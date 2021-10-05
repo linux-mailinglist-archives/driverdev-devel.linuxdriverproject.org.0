@@ -1,60 +1,130 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 077F1421EFC
-	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Oct 2021 08:44:38 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7473642205E
+	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Oct 2021 10:13:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 40269608CB;
-	Tue,  5 Oct 2021 06:44:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 930CA40794;
+	Tue,  5 Oct 2021 08:13:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R0sTnfAz0B7O; Tue,  5 Oct 2021 06:44:34 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fQHd9sjjr1Tu; Tue,  5 Oct 2021 08:13:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2022D608C7;
-	Tue,  5 Oct 2021 06:44:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 68BC9405E6;
+	Tue,  5 Oct 2021 08:13:24 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 85F6A1BF3C9
- for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 06:44:23 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E44E1BF398
+ for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 08:13:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 74C53832D8
- for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 06:44:23 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5A361606F6
+ for <devel@linuxdriverproject.org>; Tue,  5 Oct 2021 08:13:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=linuxfoundation.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9CWMW1eu2gQG for <devel@linuxdriverproject.org>;
- Tue,  5 Oct 2021 06:44:22 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4BD1A8329D
- for <devel@driverdev.osuosl.org>; Tue,  5 Oct 2021 06:44:22 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 75CA261165;
- Tue,  5 Oct 2021 06:44:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1633416261;
- bh=cXUDZv200Bhhq7gsR76VWgnrwqp0ABdauVK7hmqot5w=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ZV5n+9UvZODI6hqY+hb84xZZ1gka6VxdbbUQjl/0NAUqSzWU7FrBtKsWVpAkb0irz
- V8vqf+Kaa2+NvGcLcV5IQbzHRf1XRZ0WnY97LaQ7AwSDXBd/kpmrzPVe4o70wgrxNY
- 1JOlhmTWHZ964BV2Q0fLJw6wiy7KiwOZnkTdV6+c=
-Date: Tue, 5 Oct 2021 08:44:19 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zOGJUjsM3cON for <devel@linuxdriverproject.org>;
+ Tue,  5 Oct 2021 08:13:11 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam08on2045.outbound.protection.outlook.com [40.107.102.45])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3FAE96075E
+ for <devel@driverdev.osuosl.org>; Tue,  5 Oct 2021 08:13:11 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dro6R0M8kZZWMa/ADIs2waPYd7oJg/oXwy6xm0sac5YTZkVA4+jmjKbBmSHxsOtg5c2AC9ZIrV+cmeD84gFCy99DszEWA0D+psi5Jbt3zymxa2NYi8fwBwmmrSM9HQ2ZjeCXep9BSYBeBmbfuFukjIjS9LkvAYaI0EGD5MMSzEAcNOIKbKAWL6+C+WY0mC9z5CM4S2Rx0yWjo/XEuICCK93yZJN1s9qUaCQUWeufwJdd0sMiObRqfFBrggkrGtVbyAsdUhrs8LREiZKYwm1aU+kM9si7r6SNd6MXOyGbbhruT46OSqSKpbWzBQymQRIg4GKQ8bWVQfVN2jyB7jnHFg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=XKrfD/33W0mY9h3j/KCH9Zwe0jb1xRDgXra8d8uLDWk=;
+ b=MxEYBCJZVAgkbbMbmA63+Q1VbHyybeCdPqhvz87cILmiu0POiwm9g0q/Uf71e3J06ylpXSJPNud7F2rBKSUwriNVicBdmJW4cq42gCHYMWYjSJQnwa3kNebFYv5vEDwIvh9ICaLiVPtW/x2ZqM47y71Q9jQIlmBfD6wiHPLI3FNE7LGWi6IrrcQ/v1W55oJ3LMuaI05W+YhEVkqll/JaYS12am4uIn9htPpi/FUkOZYNf8oYCTNrG8rmIQeP/gljPeNu7dIkTzAdQCIKk3XcO84EDatDHojgSNyUgjnjVnQ9JjfpwMRzK3/ZGfYXMoUzM7DX3W6PRg+XYMUXhTjfsw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XKrfD/33W0mY9h3j/KCH9Zwe0jb1xRDgXra8d8uLDWk=;
+ b=gl2YB1w8Rbhpp/nnHnsVrxhgKpL0cSqa9Kw+FRts2PxdR8mvGZqDMp3f9YRHl3CZwT9C+9jSEZy4nXaJK887Q0fXLFuDVYUaIv+5Lp/lYM0cjQJnkXKzalZKQHBQ5HfEwvwceif89rUvSuE5InlGeM7sZJez0WnNqxYvVrFY6cc=
+Authentication-Results: codeaurora.org; dkim=none (message not signed)
+ header.d=none;codeaurora.org; dmarc=none action=none header.from=silabs.com;
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com (2603:10b6:510:ee::19)
+ by PH0PR11MB5675.namprd11.prod.outlook.com (2603:10b6:510:d4::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.14; Tue, 5 Oct
+ 2021 08:13:09 +0000
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::31cb:3b13:b0e8:d8f4]) by PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::31cb:3b13:b0e8:d8f4%9]) with mapi id 15.20.4566.022; Tue, 5 Oct 2021
+ 08:13:08 +0000
+From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
 To: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH v7 13/24] wfx: add hif_tx*.c/hif_tx*.h
-Message-ID: <YVv0Q4ARfh/ebof5@kroah.com>
+Subject: Re: [PATCH v7 05/24] wfx: add main.c/main.h
+Date: Tue, 05 Oct 2021 10:12:32 +0200
+Message-ID: <7452745.X2mWs0JoBS@pc-42>
+Organization: Silicon Labs
+In-Reply-To: <8735pgggka.fsf@codeaurora.org>
 References: <20210920161136.2398632-1-Jerome.Pouiller@silabs.com>
- <20210920161136.2398632-14-Jerome.Pouiller@silabs.com>
- <87fstlkr1m.fsf@codeaurora.org> <2873071.CAOYYqaKbK@pc-42>
- <20211001161316.w3cwsigacznjbowl@pali>
- <87tuhwf19w.fsf@codeaurora.org>
+ <3660480.PpQ1LQVJpD@pc-42> <8735pgggka.fsf@codeaurora.org>
+X-ClientProxiedBy: PAZP264CA0066.FRAP264.PROD.OUTLOOK.COM
+ (2603:10a6:102:1fd::23) To PH0PR11MB5657.namprd11.prod.outlook.com
+ (2603:10b6:510:ee::19)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87tuhwf19w.fsf@codeaurora.org>
+Received: from pc-42.localnet (37.71.187.125) by
+ PAZP264CA0066.FRAP264.PROD.OUTLOOK.COM (2603:10a6:102:1fd::23) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4587.18 via Frontend Transport; Tue, 5 Oct 2021 08:13:06 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 3bb5a6a9-c23e-4051-6107-08d987d7f738
+X-MS-TrafficTypeDiagnostic: PH0PR11MB5675:
+X-Microsoft-Antispam-PRVS: <PH0PR11MB56755F6972849C1C9FF8389E93AF9@PH0PR11MB5675.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: H5/VuKeEEeQuNj6dMKvyHA7N/BfdzckJLYVhzwdZAlnhYPDI4YQNfIqy/xYEdqWdKsty2S1yNl6GnC9UROQoSHh8EAyujmYmK2zt9VZgnujjRr7MUaw4zCK5YQ2Iw72NXp9LOJVZD+hP3zQqR07SZdMbRsrhQvre9eGc48LZpChC39uQiJ3rXECnu4lHa6bnqXmjSAMsB+yg6U3p9eBuJbeixIsAN7RzxdD93dflaH1kB8JrG1Kk4fuSSHcNhLFJUxGATqPVBLObaX2yZskBvdWFpoyuTKLoxB7JhKLVR0BKTmfjZD5dk7XTe4g4cLlRNISMJoVKrvuJInaxG3V6ksGaydHPT/9cjzVWN3Z0JzNvwaFafe8gr//mnGtXXYvEfQthr15/MXpGqJG1ETai/c7ZThxOkiKkFdCezm1NOj8ov8bfJ1Ly+sgDm4Csp4nbwt2RNJOHtEYH9G4MC92Who2CUwTV5pddipScUw80TxX1q38FUh6Dp/456zFAv1g+oaXO3qjaONJ4RZ9mUARBAogec8W99aFm287uvFJW0P9biz/mF1owgi2aEB6J3QevOQxxLcby5ktbA+ZSzWJ0JumZZydsl/uyKtoMmmOOWHFLTw1scLoVLZ1WF1UbwG260bgcia4tYeLEJymCVy8XctR3t4X4q+djCPpZGlwIGUucBsRuPxZoOKBS9jXMfm0qynXpcTnFKYXkjFRrBqGLR6ut3DYFzkcok1dEoSwdz3w=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(36916002)(316002)(54906003)(86362001)(6666004)(508600001)(6512007)(9686003)(2906002)(52116002)(33716001)(5660300002)(6486002)(956004)(66946007)(66556008)(66476007)(7416002)(66574015)(6506007)(8936002)(83380400001)(8676002)(186003)(26005)(38100700002)(38350700002)(6916009)(4326008)(39026012);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?+9VOkZS96RBi1NSmim7XCJAeFhlF0EJjGraA2Zo5rWy7ZtRv0YXWba4BKm?=
+ =?iso-8859-1?Q?w5ZvL/uSa6m/LR5kOSrp7isWIFPiY+7qhFfhul9evqTq48DWqh0FqTgFPG?=
+ =?iso-8859-1?Q?HpPLMUlqby/od0mj2BmKNy38K6BpFFwTENvObno8yEaanbkoYV+7soDE92?=
+ =?iso-8859-1?Q?JKzYJLvH1ZGoT4iz1iQItkh8PlMCQ7OEnS/hM3Pfi9rH88Qw8OPX1Slxq4?=
+ =?iso-8859-1?Q?17V5W0tMm6FjOJD/gkyFNCjXK2Ltc8FKUJR+99VfKOJfKibo2YRtYIs/wz?=
+ =?iso-8859-1?Q?iFlG4p2jUGAioyOAI59jjzHoMP4qMv1G38LlnO7PA4tG+n1MNpPl2u39iI?=
+ =?iso-8859-1?Q?egc5FyZRZxEUslDetxjckAikovBtfLNMMgAyLJk6yLIgqz6t+u5xclAlnH?=
+ =?iso-8859-1?Q?ga79RjQyV2bU7bBd8Ja3vvqFhebOi0vtEZUarsOZzuu5Bmd7iAierWFtPg?=
+ =?iso-8859-1?Q?EexxFljEnGlrnA0akIcuvuPTMnUQaGi2UQtZx+bNXfSgrK6aj6aWr/aU30?=
+ =?iso-8859-1?Q?KLy+7JBTQoNXnV/JBp5UCNbYqcFVtcNOwzXNLcIn1DqIl0ZmVOlFcN9AY2?=
+ =?iso-8859-1?Q?Eua0Z/qgvi2iIRXDH6eMK4KH/hEfd8ilbPFN1FvUEfxVQ8xphTf5yMoHTG?=
+ =?iso-8859-1?Q?+R9crfVymc2pwDpTPnQS0VirhohsAHvaZp8ZufyJ0OJzgObIZN0ceEpIYY?=
+ =?iso-8859-1?Q?AiqjanVDDABLFPwdoGLhharaHlWBWSYa3yjE0CT8+45ZfvTSc8eNjoWilF?=
+ =?iso-8859-1?Q?ekOJT4fbiuyBa8MlsPI0I4Vr/Gq1aBZGdFe0sJmD+kbvfDDkdPiRQnmyY4?=
+ =?iso-8859-1?Q?ItvXp5yxRfNncAYAPjtrUutuoHgInflJIzVsPxwmGMkrOydCIL69AmyHo6?=
+ =?iso-8859-1?Q?lDLkbaVQof6gDlc6r26Y90yUjrTaSuIVrTz9l6AxtAltBox/B/g3Vaq0r9?=
+ =?iso-8859-1?Q?vKIGZ78nQd/CfHAL43s9SvoNcQXl4NqD8ymR0C7RNQwBjDNUkgQxceNcWN?=
+ =?iso-8859-1?Q?RvFhvsaC5FxUuZdZYYQBoPvDuQ0B2rqJeT7GbJiRHGqe1xoMeAI7VvCyuZ?=
+ =?iso-8859-1?Q?f0ACrjMUdGUSYjRybnUhk5a3iThx91ybowEpV1GY6WTtuVjeRgSrNUns0D?=
+ =?iso-8859-1?Q?KFrUa2BvdnYvVR335/K0QDCAKV/GJlMb+NDGVpDur7P8970Hc9YXBX7D6T?=
+ =?iso-8859-1?Q?LPC32hNcxNZ65Y5+vDIwPYLbgy1MI++9aYkGX/KWImm8rYVewo6cnWJ88R?=
+ =?iso-8859-1?Q?35KQJ+u1SB5mh947Mwebyvev812s5SyLvCdSL9KP4rmvwtGYTNF/sMVsnd?=
+ =?iso-8859-1?Q?3RkVtjLOB3IpmMYZg9v48UDGkzJunLs5A+A1CMXh0sJa0AE00Gx1r7QPKI?=
+ =?iso-8859-1?Q?wOa+ULO6Th?=
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3bb5a6a9-c23e-4051-6107-08d987d7f738
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5657.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Oct 2021 08:13:08.6823 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: I/EOULx31YMLrJESbjME1JzHdQ03ZROvc4K6wi1EUh3T6WUE2bcWSW3R3GOd/quZsIMMIb9fczrpLEmYpd2GWQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5675
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,130 +140,133 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-mmc@vger.kernel.org,
- Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
+ Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
  "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 05, 2021 at 09:12:27AM +0300, Kalle Valo wrote:
-> Pali Roh=E1r <pali@kernel.org> writes:
+On Tuesday 5 October 2021 07:56:53 CEST Kalle Valo wrote:
+> J=E9r=F4me Pouiller <jerome.pouiller@silabs.com> writes:
 > =
 
-> > On Friday 01 October 2021 17:17:52 J=E9r=F4me Pouiller wrote:
-> >> On Friday 1 October 2021 11:55:33 CEST Kalle Valo wrote:
-> >> > CAUTION: This email originated from outside of the organization.
-> >> > Do not click links or open attachments unless you recognize the
-> >> > sender and know the content is safe.
-> >> > =
-
-> >> > =
-
-> >> > Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
-> >> > =
-
-> >> > > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> >> > >
-> >> > > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> >> > =
-
-> >> > [...]
-> >> > =
-
-> >> > > --- /dev/null
-> >> > > +++ b/drivers/net/wireless/silabs/wfx/hif_tx_mib.h
-> >> > > @@ -0,0 +1,49 @@
-> >> > > +/* SPDX-License-Identifier: GPL-2.0-only */
-> >> > > +/*
-> >> > > + * Implementation of the host-to-chip MIBs of the hardware API.
-> >> > > + *
-> >> > > + * Copyright (c) 2017-2020, Silicon Laboratories, Inc.
-> >> > > + * Copyright (c) 2010, ST-Ericsson
-> >> > > + * Copyright (C) 2010, ST-Ericsson SA
-> >> > > + */
-> >> > > +#ifndef WFX_HIF_TX_MIB_H
-> >> > > +#define WFX_HIF_TX_MIB_H
-> >> > > +
-> >> > > +struct wfx_vif;
-> >> > > +struct sk_buff;
-> >> > > +
-> >> > > +int hif_set_output_power(struct wfx_vif *wvif, int val);
-> >> > > +int hif_set_beacon_wakeup_period(struct wfx_vif *wvif,
-> >> > > +                              unsigned int dtim_interval,
-> >> > > +                              unsigned int listen_interval);
-> >> > > +int hif_set_rcpi_rssi_threshold(struct wfx_vif *wvif,
-> >> > > +                             int rssi_thold, int rssi_hyst);
-> >> > > +int hif_get_counters_table(struct wfx_dev *wdev, int vif_id,
-> >> > > +                        struct hif_mib_extended_count_table *arg);
-> >> > > +int hif_set_macaddr(struct wfx_vif *wvif, u8 *mac);
-> >> > > +int hif_set_rx_filter(struct wfx_vif *wvif,
-> >> > > +                   bool filter_bssid, bool fwd_probe_req);
-> >> > > +int hif_set_beacon_filter_table(struct wfx_vif *wvif, int tbl_len,
-> >> > > +                             const struct hif_ie_table_entry *tbl=
-);
-> >> > > +int hif_beacon_filter_control(struct wfx_vif *wvif,
-> >> > > +                           int enable, int beacon_count);
-> >> > > +int hif_set_operational_mode(struct wfx_dev *wdev, enum
-> >> > > hif_op_power_mode mode);
-> >> > > +int hif_set_template_frame(struct wfx_vif *wvif, struct sk_buff *=
-skb,
-> >> > > +                        u8 frame_type, int init_rate);
-> >> > > +int hif_set_mfp(struct wfx_vif *wvif, bool capable, bool required=
-);
-> >> > > +int hif_set_block_ack_policy(struct wfx_vif *wvif,
-> >> > > +                          u8 tx_tid_policy, u8 rx_tid_policy);
-> >> > > +int hif_set_association_mode(struct wfx_vif *wvif, int ampdu_dens=
-ity,
-> >> > > +                          bool greenfield, bool short_preamble);
-> >> > > +int hif_set_tx_rate_retry_policy(struct wfx_vif *wvif,
-> >> > > +                              int policy_index, u8 *rates);
-> >> > > +int hif_keep_alive_period(struct wfx_vif *wvif, int period);
-> >> > > +int hif_set_arp_ipv4_filter(struct wfx_vif *wvif, int idx, __be32=
- *addr);
-> >> > > +int hif_use_multi_tx_conf(struct wfx_dev *wdev, bool enable);
-> >> > > +int hif_set_uapsd_info(struct wfx_vif *wvif, unsigned long val);
-> >> > > +int hif_erp_use_protection(struct wfx_vif *wvif, bool enable);
-> >> > > +int hif_slot_time(struct wfx_vif *wvif, int val);
-> >> > > +int hif_wep_default_key_id(struct wfx_vif *wvif, int val);
-> >> > > +int hif_rts_threshold(struct wfx_vif *wvif, int val);
-> >> > =
-
-> >> > "wfx_" prefix missing from quite a few functions.
-> >> =
-
-> >> I didn't know it was mandatory to prefix all the functions with the
-> >> same prefix.
-> =
-
-> I don't know either if this is mandatory or not, for example I do not
-> have any recollection what Linus and other maintainers think of this. I
-> just personally think it's good practise to use driver prefix ("wfx_")
-> in all non-static functions.
-> =
-
-> Any opinions from others? Greg?
-
-For static functions, pick what you want.
-
-For global functions, like this, use a common prefix that indicates the
-driver as you are now playing in the global namespace of a 30 million
-line project.
-
-> >> With the rule of 80-columns, I think I will have to change a bunch of
-> >> code :( .
+> > On Friday 1 October 2021 11:22:08 CEST Kalle Valo wrote:
+> >> CAUTION: This email originated from outside of the organization. Do
+> >> not click links or open attachments unless you recognize the sender
+> >> and know the content is safe.
+> >>
+> >>
+> >> Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
+> >>
+> >> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> >> >
+> >> > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> >>
+> >> [...]
+> >>
+> >> > +/* The device needs data about the antenna configuration. This info=
+rmation in
+> >> > + * provided by PDS (Platform Data Set, this is the wording used in =
+WF200
+> >> > + * documentation) files. For hardware integrators, the full process=
+ to create
+> >> > + * PDS files is described here:
+> >> > + *   https:github.com/SiliconLabs/wfx-firmware/blob/master/PDS/READ=
+ME.md
+> >> > + *
+> >> > + * So this function aims to send PDS to the device. However, the PD=
+S file is
+> >> > + * often bigger than Rx buffers of the chip, so it has to be sent i=
+n multiple
+> >> > + * parts.
+> >> > + *
+> >> > + * In add, the PDS data cannot be split anywhere. The PDS files con=
+tains tree
+> >> > + * structures. Braces are used to enter/leave a level of the tree (=
+in a JSON
+> >> > + * fashion). PDS files can only been split between root nodes.
+> >> > + */
+> >> > +int wfx_send_pds(struct wfx_dev *wdev, u8 *buf, size_t len)
+> >> > +{
+> >> > +     int ret;
+> >> > +     int start, brace_level, i;
+> >> > +
+> >> > +     start =3D 0;
+> >> > +     brace_level =3D 0;
+> >> > +     if (buf[0] !=3D '{') {
+> >> > + dev_err(wdev->dev, "valid PDS start with '{'. Did you forget to
+> >> > compress it?\n");
+> >> > +             return -EINVAL;
+> >> > +     }
+> >> > +     for (i =3D 1; i < len - 1; i++) {
+> >> > +             if (buf[i] =3D=3D '{')
+> >> > +                     brace_level++;
+> >> > +             if (buf[i] =3D=3D '}')
+> >> > +                     brace_level--;
+> >> > +             if (buf[i] =3D=3D '}' && !brace_level) {
+> >> > +                     i++;
+> >> > +                     if (i - start + 1 > WFX_PDS_MAX_SIZE)
+> >> > +                             return -EFBIG;
+> >> > +                     buf[start] =3D '{';
+> >> > +                     buf[i] =3D 0;
+> >> > +                     dev_dbg(wdev->dev, "send PDS '%s}'\n", buf + s=
+tart);
+> >> > +                     buf[i] =3D '}';
+> >> > +                     ret =3D hif_configuration(wdev, buf + start,
+> >> > +                                             i - start + 1);
+> >> > +                     if (ret > 0) {
+> >> > + dev_err(wdev->dev, "PDS bytes %d to %d: invalid data (unsupported
+> >> > options?)\n",
+> >> > +                                     start, i);
+> >> > +                             return -EINVAL;
+> >> > +                     }
+> >> > +                     if (ret =3D=3D -ETIMEDOUT) {
+> >> > + dev_err(wdev->dev, "PDS bytes %d to %d: chip didn't reply (corrupt=
+ed
+> >> > file?)\n",
+> >> > +                                     start, i);
+> >> > +                             return ret;
+> >> > +                     }
+> >> > +                     if (ret) {
+> >> > + dev_err(wdev->dev, "PDS bytes %d to %d: chip returned an unknown
+> >> > error\n",
+> >> > +                                     start, i);
+> >> > +                             return -EIO;
+> >> > +                     }
+> >> > +                     buf[i] =3D ',';
+> >> > +                     start =3D i;
+> >> > +             }
+> >> > +     }
+> >> > +     return 0;
+> >> > +}
+> >>
+> >> I'm not really fond of having this kind of ASCII based parser in the
+> >> kernel. Do you have an example compressed file somewhere?
+> >>
+> >> Does the device still work without these PDS files? I ask because my
+> >> suggestion is to remove this part altogether and revisit after the
+> >> initial driver is moved to drivers/net/wireless. A lot simpler to revi=
+ew
+> >> complex features separately.
 > >
-> > I think that new drivers can use 100 characters per line.
+> > Do you want I remove this function from this patch and place it a new
+> > patch at the end of this series?
 > =
 
-> That's my understanding as well.
+> I don't understand, how that would help? The problem here is the file
+> format and that's what we should try to fix.
 
-Yes, that's fine.
+It was just to be able to review this function separately. Nevermind.
 
-thanks,
 
-greg k-h
+-- =
+
+J=E9r=F4me Pouiller
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
