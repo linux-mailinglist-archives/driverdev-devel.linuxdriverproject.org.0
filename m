@@ -1,85 +1,128 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2A5B4235D1
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Oct 2021 04:28:06 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 295184238F6
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Oct 2021 09:33:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B8F84403DA;
-	Wed,  6 Oct 2021 02:28:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 40DD640828;
+	Wed,  6 Oct 2021 07:33:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wElZbnHX6efp; Wed,  6 Oct 2021 02:28:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QJFBhr6JpiPU; Wed,  6 Oct 2021 07:33:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6218140129;
-	Wed,  6 Oct 2021 02:28:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2D7B340700;
+	Wed,  6 Oct 2021 07:33:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 682301BF33D
- for <devel@linuxdriverproject.org>; Wed,  6 Oct 2021 02:27:52 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F00621BF40B
+ for <devel@linuxdriverproject.org>; Wed,  6 Oct 2021 07:33:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5765E83AF3
- for <devel@linuxdriverproject.org>; Wed,  6 Oct 2021 02:27:52 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id EC1C140700
+ for <devel@linuxdriverproject.org>; Wed,  6 Oct 2021 07:33:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=google.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7d6meaPbogSu for <devel@linuxdriverproject.org>;
- Wed,  6 Oct 2021 02:27:51 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id k6SgGzMJVmbC for <devel@linuxdriverproject.org>;
+ Wed,  6 Oct 2021 07:33:01 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-vs1-xe33.google.com (mail-vs1-xe33.google.com
- [IPv6:2607:f8b0:4864:20::e33])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 260C283842
- for <devel@driverdev.osuosl.org>; Wed,  6 Oct 2021 02:27:51 +0000 (UTC)
-Received: by mail-vs1-xe33.google.com with SMTP id y14so1296312vsm.9
- for <devel@driverdev.osuosl.org>; Tue, 05 Oct 2021 19:27:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4OYSce36HFIDKSweIZsHOeEUQcMTMlRZW+u2FdUpafE=;
- b=gHppIZL0NNL41Ah+TizK4cJGOSQt6n8ckgXCCWKJaVG6WuNu6D39wA8hcCUdEJ2ZBF
- qP4uE8XmPBjyiFvPVso2jkrCUkzwGiwtyJdgYFh1W5jA3tUXXB194CJSf1C7SEgMRs4W
- P6IDsUGsVQQvAQ7Amh1603Oup30JJYY0v3AZShcjcLS2cXmQ+BJ6vQoFS+wc7BMdd6bh
- 3EMeA44QQpjNXBGt2u4IpozI3Xy6CHpvFOfLvcPRLEmIVi6pIMRUrkMqgtyU0i2mHuuj
- Q0k1kaP8hRW26c/ju0oSzrupcbkC9MJyflrfUTGXotsjd/k5vs3AS5biUUCmwpkqPkfE
- RsZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4OYSce36HFIDKSweIZsHOeEUQcMTMlRZW+u2FdUpafE=;
- b=43Hp/iFTuP3+FZ/0gW54WaTm1DJ8K3oUkoh4r4AtxqH/QyxF9gxKxUNmCkFB8YraMH
- LpO4apGZpF3wh5Jz3dCPPbXGhowkRqunL6Yz7AYxyHmrzO45IyzTFM5nnJi6Xpg5AS5j
- OBfpm9CGviSIZbgFUjBhQGGCKkWYJLYCSO+a2gM8E40jXe8wVEOvBX0DZJ147pCrkWo9
- /rKllA7A1HyRB5yO+6n8esbRu9CxcrLLfnGSuHhYi3JSSvy82vRv6CHDNts0QQzM1x7G
- yJ7Bi3v1mNZ+e5EOU1NoJxuu0nNXBLCLOzCp3WgvmJqfUQY8sDheF48ZJOkewVrh21GL
- 2TMg==
-X-Gm-Message-State: AOAM530Dzq178sOj841YlxaWoM7s0D8PoeS4gt7ohqpJzIDKMuqPI7ch
- Lp27EGKZentLEOy5CSjxPxVgp5NvRlc7O4+rsxjYjw==
-X-Google-Smtp-Source: ABdhPJyTH29CQo/Jwiml4RScXu5onK6nUS1xqUF5+/gSLGjq9q1MVF4srzfle3qW/NbIcsfW6Jj+di+yUzIVAAeTe7Y=
-X-Received: by 2002:a67:fd67:: with SMTP id h7mr382372vsa.52.1633487269836;
- Tue, 05 Oct 2021 19:27:49 -0700 (PDT)
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12on2066.outbound.protection.outlook.com [40.107.244.66])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E324C406EB
+ for <devel@driverdev.osuosl.org>; Wed,  6 Oct 2021 07:33:00 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=mRxRZ0dwyrh8/ZegOB9z3iZ23BsmB921g5fcF6N3Fc/GjyiWGyTyEpgD48GTy8+uJLlbegBvueXLe8ApqfHQmZrUGsDywJF0I3gUZTWtDnjTKh025QIIp9sSp2wN3MKMMZxsUylD0EIpLiHPUwIBR7hPZiCLeOCthWD/XiV1KYBwdZYTC6CUGmuNQ64LKbx9iDMzrwUp5U1C2XRG7xGoiWxsDVhp6O5v4GSrKC7zRuPKDNGaKlCQOdgQSi3W3vT2ST8c+svxW03KmoSKtUWYqDg0BJX7x4CsWOtrJi34umAQkjrOJ6rN9Yoi7Bs7uIPYSA6m70L26T5OwxWg7e4XEQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=CI3EkQPeflAF0v+8HIzRDHbCAyDTsxANKsxloD1B9tk=;
+ b=MUoNhc9GVu35JPYUyZcfKv1+Fb/w86m7RuPr/iYQPSANmS4GUFsgLIpNQsra8AKSDoEsNjXMWO3Oteo1yws0LTvhAqGQbMFVeKBYMoWP9a+DJnL9atk1wbA3Ra0H9n/uxSvbwjfMkyTXnWcKGUMjBnrBA+OXcSGMJNq33GZGFOvSgfpfsCvFcUXnkhEr8Di4slonNyHk6Em2oLBhWObJVarQUI+8iZsqG0qqhdtCSKdEmyziTzKWWEs+nxHwS1qE2QlwlEu8B5lYfpmIBMi4H42m9HWjjzXexwRNi1fstgaeKRXEnG2Dw0emfOj+0DrkgP0heEMl2Rw7pgDv8jfrKg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CI3EkQPeflAF0v+8HIzRDHbCAyDTsxANKsxloD1B9tk=;
+ b=C0F96TsLnUUK1mI0MVa/dwWnGA3oyyffJy0CZ8ZG/+dd6RuaeNiI+NwURlDptkKZWSYOBd0PHVVz7g9craUJarx4J4j4qmRUq5bwyCpj7o9bCxYou6J2x5DDxRH/8n7NxiAYBK+OJJDYmxhJePhbbAFJZzyfjvPenOEwzQL7AVw=
+Authentication-Results: codeaurora.org; dkim=none (message not signed)
+ header.d=none;codeaurora.org; dmarc=none action=none header.from=silabs.com;
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com (2603:10b6:510:ee::19)
+ by PH0PR11MB5580.namprd11.prod.outlook.com (2603:10b6:510:e5::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.15; Wed, 6 Oct
+ 2021 07:32:58 +0000
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::31cb:3b13:b0e8:d8f4]) by PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::31cb:3b13:b0e8:d8f4%9]) with mapi id 15.20.4566.023; Wed, 6 Oct 2021
+ 07:32:58 +0000
+From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
+To: Kalle Valo <kvalo@codeaurora.org>
+Subject: Re: [PATCH v7 05/24] wfx: add main.c/main.h
+Date: Wed, 06 Oct 2021 09:32:49 +0200
+Message-ID: <3570035.Z1gqkuQO5x@pc-42>
+Organization: Silicon Labs
+In-Reply-To: <87k0ixj5vn.fsf@codeaurora.org>
+References: <20210920161136.2398632-1-Jerome.Pouiller@silabs.com>
+ <2723787.uDASXpoAWK@pc-42> <87k0ixj5vn.fsf@codeaurora.org>
+X-ClientProxiedBy: PR3P189CA0031.EURP189.PROD.OUTLOOK.COM
+ (2603:10a6:102:53::6) To PH0PR11MB5657.namprd11.prod.outlook.com
+ (2603:10b6:510:ee::19)
 MIME-Version: 1.0
-References: <20211001175521.3853257-1-tkjos@google.com>
- <c6a650e4-15e4-2943-f759-0e9577784c7a@schaufler-ca.com>
- <CAG48ez2tejBUXJGf0R9qpEiauL9-ABgkds6mZTQD7sZKLMdAAQ@mail.gmail.com>
- <CAG48ez1SRau1Tnge5HVqxCFsNCizmnQLErqnC=eSeERv8jg-zQ@mail.gmail.com>
- <f59c6e9f-2892-32da-62f8-8bbeec18ee4c@schaufler-ca.com>
- <CAG48ez0yF0u=QBLVL2XrGB8r8ouQj-_aS9SScu4O4f+LhZxCDw@mail.gmail.com>
- <e0c1fab9-cb97-d5af-1f4b-f15b6b2097fd@schaufler-ca.com>
- <CAG48ez3qc+2sc6xTJQVqLTRcjCiw_Adx13KT3OvPMCjBLjZvgA@mail.gmail.com>
- <6bd2de29-b46a-1d24-4c73-9e4e0f3f6eea@schaufler-ca.com>
- <CAG48ez0RM6NGZLdEjaqU9KmaOgeFR6cSeNo50XG9oaFxC_ayYw@mail.gmail.com>
- <CAEjxPJ4X4N_zgH4oRbdkZi21mvS--ExDb_1gad09buMHshB_hQ@mail.gmail.com>
- <7ec1090d-5bd7-bd05-4f38-07b1cc993721@schaufler-ca.com>
-In-Reply-To: <7ec1090d-5bd7-bd05-4f38-07b1cc993721@schaufler-ca.com>
-From: Jann Horn <jannh@google.com>
-Date: Wed, 6 Oct 2021 04:27:22 +0200
-Message-ID: <CAG48ez3ZxzO3fa0T3pE0a4wQYQDvBNY=i+Nj4MtZq-QHtJdFdA@mail.gmail.com>
-Subject: Re: [PATCH v2] binder: use cred instead of task for selinux checks
-To: Casey Schaufler <casey@schaufler-ca.com>
+Received: from pc-42.localnet (37.71.187.125) by
+ PR3P189CA0031.EURP189.PROD.OUTLOOK.COM (2603:10a6:102:53::6) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4566.14 via Frontend Transport; Wed, 6 Oct 2021 07:32:55 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 540fd5ac-e407-442f-5ad9-08d9889b84cf
+X-MS-TrafficTypeDiagnostic: PH0PR11MB5580:
+X-Microsoft-Antispam-PRVS: <PH0PR11MB5580E54D8F7D0FBC6D46CBE493B09@PH0PR11MB5580.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: XHaxFnxC0VYcyNfilhw8osTedQp2tTjPObPrXg2P9kE2TJQdxX/oYaWQzfN7nceJJc/Dqv5HBEx6V0qSDFZNOitPp3Hpo4Gd2WvrWoFfuw8SPCX2y3i76BkvVedNLiEBqG7ez46R7P6HxSvxGxIIh0TEg51XwKERKVU75+nDxGh1gsEmWzz4QrDJQyx1eRMcWJdB6lYiCR+2SyUkSj3a1bzq4JIRin7BTr02Ec5kc0eT+TjcAYnszPyLzaWTA82oQ68QFCl9wYXJ0c950KLLGib2WHl6kWoL/b4GYX00dx4wUvnHfiwy7zK6QZoOo9tWgk8n4GaaZ/7emmSkJlumltEPG52TO2iVWmcoUtGOjXl3wllrpEpF7t+ypZw2pAWfQcYIfU3cWAosRd8EhFMWX24jhSwSE3MyV1tHtPjyqNJ85yk7XhuvaTDEMr6C83jX8GhSbNhy+oUQEWA65EbPAixZAvzIDpVSGPErHBXEY4b4Q7zyLOzvQVXL6aKU2krP27QW3zuJ7Z4eMqdsoog+5vLxu+MRQLOJDfSdiZ1dvReqk65YWNVGw1axP88pLQ75TG5DiK8WPnZEOOFqitXAt6kw+NwU7MyTojNAPcQSxnzf4lrXCqz6FfD8imnGuhifiC9kxUE4lqi9zXkRkEPncMWP4uWPSlEq7JT+EpNOsqb0XZho/EQ8Ak70/VTTsVsrnhe18c9Xoyffsxs27CTMItuA9ejXFW/93Evo0RsF/tM=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(6486002)(186003)(36916002)(38100700002)(2906002)(7416002)(316002)(26005)(38350700002)(956004)(66556008)(66476007)(54906003)(8676002)(66946007)(52116002)(33716001)(6512007)(6666004)(6916009)(6506007)(9686003)(86362001)(4326008)(508600001)(83380400001)(66574015)(5660300002)(8936002)(39026012);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?y+vgkbNMKFALkqOn2Kv0C1i5dDSlO1i1bCkblVuPTivTzygrvT0FGjbF5/?=
+ =?iso-8859-1?Q?lyVn0fGBro2YE9ew4RmFobo0UQib21w8xlXf7EoqaCbsyK5KDlVaN2Bb1l?=
+ =?iso-8859-1?Q?qNjPtOk2i921Q+oEU8aiSi7bFL55CgtynTeApsAPzcT0PewkNom5FmZDnV?=
+ =?iso-8859-1?Q?oYfny4ltA2jdsnYAS8hYNT1L39bgSOwwevGUwvp/rJhQBimgoz51i8dJOj?=
+ =?iso-8859-1?Q?EBJM2WdymCD1gtsPjHO1BrIeNAaW2J1KHWqUqW+oMGv0fSTJF0Vsvh90CT?=
+ =?iso-8859-1?Q?/OeprBi5LLaHG9qL3b3px/HXmlMW9C1CGCHioi9m4sSSPm3QBjjEcrOnzs?=
+ =?iso-8859-1?Q?udtBg2C62J6d8wwUuLmhRmr5yK5bvrgffnk8ht/ISTPQMI8UxK9RPv2Ut+?=
+ =?iso-8859-1?Q?LJbMUKss973/sv3J2kpJPp8hZ/wNrHAlpU+3QOlzsbYTqcKsmUZOu9A7m4?=
+ =?iso-8859-1?Q?qWV+JwoicQZ0zk4cEHpkwRKU7dZ8zJ3DVdDgB1CVFcpNYPQDdax5JqH/Lx?=
+ =?iso-8859-1?Q?wi1mnOCuQXCpmEejOuRFA5rBN+quE85uX62143HatJ2EG7TmVteQTjmvvq?=
+ =?iso-8859-1?Q?c7tAhcwfxi0/5y3sa108V85oWHVUq1SIXq/6PQBNljx8LMoKRlcNxqSAfP?=
+ =?iso-8859-1?Q?DSe8bvvuZdHzcvjeta/iBFDLvQptTVh1bi+dgANeK8RrOgn8kOojPJ7suk?=
+ =?iso-8859-1?Q?HEYXPvOZnM3svurYJuMRSGhpGMyAJzS6BKia5dA1fK6HDumX4pgqxz3EDe?=
+ =?iso-8859-1?Q?PsvoLhGQ6FrUqVt24iyzHNjRwEcOAUElyYUT+MG2x0TGT54zHmgzb+uln8?=
+ =?iso-8859-1?Q?tSW4sZEHMFQSJB9tTRlvHniAeFzXnlnyVjNVk8RA8g+gi7cCMHAo6ZWdTP?=
+ =?iso-8859-1?Q?ftdKiebePikn46LX9oZQ4IoWqk/sMoZjgXNUxWaAlgcxQqvxyUgZusl1XI?=
+ =?iso-8859-1?Q?f1bbNKrZzANXa5UGqnzJN8L6TrqxruqYkyVfEqBq75xntqPhUMVmd6jyLi?=
+ =?iso-8859-1?Q?93MRJLwIXddgKUZx/YLl55IJuXggCgY814/NLHiyKMVmGqkMj3avpaFtKu?=
+ =?iso-8859-1?Q?G2kYLJQXSCBWncTXPzSz26Nc0rxTH+1G3XNxlfHsrtYdM5hRWRoKTyRHjX?=
+ =?iso-8859-1?Q?mk6ONnfUS9EBbVo/u7iMSpbltu5aCjABgQud6hngEV6uEm2skXSvFO52eG?=
+ =?iso-8859-1?Q?LFHMupZiyP4WpArg7cOEdXhtz8KBnjLyCRi+O3wB+BMCIT4NttMDT+7sNd?=
+ =?iso-8859-1?Q?28eL+xvjehWOgMGGF0Kn+oLJaa9rdZT2Xtots44/71FXdDrTpp9EipZrqD?=
+ =?iso-8859-1?Q?yYK/WN1IlmzJ1nxnmsHrI2rvIXkFxcTG2lHbJBvInQuDaIfkivCsrBlgUs?=
+ =?iso-8859-1?Q?ypP/TrecU2?=
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 540fd5ac-e407-442f-5ad9-08d9889b84cf
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5657.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Oct 2021 07:32:58.2152 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: KqGG3eY+QNHkMoy98/bny2IcXRYo+hrGCjBemu88iqEY/I3RnJLbGQ4pBPuzcD+05wK9ZV16oHFpWeUqBfAYwQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5580
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,67 +135,168 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org,
- LSM List <linux-security-module@vger.kernel.org>,
- "Cc: Android Kernel" <kernel-team@android.com>, tkjos@android.com,
- Paul Moore <paul@paul-moore.com>, Kees Cook <keescook@chromium.org>,
- SElinux list <selinux@vger.kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Stephen Smalley <stephen.smalley.work@gmail.com>,
- James Morris <jmorris@namei.org>, Mimi Zohar <zohar@linux.ibm.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, arve@android.com,
- stable@vger.kernel.org, Jeffrey Vander Stoep <jeffv@google.com>,
- "Joel Fernandes \(Google\)" <joel@joelfernandes.org>,
- Eric Paris <eparis@parisplace.org>, maco@android.com, christian@brauner.io,
- Todd Kjos <tkjos@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
+ Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Oct 5, 2021 at 6:59 PM Casey Schaufler <casey@schaufler-ca.com> wrote:
-> On 10/5/2021 8:21 AM, Stephen Smalley wrote:
-> > On Mon, Oct 4, 2021 at 8:27 PM Jann Horn <jannh@google.com> wrote:
-> >> On Tue, Oct 5, 2021 at 1:38 AM Casey Schaufler <casey@schaufler-ca.com> wrote:
-> >>> On 10/4/2021 3:28 PM, Jann Horn wrote:
-> >>>> You can't really attribute binder transactions to specific tasks that
-> >>>> are actually involved in the specific transaction, neither on the
-> >>>> sending side nor on the receiving side, because binder is built around
-> >>>> passing data through memory mappings. Memory mappings can be accessed
-> >>>> by multiple tasks, and even a task that does not currently have it
-> >>>> mapped could e.g. map it at a later time. And on top of that you have
-> >>>> the problem that the receiving task might also go through privileged
-> >>>> execve() transitions.
-> >>> OK. I'm curious now as to why the task_struct was being passed to the
-> >>> hook in the first place.
-> >> Probably because that's what most other LSM hooks looked like and the
-> >> authors/reviewers of the patch didn't realize that this model doesn't
-> >> really work for binder? FWIW, these hooks were added in commit
-> >> 79af73079d75 ("Add security hooks to binder and implement the hooks
-> >> for SELinux."). The commit message also just talks about "processes".
-> > Note that in the same code path (binder_transaction), sender_euid is
-> > set from proc->tsk and security_ctx is based on proc->tsk. If we are
-> > changing the hooks to operate on the opener cred, then presumably we
-> > should be doing that for sender_euid and replace the
-> > security_task_getsecid_obj() call with security_cred_getsecid()?
-> >
-> > NB Mandatory Access Control doesn't allow uncontrolled delegation,
-> > hence typically checks against the subject credential either at
-> > delegation/transfer or use or both. That's true in other places too,
-> > e.g. file_permission, socket_sendmsg.
->
-> Terrific. Now I'm even less convinced that either the proposed change
-> or the existing code make sense. It's also disturbing that the change
-> log claims that the reason for the change is fix a race condition when
-> in fact it changes the data being sent to the hook completely.
+Hi Kalle,
 
-The race it's referring to is the one between
-security_binder_transaction() (which checks for permission to send a
-transaction and checks for delegation) and
-security_task_getsecid_obj() (which tells the recipient what the
-sender's security context is). (It's a good thing Paul noticed that
-the v1 patch didn't actually change the security_task_getsecid_obj()
-call... somehow I missed that.)
+On Friday 1 October 2021 14:18:04 CEST Kalle Valo wrote:
+> J=E9r=F4me Pouiller <jerome.pouiller@silabs.com> writes:
+> =
+
+> > On Friday 1 October 2021 11:22:08 CEST Kalle Valo wrote:
+> >> Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
+> >> =
+
+> >> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> >> >
+> >> > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> >> =
+
+> >> [...]
+> >> =
+
+> >> > +/* The device needs data about the antenna configuration. This info=
+rmation in
+> >> > + * provided by PDS (Platform Data Set, this is the wording used in =
+WF200
+> >> > + * documentation) files. For hardware integrators, the full process=
+ to create
+> >> > + * PDS files is described here:
+> >> > + *   https:github.com/SiliconLabs/wfx-firmware/blob/master/PDS/READ=
+ME.md
+> >> > + *
+> >> > + * So this function aims to send PDS to the device. However, the PD=
+S file is
+> >> > + * often bigger than Rx buffers of the chip, so it has to be sent i=
+n multiple
+> >> > + * parts.
+> >> > + *
+> >> > + * In add, the PDS data cannot be split anywhere. The PDS files con=
+tains tree
+> >> > + * structures. Braces are used to enter/leave a level of the tree (=
+in a JSON
+> >> > + * fashion). PDS files can only been split between root nodes.
+> >> > + */
+> >> > +int wfx_send_pds(struct wfx_dev *wdev, u8 *buf, size_t len)
+> >> > +{
+> >> > +     int ret;
+> >> > +     int start, brace_level, i;
+> >> > +
+> >> > +     start =3D 0;
+> >> > +     brace_level =3D 0;
+> >> > +     if (buf[0] !=3D '{') {
+> >> > + dev_err(wdev->dev, "valid PDS start with '{'. Did you forget to
+> >> > compress it?\n");
+> >> > +             return -EINVAL;
+> >> > +     }
+> >> > +     for (i =3D 1; i < len - 1; i++) {
+> >> > +             if (buf[i] =3D=3D '{')
+> >> > +                     brace_level++;
+> >> > +             if (buf[i] =3D=3D '}')
+> >> > +                     brace_level--;
+> >> > +             if (buf[i] =3D=3D '}' && !brace_level) {
+> >> > +                     i++;
+> >> > +                     if (i - start + 1 > WFX_PDS_MAX_SIZE)
+> >> > +                             return -EFBIG;
+> >> > +                     buf[start] =3D '{';
+> >> > +                     buf[i] =3D 0;
+> >> > +                     dev_dbg(wdev->dev, "send PDS '%s}'\n", buf + s=
+tart);
+> >> > +                     buf[i] =3D '}';
+> >> > +                     ret =3D hif_configuration(wdev, buf + start,
+> >> > +                                             i - start + 1);
+> >> > +                     if (ret > 0) {
+> >> > + dev_err(wdev->dev, "PDS bytes %d to %d: invalid data (unsupported
+> >> > options?)\n",
+> >> > +                                     start, i);
+> >> > +                             return -EINVAL;
+> >> > +                     }
+> >> > +                     if (ret =3D=3D -ETIMEDOUT) {
+> >> > + dev_err(wdev->dev, "PDS bytes %d to %d: chip didn't reply (corrupt=
+ed
+> >> > file?)\n",
+> >> > +                                     start, i);
+> >> > +                             return ret;
+> >> > +                     }
+> >> > +                     if (ret) {
+> >> > + dev_err(wdev->dev, "PDS bytes %d to %d: chip returned an unknown
+> >> > error\n",
+> >> > +                                     start, i);
+> >> > +                             return -EIO;
+> >> > +                     }
+> >> > +                     buf[i] =3D ',';
+> >> > +                     start =3D i;
+> >> > +             }
+> >> > +     }
+> >> > +     return 0;
+> >> > +}
+> >> =
+
+> >> I'm not really fond of having this kind of ASCII based parser in the
+> >> kernel. Do you have an example compressed file somewhere?
+> >
+> > An example of uncompressed configuration file can be found here[1]. Once
+> > compressed with [2], you get:
+> >
+> >     {a:{a:4,b:1},b:{a:{a:4,b:0,c:0,d:0,e:A},b:{a:4,b:0,c:0,d:0,e:B},c:{=
+a:4,b:0,c:0,d:0,e:C},d:{a:4,b:0,c:0,d:0,e:D},e:{a:4,b:0,c:0,d:0,e:E},f:{a:4=
+,b:0,c:0,d:0,e:F},g:{a:4,b:0,c:0,d:0,e:G},h:{a:4,b:0,c:0,d:0,e:H},i:{a:4,b:=
+0,c:0,d:0,e:I},j:{a:4,b:0,c:0,d:0,e:J},k:{a:4,b:0,c:0,d:0,e:K},l:{a:4,b:0,c=
+:0,d:1,e:L},m:{a:4,b:0,c:0,d:1,e:M}},c:{a:{a:4},b:{a:6},c:{a:6,c:0},d:{a:6}=
+,e:{a:6},f:{a:6}},e:{b:0,c:1},h:{e:0,a:50,b:0,d:0,c:[{a:1,b:[0,0,0,0,0,0]},=
+{a:2,b:[0,0,0,0,0,0]},{a:[3,9],b:[0,0,0,0,0,0]},{a:A,b:[0,0,0,0,0,0]},{a:B,=
+b:[0,0,0,0,0,0]},{a:[C,D],b:[0,0,0,0,0,0]},{a:E,b:[0,0,0,0,0,0]}]},j:{a:0,b=
+:0}}
+> =
+
+> So what's the grand idea with this braces format? I'm not getting it.
+
+  - It allows to describe a tree structure
+  - It is ascii (easy to dump, easy to copy-paste)
+  - It is small (as I explain below, size matters)
+  - Since it is similar to JSON, the structure is obvious to many people
+
+Anyway, I am not the author of that and I have to deal with it.
+
+> Usually the drivers just consider this kind of firmware configuration
+> data as a binary blob and dump it to the firmware, without knowing what
+> the data contains. Can't you do the same?
+
+[I didn't had received this mail :( ]
+
+The idea was also to send it as a binary blob. However, the firmware use
+a limited buffer (1500 bytes) to parse it. In most of case the PDS exceeds
+this size. So, we have to split the PDS before to send it.
+
+Unfortunately, we can't split it anywhere. The PDS is a tree structure and
+the firmware expects to receive a well formatted tree.
+
+So, the easiest way to send it to the firmware is to split the tree
+between each root nodes and send each subtree separately (see also the
+comment above wfx_send_pds()).
+
+Anyway, someone has to cook this configuration before to send it to the
+firmware. This could be done by a script outside of the kernel. Then we
+could change the input format to simplify a bit the processing in the
+kernel. However, the driver has already some users and I worry that
+changing the input format would lead to a mess.
+
+
+-- =
+
+J=E9r=F4me Pouiller
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
