@@ -1,131 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5747942509E
-	for <lists+driverdev-devel@lfdr.de>; Thu,  7 Oct 2021 12:00:45 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CEC64250C1
+	for <lists+driverdev-devel@lfdr.de>; Thu,  7 Oct 2021 12:10:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 321E740972;
-	Thu,  7 Oct 2021 10:00:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C3ECC8419E;
+	Thu,  7 Oct 2021 10:10:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6ITRL-4QtIZG; Thu,  7 Oct 2021 10:00:41 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7t3z4qmkJHNb; Thu,  7 Oct 2021 10:10:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F30C14096F;
-	Thu,  7 Oct 2021 10:00:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C35CD840B5;
+	Thu,  7 Oct 2021 10:10:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D0C831BF873
- for <devel@linuxdriverproject.org>; Thu,  7 Oct 2021 10:00:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 98F931BF2B1
+ for <devel@linuxdriverproject.org>; Thu,  7 Oct 2021 10:10:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C04B060754
- for <devel@linuxdriverproject.org>; Thu,  7 Oct 2021 10:00:30 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 845B560754
+ for <devel@linuxdriverproject.org>; Thu,  7 Oct 2021 10:10:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LW1ZShPswzUF for <devel@linuxdriverproject.org>;
- Thu,  7 Oct 2021 10:00:29 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2060a.outbound.protection.outlook.com
- [IPv6:2a01:111:f400:fe59::60a])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C8CFA6071A
- for <devel@driverdev.osuosl.org>; Thu,  7 Oct 2021 10:00:29 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JjnBRvtCbjsfikNdDXrbmPjYqvIXIZHx0L+N/tdZgpFuLnGL0lxLsgpAUgyObTouxuGntIPMqibhTxzdkXeyIDf89hdkpEzs/rlb/++iAli+GR8bo7MghJZKY9hFb2Mcfb3yUkcQeZ0WQt1Q0EB8+hjpyVMOu8R5Trj5FUgKyRnMOkpddWdnCHkWk3w5MobYCXh92Dc2gi6qRv0yQJWn9dLZjXnrOhqxLwuWnqgbF8ofDeX7uxkffY5a36wiGRoL6aoVoHZL3SXWvRXDzu4UVbfbkib7p11GPxWw3GoYzDHDMaa2M1j3Om+UejftCyvFyLRmRljrNwIIkv7OgHB6AQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=11WL8+YEQwxM1jcp9T1fZ6ifKd7bF/pv0niOZq0mKTE=;
- b=W9gqzF61XsnByUaxABrZgKhAToVo618sU+EYEkEyTK5v1W4ZswLb1GrHSGWaDY1nfwc8ql1O2KtqBMz1DYdmfMjHPqNGCg41B01LjpY9taei0IpFcr9vDA71kQjjqNm0XtLlP3y7iNgs7+HLGkLjFb7eSHUB/Caq/ERiSJjoqqFwvtjzkCxWUWTnQWtxtzsJHcWDuzfCHDhBuwGtp0jT8eAu8KfD0gBfKlmRxK1hyfIO52sNnJbVU/aMTeZ/V8TcV3qm2b4ElNUSztPKPBdEfFQyOj02LCnkiCM9gY4COuHBFb+dRh9cC1NL312fPPno5Ftxmog30cvZ4HiTxNG9Uw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
- dkim=pass header.d=silabs.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=11WL8+YEQwxM1jcp9T1fZ6ifKd7bF/pv0niOZq0mKTE=;
- b=HwfVTy7CYh2QvSSqXMaLXYA67DmJtEhlLjtcrOTwgbcVTEsiODDHy4U1psOrt8vjO6GtYJpiqtSK8pWQGBZivQJ9Qk5YvgEifgeMIDZtNU+VIjelOWg6+fKBSAJ3aUsVoldCALqND9EpQ9/6aS5o/qu0iIfgAbRKBeXJ6i2fiMc=
-Authentication-Results: codeaurora.org; dkim=none (message not signed)
- header.d=none;codeaurora.org; dmarc=none action=none header.from=silabs.com;
-Received: from PH0PR11MB5657.namprd11.prod.outlook.com (2603:10b6:510:ee::19)
- by PH0PR11MB5595.namprd11.prod.outlook.com (2603:10b6:510:e5::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4587.18; Thu, 7 Oct
- 2021 10:00:27 +0000
-Received: from PH0PR11MB5657.namprd11.prod.outlook.com
- ([fe80::31cb:3b13:b0e8:d8f4]) by PH0PR11MB5657.namprd11.prod.outlook.com
- ([fe80::31cb:3b13:b0e8:d8f4%9]) with mapi id 15.20.4587.019; Thu, 7 Oct 2021
- 10:00:26 +0000
-From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
+ with ESMTP id dAmgHiLtgUt9 for <devel@linuxdriverproject.org>;
+ Thu,  7 Oct 2021 10:10:06 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 753566071A
+ for <devel@driverdev.osuosl.org>; Thu,  7 Oct 2021 10:10:06 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 97909610EA;
+ Thu,  7 Oct 2021 10:10:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1633601405;
+ bh=Dv3qgGnXN5hf3/aR7Ya39BbKuSxyHbv2DT0bSXt0WUU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=EU/xBtuIlE9aHhOu1bi02mIAyV71Vv0ij2ZszvgT9cOyeyl2HZCR9osGMmPqSs7TI
+ QdR5zFBc2o4JyTRFcYMlHF9WUaUnF9sIXJw9Pri6tVWG8PV19AuhUDl4txxE0f3/Bs
+ DTOVDZdowRBa7Fq863R9rXJPA7HIhaR6CpzpmzjMAn4ZiB+rlLQCSOoZM+1QC3GC6V
+ tisoKT4jGORLgEXbQb7FPzXcWvYDzlBTNnVc/yortQ1RcOvFTpTz361L3C6UASKJP0
+ Q2gtn+n9Qq/BQqRCS1+ERJHA9XE8tVRBxVMxO45IvxVARQHAcjVMcduuvc2nq0xXev
+ Fvw6FuE7kpgcg==
+Received: by pali.im (Postfix)
+ id 499CF81A; Thu,  7 Oct 2021 12:10:03 +0200 (CEST)
+Date: Thu, 7 Oct 2021 12:10:03 +0200
+From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
 To: Kalle Valo <kvalo@codeaurora.org>
-Subject: Re: [PATCH v7 05/24] wfx: add main.c/main.h
-Date: Thu, 07 Oct 2021 12:00:18 +0200
-Message-ID: <2672405.M38RcEoSet@pc-42>
-Organization: Silicon Labs
-In-Reply-To: <875yu9cjvk.fsf@codeaurora.org>
+Subject: Re: [PATCH v7 10/24] wfx: add fwio.c/fwio.h
+Message-ID: <20211007101003.na5rdtildnatx432@pali>
 References: <20210920161136.2398632-1-Jerome.Pouiller@silabs.com>
- <3570035.Z1gqkuQO5x@pc-42> <875yu9cjvk.fsf@codeaurora.org>
-X-ClientProxiedBy: PR3P192CA0010.EURP192.PROD.OUTLOOK.COM
- (2603:10a6:102:56::15) To PH0PR11MB5657.namprd11.prod.outlook.com
- (2603:10b6:510:ee::19)
+ <2174509.SLDT7moDbM@pc-42> <20211001160832.ozxc7bhlwlmjeqbo@pali>
+ <19961646.Mslci0rqIs@pc-42> <87lf35ckn5.fsf@codeaurora.org>
 MIME-Version: 1.0
-Received: from pc-42.localnet (37.71.187.125) by
- PR3P192CA0010.EURP192.PROD.OUTLOOK.COM (2603:10a6:102:56::15) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4587.18 via Frontend Transport; Thu, 7 Oct 2021 10:00:24 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: ab6b4bc9-6d76-4b14-9c91-08d989794964
-X-MS-TrafficTypeDiagnostic: PH0PR11MB5595:
-X-Microsoft-Antispam-PRVS: <PH0PR11MB5595E414FDA8FACCCEDF96F293B19@PH0PR11MB5595.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ntGzNTQuNkUlsKDjlXI9CaJkUCIGvvFrr5UAudHTqvI+Ik+S0BIUNew9C5FySdRgBMOGgyT4LbylbINjDUGAoNTsJHdSq9/iFtcptv+0GL4AzQ0Ua9QD4LRmdZ1eAIsRDDcj8WbTJv6Q+rY5Copaoi6vVzxTKDTVo0DGeSBtJEjaF7fUeHOYhYxJadofqECJNKc0xpmzc33BHdSE/v8SH+mP77wo3cosHVSKXSJLD487wslSV+zw7X9zUpuW5lCfPgtabwPqaxwURQ2op46ye33/uB+qHyaQkZMXM7jK6WQUAxEPXyScAIqyiO0oRnCRbBveqYseWa8IzWTm9RWf0+O/t3lA41HnqrGrTJlHknUymB+wAjSuiNOajhdIUFaK9WrmoOMiDuqZipeaWO42SUNsGjyrbJ/U0X8iVBzlK60wS2qpBlATPaR/FJC7Di3CQPBtE1bPzT+xzhWxF0P1KcIBkFay3cf/C1hyNHFw8WInLgZSXCYN0BZ6fGkonX10NCenaRamQypdj/mTfWeQ1n1/0VsrV2ewe3Qr9j2PgCZdOpEBNqoVWhobTJ0BEQNGD62wEVNaCjEOGOIS8E7H68G9dxFfnAQAaU70LeTsADzuQDeRbVBZwfoUu+8rT0u9RSH4sH0n/h8fDTQ003AhHTukKUzHuIM3l27qf1y7WPT9xGMHsEINQRoFyq3yLknj/22F+2gCdpqOo3B+X1x5R7bjGSD5S+cMiDhfWXy74Aw=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR11MB5657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(9686003)(508600001)(6512007)(86362001)(66476007)(26005)(6666004)(66574015)(83380400001)(2906002)(186003)(38350700002)(7416002)(5660300002)(38100700002)(8676002)(316002)(33716001)(6916009)(36916002)(6506007)(52116002)(66946007)(956004)(8936002)(66556008)(54906003)(4326008)(6486002)(39026012);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?Sjs48w6p6mouJyhi6voHVn4UYHDK0MQdDOUgvUqS0SpNWHMLEWl70LIA6w?=
- =?iso-8859-1?Q?ejb+OqtKU+ZIF/n8R8rrPpimSqxMw9avvlbP5+fNe9vQYPRlHtHUX1e+ks?=
- =?iso-8859-1?Q?n4vYehtc+uL02fYjwhiQICiSlFnKZ7lop29x9qtzpjorWLPxvLQhtKT5zE?=
- =?iso-8859-1?Q?fIFztGRfsuwz6GS3HnX64h9sCUNTJ8X7BzQzyPWEf/DYWgMXf+pD8P6QAP?=
- =?iso-8859-1?Q?V0qHpddg62wEJjCzgbDwwHSIt24xoRvMvO8OAtvxBdiUqlNZvVPcIoURIq?=
- =?iso-8859-1?Q?kwI2azVrmWtry01+q+gO5fGKEKTe1PRcRe9tPoVtniK4aOIGWGcsktAUuK?=
- =?iso-8859-1?Q?lqzkvtF+tkAHYGkoQIa9G9+jydkJni6XcTSOxJjaaPbPN850e4plbr+Bbs?=
- =?iso-8859-1?Q?3s8gm/uIK4fED8mCSHyPk/n3Na5AxuKJGEmqIwjh2qlYbQsNh1PzfW/mbc?=
- =?iso-8859-1?Q?0ciEh+BtBCMqXvveuFyx9opi+Tf2Jk7QisNVsVRrs2q4fXc8AvBDkeMCTn?=
- =?iso-8859-1?Q?oRnp0bO1CNxvmFy6o5BAo7MCSNMP6Jwwf6iG1HfgNSpZWIsESgjlX9/f5z?=
- =?iso-8859-1?Q?1+rGo8xe5jqlwN4LM7fpyp5oGDB3kuWdFFq3Ryx7a4XdyJJVDFCOMKuGAV?=
- =?iso-8859-1?Q?FmQKamUNIp+ReyBrp4HpWsNLeauSU3A2YBSiPteYctuFHlLbDGHnYYm9tJ?=
- =?iso-8859-1?Q?TRILIFbHnmWK3rxri0HgM2cnnV73PxW8oUEs6WnNp8ikSlKCyEOGJi8flD?=
- =?iso-8859-1?Q?6oMgHeds+X9X9E9popClGSTIG+MEOt00sMmLfqwndzMfN2G3No68R0MrRq?=
- =?iso-8859-1?Q?OGrdlXwaDQd7jsIspaJt1F/7tn1P+oPKcXNqG1NUmsrtg6xUlFfmTCvjkg?=
- =?iso-8859-1?Q?t/Gzi25HFmvIQWAO/tszaI994EFvntEoV0dO0gtm49hhCErpNl/YVGTGRY?=
- =?iso-8859-1?Q?oPq/av4MH8ny92pPeGC5DmkbaNXGqfVkv55prt77CvcXZBRj+1YZsvnbaE?=
- =?iso-8859-1?Q?js+G+IpulRoYyl1kA0IMZhxsjf7PsHeZsrdDWipObaXpDVr6UPV0Fx6nuX?=
- =?iso-8859-1?Q?48N18FUo0hT06e1B7ZBHfsN8equA9pcIhTMXOtnnE/TUclCYYRJbBWsQAX?=
- =?iso-8859-1?Q?jKNdbvNn1PQwhKNprgkFBng8zZQCXMXBo+5FjTcS1o117JnOBw3x+ohKvX?=
- =?iso-8859-1?Q?PaBHzMuS6TSt6QHJTwdvZ9zvNQ8p+YGajLUjnxewJ8vBFbzN1vSXkTJH7O?=
- =?iso-8859-1?Q?M/CJomqKW+uwkuuTYoixer5QodAQ6oUFcwjpkluj6RQFMQuhSPFJJyuNcr?=
- =?iso-8859-1?Q?pQI7W92C1Wq3nLGKcjPjut3TeYMpUGQSXrMRHGQ0a2wz1bnj3ZWHKYz4eO?=
- =?iso-8859-1?Q?ON1tCakNon?=
-X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ab6b4bc9-6d76-4b14-9c91-08d989794964
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5657.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Oct 2021 10:00:26.6448 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: YplJluwlq/KTWSR4jfK6HvQQbEVyBpubmUn3wvMimHZTfzu/gkNR0dWis+4tnWxYEw/jSFhf26Sl0SrMnfhf3w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5595
+Content-Disposition: inline
+In-Reply-To: <87lf35ckn5.fsf@codeaurora.org>
+User-Agent: NeoMutt/20180716
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -143,206 +76,109 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
  Rob Herring <robh+dt@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
- Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
  "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Thursday 7 October 2021 10:35:43 CEST Kalle Valo wrote:
-> J=E9r=F4me Pouiller <jerome.pouiller@silabs.com> writes:
-> > On Friday 1 October 2021 14:18:04 CEST Kalle Valo wrote:
-> >> J=E9r=F4me Pouiller <jerome.pouiller@silabs.com> writes:
-> >> > On Friday 1 October 2021 11:22:08 CEST Kalle Valo wrote:
-> >> >> Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
-> >> >>
-> >> >> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> >> >> >
-> >> >> > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
-> >> >>
-> >> >> [...]
-> >> >>
-> >> >> > +/* The device needs data about the antenna configuration. This i=
-nformation in
-> >> >> > + * provided by PDS (Platform Data Set, this is the wording used =
-in WF200
-> >> >> > + * documentation) files. For hardware integrators, the full proc=
-ess to create
-> >> >> > + * PDS files is described here:
-> >> >> > + *   https:github.com/SiliconLabs/wfx-firmware/blob/master/PDS/R=
-EADME.md
-> >> >> > + *
-> >> >> > + * So this function aims to send PDS to the device. However, the=
- PDS file is
-> >> >> > + * often bigger than Rx buffers of the chip, so it has to be sen=
-t in multiple
-> >> >> > + * parts.
-> >> >> > + *
-> >> >> > + * In add, the PDS data cannot be split anywhere. The PDS files =
-contains tree
-> >> >> > + * structures. Braces are used to enter/leave a level of the tre=
-e (in a JSON
-> >> >> > + * fashion). PDS files can only been split between root nodes.
-> >> >> > + */
-> >> >> > +int wfx_send_pds(struct wfx_dev *wdev, u8 *buf, size_t len)
-> >> >> > +{
-> >> >> > +     int ret;
-> >> >> > +     int start, brace_level, i;
-> >> >> > +
-> >> >> > +     start =3D 0;
-> >> >> > +     brace_level =3D 0;
-> >> >> > +     if (buf[0] !=3D '{') {
-> >> >> > + dev_err(wdev->dev, "valid PDS start with '{'. Did you forget to
-> >> >> > compress it?\n");
-> >> >> > +             return -EINVAL;
-> >> >> > +     }
-> >> >> > +     for (i =3D 1; i < len - 1; i++) {
-> >> >> > +             if (buf[i] =3D=3D '{')
-> >> >> > +                     brace_level++;
-> >> >> > +             if (buf[i] =3D=3D '}')
-> >> >> > +                     brace_level--;
-> >> >> > +             if (buf[i] =3D=3D '}' && !brace_level) {
-> >> >> > +                     i++;
-> >> >> > +                     if (i - start + 1 > WFX_PDS_MAX_SIZE)
-> >> >> > +                             return -EFBIG;
-> >> >> > +                     buf[start] =3D '{';
-> >> >> > +                     buf[i] =3D 0;
-> >> >> > +                     dev_dbg(wdev->dev, "send PDS '%s}'\n", buf =
-+ start);
-> >> >> > +                     buf[i] =3D '}';
-> >> >> > +                     ret =3D hif_configuration(wdev, buf + start,
-> >> >> > +                                             i - start + 1);
-> >> >> > +                     if (ret > 0) {
-> >> >> > + dev_err(wdev->dev, "PDS bytes %d to %d: invalid data (unsupport=
-ed
-> >> >> > options?)\n",
-> >> >> > +                                     start, i);
-> >> >> > +                             return -EINVAL;
-> >> >> > +                     }
-> >> >> > +                     if (ret =3D=3D -ETIMEDOUT) {
-> >> >> > + dev_err(wdev->dev, "PDS bytes %d to %d: chip didn't reply (corr=
-upted
-> >> >> > file?)\n",
-> >> >> > +                                     start, i);
-> >> >> > +                             return ret;
-> >> >> > +                     }
-> >> >> > +                     if (ret) {
-> >> >> > + dev_err(wdev->dev, "PDS bytes %d to %d: chip returned an unknown
-> >> >> > error\n",
-> >> >> > +                                     start, i);
-> >> >> > +                             return -EIO;
-> >> >> > +                     }
-> >> >> > +                     buf[i] =3D ',';
-> >> >> > +                     start =3D i;
-> >> >> > +             }
-> >> >> > +     }
-> >> >> > +     return 0;
-> >> >> > +}
-> >> >>
-> >> >> I'm not really fond of having this kind of ASCII based parser in the
-> >> >> kernel. Do you have an example compressed file somewhere?
-> >> >
-> >> > An example of uncompressed configuration file can be found here[1]. =
-Once
-> >> > compressed with [2], you get:
-> >> >
-> >> >     {a:{a:4,b:1},b:{a:{a:4,b:0,c:0,d:0,e:A},b:{a:4,b:0,c:0,d:0,e:B},=
-c:{a:4,b:0,c:0,d:0,e:C},d:{a:4,b:0,c:0,d:0,e:D},e:{a:4,b:0,c:0,d:0,e:E},f:{=
-a:4,b:0,c:0,d:0,e:F},g:{a:4,b:0,c:0,d:0,e:G},h:{a:4,b:0,c:0,d:0,e:H},i:{a:4=
-,b:0,c:0,d:0,e:I},j:{a:4,b:0,c:0,d:0,e:J},k:{a:4,b:0,c:0,d:0,e:K},l:{a:4,b:=
-0,c:0,d:1,e:L},m:{a:4,b:0,c:0,d:1,e:M}},c:{a:{a:4},b:{a:6},c:{a:6,c:0},d:{a=
-:6},e:{a:6},f:{a:6}},e:{b:0,c:1},h:{e:0,a:50,b:0,d:0,c:[{a:1,b:[0,0,0,0,0,0=
-]},{a:2,b:[0,0,0,0,0,0]},{a:[3,9],b:[0,0,0,0,0,0]},{a:A,b:[0,0,0,0,0,0]},{a=
-:B,b:[0,0,0,0,0,0]},{a:[C,D],b:[0,0,0,0,0,0]},{a:E,b:[0,0,0,0,0,0]}]},j:{a:=
-0,b:0}}
-> >>
-> >> So what's the grand idea with this braces format? I'm not getting it.
-> >
-> >   - It allows to describe a tree structure
-> >   - It is ascii (easy to dump, easy to copy-paste)
-> >   - It is small (as I explain below, size matters)
-> >   - Since it is similar to JSON, the structure is obvious to many people
-> >
-> > Anyway, I am not the author of that and I have to deal with it.
-> =
-
-> I'm a supported for JSON like formats, flexibility and all that. But
-> they belong to user space, not kernel.
-> =
-
-> >> Usually the drivers just consider this kind of firmware configuration
-> >> data as a binary blob and dump it to the firmware, without knowing what
-> >> the data contains. Can't you do the same?
-> >
-> > [I didn't had received this mail :( ]
-> >
-> > The idea was also to send it as a binary blob. However, the firmware use
-> > a limited buffer (1500 bytes) to parse it. In most of case the PDS exce=
-eds
-> > this size. So, we have to split the PDS before to send it.
-> >
-> > Unfortunately, we can't split it anywhere. The PDS is a tree structure =
-and
-> > the firmware expects to receive a well formatted tree.
-> >
-> > So, the easiest way to send it to the firmware is to split the tree
-> > between each root nodes and send each subtree separately (see also the
-> > comment above wfx_send_pds()).
-> >
-> > Anyway, someone has to cook this configuration before to send it to the
-> > firmware. This could be done by a script outside of the kernel. Then we
-> > could change the input format to simplify a bit the processing in the
-> > kernel.
-> =
-
-> I think a binary file with TLV format would be much better, but I'm sure
-> there also other good choises.
-> =
-
-> > However, the driver has already some users and I worry that changing
-> > the input format would lead to a mess.
-> =
-
-> You can implement a script which converts the old format to the new
-> format. And you can use different naming scheme in the new format so
-> that we don't accidentally load the old format. And even better if you
-> add a some kind of signature in the new format and give a proper error
-> from the driver if it doesn't match.
-
-Ok. I am going to change the input format. I think the new function is
-going to look like:
-
-int wfx_send_pds(struct wfx_dev *wdev, u8 *buf, size_t buf_len)
-{
-	int ret;
-	int start =3D 0;
-
-	if (buf[start] !=3D '{') {
-		dev_err(wdev->dev, "valid PDS start with '{'. Did you forget to compress =
-it?\n");
-		return -EINVAL;
-	}
-	while (start < buf_len) {
-		len =3D strnlen(buf + start, buf_len - start);
-		if (len > WFX_PDS_MAX_SIZE) {
-			dev_err(wdev->dev, "PDS chunk is too big (legacy format?)\n");
-			return -EINVAL;
-		}
-		dev_dbg(wdev->dev, "send PDS '%s'\n", buf + start);
-		ret =3D wfx_hif_configuration(wdev, buf + start, len);
-		/* FIXME: Add error handling here */
-		start +=3D len;
-	}
-	return 0;
-}
-
--- =
-
-J=E9r=F4me Pouiller
-
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+T24gVGh1cnNkYXkgMDcgT2N0b2JlciAyMDIxIDExOjE5OjEwIEthbGxlIFZhbG8gd3JvdGU6Cj4g
+SsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPiB3cml0ZXM6Cj4g
+Cj4gPiBPbiBGcmlkYXkgMSBPY3RvYmVyIDIwMjEgMTg6MDg6MzIgQ0VTVCBQYWxpIFJvaMOhciB3
+cm90ZToKPiA+PiBPbiBGcmlkYXkgMDEgT2N0b2JlciAyMDIxIDE3OjA5OjQxIErDqXLDtG1lIFBv
+dWlsbGVyIHdyb3RlOgo+ID4+ID4gT24gRnJpZGF5IDEgT2N0b2JlciAyMDIxIDEzOjU4OjM4IENF
+U1QgS2FsbGUgVmFsbyB3cm90ZToKPiA+PiA+ID4gSmVyb21lIFBvdWlsbGVyIDxKZXJvbWUuUG91
+aWxsZXJAc2lsYWJzLmNvbT4gd3JpdGVzOgo+ID4+ID4gPgo+ID4+ID4gPiA+IEZyb206IErDqXLD
+tG1lIFBvdWlsbGVyIDxqZXJvbWUucG91aWxsZXJAc2lsYWJzLmNvbT4KPiA+PiA+ID4gPgo+ID4+
+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IErDqXLDtG1lIFBvdWlsbGVyIDxqZXJvbWUucG91aWxsZXJA
+c2lsYWJzLmNvbT4KPiA+PiA+ID4KPiA+PiA+ID4gWy4uLl0KPiA+PiA+ID4KPiA+PiA+ID4gPiAr
+c3RhdGljIGludCBnZXRfZmlybXdhcmUoc3RydWN0IHdmeF9kZXYgKndkZXYsIHUzMiBrZXlzZXRf
+Y2hpcCwKPiA+PiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAgY29uc3Qgc3RydWN0IGZpcm13
+YXJlICoqZncsIGludCAqZmlsZV9vZmZzZXQpCj4gPj4gPiA+ID4gK3sKPiA+PiA+ID4gPiArICAg
+ICBpbnQga2V5c2V0X2ZpbGU7Cj4gPj4gPiA+ID4gKyAgICAgY2hhciBmaWxlbmFtZVsyNTZdOwo+
+ID4+ID4gPiA+ICsgICAgIGNvbnN0IGNoYXIgKmRhdGE7Cj4gPj4gPiA+ID4gKyAgICAgaW50IHJl
+dDsKPiA+PiA+ID4gPiArCj4gPj4gPiA+ID4gKyAgICAgc25wcmludGYoZmlsZW5hbWUsIHNpemVv
+ZihmaWxlbmFtZSksICIlc18lMDJYLnNlYyIsCj4gPj4gPiA+ID4gKyAgICAgICAgICAgICAgd2Rl
+di0+cGRhdGEuZmlsZV9mdywga2V5c2V0X2NoaXApOwo+ID4+ID4gPiA+ICsgICAgIHJldCA9IGZp
+cm13YXJlX3JlcXVlc3Rfbm93YXJuKGZ3LCBmaWxlbmFtZSwgd2Rldi0+ZGV2KTsKPiA+PiA+ID4g
+PiArICAgICBpZiAocmV0KSB7Cj4gPj4gPiA+ID4gKyAgICAgICAgICAgICBkZXZfaW5mbyh3ZGV2
+LT5kZXYsICJjYW4ndCBsb2FkICVzLCBmYWxsaW5nIGJhY2sgdG8gJXMuc2VjXG4iLAo+ID4+ID4g
+PiA+ICsgICAgICAgICAgICAgICAgICAgICAgZmlsZW5hbWUsIHdkZXYtPnBkYXRhLmZpbGVfZncp
+Owo+ID4+ID4gPiA+ICsgICAgICAgICAgICAgc25wcmludGYoZmlsZW5hbWUsIHNpemVvZihmaWxl
+bmFtZSksICIlcy5zZWMiLAo+ID4+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgd2Rldi0+
+cGRhdGEuZmlsZV9mdyk7Cj4gPj4gPiA+ID4gKyAgICAgICAgICAgICByZXQgPSByZXF1ZXN0X2Zp
+cm13YXJlKGZ3LCBmaWxlbmFtZSwgd2Rldi0+ZGV2KTsKPiA+PiA+ID4gPiArICAgICAgICAgICAg
+IGlmIChyZXQpIHsKPiA+PiA+ID4gPiArICAgICAgICAgICAgICAgICAgICAgZGV2X2Vycih3ZGV2
+LT5kZXYsICJjYW4ndCBsb2FkICVzXG4iLCBmaWxlbmFtZSk7Cj4gPj4gPiA+ID4gKyAgICAgICAg
+ICAgICAgICAgICAgICpmdyA9IE5VTEw7Cj4gPj4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAg
+IHJldHVybiByZXQ7Cj4gPj4gPiA+ID4gKyAgICAgICAgICAgICB9Cj4gPj4gPiA+ID4gKyAgICAg
+fQo+ID4+ID4gPgo+ID4+ID4gPiBIb3cgaXMgdGhpcyBmaXJtd2FyZSBmaWxlIGxvYWRpbmcgc3Vw
+cG9zZWQgdG8gd29yaz8gSWYgSSdtIHJlYWRpbmcgdGhlCj4gPj4gPiA+IGNvZGUgcmlnaHQsIHRo
+ZSBkcml2ZXIgdHJpZXMgdG8gbG9hZCBmaWxlICJ3Zm1fd2YyMDBfPz8uc2VjIiBidXQgaW4KPiA+
+PiA+ID4gbGludXgtZmlybXdhcmUgdGhlIGZpbGUgaXMgc2lsYWJzL3dmbV93ZjIwMF9DMC5zZWM6
+Cj4gPj4gPiA+Cj4gPj4gPiA+IGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9r
+ZXJuZWwvZ2l0L2Zpcm13YXJlL2xpbnV4LWZpcm13YXJlLmdpdC90cmVlL3NpbGFicwo+ID4+ID4g
+Pgo+ID4+ID4gPiBUaGF0IGNhbid0IHdvcmsgYXV0b21hdGljYWxseSwgdW5sZXNzIEknbSBtaXNz
+aW5nIHNvbWV0aGluZyBvZiBjb3Vyc2UuCj4gPj4gPgo+ID4+ID4gVGhlIGZpcm13YXJlIGFyZSBz
+aWduZWQuICJDMCIgaXMgdGhlIGtleSB1c2VkIHRvIHNpZ24gdGhpcyBmaXJtd2FyZS4gVGhpcwo+
+ID4+ID4ga2V5IG11c3QgbWF0Y2ggd2l0aCB0aGUga2V5IGJ1cm5lZCBpbnRvIHRoZSBjaGlwLiBG
+b3J0dW5hdGVseSwgdGhlIGRyaXZlcgo+ID4+ID4gaXMgYWJsZSB0byByZWFkIHRoZSBrZXkgYWNj
+ZXB0ZWQgYnkgdGhlIGNoaXAgYW5kIGF1dG9tYXRpY2FsbHkgY2hvb3NlIHRoZQo+ID4+ID4gcmln
+aHQgZmlybXdhcmUuCj4gPj4gPgo+ID4+ID4gV2UgY291bGQgaW1hZ2luZSB0byBhZGQgYSBhdHRy
+aWJ1dGUgaW4gdGhlIERUIHRvIGNob29zZSB0aGUgZmlybXdhcmUgdG8KPiA+PiA+IGxvYWQuIEhv
+d2V2ZXIsIGl0IHdvdWxkIGJlIGEgcGl0eSB0byBoYXZlIHRvIHNwZWNpZnkgaXQgbWFudWFsbHkg
+d2hlcmVhcwo+ID4+ID4gdGhlIGRyaXZlciBpcyBhYmxlIHRvIGRldGVjdCBpdCBhdXRvbWF0aWNh
+bGx5Lgo+ID4+ID4KPiA+PiA+IEN1cnJlbnRseSwgdGhlIG9ubHkgcG9zc2libGUga2V5IGlzIEMw
+LiBIb3dldmVyLCBpdCBleGlzdHMgc29tZSBpbnRlcm5hbAo+ID4+ID4gcGFydHMgd2l0aCBvdGhl
+ciBrZXlzLiBJbiBhZGRpdGlvbiwgaXQgaXMgdGhlb3JldGljYWxseSBwb3NzaWJsZSB0byBhc2sK
+PiA+PiA+IHRvIFNpbGFicyB0byBidXJuIHBhcnRzIHdpdGggYSBzcGVjaWZpYyBrZXkgaW4gb3Jk
+ZXIgdG8gaW1wcm92ZSBzZWN1cml0eQo+ID4+ID4gb2YgYSBwcm9kdWN0Lgo+ID4+ID4KPiA+PiA+
+IE9idmlvdXNseSwgZm9yIG5vdywgdGhpcyBmZWF0dXJlIG1haW5seSBleGlzdHMgZm9yIHRoZSBT
+aWxhYnMgZmlybXdhcmUKPiA+PiA+IGRldmVsb3BlcnMgd2hvIGhhdmUgdG8gd29yayB3aXRoIG90
+aGVyIGtleXMuCj4gPj4gPgo+ID4+ID4gPiBBbHNvIEkgd291bGQgcHJlZmVyIHRvIHVzZSBkaXJl
+Y3RvcnkgbmFtZSBhcyB0aGUgZHJpdmVyIG5hbWUgd2Z4LCBidXQgSQo+ID4+ID4gPiBndWVzcyBz
+aWxhYnMgaXMgYWxzbyBkb2FibGUuCj4gPj4gPgo+ID4+ID4gSSBoYXZlIG5vIG9waW5pb24uCj4g
+Pj4gPgo+ID4+ID4KPiA+PiA+ID4gQWxzbyBJJ20gbm90IHNlZWluZyB0aGUgUERTIGZpbGVzIGlu
+IGxpbnV4LWZpcm13YXJlLiBUaGUgaWRlYSBpcyB0aGF0Cj4gPj4gPiA+IHdoZW4gdXNlciBpbnN0
+YWxscyBhbiB1cHN0cmVhbSBrZXJuZWwgYW5kIHRoZSBsaW51eC1maXJtd2FyZSBldmVyeXRoaW5n
+Cj4gPj4gPiA+IHdpbGwgd29yayBhdXRvbWF0aWNhbGx5LCB3aXRob3V0IGFueSBtYW51YWwgZmls
+ZSBpbnN0YWxsYXRpb25zLgo+ID4+ID4KPiA+PiA+IFdGMjAwIGlzIGp1c3QgYSBjaGlwLiBTb21l
+b25lIGhhcyB0byBkZXNpZ24gYW4gYW50ZW5uYSBiZWZvcmUgdG8gYmUgYWJsZQo+ID4+ID4gdG8g
+dXNlLgo+ID4+ID4KPiA+PiA+IEhvd2V2ZXIsIHdlIGhhdmUgZXZhbHVhdGlvbiBib2FyZHMgdGhh
+dCBoYXZlIGFudGVubmFzIGFuZCBjb3JyZXNwb25kaW5nCj4gPj4gPiBQRFMgZmlsZXNbMV0uIE1h
+eWJlIGxpbnV4LWZpcm13YXJlIHNob3VsZCBpbmNsdWRlIHRoZSBQRFMgZm9yIHRoZXNlIGJvYXJk
+cwo+ID4+IAo+ID4+IFNvIGNoaXAgdmVuZG9yIHByb3ZpZGVzIGZpcm13YXJlIGFuZCBjYXJkIHZl
+bmRvciBwcm92aWRlcyBQRFMgZmlsZXMuCj4gPgo+ID4gRXhhY3RseS4KPiA+Cj4gPj4gSW4KPiA+
+PiBteSBvcGluaW9uIGFsbCBmaWxlcyBzaG91bGQgZ28gaW50byBsaW51eC1maXJtd2FyZSByZXBv
+c2l0b3J5LiBJZiBTaWxhYnMKPiA+PiBoYXMgUERTIGZpbGVzIGZvciBpdHMgZGV2ZWwgYm9hcmRz
+ICh3aGljaCBhcmUgYmFzaWNhbGx5IGNhcmRzKSB0aGVuIEkKPiA+PiB0aGluayB0aGVzZSBmaWxl
+cyBzaG91bGQgZ28gYWxzbyBpbnRvIGxpbnV4LWZpcm13YXJlIHJlcG9zaXRvcnkuCj4gPj4gCj4g
+Pj4gQW5kIGJhc2VkIG9uIHNvbWUgcGFyYW1ldGVyLCBkcml2ZXIgc2hvdWxkIGxvYWQgY29ycmVj
+dCBQRFMgZmlsZS4gU2VlbXMKPiA+PiBsaWtlIERUIGNhbiBiZSBhIHBsYWNlIHdoZXJlIHRvIHB1
+dCBzb21ldGhpbmcgd2hpY2ggaW5kaWNhdGVzIHdoaWNoIFBEUwo+ID4+IGZpbGUgc2hvdWxkIGJl
+IHVzZWQuCj4gPj4gCj4gPj4gQnV0IHNob3VsZCBiZSBpbiBEVCBkaXJlY3RseSBuYW1lIG9mIFBE
+UyBmaWxlPyBPciBzaG91bGQgYmUgaW4gRFQganVzdAo+ID4+IGFkZGl0aW9uYWwgY29tcGF0aWJs
+ZSBzdHJpbmcgd2l0aCBjYXJkIHZlbmRvciBuYW1lIGFuZCB0aGVuIGluIGRyaXZlcgo+ID4+IGl0
+c2VsZiBzaG91bGQgYmUgbWFwcGluZyB0YWJsZSBmcm9tIGNvbXBhdGlibGUgc3RyaW5nIHRvIGZp
+bGVuYW1lPyBJIGRvCj4gPj4gbm90IGtub3cgd2hhdCBpcyBiZXR0ZXIuCj4gPgo+ID4gVGhlIERU
+IGFscmVhZHkgYWNjZXB0cyB0aGUgYXR0cmlidXRlIHNpbGFicyxhbnRlbm5hLWNvbmZpZy1maWxl
+IChzZWUKPiA+IHBhdGNoICMyKS4KPiA+Cj4gPiBJIHRoaW5rIHRoYXQgbGludXgtZmlybXdhcmUg
+cmVwb3NpdG9yeSB3aWxsIHJlamVjdCB0aGUgcGRzIGZpbGVzIGlmCj4gPiBubyBkcml2ZXIgaW4g
+dGhlIGtlcm5lbCBkaXJlY3RseSBwb2ludCB0byBpdC4gRWxzZSBob3cgdG8gZGV0ZWN0Cj4gPiBv
+cnBoYW5zPwo+IAo+IFRoaXMgKGxpbnV4LWZpcm13YXJlIHJlamVjdGluZyBmaWxlcykgaXMgbmV3
+cyB0byBtZSwgZG8geW91IGhhdmUgYW55Cj4gcG9pbnRlcnM/CgpJIHVuZGVyc3RhbmQgdGhpcyBh
+cywgbGludXgtZmlybXdhcmUgcmVqZWN0cyBmaWxlcyB3aGljaCBhcmUgbm90IHVzZWQgYnkKYW55
+IGRyaXZlciB5ZXQuCgpCdXQgeW91IGNhbiBzZW5kIGJvdGggcHVsbCByZXF1ZXN0IGZvciBsaW51
+eC1maXJtd2FyZSBhbmQgcHVsbCByZXF1ZXN0CmZvciB5b3VyIGtlcm5lbCBkcml2ZXIgdG8gbWFp
+bGluZyBsaXN0cy4gQW5kIG9uY2UgZHJpdmVyIGNoYW5nZXMgYXJlCm1lcmdlZCBpbnRvIC1uZXQg
+dHJlZSB0aGVuIHB1bGwgcmVxdWVzdCBmb3IgbGludXgtZmlybXdhcmUgY2FuIGJlIG1lcmdlZAp0
+b28uCgo+ID4gU28sIEkgdGhpbmsgaXQgaXMgc2xpZ2h0bHkgYmV0dGVyIHRvIHVzZSBhIG1hcHBp
+bmcgdGFibGUuCj4gCj4gTm90IGZvbGxvd2luZyB5b3UgaGVyZS4KCkkgdW5kZXJzdGFuZCB0aGlz
+IHBhcnQgdG8gaGF2ZSBtYXBwaW5nIHRhYmxlIGJldHdlZW4gRFRTIGNvbXBhdGlibGUKc3RyaW5n
+IGFuZCBwZHMgZmlybXdhcmUgbmFtZSBpbiBkcml2ZXIgY29kZS4KCj4gLS0gCj4gaHR0cHM6Ly9w
+YXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0L2xpbnV4LXdpcmVsZXNzL2xpc3QvCj4gCj4gaHR0
+cHM6Ly93aXJlbGVzcy53aWtpLmtlcm5lbC5vcmcvZW4vZGV2ZWxvcGVycy9kb2N1bWVudGF0aW9u
+L3N1Ym1pdHRpbmdwYXRjaGVzCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3Jn
+Cmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaXZlcmRldi1kZXZlbAo=
