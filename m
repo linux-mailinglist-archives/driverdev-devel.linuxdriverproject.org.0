@@ -2,53 +2,53 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D3EAC426330
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Oct 2021 05:40:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 54E95426338
+	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Oct 2021 05:41:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 827F28404A;
-	Fri,  8 Oct 2021 03:40:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0A40E840EB;
+	Fri,  8 Oct 2021 03:41:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JMFD6QiB--bF; Fri,  8 Oct 2021 03:40:42 +0000 (UTC)
+	with ESMTP id uFTyOxxYttgE; Fri,  8 Oct 2021 03:41:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BEDD784051;
-	Fri,  8 Oct 2021 03:40:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 484B7840CB;
+	Fri,  8 Oct 2021 03:41:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B19A31BF983
- for <devel@linuxdriverproject.org>; Fri,  8 Oct 2021 03:40:31 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B51DA1BF983
+ for <devel@linuxdriverproject.org>; Fri,  8 Oct 2021 03:41:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A1CBB84033
- for <devel@linuxdriverproject.org>; Fri,  8 Oct 2021 03:40:31 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B13594051E
+ for <devel@linuxdriverproject.org>; Fri,  8 Oct 2021 03:41:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D85eHSvaMFVj for <devel@linuxdriverproject.org>;
- Fri,  8 Oct 2021 03:40:30 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xKSrTcCF6AfI for <devel@linuxdriverproject.org>;
+ Fri,  8 Oct 2021 03:41:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C1E5D83FA7
- for <devel@driverdev.osuosl.org>; Fri,  8 Oct 2021 03:40:30 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10130"; a="249784366"
-X-IronPort-AV: E=Sophos;i="5.85,356,1624345200"; d="scan'208";a="249784366"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Oct 2021 20:40:29 -0700
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C65A84049D
+ for <devel@driverdev.osuosl.org>; Fri,  8 Oct 2021 03:41:27 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10130"; a="312623359"
+X-IronPort-AV: E=Sophos;i="5.85,356,1624345200"; d="scan'208";a="312623359"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Oct 2021 20:41:27 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.85,356,1624345200"; d="scan'208";a="522851127"
+X-IronPort-AV: E=Sophos;i="5.85,356,1624345200"; d="scan'208";a="478822527"
 Received: from lkp-server01.sh.intel.com (HELO 72c3bd3cf19c) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 07 Oct 2021 20:40:28 -0700
+ by orsmga007.jf.intel.com with ESMTP; 07 Oct 2021 20:41:25 -0700
 Received: from kbuild by 72c3bd3cf19c with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1mYgkC-0007wH-VV; Fri, 08 Oct 2021 03:40:24 +0000
-Date: Fri, 08 Oct 2021 11:39:32 +0800
+ id 1mYglB-0007x1-7A; Fri, 08 Oct 2021 03:41:25 +0000
+Date: Fri, 08 Oct 2021 11:40:37 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-linus] BUILD SUCCESS
- 37f12202c5d28291ba5f83ce229771447ce9148f
-Message-ID: <615fbd74.WAMW6N1G39xd4pLp%lkp@intel.com>
+Subject: [driver-core:driver-core-linus] BUILD SUCCESS
+ 81967efb5f3966e8692f9173c7fa2964034ece5d
+Message-ID: <615fbdb5.zLyjhh/R9YcwDpO0%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -69,10 +69,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-linus
-branch HEAD: 37f12202c5d28291ba5f83ce229771447ce9148f  staging: r8188eu: prevent array underflow in rtw_hal_update_ra_mask()
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-linus
+branch HEAD: 81967efb5f3966e8692f9173c7fa2964034ece5d  drivers: bus: Delete CONFIG_SIMPLE_PM_BUS
 
-elapsed time: 1218m
+elapsed time: 1220m
 
 configs tested: 149
 configs skipped: 3
