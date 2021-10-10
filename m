@@ -1,19 +1,19 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A819342809D
-	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Oct 2021 13:02:27 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AA9C242809B
+	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Oct 2021 13:02:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A95BB607DA;
-	Sun, 10 Oct 2021 11:02:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 997C182EA4;
+	Sun, 10 Oct 2021 11:02:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OhQaLX4UiH8P; Sun, 10 Oct 2021 11:02:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id C6OtSX06aijX; Sun, 10 Oct 2021 11:02:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 32D9F60783;
-	Sun, 10 Oct 2021 11:02:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 236FD82C21;
+	Sun, 10 Oct 2021 11:02:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
@@ -23,6 +23,8 @@ Received: from localhost (localhost [127.0.0.1])
  by smtp3.osuosl.org (Postfix) with ESMTP id 71419607DA;
  Sun, 10 Oct 2021 11:02:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=patelherbert.online
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
  with ESMTP id 4uDUtC4bJXb8; Sun, 10 Oct 2021 11:02:05 +0000 (UTC)
