@@ -1,80 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A6504299A6
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Oct 2021 01:11:24 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A2924299E8
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Oct 2021 01:40:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AC99240389;
-	Mon, 11 Oct 2021 23:11:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DC1CD608D6;
+	Mon, 11 Oct 2021 23:40:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kLigoGEw2b9Y; Mon, 11 Oct 2021 23:11:20 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id djkKD88RGMh0; Mon, 11 Oct 2021 23:40:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6F4F9402DF;
-	Mon, 11 Oct 2021 23:11:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D6EDA608B3;
+	Mon, 11 Oct 2021 23:40:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E510D1BF841
- for <devel@linuxdriverproject.org>; Mon, 11 Oct 2021 23:11:08 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 68FD61BF841
+ for <devel@linuxdriverproject.org>; Mon, 11 Oct 2021 23:40:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D374E403C1
- for <devel@linuxdriverproject.org>; Mon, 11 Oct 2021 23:11:08 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5858C608A8
+ for <devel@linuxdriverproject.org>; Mon, 11 Oct 2021 23:40:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key)
- header.d=paul-moore-com.20210112.gappssmtp.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3lwdOrlJJeTp for <devel@linuxdriverproject.org>;
- Mon, 11 Oct 2021 23:11:05 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id JUnNjmAP1Iiz for <devel@linuxdriverproject.org>;
+ Mon, 11 Oct 2021 23:39:59 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-x534.google.com (mail-ed1-x534.google.com
- [IPv6:2a00:1450:4864:20::534])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9A90D403BB
- for <devel@driverdev.osuosl.org>; Mon, 11 Oct 2021 23:11:05 +0000 (UTC)
-Received: by mail-ed1-x534.google.com with SMTP id y12so60704934eda.4
- for <devel@driverdev.osuosl.org>; Mon, 11 Oct 2021 16:11:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=paul-moore-com.20210112.gappssmtp.com; s=20210112;
+Received: from mail-lf1-x12f.google.com (mail-lf1-x12f.google.com
+ [IPv6:2a00:1450:4864:20::12f])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 582256088E
+ for <devel@driverdev.osuosl.org>; Mon, 11 Oct 2021 23:39:59 +0000 (UTC)
+Received: by mail-lf1-x12f.google.com with SMTP id u18so79750950lfd.12
+ for <devel@driverdev.osuosl.org>; Mon, 11 Oct 2021 16:39:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=h1aojVMiAC+dTJJ9CxG9nUezJ612JW4LOoadws/Wdgg=;
- b=ibryuqSlxRvY3tcfhcqgvog5M3wbrRAapyw8XCWWSuXm8vG56eJfeVmy2Xbv4z/zZF
- 8pwYzCKKrrdVgveJzQeaCsghTrjV9hu5ZmSJw/V1tjPokRHPYnJWZtsathabPyNqFzvp
- ESHhUWgDfmPsALNVSkGr/+18KBjVZbyQUSHD3IFzJccyCVaLrt+lPkvNk0F3vbRguonh
- HGJpf5sRFAFTZjGWFFNnp3x/BmvQka0TlBfhM6FBuSZ3aCZmx4LDDx+WUPQ5mU42hbKq
- G67TAms50uVImTBEpvs00E7JyuGMsYa7gPtrZ5+ethDTWjDBKPQamhJw707s8Sm1/1vk
- +yQg==
+ :cc; bh=350Zyde5NHUyrWXKjoBMtH0Ka1p1k23ESLRD0Ny2AAk=;
+ b=OzYbyPMYnoypTGzHb6++gJhPpX/aMvA8HTl2F/X1uqm83TU6mdlOMtYyLrm+yLnLuu
+ 1cdGNfZ39RhG9F9acYYLPUDo8JmnDkON0vpK1JGRF+enSzeuZj0Jw7O64QIMXa+H0ysR
+ 0vu5TZjN5yxhkJ+RSZKGr0qo7GVuyANYSeoum4yaz1LgfHsAmZWqFN2AJw7809ScHXjv
+ DCc+KXKcaWFUHKOMH7bSAOve1qpc6GTzZfnIYGSDNp6oUVMJYa4X+BzfKMfKdaUV0EDc
+ l85wZP7XwJzndPJzrXSHc/aoT9EGegSsQvoYHWFlbemlfX3+gbEqA/WiXVyHC9a+HLZz
+ So5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=h1aojVMiAC+dTJJ9CxG9nUezJ612JW4LOoadws/Wdgg=;
- b=TG8rucnxrINSU5Y9WOe5DipNwgHWLXfdybfowiRg7Pg/8/fN9AQ/esn99hNir5xHIA
- r+VHXMnFChvXzbotGuGHMkdnMMVdSKoV+05cD5M5Lh6I3gCsyts9cuzgn4qaHqPWD6V1
- z4wYr0wHY/vmYFAsa02UrtMVeBNu9aUWoukStQ4AhH8lf42qHAUcJFHSftMrDldqZ1Kb
- buY6npYj7ztVgEOTm7UpkzqYmCnSxRdXDxBTsE8iNjalVrGVUO1u7GQqDeSaTUkBhc03
- pk7T4RxZsq7G4nDknh9yAljoD9Su16+zVcP0ZHzsnUBRn7XzIoPA23nGcWxguyxDx+Hm
- ufKw==
-X-Gm-Message-State: AOAM533ByuKMTaXl7U7DPO3p9EATi2eoybf/y6/df7WeDu3A4rtV4oAW
- l8zqMoOkeOGPov7DXs+lcSZV8pqd7lCFxfaNeQGy
-X-Google-Smtp-Source: ABdhPJxF6p6SBEimtPUNrEkSQF+zX9DJpwgGk4iFPWdSD+Id4rVokmvAN6idcgQhVjJ7yAcuLfiu8m9JyNw2bU7wl94=
-X-Received: by 2002:a17:907:784b:: with SMTP id
- lb11mr29565002ejc.307.1633993863523; 
- Mon, 11 Oct 2021 16:11:03 -0700 (PDT)
+ bh=350Zyde5NHUyrWXKjoBMtH0Ka1p1k23ESLRD0Ny2AAk=;
+ b=ruJ7cr8ApJLEyBR/GDO5jNJJMKrv84e7vzmU1Rd1acConQvE3Tqzi6WyYiMppN6HCW
+ 9xThwacuEclP/vopA5grWwcr3nSfY+3eFURgT+R0o2Wp/QwrvLvXjvxrwmdaD8rP19hQ
+ dNNvr9iZMmljl05NBh+5jCuv3vnnDUem7EAaDs3LeJ5XtzlgybNDBB0mhfr5yOYfccI+
+ JsgqOpjkWTH4+4IfFbZn1nmkMBs8NcDBTsF3sPBkFl3jSDGrr07kFnPD4eBv9Lgfh+Wz
+ I77Uw4qoTBJofR5uhqIPp9dTAfJGNc7qeT2DMnOJh6Q05wBb7QLoDhHGCsOcSZYWaHod
+ vbyQ==
+X-Gm-Message-State: AOAM530a7X20/KqtF+3e8VDKDhtJTDjXHQsp/UUcWSJBpN9XzTcDZ4Oh
+ AcCDWGCc0XN9oWcbA0nNjdp/+0V7azO2yZ5HtIJE/Q==
+X-Google-Smtp-Source: ABdhPJwRxHo++mt2ts2tuHKj97PgUfltXjxEpnNt1psrUBoyI5y1QyTnG4FDY6wOkqBZq8c4R9LztUvqCmZoPJ7PiEE=
+X-Received: by 2002:a05:6512:1291:: with SMTP id
+ u17mr29841307lfs.226.1633995596978; 
+ Mon, 11 Oct 2021 16:39:56 -0700 (PDT)
 MIME-Version: 1.0
 References: <20211007004629.1113572-1-tkjos@google.com>
- <20211007004629.1113572-3-tkjos@google.com>
- <CAHC9VhSDnwapGk6Pvn5iuKv0zCtZSbfnGAkZwKcxVYLVRH6CLg@mail.gmail.com>
- <8c07f9b7-58b8-18b5-84f8-9b6c78acb08b@schaufler-ca.com>
-In-Reply-To: <8c07f9b7-58b8-18b5-84f8-9b6c78acb08b@schaufler-ca.com>
-From: Paul Moore <paul@paul-moore.com>
-Date: Mon, 11 Oct 2021 19:10:52 -0400
-Message-ID: <CAHC9VhRZz8ORWfQpQ8Wix845Zx3xGyusc3ne_UM7AmeLUpz9Eg@mail.gmail.com>
-Subject: Re: [PATCH v4 2/3] binder: use cred instead of task for getsecid
-To: Casey Schaufler <casey@schaufler-ca.com>
+ <20211007004629.1113572-4-tkjos@google.com>
+ <CAHC9VhTRTcZW9eyXXvAN7T=ZCQ_zwH5iBz+d0h2ntf7=XHE-Vw@mail.gmail.com>
+ <CAHRSSEy=eC0rbHUzDmCo6Na7Ya=uCq7zJ6_cXysi0oWQB=19YQ@mail.gmail.com>
+ <CAHC9VhQVKTxwUUP02U43=zVZrEFWc0hhmpaR1YSxe+KHjhnhbw@mail.gmail.com>
+In-Reply-To: <CAHC9VhQVKTxwUUP02U43=zVZrEFWc0hhmpaR1YSxe+KHjhnhbw@mail.gmail.com>
+From: Todd Kjos <tkjos@google.com>
+Date: Mon, 11 Oct 2021 16:39:45 -0700
+Message-ID: <CAHRSSEwYrqFum7gS0XOYG0p3F+0Hv8qvaZbWLUyXUm0oCWpX9w@mail.gmail.com>
+Subject: Re: [PATCH v4 3/3] binder: use euid from cred instead of using task
+To: Paul Moore <paul@paul-moore.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,93 +84,90 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: zohar@linux.ibm.com, arve@android.com, joel@joelfernandes.org,
- devel@driverdev.osuosl.org, Jeffrey Vander Stoep <jeffv@google.com>,
- James Morris <jmorris@namei.org>, kernel-team@android.com, tkjos@android.com,
- keescook@chromium.org, jannh@google.com, selinux@vger.kernel.org,
- Eric Paris <eparis@parisplace.org>, maco@android.com, christian@brauner.io,
- gregkh@linuxfoundation.org, Stephen Smalley <stephen.smalley.work@gmail.com>,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- linux-security-module@vger.kernel.org, Todd Kjos <tkjos@google.com>
+Cc: devel@driverdev.osuosl.org, linux-security-module@vger.kernel.org,
+ kernel-team@android.com, tkjos@android.com, keescook@chromium.org,
+ jannh@google.com, selinux@vger.kernel.org, gregkh@linuxfoundation.org,
+ Stephen Smalley <stephen.smalley.work@gmail.com>,
+ James Morris <jmorris@namei.org>, zohar@linux.ibm.com,
+ linux-kernel@vger.kernel.org, joel@joelfernandes.org, arve@android.com,
+ stable@vger.kernel.org, Jeffrey Vander Stoep <jeffv@google.com>,
+ casey@schaufler-ca.com, Eric Paris <eparis@parisplace.org>, maco@android.com,
+ christian@brauner.io
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Oct 11, 2021 at 5:59 PM Casey Schaufler <casey@schaufler-ca.com> wrote:
-> On 10/11/2021 2:33 PM, Paul Moore wrote:
-> > On Wed, Oct 6, 2021 at 8:46 PM Todd Kjos <tkjos@google.com> wrote:
-> >> Use the 'struct cred' saved at binder_open() to lookup
-> >> the security ID via security_cred_getsecid(). This
-> >> ensures that the security context that opened binder
-> >> is the one used to generate the secctx.
-> >>
-> >> Fixes: ec74136ded79 ("binder: create node flag to request sender's
-> >> security context")
-> >> Signed-off-by: Todd Kjos <tkjos@google.com>
-> >> Suggested-by: Stephen Smalley <stephen.smalley.work@gmail.com>
-> >> Reported-by: kernel test robot <lkp@intel.com>
-> >> Cc: stable@vger.kernel.org # 5.4+
-> >> ---
-> >> v3: added this patch to series
-> >> v4: fix build-break for !CONFIG_SECURITY
-> >>
-> >>  drivers/android/binder.c | 11 +----------
-> >>  include/linux/security.h |  4 ++++
-> >>  2 files changed, 5 insertions(+), 10 deletions(-)
-> >>
-> >> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> >> index ca599ebdea4a..989afd0804ca 100644
-> >> --- a/drivers/android/binder.c
-> >> +++ b/drivers/android/binder.c
-> >> @@ -2722,16 +2722,7 @@ static void binder_transaction(struct binder_proc *proc,
-> >>                 u32 secid;
-> >>                 size_t added_size;
-> >>
-> >> -               /*
-> >> -                * Arguably this should be the task's subjective LSM secid but
-> >> -                * we can't reliably access the subjective creds of a task
-> >> -                * other than our own so we must use the objective creds, which
-> >> -                * are safe to access.  The downside is that if a task is
-> >> -                * temporarily overriding it's creds it will not be reflected
-> >> -                * here; however, it isn't clear that binder would handle that
-> >> -                * case well anyway.
-> >> -                */
-> >> -               security_task_getsecid_obj(proc->tsk, &secid);
-> >> +               security_cred_getsecid(proc->cred, &secid);
-> >>                 ret = security_secid_to_secctx(secid, &secctx, &secctx_sz);
-> >>                 if (ret) {
-> >>                         return_error = BR_FAILED_REPLY;
-> >> diff --git a/include/linux/security.h b/include/linux/security.h
-> >> index 6344d3362df7..f02cc0211b10 100644
-> >> --- a/include/linux/security.h
-> >> +++ b/include/linux/security.h
-> >> @@ -1041,6 +1041,10 @@ static inline void security_transfer_creds(struct cred *new,
-> >>  {
-> >>  }
-> >>
-> >> +static inline void security_cred_getsecid(const struct cred *c, u32 *secid)
-> >> +{
-> >> +}
-> >
-> > Since security_cred_getsecid() doesn't return an error code we should
-> > probably set the secid to 0 in this case, for example:
-> >
-> >   static inline void security_cred_getsecid(...)
-> >   {
-> >     *secid = 0;
-> >   }
+On Mon, Oct 11, 2021 at 2:39 PM Paul Moore <paul@paul-moore.com> wrote:
 >
-> If CONFIG_SECURITY is unset there shouldn't be any case where
-> the secid value is ever used for anything. Are you suggesting that
-> it be set out of an abundance of caution?
+> On Fri, Oct 8, 2021 at 5:24 PM Todd Kjos <tkjos@google.com> wrote:
+> >
+> > On Fri, Oct 8, 2021 at 2:12 PM Paul Moore <paul@paul-moore.com> wrote:
+> > >
+> > > On Wed, Oct 6, 2021 at 8:46 PM Todd Kjos <tkjos@google.com> wrote:
+> > > >
+> > > > Set a transaction's sender_euid from the 'struct cred'
+> > > > saved at binder_open() instead of looking up the euid
+> > > > from the binder proc's 'struct task'. This ensures
+> > > > the euid is associated with the security context that
+> > > > of the task that opened binder.
+> > > >
+> > > > Fixes: 457b9a6f09f0 ("Staging: android: add binder driver")
+> > > > Signed-off-by: Todd Kjos <tkjos@google.com>
+> > > > Suggested-by: Stephen Smalley <stephen.smalley.work@gmail.com>
+> > > > Cc: stable@vger.kernel.org # 4.4+
+> > > > ---
+> > > > v3: added this patch to series
+> > > >
+> > > >  drivers/android/binder.c | 2 +-
+> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >
+> > > This is an interesting ordering of the patches.  Unless I'm missing
+> > > something I would have expected patch 3/3 to come first, followed by
+> > > 2/3, with patch 1/3 at the end; basically the reverse of what was
+> > > posted here.
+> >
+> > 2/3 and 3/3 both depend on 1/3 (add "cred" member of struct
+> > binder_proc). I kept that in 1/3 to keep that patch the same as what
+> > had already been reviewed. I didn't think much about the ordering
+> > between 2/3 and 3/3 -- but I agree that it would have been sensible to
+> > reverse their order.
+> >
+> > >
+> > > My reading of the previous thread was that Casey has made his peace
+> > > with these changes so unless anyone has any objections I'll plan on
+> > > merging 2/3 and 3/3 into selinux/stable-5.15 and merging 1/3 into
+> > > selinux/next.
+> >
+> > Thanks Paul. I'm not familiar with the branch structure, but you need
+> > 1/3 in selinux/stable-5.15 to resolve the dependency on proc->cred.
+>
+> Yep, thanks.  My eyes kinda skipped over that part when looking at the
+> patchset but that would have fallen out as soon as I merged them.
+>
+> Unfortunately that pretty much defeats the purpose of splitting this
+> into three patches.  While I suppose one could backport patches 2/3
+> and 3/3 individually, both of them have a very small footprint
+> especially considering their patch 1/3 dependency.  At the very least
+> it looks like patch 2/3 needs to be respun to address the
+> !CONFIG_SECURITY case and seeing the split patches now I think the
+> smart thing is to just combine them into a single patch.  I apologize
+> for the bad recommendation earlier, I should have followed that thread
+> a bit closer after the discussion with Casey and Stephen.
 
-It follows a pattern with the other LSM hooks when !CONFIG_SECURITY,
-and I'd much rather us keep things consistent.
+I'm happy to submit a single patch for all of this. Another part of
+the rationale
+for splitting it into 3 patches was correctly identify the patch that introduced
+the patch that introduced the issue -- so each of the 3 had a different
+"Fixes:" tag. Should I cite the oldest (binder introduction) with the "Fixes"
+tag and perhaps mention the other two in the commit message?
 
--- 
-paul moore
-www.paul-moore.com
+-Todd
+
+>
+> --
+> paul moore
+> www.paul-moore.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
