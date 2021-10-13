@@ -1,40 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9694642C09A
-	for <lists+driverdev-devel@lfdr.de>; Wed, 13 Oct 2021 14:52:21 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8261842C9B6
+	for <lists+driverdev-devel@lfdr.de>; Wed, 13 Oct 2021 21:14:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 044E382D62;
-	Wed, 13 Oct 2021 12:52:20 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 742794058F;
+	Wed, 13 Oct 2021 19:14:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L26ogUfS_sZA; Wed, 13 Oct 2021 12:52:19 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id JhgBhhY9WJUr; Wed, 13 Oct 2021 19:14:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6C5D782CF9;
-	Wed, 13 Oct 2021 12:52:18 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6C1604052C;
+	Wed, 13 Oct 2021 19:14:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D85831BF3BF
- for <devel@linuxdriverproject.org>; Wed, 13 Oct 2021 12:52:08 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0A8751BF372
+ for <devel@linuxdriverproject.org>; Wed, 13 Oct 2021 19:14:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D4FC6407FC
- for <devel@linuxdriverproject.org>; Wed, 13 Oct 2021 12:52:08 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id EEAFB829B6
+ for <devel@linuxdriverproject.org>; Wed, 13 Oct 2021 19:14:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Missing required header field: "Date"
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qQPr9WAe7OOE for <devel@linuxdriverproject.org>;
- Wed, 13 Oct 2021 12:52:07 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1-DDZhOcJZxb for <devel@linuxdriverproject.org>;
+ Wed, 13 Oct 2021 19:14:40 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from 1zaza.website (1zaza.website [106.75.236.76])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 76D9640803
- for <devel@linuxdriverproject.org>; Wed, 13 Oct 2021 12:52:07 +0000 (UTC)
-Message-Id: <20211013125208.D4FC6407FC@smtp4.osuosl.org>
-Date: Wed, 13 Oct 2021 12:52:08 +0000 (UTC)
-From: nami@1zaza.website
+Received: from mail01.anli5223.com.local (mail.anli5223.com [58.210.22.122])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 23A30829B1
+ for <devel@driverdev.osuosl.org>; Wed, 13 Oct 2021 19:14:40 +0000 (UTC)
+Received: from User (185.239.242.53) by mail01.anli5223.com.local
+ (172.16.101.8) with Microsoft SMTP Server id 14.2.347.0; Wed, 13 Oct 2021
+ 23:09:12 +0800
+From: bmw@osuosl.org, lottery@osuosl.org, department@osuosl.org
+Subject: Congratulations To You Our New BMW Winner!!!
+Date: Wed, 13 Oct 2021 08:09:11 -0700
+MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <bfe56d0a-cead-4397-bfcf-e113692948dd@mail01.anli5223.com.local>
+To: Undisclosed recipients:;
+X-Originating-IP: [185.239.242.53]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -47,54 +57,50 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: "<melvidabullock"@gmail.com
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============2271562401133348680=="
+Reply-To: bmwlottdepartment@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============2271562401133348680==
-Content-Type: text/plain
-
->
-From: "Ms. Melvida Bullock"<nami@1zaza.website>
-Subject: Greetings Dear Beloved:
-Date: Wed, 13 Oct 2021 05:52:00 -0700
-MIME-Version: 1.0
-Content-Type: text/plain;
-	charset="Windows-1251"
-Content-Transfer-Encoding: 7bit
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-
-Dear Beloved,
-
-
-
-Life is gradually passing away from me as a result of my present medical condition and my personal doctor confided in me yesterday that I have only a few more weeks to live. In view of this setback, I want to donate my estate for humanitarian assistance, since this has always been the plan of my late husband and besides I have no child. In an effort to compliment the good work of our creator for humanity and the wish of my late Husband I donate the sum of 10,000,000.00 Euro (Ten Million EUR) to you. Upon your acknowledgement of this mail and informing me of your nationality and current place of resident, my Bank will facilitate due processes for transfer of this legacy to you. May God bless you as you use this money judiciously for the work of charity to help the less privileged.
-
-
-
-Sincere regards,
-
-
-
-Ms. Melvida Bullock
-
-Email: melvidabullock@gmail.com
-
-
---===============2271562401133348680==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Dear Winner,
+ 
+This is to inform you that your email have been selected for a prize of a
+brand new 2021 Model BMW 7 Series Car, Apple Laptop and a Check
+of $1,500,000.00 USD from the international balloting programs held
+in the UNITED STATE OF AMERICA.
+ 
+The selection process was carried out through random selection in our
+computerized email selection system (ESS) from a database of over
+250,000 email addresses drawn from all the continents of the world
+which you were selected.
+ 
+The BMW Lottery is approved by the British Gaming Board and also
+Licensed by the International Association of Gaming Regulators (IAGR).
+To begin the processing of your prize you are to contact our fiduciary
+claims department for more information as regards procedures to the
+claim of your prize.
+ 
+Name: Mr.. Murphy attorney
+Email: bmwlottdepartment@gmail.com
+Contact him by providing him with your secret pin code Number
+BMW:958348003/24. You are also advised to provide him with the under
+listed information as soon as possible:
+ 
+1. Name In Full :
+2. Residential Address :
+3. Nationality :
+4. Age :
+5. Occupation :
+6. Direct Phone :
+7. Present Country :
+8. Email address :
+9. pin code Number BMW:
+ 
+Mrs. Rachael Adams.
+THE DIRECTOR PROMOTIONS
+BMW LOTTERY DEPARTMENT
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============2271562401133348680==--
