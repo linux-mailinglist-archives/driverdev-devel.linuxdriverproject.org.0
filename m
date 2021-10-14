@@ -1,59 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F09F42E2E0
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Oct 2021 22:50:52 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E9EE342E34A
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Oct 2021 23:34:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B4896407C0;
-	Thu, 14 Oct 2021 20:50:50 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C00654012A;
+	Thu, 14 Oct 2021 21:34:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GY5rf6ZS1zzz; Thu, 14 Oct 2021 20:50:50 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id K7ep8O4lSdiw; Thu, 14 Oct 2021 21:34:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0D07E403F3;
-	Thu, 14 Oct 2021 20:50:49 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5190B400D9;
+	Thu, 14 Oct 2021 21:34:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 166781BF343
- for <devel@linuxdriverproject.org>; Thu, 14 Oct 2021 20:50:40 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 861381BF576
+ for <devel@linuxdriverproject.org>; Thu, 14 Oct 2021 21:34:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 11E8B403F3
- for <devel@linuxdriverproject.org>; Thu, 14 Oct 2021 20:50:40 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8250681CFE
+ for <devel@linuxdriverproject.org>; Thu, 14 Oct 2021 21:34:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id RSYQ4RC19ylS for <devel@linuxdriverproject.org>;
- Thu, 14 Oct 2021 20:50:38 +0000 (UTC)
-X-Greylist: delayed 00:16:05 by SQLgrey-1.8.0
-Received: from mx2.smtp.larsendata.com (mx2.smtp.larsendata.com
- [91.221.196.228])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 685A440333
- for <devel@linuxdriverproject.org>; Thu, 14 Oct 2021 20:50:38 +0000 (UTC)
-Received: from mail01.mxhotel.dk (mail01.mxhotel.dk [91.221.196.236])
- by mx2.smtp.larsendata.com (Halon) with ESMTPS
- id 271d616c-2d2e-11ec-ac3c-0050568cd888;
- Thu, 14 Oct 2021 20:34:38 +0000 (UTC)
-Received: from ravnborg.org (80-162-45-141-cable.dk.customer.tdc.net
- [80.162.45.141])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- (Authenticated sender: sam@ravnborg.org)
- by mail01.mxhotel.dk (Postfix) with ESMTPSA id BE344194B5B;
- Thu, 14 Oct 2021 22:34:35 +0200 (CEST)
-Date: Thu, 14 Oct 2021 22:34:26 +0200
-X-Report-Abuse-To: abuse@mxhotel.dk
-From: Sam Ravnborg <sam@ravnborg.org>
-To: lichenyang <lichenyang@loongson.cn>
-Subject: Re: [PATCH v5 1/3] drm/loongson: Add DRM Driver for Loongson 7A1000
- bridge chip
-Message-ID: <YWiUUmCRVdxpZrCz@ravnborg.org>
-References: <20210911023133.851311-1-lichenyang@loongson.cn>
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key)
+ header.d=paul-moore-com.20210112.gappssmtp.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FuK1zCTs_LFX for <devel@linuxdriverproject.org>;
+ Thu, 14 Oct 2021 21:34:01 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ed1-x52d.google.com (mail-ed1-x52d.google.com
+ [IPv6:2a00:1450:4864:20::52d])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E879481CE3
+ for <devel@driverdev.osuosl.org>; Thu, 14 Oct 2021 21:34:00 +0000 (UTC)
+Received: by mail-ed1-x52d.google.com with SMTP id r18so29711962edv.12
+ for <devel@driverdev.osuosl.org>; Thu, 14 Oct 2021 14:34:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=paul-moore-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=QoPu0jnNDwspHFj/KwTjXTK5IovBXrFnYnRM3qY9AfI=;
+ b=a6KNglUwuPfv6oIfTS0ZYiZ4KlAFHaiXh7LKObdDfk5CWQzJWVBf4zQfr+h2DcJC+q
+ /6GC8MY8aeLSG9gRqlIj5iz++B4UI0/XaeMbc1vyyC9cmgmj1Ga6sYbPgi13jZB/PdGw
+ EjaDJ6X3eS1fm/ZL1GEQ8kxsLVPysO+XqTkMqqpFK6X+OPSHu9t9dspGa0ODwtJrnwYa
+ 2JCH5e8jK6dlNwBA2rh7BCfstK7WIld8g4LPRuxYNWh6XAQpRoLFqbqi+PtyK5d/X2pq
+ MYKYgIXToadW9qIHhG8Z1QRBqXaqWeEHOjtwPhK/AqNf065c7fPuruiSGzVXxkmlA/rG
+ NEnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=QoPu0jnNDwspHFj/KwTjXTK5IovBXrFnYnRM3qY9AfI=;
+ b=O4z4k1zzex73JLZ6ymwR9U5Z/wUf0jsqe28L8c5cff6vk7WBkAue2TNXQ010avAunX
+ 8v3zF2wFv7qp+Lrl+Lwx7LPdc3VGhLgdXPlJSzf/MvfhjVfjIMy7MVzdncbxCB8FFyZX
+ dXb7MKPKYv4UZCKlD2cxnLz7U3kvPxSuFxsSmOjWCWUMENYZDzgipxVoaJuVsfSdq0yK
+ z78D8h4IfT51LE8i1zDtAUgvxuvBMPxX5z5KI5Sz/PXK1ExdkOgdvVN1Xz7BZ7n12tAV
+ qO5PSQzgGlABuf4ozMncUeSdk7z2m93KIfuhJrObkgPkpc8dvY3yxfPLRux6N4r5vUxH
+ PBmQ==
+X-Gm-Message-State: AOAM532yKe2R1GLmhqSRY0V8Ixfu0S5PTOtJ/rJETgqDitRrKLs4sh6r
+ KgVVWZQpZKT84RB8Ps57JgWzXlJafCbd1QpuyQvk
+X-Google-Smtp-Source: ABdhPJwdxSsmYhKsafUPIKuDs91ExUIKE/+rIIpYnPbV6xJvCFR8GllgoKtB9zmq6jGKXojYL90idam79iMgX4lDJwQ=
+X-Received: by 2002:a05:6402:2552:: with SMTP id
+ l18mr12249192edb.370.1634247239018; 
+ Thu, 14 Oct 2021 14:33:59 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210911023133.851311-1-lichenyang@loongson.cn>
+References: <20211012165614.2873369-1-tkjos@google.com>
+In-Reply-To: <20211012165614.2873369-1-tkjos@google.com>
+From: Paul Moore <paul@paul-moore.com>
+Date: Thu, 14 Oct 2021 17:33:48 -0400
+Message-ID: <CAHC9VhQ6W=8rX6hryk_d+iTc90MAoZOw=KVDhjXsXE5Laccn_A@mail.gmail.com>
+Subject: Re: [PATCH v5 0/3] binder: use cred instead of task for security
+ context
+To: Todd Kjos <tkjos@google.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,57 +85,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
- Huacai Chen <chenhuacai@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, dri-devel@lists.freedesktop.org,
- Daniel Vetter <daniel@ffwll.ch>, devel@linuxdriverproject.org,
- Dan Carpenter <dan.carpenter@oracle.com>
+Cc: devel@driverdev.osuosl.org, linux-security-module@vger.kernel.org,
+ kernel-team@android.com, tkjos@android.com, keescook@chromium.org,
+ jannh@google.com, selinux@vger.kernel.org, gregkh@linuxfoundation.org,
+ Stephen Smalley <stephen.smalley.work@gmail.com>,
+ James Morris <jmorris@namei.org>, zohar@linux.ibm.com,
+ linux-kernel@vger.kernel.org, arve@android.com,
+ Jeffrey Vander Stoep <jeffv@google.com>, joel@joelfernandes.org,
+ Eric Paris <eparis@parisplace.org>, maco@android.com, christian@brauner.io
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi lichenyang,
-On Sat, Sep 11, 2021 at 10:31:31AM +0800, lichenyang wrote:
-> From: Chenyang Li <lichenyang@loongson.cn>
-> 
-> This patch adds an initial DRM driver for the Loongson LS7A1000
-> bridge chip(LS7A). The LS7A bridge chip contains two display
-> controllers, support dual display output. The maximum support for
-> each channel display is to 1920x1080@60Hz.
-> At present, DC device detection and DRM driver registration are
-> completed, the crtc/plane/encoder/connector objects has been
-> implemented.
-> On Loongson 3A4000 CPU and 7A1000 system, we have achieved the use
-> of dual screen, and support dual screen clone mode and expansion
-> mode.
-> 
-> v11:
-> - Remove a lot of useless code.
-> - Add help information.
-> - Delete unnecessary header files.
-Looks much better now, thanks.
+On Tue, Oct 12, 2021 at 12:56 PM Todd Kjos <tkjos@google.com> wrote:
+>
+> This series fixes the possible use of an incorrect security context
+> when checking selinux permissions, getting a security ID, or lookup
+> up the euid.
+>
+> The previous behavior was to save the group_leader 'struct task_struct'
+> in binder_open() and using that to obtain security IDs or euids.
+>
+> This has been shown to be unreliable, so this series instead saves the
+> 'struct cred' of the task that called binder_open(). This cred is used
+> for these lookups instead of the task.
 
-Can you provide some kind of overview of the HW?
-It is confusing that you talk about a bridge for a display driver - is
-this something from the HW?
-And please look into usign the drm_bridge_connector - as this is what
-any modern DRM display driver needs to use today.
+Hi Todd,
 
-Also the connector type needs to be specified - unknown is not
-acceptable here.
+I just merged all three patches into selinux/next, thanks for your
+help patience on this patchset.  Ultimately I merged these patches
+into selinux/next as opposed to selinux/stable-5.15 because I felt
+that a couple of weeks in -next before going to Linus would be a good
+thing.  I'm also not certain how widespread binder is outside of
+Android so I figured the practical difference between next and
+stable-5.15 is likely very small.  Regardless, all of your Fixes and
+stable tags remain in the patches so as soon as they go up to Linus
+during the next merge window the stable folks will be notified.
 
-The mail you sent did not show up at https://lore.kernel.org/dri-devel/
-Please fix what is required to make it visible there.
-This is where we point people to see the original mails.
-
-Also a cover letter that explains what has been done - and what has not
-been done - would be nice.
-
-I look forward to v12,
-
-	Sam
+-- 
+paul moore
+www.paul-moore.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
