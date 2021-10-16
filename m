@@ -1,43 +1,43 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA24143038D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 16 Oct 2021 17:58:04 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 95EB04304EA
+	for <lists+driverdev-devel@lfdr.de>; Sat, 16 Oct 2021 22:26:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C157960665;
-	Sat, 16 Oct 2021 15:58:02 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 33PkWY_3-2Ht; Sat, 16 Oct 2021 15:58:02 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1FD1860646;
-	Sat, 16 Oct 2021 15:58:01 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 88CB51BF3D2
- for <devel@linuxdriverproject.org>; Sat, 16 Oct 2021 15:57:51 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 718E84021A
- for <devel@linuxdriverproject.org>; Sat, 16 Oct 2021 15:57:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 13E11402CC;
+	Sat, 16 Oct 2021 20:26:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fFj1-4G-Ke_s for <devel@linuxdriverproject.org>;
- Sat, 16 Oct 2021 15:57:49 +0000 (UTC)
-X-Greylist: delayed 04:37:08 by SQLgrey-1.8.0
-Received: from smtp.restena.lu (legolas.restena.lu [IPv6:2001:a18:1::34])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C3020400C9
- for <devel@driverdev.osuosl.org>; Sat, 16 Oct 2021 15:57:49 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bkvO59SuDQV9; Sat, 16 Oct 2021 20:26:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id F22814015F;
+	Sat, 16 Oct 2021 20:26:43 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 301B61BF3AD
+ for <devel@linuxdriverproject.org>; Sat, 16 Oct 2021 20:26:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2C9856061C
+ for <devel@linuxdriverproject.org>; Sat, 16 Oct 2021 20:26:34 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KREtAl8vkWVh for <devel@linuxdriverproject.org>;
+ Sat, 16 Oct 2021 20:26:32 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from smtp.restena.lu (legolas.restena.lu [158.64.1.34])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9B89460613
+ for <devel@driverdev.osuosl.org>; Sat, 16 Oct 2021 20:26:32 +0000 (UTC)
 Received: from webmail (luthien.restena.lu [IPv6:2001:a18:1::24])
- by smtp.restena.lu (Postfix) with ESMTPS id 7CFCF11004C;
- Sat, 16 Oct 2021 12:19:09 +0200 (CEST)
+ by smtp.restena.lu (Postfix) with ESMTPS id 40CD3110036;
+ Sat, 16 Oct 2021 12:14:36 +0200 (CEST)
 Received: from 197.211.59.63 ([197.211.59.63]) by webmail.restena.lu (Horde
- Framework) with HTTP; Sat, 16 Oct 2021 12:19:08 +0200
-Date: Sat, 16 Oct 2021 12:19:08 +0200
-Message-ID: <20211016121908.Horde.dwH7fjiHsYALz3PDxp6nvA2@webmail.restena.lu>
+ Framework) with HTTP; Sat, 16 Oct 2021 12:14:35 +0200
+Date: Sat, 16 Oct 2021 12:14:35 +0200
+Message-ID: <20211016121435.Horde.nxmFKoz7io2XW5_GmpHApQ1@webmail.restena.lu>
 From: Robert Schiltz <robert.schiltz@education.lu>
 To: 
 Subject: Join the Illuminati.
