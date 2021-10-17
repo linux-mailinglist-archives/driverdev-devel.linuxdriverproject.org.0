@@ -2,46 +2,68 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8198A4304F5
-	for <lists+driverdev-devel@lfdr.de>; Sat, 16 Oct 2021 22:53:29 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CD0214309CA
+	for <lists+driverdev-devel@lfdr.de>; Sun, 17 Oct 2021 16:39:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ABF2F4044D;
-	Sat, 16 Oct 2021 20:53:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AAA6640311;
+	Sun, 17 Oct 2021 14:38:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jjUGbNdPaFzc; Sat, 16 Oct 2021 20:53:26 +0000 (UTC)
+	with ESMTP id zOEGaNiwi6dh; Sun, 17 Oct 2021 14:38:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 16F0940409;
-	Sat, 16 Oct 2021 20:53:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F15CE40175;
+	Sun, 17 Oct 2021 14:38:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 56B8A1BF3AD
- for <devel@linuxdriverproject.org>; Sat, 16 Oct 2021 20:53:15 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 87E811BF5AC
+ for <devel@linuxdriverproject.org>; Sun, 17 Oct 2021 14:38:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 463DB606D9
- for <devel@linuxdriverproject.org>; Sat, 16 Oct 2021 20:53:15 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6C34C402C9
+ for <devel@linuxdriverproject.org>; Sun, 17 Oct 2021 14:38:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IHBQQZtpQW1x for <devel@linuxdriverproject.org>;
- Sat, 16 Oct 2021 20:53:14 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from brain.mindsystem.cz (brain.mindsystem.cz [81.0.237.147])
- by smtp3.osuosl.org (Postfix) with SMTP id 28BE260613
- for <devel@driverdev.osuosl.org>; Sat, 16 Oct 2021 20:53:13 +0000 (UTC)
-Received: (qmail 26482 invoked by uid 1068); 16 Oct 2021 19:09:13 -0000
-Received: from brain.mindsystem.cz (HELO
- info.14p54xjy1kgu5m1lxoc4mq0acd.mx.internal.cloudapp.net) (81.0.237.147)
- by brain.mindsystem.cz with SMTP; 16 Oct 2021 19:09:13 -0000
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=agerio.com.br
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jUqC2IJgHTTh for <devel@linuxdriverproject.org>;
+ Sun, 17 Oct 2021 14:38:47 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.agerio.com.br (mail3.agerio.com.br [177.47.113.51])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EDCB4400F6
+ for <devel@driverdev.osuosl.org>; Sun, 17 Oct 2021 14:38:46 +0000 (UTC)
+Received: from mimosa.agerio.com.br (unknown [192.168.252.10])
+ by mail.agerio.com.br (Postfix) with ESMTP id 93994630CA;
+ Sun, 17 Oct 2021 11:02:22 -0300 (-03)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=agerio.com.br;
+ s=default; t=1634479348;
+ bh=2q31gy4k5R/DJs0eL5OO6ZbeJWvdQ44vutGSP4M3piU=;
+ h=Subject:To:From:Date:Reply-To:From;
+ b=aHYw2ZdZ0RpDl8n1MvXU5moan/wIHcp7WZFIOHSEOZQFN2osemMFO1DW3lva91RmA
+ PWrPhlz10i+o6EP/3lUw7RmvpwSFfUpfH1Kdxm4Ign0EH5LRimKR9xB7W+OY8nhQuP
+ /YyjakPhF0eryhevnXEN6GLDnvegxezomRABNA2PPpZcc47ve6IGtzrmRFlwZnxP+s
+ RFlY7y9ouCqZ8aM1ty2bmhX7E+DfDOiKDdw/Ecd+nW6gnL3YwJo3gAUuiPeAW5Q0uE
+ Fk6Y4XuD5PF9bG9I8Q8T8Jjio6znXpwzeofrfJOuwUSzwVgESfcDL/ub71RR0OjTl2
+ XfZlK4v1XNuEw==
+Received: from localhost (localhost [127.0.0.1])
+ by mimosa.agerio.com.br (Postfix) with ESMTP id EE585B28580;
+ Sun, 17 Oct 2021 10:59:16 -0300 (-03)
+X-Virus-Scanned: amavisd-new at mimosa.agerio.com.br
+Received: from mimosa.agerio.com.br ([127.0.0.1])
+ by localhost (mimosa.agerio.com.br [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id OMZhJsVJ3YpI; Sun, 17 Oct 2021 10:59:16 -0300 (-03)
+Received: from info.14p54xjy1kgu5m1lxoc4mq0acd.mx.internal.cloudapp.net
+ (unknown [192.168.252.8])
+ by mimosa.agerio.com.br (Postfix) with ESMTPS id B26D5B2840D;
+ Sun, 17 Oct 2021 10:59:10 -0300 (-03)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Investment fund..
-To: Recipients <bulgaria@photomate.eu>
-From: "Ms. Reem E.A" <bulgaria@photomate.eu>
-Date: Sat, 16 Oct 2021 19:09:00 +0000
-Message-Id: <20211016205315.463DB606D9@smtp3.osuosl.org>
+To: Recipients <alessandrahorto@agerio.com.br>
+From: "Ms. Reem E.A" <alessandrahorto@agerio.com.br>
+Date: Sun, 17 Oct 2021 13:59:01 +0000
+Message-Id: <20211017135910.B26D5B2840D@mimosa.agerio.com.br>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
