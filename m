@@ -1,48 +1,43 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E9A17438559
-	for <lists+driverdev-devel@lfdr.de>; Sat, 23 Oct 2021 22:43:51 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 79621438618
+	for <lists+driverdev-devel@lfdr.de>; Sun, 24 Oct 2021 03:06:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9C01181AF4;
-	Sat, 23 Oct 2021 20:43:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8720E40365;
+	Sun, 24 Oct 2021 01:06:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5PX6eiGMQv_k; Sat, 23 Oct 2021 20:43:49 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PRHGNthIbPpp; Sun, 24 Oct 2021 01:06:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 19FC981AF5;
-	Sat, 23 Oct 2021 20:43:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1A834402AC;
+	Sun, 24 Oct 2021 01:06:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8BEA81BF30F
- for <devel@linuxdriverproject.org>; Sat, 23 Oct 2021 20:43:38 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id ECCC41BF59D
+ for <devel@linuxdriverproject.org>; Sun, 24 Oct 2021 01:06:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 76AB86081E
- for <devel@linuxdriverproject.org>; Sat, 23 Oct 2021 20:43:38 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id DCD19817F5
+ for <devel@linuxdriverproject.org>; Sun, 24 Oct 2021 01:06:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mbVKGyT0trNg for <devel@linuxdriverproject.org>;
- Sat, 23 Oct 2021 20:43:38 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from cs2313.mojohost.com (cs2313.mojohost.com [64.59.125.111])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C584A60814
- for <devel@driverdev.osuosl.org>; Sat, 23 Oct 2021 20:43:37 +0000 (UTC)
-Received: from User ([20.69.178.247]) (authenticated bits=0)
- by cs2313.mojohost.com (8.14.4/8.14.4) with ESMTP id 19NKh0kH011112;
- Sat, 23 Oct 2021 16:43:01 -0400
-Message-Id: <202110232043.19NKh0kH011112@cs2313.mojohost.com>
-From: "Martins"<courses-support@nuctc-academy.com>
-Subject: Good News
-Date: Sat, 23 Oct 2021 20:43:07 -0000
-MIME-Version: 1.0
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id HhJDl5nxH0ny for <devel@linuxdriverproject.org>;
+ Sun, 24 Oct 2021 01:06:16 +0000 (UTC)
+X-Greylist: delayed 00:24:59 by SQLgrey-1.8.0
+Received: from hotmail.com (unknown [112.66.246.92])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 56852817F2
+ for <devel@linuxdriverproject.org>; Sun, 24 Oct 2021 01:06:15 +0000 (UTC)
+From: jinchukoubaoguan@hotmail.com
+Subject: =?GB2312?B?s/a/2rGoudhRUToxNTc5MzEzMjk=?=
+To: devel@linuxdriverproject.org
+Date: Sun, 24 Oct 2021 09:06:15 +0800
 X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Mailer: Microsoft Outlook Express 6.00.2800.1158
+Message-Id: <20211024010616.DCD19817F5@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,19 +50,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: rmartinsedward950@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: text/plain; charset="gb2312"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Your fund of $10.5 Million has been approved to be paid to you through UBS Bank. This is a reward compensation from the United Nations allocated to the beneficiaries on random selection in the eradication Program.
-
-You need to contact the affiliate payment officer DR.Martins Edward, email: ( edwarddrmartins@gmail.com ) and send them your details so they can get your funds transferred to you without delay.
-
-Sincerely,
-Bar. Jerry Lawrence(Esq)
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CrDswO2497XYv9qwtsLytaWxqLnYCgrTxcrGzOG5qb34v9q+rdOqzKfNtyDP+7fRzKfNt7K5zPmh
+owoK08XKxrT6sOy499bWx+W52LWl1qShorL6tdjWpKGizsS8/sjP1qS088q5ud2horP2v9rQ7b/J
+1qQgoaLW8cS+6/jB+LLdzai52LWloaLEvtbGxrfJzLzsCgoKu7bTrdfJ0a+jutCh1bwxNzgxODg1
+ODQ1MyAozqLQxc2susUpIFFROjE1NzkzMTMyOQpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJw
+cm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
