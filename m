@@ -2,74 +2,50 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8592F438937
-	for <lists+driverdev-devel@lfdr.de>; Sun, 24 Oct 2021 15:45:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E4FCA439BB7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Oct 2021 18:37:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B8D9C80E92;
-	Sun, 24 Oct 2021 13:45:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4FA4E80F0C;
+	Mon, 25 Oct 2021 16:37:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sq_LRzz-kgBj; Sun, 24 Oct 2021 13:45:42 +0000 (UTC)
+	with ESMTP id vFVVVy_PT0pz; Mon, 25 Oct 2021 16:37:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1EE9280E97;
-	Sun, 24 Oct 2021 13:45:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9E5C380EFE;
+	Mon, 25 Oct 2021 16:37:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 504251BF2F2
- for <devel@linuxdriverproject.org>; Sun, 24 Oct 2021 13:45:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 419BE1BF27E
+ for <devel@linuxdriverproject.org>; Mon, 25 Oct 2021 16:37:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3F48E60610
- for <devel@linuxdriverproject.org>; Sun, 24 Oct 2021 13:45:31 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 28C8F607EC
+ for <devel@linuxdriverproject.org>; Mon, 25 Oct 2021 16:37:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gzm4CLuhM7SP for <devel@linuxdriverproject.org>;
- Sun, 24 Oct 2021 13:45:30 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-x135.google.com (mail-lf1-x135.google.com
- [IPv6:2a00:1450:4864:20::135])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9A5136058A
- for <devel@driverdev.osuosl.org>; Sun, 24 Oct 2021 13:45:30 +0000 (UTC)
-Received: by mail-lf1-x135.google.com with SMTP id u21so7372753lff.8
- for <devel@driverdev.osuosl.org>; Sun, 24 Oct 2021 06:45:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:sender:from:date:message-id:subject:to;
- bh=J64IZF9PVQr8R+mvV6ce9ekiJ1rmezsroOUDCf2tvvE=;
- b=bLyFCVOtdAnoJKNll//iuKqFt6/a6MwtTzBNnL+Hix17ONP6Jg99cYwId7QrY0rID/
- YJVad3fvQIGqiA6mFwaB4G1bu5loks76pg/9SzXxWG0/zJJtmsghQ2hcGNDtQ0wk09gw
- Mrpp8/j+zJZ/EEVp5HsWVA1F+BU0ixJbDSrPxnJ4l0NNLNWiMY2LMYGIHIdfZ6Q8sKVA
- SfNMKrqmVe9ef/XqJiCehTTGqY/e1kD+c+z1YGgi68+19oHiJ+QY6AvtVfazhz9LODnV
- YFccRe75kb8x2r4UMKtktyptjINM1pR7470WxLhlw/DhrReOoTYhRhoJt2zIqYF/kC2Q
- zmuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:sender:from:date
- :message-id:subject:to;
- bh=J64IZF9PVQr8R+mvV6ce9ekiJ1rmezsroOUDCf2tvvE=;
- b=T3Z7zl62m3V2xf1qDW1DbEeqL5MSoa58D7/rzDEQRqHwYUJiDeLcROaTU7ghAItH5W
- fU3A15G2Y0QcLFYHPByV8jsHaeGRUl0N+vcx59MtfnAQ4klUa9OW+rqXWuAZs2lDq7ns
- 1AIwsktLanVjxE+mFSQpI+wwlvo5eWvl4SKRsSeMxOamB6J8uX154+tOgHVhbUL4SOMj
- Kby0aBdCljPtq7oc9WTG8618I96qGlVLfVKg/ThhC2vziGgd257n5V0nTCByj9dGmBKo
- eCgdgID+C+dDw/MSCjJ+0xradmP13RowzAVq73D0nL4fAW/rxlr+0pHbthGgiIQ+Atxr
- 2fSg==
-X-Gm-Message-State: AOAM532b6hYrfDnhBLyRMXwX14JzW9cIDQX0/o+ZEZIvmm02HkoPX097
- J4mg8NTb6jbBxYiQR02KuJSTKS4P6ttU1rYJXg==
-X-Google-Smtp-Source: ABdhPJx8VEx22ED+Tt44ieVEg4W5+GMTCiJC9Ie/t9PvfvQ53xy2z43wUeRHGPq4N85vxe59cEo+OIVFMWETxSyYEzY=
-X-Received: by 2002:a19:e00b:: with SMTP id x11mr10362764lfg.87.1635083128350; 
- Sun, 24 Oct 2021 06:45:28 -0700 (PDT)
+ with ESMTP id DPgsRq-KDr0u for <devel@linuxdriverproject.org>;
+ Mon, 25 Oct 2021 16:37:46 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.ohs.estore.co.jp (h038.ty.estore.co.jp [64.56.177.38])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 925D7607C1
+ for <devel@driverdev.osuosl.org>; Mon, 25 Oct 2021 16:37:46 +0000 (UTC)
+Received: from mail.ohs.estore.co.jp (h042.ty.estore.co.jp [64.56.177.42])
+ by tymailrelay01.ty.estore.co.jp (Postfix) with SMTP id 310D727F252
+ for <devel@driverdev.osuosl.org>; Tue, 26 Oct 2021 01:24:12 +0900 (JST)
+Received: (qmail 9653 invoked from network); 26 Oct 2021 01:17:06 +0900
+X-ohsqaws: 1962362f36a6c68e9fa50f60
+Received: from unknown (HELO
+ info.14p54xjy1kgu5m1lxoc4mq0acd.mx.internal.cloudapp.net) (40.74.71.179)
+ by 0 with SMTP; 26 Oct 2021 01:17:06 +0900
 MIME-Version: 1.0
-Received: by 2002:a2e:8e79:0:0:0:0:0 with HTTP; Sun, 24 Oct 2021 06:45:27
- -0700 (PDT)
-From: "Dr. Joseph Mark" <josephmark00011@gmail.com>
-Date: Sun, 24 Oct 2021 13:45:27 +0000
-X-Google-Sender-Auth: okOrtKjSzfiVf0PWhQlcdZ6S9MM
-Message-ID: <CAPRrOZN_n+Uk=deCGjs71cFRnzJOXRLNZ-e=ngjSXkL280rnnQ@mail.gmail.com>
-Subject: Hello Dear.
-To: undisclosed-recipients:;
+Content-Description: Mail message body
+Subject: Comfidential
+To: Recipients <mail2021@glorious-angel.com>
+From: "Andujar Jose Ramon Jr" <mail2021@glorious-angel.com>
+Date: Mon, 25 Oct 2021 16:17:04 +0000
+Message-Id: <20211025163747.28C8F607EC@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,32 +58,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: josephmarks20201@gmail.com
+Reply-To: joseramonjr1@daum.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-Dear Friend,
+Dear Sir/Madam,
 
-I am Dr. Joseph Mark Work in bank. I Discovered the sum of seven
-million, two hundred thousand dollars (usd7.2) belonging to a deceased
-customer of this bank the fund has been lying in a suspense account
-without anybody coming to put claim over the money since the account
-late owner from Lebanese who was involved in car crash.
+How are you doing today? As strange as this mail may seems, I would like you to receive it in good fate even though we haven't met before now. My name is Andujar Jose Ramon Jr, a Sergeant in American Army and i served in Afghanistan from 2010 until the unfortunate takeover of the Talibans in August this year.
 
-Therefore, I am soliciting for your assistance to come forward as the
-next of kin. I have agreed that 40% of this money will be for you as
-the beneficiary respect of the provision of your account and service
-rendered, 60% will be for me. Then immediately the money transferred
-to your account from this bank, I will proceed to your country for the
-sharing of the fund.  If you think you are capable and will be
-committed to making this deal successes send me an email as soon as
-possible to confirm your interest.
+During my stay in Afghanistan, I and some of my colleaques found an oil vessel abandoned by oil thivies in a lake between Afghanistan and Turkey so we repaired the vessel and through the information we got in the vessel we contacted the buyers who directed us on how to get the crude oil to the them. Because of the nature of the business and our jobs we did not want to transfer the money to the US so, we decided to open a private EXCREW account in Turkey without a beneficiary details to enable us to transfer it to anyone we may choose to be the beneficiary.
 
-Yours faithful,
-Dr. Joseph Mark
+The total Amount in this deal is $24.7m {twenty four million, seven hondred thousand US dollars} and you stand a chance of getting %20 of the total sum as compensation while the %80 will be used for an investment that you will handle and benefit from the proceeds. This sounds like a joke right? Well, it is not a joke, so it need to be taken seriously.
+
+In order to start the pepper work in the bank with your name, i would like to have the following details about you if you would like to be part of this.
+
+1. FULL NAME:
+2. YOUR AGE:
+3. SEX:
+4. NATIONALITY:
+5. COUNTRY OF RESIDENCE:
+6. TELEPHONE NUMBER:
+7. YOUR MARITAL STATUS:
+8. YOUR OCCUPATION:
+9. CURRENT ADDRESS:
+10.COPY OF ID
+
+As soon as i receives the above requrements, i will send it to the bank and also open a communication between you and the bank for better communication. In order for us to succeed in this transaction, i would want you to handle this confidentail. No word of this should for any reason get to any ear. I want to believe that i can trust you
+
+I will be waiting for your earliest response to my private Email: andujarjoseramonjr@yandex.com
+
+Best Regards,
+Andujar Jose Ramon Jr
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
