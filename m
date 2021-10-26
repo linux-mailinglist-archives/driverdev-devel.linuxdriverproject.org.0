@@ -1,54 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D57A243B4E6
-	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Oct 2021 16:55:31 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7465943B677
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Oct 2021 18:06:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2AD1D40284;
-	Tue, 26 Oct 2021 14:55:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 43D2381826;
+	Tue, 26 Oct 2021 16:06:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FqnLn3SdfsvF; Tue, 26 Oct 2021 14:55:29 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fOL82I_6hWUp; Tue, 26 Oct 2021 16:06:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D82B34013C;
-	Tue, 26 Oct 2021 14:55:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 40E6A81759;
+	Tue, 26 Oct 2021 16:06:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0E35A1BF2B3
- for <devel@linuxdriverproject.org>; Tue, 26 Oct 2021 14:55:18 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DA95E1BF5DA
+ for <devel@linuxdriverproject.org>; Tue, 26 Oct 2021 16:06:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0A1F94013C
- for <devel@linuxdriverproject.org>; Tue, 26 Oct 2021 14:55:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C7052608F2
+ for <devel@linuxdriverproject.org>; Tue, 26 Oct 2021 16:06:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xktzwd3J0SbQ for <devel@linuxdriverproject.org>;
- Tue, 26 Oct 2021 14:55:16 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fcZVSxv9d9_q for <devel@linuxdriverproject.org>;
+ Tue, 26 Oct 2021 16:05:59 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C5193400CE
- for <devel@driverdev.osuosl.org>; Tue, 26 Oct 2021 14:55:16 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10149"; a="216841019"
-X-IronPort-AV: E=Sophos;i="5.87,184,1631602800"; d="scan'208";a="216841019"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Oct 2021 07:55:04 -0700
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A2010608C6
+ for <devel@driverdev.osuosl.org>; Tue, 26 Oct 2021 16:05:59 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10149"; a="217120169"
+X-IronPort-AV: E=Sophos;i="5.87,184,1631602800"; d="scan'208";a="217120169"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Oct 2021 09:04:03 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,184,1631602800"; d="scan'208";a="446784372"
+X-IronPort-AV: E=Sophos;i="5.87,184,1631602800"; d="scan'208";a="497408358"
 Received: from lkp-server01.sh.intel.com (HELO 072b454ebba8) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 26 Oct 2021 07:54:59 -0700
+ by orsmga008.jf.intel.com with ESMTP; 26 Oct 2021 09:04:02 -0700
 Received: from kbuild by 072b454ebba8 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1mfNqt-00002X-1M; Tue, 26 Oct 2021 14:54:59 +0000
-Date: Tue, 26 Oct 2021 22:54:54 +0800
+ id 1mfOvh-00006y-Dz; Tue, 26 Oct 2021 16:04:01 +0000
+Date: Wed, 27 Oct 2021 00:03:55 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS
- 7e4c7947b42c4d9af0daa8d51dc58d4f17605dd9
-Message-ID: <617816be.0oZ3zpdEKMpu5VZ2%lkp@intel.com>
+Subject: [staging:staging-testing] BUILD REGRESSION
+ dcf7be79c953b17bbdfb72cbcecd0eff0767f831
+Message-ID: <617826eb.ptCVflWnPSuc39/7%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -69,16 +69,42 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
-branch HEAD: 7e4c7947b42c4d9af0daa8d51dc58d4f17605dd9  staging: r8188eu: Use a Mutex instead of a binary Semaphore
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: dcf7be79c953b17bbdfb72cbcecd0eff0767f831  staging: mt7621-dts: add missing SPDX license to files
 
-elapsed time: 2968m
+possible Error/Warning in current branch (please contact us if interested):
+
+drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:419:5: error: no previous prototype for 'vchiq_platform_init' [-Werror=missing-prototypes]
+drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:458:5: error: no previous prototype for 'vchiq_platform_init' [-Werror=missing-prototypes]
+drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:547:1: error: no previous prototype for 'vchiq_platform_get_arm_state' [-Werror=missing-prototypes]
+drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:586:1: error: no previous prototype for 'vchiq_platform_get_arm_state' [-Werror=missing-prototypes]
+
+Error/Warning ids grouped by kconfigs:
+
+gcc_recent_errors
+|-- arm-allmodconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- arm-allyesconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- arm-buildonly-randconfig-r001-20211007
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- m68k-allmodconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- m68k-allyesconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+`-- riscv-allmodconfig
+    |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+    `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+
+elapsed time: 1768m
 
 configs tested: 111
 configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
 
 gcc tested configs:
 arm                                 defconfig
