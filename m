@@ -1,79 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91ED043D93A
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Oct 2021 04:15:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 875A443DA62
+	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Oct 2021 06:29:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 03E4C60B38;
-	Thu, 28 Oct 2021 02:15:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 122A240571;
+	Thu, 28 Oct 2021 04:29:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c-L9gmBft1Ev; Thu, 28 Oct 2021 02:15:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YPDWeEail_cW; Thu, 28 Oct 2021 04:29:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 75CA560676;
-	Thu, 28 Oct 2021 02:15:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 748BC4053A;
+	Thu, 28 Oct 2021 04:29:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 21EE41BF293
- for <devel@linuxdriverproject.org>; Thu, 28 Oct 2021 02:15:08 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4DB101BF27C
+ for <devel@linuxdriverproject.org>; Thu, 28 Oct 2021 04:29:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1B4C081A5C
- for <devel@linuxdriverproject.org>; Thu, 28 Oct 2021 02:15:08 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3EB5E40208
+ for <devel@linuxdriverproject.org>; Thu, 28 Oct 2021 04:29:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9NWbb6N1UXEJ for <devel@linuxdriverproject.org>;
- Thu, 28 Oct 2021 02:15:07 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id B3VVIG26q04Y for <devel@linuxdriverproject.org>;
+ Thu, 28 Oct 2021 04:29:30 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-io1-f70.google.com (mail-io1-f70.google.com
- [209.85.166.70])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5F2B48191E
- for <devel@driverdev.osuosl.org>; Thu, 28 Oct 2021 02:15:07 +0000 (UTC)
-Received: by mail-io1-f70.google.com with SMTP id
- r25-20020a5d9b99000000b005de9c9abc68so3267267iom.12
- for <devel@driverdev.osuosl.org>; Wed, 27 Oct 2021 19:15:07 -0700 (PDT)
+Received: from mail-vk1-xa36.google.com (mail-vk1-xa36.google.com
+ [IPv6:2607:f8b0:4864:20::a36])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 733EE400E5
+ for <devel@driverdev.osuosl.org>; Thu, 28 Oct 2021 04:29:30 +0000 (UTC)
+Received: by mail-vk1-xa36.google.com with SMTP id n201so2376665vkn.12
+ for <devel@driverdev.osuosl.org>; Wed, 27 Oct 2021 21:29:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:sender:from:date:message-id:subject:to;
+ bh=J64IZF9PVQr8R+mvV6ce9ekiJ1rmezsroOUDCf2tvvE=;
+ b=fhXYv19ysRvIdT/NYPDKsL7raOw3iBnm29pcfgffw3ZXYmJedYwlD+TmKqh9MnLRMO
+ zIU2qvD2GMjDFt2/7Zz59txO70vhX+A9XJdbDDk8hnoqOMXU8fquxO+ALZnsbTpsUvP+
+ /oj8IJ1VbczNr8tVFba7gawhgYd3ePZBZ85EJ5UQsSHEgkL3jr3hRG76THknTjWCTpQe
+ 1ZHyv0+y/6TrDTLNOuB/V7M95uQ9GcZoJx/Gqj232RySbxK4bZjJ0XCJFqOQQeQ3ypLp
+ Wz1iNfyf97iIT37X+JLVEiIPzEmM+sXHNXlcsk0wqSR3806irjuqp3G4cwZ/AGgN0ztt
+ 50PQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:date:in-reply-to:message-id:subject
- :from:to;
- bh=6yG8pcJo54/vxDX6p7Xpz0mDhkbXcuuHhQ0tF2/zx5g=;
- b=rQLG/bcRsJ5sMgEN573skuqGTGJ7S45WbIiozxhnzdHyYoJHKcAe6Tn5kR/LWHxGFt
- XhxKwpzVkMjR9nzBEiroCPBzOkUVf2+nQx3NEyOVRUqMY4VddsJKyh8Blpmmc7VVPR1S
- QtTj5Iq4rWuGkDsMCTH/9Mk1Aeh2GJBnzKqIlVSvbh3wVio34yVcz5gO/jiS7YHEcgzd
- 7A8yfbsD6RkoNF74xHd0MzGHx6jTXUX58cZHgaLm/Fpd20/JpsrOiuyza0SdBacKz6HP
- aV1GQ+FRYyvEBl4DkcBgDoH2wHdChQ70T10BcFPxhlB2GFYPdymvrPsn9dwJ0QY02UYn
- bw+g==
-X-Gm-Message-State: AOAM530Gk30M2i4dggBLhiMave9wgJjuSXs/BgcN9HppO4mFnjX5JMW5
- EHnG4D3Sj4kS3Jj83DUnkpuk+kHZSSa5E9fXsZrBiuzOtgHt
-X-Google-Smtp-Source: ABdhPJzcSorb1KARbjJuazLmAfL+5SdTTWdZypcGX+Si7N9T1NNDXJ4DOpUfV3/jg9EUyHmPOXTHGnfR0KVgoFgwpLcLEWUEbWTC
+ h=x-gm-message-state:mime-version:reply-to:sender:from:date
+ :message-id:subject:to;
+ bh=J64IZF9PVQr8R+mvV6ce9ekiJ1rmezsroOUDCf2tvvE=;
+ b=AGvKZTvRPpkaN8j41oY7DTbT+XOW6+zCXiCgZln10gIOTUyC1yR/YkUPk6AgI4k/Hz
+ LkDGb/azOznFsfRk3aQA3EOQGMDgco3ZDYCtacsrv4i5nyeuthQFYWLwbB5nU0gChXtW
+ 9qj/9BsXmlBskYCCkO7eAGWmq/v3IesA0zeV7J82w3VNVadJGIQYEFVICujp/yxPsoRS
+ EKvmyqlAqa4W+6svtD/p/M2gmn8RYmYhe4ag3cM8ybr2edD28V4gIENXsdFBI+sgGO61
+ 58HlWAwkpE3gPk0W2bNiu8dj722ZCPIvXQYD8JgpvqiNu+Ci8R0DU3lnbN7vOGhCNvQU
+ MVHg==
+X-Gm-Message-State: AOAM532zEjvVDuX+RIx3/hQxXOMZkH8gN8ckegfQAupOMc0REBaAVuBh
+ dXvF9Kur6IOQmXuBL9uAm6rSH4/Fudn+cPKZwhs=
+X-Google-Smtp-Source: ABdhPJyfmYXhEAuoHpfdxbUJ9UcmPXS//3aRAGaSCbtdgUTGJOTlg30rWEdoFxoFDBjuH1kF7ogONNF9PZQ/zVBH+Ik=
+X-Received: by 2002:a05:6122:d87:: with SMTP id
+ bc7mr2214066vkb.8.1635395369333; 
+ Wed, 27 Oct 2021 21:29:29 -0700 (PDT)
 MIME-Version: 1.0
-X-Received: by 2002:a05:6e02:1c4d:: with SMTP id
- d13mr1095444ilg.120.1635387306485; 
- Wed, 27 Oct 2021 19:15:06 -0700 (PDT)
-Date: Wed, 27 Oct 2021 19:15:06 -0700
-In-Reply-To: <0000000000000f73a805afeb9be8@google.com>
-X-Google-Appengine-App-Id: s~syzkaller
-X-Google-Appengine-App-Id-Alias: syzkaller
-Message-ID: <000000000000792dda05cf604775@google.com>
-Subject: Re: [syzbot] BUG: spinlock bad magic in synchronize_srcu
-From: syzbot <syzbot+05017ad275a64a3246f8@syzkaller.appspotmail.com>
-To: bcm-kernel-feedback-list@broadcom.com, bhelgaas@google.com, bp@alien8.de, 
- dave.hansen@linux.intel.com, devel@driverdev.osuosl.org,
- f.fainelli@gmail.com, 
- gregkh@linuxfoundation.org, hpa@zytor.com, info@cestasdeplastico.com, 
- jmattson@google.com, joro@8bytes.org, kvm@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-media@vger.kernel.org, linux-pci@vger.kernel.org, 
- linux-rpi-kernel-owner@lists.infradead.org, 
- linux-rpi-kernel@lists.infradead.org, lorenzo.pieralisi@arm.com, 
- mchehab@kernel.org, mingo@redhat.com, nsaenzjulienne@suse.de, 
- pbonzini@redhat.com, robh@kernel.org, sean.j.christopherson@intel.com, 
- seanjc@google.com, sfr@canb.auug.org.au, syzkaller-bugs@googlegroups.com, 
- tcs_kernel@tencent.com, tglx@linutronix.de, vkuznets@redhat.com, 
- wanpengli@tencent.com, x86@kernel.org
+Received: by 2002:ab0:1567:0:0:0:0:0 with HTTP; Wed, 27 Oct 2021 21:29:29
+ -0700 (PDT)
+From: "Dr. Joseph Mark" <josephmark00011@gmail.com>
+Date: Thu, 28 Oct 2021 04:29:29 +0000
+X-Google-Sender-Auth: 2Jq8Y4OoRRjKMOxGMjeV5LDXlF0
+Message-ID: <CAMroiSOxd95L+QHGVi1AYffoGq3J1Ffsth1nLS6q3YtWLx1O5w@mail.gmail.com>
+Subject: Dear Friend,
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,32 +83,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: josephmarks20201@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-syzbot suspects this issue was fixed by commit:
+-- 
+Dear Friend,
 
-commit eb7511bf9182292ef1df1082d23039e856d1ddfb
-Author: Haimin Zhang <tcs_kernel@tencent.com>
-Date:   Fri Sep 3 02:37:06 2021 +0000
+I am Dr. Joseph Mark Work in bank. I Discovered the sum of seven
+million, two hundred thousand dollars (usd7.2) belonging to a deceased
+customer of this bank the fund has been lying in a suspense account
+without anybody coming to put claim over the money since the account
+late owner from Lebanese who was involved in car crash.
 
-    KVM: x86: Handle SRCU initialization failure during page track init
+Therefore, I am soliciting for your assistance to come forward as the
+next of kin. I have agreed that 40% of this money will be for you as
+the beneficiary respect of the provision of your account and service
+rendered, 60% will be for me. Then immediately the money transferred
+to your account from this bank, I will proceed to your country for the
+sharing of the fund.  If you think you are capable and will be
+committed to making this deal successes send me an email as soon as
+possible to confirm your interest.
 
-bisection log:  https://syzkaller.appspot.com/x/bisect.txt?x=143e2b02b00000
-start commit:   78e709522d2c Merge tag 'for_linus' of git://git.kernel.org..
-git tree:       upstream
-kernel config:  https://syzkaller.appspot.com/x/.config?x=2150ebd7e72fa695
-dashboard link: https://syzkaller.appspot.com/bug?extid=05017ad275a64a3246f8
-syz repro:      https://syzkaller.appspot.com/x/repro.syz?x=10b72895300000
-C reproducer:   https://syzkaller.appspot.com/x/repro.c?x=14c42853300000
-
-If the result looks correct, please mark the issue as fixed by replying with:
-
-#syz fix: KVM: x86: Handle SRCU initialization failure during page track init
-
-For information about bisection process see: https://goo.gl/tpsmEJ#bisection
+Yours faithful,
+Dr. Joseph Mark
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
