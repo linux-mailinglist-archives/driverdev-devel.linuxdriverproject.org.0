@@ -1,54 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D02143E54C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Oct 2021 17:37:18 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF2BC43FF7D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Oct 2021 17:29:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4ABAE823AB;
-	Thu, 28 Oct 2021 15:37:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DACD640250;
+	Fri, 29 Oct 2021 15:29:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bUUoPgj5f737; Thu, 28 Oct 2021 15:37:15 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CqYmGHIfGCVo; Fri, 29 Oct 2021 15:29:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B00CC81D5F;
-	Thu, 28 Oct 2021 15:37:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 44BE1401DB;
+	Fri, 29 Oct 2021 15:29:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9CABC1BF83E
- for <devel@linuxdriverproject.org>; Thu, 28 Oct 2021 15:37:05 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 24B171BF3EC
+ for <devel@linuxdriverproject.org>; Fri, 29 Oct 2021 15:29:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 84A7740122
- for <devel@linuxdriverproject.org>; Thu, 28 Oct 2021 15:37:05 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1512B6060E
+ for <devel@linuxdriverproject.org>; Fri, 29 Oct 2021 15:29:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9LEXj9PYRAOX for <devel@linuxdriverproject.org>;
- Thu, 28 Oct 2021 15:37:04 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from relay.rsaweb.co.za (relay.rsaweb.co.za [41.74.187.153])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7869C400FF
- for <devel@driverdev.osuosl.org>; Thu, 28 Oct 2021 15:37:04 +0000 (UTC)
-Received: from relay.rsaweb.co.za (localhost [127.0.0.1])
- by relay.rsaweb.co.za (Postfix) with ESMTP id 78A103E2CE4;
- Thu, 28 Oct 2021 17:36:51 +0200 (SAST)
-Received: from mailnode2.rsaweb.co.za (unknown [41.74.182.203])
- by relay.rsaweb.co.za (Postfix) with ESMTP;
- Thu, 28 Oct 2021 17:36:51 +0200 (SAST)
-Received: from mail.rsaweb.co.za (unknown [10.0.0.111])
- by mailnode2.rsaweb.co.za (Postfix) with ESMTP id 5903F5F4EF;
- Thu, 28 Oct 2021 17:36:56 +0200 (SAST)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CEh0aGL0s__K for <devel@linuxdriverproject.org>;
+ Fri, 29 Oct 2021 15:29:05 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-lf1-x144.google.com (mail-lf1-x144.google.com
+ [IPv6:2a00:1450:4864:20::144])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CD59F605B3
+ for <devel@driverdev.osuosl.org>; Fri, 29 Oct 2021 15:29:04 +0000 (UTC)
+Received: by mail-lf1-x144.google.com with SMTP id u11so21820469lfs.1
+ for <devel@driverdev.osuosl.org>; Fri, 29 Oct 2021 08:29:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:sender:from:date:message-id:subject:to;
+ bh=S5sdFu0RQlZFvupo/qwNdlJ2GO8zZANN1PS6veJLDy8=;
+ b=kozYGVIiRzqw+44DoJCSBQb4QI/EkLiwoPlJcN8WG+Wzm8mGuOnFxuLWdsaljJ2Nb7
+ yxfwXUdaKcYiZPFiCScT9VGkXjnXoGZTBKq0+FdfNRJEBmQz6ztC9bY/1tYQlT5aGK/D
+ 2BJHS3x4fqsfAM14EVXYRT0Q09V8vUU3WqjnWtGLVoNygl1vPVAbTFMNLEpuk5EvjdjU
+ jB3OX1QVPvlEpTPLBxUD3L/GLX+Ic30XfGo9kd6ibtMChGV+gEgQk+RkxHKJ1itu2U2J
+ 1BdUp0Bmb50j2W9/y/4YJ6rAYu0N0Xqwpk5V1xaAiO5MZICu+rC4UpekaQJh9PAcn+mV
+ Coow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:sender:from:date
+ :message-id:subject:to;
+ bh=S5sdFu0RQlZFvupo/qwNdlJ2GO8zZANN1PS6veJLDy8=;
+ b=I5Fed71UDgi7CRrJZ8JJlDe/vmLQGGT76kIRV/u3jpjwZIoSwn9TT6IIHuXYQ5UC/H
+ wYGhvYuGU6Sy/8vMag07GEa/hfhqKvJv182pQc2DPaoBAj44M0oLF8/Vc8WtsDQBqbVE
+ TtHbu2WOKDEWuOeL5UPzYIZJdjfHIZD/yAcL9xXWCGfKS2TbphVPvPrJBgFYiITR+HHL
+ 2uWic4zQnIxpwX30VWrITBDTZQxSLWXHtdSr2r6hECkqKoQXTxuwmvz4Otk1nSflqhRt
+ NWTxGq1y6SdV1N4CJup9CV5MusMSOdMskyKsHXsv51ETFPvMie843gP0TEox9G+m6rjC
+ hgSw==
+X-Gm-Message-State: AOAM532bdMWPTAquNELMNto+1w7DmtRdr6KAfnaZHgvSsG4p/G/ykLKK
+ 2nyAQ32Pb/E+NZyyChw5qoyQqAlNwKFckuEHwTQ=
+X-Google-Smtp-Source: ABdhPJzCA8DJAO3A6XoCYrL7s9gXofbtsHx2NTy3EWhFnRYCG9Q1hGUPbCjgzGQJPLjg5fTT5c9GMcmOLimQmooD5vM=
+X-Received: by 2002:a19:c185:: with SMTP id
+ r127mr11124395lff.535.1635521342556; 
+ Fri, 29 Oct 2021 08:29:02 -0700 (PDT)
 MIME-Version: 1.0
-Date: Thu, 28 Oct 2021 08:36:56 -0700
-From: jeremiah mamabolo <rob@netprophet.org.za>
+Received: by 2002:a05:6504:128e:0:0:0:0 with HTTP; Fri, 29 Oct 2021 08:29:01
+ -0700 (PDT)
+From: "Mr Ali Musa." <fl621816@gmail.com>
+Date: Fri, 29 Oct 2021 03:29:01 -1200
+X-Google-Sender-Auth: NjcuB6UNVz_XmR0P4EjL-EBG_M4
+Message-ID: <CAK8dbAUSh2wnhtcdFqM81Q7mBm1siEcBkMiT=fpBy40YaovwGA@mail.gmail.com>
+Subject: INTRODUCTION:
 To: undisclosed-recipients:;
-Subject: INVESTMENT
-Mail-Reply-To: jeremiahmamabolo55@gmail.com
-Message-ID: <187a6a1429111239367685f034330f66@netprophet.org.za>
-X-Sender: rob@netprophet.org.za
-User-Agent: Roundcube Webmail/1.3.1 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,38 +83,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: jeremiahmamabolo55@gmail.com
+Reply-To: kl621816@gmail.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Dear Friend,
 
-Hello sir,
-  I am Ambassador Jeremiah .N. Kingsley Mamabolo.
-Special Representative And Head of The African Union, United Nations 
-HYBRID Operation In Darfur, Sudan.
-I got your contact online for a joint investment purpose. I am in United 
-Kingdom London, presently. I made some money in over invoice of supply 
-contract of covid 19 vaccine and other materials in the Middle East. 
-10.2million U.S dollars has been mapped out for the joint venture.
-for safe keeping the money has been deposited into the Bank of Africa 
-until I find a reliable business partner. Because of my work and 
-position in the United Nations, I can not invest or save this money in 
-my country until I retired. So I need you to help me to receive it and 
-to invest it into a lucrative business in your country.
-I agree to offer you 10% of the total sum for your assistance to receive 
-the money and to invest it in your country. After receiving the money I 
-am going to quit my job and come over to your country for sharing.
-More details will be giving to you as you respond to indicate your 
-interest.
-whatsApp:+447452180785.
+ How are you today, Please accept my sincere apologies if my email
+does not meet your business or personal ethics, I really like to have
+a good relationship with you, and I have a special reason why I
+decided to contact you because of the urgency of my situation here.I
+came across your e-mail contact prior to a private search while in
+need of your assistance.
 
-  Regards.
+INTRODUCTION: Am Mr Ali Musa a Banker and in one way or the other was
+hoping you will cooperate with me as a partner in a project of
+transferring an abandoned fund of a late customer of the bank worth of
 
-Ambassador Jeremiah .N. Kingsley Mamabolo
+$18,000,000 (Eighteen Million Dollars US).
 
-https://www.africa-newsroom.com/press/secretarygeneral-african-union-commission-chairperson-appoint-jeremiah-kingsley-mamabolo-of-south-africa-acting-joint-special-representative-for-darfur
+This will be disbursed or shared between the both of us in these
+percentages, 55% for me and 45% for you. Contact me immediately if
+that is alright with you so that we can enter in agreement before we
+start
+
+processing for the transfer of the funds. If you are satisfied with
+this proposal, please provide the below details for the Mutual
+Confidentiality Agreement:
+
+1. Full Name and Address
+
+2. Occupation and Country of Origin
+
+3. Telephone Number
+
+4. A scan copy of your identification
+
+I wait for your response so that we can commence on this transaction
+as soon as possible.
+
+Regards,
+Mr Ali Musa.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
