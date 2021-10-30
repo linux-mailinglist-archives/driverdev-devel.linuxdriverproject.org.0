@@ -1,48 +1,43 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D224D4406EC
-	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Oct 2021 04:30:32 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F5C14409CA
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Oct 2021 17:00:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D0357401E4;
-	Sat, 30 Oct 2021 02:30:30 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 61E09401FA;
+	Sat, 30 Oct 2021 15:00:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bDKtcFYQfEuR; Sat, 30 Oct 2021 02:30:30 +0000 (UTC)
+	with ESMTP id DlPXti-gsvcF; Sat, 30 Oct 2021 15:00:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DC5654011C;
-	Sat, 30 Oct 2021 02:30:28 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7344A40160;
+	Sat, 30 Oct 2021 15:00:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CBD1F1BF331
- for <devel@linuxdriverproject.org>; Sat, 30 Oct 2021 02:30:10 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 55E271BF33F
+ for <devel@linuxdriverproject.org>; Sat, 30 Oct 2021 15:00:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B817440015
- for <devel@linuxdriverproject.org>; Sat, 30 Oct 2021 02:30:09 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4589580C4B
+ for <devel@linuxdriverproject.org>; Sat, 30 Oct 2021 15:00:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GNqVovHAgasw for <devel@linuxdriverproject.org>;
- Sat, 30 Oct 2021 02:30:09 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oL1zFrSa6Hfk for <devel@linuxdriverproject.org>;
+ Sat, 30 Oct 2021 15:00:10 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from rdns0.k-tuts.com (rdns0.k-tuts.com [142.93.171.201])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1A47940105
- for <devel@linuxdriverproject.org>; Sat, 30 Oct 2021 02:30:08 +0000 (UTC)
-Received: from User (unknown [142.93.168.32])
- by rdns0.k-tuts.com (Postfix) with SMTP id 5B157162709;
- Fri, 29 Oct 2021 21:31:12 -0500 (CDT)
-From: " Ordering Request"<samrat@library.iitkgp.ernet.in>
-Subject: Contract Supplier Wholesale
-Date: Sat, 30 Oct 2021 02:30:05 -0000
-MIME-Version: 1.0
+Received: from hotmail.com (unknown [119.41.192.99])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6AB9780C3C
+ for <devel@linuxdriverproject.org>; Sat, 30 Oct 2021 15:00:09 +0000 (UTC)
+From: lukdttrfserjhrt@hotmail.com
+Subject: =?GB2312?B?tPq/qreixrExMzU2NDk5OTg3MsDu?=
+To: devel@linuxdriverproject.org
+Date: Sat, 30 Oct 2021 23:00:08 +0800
 X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20211030023009.B817440015@smtp2.osuosl.org>
+X-Mailer: Foxmail 4.1 [cn]
+Message-Id: <20211030150011.4589580C4B@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,28 +50,14 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: pup@sante-thai.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: text/plain; charset="gb2312"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good morning,
-
-        Our Company Chief Operating Officer (CEO) in Ghana, is interested in the importation of VAPORIZED AGRICULTURAL SPRAY OIL VESO-1000 in large quantities. Can you supply the product? VAPORIZED AGRICULTURAL SPRAY OIL VESO-1000 is used in the production of animal drugs, vaccine and food supplements for Sub-Saharan Horses and Ponies and it is newly formulated in your country, the price of the product is twice as cheap as what our company buys in the United States of America.
-
-    I am specifically contacting you so that you can bridge the gap between the local source and our company and act as a purchase agent while you supply the product directly, after we share the over invoice excess profit together. That is my interest.
-
-    Your urgent response will discourage me from further search. Contact me now if you are interested for more details with your phone number.
-
-Thank
-
-
-Mr. Robert Patrick Ankobiah
-Ag. Chief Director
- 
-FRFBBIDYGGNESDBFLFMDJXCFUURHYRCUISRMSE
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CrT6v6q497XY0NDStdX9uea3osaxoaK148r908W73aGi0em687i2v+4KCsS+19MxMzU2NDk5OTg3
+MqOozqLQxc2susWjqQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRw
+Oi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2
+ZXJkZXYtZGV2ZWwK
