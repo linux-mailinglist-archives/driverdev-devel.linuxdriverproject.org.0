@@ -1,76 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 125FA443153
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Nov 2021 16:13:13 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BD04443F0E
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Nov 2021 10:13:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CB77280DA5;
-	Tue,  2 Nov 2021 15:13:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E6D24403EF;
+	Wed,  3 Nov 2021 09:13:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qU9wuYICzmlH; Tue,  2 Nov 2021 15:13:06 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zVOSI-7ivqdg; Wed,  3 Nov 2021 09:13:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B66BD80D9F;
-	Tue,  2 Nov 2021 15:13:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3204D40260;
+	Wed,  3 Nov 2021 09:13:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 055D41BF3F0
- for <devel@linuxdriverproject.org>; Tue,  2 Nov 2021 15:12:54 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 006031BF370
+ for <devel@linuxdriverproject.org>; Wed,  3 Nov 2021 09:12:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F2CCE40196
- for <devel@linuxdriverproject.org>; Tue,  2 Nov 2021 15:12:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id F157C80E4F
+ for <devel@linuxdriverproject.org>; Wed,  3 Nov 2021 09:12:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=google.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id maCkHbUpwxfJ for <devel@linuxdriverproject.org>;
- Tue,  2 Nov 2021 15:12:49 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id JX0g6pgj1E2m for <devel@linuxdriverproject.org>;
+ Wed,  3 Nov 2021 09:12:57 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-x12c.google.com (mail-lf1-x12c.google.com
- [IPv6:2a00:1450:4864:20::12c])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1B83C400D0
- for <devel@driverdev.osuosl.org>; Tue,  2 Nov 2021 15:12:48 +0000 (UTC)
-Received: by mail-lf1-x12c.google.com with SMTP id p16so43661346lfa.2
- for <devel@driverdev.osuosl.org>; Tue, 02 Nov 2021 08:12:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=r/P+JlVQhPdjKm5XVeacoTH/sKiOZvU19Ao66NpLjpI=;
- b=aD7qi2PqWnlK63AXdBGNS1hr7R1FH79qcGi3MHxWRuL0rLfjXUaQ2cjMSyVz2Nfc3+
- ubgN2WgYfaUo112pMoj/Yhwev7VaVn219E6uZBZZIiZ6fiPLpryHgwhOrbWjM7KGnJ2x
- 2mXiIG7EipPN7vw/m9BA3RzmCPi/y3xvJm5/9URsL3dRY2EHtw+WppaQrrHaSYsOR5W4
- 46Kr6/q2GuVRu8RUnQ/bz3IIJWPE3ddy1zU3vN0mzORcb/DX9eY7qUlpLAGyPLymI7zU
- M3Bh0YSxiggp+lWL+tdEhmYAMPGtSfMXW8P09HvZvkU7UT9CTzXWzvX26djzsfohVxyl
- 3a1A==
+Received: from mail-ua1-x942.google.com (mail-ua1-x942.google.com
+ [IPv6:2607:f8b0:4864:20::942])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5579880E4C
+ for <devel@driverdev.osuosl.org>; Wed,  3 Nov 2021 09:12:57 +0000 (UTC)
+Received: by mail-ua1-x942.google.com with SMTP id v3so3031448uam.10
+ for <devel@driverdev.osuosl.org>; Wed, 03 Nov 2021 02:12:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=pvrfk+btNaHVnXDgHHIXgMr5VUpT/9Qf15uUZyIvenc=;
+ b=RSrhjnO6b2qlxcrxtcE8iuTzXc6bFfciEu6lWsfBXHSXOyqR0KZLQXspfV6nDw/6I5
+ 3sa26imY2xmjKh2rPmFcjMaIWMW3VsdKfsttahH1xpyHCxN2FXUfIbUw/17CXDGrCV36
+ eM3dW/+D7wnUfWUqIFExfKYrFaSDINwpGZcUQ0/uyvJUoPV/bBQuinINtuNvrjYZ21HY
+ DKSEx4elFEoLIwEt29L4+UVRD3dm8yx7ChGHwJJU9S93NPSWjsDYtQJOzyft40gyArHM
+ eDyjIWwve5mYKQZbxFFkvCQeZhtyEnkxiVBh/qpYsxkOresUUGM5Zl34qBKRFlubWxdZ
+ hZcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=r/P+JlVQhPdjKm5XVeacoTH/sKiOZvU19Ao66NpLjpI=;
- b=O7ENMiLuLFhuYdkZJl/9nERjNajPA3hSjaC5EicW5HCn7irmB5UnAKSILNLN3s9C8h
- DLvWw4MSxb7JZzRdawRnL2JGrVQY7Yauut8fact6nFSI+/LRbY2/sbCxo94hQUsJOyXp
- 1/y+fsDXjIsMxMnKf21ZiXtUyjJHv95fbySJmRFvTh8YuNN9X1p5ccezwJVOBpn6mPjk
- 1K3UA0UCUXvJcJ8+j4aXJJ7graWxJ2qyWtysQvgnLx+tWb72YmRqQ7uPyl9sJ8D+SzGS
- zuN+AQeWZ1o+6YH7+E1F/3GN4yXV+/MYr5EqkhqogHJFw1Ampw2cxjgXueldSkHUWt0V
- lOOg==
-X-Gm-Message-State: AOAM531V8ykf7OuJ6JS/jXVNAAEZo7N4E2hIcxUfutC6oC/DRaMm4I/L
- bdWRfaY8SdxTuspcZVgHA3l4h1SIVmTWf+AqXG75SQ==
-X-Google-Smtp-Source: ABdhPJwW3bbYBMow+BLOQ6Z3kkTuneCZ+XClKxxTiKeWebydUO7lU3aFBAnfGW9IxwVbPNEWk0MGovuLAA7JuapWzkg=
-X-Received: by 2002:a05:6512:1286:: with SMTP id
- u6mr30858097lfs.226.1635865966770; 
- Tue, 02 Nov 2021 08:12:46 -0700 (PDT)
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=pvrfk+btNaHVnXDgHHIXgMr5VUpT/9Qf15uUZyIvenc=;
+ b=qM2pN8axvEMSwOi2Tg1n/a/yTOmrGKwaJSA4rJeVV8JPr+Jku8OtK+bNZZqhzRXscp
+ mpPdntU/VnCwsbTbkIqWwZVCWRoPc/4fELXs9Ju/yOiu7qeY+EZCURYd52x6ky2s0unL
+ g6GBkPLvQlV2CldJvNIoIWaNo/XxP3GUwC0BYUiW/YeD/q63Ktnypwff7dK6xigFDS5Q
+ Um2XRPpsDTae6kP/oG2XQLOyoc6EKG28Tqots4MrTjbjBm46h7/jE4r05PzD6v0Nj+mJ
+ nRXvzr4giLR+6MvaQa7zAVzTXsJ4WMq7Z24rDfPRkj+5pe2ABdSWP41WfrskvptN1JL9
+ ri+w==
+X-Gm-Message-State: AOAM531PFCktxyxmBl39eycv5sr9GG07q/bYbY24cYhbyboI8dM5kxl5
+ iVMCVGqacyR88edQILsb6jYd/EZYGu4U7H0wShI=
+X-Google-Smtp-Source: ABdhPJzAPm+o3jdJ5o6DlbKNUmxi8r1N1HXMaxA0JndPUcG9YHisQkH7hsE/+J5yAQdCns8batGMx5SRqOnf9r+K2nk=
+X-Received: by 2002:a05:6102:2926:: with SMTP id
+ cz38mr38013660vsb.51.1635930776030; 
+ Wed, 03 Nov 2021 02:12:56 -0700 (PDT)
 MIME-Version: 1.0
-References: <20211015233811.3532235-1-tkjos@google.com>
- <20211102132336.GG2794@kadam>
-In-Reply-To: <20211102132336.GG2794@kadam>
-From: Todd Kjos <tkjos@google.com>
-Date: Tue, 2 Nov 2021 08:12:35 -0700
-Message-ID: <CAHRSSEwz-J57rz3n7-fnzK6gyY66WmvuG6BT6XdG6jZB668CWw@mail.gmail.com>
-Subject: Re: [PATCH] binder: don't detect sender/target during buffer cleanup
-To: Dan Carpenter <dan.carpenter@oracle.com>
+Received: by 2002:a59:1548:0:b0:23d:2dd2:f5c1 with HTTP; Wed, 3 Nov 2021
+ 02:12:55 -0700 (PDT)
+From: Miss Lisha Haman <jalomustafa555@gmail.com>
+Date: Wed, 3 Nov 2021 02:12:55 -0700
+Message-ID: <CANDndz-Oj7WnL0FqQp5iwJwHZtQdT1mg7KLh6cp1jHKb3O+anA@mail.gmail.com>
+Subject: Hello Dearest
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,43 +82,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, jannh@google.com, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, arve@android.com, maco@google.com,
- joel@joelfernandes.org, kernel-team@android.com, christian@brauner.io
+Reply-To: LishaHaman225@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Nov 2, 2021 at 6:24 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
->
-> On Fri, Oct 15, 2021 at 04:38:11PM -0700, Todd Kjos wrote:
-> > When freeing txn buffers, binder_transaction_buffer_release()
-> > attempts to detect whether the current context is the target by
-> > comparing current->group_leader to proc->tsk. This is an unreliable
-> > test. Instead explicitly pass an 'is_failure' boolean.
-> >
-> > Detecting the sender was being used as a way to tell if the
-> > transaction failed to be sent.  When cleaning up after
-> > failing to send a transaction, there is no need to close
-> > the fds associated with a BINDER_TYPE_FDA object. Now
-> > 'is_failure' can be used to accurately detect this case.
-> >
->
-> It's really hard for me to understand what this bug looks like to the
-> user?  Is it a memory leak or do we free the wrong thing?
+My dear I am Miss Lisha Haman 23 years of age , I am the only daughter
+to Dr Abdul Haman from France-Paris who work with (SEMAFO) the biggest
+Canadian gold producer here in West Africa Burkina Faso,
 
-It is a difficult case to hit (impossible for "well-behaved"
-processes), but it could result in file descriptors being closed when
-they shouldn't be.
+Unfortunately my father was a victim on the deadliest attack by the
+jihadist On the 6 November 2019 when gunmen ambushed a convoy
+transporting workers of the Canadian mining firm Semafo, it is my sad
+moment each time I think about this, but the reason why I contacted
+you is that I have my late father receipt of deposit he made with a
+bank in abroad with my name as next of kin, The total amount deposited
+was 3.7 million United Stated dollars,
 
->
-> regards,
-> dan carpenter
->
-> --
-> To unsubscribe from this group and stop receiving emails from it, send an email to kernel-team+unsubscribe@android.com.
->
+Now I decided to travel for the money but embassy here deny me visa
+due to the Corona virus outbreak,
+
+I talk to the bank regarding my visa problem and they advise me to
+look for my relative trusted bank account so that they will transfer
+the total fund in there, But I am the only daughter of my father and
+have no relative to present, that is why I want to present you to the
+bank as my relative who will receive the total fund on my behalf and
+also take care of me as well,
+
+I attached my picture  with this mail please send me your complete
+full details such as, Your Full Name:
+
+Home and Office Addresses:
+
+Telephone Number:
+
+Occupation:
+
+Country of Residence:
+
+Your Bank account number where the bank will remit the fund
+
+Once I received your details, I will give you the bank contact so that
+you can contact them directly to discuss how they can transfer the
+total fund in your bank account so that you can relocate me to join
+you over there in your country,
+
+Sincerely
+
+LishaHaman225@gmail.com
+
+Miss Lisha Haman
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
