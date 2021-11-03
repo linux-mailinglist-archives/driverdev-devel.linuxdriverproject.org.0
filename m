@@ -1,75 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2BD04443F0E
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Nov 2021 10:13:12 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8485344425E
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Nov 2021 14:26:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E6D24403EF;
-	Wed,  3 Nov 2021 09:13:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0815080EC7;
+	Wed,  3 Nov 2021 13:26:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zVOSI-7ivqdg; Wed,  3 Nov 2021 09:13:09 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kF-HgnImVpdW; Wed,  3 Nov 2021 13:26:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3204D40260;
-	Wed,  3 Nov 2021 09:13:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7612180EAE;
+	Wed,  3 Nov 2021 13:26:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 006031BF370
- for <devel@linuxdriverproject.org>; Wed,  3 Nov 2021 09:12:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F0EC61BF378
+ for <devel@linuxdriverproject.org>; Wed,  3 Nov 2021 13:25:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F157C80E4F
- for <devel@linuxdriverproject.org>; Wed,  3 Nov 2021 09:12:57 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E074780EA2
+ for <devel@linuxdriverproject.org>; Wed,  3 Nov 2021 13:25:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JX0g6pgj1E2m for <devel@linuxdriverproject.org>;
- Wed,  3 Nov 2021 09:12:57 +0000 (UTC)
+ with ESMTP id EB9DsCxdttVF for <devel@linuxdriverproject.org>;
+ Wed,  3 Nov 2021 13:25:49 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ua1-x942.google.com (mail-ua1-x942.google.com
- [IPv6:2607:f8b0:4864:20::942])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5579880E4C
- for <devel@driverdev.osuosl.org>; Wed,  3 Nov 2021 09:12:57 +0000 (UTC)
-Received: by mail-ua1-x942.google.com with SMTP id v3so3031448uam.10
- for <devel@driverdev.osuosl.org>; Wed, 03 Nov 2021 02:12:57 -0700 (PDT)
+Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
+ [IPv6:2a00:1450:4864:20::334])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D727480E95
+ for <devel@driverdev.osuosl.org>; Wed,  3 Nov 2021 13:25:48 +0000 (UTC)
+Received: by mail-wm1-x334.google.com with SMTP id
+ o4-20020a1c7504000000b0032cab7473caso3406700wmc.1
+ for <devel@driverdev.osuosl.org>; Wed, 03 Nov 2021 06:25:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=pvrfk+btNaHVnXDgHHIXgMr5VUpT/9Qf15uUZyIvenc=;
- b=RSrhjnO6b2qlxcrxtcE8iuTzXc6bFfciEu6lWsfBXHSXOyqR0KZLQXspfV6nDw/6I5
- 3sa26imY2xmjKh2rPmFcjMaIWMW3VsdKfsttahH1xpyHCxN2FXUfIbUw/17CXDGrCV36
- eM3dW/+D7wnUfWUqIFExfKYrFaSDINwpGZcUQ0/uyvJUoPV/bBQuinINtuNvrjYZ21HY
- DKSEx4elFEoLIwEt29L4+UVRD3dm8yx7ChGHwJJU9S93NPSWjsDYtQJOzyft40gyArHM
- eDyjIWwve5mYKQZbxFFkvCQeZhtyEnkxiVBh/qpYsxkOresUUGM5Zl34qBKRFlubWxdZ
- hZcg==
+ h=mime-version:reply-to:in-reply-to:references:from:date:message-id
+ :subject:cc; bh=AT2vVSkbs5Z2AlPH3lVSxISBm4g33VFLgVGD3BjUf+w=;
+ b=NssUe6TPfp4UjhVPGhPQ6lbMMxUUbJuTSv1UCWi7suMG5Jn446lxrDNAXwC7vDq0V+
+ 4DOAQHVVC8lt4aRY3zzO0FgcFFQ29esRnQAL7GA/zclO30WNtz4YP/R6sLRmXNpoAVwk
+ HBP0961Uplnh4XG1uHq5jsVcaR+p033Dgaw6vuvIHtI+9I/al9SWjjZsT43tTsSR3TW+
+ vJ4PFgHJd7C01Om+3WbUnOQzAR3r+d1Hos6esORPtbmoYJ2A/Sn8pkczTnlpEZ01ioNK
+ ilLBS3jUwqHzGlEih+uxzNN+V3AOsO1oynnaNqoKq3E4ReCbjBFG5Ia8pFkjhxOPXR77
+ 5Zag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=pvrfk+btNaHVnXDgHHIXgMr5VUpT/9Qf15uUZyIvenc=;
- b=qM2pN8axvEMSwOi2Tg1n/a/yTOmrGKwaJSA4rJeVV8JPr+Jku8OtK+bNZZqhzRXscp
- mpPdntU/VnCwsbTbkIqWwZVCWRoPc/4fELXs9Ju/yOiu7qeY+EZCURYd52x6ky2s0unL
- g6GBkPLvQlV2CldJvNIoIWaNo/XxP3GUwC0BYUiW/YeD/q63Ktnypwff7dK6xigFDS5Q
- Um2XRPpsDTae6kP/oG2XQLOyoc6EKG28Tqots4MrTjbjBm46h7/jE4r05PzD6v0Nj+mJ
- nRXvzr4giLR+6MvaQa7zAVzTXsJ4WMq7Z24rDfPRkj+5pe2ABdSWP41WfrskvptN1JL9
- ri+w==
-X-Gm-Message-State: AOAM531PFCktxyxmBl39eycv5sr9GG07q/bYbY24cYhbyboI8dM5kxl5
- iVMCVGqacyR88edQILsb6jYd/EZYGu4U7H0wShI=
-X-Google-Smtp-Source: ABdhPJzAPm+o3jdJ5o6DlbKNUmxi8r1N1HXMaxA0JndPUcG9YHisQkH7hsE/+J5yAQdCns8batGMx5SRqOnf9r+K2nk=
-X-Received: by 2002:a05:6102:2926:: with SMTP id
- cz38mr38013660vsb.51.1635930776030; 
- Wed, 03 Nov 2021 02:12:56 -0700 (PDT)
+ h=x-gm-message-state:mime-version:reply-to:in-reply-to:references
+ :from:date:message-id:subject:cc;
+ bh=AT2vVSkbs5Z2AlPH3lVSxISBm4g33VFLgVGD3BjUf+w=;
+ b=wgnW+pde9Gy/hZX6loktulwO3sNGSpRZm161eGcHXNEoSRRQl0+ochfsuJ34Mp0y2U
+ YcARuz/xFWMh16wnlAMhYnjARRNkehQO+Mu0GOmSzOsQLHxVY6pDh2yA4xrFiZDBGiln
+ UV2evddc/Mgv0pUnrsq5dhbfM5QjfUxoI+yaQer5Vz4m1ThKmZkLJaY1A8d+BhGnf9gU
+ d54lWn1JZAOqHs6zUfeBFDH52daocB+ZbX5+YOTu/tsalc+grDlXO/7OczzHJ7++UN1Z
+ zb0+PSMjVlU0QjIVSaMXn2ewxP0mZVl8ODi8GHaLc0fkx/UoG0mQ6yNxMBrxib8PHiVV
+ WGfQ==
+X-Gm-Message-State: AOAM5311iDz610khaGozK+UKh5jlyq0Lm5x/0JMCj/IfwMLJ8puKdzgC
+ l5tpvT6MhDsSgxrayZBlRFI46BK7+TI+8Qpojzc=
+X-Received: by 2002:a05:600c:a08:: with SMTP id
+ z8mt7282616wmp.52.1635945947089; 
+ Wed, 03 Nov 2021 06:25:47 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a59:1548:0:b0:23d:2dd2:f5c1 with HTTP; Wed, 3 Nov 2021
- 02:12:55 -0700 (PDT)
-From: Miss Lisha Haman <jalomustafa555@gmail.com>
-Date: Wed, 3 Nov 2021 02:12:55 -0700
-Message-ID: <CANDndz-Oj7WnL0FqQp5iwJwHZtQdT1mg7KLh6cp1jHKb3O+anA@mail.gmail.com>
-Subject: Hello Dearest
-To: undisclosed-recipients:;
+Received: by 2002:adf:c407:0:0:0:0:0 with HTTP;
+ Wed, 3 Nov 2021 06:25:46 -0700 (PDT)
+In-Reply-To: <CAO8vqisYB0E3PAC_AcRpB1-LF7FphjVs9GprbQ9St0VsREq1Lg@mail.gmail.com>
+References: <CAO8vqispfzVbgFsrTqkXDZuHA+UFTJ3T9GzobaMVxkOsmzwgSQ@mail.gmail.com>
+ <CAO8vqiu54ZBsOyORAQKUUgfBVKh9VuQNb0Mi_WOwOD29p2JjEA@mail.gmail.com>
+ <CAO8vqivC0Bkw+uj8jwoFEpOL7yvtQvAvEoA5QJOJ4q2Oiu8bJw@mail.gmail.com>
+ <CAO8vqisYB0E3PAC_AcRpB1-LF7FphjVs9GprbQ9St0VsREq1Lg@mail.gmail.com>
+From: israel barney <lmuna521@gmail.com>
+Date: Wed, 3 Nov 2021 14:25:46 +0100
+Message-ID: <CAO8vqivRH_kDgTbRu9vg3jWWxtSQ88tWwYvhtkLzhghVrSN+cQ@mail.gmail.com>
+Subject: Greetings
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,57 +84,14 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: LishaHaman225@gmail.com
+Reply-To: israelbarney287@gmail.com
+Cc: israelbarney287@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My dear I am Miss Lisha Haman 23 years of age , I am the only daughter
-to Dr Abdul Haman from France-Paris who work with (SEMAFO) the biggest
-Canadian gold producer here in West Africa Burkina Faso,
-
-Unfortunately my father was a victim on the deadliest attack by the
-jihadist On the 6 November 2019 when gunmen ambushed a convoy
-transporting workers of the Canadian mining firm Semafo, it is my sad
-moment each time I think about this, but the reason why I contacted
-you is that I have my late father receipt of deposit he made with a
-bank in abroad with my name as next of kin, The total amount deposited
-was 3.7 million United Stated dollars,
-
-Now I decided to travel for the money but embassy here deny me visa
-due to the Corona virus outbreak,
-
-I talk to the bank regarding my visa problem and they advise me to
-look for my relative trusted bank account so that they will transfer
-the total fund in there, But I am the only daughter of my father and
-have no relative to present, that is why I want to present you to the
-bank as my relative who will receive the total fund on my behalf and
-also take care of me as well,
-
-I attached my picture  with this mail please send me your complete
-full details such as, Your Full Name:
-
-Home and Office Addresses:
-
-Telephone Number:
-
-Occupation:
-
-Country of Residence:
-
-Your Bank account number where the bank will remit the fund
-
-Once I received your details, I will give you the bank contact so that
-you can contact them directly to discuss how they can transfer the
-total fund in your bank account so that you can relocate me to join
-you over there in your country,
-
-Sincerely
-
-LishaHaman225@gmail.com
-
-Miss Lisha Haman
+do you receive my massage
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
