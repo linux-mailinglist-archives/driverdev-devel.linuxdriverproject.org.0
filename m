@@ -1,72 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFE5C446E8C
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Nov 2021 16:12:32 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 448AF44712D
+	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Nov 2021 02:39:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DE68F402C8;
-	Sat,  6 Nov 2021 15:12:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B4AF0823F6;
+	Sun,  7 Nov 2021 01:39:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IVup5JLeMMkW; Sat,  6 Nov 2021 15:12:30 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xP2nZd837yE1; Sun,  7 Nov 2021 01:39:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 662DB402D7;
-	Sat,  6 Nov 2021 15:12:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3917D80F0B;
+	Sun,  7 Nov 2021 01:39:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A74EB1BF2A1
- for <devel@linuxdriverproject.org>; Sat,  6 Nov 2021 15:12:19 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 39F131BF578
+ for <devel@linuxdriverproject.org>; Sun,  7 Nov 2021 01:39:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 93C0A402C5
- for <devel@linuxdriverproject.org>; Sat,  6 Nov 2021 15:12:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3363E400DB
+ for <devel@linuxdriverproject.org>; Sun,  7 Nov 2021 01:39:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lr-cD_U6s_8H for <devel@linuxdriverproject.org>;
- Sat,  6 Nov 2021 15:12:19 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-yb1-xb35.google.com (mail-yb1-xb35.google.com
- [IPv6:2607:f8b0:4864:20::b35])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0BC2D402AC
- for <devel@linuxdriverproject.org>; Sat,  6 Nov 2021 15:12:18 +0000 (UTC)
-Received: by mail-yb1-xb35.google.com with SMTP id a129so30657961yba.10
- for <devel@linuxdriverproject.org>; Sat, 06 Nov 2021 08:12:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=w1lOikvT83TxlEoyvgpvkpl+gUOy6uaCwKYN12Rxif8=;
- b=RMUXiPqgDSto6twVQMmuowE5aASiczFRJJPIOIE6YXD/W6JgwlXXiyZoRMZBkJyaci
- QuAjWXwMlIwJc8d5feHvAOGBTe0vr8wBlXIOO88CDUFyxiDlEfDljvuaYYi4FxR+mqDr
- 9YUDrvv2FFSgfEy1AVXqitoNMk/Q8/nezuRerbaYY3YQ0VWpAkCwEKwlpOpRBnnmaqJK
- AlEd6hKQySZdpzlwzzBUsNywhnj85ZnkdX0clkzAync/bDQ3KmQVwXkfXEIF5WBxXZLN
- TDLWZNuS9dgy7B7Y/6vJ1KoBDTVMxoM49LIlW6ZxFWeo2duvEaMhcI7K4+JRazjHAnEk
- plmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=w1lOikvT83TxlEoyvgpvkpl+gUOy6uaCwKYN12Rxif8=;
- b=hKrZ8i5tXiHWMUIOraI+8C6P9PEa1iTTMCaIHBufqrdduGPjUhHDQw2roWVQJJF8ea
- cGOGGEIUnpiA9FhaY+lsVVCqrPXXXgXcPkud6joyZ9u2/eQlNewnEUfF0jJTH3JNlsT1
- zyb7ycfJ9RxxPgSvSGGeD5+xHgrQuEAynIXLvraoaanPatRLk97JTl4EEJap62ssBCry
- qwC3ay8MIl1BRHINn3twDC8tCNVE5vAjNKWN12Ue1WzHgIRa+//I0Vr3NyITxg8skJCB
- wzZPpwEZ4CvzC8WcCxtLeWaD8yS7ORQTCIvrsNayFqng5yZvnfqwPEcGZZvYSEvxJMe9
- hJlQ==
-X-Gm-Message-State: AOAM533eZTbQC1fjos7AcWhDfivoTEQG792TVc2q+Or2bMzkF0o9ieyv
- WobiUpehCNVTCdh4tSFp3uEJrL0l/yf46z1Gdp0=
-X-Google-Smtp-Source: ABdhPJzOjZXTEKnzYRcTYD7lpaJy+KKg9krUL9Ave9E3tHjMewnFauVBwRVDdgbwM7cntg5j3Lo7KpO3NUWR+CRYojY=
-X-Received: by 2002:a25:6e0a:: with SMTP id j10mr70641822ybc.361.1636211538043; 
- Sat, 06 Nov 2021 08:12:18 -0700 (PDT)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=123yaya.space
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 43OA5vAvpwPn for <devel@linuxdriverproject.org>;
+ Sun,  7 Nov 2021 01:39:27 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from 123yaya.space (123yaya.space [106.75.166.203])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4BF6040139
+ for <devel@driverdev.osuosl.org>; Sun,  7 Nov 2021 01:39:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=123yaya.space;
+ h=From:Subject:To:MIME-Version:Reply-To:Date:Content-Type:Content-Transfer-Encoding;
+ i=nami@123yaya.space; bh=XPmreX+dxgMZMj+x6NI1EENOoak=;
+ b=cRzDxBiHG+cPPR3hdR72CXO1rnk9xxq5ZRa+JA66/JOsW3I29rHUI1vdLM4CD2jFi/pxO1pkMTnX
+ Zm+Wxs1w3tyFaCq2vY4Vv5qbzmixVtDUqgr4KlsELpL8E19n2QWSxRKtLv/5NE7qysJ56D39TJOK
+ ZG4ZOj5V7nWQwYaRyps=
+From: "Ms. Melvida Bullock" <nami@123yaya.space>
+Subject: Greetings Dear Beloved
+To: devel@driverdev.osuosl.org
 MIME-Version: 1.0
-Received: by 2002:a05:7108:4189:0:0:0:0 with HTTP; Sat, 6 Nov 2021 08:12:17
- -0700 (PDT)
-From: Mr Albert Jonathan <lauraginia0@gmail.com>
-Date: Sat, 6 Nov 2021 20:42:17 +0530
-Message-ID: <CAL4vni=Jd4yrGOVG=AQg5ewCfxXOMb6zq3+Za-VF-XwxwsjXRw@mail.gmail.com>
-Subject: 
-To: undisclosed-recipients:;
+Date: Sat, 6 Nov 2021 19:38:40 -0600
+Message-Id: <20211107013928.3363E400DB@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,22 +57,47 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: albertkjonatwn@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: melvbullockzone123@gmail.com
+Content-Type: multipart/mixed; boundary="===============8810212376207372431=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-Greetings to you, my name is Albert Jonathan, I have a very urgent
-beneficial proposal deal that will be of great benefit to you. If
-interested, kindly reply to me back.
+--===============8810212376207372431==
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-I await your response.
+Please kindly allow me share this information with you.
 
-Best Regards
-Albert Jonathan
+Dear Beloved,
+Life is gradually passing away from me as a result of my present medic=
+al condition and my personal doctor confided in me that I have only bu=
+t few more weeks to live.
+In view of this setback, I=A0want to donate my estate for humanitarian=
+ assistance, since this has always been the plan of my late husband an=
+d besides I have no child.
+In an effort to compliment the good work of our creator for humanity a=
+nd the wish of my late Husband I donate the sum of =8010,000,000.00 Eu=
+ro (Ten Million EUR) to you to stand as my project director for this c=
+harity purpose.
+On your acknowledgment of this mail and informing me of your nationali=
+ty and current place of resident, my Bank will facilitate due processe=
+s for transfer of this legacy to you.May God bless you as you use this=
+ money judiciously for the work of charity.
+Sincere regards,
+
+Ms. Melvida Bullock
+Email:=A0melvbullockzone123@gmail.com
+
+
+--===============8810212376207372431==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============8810212376207372431==--
