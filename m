@@ -1,56 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6880F4472B6
-	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Nov 2021 12:27:21 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE68B447407
+	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Nov 2021 17:49:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AC89440251;
-	Sun,  7 Nov 2021 11:27:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1660060665;
+	Sun,  7 Nov 2021 16:49:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RyMsEUlNPAmN; Sun,  7 Nov 2021 11:27:18 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MEKnWt0TUNTT; Sun,  7 Nov 2021 16:48:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1BC6F401A2;
-	Sun,  7 Nov 2021 11:27:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6D60D606C7;
+	Sun,  7 Nov 2021 16:48:58 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BA5071BF471
- for <devel@linuxdriverproject.org>; Sun,  7 Nov 2021 11:27:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4B7561BF426
+ for <devel@linuxdriverproject.org>; Sun,  7 Nov 2021 16:48:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A9CF36063F
- for <devel@linuxdriverproject.org>; Sun,  7 Nov 2021 11:27:06 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3AD79605B0
+ for <devel@linuxdriverproject.org>; Sun,  7 Nov 2021 16:48:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BoL5NwH5xm-i for <devel@linuxdriverproject.org>;
- Sun,  7 Nov 2021 11:27:05 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A679C6061C
- for <devel@driverdev.osuosl.org>; Sun,  7 Nov 2021 11:27:05 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10160"; a="219002141"
-X-IronPort-AV: E=Sophos;i="5.87,216,1631602800"; d="scan'208";a="219002141"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Nov 2021 03:27:05 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,216,1631602800"; d="scan'208";a="533037238"
-Received: from lkp-server02.sh.intel.com (HELO c20d8bc80006) ([10.239.97.151])
- by orsmga001.jf.intel.com with ESMTP; 07 Nov 2021 03:27:03 -0800
-Received: from kbuild by c20d8bc80006 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mjgKF-000AXU-2i; Sun, 07 Nov 2021 11:27:03 +0000
-Date: Sun, 07 Nov 2021 19:26:14 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD REGRESSION
- 8a90ee69bff5d56d90c8a9d69d681df877a1cb74
-Message-ID: <6187b7d6.nM7n51q/0RTzbxIE%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id qeewon4DSdQ4 for <devel@linuxdriverproject.org>;
+ Sun,  7 Nov 2021 16:48:47 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pl1-x62a.google.com (mail-pl1-x62a.google.com
+ [IPv6:2607:f8b0:4864:20::62a])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6A01D605A7
+ for <devel@driverdev.osuosl.org>; Sun,  7 Nov 2021 16:48:47 +0000 (UTC)
+Received: by mail-pl1-x62a.google.com with SMTP id o14so14256140plg.5
+ for <devel@driverdev.osuosl.org>; Sun, 07 Nov 2021 08:48:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=3KhLtwCKP93j3EcWq+BGTsAWsp8Oi4eBuXX0Ov40ah8=;
+ b=TNg4tHoQw5kKoLZkiGTAZIxJzUBBq4ejYt4ncgOecgNOvSUwtqqwittPPI+7pJVjX+
+ GpTp2M0KfhRYRUpBRXEYVXnxqP/7lqMWjwkVgxSXQTHg4r801CGBH3Cxkr2xCA8iHpDQ
+ PkNioeCtNa8D4FxZOybE5F6kFZNCXIj5SS/5dluRY9kmgQGkqsgb/0EL9qYgh0jdJYEk
+ mgqrImAxVO9xLB3ph2REOdqPQUk3eSUgj070IZGlv2zYI0h97xHGiGSssFFZrlwEHWTd
+ 7gJa3FlCIyQYHI4/knwR34TShiwqFLlPcy+ypePmUlRAZLKNrHzuj6T1hpUgZdGxUgLr
+ tNtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=3KhLtwCKP93j3EcWq+BGTsAWsp8Oi4eBuXX0Ov40ah8=;
+ b=ZDeKcYAv5xlOOvAFj6lEURXWCUbX0ng5OQU/IPk1cCEq8u7qK6o3G7OmV0TG3RafDY
+ Ea9LkQyRUv+PsgpAvwE+Rb5iK9tYBEs++fbiaIpGhAeFYFUPOKZn+VG7s7te7Jlsi8qD
+ SHO80xLJuGwVZp4fgjeUasTRNYrXVuINxNDjOJ2yxitrOFH+XYtI1aCJZM0zQQeLLOxF
+ TrjXwqyZK3Tdw+bt0/RoO7aqX6S4KbmO5X0q82eUfmOD8sXxcYEV6v2WMrhkQN3Uxn7+
+ Pmz13LR4rn2gpim9dEWTzQWRrRfColOpstSS8knu7ubOp9Kf7XDWItMObvC7tjTRvn1W
+ oHJg==
+X-Gm-Message-State: AOAM532VDFhRON8pKu7/xgrpXbWBbqWXy5AlaqFa1y6FJ+Z+6DXIwfyJ
+ fq1PJ4ngo2h5WQI/E8stDvSrw0RHW3TJ2VPby+Y=
+X-Google-Smtp-Source: ABdhPJxAeCOxzzTO2bC1ebInPX7TK42gu5RWx2Xb9R/R8imfArbHNs+vmtD0xqJ/WYY5NVOuLREd2E+dZSLVoRt6leo=
+X-Received: by 2002:a17:902:a60b:b0:142:7621:be0b with SMTP id
+ u11-20020a170902a60b00b001427621be0bmr4070721plq.58.1636303726736; Sun, 07
+ Nov 2021 08:48:46 -0800 (PST)
 MIME-Version: 1.0
+Received: by 2002:a05:6a10:4a14:0:0:0:0 with HTTP; Sun, 7 Nov 2021 08:48:46
+ -0800 (PST)
+From: Amadou Benjamin <ousmanekarim54@gmail.com>
+Date: Sun, 7 Nov 2021 08:48:46 -0800
+Message-ID: <CAJFAt4Zwu2DZNzEx2mhTp73fqWvHNwMrUMgOFZ==TBGW8S=HkA@mail.gmail.com>
+Subject: 
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,132 +80,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: amabenchambers00@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: 8a90ee69bff5d56d90c8a9d69d681df877a1cb74  staging: rtl8723bs: core: remove unused local variable padapter
+-- 
+Hello good day.
 
-possible Error/Warning in current branch (please contact us if interested):
+I am Barrister Amadou Benjamin by name, with due respect, I am
+contacting you to help get the deposit 10.5 million Dollars, my late
+client Engineer Vasiliy left in his Bank before his sudden death on
+April 21, 2007, to avoid confiscation by Lloyds bank. Please write me
+back through this email (amabenchambers00@gmail.com)for more
+information about this transaction or send me your private email to
+Contact you myself.
 
-drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:458:5: error: no previous prototype for 'vchiq_platform_init' [-Werror=missing-prototypes]
-drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:586:1: error: no previous prototype for 'vchiq_platform_get_arm_state' [-Werror=missing-prototypes]
-
-Error/Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- arc-allyesconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- arm-allmodconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- arm-allyesconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- h8300-allyesconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- m68k-allmodconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- m68k-allyesconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- nios2-allyesconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- parisc-allyesconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- powerpc-allmodconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- powerpc-allyesconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- riscv-allmodconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- riscv-allyesconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- s390-allyesconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-|-- sh-allmodconfig
-|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-`-- xtensa-allyesconfig
-    |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
-    `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
-
-elapsed time: 1154m
-
-configs tested: 53
-configs skipped: 3
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nds32                               defconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-nios2                            allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-parisc                           allyesconfig
-s390                                defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-i386                              debian-10.3
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                           allnoconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Sincerely,
+Barrister Amadou Benjamin Esq
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
