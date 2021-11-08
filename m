@@ -1,63 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C6ABF447841
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Nov 2021 02:28:28 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0772C447850
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Nov 2021 02:30:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B07A26076C;
-	Mon,  8 Nov 2021 01:28:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A52B840266;
+	Mon,  8 Nov 2021 01:30:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2yRdQApcKqIX; Mon,  8 Nov 2021 01:28:25 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id C5WcnZAHIGh0; Mon,  8 Nov 2021 01:30:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 032C0600B9;
-	Mon,  8 Nov 2021 01:28:25 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 99ED44025C;
+	Mon,  8 Nov 2021 01:30:37 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 23EE71BF3DA
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  8 Nov 2021 01:28:15 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 026081BF3DA
+ for <devel@linuxdriverproject.org>; Mon,  8 Nov 2021 01:30:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 20F2060753
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  8 Nov 2021 01:28:15 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E6C1880D94
+ for <devel@linuxdriverproject.org>; Mon,  8 Nov 2021 01:30:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ycDM_NkVH8XM
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  8 Nov 2021 01:28:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id k6dAA6Lq95og for <devel@linuxdriverproject.org>;
+ Mon,  8 Nov 2021 01:30:27 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail2.bsgrebocin.pl (unknown [213.25.29.186])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 53A956071D
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  8 Nov 2021 01:28:14 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 171A480D65
+ for <devel@linuxdriverproject.org>; Mon,  8 Nov 2021 01:30:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail2.bsgrebocin.pl (Postfix) with ESMTP id 49A5C824F599;
- Mon,  8 Nov 2021 01:19:33 +0100 (CET)
+ by mail2.bsgrebocin.pl (Postfix) with ESMTP id C48A18255CC9;
+ Mon,  8 Nov 2021 01:19:38 +0100 (CET)
 Received: from mail2.bsgrebocin.pl ([127.0.0.1])
  by localhost (mail2.bsgrebocin.pl [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id 57OYbq790lSc; Mon,  8 Nov 2021 01:19:33 +0100 (CET)
+ with ESMTP id AfvACBINXF4B; Mon,  8 Nov 2021 01:19:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by mail2.bsgrebocin.pl (Postfix) with ESMTP id 0EF39824F5A7;
- Mon,  8 Nov 2021 01:19:33 +0100 (CET)
+ by mail2.bsgrebocin.pl (Postfix) with ESMTP id 70E688255CCD;
+ Mon,  8 Nov 2021 01:19:38 +0100 (CET)
 X-Virus-Scanned: amavisd-new at bsgrebocin.pl
 Received: from mail2.bsgrebocin.pl ([127.0.0.1])
  by localhost (mail2.bsgrebocin.pl [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id XxRX-e0WxXFo; Mon,  8 Nov 2021 01:19:32 +0100 (CET)
+ with ESMTP id xPtaVV_mDBTF; Mon,  8 Nov 2021 01:19:38 +0100 (CET)
 Received: from [185.239.242.42] (_gateway [213.25.29.177])
- by mail2.bsgrebocin.pl (Postfix) with ESMTP id 3CAA8824F599;
- Mon,  8 Nov 2021 01:19:32 +0100 (CET)
+ by mail2.bsgrebocin.pl (Postfix) with ESMTP id A66EF8255CC9;
+ Mon,  8 Nov 2021 01:19:37 +0100 (CET)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: USUS$1,500,000.00USD Donation for you and your family;
 To: Recipients <send@car-part.com>
 From: "Piramal Foundation" <send@car-part.com>
-Date: Sun, 07 Nov 2021 16:19:30 -0800
-Message-Id: <20211108001932.3CAA8824F599@mail2.bsgrebocin.pl>
+Date: Sun, 07 Nov 2021 16:19:36 -0800
+Message-Id: <20211108001937.A66EF8255CC9@mail2.bsgrebocin.pl>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
