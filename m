@@ -2,47 +2,62 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18C5C44A84B
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Nov 2021 09:25:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id BF16A44B54E
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Nov 2021 23:17:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 431B560692;
-	Tue,  9 Nov 2021 08:25:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EF91F608D4;
+	Tue,  9 Nov 2021 22:17:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Twp70S_urocj; Tue,  9 Nov 2021 08:25:07 +0000 (UTC)
+	with ESMTP id KuoSfB_DnlvK; Tue,  9 Nov 2021 22:17:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 798C460621;
-	Tue,  9 Nov 2021 08:25:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EC90360899;
+	Tue,  9 Nov 2021 22:17:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9AAA61BF3B9
- for <devel@linuxdriverproject.org>; Tue,  9 Nov 2021 08:24:57 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E29D1BF3C2
+ for <devel@linuxdriverproject.org>; Tue,  9 Nov 2021 22:17:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 879A580D20
- for <devel@linuxdriverproject.org>; Tue,  9 Nov 2021 08:24:57 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8C4A2401B1
+ for <devel@linuxdriverproject.org>; Tue,  9 Nov 2021 22:17:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DTfz37JVOvWk for <devel@linuxdriverproject.org>;
- Tue,  9 Nov 2021 08:24:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.cmd74.ru (mail.cmd74.ru [176.215.198.48])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6093780D1E
- for <devel@driverdev.osuosl.org>; Tue,  9 Nov 2021 08:24:56 +0000 (UTC)
-Received: by mail.cmd74.ru (Postfix, from userid 1001)
- id 6B731CD4E2; Tue,  9 Nov 2021 13:13:12 +0500 (+05)
-Received: from [156.96.56.25] (router [192.168.2.1])
- by mail.cmd74.ru (Postfix) with ESMTP id CEF4BD4D0F;
- Tue,  9 Nov 2021 13:12:48 +0500 (+05)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QiDkY77i293U for <devel@linuxdriverproject.org>;
+ Tue,  9 Nov 2021 22:17:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6633E40166
+ for <devel@driverdev.osuosl.org>; Tue,  9 Nov 2021 22:17:04 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 55E9E6124C;
+ Tue,  9 Nov 2021 22:17:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1636496224;
+ bh=/ahGexqzVTXG7JFQ0rzYJgACzFkUSORSyfe96ic9jA8=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=cIMRR8Cop6mbm0mo+4VJ0CkwtS5/Tuic2pbtNBCvVvU0tBnK3GRqEvQZ45K2xFgUc
+ S3qBdflF8Y+tkcIEaDjDjo/Yq68ufm8+8l39nJEUkSXCm7wHagHFIeJ/dtD334lh5C
+ ENB9kOS+ZZcqf/m8T0sXHXWJ7cmG6abBN2GT8f7Mo4bUQpM4bpw8K8JgxcPvOgQ6pE
+ uY28GAqBJarckK+IasTUDRT00re8EF3Cd4XI+3cDBMms7fHBMGehzQlmHTzNLaqi+J
+ GoLtwwZbALhtK7ajYsbLlvODbLAKQj/WE9mtyEMspOXXpuGqOuvv9JV2/55SPGih00
+ +1T0dC54B8coA==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.15 07/82] staging: wfx: ensure IRQ is ready before
+ enabling it
+Date: Tue,  9 Nov 2021 17:15:25 -0500
+Message-Id: <20211109221641.1233217-7-sashal@kernel.org>
+X-Mailer: git-send-email 2.33.0
+In-Reply-To: <20211109221641.1233217-1-sashal@kernel.org>
+References: <20211109221641.1233217-1-sashal@kernel.org>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Partnership Request --48
-To: Recipients <my1kone@yahoo.com>
-From: "MK" <my1kone@yahoo.com>
-Date: Tue, 09 Nov 2021 00:12:39 -0800
-Message-Id: <20211109081411.6B731CD4E2@mail.cmd74.ru>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,31 +70,124 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: dyari111020@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Sasha Levin <sashal@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Partnership Request
-
-
-
-Sir,
-
-I am Mark Kone,a consultant and of African descent but based here in the U.K.I am contacting you after painstaking searching exercise to confirm that you have the reputation and capacity to handle the task ahead.
-
-We are in search of a reputable person or company to do a partnership with.I am currently working for a government official who is a former Minister of Petroleum Resources in one of the biggest oil producing countries in the world.Unfortunately the country's refineries are not working so they depend very much on imported refined products.These products usually come in numerous very big vessels and the country does not have deep ports to berth such vessels in their country.Inevitably,they use smaller vessels to transfer the products from the mother- vessel from the high sea to their ports en-route Tank farms for distribution.
-
-Now,here is the area of partnership.The ministry pays so much for the transshipment of these products hence the minister desires to get involved in a private capacity by proxy.Your role here will be to Incorporate a company and Register same with the ministry in accordance with the laid down rules of foreign companies engaging in commercial activities in their country.Once that is done,the minister will provide the necessary fund required to procure medium size vessels (7-10) in your company's name  for the contract.
-
-However,we are proposing a 30% commission for you from what is accumulated as profit.The anticipated  monthly profit accumulation is in the region of usd 10-15m.
-
-Please confirm your interest for further details.
-
-Yours faithfully,
-Mark Kone
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKWyBV
+cHN0cmVhbSBjb21taXQgNWU1N2M2NjhkYzA5N2M2YzI3Yzk3MzUwNDcwNmVkZWM1M2Y3OTI4MSBd
+CgpTaW5jZSBjb21taXQgNTU2MTc3MGY4MGIxICgic3RhZ2luZzogd2Z4OiByZXBhaXIgZXh0ZXJu
+YWwgSVJRIGZvcgpTRElPIiksIHdmeF9zZGlvX2lycV9zdWJzY3JpYmUoKSBlbmZvcmNlIHRoZSBk
+ZXZpY2UgdG8gdXNlIElSUXMuCkhvd2V2ZXIsIHRoZXJlIGlzIGN1cnJlbnRseSBhIHJhY2UgaW4g
+dGhpcyBjb2RlLiBBbiBJUlEgbWF5IGhhcHBlbgpiZWZvcmUgdGhlIElSUSBoYXMgYmVlbiByZWdp
+c3RlcmVkLgoKVGhlIHByb2JsZW0gaGFzIG9ic2VydmVkIGR1cmluZyBkZWJ1ZyBzZXNzaW9uIHdo
+ZW4gdGhlIGRldmljZSBjcmFzaGVzCmJlZm9yZSB0aGUgSVJRIHNldCB1cDoKCiAgICBbIDEuNTQ2
+XSB3Zngtc2RpbyBtbWMwOjAwMDE6MTogc3RhcnRlZCBmaXJtd2FyZSAzLjEyLjIgIldGMjAwX0FT
+SUNfV0ZNXyhKZW5raW5zKV9GVzMuMTIuMiIgKEFQSTogMy43LCBrZXlzZXQ6IEMwLCBjYXBzOiAw
+eDAwMDAwMDAyKQogICAgWyAyLjU1OV0gd2Z4LXNkaW8gbW1jMDowMDAxOjE6IHRpbWUgb3V0IHdo
+aWxlIHBvbGxpbmcgY29udHJvbCByZWdpc3RlcgogICAgWyAzLjU2NV0gd2Z4LXNkaW8gbW1jMDow
+MDAxOjE6IGNoaXAgaXMgYWJub3JtYWxseSBsb25nIHRvIGFuc3dlcgogICAgWyA2LjU2M10gd2Z4
+LXNkaW8gbW1jMDowMDAxOjE6IGNoaXAgZGlkIG5vdCBhbnN3ZXIKICAgIFsgNi41NjhdIHdmeC1z
+ZGlvIG1tYzA6MDAwMToxOiBoYXJkd2FyZSByZXF1ZXN0IENPTkZJR1VSQVRJT04gKDB4MDkpIG9u
+IHZpZiAyIHJldHVybmVkIGVycm9yIC0xMTAKICAgIFsgNi41NzddIHdmeC1zZGlvIG1tYzA6MDAw
+MToxOiBQRFMgYnl0ZXMgMCB0byAxMjogY2hpcCBkaWRuJ3QgcmVwbHkgKGNvcnJ1cHRlZCBmaWxl
+PykKICAgIFsgNi41ODVdIFVuYWJsZSB0byBoYW5kbGUga2VybmVsIE5VTEwgcG9pbnRlciBkZXJl
+ZmVyZW5jZSBhdCB2aXJ0dWFsIGFkZHJlc3MgMDAwMDAwMDAKICAgIFsgNi41OTJdIHBnZCA9IGMw
+MDA0MDAwCiAgICBbIDYuNTk1XSBbMDAwMDAwMDBdICpwZ2Q9MDAwMDAwMDAKICAgIFsgNi41OThd
+IEludGVybmFsIGVycm9yOiBPb3BzIC0gQlVHOiAxNyBbIzFdIFRIVU1CMgogICAgWyA2LjYwM10g
+TW9kdWxlcyBsaW5rZWQgaW46CiAgICBbIDYuNjA2XSBDUFU6IDAgUElEOiAyMyBDb21tOiBrd29y
+a2VyL3UyOjEgTm90IHRhaW50ZWQgMy4xOC4xOSAjNzgKICAgIFsgNi42MTJdIFdvcmtxdWV1ZTog
+a21tY2QgbW1jX3Jlc2NhbgogICAgWyA2LjYxNl0gdGFzazogYzE3NmQxMDAgdGk6IGMwZTUwMDAw
+IHRhc2sudGk6IGMwZTUwMDAwCiAgICBbIDYuNjIxXSBQQyBpcyBhdCB3YWtlX3VwX3Byb2Nlc3Mr
+MHhhLzB4MTQKICAgIFsgNi42MjVdIExSIGlzIGF0IHNkaW9faXJxKzB4NjEvMHgyNTAKICAgIFsg
+Ni42MjldIHBjIDogWzxjMDAxZThhZT5dIGxyIDogWzxjMDBlYzViZD5dIHBzcjogNjAwMDAxYjMK
+ICAgIFsgNi42MjldIHNwIDogYzBlNTFiZDggaXAgOiBjMGU1MWNjOCBmcCA6IDAwMDAwMDAxCiAg
+ICBbIDYuNjQwXSByMTA6IDAwMDAwMDAzIHI5IDogMDAwMDAwMDAgcjggOiBjMDAwM2MzNAogICAg
+WyA2LjY0NF0gcjcgOiBjMGU1MWJkOCByNiA6IGMwMDAzYzMwIHI1IDogMDAwMDAwMDEgcjQgOiBj
+MGU3OGMwMAogICAgWyA2LjY1MV0gcjMgOiAwMDAwMDAwMCByMiA6IDAwMDAwMDAwIHIxIDogMDAw
+MDAwMDMgcjAgOiAwMDAwMDAwMAogICAgWyA2LjY1N10gRmxhZ3M6IG5aQ3YgSVJRcyBvZmYgRklR
+cyBvbiBNb2RlIFNWQ18zMiBJU0EgVGh1bWIgU2VnbWVudCBrZXJuZWwKICAgIFsgNi42NjRdIENv
+bnRyb2w6IDUwYzUzYzdkIFRhYmxlOiAxMWZkODA1OSBEQUM6IDAwMDAwMDE1CiAgICBbIDYuNjcw
+XSBQcm9jZXNzIGt3b3JrZXIvdTI6MSAocGlkOiAyMywgc3RhY2sgbGltaXQgPSAweGMwZTUwMWIw
+KQogICAgWyA2LjY3Nl0gU3RhY2s6ICgweGMwZTUxYmQ4IHRvIDB4YzBlNTIwMDApCiAgICBbLi4u
+XQogICAgWyA2Ljk0OV0gWzxjMDAxZThhZT5dICh3YWtlX3VwX3Byb2Nlc3MpIGZyb20gWzxjMDBl
+YzViZD5dIChzZGlvX2lycSsweDYxLzB4MjUwKQogICAgWyA2Ljk1Nl0gWzxjMDBlYzViZD5dIChz
+ZGlvX2lycSkgZnJvbSBbPGMwMDI1MDk5Pl0gKGhhbmRsZV9pcnFfZXZlbnRfcGVyY3B1KzB4MTcv
+MHg5MikKICAgIFsgNi45NjRdIFs8YzAwMjUwOTk+XSAoaGFuZGxlX2lycV9ldmVudF9wZXJjcHUp
+IGZyb20gWzxjMDAyNTEyZj5dIChoYW5kbGVfaXJxX2V2ZW50KzB4MWIvMHgyNCkKICAgIFsgNi45
+NzNdIFs8YzAwMjUxMmY+XSAoaGFuZGxlX2lycV9ldmVudCkgZnJvbSBbPGMwMDI2NTc3Pl0gKGhh
+bmRsZV9sZXZlbF9pcnErMHg1ZC8weDc2KQogICAgWyA2Ljk4MV0gWzxjMDAyNjU3Nz5dIChoYW5k
+bGVfbGV2ZWxfaXJxKSBmcm9tIFs8YzAwMjRjYzM+XSAoZ2VuZXJpY19oYW5kbGVfaXJxKzB4MTMv
+MHgxYykKICAgIFsgNi45ODldIFs8YzAwMjRjYzM+XSAoZ2VuZXJpY19oYW5kbGVfaXJxKSBmcm9t
+IFs8YzAwMjRkZDk+XSAoX19oYW5kbGVfZG9tYWluX2lycSsweDMxLzB4NDgpCiAgICBbIDYuOTk3
+XSBbPGMwMDI0ZGQ5Pl0gKF9faGFuZGxlX2RvbWFpbl9pcnEpIGZyb20gWzxjMDAwODM1OT5dIChv
+dl9oYW5kbGVfaXJxKzB4MzEvMHhlMCkKICAgIFsgNy4wMDVdIFs8YzAwMDgzNTk+XSAob3ZfaGFu
+ZGxlX2lycSkgZnJvbSBbPGMwMDBhZjViPl0gKF9faXJxX3N2YysweDNiLzB4NWMpCiAgICBbIDcu
+MDEzXSBFeGNlcHRpb24gc3RhY2soMHhjMGU1MWM2OCB0byAweGMwZTUxY2IwKQogICAgWy4uLl0K
+ICAgIFsgNy4wMzhdIFs8YzAwMGFmNWI+XSAoX19pcnFfc3ZjKSBmcm9tIFs8YzAxNzc1YWE+XSAo
+d2FpdF9mb3JfY29tbW9uKzB4OWUvMHhjNCkKICAgIFsgNy4wNDVdIFs8YzAxNzc1YWE+XSAod2Fp
+dF9mb3JfY29tbW9uKSBmcm9tIFs8YzAwZTFkYzM+XSAobW1jX3dhaXRfZm9yX3JlcSsweDRiLzB4
+ZGMpCiAgICBbIDcuMDUzXSBbPGMwMGUxZGMzPl0gKG1tY193YWl0X2Zvcl9yZXEpIGZyb20gWzxj
+MDBlMWU4Mz5dIChtbWNfd2FpdF9mb3JfY21kKzB4MmYvMHgzNCkKICAgIFsgNy4wNjFdIFs8YzAw
+ZTFlODM+XSAobW1jX3dhaXRfZm9yX2NtZCkgZnJvbSBbPGMwMGU3YjJiPl0gKG1tY19pb19yd19k
+aXJlY3RfaG9zdCsweDcxLzB4YWMpCiAgICBbIDcuMDcwXSBbPGMwMGU3YjJiPl0gKG1tY19pb19y
+d19kaXJlY3RfaG9zdCkgZnJvbSBbPGMwMGU4Zjc5Pl0gKHNkaW9fY2xhaW1faXJxKzB4NmIvMHgx
+MTYpCiAgICBbIDcuMDc4XSBbPGMwMGU4Zjc5Pl0gKHNkaW9fY2xhaW1faXJxKSBmcm9tIFs8YzAw
+ZDg0MTU+XSAod2Z4X3NkaW9faXJxX3N1YnNjcmliZSsweDE5LzB4OTQpCiAgICBbIDcuMDg2XSBb
+PGMwMGQ4NDE1Pl0gKHdmeF9zZGlvX2lycV9zdWJzY3JpYmUpIGZyb20gWzxjMDBkNTIyOT5dICh3
+ZnhfcHJvYmUrMHgxODkvMHgyYWMpCiAgICBbIDcuMDk1XSBbPGMwMGQ1MjI5Pl0gKHdmeF9wcm9i
+ZSkgZnJvbSBbPGMwMGQ4M2JmPl0gKHdmeF9zZGlvX3Byb2JlKzB4OGYvMHhjYykKICAgIFsgNy4x
+MDJdIFs8YzAwZDgzYmY+XSAod2Z4X3NkaW9fcHJvYmUpIGZyb20gWzxjMDBlN2ZiYj5dIChzZGlv
+X2J1c19wcm9iZSsweDVmLzB4YTgpCiAgICBbIDcuMTA5XSBbPGMwMGU3ZmJiPl0gKHNkaW9fYnVz
+X3Byb2JlKSBmcm9tIFs8YzAwYmUyMjk+XSAoZHJpdmVyX3Byb2JlX2RldmljZSsweDU5LzB4MTM0
+KQogICAgWyA3LjExOF0gWzxjMDBiZTIyOT5dIChkcml2ZXJfcHJvYmVfZGV2aWNlKSBmcm9tIFs8
+YzAwYmQ0ZDc+XSAoYnVzX2Zvcl9lYWNoX2RydisweDNmLzB4NGEpCiAgICBbIDcuMTI2XSBbPGMw
+MGJkNGQ3Pl0gKGJ1c19mb3JfZWFjaF9kcnYpIGZyb20gWzxjMDBiZTFhNT5dIChkZXZpY2VfYXR0
+YWNoKzB4M2IvMHg1MikKICAgIFsgNy4xMzRdIFs8YzAwYmUxYTU+XSAoZGV2aWNlX2F0dGFjaCkg
+ZnJvbSBbPGMwMGJkYzJiPl0gKGJ1c19wcm9iZV9kZXZpY2UrMHgxNy8weDRjKQogICAgWyA3LjE0
+MV0gWzxjMDBiZGMyYj5dIChidXNfcHJvYmVfZGV2aWNlKSBmcm9tIFs8YzAwYmNkNjk+XSAoZGV2
+aWNlX2FkZCsweDJjNS8weDMzNCkKICAgIFsgNy4xNDldIFs8YzAwYmNkNjk+XSAoZGV2aWNlX2Fk
+ZCkgZnJvbSBbPGMwMGU4MGJmPl0gKHNkaW9fYWRkX2Z1bmMrMHgyMy8weDQ0KQogICAgWyA3LjE1
+Nl0gWzxjMDBlODBiZj5dIChzZGlvX2FkZF9mdW5jKSBmcm9tIFs8YzAwZTc5ZWI+XSAobW1jX2F0
+dGFjaF9zZGlvKzB4MTg3LzB4MWVjKQogICAgWyA3LjE2NF0gWzxjMDBlNzllYj5dIChtbWNfYXR0
+YWNoX3NkaW8pIGZyb20gWzxjMDBlMzFiZD5dIChtbWNfcmVzY2FuKzB4MThkLzB4MWZjKQogICAg
+WyA3LjE3Ml0gWzxjMDBlMzFiZD5dIChtbWNfcmVzY2FuKSBmcm9tIFs8YzAwMWExNGY+XSAocHJv
+Y2Vzc19vbmVfd29yaysweGQ3LzB4MTcwKQogICAgWyA3LjE3OV0gWzxjMDAxYTE0Zj5dIChwcm9j
+ZXNzX29uZV93b3JrKSBmcm9tIFs8YzAwMWE1OWI+XSAod29ya2VyX3RocmVhZCsweDEwMy8weDFi
+YykKICAgIFsgNy4xODddIFs8YzAwMWE1OWI+XSAod29ya2VyX3RocmVhZCkgZnJvbSBbPGMwMDFj
+NzMxPl0gKGt0aHJlYWQrMHg3ZC8weDkwKQogICAgWyA3LjE5NF0gWzxjMDAxYzczMT5dIChrdGhy
+ZWFkKSBmcm9tIFs8YzAwMDhjZTE+XSAocmV0X2Zyb21fZm9yaysweDExLzB4MzApCiAgICBbIDcu
+MjAxXSBDb2RlOiAyMTAzIGI1ODAgMjIwMCBhZjAwICg2ODFiKSA0NmJkCiAgICBbIDcuMjA2XSAt
+LS1bIGVuZCB0cmFjZSAzYWI1MGFjZWQ0MmVlZGI0IF0tLS0KClNpZ25lZC1vZmYtYnk6IErDqXLD
+tG1lIFBvdWlsbGVyIDxqZXJvbWUucG91aWxsZXJAc2lsYWJzLmNvbT4KTGluazogaHR0cHM6Ly9s
+b3JlLmtlcm5lbC5vcmcvci8yMDIxMDkxMzEzMDIwMy4xOTAzNjIyLTMzLUplcm9tZS5Qb3VpbGxl
+ckBzaWxhYnMuY29tClNpZ25lZC1vZmYtYnk6IEdyZWcgS3JvYWgtSGFydG1hbiA8Z3JlZ2toQGxp
+bnV4Zm91bmRhdGlvbi5vcmc+ClNpZ25lZC1vZmYtYnk6IFNhc2hhIExldmluIDxzYXNoYWxAa2Vy
+bmVsLm9yZz4KLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2J1c19zZGlvLmMgfCAxNyArKysrKysr
+KysrLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKyksIDcgZGVsZXRpb25z
+KC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL3dmeC9idXNfc2Rpby5jIGIvZHJpdmVy
+cy9zdGFnaW5nL3dmeC9idXNfc2Rpby5jCmluZGV4IGUwNmQ3ZTFlYmU5YzMuLjYxYjhjYzA1ZjI5
+MzUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy93ZngvYnVzX3NkaW8uYworKysgYi9kcml2
+ZXJzL3N0YWdpbmcvd2Z4L2J1c19zZGlvLmMKQEAgLTEyMCwxOSArMTIwLDIyIEBAIHN0YXRpYyBp
+bnQgd2Z4X3NkaW9faXJxX3N1YnNjcmliZSh2b2lkICpwcml2KQogCQlyZXR1cm4gcmV0OwogCX0K
+IAorCWZsYWdzID0gaXJxX2dldF90cmlnZ2VyX3R5cGUoYnVzLT5vZl9pcnEpOworCWlmICghZmxh
+Z3MpCisJCWZsYWdzID0gSVJRRl9UUklHR0VSX0hJR0g7CisJZmxhZ3MgfD0gSVJRRl9PTkVTSE9U
+OworCXJldCA9IGRldm1fcmVxdWVzdF90aHJlYWRlZF9pcnEoJmJ1cy0+ZnVuYy0+ZGV2LCBidXMt
+Pm9mX2lycSwgTlVMTCwKKwkJCQkJd2Z4X3NkaW9faXJxX2hhbmRsZXJfZXh0LCBmbGFncywKKwkJ
+CQkJIndmeCIsIGJ1cyk7CisJaWYgKHJldCkKKwkJcmV0dXJuIHJldDsKIAlzZGlvX2NsYWltX2hv
+c3QoYnVzLT5mdW5jKTsKIAljY2NyID0gc2Rpb19mMF9yZWFkYihidXMtPmZ1bmMsIFNESU9fQ0ND
+Ul9JRU54LCBOVUxMKTsKIAljY2NyIHw9IEJJVCgwKTsKIAljY2NyIHw9IEJJVChidXMtPmZ1bmMt
+Pm51bSk7CiAJc2Rpb19mMF93cml0ZWIoYnVzLT5mdW5jLCBjY2NyLCBTRElPX0NDQ1JfSUVOeCwg
+TlVMTCk7CiAJc2Rpb19yZWxlYXNlX2hvc3QoYnVzLT5mdW5jKTsKLQlmbGFncyA9IGlycV9nZXRf
+dHJpZ2dlcl90eXBlKGJ1cy0+b2ZfaXJxKTsKLQlpZiAoIWZsYWdzKQotCQlmbGFncyA9IElSUUZf
+VFJJR0dFUl9ISUdIOwotCWZsYWdzIHw9IElSUUZfT05FU0hPVDsKLQlyZXR1cm4gZGV2bV9yZXF1
+ZXN0X3RocmVhZGVkX2lycSgmYnVzLT5mdW5jLT5kZXYsIGJ1cy0+b2ZfaXJxLCBOVUxMLAotCQkJ
+CQkgd2Z4X3NkaW9faXJxX2hhbmRsZXJfZXh0LCBmbGFncywKLQkJCQkJICJ3ZngiLCBidXMpOwor
+CXJldHVybiAwOwogfQogCiBzdGF0aWMgaW50IHdmeF9zZGlvX2lycV91bnN1YnNjcmliZSh2b2lk
+ICpwcml2KQotLSAKMi4zMy4wCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9y
+ZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9kcml2ZXJkZXYtZGV2ZWwK
