@@ -2,75 +2,70 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E6E344CD94
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Nov 2021 00:01:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0916044CD97
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Nov 2021 00:01:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DC7EC40534;
-	Wed, 10 Nov 2021 23:01:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AE30F404E2;
+	Wed, 10 Nov 2021 23:01:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9AuV6aK7QY6I; Wed, 10 Nov 2021 23:01:30 +0000 (UTC)
+	with ESMTP id csvcPtWr-6xL; Wed, 10 Nov 2021 23:01:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 267DF404F1;
-	Wed, 10 Nov 2021 23:01:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1C675404C2;
+	Wed, 10 Nov 2021 23:01:47 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0EAC91BF279
- for <devel@linuxdriverproject.org>; Wed, 10 Nov 2021 23:00:34 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 530691BF279
+ for <devel@linuxdriverproject.org>; Wed, 10 Nov 2021 23:00:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C2B1B4021A
- for <devel@linuxdriverproject.org>; Wed, 10 Nov 2021 23:00:33 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4F2B8404C9
+ for <devel@linuxdriverproject.org>; Wed, 10 Nov 2021 23:00:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=google.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NhG4ThsjfwDi for <devel@linuxdriverproject.org>;
- Wed, 10 Nov 2021 23:00:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 05BmGtXkmmQZ for <devel@linuxdriverproject.org>;
+ Wed, 10 Nov 2021 23:00:41 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x1049.google.com (mail-pj1-x1049.google.com
- [IPv6:2607:f8b0:4864:20::1049])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 424FE400BE
- for <devel@driverdev.osuosl.org>; Wed, 10 Nov 2021 23:00:33 +0000 (UTC)
-Received: by mail-pj1-x1049.google.com with SMTP id
- l10-20020a17090a4d4a00b001a6f817f57eso1841119pjh.3
- for <devel@driverdev.osuosl.org>; Wed, 10 Nov 2021 15:00:33 -0800 (PST)
+Received: from mail-qt1-x84a.google.com (mail-qt1-x84a.google.com
+ [IPv6:2607:f8b0:4864:20::84a])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0AEEC404C5
+ for <devel@driverdev.osuosl.org>; Wed, 10 Nov 2021 23:00:40 +0000 (UTC)
+Received: by mail-qt1-x84a.google.com with SMTP id
+ v32-20020a05622a18a000b002b04d0d410dso1948516qtc.11
+ for <devel@driverdev.osuosl.org>; Wed, 10 Nov 2021 15:00:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=yNrrb1MY66o5TEyam1VaYvCkGo/lj2vOXH/uZFJ75Lc=;
- b=CUiAJ9p5bk6Iv5tdC414ooYPRjb2bhcAWHQgOvROCxmPWVNHbu21+CN5VqNAqK+mcs
- FFtDjMO7bm0CbatcQhs84QzxXP94big3USlPHlyS3RGDCvEhnlsWpqBJZOVY8lIJp5hn
- 3Go0qjSqbksTmIablvqW2e/FGdfCqpq6cyxLCONn7aCyrDVeFrErwdojbZM0cWHT3SRo
- 3L9gRGkHDx4RmWHyqr/NfoVpe2WoTMZmIE0oHCr1zWm82eVeif7vlOfe1rGu3wFnjLec
- 05IJIhEFUy7/jOUiv46ST6F/2eIPPE2FtQc6HN5u5tB7qBOo/oW1Lzhol+VXAc50CbA6
- 8xpA==
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=B5qR9IFfPYyqZzAR1NtxHfHPCrwSatA1W5mjCxV+NDo=;
+ b=dxpfCGJxE0aLuP6SejLibiTWJsNl6eV6c/7AD/qBuov+nxRRy9M+Huw3sdeCqSw3xv
+ untZb7uJRe2oloH8KlA+ToFNZyo1bQX1//VSPZG1xBzkjFFmXQ8FUT0loiOBRk/qzJQ+
+ vUFvWT9J8gW7RNdvL06j01uuCWnmRV4JaOhGfxGF/4xo3f7jewGnfVu/v8rQDnTqCv63
+ vbIOKJhptN6quN5JVzvqlOdqkPmVW0QhGrE+OVgPBU+w1jzf9h4Q2dIgNefrreNPlTZt
+ NOf9feJkkaU36k5lWJJBZaNmDy6lqNrPoJ4cLXDaA8pj5JkDO/RivBeoALWPLGPNC18B
+ RCew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc;
- bh=yNrrb1MY66o5TEyam1VaYvCkGo/lj2vOXH/uZFJ75Lc=;
- b=cGstsnkpcYxHmY3PPZaZWdeE9tXiggJ1gaKkdH+npiiR+RKVemHTys1TDQq41yY6L+
- uqodmhN6DkXX+gq9xNemVCEFjkg4Y+U74fZvLLcN02rlSYXIhfw9ln9725FR1MwGRW+x
- y+fJlYkMi7cSxc1QQIm/RJ34G/8E25tF2wY0itmIPXki0SqGV0C0q4GBJ6N74J+yC/rM
- 8wMMoYiS8hPcrcUrq3VazGKqr1s9QI2Wd50O0vKHP2OyrvZxI7EknPBcrRkkeqMN3fiW
- KXIHgk9OaS9njQUAO25wjz/TbERvTFtGNmKoQLLlP9mCP2aQqWIxLg7YHrVWhNlipACQ
- xLcw==
-X-Gm-Message-State: AOAM531Y9Whz+uRr4DcNNPKjN20iCbbL2LxxWBOl1QeN+8nitD3ryVRu
- XBAKZMoLGd/L470nxbyOqtU3cgV8pg==
-X-Google-Smtp-Source: ABdhPJywdaxOOw9nASlhOPJsKBRybMvXwDYonXMni0w7Qq+5w6A1MNcPmMEClR1ICZ6i+XHI8LUP2VsobA==
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=B5qR9IFfPYyqZzAR1NtxHfHPCrwSatA1W5mjCxV+NDo=;
+ b=Jvw9giOg9pYydxq+43mpnGy8obJpLk/MP0VXK6ktUjz0USTiRA60kKXeKIoGqDMSTf
+ tVzaInyhKooNcxx/RZOhlJqbgLpfHhVddrtlVGUB4cmUMbI0b1gUib9elpPAdVWRDlxk
+ SCsqw1fQop94Hchu3PC9Gcfxt7dlSIPbXMs6YfByUbUWGMnfbRrwCHBMFZcrkzedfe24
+ HWcwX0eyCW5FzlzmaXEdYGybFs0GqYIVX6X6vKz8jJ/jCaKBNkMXSl/kd67vt76/j7m2
+ 9hv05VfeMwJ3U5Aj9U9QR2JYYQCKCjRU3GtlGQkO67J7tuDXfSBwJ/2lg1VGFxBr923o
+ svYg==
+X-Gm-Message-State: AOAM530Yu+XrndI6F4VM4u5ky39MLtnxmPzm/1kogMgr27ZXKSSSsenH
+ ykgSh/M/gr2osJKMt2QSisViesPOMA==
+X-Google-Smtp-Source: ABdhPJxNeI9pPQMczNqh7lTEOTjZOwslOwZWyiK/KZOlDPOiuxMgX0yqvhob/VWngaHy4gSf0G3hdmOstQ==
 X-Received: from tkjos-desktop.mtv.corp.google.com
  ([2620:15c:211:200:4a73:99b6:9694:8c4d])
- (user=tkjos job=sendgmr) by 2002:a17:90a:b107:: with SMTP id
- z7mr3006564pjq.104.1636585232687; Wed, 10 Nov 2021 15:00:32 -0800 (PST)
-Date: Wed, 10 Nov 2021 15:00:25 -0800
-In-Reply-To: <20211110230025.3272776-1-tkjos@google.com>
-Message-Id: <20211110230025.3272776-3-tkjos@google.com>
+ (user=tkjos job=sendgmr) by 2002:a05:622a:20d:: with SMTP id
+ b13mr2915118qtx.368.1636585239970; Wed, 10 Nov 2021 15:00:39 -0800 (PST)
+Date: Wed, 10 Nov 2021 15:00:34 -0800
+Message-Id: <20211110230036.3274365-1-tkjos@google.com>
 Mime-Version: 1.0
-References: <20211110230025.3272776-1-tkjos@google.com>
 X-Mailer: git-send-email 2.34.0.rc0.344.g81b53c2807-goog
-Subject: [PATCH 5.4 3/3] binder: use cred instead of task for getsecid
+Subject: [PATCH 5.10 1/3] binder: use euid from cred instead of using task
 From: Todd Kjos <tkjos@google.com>
 To: stable@vger.kernel.org, gregkh@linuxfoundation.org, arve@android.com, 
  tkjos@android.com, maco@android.com, christian@brauner.io, jmorris@namei.org, 
@@ -97,55 +92,77 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-commit 4d5b5539742d2554591751b4248b0204d20dcc9d upstream.
+commit 29bc22ac5e5bc63275e850f0c8fc549e3d0e306b upstream.
 
-Use the 'struct cred' saved at binder_open() to lookup
-the security ID via security_cred_getsecid(). This
-ensures that the security context that opened binder
-is the one used to generate the secctx.
+Save the 'struct cred' associated with a binder process
+at initial open to avoid potential race conditions
+when converting to an euid.
 
-Cc: stable@vger.kernel.org # 5.4+
-Fixes: ec74136ded79 ("binder: create node flag to request sender's security context")
+Set a transaction's sender_euid from the 'struct cred'
+saved at binder_open() instead of looking up the euid
+from the binder proc's 'struct task'. This ensures
+the euid is associated with the security context that
+of the task that opened binder.
+
+Cc: stable@vger.kernel.org # 4.4+
+Fixes: 457b9a6f09f0 ("Staging: android: add binder driver")
 Signed-off-by: Todd Kjos <tkjos@google.com>
 Suggested-by: Stephen Smalley <stephen.smalley.work@gmail.com>
-Reported-by: kernel test robot <lkp@intel.com>
+Suggested-by: Jann Horn <jannh@google.com>
 Acked-by: Casey Schaufler <casey@schaufler-ca.com>
 Signed-off-by: Paul Moore <paul@paul-moore.com>
-Change-Id: Ia7b59804a0bdbd51191bbcca556414840307c623
+Change-Id: I91922e7f359df5901749f1b09094c3c68d45aed4
 ---
- drivers/android/binder.c | 2 +-
- include/linux/security.h | 5 +++++
- 2 files changed, 6 insertions(+), 1 deletion(-)
+ drivers/android/binder.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index cebb2cd1876c..c2c411c458b2 100644
+index 65b22b5af51a..4e33f6e42ac4 100644
 --- a/drivers/android/binder.c
 +++ b/drivers/android/binder.c
-@@ -3107,7 +3107,7 @@ static void binder_transaction(struct binder_proc *proc,
- 		u32 secid;
- 		size_t added_size;
- 
--		security_task_getsecid(proc->tsk, &secid);
-+		security_cred_getsecid(proc->cred, &secid);
- 		ret = security_secid_to_secctx(secid, &secctx, &secctx_sz);
- 		if (ret) {
- 			return_error = BR_FAILED_REPLY;
-diff --git a/include/linux/security.h b/include/linux/security.h
-index 0d4cb64cae1f..3f6b8195ae9e 100644
---- a/include/linux/security.h
-+++ b/include/linux/security.h
-@@ -985,6 +985,11 @@ static inline void security_transfer_creds(struct cred *new,
- {
+@@ -420,6 +420,9 @@ enum binder_deferred_state {
+  *                        (invariant after initialized)
+  * @tsk                   task_struct for group_leader of process
+  *                        (invariant after initialized)
++ * @cred                  struct cred associated with the `struct file`
++ *                        in binder_open()
++ *                        (invariant after initialized)
+  * @deferred_work_node:   element for binder_deferred_list
+  *                        (protected by binder_deferred_lock)
+  * @deferred_work:        bitmap of deferred work to perform
+@@ -465,6 +468,7 @@ struct binder_proc {
+ 	struct list_head waiting_threads;
+ 	int pid;
+ 	struct task_struct *tsk;
++	const struct cred *cred;
+ 	struct hlist_node deferred_work_node;
+ 	int deferred_work;
+ 	bool is_dead;
+@@ -3088,7 +3092,7 @@ static void binder_transaction(struct binder_proc *proc,
+ 		t->from = thread;
+ 	else
+ 		t->from = NULL;
+-	t->sender_euid = task_euid(proc->tsk);
++	t->sender_euid = proc->cred->euid;
+ 	t->to_proc = target_proc;
+ 	t->to_thread = target_thread;
+ 	t->code = tr->code;
+@@ -4703,6 +4707,7 @@ static void binder_free_proc(struct binder_proc *proc)
+ 	}
+ 	binder_alloc_deferred_release(&proc->alloc);
+ 	put_task_struct(proc->tsk);
++	put_cred(proc->cred);
+ 	binder_stats_deleted(BINDER_STAT_PROC);
+ 	kfree(proc);
  }
- 
-+static inline void security_cred_getsecid(const struct cred *c, u32 *secid)
-+{
-+	*secid = 0;
-+}
-+
- static inline int security_kernel_act_as(struct cred *cred, u32 secid)
- {
- 	return 0;
+@@ -5220,6 +5225,7 @@ static int binder_open(struct inode *nodp, struct file *filp)
+ 	spin_lock_init(&proc->outer_lock);
+ 	get_task_struct(current->group_leader);
+ 	proc->tsk = current->group_leader;
++	proc->cred = get_cred(filp->f_cred);
+ 	INIT_LIST_HEAD(&proc->todo);
+ 	proc->default_priority = task_nice(current);
+ 	/* binderfs stashes devices in i_private */
 -- 
 2.34.0.rc0.344.g81b53c2807-goog
 
