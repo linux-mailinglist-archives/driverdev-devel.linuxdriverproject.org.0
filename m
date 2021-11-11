@@ -1,72 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DABA144D342
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Nov 2021 09:36:58 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2474644D83A
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Nov 2021 15:26:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F099181AAD;
-	Thu, 11 Nov 2021 08:36:56 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3DB92403A2;
+	Thu, 11 Nov 2021 14:26:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yWMeWSJOrg-x; Thu, 11 Nov 2021 08:36:56 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5mVkXFzGXc8I; Thu, 11 Nov 2021 14:26:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6567A8191E;
-	Thu, 11 Nov 2021 08:36:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C1313404D2;
+	Thu, 11 Nov 2021 14:26:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A8F421BF282
- for <devel@linuxdriverproject.org>; Thu, 11 Nov 2021 08:36:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 75D391BF288
+ for <devel@linuxdriverproject.org>; Thu, 11 Nov 2021 14:26:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9793A40389
- for <devel@linuxdriverproject.org>; Thu, 11 Nov 2021 08:36:45 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 64E2540240
+ for <devel@linuxdriverproject.org>; Thu, 11 Nov 2021 14:26:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=fsin.gov.ru
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ELq3ub2alXTk for <devel@linuxdriverproject.org>;
- Thu, 11 Nov 2021 08:36:45 +0000 (UTC)
+ with ESMTP id ABd7RZTdqjcc for <devel@linuxdriverproject.org>;
+ Thu, 11 Nov 2021 14:26:44 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mx.fsin.su (mail.fsin.su [95.173.158.58])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C06A940224
- for <devel@linuxdriverproject.org>; Thu, 11 Nov 2021 08:36:44 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mx.fsin.su (Postfix) with ESMTP id 5F1BC6C09C7406;
- Thu, 11 Nov 2021 09:11:24 +0300 (MSK)
-Received: from mx.fsin.su ([127.0.0.1])
- by localhost (mx.fsin.su [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id MDMNIGucMBtw; Thu, 11 Nov 2021 09:11:24 +0300 (MSK)
-Received: from localhost (localhost [127.0.0.1])
- by mx.fsin.su (Postfix) with ESMTP id 92BB96C093082C;
- Thu, 11 Nov 2021 07:12:33 +0300 (MSK)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mx.fsin.su 92BB96C093082C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fsin.gov.ru;
- s=A761C892-9857-11EB-B742-EFF55F3AF7D2; t=1636603953;
- bh=qe03qPta472IKHcncUmeMMDKgsnfnO0TggSvkuZsT4g=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=fLnqSlKsDEES9NxvHHiAyljs19IUOeJuVHNx1WV4SoYrDlhdBqbLx0JdznSxQBd3w
- g0wCtcq4evNnHu9IPx8rNLbY02pj+SmUD7sZxr6KnPdfjvsmoodg6MrxScdJh6X5Sb
- XR698T8925Auu6HOli2qYQKLA01z/RImYzidO/W6aCv9+oW6GzliojlSFGHPiBOlwQ
- 9q+bjhlmcsOn27sFJshMQMRHz7DRYnR9DunAmAvJZjjAsvictu2O6aEl+6klWbAr1a
- fEzFNFZOHx88rvMkPKjOVK4ZOBoAirEt4Og+gvYHlC4Ft2oPBkAbFfeiH12TNXviYT
- qWd4QGc+L2Czg==
-X-Virus-Scanned: amavisd-new at fsin.su
-Received: from mx.fsin.su ([127.0.0.1])
- by localhost (mx.fsin.su [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 5wvZnd6a48lK; Thu, 11 Nov 2021 07:12:33 +0300 (MSK)
-Received: from [192.168.0.103] (unknown [93.182.105.113])
- by mx.fsin.su (Postfix) with ESMTPSA id 1E8B56C080DC3A;
- Thu, 11 Nov 2021 05:34:22 +0300 (MSK)
+Received: from mail.pos-demo.site (mail.pos-demo.site [162.217.146.250])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7D79D40238
+ for <devel@driverdev.osuosl.org>; Thu, 11 Nov 2021 14:26:44 +0000 (UTC)
+Received: from DESKTOP-KKC61N3.zuku.co.ke ([102.140.247.42]) by home with
+ MailEnable ESMTPA; Thu, 11 Nov 2021 13:02:02 +0400
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: donation
-To: Recipients <13@fsin.gov.ru>
-From: Stefano <13@fsin.gov.ru>
-Date: Thu, 11 Nov 2021 02:34:09 +0000
-Message-Id: <20211111023424.1E8B56C080DC3A@mx.fsin.su>
+Subject: RE
+To: Recipients <info@horsesstation.net>
+From: "Sgt Irene" <info@horsesstation.net>
+Date: Thu, 11 Nov 2021 12:01:17 +0300
+Message-ID: <7044A1BEB3FA4FACB7FFE1D5FD6E50A1.MAI@home>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,29 +52,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: stefanopessina35@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: sgtireneb1@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGFsbG8sCgpJY2ggYmluIFNURUZBTk8gUEVTU0lOQS4gSWNoIGJpbiBlaW4gaXRhbGllbmlzY2gt
-bW9uZWdhc3Npc2NoZXIgTWlsbGlhcmTDpHIgdW5kIHN0ZWxsdmVydHJldGVuZGVyIFZvcnNpdHpl
-bmRlciwgQ2hpZWYgRXhlY3V0aXZlIE9mZmljZXIgKENFTykgdW5kIGdyw7bDn3RlciBFaW56ZWxh
-a3Rpb27DpHIgZGVyIFdhbGdyZWVucyBCb290cyBBbGxpYW5jZS4gQXVmZ3J1bmQgZGllc2VyIGFr
-dHVlbGxlbiBTaXR1YXRpb24gKENvcm9uYS1WaXJ1cyksIGRpZSBzaWNoIGF1ZiBkZXIgZ2FuemVu
-IFdlbHQgYXVzYnJlaXRldCwgc3BlbmRlbiBpY2ggc2VsYnN0IHVuZCBhbmRlcmUgMTkgaXRhbGll
-bmlzY2hlIE1pbGxpYXJkw6RyZSBtZWhyIGFscyA0NSBNaWxsaW9uZW4gVVMtRG9sbGFyLCB1bSBk
-YXMgQ29yb25hdmlydXMgaW4gSXRhbGllbiB6dSBiZWvDpG1wZmVuLiBJY2ggaGFiZSBhdWNoIHp1
-Z2VzYWd0LCAxLjUwMC4wMDAsMDAg4oKsIGFuIEVpbnplbHBlcnNvbmVuLCBLaXJjaGVuIHVuZCBX
-YWlzZW5ow6R1c2VyIHVzdy4genUgc3BlbmRlbi4gSWNoIGhhYmUgbWljaCBlbnRzY2hsb3NzZW4s
-IElobmVuIDEuNTAwLjAwMCwwMCDigqwgenUgc3BlbmRlbiwgZGEgSWhyZSBFLU1haWwtQWRyZXNz
-ZSB6dSBkZW4gZ2zDvGNrbGljaGVuIEdld2lubmVybiBnZWjDtnJ0IGRpZSBJbmZvLiBEdSBrYW5u
-c3QgYXVjaCDDvGJlciBkZW4gdW50ZW5zdGVoZW5kZW4gTGluayBtZWhyIMO8YmVyIG1pY2ggbGVz
-ZW4KCmh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL1N0ZWZhbm9fUGVzc2luYQoKSGVyemxp
-Y2hlciBHcnVzcwpTdGVsbHZlcnRyZXRlbmRlciBWb3JzaXR6ZW5kZXIgdW5kIEdlc2Now6RmdHNm
-w7xocmVyLApXYWxncmVlbnMgQm9vdHMtQWxsaWFuei4KU3RlZmFubyBQZXNzaW5hCgpFLU1haWw6
-IHN0ZWZhbm9wZXNzaW5hMzVAZ21haWwuY29tCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnBy
-b2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+I wish to notify you about my blessed deal in your Favor from Camp Casey, South Korea promoting peace around the Korean Peninsula. Will give you further information once i hear from you.
+Thank you for your time and God bless 
+Sgt. I
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
