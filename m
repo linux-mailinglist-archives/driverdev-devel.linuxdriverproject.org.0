@@ -1,72 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABA4C44EEA0
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 Nov 2021 22:29:53 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7281F44F04D
+	for <lists+driverdev-devel@lfdr.de>; Sat, 13 Nov 2021 01:53:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 47B25404D5;
-	Fri, 12 Nov 2021 21:29:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5D50E404D0;
+	Sat, 13 Nov 2021 00:53:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HLsQFS06t2Xx; Fri, 12 Nov 2021 21:29:50 +0000 (UTC)
+	with ESMTP id 8OirXYnJO0ES; Sat, 13 Nov 2021 00:53:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 297024018D;
-	Fri, 12 Nov 2021 21:29:49 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 832AA40206;
+	Sat, 13 Nov 2021 00:53:03 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 85B481BF3A9
- for <devel@linuxdriverproject.org>; Fri, 12 Nov 2021 21:29:38 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E071F1BF390
+ for <devel@linuxdriverproject.org>; Sat, 13 Nov 2021 00:52:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 817BD4018D
- for <devel@linuxdriverproject.org>; Fri, 12 Nov 2021 21:29:38 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id CF051606F3
+ for <devel@linuxdriverproject.org>; Sat, 13 Nov 2021 00:52:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wE18dUt2ZKVb for <devel@linuxdriverproject.org>;
- Fri, 12 Nov 2021 21:29:37 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lj1-x22b.google.com (mail-lj1-x22b.google.com
- [IPv6:2a00:1450:4864:20::22b])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 99F7840103
- for <devel@driverdev.osuosl.org>; Fri, 12 Nov 2021 21:29:37 +0000 (UTC)
-Received: by mail-lj1-x22b.google.com with SMTP id k2so13528973lji.4
- for <devel@driverdev.osuosl.org>; Fri, 12 Nov 2021 13:29:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=rlMLedUP6ai+RLLMrsfsnbn8KA2hfHHQKD0cQsk8eao=;
- b=ZBZclZMlB9TbtthktWqR5rhIH5jsfROjpPZc1fLuRfKXAJiY+ZDkAJvtKadNNRTHuB
- J2eSWqI+tkNIIEsjIezju7oNs154mW1mWBQU6aQNFeVRqatiHRRfM4w3PxQpLjo9Zqe9
- icc3zdGIh8c7SbFnX0t2Yon7tUFLDqe2FICRAPlIGdyWC3CG19DLjByOVk7Wh5GuCJeP
- ReuDYre9SJ3s41gTirPcCQMQpH+3iVQVH/nYS3PA/86BIrd7fmHT4gUEm0fq7jCiH0I2
- mI/cwqLIUxTuYVov+0huIyleLtzVJ7FyPpSRarWuKmDif40OO0vSvPF+OGkOKbGw0x6J
- iUaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=rlMLedUP6ai+RLLMrsfsnbn8KA2hfHHQKD0cQsk8eao=;
- b=XQrGGdh1GFBN/X62RaC2BXPFygDJ7/pVmjXpf9ZCidJp/ChZpfnDt7zp3o9x0eIn8r
- vDvdhfs9WGwhH0jJeEd1UNGxpJK7d0gElb9rgf60hJRgXzrjynV9IJJar6KHE+LPnY2U
- 0Nfq49UDKf1vDLU5T/h86/Nxauos1U5ixi7xRrheCScho0pzaN4gMTYwI3b6g7qDG2/2
- PH01Ao7VYgUhHns6yZaf/5lIMzYEefnCaxnoxZKPEpJyt5iVpyDd4swuzoRcsbgT4bW4
- j+QO1XYW0rTe9RRgzqLFB9qdHrLKT/eebTzYCJo23OkW9lgHdj6l9KBocETfGWUeoxod
- rKfw==
-X-Gm-Message-State: AOAM531JNYxhmpMD0FXTR2NvC/UUJk5kxpR2ehmUBrXv+8z0982HAV7l
- EGdy25VIQXWExBIFMnSqIM0fLjoD71AeKdSFme0=
-X-Google-Smtp-Source: ABdhPJwbWUN/udHCHMahYqwBDU1Q5M3TzSYKBDyabU4zlBYKuXaXbHVe/IJsLyPxSPcRWrGeWbAEJedKrhtbG6HAdJg=
-X-Received: by 2002:a2e:740b:: with SMTP id p11mr18144706ljc.215.1636752575350; 
- Fri, 12 Nov 2021 13:29:35 -0800 (PST)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id COmx2VTpbLUE for <devel@linuxdriverproject.org>;
+ Sat, 13 Nov 2021 00:52:52 +0000 (UTC)
+X-Greylist: delayed 00:18:13 by SQLgrey-1.8.0
+Received: from homeweb1 (unknown [220.81.156.173])
+ by smtp3.osuosl.org (Postfix) with ESMTP id C1460606F1
+ for <devel@driverdev.osuosl.org>; Sat, 13 Nov 2021 00:52:51 +0000 (UTC)
+Received: from dsl-189-151-190-37-dyn.prod-infinitum.com.mx ([189.151.190.37])
+ by homeweb1 with Microsoft SMTPSVC(8.0.9200.16384); 
+ Sat, 13 Nov 2021 09:34:37 +0900
+From: Bases MX<devel@driverdev.osuosl.org>
+To: devel@driverdev.osuosl.org
+Subject: Este Buen Fin - Todos nuestros Directorios al 50 por ciento
+Date: 12 Nov 2021 18:34:36 -0600
+Message-ID: <20211112183436.C9746714B5DA5517@driverdev.osuosl.org>
 MIME-Version: 1.0
-Received: by 2002:a05:6512:3ca6:0:0:0:0 with HTTP; Fri, 12 Nov 2021 13:29:34
- -0800 (PST)
-From: DTB Bank of Tanzania <nspector205@gmail.com>
-Date: Fri, 12 Nov 2021 13:29:34 -0800
-Message-ID: <CABJaD1gp118FY15U_vZbbe1KHzB-=CHsd6+y9gNYB61Ff2qh6w@mail.gmail.com>
-Subject: DTB Bank of Tanzania,
-To: undisclosed-recipients:;
+X-OriginalArrivalTime: 13 Nov 2021 00:34:38.0245 (UTC)
+ FILETIME=[3D798550:01D7D826]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,34 +54,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: bankdtb160@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: bases.segmentadas.mexico@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello
-
-We write to inform you regarding your inheritance award winning check
-of $2.8 million USD which was issued out from DTB Bank of Tanzania
-last
-week, although the check has been cashed & converted to ATM Visa card,
-reason, the check was cashed & loaded into a card is because the check
-may get expired before it gets to your possession, therefore we have
-to registered the ATM card with EMS SPEED POSTAL SERVICE company here.
-So you are advise to contact DTB Bank of Tanzania through
-E-mail;bankdtb160@gmail.com via their info below,
-please be sure you send your current home address where to deliver the
-ATM card to avoid mistake or misplacing.
-
-Contact the Manager Mr. Abdul Samji the Executive Governor Of DTB Bank
-of Tanzania
-E-mail;bankdtb160@gmail.com
-Telephone:+255 8983 0023
-
-Regards,
-Samuel Brida
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+QXByZWNpYWJsZSBkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZzoKCk5vcyBjb21wbGFjZSBpbmZv
+cm1hcmxlIGEgdG9kb3MgbnVlc3Ryb3MgY2xpZW50ZXMgcXVlIGF1biBubyBoYW4gCmFkcXVpcmlk
+byBudWVzdHJvcyBwcm9kdWN0b3MgKERpcmVjdG9yaW8gRW1wcmVzYXJpYWwgTWV4aWNvIHkgClBy
+b21vRGlyZWN0bykgcXVlIHBvciBwcm9tb2Npw7NuIGRlIEVsIEJ1ZW4gRmluIGxlcyBvZnJlY2Vt
+b3MgdW4gCjUwIHBvciBjaWVudG8gZGUgZGVzY3VlbnRvIHNvYnJlIGVsIHByZWNpbyBkZSBsaXN0
+YS4KCkZhdm9yIGRlIHJlc3BvbmRlciBhIGVzdGUgY29ycmVvIHBhcmEgZW52aWFybGUgZGVtb3Mg
+eSBsb3MgCmJyb2NodXJlcyBjb21wbGV0b3MgZGUgbnVlc3Ryb3MgcHJvZHVjdG9zLgoKRXN0ZSBk
+ZXNjdWVudG8gYXBsaWNhIGEgdG9kb3MgbnVlc3Ryb3MgY2xpZW50ZXMgcXVlIHJlYWxpY2VuIHN1
+IApjb21wcmEgaG95IHZpZXJuZXMgMTIgeSBtYcOxYW5hIHPDoWJhZG8gMTMgZGUgTm92aWVtYnJl
+LgoKRXN0YW1vcyBzZWd1cm9zIGRlIGxhIHV0aWxpZGFkIGRlIG51ZXN0cm9zIGRpcmVjdG9yaW9z
+IHkgCmhlcnJhbWllbnRhcyBkZSB2YWxvciBhZ3JlZ2FkbyBlbiBmYXZvciBkZSB1biBpbmNyZW1l
+bnRvIGVuIApwcm9zcGVjY2nDs24geSB2ZW50YXMgYSBmYXZvciBkZSBzdSBlbXByZXNhLgoKUXVl
+ZGFtb3MgYSBzdXMgw7NyZGVuZXMuIFNhbHVkb3MgY29yZGlhbGVzLgoKTGljLiBBbGJlcnRvIFNv
+dG9tYXlvciBIZXJuw6FuZGV6CkJhc2VzIFNlZ21lbnRhZGFzIE1leGljbyAvIFByb21vRGlyZWN0
+bwpPZmljaW5hOiAoNTUpIDQxNjkuMTAwMiAtIFdoYXRzQXBwICg1NikgMTAxNS40MzI0CgoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGlu
+ZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51
+eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
