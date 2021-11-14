@@ -1,73 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0517144F5CB
-	for <lists+driverdev-devel@lfdr.de>; Sun, 14 Nov 2021 01:38:27 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 01E7344F5DA
+	for <lists+driverdev-devel@lfdr.de>; Sun, 14 Nov 2021 02:05:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 106FD60667;
-	Sun, 14 Nov 2021 00:38:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 90E6660667;
+	Sun, 14 Nov 2021 01:05:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ncbEE962h3Q4; Sun, 14 Nov 2021 00:38:24 +0000 (UTC)
+	with ESMTP id E_IOF6LRvEnG; Sun, 14 Nov 2021 01:05:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 77FB960093;
-	Sun, 14 Nov 2021 00:38:23 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F23CD605D1;
+	Sun, 14 Nov 2021 01:05:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C446E1BF95F
- for <devel@linuxdriverproject.org>; Sun, 14 Nov 2021 00:38:13 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F11E11BF32A
+ for <devel@linuxdriverproject.org>; Sun, 14 Nov 2021 01:05:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B2D5B401C5
- for <devel@linuxdriverproject.org>; Sun, 14 Nov 2021 00:38:13 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id EDFCA80D60
+ for <devel@linuxdriverproject.org>; Sun, 14 Nov 2021 01:05:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lQpU8O-fzols for <devel@linuxdriverproject.org>;
- Sun, 14 Nov 2021 00:38:12 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oN_UqFpgTHM2 for <devel@linuxdriverproject.org>;
+ Sun, 14 Nov 2021 01:05:03 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x42b.google.com (mail-wr1-x42b.google.com
- [IPv6:2a00:1450:4864:20::42b])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6588D40170
- for <devel@driverdev.osuosl.org>; Sun, 14 Nov 2021 00:38:12 +0000 (UTC)
-Received: by mail-wr1-x42b.google.com with SMTP id d24so22692253wra.0
- for <devel@driverdev.osuosl.org>; Sat, 13 Nov 2021 16:38:12 -0800 (PST)
+Received: from mail-lj1-x235.google.com (mail-lj1-x235.google.com
+ [IPv6:2a00:1450:4864:20::235])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A8F1780D3B
+ for <devel@driverdev.osuosl.org>; Sun, 14 Nov 2021 01:05:03 +0000 (UTC)
+Received: by mail-lj1-x235.google.com with SMTP id u22so19861382lju.7
+ for <devel@driverdev.osuosl.org>; Sat, 13 Nov 2021 17:05:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:sender:from:date:message-id:subject:to;
- bh=JONdNVdBlwOaayLv6r3+ADIN5li1EUdh95UdwgGmb68=;
- b=ElPZPqSuVtbe/GvZkbtQHyOJyCyB1ijyIs14xu3c/l9aGjPfI16OuIrJ+7EpNamX2B
- S6h+j5N/6t1RQycwl/WJwG5uHP+7DUf2WndaUlzkFyvF39J0OKapKRW/Rbn+hXvC58Kb
- AGgy2HGX1n5lwRnttT0Qknf1am+/61pMyJohr3iIiGdvwlBfp+5QiIOseWyJxZrQxUyw
- Mos0s06Vg6COqzkMUoV7HIRh301Pve7+jeYH17GNuvHDromBm3lMhuaX2Dm1PCd1E2Ll
- Wx+4hmQF9M6R3Razop5n6b2bxxS2dhMPe8ZywEanF3uOz+R699JY72KtU2FfSjlPnkfG
- hbjA==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=bdsvl1UwZuOHxPwopT9QunKFFT2xiibkhLWpB5BPk7U=;
+ b=JKkl26dljUnc8UfHDyfMTIAEqHF3NeRxHW+UwNLp7DYFSwAPTs/wYoFGn2hjmqblkh
+ oZwQrAYiTJr5Tc3O5V6Snf0n4gGVnstXsqEZWCJTV/iwk3V3KFdO6K61HS8A9boUbZFP
+ qKlzfoeBuJAyiP+tzAEhrBexdZlTno9J7M+vFLekLo78oH14sB/ctiRUn+zxqBnzf6jj
+ Sgrczr5V3XozdELhwbCnZ0f0ieLzXQ2m6p6G9UoKFgWq2E7ppXxw3isd/43rLLfY7GbT
+ hRR4q0u8JPlcctEpsWjydWwERg95HntEfcv1XtxJKi4KJ1gP1aBVK45Msa0W/xYYuvTw
+ Pe9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
- :to; bh=JONdNVdBlwOaayLv6r3+ADIN5li1EUdh95UdwgGmb68=;
- b=Wro6iNXtQTVM/V0xaqbLlOF4WP73u96o2fuJp3OA2S7guU/dRo5d03vnNyVMKZvL+p
- xoK6MPawpy4daMTwjqrV5sXpvfatG64G6b54bWDYJIzu+8ZSMFqexpwiKtHLeceIMP3D
- EuyIfr/5dBg4+EiSBrvQ5E7IhhXL0sribx8NIP9HI/2tklIVb7gOHt7CWv9GSniQ1elR
- iavDkkV5ywVvz0enKEyiKTPN2z4KhtdxETXLQdX/dFdvhzrRo1GZs86uRxaRKE3TkdY5
- CvtGzW5KBG6nfg1x+rYInncyIZTYnSmX/y7reBYCreEo8b8aGPvTIqQyEvJmMxd5BcAH
- xnhg==
-X-Gm-Message-State: AOAM533dDnbWfh9UOCZtUzD9858wzgyC+YRkMI7Pk9Nedy31jZP1hu+l
- T0VV1WWxtNW6sXdrXw4aSnZlckEZ/TyHWzCGvSo=
-X-Google-Smtp-Source: ABdhPJz/z54Ab9VOS5TTm6eaW7jhI5Nf41MgYQGfH+BFnyGRVSb+3B6bPWW3+30cLLuO48xxKD6eyx4eik2JgvTRt3g=
-X-Received: by 2002:a5d:64cd:: with SMTP id f13mr32130972wri.382.1636850290529; 
- Sat, 13 Nov 2021 16:38:10 -0800 (PST)
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=bdsvl1UwZuOHxPwopT9QunKFFT2xiibkhLWpB5BPk7U=;
+ b=gGlhpg7ROYXGOY8vrwKYX8FM0oKYKp3SSrN1/S3y6Cup1qAcXoAXZqH//nyOavhwP6
+ KjvCTYrGMpaqQRmwOyCqwwsd0hfnMt+3LX4qEDg6UaENhKM8GmQuT1PBX4sKgVuhKa+k
+ WRBVXoWGy/ZUNSrHeoqP0+hTErqgRi0rHawEgabHVwfmxJGFp1TjTlqlhfdyeeadZDdo
+ D6Sc8WPW7DCYL/zxEEzvLeJSyvP4zAXUEoejOgXWlV6mka7j6lgdl1jWqt9SOKQ4x+wv
+ n+9PCJFCezA/2yMWMOlfc8osvtTRAarnvsXZUzSfCMjhDEjl1vK/tpwCbFGfJW4XhhEI
+ eD/A==
+X-Gm-Message-State: AOAM530MGykyZedFeVpRbLjfu8Hotx5DDfgcis3YNXvWWjng7ivWJqRT
+ WvMgk6Znjf4uu1Fvr9vSzMsl3ruqV2kiP1b1KHI=
+X-Google-Smtp-Source: ABdhPJxRF7ao6MSjB0RSmXRZQIumPLGBHp8DTZ19lGjuKxhfnbeUp80bnNf+/XEfspYD6RuRv0QDsE0c+i6js2VGhOc=
+X-Received: by 2002:a2e:9712:: with SMTP id r18mr25769313lji.245.1636851901596; 
+ Sat, 13 Nov 2021 17:05:01 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a5d:6d0d:0:0:0:0:0 with HTTP; Sat, 13 Nov 2021 16:38:10
+Received: by 2002:a05:6512:3daa:0:0:0:0 with HTTP; Sat, 13 Nov 2021 17:05:01
  -0800 (PST)
-From: "Dr. Phil Remond" <drr051246@gmail.com>
-Date: Sat, 13 Nov 2021 16:38:10 -0800
-X-Google-Sender-Auth: GsKsU1aMy96s_k5Hmg9i_dZmVHc
-Message-ID: <CAGyazJCREZdHCJyPm0Mp1Pe=rZBLO4g9=9bH=xss_Eiu0UkGHg@mail.gmail.com>
-Subject: HELLO
+From: "Miss.Mmamie Shimirah" <orgimfoffice791@gmail.com>
+Date: Sat, 13 Nov 2021 17:05:01 -0800
+Message-ID: <CAC-pytEfTMV=gorLQ-PyP5oyzeMY26OvH4-WDN0NzwZdZn7vHg@mail.gmail.com>
+Subject: Regarding Of My Late Father's Fund $10,200,000,
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -81,37 +81,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: mmamie_shimirah@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-Hello,
+dear,
 
-Greetings and hope this email meets you well?
+I got your contact through the internet due to serious searching for a
+reliable personality.  I am Mmamie Shimirah from FreeTown Capital of
+Sierra Leone.
 
-I am Dr. Philip Remond, the chief Medical consultant at a reputable
-Hospital here in Ouagadougou - Burkina Faso and I have a Patient who
-is an origin of the Republic of Philippines by name Mrs. Sismer
-Shirley Acojedo but unfortunately is in Coma presently due to
-complications from a Cancer disease and she has the sum of $10.7 (Ten
-Million, Seven Hundred Thousand Dollars) she wants me to guide you on,
-so  that her Bank can transfer it to you for charity purposes.
+Time of opposed to the government of President Ahmad Tejan Kebbah the
+ex-leader since 21st November 2005 But I am current residing in Calavi
+Benin due to war of my country, my mother killed on 04/01/2002 for
+Sierra Leone civilian war and I am only child for my family bad news
+that my father passed away on 25/11/2018. During the war my father
+made a lot of money through the illegal sales of Diamonds to the tune
+of $10,200,000.
 
-I will like you to contact me on this email (drr051246@gmail.com) for
-further details as this is a very sensitive issue that needs urgent
-attention from you and I want to maintain the promise I made to the
-woman before she entered Coma, never to betray her by looking for
-another person other than you that she choosed and selected for the
-offer among the people she got their email contacts randomly in her
-quest for an honest person oversea to help her wholeheartedly in
-handling this project to fulfill her wish.
+This money is currently and secretly kept in ECOWAS security company
+in Porto-Novo Benin, but because of the political turmoil which still
+exists in Africa, I can not invest the money by myself, hence am
+soliciting your help to help me take these funds into your custody for
+invest.
 
-Best Regards,
-
-Dr. Philip Remond
-on behalf of Mrs. Sismer Shirley Acojedo
+I want to add here that if agreed 35% that's $3,570,000 of the total
+worth of the fund will be yours minus your total expenses incurred
+during the clearing of the fund in Porto Novo Benin. I would like to
+invest on heavy duty agricultural equipment and earth moving machines
+to enable me go into a full scale mechanized farming. l wait to hear
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
