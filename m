@@ -1,47 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D23A344FCCA
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Nov 2021 02:45:39 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1637A44FE89
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Nov 2021 07:03:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4D53760704;
-	Mon, 15 Nov 2021 01:45:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0E8EC4031E;
+	Mon, 15 Nov 2021 06:03:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6uSzoC3N0_7u; Mon, 15 Nov 2021 01:45:36 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 5Hkc73-AnETn; Mon, 15 Nov 2021 06:03:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A0FD5606BB;
-	Mon, 15 Nov 2021 01:45:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5E87040229;
+	Mon, 15 Nov 2021 06:03:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DAE241BF407;
- Mon, 15 Nov 2021 01:45:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CE5341BF957;
+ Mon, 15 Nov 2021 06:02:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D637B40015;
- Mon, 15 Nov 2021 01:45:25 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id BCF094012C;
+ Mon, 15 Nov 2021 06:02:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9MVZUqLyybN3; Mon, 15 Nov 2021 01:45:25 +0000 (UTC)
+ with ESMTP id 3iLx14fgyn3u; Mon, 15 Nov 2021 06:02:56 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.attitudemarketing.ca (unknown [207.253.141.242])
- by smtp2.osuosl.org (Postfix) with ESMTP id E2F1240001;
- Mon, 15 Nov 2021 01:45:24 +0000 (UTC)
-Message-ID: <558104617-450891776@mail.attitudemarketing.ca>
+ by smtp2.osuosl.org (Postfix) with ESMTP id 583EE40015;
+ Mon, 15 Nov 2021 06:02:56 +0000 (UTC)
+Message-ID: <573635487-770732032@mail.attitudemarketing.ca>
 Received: from [77.247.110.57] ([77.247.110.57])
  by mail.attitudemarketing.ca (Kerio Connect 8.5.1);
- Sun, 14 Nov 2021 16:20:33 -0500
+ Sun, 14 Nov 2021 17:18:37 -0500
 MIME-Version: 1.0
 Content-Description: Mail message body
 X-Original-Subject: UAE Base Soft Loan Project Funding.
 Subject: **SPAM**  UAE Base Soft Loan Project Funding.
 To: Recipients <info@rina.org>
 From: "Loan. Consultant" <info@rina.org>
-Date: Sun, 14 Nov 2021 22:20:17 +0100
+Date: Sun, 14 Nov 2021 23:18:21 +0100
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
