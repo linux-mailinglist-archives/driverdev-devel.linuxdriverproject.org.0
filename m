@@ -1,54 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91F6544FC85
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Nov 2021 01:10:16 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8E5D2606BB;
-	Mon, 15 Nov 2021 00:10:14 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e-DiEMAwud8A; Mon, 15 Nov 2021 00:10:13 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 93761606AE;
-	Mon, 15 Nov 2021 00:10:12 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E32391BF59D
- for <devel@linuxdriverproject.org>; Mon, 15 Nov 2021 00:10:02 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 32B6644FC8C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Nov 2021 01:17:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DE8F440200
- for <devel@linuxdriverproject.org>; Mon, 15 Nov 2021 00:10:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1A8AA40298;
+	Mon, 15 Nov 2021 00:17:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1Rjq_pFVsmL8 for <devel@linuxdriverproject.org>;
- Mon, 15 Nov 2021 00:10:01 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id riditvGYIK5d; Mon, 15 Nov 2021 00:17:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id A2DF340166;
+	Mon, 15 Nov 2021 00:17:11 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0D9E91BF977
+ for <devel@linuxdriverproject.org>; Mon, 15 Nov 2021 00:17:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id EFB114024F
+ for <devel@linuxdriverproject.org>; Mon, 15 Nov 2021 00:17:01 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nyVWhvBZKt5o for <devel@linuxdriverproject.org>;
+ Mon, 15 Nov 2021 00:17:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1526340001
- for <devel@driverdev.osuosl.org>; Mon, 15 Nov 2021 00:10:00 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10168"; a="214077483"
-X-IronPort-AV: E=Sophos;i="5.87,235,1631602800"; d="scan'208";a="214077483"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Nov 2021 16:10:00 -0800
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id DEE7D4024E
+ for <devel@driverdev.osuosl.org>; Mon, 15 Nov 2021 00:17:00 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10168"; a="232075875"
+X-IronPort-AV: E=Sophos;i="5.87,235,1631602800"; d="scan'208";a="232075875"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Nov 2021 16:17:00 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,235,1631602800"; d="scan'208";a="493787546"
+X-IronPort-AV: E=Sophos;i="5.87,235,1631602800"; d="scan'208";a="671318519"
 Received: from lkp-server02.sh.intel.com (HELO c20d8bc80006) ([10.239.97.151])
- by orsmga007.jf.intel.com with ESMTP; 14 Nov 2021 16:09:58 -0800
+ by orsmga005.jf.intel.com with ESMTP; 14 Nov 2021 16:16:58 -0800
 Received: from kbuild by c20d8bc80006 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1mmPZN-000LuN-Hp; Mon, 15 Nov 2021 00:09:57 +0000
-Date: Mon, 15 Nov 2021 08:09:38 +0800
+ id 1mmPg9-000Luw-Vl; Mon, 15 Nov 2021 00:16:57 +0000
+Date: Mon, 15 Nov 2021 08:16:32 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- 8247270bcf99bc7bf661ae2a3f2ee6e64c7f957d
-Message-ID: <6191a542.UoOwD8oPJj0aLifW%lkp@intel.com>
+Subject: [staging:staging-testing] BUILD REGRESSION
+ 501d3e5056387568baf1f60e1d0929d912f5893f
+Message-ID: <6191a6e0.ZoAjSndtJBA1dg04%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -69,26 +69,61 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
-branch HEAD: 8247270bcf99bc7bf661ae2a3f2ee6e64c7f957d  fs: make d_path-like functions all have unsigned size
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 501d3e5056387568baf1f60e1d0929d912f5893f  staging: wlan-ng: Removed unused comments
 
-possible Warning in current branch (please contact us if interested):
+possible Error/Warning in current branch (please contact us if interested):
 
-fs/d_path.c:20:20: warning: Unsigned variable '.' can't be negative so it is unnecessary to test it. [unsignedPositive]
+drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:458:5: error: no previous prototype for 'vchiq_platform_init' [-Werror=missing-prototypes]
+drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c:586:1: error: no previous prototype for 'vchiq_platform_get_arm_state' [-Werror=missing-prototypes]
 
-Warning ids grouped by kconfigs:
+Error/Warning ids grouped by kconfigs:
 
 gcc_recent_errors
-`-- ia64-randconfig-p001-20211114
-    `-- fs-d_path.c:warning:Unsigned-variable-.-can-t-be-negative-so-it-is-unnecessary-to-test-it.-unsignedPositive
+|-- arm-allmodconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- arm-allyesconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- h8300-allyesconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- m68k-allmodconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- m68k-allyesconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- nios2-allyesconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- powerpc-allmodconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- powerpc-allyesconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- riscv-allmodconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- riscv-allyesconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- s390-allyesconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+|-- sh-allmodconfig
+|   |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+|   `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
+`-- xtensa-allyesconfig
+    |-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_get_arm_state
+    `-- drivers-staging-vc04_services-interface-vchiq_arm-vchiq_arm.c:error:no-previous-prototype-for-vchiq_platform_init
 
-elapsed time: 720m
+elapsed time: 725m
 
-configs tested: 196
-configs skipped: 4
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+configs tested: 154
+configs skipped: 3
 
 gcc tested configs:
 arm                                 defconfig
@@ -96,24 +131,12 @@ arm64                            allyesconfig
 arm64                               defconfig
 arm                              allmodconfig
 arm                              allyesconfig
-m68k                          amiga_defconfig
-mips                           jazz_defconfig
-powerpc                   lite5200b_defconfig
-m68k                       bvme6000_defconfig
-mips                            gpr_defconfig
-arc                          axs101_defconfig
-powerpc                  mpc866_ads_defconfig
-powerpc                 mpc834x_itx_defconfig
-powerpc64                           defconfig
-csky                             alldefconfig
-arm                             rpc_defconfig
-arm                        mini2440_defconfig
-arm                         palmz72_defconfig
-sh                           se7721_defconfig
-powerpc                    sam440ep_defconfig
-powerpc                    klondike_defconfig
-riscv             nommu_k210_sdcard_defconfig
-m68k                        mvme147_defconfig
+i386                             alldefconfig
+powerpc                     mpc83xx_defconfig
+microblaze                      mmu_defconfig
+arm                         orion5x_defconfig
+sh                          urquell_defconfig
+sh                        sh7763rdp_defconfig
 powerpc                          g5_defconfig
 arm                          ixp4xx_defconfig
 mips                       lemote2f_defconfig
@@ -123,32 +146,18 @@ arm                         lpc18xx_defconfig
 powerpc                      ppc44x_defconfig
 arm                          imote2_defconfig
 powerpc                 mpc837x_rdb_defconfig
-arc                        vdk_hs38_defconfig
-arm                          pcm027_defconfig
-sparc64                             defconfig
-arm                         assabet_defconfig
-sparc                       sparc32_defconfig
-powerpc                     rainier_defconfig
-m68k                          sun3x_defconfig
-powerpc                     tqm8555_defconfig
-um                               alldefconfig
-sh                            migor_defconfig
 sh                        edosk7760_defconfig
 powerpc                      ppc6xx_defconfig
-openrisc                            defconfig
-arm                        vexpress_defconfig
-sh                             shx3_defconfig
-m68k                        stmark2_defconfig
-arm                      jornada720_defconfig
 arm                           h3600_defconfig
 sh                            titan_defconfig
 powerpc                mpc7448_hpc2_defconfig
 sh                           sh2007_defconfig
 ia64                             alldefconfig
-sh                           se7724_defconfig
+sh                           se7721_defconfig
 mips                        omega2p_defconfig
-arm                           u8500_defconfig
 arm                           spitz_defconfig
+sh                           se7724_defconfig
+arm                           u8500_defconfig
 sh                     magicpanelr2_defconfig
 sh                                  defconfig
 sh                           se7722_defconfig
@@ -156,11 +165,6 @@ arm                         at91_dt_defconfig
 powerpc                 mpc8272_ads_defconfig
 mips                      pic32mzda_defconfig
 mips                        bcm63xx_defconfig
-arm                      pxa255-idp_defconfig
-arm                            hisi_defconfig
-arc                              alldefconfig
-arm                          pxa3xx_defconfig
-sh                           se7206_defconfig
 powerpc                     pq2fads_defconfig
 mips                     loongson1b_defconfig
 arm                           sama7_defconfig
@@ -171,15 +175,10 @@ sh                             sh03_defconfig
 xtensa                              defconfig
 powerpc64                        alldefconfig
 powerpc                 mpc8315_rdb_defconfig
-arm                       aspeed_g4_defconfig
-mips                          malta_defconfig
-arm                       mainstone_defconfig
-powerpc                 mpc8540_ads_defconfig
-powerpc                     powernv_defconfig
-mips                     decstation_defconfig
-openrisc                 simple_smp_defconfig
 arm                         socfpga_defconfig
 arm                            pleb_defconfig
+arm                      pxa255-idp_defconfig
+arm                        mini2440_defconfig
 arm                          moxart_defconfig
 arm                        magician_defconfig
 arm                       multi_v4t_defconfig
@@ -191,8 +190,8 @@ m68k                                defconfig
 m68k                             allmodconfig
 m68k                             allyesconfig
 nios2                               defconfig
-nds32                             allnoconfig
 arc                              allyesconfig
+nds32                             allnoconfig
 nds32                               defconfig
 csky                                defconfig
 alpha                               defconfig
@@ -201,10 +200,10 @@ nios2                            allyesconfig
 arc                                 defconfig
 sh                               allmodconfig
 xtensa                           allyesconfig
-s390                             allmodconfig
-s390                             allyesconfig
 parisc                              defconfig
 s390                                defconfig
+s390                             allmodconfig
+s390                             allyesconfig
 parisc                           allyesconfig
 sparc                            allyesconfig
 sparc                               defconfig
@@ -216,18 +215,12 @@ mips                             allyesconfig
 powerpc                           allnoconfig
 powerpc                          allmodconfig
 powerpc                          allyesconfig
-i386                 randconfig-a006-20211115
-i386                 randconfig-a003-20211115
-i386                 randconfig-a005-20211115
-i386                 randconfig-a001-20211115
-i386                 randconfig-a004-20211115
-i386                 randconfig-a002-20211115
 x86_64               randconfig-a015-20211114
 x86_64               randconfig-a013-20211114
 x86_64               randconfig-a012-20211114
 x86_64               randconfig-a011-20211114
-x86_64               randconfig-a016-20211114
 x86_64               randconfig-a014-20211114
+x86_64               randconfig-a016-20211114
 i386                 randconfig-a014-20211114
 i386                 randconfig-a016-20211114
 i386                 randconfig-a012-20211114
@@ -266,12 +259,12 @@ x86_64               randconfig-a001-20211114
 x86_64               randconfig-a002-20211114
 x86_64               randconfig-a006-20211114
 x86_64               randconfig-a004-20211114
-i386                 randconfig-a006-20211114
 i386                 randconfig-a003-20211114
 i386                 randconfig-a005-20211114
 i386                 randconfig-a001-20211114
 i386                 randconfig-a004-20211114
 i386                 randconfig-a002-20211114
+i386                 randconfig-a006-20211114
 x86_64               randconfig-a015-20211115
 x86_64               randconfig-a013-20211115
 x86_64               randconfig-a011-20211115
@@ -284,12 +277,12 @@ i386                 randconfig-a012-20211115
 i386                 randconfig-a013-20211115
 i386                 randconfig-a011-20211115
 i386                 randconfig-a015-20211115
+hexagon              randconfig-r045-20211114
+hexagon              randconfig-r041-20211114
 hexagon              randconfig-r045-20211115
 hexagon              randconfig-r041-20211115
 s390                 randconfig-r044-20211115
 riscv                randconfig-r042-20211115
-hexagon              randconfig-r045-20211114
-hexagon              randconfig-r041-20211114
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
