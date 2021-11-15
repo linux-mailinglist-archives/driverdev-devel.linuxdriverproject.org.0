@@ -1,47 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EBADF44FE8A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Nov 2021 07:03:19 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 15D5580DDE;
-	Mon, 15 Nov 2021 06:03:18 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T8-ubpnTy-tm; Mon, 15 Nov 2021 06:03:17 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 626AE80DB0;
-	Mon, 15 Nov 2021 06:03:16 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CE5341BF957;
- Mon, 15 Nov 2021 06:02:57 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D35244FFFA
+	for <lists+driverdev-devel@lfdr.de>; Mon, 15 Nov 2021 09:30:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BCF094012C;
- Mon, 15 Nov 2021 06:02:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 69F7940394;
+	Mon, 15 Nov 2021 08:30:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3iLx14fgyn3u; Mon, 15 Nov 2021 06:02:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.attitudemarketing.ca (unknown [207.253.141.242])
- by smtp2.osuosl.org (Postfix) with ESMTP id 583EE40015;
- Mon, 15 Nov 2021 06:02:56 +0000 (UTC)
-Message-ID: <573635487-770732032@mail.attitudemarketing.ca>
-Received: from [77.247.110.57] ([77.247.110.57])
- by mail.attitudemarketing.ca (Kerio Connect 8.5.1);
- Sun, 14 Nov 2021 17:18:37 -0500
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zjxq8Wk15BNU; Mon, 15 Nov 2021 08:30:11 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 40A6C40384;
+	Mon, 15 Nov 2021 08:30:10 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 586231BF29E
+ for <devel@linuxdriverproject.org>; Mon, 15 Nov 2021 08:30:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 472E340430
+ for <devel@linuxdriverproject.org>; Mon, 15 Nov 2021 08:30:00 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DAExSiOfzdYU for <devel@linuxdriverproject.org>;
+ Mon, 15 Nov 2021 08:29:59 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ua1-x92b.google.com (mail-ua1-x92b.google.com
+ [IPv6:2607:f8b0:4864:20::92b])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B892A402CB
+ for <devel@driverdev.osuosl.org>; Mon, 15 Nov 2021 08:29:59 +0000 (UTC)
+Received: by mail-ua1-x92b.google.com with SMTP id r15so5942603uao.3
+ for <devel@driverdev.osuosl.org>; Mon, 15 Nov 2021 00:29:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=3a8zASbwuCJueHjafSraYg3mz5t9YgqGAdn4Nkubq2Y=;
+ b=UrKuPEAOj5ThdMCxVnzD3PgYNvi8pYMi4sWSvy/+JURzed3SD1pN7oqmzQnD1VQcIn
+ w6ZpXz6ILGfz0g3y7zGfyUgU6AK60pCJjH1SKm3VXodL5qULklRK+OmLHGynoSYejH71
+ fDeAAFZbw6271/woN3H3D+jwG43z0oliFDc7CLwHm7m4on+K7UTKwJOklGlrqim1DSVu
+ F8tKCx6XRzzp2xf/7prLHyAVQhMWzEG9gf3Xr0pZHVSBC5hezOmxHoFInvcb3bv14E8u
+ 7JhJAUE03wBcX9XCi77iiNYMlryQdItRnSfh5xsUxCzWgY3xGLPyOxv8YfUsxynZ/lTx
+ 2q7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=3a8zASbwuCJueHjafSraYg3mz5t9YgqGAdn4Nkubq2Y=;
+ b=h33HBez9AAUubJ7kBXUGzweyWdNCXIX3MjjYu5nW/E4B1pQJU2b99yxt1TWoSWK+rC
+ XDaxIiNdcNPprpmibxFPrWwRSPgTlUlVBAqVHxgs1Jyjv84xao9ECLD3L4ox8yF08p13
+ 0kNJSDNtQc/Kz6u/CxLOfCsfNrJK2q5W0t9DLPF7OiuefSLiKfLKKQe3MsB+BJUH9jci
+ Y5zX5Ojr1NJrbY7Fk/K+zRPCuZU7dJd9zlYOdfTCJuzvqLXucN/VXypH6Sb9HtB3LUdg
+ JnjZ3LFxwkRLr5iXdhkJNtZxiuaczhQZaRQG0bA3LKGzPROcICUIdt747lw5ePyIuBb8
+ Yj6Q==
+X-Gm-Message-State: AOAM532E5cJHZdjmq4UHvL0BQzNW3eU1BKBt4bjYB6L4I44qydC0SzU0
+ za8qSZobWQAZ8toft+DmjJg7CKm4NZcfCIKQ79E=
+X-Google-Smtp-Source: ABdhPJxN2XOS4P9+6Ru+2yNed2FCIm/YgcKwfwPeDAHrWzBVGurLu+0aBr3OxMTxingBBqeraEJnZ9uvv0EwFvjQPbc=
+X-Received: by 2002:a67:f6d7:: with SMTP id v23mr39925826vso.22.1636964998377; 
+ Mon, 15 Nov 2021 00:29:58 -0800 (PST)
 MIME-Version: 1.0
-Content-Description: Mail message body
-X-Original-Subject: UAE Base Soft Loan Project Funding.
-Subject: **SPAM**  UAE Base Soft Loan Project Funding.
-To: Recipients <info@rina.org>
-From: "Loan. Consultant" <info@rina.org>
-Date: Sun, 14 Nov 2021 23:18:21 +0100
+Received: by 2002:a59:b586:0:b0:23d:2f30:78e5 with HTTP; Mon, 15 Nov 2021
+ 00:29:58 -0800 (PST)
+From: Mrs Bill Chantal <patrickmurphy791@gmail.com>
+Date: Mon, 15 Nov 2021 09:29:58 +0100
+Message-ID: <CAEsU2=hqtQHF4Q0VCHYzJ3h+5OCCogp=N8=bKCDrtcvR9572vg@mail.gmail.com>
+Subject: Dear Friend
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,29 +81,19 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mr.zhangya9090@gmail.com
+Reply-To: mrsbillchantal2022@mail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greetings
-
-we are a Group of License Investment Company, a Global Loan Investment Funding Group based in the UAE. We are interested in Loan Funding around the Globe. Below are brief on the Investment Loan Funding portfolio: We are looking out for viable Investment Projects outside the UAE We can Fund as a Soft Loan under our ongoing Corporate Finance Program at 2% interest rate per annum without collateral except a Surety Bond from UAE Authority.
-
-Below are brief on the investment loan portfolio
-Minimum and Maximum Funding: USD 1 Million to USD 10 Billion
-Placement Opens to: Entrepreneurs, Corporations and Investors around the globe
-Funding Type: Soft Loan Investment Funding with no physical collateral requirement if you are outside UAE except a Surety Bond.
-Funding Rate: 2% Interest Rate Per Annum
-Term: 2 to10 Years Repayment Renewable Tenure
-
-We don't have any major area of Funding but we give priority attention to Real Estate Development, other areas of interests include: Oil and Gas, Agriculture, Health, Aviation, Tourism, Construction, IT & Communications, Technology, Education, Energy, Engineering, Utilities, Telecom, Mining, Maritime and host of other profitable ventures. Therefore, based on the above information, we would be glad to receive your Project Plan Executive Summary in a compatible format for review by our Funding Management Team.
-
-If you have any viable Project that requires funding, kindly revert back to us via email at;  em0000192019@asia.com
-
-Management Dubai UAE
-
+Dear Friend
+You have been compensated with the sum of 5.4 million dollars in this
+united nation the payment will be Issue into ATM visa card and send to
+you from the bank  we need your address, passport and your Whatsapp
+Number.
+Thanks
+Mrs Bill Chantal
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
