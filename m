@@ -1,74 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A13AC456927
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Nov 2021 05:27:21 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E70A4456A58
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Nov 2021 07:38:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8E30781C2F;
-	Fri, 19 Nov 2021 04:27:19 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1383C405B9;
+	Fri, 19 Nov 2021 06:38:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Bi1O7BOf7xHr; Fri, 19 Nov 2021 04:27:18 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 71occD-pMhu4; Fri, 19 Nov 2021 06:38:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 135C081C21;
-	Fri, 19 Nov 2021 04:27:18 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 14F0540372;
+	Fri, 19 Nov 2021 06:38:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EFE821BF591
- for <devel@linuxdriverproject.org>; Fri, 19 Nov 2021 04:27:07 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 182C41BF580
+ for <devel@linuxdriverproject.org>; Fri, 19 Nov 2021 06:38:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DEF0D81C21
- for <devel@linuxdriverproject.org>; Fri, 19 Nov 2021 04:27:07 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 07DCA40382
+ for <devel@linuxdriverproject.org>; Fri, 19 Nov 2021 06:38:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kJpDogl6Hgwe for <devel@linuxdriverproject.org>;
- Fri, 19 Nov 2021 04:27:07 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ua1-x92a.google.com (mail-ua1-x92a.google.com
- [IPv6:2607:f8b0:4864:20::92a])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 39FE781B99
- for <devel@driverdev.osuosl.org>; Fri, 19 Nov 2021 04:27:07 +0000 (UTC)
-Received: by mail-ua1-x92a.google.com with SMTP id o1so18755465uap.4
- for <devel@driverdev.osuosl.org>; Thu, 18 Nov 2021 20:27:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:sender:from:date:message-id:subject:to;
- bh=ujx8Pmruz5VDMz2Wga0CAPmfOeIDJ9v6BK31oqh0jck=;
- b=UTW9tUymV+Y1vbzBnycwE4HXSG4n+cKx0LmDtcMSJ5BzLSFUqdhyS5FqbFzEeEDJca
- f2Af/x8rcauV7eAwZ0FaZDdPkL4FoafK+Sxly42KUaWRjprEwA06AQCwSOExkv8ijyKv
- YGkeYXiY9HlH2Qwwrbw5ChnrnkhYilI6CSjRKEtXLuTDVp/Fdyc03tRv29s1OnYP3ZC7
- M/IU0KxfOmyddwxsRMcexasBeRiOQW02PiVw4G86uR+1BHEX5/zSljq3pvtrUl/peHBo
- rGJ675rl5UuTX2/adluF67loiRCGwjAibLNkJEVgHm66XnZGm0444X4UtaZ47++9hFGm
- eceg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:sender:from:date
- :message-id:subject:to;
- bh=ujx8Pmruz5VDMz2Wga0CAPmfOeIDJ9v6BK31oqh0jck=;
- b=gJBnV/+l88M7Bq28hAdCK0HDUQlQCmNfcfekC+fMgUZTi+oGeHpUv5vunsjA3xhAOi
- LX2+/286PYTBN6K/zlndL39eTfkBvULJhoeEv2wHPEJ6pAcj8IRxUZSIS7N2IRNCTfJ+
- 33d6Uq6W1VygYXUfYiDK97SmwshOC4IvttJL5MwlD3T0XNPgNezY+1pQDD1hpTX5jdz4
- CCboPoJ+fuC7soUEvsE2YPsH0cSmg6Zl1v+G2+S6ilxtIWI4tbgXkrGYqgpJGyOrj7ms
- vzgyo9KaY0v9FNhpqBjin9XqMPww2MtXMoA5Bn1SET38pJGPPrTkqAsltP6Wycs4ADTh
- y7+w==
-X-Gm-Message-State: AOAM531zSvg+/qnuHNQ6oZIBmdaaNwS5kjdnxxS4vQtgrslsemvtegzG
- YRt83Gzt8ll1cDGurqJrD2+MNv1DtHVaK2Ud1eI=
-X-Google-Smtp-Source: ABdhPJyVqk8PO5FFFNZGj2sGxi/Qa7J2CzGQCVw2f3Yf1M38kzrsDzbe3u7JSjAzcpp5gZjWY2T5MGuYNEAxBT5QiQQ=
-X-Received: by 2002:a05:6102:32c9:: with SMTP id
- o9mr89125750vss.46.1637296025867; 
- Thu, 18 Nov 2021 20:27:05 -0800 (PST)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IiCcQY0-A-7H for <devel@linuxdriverproject.org>;
+ Fri, 19 Nov 2021 06:38:35 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 82DEB4037C
+ for <devel@driverdev.osuosl.org>; Fri, 19 Nov 2021 06:38:35 +0000 (UTC)
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A8B4A61101;
+ Fri, 19 Nov 2021 06:38:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1637303915;
+ bh=+ETw7Xi0OwIuaRxNGm3Y/jlhPTldMlIj9OAAr37LegU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=h4/kVnNmukiRnneGq6Ci2GQ9TDmBrlAo+O5C3Bc75rHwKZZ5lXB8gaHNP9HurxEwe
+ RExlCEeg5t5ZibFWYZ3mRQYYakelrL6A3ABI2g/MgGKvs5NjtvOHQ+dSTfqoM37CGL
+ FWVkDMUHtS9dSS/kNu2BIJ3NC0b9aQIPitKA/Vlo=
+Date: Fri, 19 Nov 2021 07:38:32 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Alberto Merciai <alb3rt0.m3rciai@gmail.com>
+Subject: Re: [PATCH v3] staging: vt6655: refactor camelcase uCurrRSSI to
+ current_rssi
+Message-ID: <YZdGaAVSVM8/4ZB2@kroah.com>
+References: <20211118202718.GA152832@t470p>
 MIME-Version: 1.0
-Received: by 2002:a67:ea45:0:0:0:0:0 with HTTP; Thu, 18 Nov 2021 20:27:05
- -0800 (PST)
-From: Godwin Pete <godwinnpeter@gmail.com>
-Date: Fri, 19 Nov 2021 05:27:05 +0100
-X-Google-Sender-Auth: a9mmzntZXKXR6UgfVxXbMplWaJQ
-Message-ID: <CAA_hoV1nHVfDMqdODhyc0AdTKUE0_JX3a+u5UPMdT+wouTHp_A@mail.gmail.com>
-Subject: Reply urgently
-To: undisclosed-recipients:;
+Content-Disposition: inline
+In-Reply-To: <20211118202718.GA152832@t470p>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,20 +64,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: godwinppter@gmail.com
+Cc: devel@driverdev.osuosl.org, forest@alittletooquiet.net,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
+On Thu, Nov 18, 2021 at 09:27:18PM +0100, Alberto Merciai wrote:
+> Replace camelcase variable "uCurrRSSI" (current Received Signal Strength
+> Indicator) into linux kernel coding style equivalent
+> variable "current_rssi".
+> 
+> Signed-off-by: Alberto Merciai <alb3rt0.m3rciai@gmail.com>
+> ---
+> 
+> v2
+> - correct mailing list
 
-I'm contacting you to know if you can help me to transfer the amount
-of ($6Million). After the transfer we have to share it, 50% for me,
-and 50% for you. Please let me know if you can help me so that I can
-give you the full information regarding the transfer.
+No, you did not use the correct mailing list.
 
-Thanks.
+What is the output of scripts/get_maintainer.pl on your patch?
+
+thanks,
+
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
