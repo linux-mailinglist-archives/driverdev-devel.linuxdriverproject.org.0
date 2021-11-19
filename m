@@ -1,55 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0D16457808
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Nov 2021 22:14:27 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 31D54457941
+	for <lists+driverdev-devel@lfdr.de>; Sat, 20 Nov 2021 00:00:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 21D2561C50;
-	Fri, 19 Nov 2021 21:14:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 800F782A53;
+	Fri, 19 Nov 2021 23:00:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zOvJT9o6q74g; Fri, 19 Nov 2021 21:14:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MfkarvvhgxE0; Fri, 19 Nov 2021 23:00:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 25516606A8;
-	Fri, 19 Nov 2021 21:14:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A050B82977;
+	Fri, 19 Nov 2021 23:00:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BCC1B1BF3F2
- for <devel@linuxdriverproject.org>; Fri, 19 Nov 2021 21:14:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3BDB21BF4D7
+ for <devel@linuxdriverproject.org>; Fri, 19 Nov 2021 23:00:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B95E141C15
- for <devel@linuxdriverproject.org>; Fri, 19 Nov 2021 21:14:14 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2B51441C41
+ for <devel@linuxdriverproject.org>; Fri, 19 Nov 2021 23:00:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key)
+ header.d=paul-moore-com.20210112.gappssmtp.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Cw0SFLZFBuDb for <devel@linuxdriverproject.org>;
- Fri, 19 Nov 2021 21:14:14 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from hngtrust.com (unknown [124.65.196.6])
- by smtp4.osuosl.org (Postfix) with ESMTP id 71DFE41C0E
- for <devel@driverdev.osuosl.org>; Fri, 19 Nov 2021 21:14:13 +0000 (UTC)
-Received: from info.fztojnxd1gwetdgy2mohtnhphh.lx.internal.cloudapp.net
- (unknown [20.89.23.133])
- by all1 (Coremail) with SMTP id AZDVCgC3QsVECZhh+5sVAA--.19342S823;
- Sat, 20 Nov 2021 04:56:11 +0800 (CST)
+ with ESMTP id uKX5Ee1loUcP for <devel@linuxdriverproject.org>;
+ Fri, 19 Nov 2021 23:00:44 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ed1-x52f.google.com (mail-ed1-x52f.google.com
+ [IPv6:2a00:1450:4864:20::52f])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F2BD541C3B
+ for <devel@driverdev.osuosl.org>; Fri, 19 Nov 2021 23:00:43 +0000 (UTC)
+Received: by mail-ed1-x52f.google.com with SMTP id x15so48793702edv.1
+ for <devel@driverdev.osuosl.org>; Fri, 19 Nov 2021 15:00:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=paul-moore-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=It4uFIPm/TcoK+jPH5YkeMMq3zsyxm4gO2u58vGukR0=;
+ b=3pJoQe2hjfrg/7hSbzLxsod9OrFWCoaug9P7fvkrEFg0rv9ffCcPK1UzNYydItGFTZ
+ 8Gsmt/c334dnG4toozreaXjNphhZPsZYp2nlHPw3e/IL09S/41opYVanB2nzNO6/romw
+ i1rKm54xMk9+J65ZcFGOcZQ1SLjAb01WfAXpC5IjfPdVnhpO70u2p2JsMNKHDcQdADrz
+ aY47nKih2yF8knoiTAME51sXes1K6AV8Z51vQZXQFjkOEDpmKlNrruLgqJUvnP5ZmTFO
+ EX6tdfLRUPCJosqeGFNBGk62gvwF20K+oZOxePAEXnDwZsit9k4eDkfGa6isnfm5eM4B
+ QSvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=It4uFIPm/TcoK+jPH5YkeMMq3zsyxm4gO2u58vGukR0=;
+ b=R4uQ4xn4XgO+2TOOYmH7X7UB2Mdt18C70T80kRx9EUkYrhOismvSU08njoNXr2dHqD
+ FzI3PGIT4rYXGDifLhvZUlqrWyTS0Yl9DdnIUSMiNHgi7Bdhf7e1XVLLco/NJWQzUyTf
+ xPksOpz+F/1E1CjplRWxtvxGUh3zBcH62GZhGjUMhMVO/DsgEQ09/EMsbRBHjNwi31rC
+ xFNa3DtBaRPUgToBYu+upScOaE1WV+/KssmPNvPIgSyl2ooPZ26KG1yrQjoCzxMeXuEg
+ L1z5Ojd0MNtjoLbdSW0DbQ+j8W0X4BUatJ0hiWVs1+lKeElVddRYzjDPosm/L9gyRwa2
+ jZRQ==
+X-Gm-Message-State: AOAM531ER/KeljA1qxGeGUUollFckcpFWCVd4HjRlU1rH+Zfzrh0O87f
+ K+6cQ2AezLGh310+M9vXSXXM1d2L1dmV0krOil3s
+X-Google-Smtp-Source: ABdhPJwj8srWh1Z1Q4zO93E9LesvzJGVPu0HuTT8W9Stihxm6dQnTTI+EpjPhsnLo9c1VlkWaxAuFRFcd+EwUhAciqo=
+X-Received: by 2002:a17:907:629b:: with SMTP id
+ nd27mr12593174ejc.24.1637362841746; 
+ Fri, 19 Nov 2021 15:00:41 -0800 (PST)
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Hello
-To: Recipients <hngc_dflz@hngtrust.com>
-From: "Ms. Reem A." <hngc_dflz@hngtrust.com>
-Date: Fri, 19 Nov 2021 20:56:03 +0000
-X-CM-TRANSID: AZDVCgC3QsVECZhh+5sVAA--.19342S823
-Message-Id: <61980F6B.046A9A.51395@hngtrust.com>
-Authentication-Results: all1; spf=neutral smtp.mail=hngc_dflz@hngtrust
-	.com;
-X-Coremail-Antispam: 1UD129KBjvJXoW7KF4xtr4rJrykGrykJr1DZFb_yoW8Xr45pr
- Z5uwnFyF97Jay0kwn7Aw4xZrya9F95Ars8Ga4DGw4vkry5X3WIgr1xtF1j9anruFWfWw4U
- ZrW7uF1UuF1YvFJanT9S1TB71UUUt8UqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UUUUUUUUU==
-X-CM-SenderInfo: 5kqjushgio6qhkqj32xxvwhudrp/1tbiAQEKBmC1tToDVQAAsA
+References: <20211112180720.2858135-1-tkjos@google.com>
+In-Reply-To: <20211112180720.2858135-1-tkjos@google.com>
+From: Paul Moore <paul@paul-moore.com>
+Date: Fri, 19 Nov 2021 18:00:31 -0500
+Message-ID: <CAHC9VhQaHzrjdnr_DvZdPfWGiehC17yJVAJdVJMn8tOC1_Y+gA@mail.gmail.com>
+Subject: Re: [PATCH] binder: fix test regression due to sender_euid change
+To: Todd Kjos <tkjos@google.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,27 +84,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reem2018@daum.net
+Cc: devel@driverdev.osuosl.org, linux-security-module@vger.kernel.org,
+ kernel-team@android.com, tkjos@android.com, keescook@chromium.org,
+ jannh@google.com, selinux@vger.kernel.org, gregkh@linuxfoundation.org,
+ stephen.smalley.work@gmail.com, jmorris@namei.org, zohar@linux.ibm.com,
+ linux-kernel@vger.kernel.org, arve@android.com, stable@vger.kernel.org,
+ jeffv@google.com, joel@joelfernandes.org, eparis@parisplace.org,
+ maco@android.com, christian@brauner.io
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Friend,
+On Fri, Nov 12, 2021 at 1:07 PM Todd Kjos <tkjos@google.com> wrote:
+>
+> This is a partial revert of commit
+> 29bc22ac5e5b ("binder: use euid from cred instead of using task").
+> Setting sender_euid using proc->cred caused some Android system test
+> regressions that need further investigation. It is a partial
+> reversion because subsequent patches rely on proc->cred.
+>
+> Cc: stable@vger.kernel.org # 4.4+
+> Fixes: 29bc22ac5e5b ("binder: use euid from cred instead of using task")
+> Signed-off-by: Todd Kjos <tkjos@google.com>
+> Change-Id: I9b1769a3510fed250bb21859ef8beebabe034c66
+> ---
+> - the issue was introduced in 5.16-rc1, so please apply to 5.16
+> - this should apply cleanly to all stable branches back to 4.4
+>   that contain "binder: use euid from cred instead of using task"
+>
+>
+>  drivers/android/binder.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also I want to use this fund to assist Coronavirus Symptoms and Causes.
+This looks okay to me.  I assume this is going in via GregKH's tree?
 
-I am a single Arab woman and serving as a minister, and there is a limit to my personal income and investment level. For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transferrals of the fund to a third party account for investment purposes which is the reason I contacted you to receive the fund as my partner for investment in your country.
- 
-The amount is valued at 47,745,533 Euros with a financial institution waiting my instruction for further transferral to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
- 
-If you can handle the fund in a good investment, reply to this email only: reem.alhashimi@yandex.com
+Acked-by: Paul Moore <paul@paul-moore.com>
 
+> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
+> index 49fb74196d02..cffbe57a8e08 100644
+> --- a/drivers/android/binder.c
+> +++ b/drivers/android/binder.c
+> @@ -2710,7 +2710,7 @@ static void binder_transaction(struct binder_proc *proc,
+>                 t->from = thread;
+>         else
+>                 t->from = NULL;
+> -       t->sender_euid = proc->cred->euid;
+> +       t->sender_euid = task_euid(proc->tsk);
+>         t->to_proc = target_proc;
+>         t->to_thread = target_thread;
+>         t->code = tr->code;
+> --
+> 2.34.0.rc1.387.gb447b232ab-goog
 
-
-Best Regards,
-Ms. Reem
-
+-- 
+paul moore
+www.paul-moore.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
