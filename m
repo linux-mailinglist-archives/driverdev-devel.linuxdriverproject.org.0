@@ -1,75 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33C9E457E30
-	for <lists+driverdev-devel@lfdr.de>; Sat, 20 Nov 2021 13:34:32 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C0A4B457EBB
+	for <lists+driverdev-devel@lfdr.de>; Sat, 20 Nov 2021 15:34:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DA1BF60746;
-	Sat, 20 Nov 2021 12:34:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B025241BF5;
+	Sat, 20 Nov 2021 14:34:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ovn_c0gnA10m; Sat, 20 Nov 2021 12:34:29 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id dZBwDJq_Y8zg; Sat, 20 Nov 2021 14:34:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 702DE60008;
-	Sat, 20 Nov 2021 12:34:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1DC314045B;
+	Sat, 20 Nov 2021 14:34:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1C94A1BF36D
- for <devel@linuxdriverproject.org>; Sat, 20 Nov 2021 12:34:19 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E8AF31BF404
+ for <devel@linuxdriverproject.org>; Sat, 20 Nov 2021 14:34:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0CA6480DF2
- for <devel@linuxdriverproject.org>; Sat, 20 Nov 2021 12:34:19 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id D7C0240453
+ for <devel@linuxdriverproject.org>; Sat, 20 Nov 2021 14:34:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dFWz-FQVbd6u for <devel@linuxdriverproject.org>;
- Sat, 20 Nov 2021 12:34:18 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com
- [IPv6:2a00:1450:4864:20::32b])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6D8A980DE1
- for <devel@driverdev.osuosl.org>; Sat, 20 Nov 2021 12:34:18 +0000 (UTC)
-Received: by mail-wm1-x32b.google.com with SMTP id
- g191-20020a1c9dc8000000b0032fbf912885so9579269wme.4
- for <devel@driverdev.osuosl.org>; Sat, 20 Nov 2021 04:34:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=w2dLnl5hsLVKZTBAdcVFnDnMtM7+guW1LU+8LG4nir0=;
- b=Fg0CuYYkyt0hZtxEaL3pzh0wmxFN/BDqDvJITI1D07EsGGgN8PZtfHGDuXTh7/BoIl
- qVNJH9zXnG8cNi2LJMLF71hiIrDCE84586190GfTLhvhTykKIh4u2rbstY72IJ2bwxdi
- dD1A4IvTr0xiNtXbl34OchcNTBgwtuJY6Bjfg1D2EI5sf1RrQ+sb29ycEh2OqGIrNIor
- 9ZgC+8bGry8Ek/GHCpQ99htcECmIpz2LX84bJAMeuv5rRWeUbFN4BCL5K+oO4sSjngOB
- 8QNuFreM8gT309f4IkX7URhAMyYexwDutkEXDHBb6UE/vMNjPjAcuLVnaWzcjl7URoeu
- P8/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=w2dLnl5hsLVKZTBAdcVFnDnMtM7+guW1LU+8LG4nir0=;
- b=xh5P5M0oawoFXmD0pKKSbxOqG7Hx3UdelwiixToD1dGozxmKMB7Bqn5AVK4m4nYMX8
- QPv5Vx+pWUiG1MpXlxCv7tXLopGss9e1E4+pUD3BmjP0PJmDlLdaVtN8tW0gSnUOpryH
- NqmOAnB1cjtzM48HMRZSr1QyCgSRxz0trjkBCEmwYKKFhDAzHrcCqfXzPU9EsTmwpeTT
- xy35wgM6J5L3aEOqIxa1s8wxzWtqWraSdE2aehA46tODwAbo4VeMtVZdlw3mESwl4oF1
- qwwpAu/Rq5ITLTj7jDCUu9I+QPh6GT7E1sHYRi/1OjCo4WAbcPlToPdXRs/3TkHt3Gqg
- CusA==
-X-Gm-Message-State: AOAM531YgFSzwOaJfQUW99LdNd+0StHgDHrQBFyRM2l6YcAOvqhwEtdQ
- KLL68I296OlwuVlJGrUpJLWeQ3WFmDcm57xdBjg=
-X-Google-Smtp-Source: ABdhPJx9lg3O3sAF2QNHrqcxWsGvQFfQfiAtfif8DZ5B4m8o6/KXkYAJ/QEnjRn5/uYIqbdMP8Au276Y+aqkPaELun0=
-X-Received: by 2002:a1c:5409:: with SMTP id i9mr9522973wmb.146.1637411656042; 
- Sat, 20 Nov 2021 04:34:16 -0800 (PST)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id O0TPCquDua4q for <devel@linuxdriverproject.org>;
+ Sat, 20 Nov 2021 14:34:23 +0000 (UTC)
+X-Greylist: delayed 01:33:33 by SQLgrey-1.8.0
+Received: from mail.biaobiaocha.com (unknown [39.107.156.193])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C53BB4045B
+ for <devel@driverdev.osuosl.org>; Sat, 20 Nov 2021 14:34:22 +0000 (UTC)
+Received: from info.fztojnxd1gwetdgy2mohtnhphh.lx.internal.cloudapp.net
+ (unknown [20.89.23.133])
+ by mail.biaobiaocha.com (Postfix) with ESMTPS id 0D0471034FE;
+ Sat, 20 Nov 2021 20:18:23 +0800 (CST)
 MIME-Version: 1.0
-Received: by 2002:adf:f989:0:0:0:0:0 with HTTP; Sat, 20 Nov 2021 04:34:15
- -0800 (PST)
-From: Mitchell Vivian <duplanmartine36@gmail.com>
-Date: Sat, 20 Nov 2021 12:34:15 +0000
-Message-ID: <CAO-XXH4V+dUpgGpmCiApBhW-zaz1u6CaEOyFDdkQsbAu_nkg3w@mail.gmail.com>
-Subject: Hello
-To: undisclosed-recipients:;
+Content-Description: Mail message body
+Subject: Partnership
+To: Recipients <uff08tech_service1@biaobiaocha.com>
+From: "Ms. Reem A." <uff08tech_service1@biaobiaocha.com>
+Date: Sat, 20 Nov 2021 12:18:21 +0000
+Message-Id: <20211120143424.D7C0240453@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,23 +54,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mitchellvivian01@gamil.com
+Reply-To: reem2018@daum.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello
+Hello Friend,
 
-My name is Miss Vivian Mitchell. I want to donate my fund $ 4.5
-million USD to you on a charity name to help the poor People.
+My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also I want to use this fund to assist Coronavirus Symptoms and Causes.
 
-As soon as I read from you I will give you more details on how to
-achieve this goal and get this fund transferred into your bank
-account.
+I am a single Arab woman and serving as a minister, and there is a limit to my personal income and investment level. For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transferrals of the fund to a third party account for investment purposes which is the reason I contacted you to receive the fund as my partner for investment in your country.
+ 
+The amount is valued at 47,745,533 Euros with a financial institution waiting my instruction for further transferral to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+ 
+If you can handle the fund in a good investment, reply to this email only: reem.alhashimi@yandex.com
 
-Thanks have a nice day,
-Miss.vivian
+
+
+Best Regards,
+Ms. Reem
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
