@@ -1,47 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0A4B457EBB
-	for <lists+driverdev-devel@lfdr.de>; Sat, 20 Nov 2021 15:34:37 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F952457EAC
+	for <lists+driverdev-devel@lfdr.de>; Sat, 20 Nov 2021 14:43:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B025241BF5;
-	Sat, 20 Nov 2021 14:34:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AA71560718;
+	Sat, 20 Nov 2021 13:43:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dZBwDJq_Y8zg; Sat, 20 Nov 2021 14:34:35 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id x9UMeag6nxH0; Sat, 20 Nov 2021 13:43:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1DC314045B;
-	Sat, 20 Nov 2021 14:34:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 06A526065A;
+	Sat, 20 Nov 2021 13:43:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E8AF31BF404
- for <devel@linuxdriverproject.org>; Sat, 20 Nov 2021 14:34:24 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E75381BF348
+ for <devel@linuxdriverproject.org>; Sat, 20 Nov 2021 13:43:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D7C0240453
- for <devel@linuxdriverproject.org>; Sat, 20 Nov 2021 14:34:24 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D2D068104F
+ for <devel@linuxdriverproject.org>; Sat, 20 Nov 2021 13:43:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id O0TPCquDua4q for <devel@linuxdriverproject.org>;
- Sat, 20 Nov 2021 14:34:23 +0000 (UTC)
-X-Greylist: delayed 01:33:33 by SQLgrey-1.8.0
-Received: from mail.biaobiaocha.com (unknown [39.107.156.193])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C53BB4045B
- for <devel@driverdev.osuosl.org>; Sat, 20 Nov 2021 14:34:22 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id N3neRu1Ec3uy for <devel@linuxdriverproject.org>;
+ Sat, 20 Nov 2021 13:43:19 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from hngtrust.com (unknown [124.65.196.6])
+ by smtp1.osuosl.org (Postfix) with ESMTP id BE6368104C
+ for <devel@driverdev.osuosl.org>; Sat, 20 Nov 2021 13:43:18 +0000 (UTC)
 Received: from info.fztojnxd1gwetdgy2mohtnhphh.lx.internal.cloudapp.net
  (unknown [20.89.23.133])
- by mail.biaobiaocha.com (Postfix) with ESMTPS id 0D0471034FE;
- Sat, 20 Nov 2021 20:18:23 +0800 (CST)
+ by all1 (Coremail) with SMTP id AZDVCgAHksSb9ZhhLtIVAA--.31334S720;
+ Sat, 20 Nov 2021 21:43:16 +0800 (CST)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Partnership
-To: Recipients <uff08tech_service1@biaobiaocha.com>
-From: "Ms. Reem A." <uff08tech_service1@biaobiaocha.com>
-Date: Sat, 20 Nov 2021 12:18:21 +0000
-Message-Id: <20211120143424.D7C0240453@smtp4.osuosl.org>
+Subject: Hello
+To: Recipients <hngc_dflz@hngtrust.com>
+From: "Ms. Reem A." <hngc_dflz@hngtrust.com>
+Date: Sat, 20 Nov 2021 13:43:12 +0000
+X-CM-TRANSID: AZDVCgAHksSb9ZhhLtIVAA--.31334S720
+Message-Id: <6198FB74.33C0C3.51395@hngtrust.com>
+Authentication-Results: all1; spf=neutral smtp.mail=hngc_dflz@hngtrust
+	.com;
+X-Coremail-Antispam: 1UD129KBjvJXoW7KF4xtr4rJrykGrykJr1DZFb_yoW8Xr45pr
+ Z5uwnFyF97Jay0kwn7Aw4xZrya9F95Ars8Ga4DGw4vkry5X3WIgr1xtF1j9anruFWfWw4U
+ ZrW7uF1UuF1YvFJanT9S1TB71UUnkl7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UUUUUUUUU==
+X-CM-SenderInfo: 5kqjushgio6qhkqj32xxvwhudrp/
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,6 +82,7 @@ If you can handle the fund in a good investment, reply to this email only: reem.
 
 Best Regards,
 Ms. Reem
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
