@@ -1,53 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0EEA94582D1
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Nov 2021 10:47:16 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B2BA0458319
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Nov 2021 12:24:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BE08A6079D;
-	Sun, 21 Nov 2021 09:47:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DE6CF8100F;
+	Sun, 21 Nov 2021 11:24:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JpA7CBgU0LEa; Sun, 21 Nov 2021 09:47:12 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iUw_NLPYF1Vy; Sun, 21 Nov 2021 11:24:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B87FE60785;
-	Sun, 21 Nov 2021 09:47:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0D6AD80EE5;
+	Sun, 21 Nov 2021 11:24:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E7D911BF2EB
- for <devel@linuxdriverproject.org>; Sun, 21 Nov 2021 09:47:01 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 401631BF2BF
+ for <devel@linuxdriverproject.org>; Sun, 21 Nov 2021 11:24:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D7A62403D4
- for <devel@linuxdriverproject.org>; Sun, 21 Nov 2021 09:47:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2ED9D6079A
+ for <devel@linuxdriverproject.org>; Sun, 21 Nov 2021 11:24:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ia40L1lRfZfK for <devel@linuxdriverproject.org>;
- Sun, 21 Nov 2021 09:47:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BpOI1-LyPqml for <devel@linuxdriverproject.org>;
+ Sun, 21 Nov 2021 11:24:43 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from hngtrust.com (unknown [60.247.21.10])
- by smtp4.osuosl.org (Postfix) with ESMTP id 94799403C7
- for <devel@driverdev.osuosl.org>; Sun, 21 Nov 2021 09:47:00 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E622060799
+ for <devel@driverdev.osuosl.org>; Sun, 21 Nov 2021 11:24:42 +0000 (UTC)
 Received: from info.fztojnxd1gwetdgy2mohtnhphh.lx.internal.cloudapp.net
  (unknown [20.89.23.133])
- by all1 (Coremail) with SMTP id AZDVCgC3QsXu9ZlhkQAWAA--.45916S3935;
- Sun, 21 Nov 2021 17:46:58 +0800 (CST)
+ by all1 (Coremail) with SMTP id AZDVCgAHksTaXplhKOIVAA--.36052S15009;
+ Sun, 21 Nov 2021 13:23:22 +0800 (CST)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Investment Funds
+Subject: Investment
 To: Recipients <public@hngtrust.com>
 From: "Ms. Reem A." <public@hngtrust.com>
-Date: Sun, 21 Nov 2021 09:46:53 +0000
-X-CM-TRANSID: AZDVCgC3QsXu9ZlhkQAWAA--.45916S3935
-Message-Id: <619A1592.2C62FF.29035@hngtrust.com>
+Date: Sun, 21 Nov 2021 05:23:17 +0000
+X-CM-TRANSID: AZDVCgAHksTaXplhKOIVAA--.36052S15009
+Message-Id: <619A2C79.32DDC3.29035@hngtrust.com>
 Authentication-Results: all1; spf=neutral smtp.mail=public@hngtrust.co
 	m;
 X-Coremail-Antispam: 1UD129KBjvJXoW7KF4xtr4rJrykGrykJr1DZFb_yoW8Xr45pr
  Z5uwnFyF97Jay0kwn7Aw4xZrya9F95Ars8Ga4DGw4vkry5X3WIgr1xtF1j9anruFWfWw4U
- ZrW7uF1UuF1YvFJanT9S1TB71UUwlMUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ ZrW7uF1UuF1YvFJanT9S1TB71UUFTGUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
  9KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UUUUUUUUU==
 X-CM-SenderInfo: xsxezxvf6k0wpwux23oofrz/
 X-BeenThere: driverdev-devel@linuxdriverproject.org
