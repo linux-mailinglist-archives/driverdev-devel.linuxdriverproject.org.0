@@ -1,74 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C758145A924
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Nov 2021 17:44:40 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FCA645AA8D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Nov 2021 18:52:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4C18E403A5;
-	Tue, 23 Nov 2021 16:44:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A55B680DFD;
+	Tue, 23 Nov 2021 17:52:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VTrF57VbQY0r; Tue, 23 Nov 2021 16:44:37 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7iA9guq7J1hF; Tue, 23 Nov 2021 17:52:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6CBAA40140;
-	Tue, 23 Nov 2021 16:44:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 30D7E80E0A;
+	Tue, 23 Nov 2021 17:52:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C87CA1BF487
- for <devel@linuxdriverproject.org>; Tue, 23 Nov 2021 16:44:26 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E62381BF29F
+ for <devel@linuxdriverproject.org>; Tue, 23 Nov 2021 17:52:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A91D040204
- for <devel@linuxdriverproject.org>; Tue, 23 Nov 2021 16:44:26 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E39A760A55
+ for <devel@linuxdriverproject.org>; Tue, 23 Nov 2021 17:52:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jComli-735XP for <devel@linuxdriverproject.org>;
- Tue, 23 Nov 2021 16:44:26 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x1031.google.com (mail-pj1-x1031.google.com
- [IPv6:2607:f8b0:4864:20::1031])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1C0FE40140
- for <devel@driverdev.osuosl.org>; Tue, 23 Nov 2021 16:44:25 +0000 (UTC)
-Received: by mail-pj1-x1031.google.com with SMTP id
- j6-20020a17090a588600b001a78a5ce46aso2589133pji.0
- for <devel@driverdev.osuosl.org>; Tue, 23 Nov 2021 08:44:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=7JGyB07y7ZByxWxdqdB4x0U4uTVlvMSKnrd7b8IAjS4=;
- b=TonMh0+ZsFWmkk+V64GV4h3yXf9ckG2DUfn0hGG07m5ctZJ+ys0f0eOp3UJRl3u7fm
- Z1FLzZrEeViAnGEIv1Ulu7fayckyNlhqC6bcP/C4dxxQW5Re0bmfsYPyxdrKnu+ymsyp
- X+65i+yj+zfwBeP/LcVjnESBXFGzOQPu9GH5OVlBXrED+YxDqBX8HSKAU5ENJ3FfRRWT
- ffxGrumUTaRBNbx36h0XeBSHmquuprObdOB2Kuu/Ldc8vv8yXN1+sSJgmSQShDVkL2Jk
- aFT9yEkBaPt1uwWned6Rp/GzVMTZ6aDR6nu+UKUEqx2ClZZr3fjFqDUiOVIacKDupUrX
- Caow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=7JGyB07y7ZByxWxdqdB4x0U4uTVlvMSKnrd7b8IAjS4=;
- b=BguaS4KqiUvpa1lihR8UbIZ+g0SbpoC/YaVbpUkQmwI3ocfFc3dW+dP3VJzGwfqIp5
- m6WhET5TLd/i1rIArBQTYKTPLT9vWYhtzN+UB0xOGYMYbk4kE01MMycDGKU2Dd6elkQe
- 9nt1MV7Ay3o4vMZDSo5MwtwoLrKoCir6UHQ7Jshc8jw5Rc48RMAiijUO352UkSNnP8qz
- gzEbM54t00M0UJzwjbmLvT58eqTbG270HwJoQPxyt+LZElRTIOEiD7mVfNATTvND3zXo
- 4WU1qhXAhOZWW7oMUaHCEZJt9QKJ9FUjHv5soPh4AbuzNjqlBNDiwsRcfG3++9coP/va
- nyvQ==
-X-Gm-Message-State: AOAM5314Jhzu1JjRoD4mpqS/WtOW9coM4o6/H2SbF3a0bpTLi8JZ0SmS
- XFutL3ez4BR6XIlvs3aMApUDRJsH3WXFqFt7YxA=
-X-Google-Smtp-Source: ABdhPJzTAHbAKrGNhYz+cMw3CGykVngfnQLwt1Cc+zP+CBSsVYj/H4TORxmup4XVSUX0eFcN/wwz4NkHdHKwep2ta6M=
-X-Received: by 2002:a17:902:e885:b0:142:1500:d2ba with SMTP id
- w5-20020a170902e88500b001421500d2bamr8443979plg.19.1637685865582; Tue, 23 Nov
- 2021 08:44:25 -0800 (PST)
+Authentication-Results: smtp3.osuosl.org (amavisd-new); dkim=neutral
+ reason="invalid (public key: invalid data)" header.d=simpur.net.bn
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Pi4WIomOSAwy for <devel@linuxdriverproject.org>;
+ Tue, 23 Nov 2021 17:52:17 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail1.simpur.net.bn (mail.simpur.net.bn [202.152.94.149])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CAC7C60A48
+ for <devel@driverdev.osuosl.org>; Tue, 23 Nov 2021 17:52:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=simpur.net.bn; s=mail; h=Reply-To:Date:From:To:Subject:Content-Description:
+ Content-Transfer-Encoding:MIME-Version:Content-Type:Sender:Message-ID:Cc:
+ Content-ID:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:
+ Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=cvg12IYJMyPRD8zLyrOxjUM+1OXbz8vOs/VceyAL25U=; b=SlyhTquobtBijuOt+CVnfuRL6O
+ Asycb5NP8Olzp1ZBtALMdTrePYzS0ZbbhRW9rs76P7Ki3tEYdCejeN+AuJ+syJ9XFMmeQHD4G1bKq
+ VSvmx3GkVW/vUKKOutWkZsTt+9ahiO1UZTLJZKcNCiKcP9bnjx5Zx2qmrqucy4c50kv0=;
+Received: from [161.129.70.174] (helo=[10.162.132.51])
+ by mail1.simpur.net.bn with esmtpsa (TLSv1:DHE-RSA-AES256-SHA:256)
+ (Exim 4.90_1) (envelope-from <Elinev@my.ccsu.edu>)
+ id 1mp4XQ-00052p-HW; Mon, 22 Nov 2021 16:18:57 +0800
 MIME-Version: 1.0
-Received: by 2002:a05:6a10:680b:0:0:0:0 with HTTP; Tue, 23 Nov 2021 08:44:25
- -0800 (PST)
-From: Fiona Hill <grace.desmond2021@gmail.com>
-Date: Tue, 23 Nov 2021 08:44:25 -0800
-Message-ID: <CAOW9D1vrJPo3a4BExjxxxu4V=NXdKvD-dqZhNSNUm4utiuOvMg@mail.gmail.com>
-Subject: 
-To: undisclosed-recipients:;
+Content-Description: Mail message body
+Subject: Kreditangebot bei 2%
+To: Recipients <Elinev@my.ccsu.edu>
+From: "NT"<Elinev@my.ccsu.edu>
+Date: Mon, 22 Nov 2021 09:18:33 +0100
+Message-Id: <20211123175217.E39A760A55@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,16 +65,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: fionahill.usa@hotmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: clmloans9@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
+Ben=F6tigen Sie finanzielle Hilfe? Wir bieten Darlehen zu einem niedrigen Z=
+inssatz von 2% an. Wenn Sie an einer Art von Darlehen interessiert sind, ko=
+ntaktieren Sie uns mit den untenstehenden Details f=FCr weitere Details.
 
+Vollst=E4ndiger Name:
+Adresse/Land:
+Ben=F6tigte Menge:
+Dauer:
+Alter:
+Handy Nummer:
 
-I expect a letter from you i don't know if you receive  my message?
+Ich warte darauf, etwas von dir zu h=F6ren.
+
+Mit freundlichen Gr=FC=DFen
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
