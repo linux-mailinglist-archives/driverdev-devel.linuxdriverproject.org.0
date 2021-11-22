@@ -1,55 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C3444583AD
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Nov 2021 13:59:10 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D2DA458A64
+	for <lists+driverdev-devel@lfdr.de>; Mon, 22 Nov 2021 09:16:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 685CB4043A;
-	Sun, 21 Nov 2021 12:59:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 38EDD404BD;
+	Mon, 22 Nov 2021 08:16:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id anvJ0VijA9zY; Sun, 21 Nov 2021 12:59:06 +0000 (UTC)
+	with ESMTP id 73nzL1cWncbp; Mon, 22 Nov 2021 08:16:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 01DEB4036F;
-	Sun, 21 Nov 2021 12:59:04 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4B2324030F;
+	Mon, 22 Nov 2021 08:16:44 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 293BC1BF2B9
- for <devel@linuxdriverproject.org>; Sun, 21 Nov 2021 12:58:55 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 41A791BF82F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Nov 2021 08:16:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1517D606C0
- for <devel@linuxdriverproject.org>; Sun, 21 Nov 2021 12:58:55 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 30DE480DCE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Nov 2021 08:16:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UcM3maGU5SOh for <devel@linuxdriverproject.org>;
- Sun, 21 Nov 2021 12:58:54 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from hngtrust.com (unknown [60.247.21.10])
- by smtp3.osuosl.org (Postfix) with ESMTP id C652360680
- for <devel@driverdev.osuosl.org>; Sun, 21 Nov 2021 12:58:53 +0000 (UTC)
-Received: from info.fztojnxd1gwetdgy2mohtnhphh.lx.internal.cloudapp.net
- (unknown [20.89.23.133])
- by all1 (Coremail) with SMTP id AZDVCgA3wsTu9ZlhjwAWAA--.44850S10076;
- Sun, 21 Nov 2021 20:58:51 +0800 (CST)
+Authentication-Results: smtp1.osuosl.org (amavisd-new); dkim=neutral
+ reason="invalid (public key: invalid data)" header.d=simpur.net.bn
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KmFC-egO0M6V
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Nov 2021 08:16:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail1.simpur.net.bn (mail.simpur.net.bn [202.152.94.149])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3891F80DBC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 22 Nov 2021 08:16:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=simpur.net.bn; s=mail; h=Reply-To:Date:From:To:Subject:Content-Description:
+ Content-Transfer-Encoding:MIME-Version:Content-Type:Sender:Message-ID:Cc:
+ Content-ID:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:
+ Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=cvg12IYJMyPRD8zLyrOxjUM+1OXbz8vOs/VceyAL25U=; b=CFISVOcRKTRpdJE+vdzbeOcNxD
+ UjMhU3Q9Kw672J+L1Geeiecm0i2etYLwdXwN6FIu0pcGIxy5CYVexUFa4E/Ub9z2zBEXlTZ3rjlA/
+ BuXpjMCqjOiBidi80CywVT29MkHAw10++TupacuxemEa4hBVlo5yHqBJlxIpBtvW+4Ts=;
+Received: from [161.129.70.174] (helo=[10.162.132.51])
+ by mail1.simpur.net.bn with esmtpsa (TLSv1:DHE-RSA-AES256-SHA:256)
+ (Exim 4.90_1) (envelope-from <Elinev@my.ccsu.edu>)
+ id 1mp4Uu-00052q-2M; Mon, 22 Nov 2021 16:16:20 +0800
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Investment Funds
-To: Recipients <public@hngtrust.com>
-From: "Ms. Reem A." <public@hngtrust.com>
-Date: Sun, 21 Nov 2021 12:58:46 +0000
-X-CM-TRANSID: AZDVCgA3wsTu9ZlhjwAWAA--.44850S10076
-Message-Id: <619A428B.3936DC.29035@hngtrust.com>
-Authentication-Results: all1; spf=neutral smtp.mail=public@hngtrust.co
-	m;
-X-Coremail-Antispam: 1UD129KBjvJXoW7KF4xtr4rJrykGrykJr1DZFb_yoW8Xr45pr
- Z5uwnFyF97Jay0kwn7Aw4xZrya9F95Ars8Ga4DGw4vkry5X3WIgr1xtF1j9anruFWfWw4U
- ZrW7uF1UuF1YvFJanT9S1TB71UU76lJqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UUUUUUUUU==
-X-CM-SenderInfo: xsxezxvf6k0wpwux23oofrz/
+Subject: Kreditangebot bei 2%
+To: Recipients <Elinev@my.ccsu.edu>
+From: "NT"<Elinev@my.ccsu.edu>
+Date: Mon, 22 Nov 2021 09:15:57 +0100
+Message-Id: <20211122081635.30DE480DCE@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,27 +69,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reem2018@daum.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: clmloans9@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Friend,
+Ben=F6tigen Sie finanzielle Hilfe? Wir bieten Darlehen zu einem niedrigen Z=
+inssatz von 2% an. Wenn Sie an einer Art von Darlehen interessiert sind, ko=
+ntaktieren Sie uns mit den untenstehenden Details f=FCr weitere Details.
 
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also I want to use this fund to assist Coronavirus Symptoms and Causes.
+Vollst=E4ndiger Name:
+Adresse/Land:
+Ben=F6tigte Menge:
+Dauer:
+Alter:
+Handy Nummer:
 
-I am a single Arab woman and serving as a minister, and there is a limit to my personal income and investment level. For this reason, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transferrals of the fund to a third party account for investment purposes which is the reason I contacted you to receive the fund as my partner for investment in your country.
- 
-The amount is valued at 47,745,533 Euros with a financial institution waiting my instruction for further transferral to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
- 
-If you can handle the fund in a good investment, reply to this email only: reem.alhashimi@yandex.com
+Ich warte darauf, etwas von dir zu h=F6ren.
 
-
-
-Best Regards,
-Ms. Reem
-
+Mit freundlichen Gr=FC=DFen
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
