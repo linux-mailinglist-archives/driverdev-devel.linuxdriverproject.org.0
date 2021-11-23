@@ -1,72 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8DB1445AB61
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Nov 2021 19:39:36 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 09A6645AC1D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Nov 2021 20:18:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5D225403D4;
-	Tue, 23 Nov 2021 18:39:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 026FA60A8A;
+	Tue, 23 Nov 2021 19:17:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rpvt3fqqMLiJ; Tue, 23 Nov 2021 18:39:32 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1AtFmSN2CsNA; Tue, 23 Nov 2021 19:17:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DD94040169;
-	Tue, 23 Nov 2021 18:39:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 693BA60A6A;
+	Tue, 23 Nov 2021 19:17:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 45A461BF39C
- for <devel@linuxdriverproject.org>; Tue, 23 Nov 2021 18:39:21 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 66BBB1BF30C
+ for <devel@linuxdriverproject.org>; Tue, 23 Nov 2021 19:17:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 403AE40169
- for <devel@linuxdriverproject.org>; Tue, 23 Nov 2021 18:39:21 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 54ECE80D67
+ for <devel@linuxdriverproject.org>; Tue, 23 Nov 2021 19:17:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CNvXSarFrDOH for <devel@linuxdriverproject.org>;
- Tue, 23 Nov 2021 18:39:20 +0000 (UTC)
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=google.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oLJV7Xq7LGtH for <devel@linuxdriverproject.org>;
+ Tue, 23 Nov 2021 19:17:45 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-yb1-xb44.google.com (mail-yb1-xb44.google.com
- [IPv6:2607:f8b0:4864:20::b44])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 871FC4010E
- for <devel@driverdev.osuosl.org>; Tue, 23 Nov 2021 18:39:20 +0000 (UTC)
-Received: by mail-yb1-xb44.google.com with SMTP id v138so47018ybb.8
- for <devel@driverdev.osuosl.org>; Tue, 23 Nov 2021 10:39:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=j0JNrkjqaSqbwzj2a3jRGd70xFLI37qdoAkL2CiRb2s=;
- b=pWJpzFJu8cB1CJOfvSWr+mbcM8wcIzpcxy8q7vtpFrxlt7baWw2NMDFjAOJV95WEMl
- XLYyThSWwV09QKhjZWJkCpmqabPbNuX2RKxwqH5IhFJ4/mCNS/0f/HEyU+IH1O7UQecG
- yMWbrZQbmFU3iQGf4/5GQq7GuhgauoZ0Ol/uB21nPSIoXDOb5kx4muD8Ui3bxveXc3Lv
- 1sD6pECA7K0Y2/2r5l78MxsiS0hlLROyL3/TyFP0KnaRIGV5Gxdc47zjhmM4o3mY0b9v
- Vys+nsmsRt2U7avIUdDC7E0JO0UStpiuo69WVUFKkJIcH0+Z0uaIA5FLb4zeHdi7Njlw
- mbtQ==
+Received: from mail-yb1-xb49.google.com (mail-yb1-xb49.google.com
+ [IPv6:2607:f8b0:4864:20::b49])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C265B80D59
+ for <devel@driverdev.osuosl.org>; Tue, 23 Nov 2021 19:17:45 +0000 (UTC)
+Received: by mail-yb1-xb49.google.com with SMTP id
+ v7-20020a25ab87000000b005c2130838beso299932ybi.0
+ for <devel@driverdev.osuosl.org>; Tue, 23 Nov 2021 11:17:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=zzQE2/0f+XLR2kGU4qt01xqekYzdAVEvEi8bWEw/fiU=;
+ b=U9VLJSGPNG+7rafa41zjmw9wu9ecJ3vdtXeEjSNnIQ+f7rJqnguvCqrk9LzwOMRlev
+ w2wxZQmjJ6ioEn1e5XM+amdD2K+Qa/dk4TvGWbLJbC86kw8DADsYoDM+QmAbUdVICFXT
+ Lt1E0e8eBzvZLvUoiWT44NlttEks4eC/wpkOui7kKHCKp62zLCX8LZm4M0TxEuHf9FLd
+ OBKYq3xhWNu8b2mTKPdbte7ETq/d/rViTBAPaj2RrRsfn6PiMtccVuqSedC8Jwny0bUo
+ jDEEe8YrtyR+l4HH6SS5SIHiZzhxpN8GKQnHoVvPZBt2BvMw3L44VJW1/zksBafvr/sA
+ DfNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=j0JNrkjqaSqbwzj2a3jRGd70xFLI37qdoAkL2CiRb2s=;
- b=okjcdFYdVlMMcqAZt1A9qducLUQBANI8TD3Nifx89SqqU668plysA3l5pWAX8rL3Ea
- GxtJ4IgP3qGAZdrVB30MCDakKqdyPXCPQc/aSnwxti6dBmYrtlsZvkdUZsNDihnQMGnU
- W1ZQSCaPgUfIXe4Qmxs+CPeyxhw7MXEpqJIiVhNVq+rlh2WeW2i3352dDWlC/+n3Jc+t
- 93xomnDiEs5AkMcOX7NVBNGyoDtTIvIK7ErGTZL0Xfy4DIlVSV3gxxdUbGr//jG82k0t
- sR6g2UZQ/36j1auHHlbHNRNadrDQjIvA/6uwvitQ/+S63Exek+Rk6XqatC4J+PYBXXuW
- Rk3A==
-X-Gm-Message-State: AOAM533nmILJjrA8ATWBe5gFC3ihOhTry2QyC+1EI7TJPMQAEqjDfVGT
- isECnMo00aLysEKGlaNphoPbt6yIURkzLNMRCw==
-X-Google-Smtp-Source: ABdhPJybpTCuPyKee0oIKgMiI9lnhHydMT6lNVvCnTgORKNacigQYej1wr60d8txdjmP42DLiZDoWrxaF5/wT8UhRxU=
-X-Received: by 2002:a25:4d87:: with SMTP id a129mr8291830ybb.310.1637692759420; 
- Tue, 23 Nov 2021 10:39:19 -0800 (PST)
-MIME-Version: 1.0
-Received: by 2002:a05:7000:240b:0:0:0:0 with HTTP; Tue, 23 Nov 2021 10:39:19
- -0800 (PST)
-From: Mr David Wood <mr.aboubacar.sangoul.2020@gmail.com>
-Date: Tue, 23 Nov 2021 18:39:19 +0000
-Message-ID: <CAA5AzaQAz7r3CQf9zUEMx1K5kcwrHo8x2WX7NtkUh3RVHiq_ug@mail.gmail.com>
-Subject: Greetings,
-To: undisclosed-recipients:;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=zzQE2/0f+XLR2kGU4qt01xqekYzdAVEvEi8bWEw/fiU=;
+ b=5OodeM9wlM6ZyRW6JNtVkgIx9gibJ2qoy8FC7uHVM8zY4abyn6vPeS4nLjgz7E580l
+ YaKHLaPETNEBFhgEsS7aGKtRflOV/3MLBA4BEDUTxYq/8iObZY2l6Pw6Pw3kZUUTf9hU
+ aHnH3GD2X89nEt3y8ha02lrmeKSKS6BZByp6qR+i++M7z7StT7Ejus67d4SBASQPsMQA
+ IhIWbdh3+s2kRkn5kaH+ZoKdWJj/owZf8qLeg9TQjIDnnCqLeXiSDV9lOvpIMQYtM+/O
+ NK4sph+NBP7vRtzZu5FLaVjZ8xAoiCFGE02miRuoBI5h8836H+pfsVYrGogTm6JWzmSJ
+ scdA==
+X-Gm-Message-State: AOAM533anDgfnp82F+jWJG9wVhEm2BEnuyS9z9kyREiEDJMXppStH12Y
+ YaXzchIHBXMUFRbIdjsCHS7Bjx0OYQ==
+X-Google-Smtp-Source: ABdhPJy+cyU6Dc+6JXrCnEQqfJlJt3b9RxYJKK6SdKqPNw613+/4UybKEHZ9OyPwV25x0syYrUtZuA7S7A==
+X-Received: from tkjos-desktop.mtv.corp.google.com
+ ([2620:15c:211:200:ac67:ee23:d7c5:aa3b])
+ (user=tkjos job=sendgmr) by 2002:a25:ada5:: with SMTP id
+ z37mr8996151ybi.93.1637695064659; 
+ Tue, 23 Nov 2021 11:17:44 -0800 (PST)
+Date: Tue, 23 Nov 2021 11:17:34 -0800
+Message-Id: <20211123191737.1296541-1-tkjos@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.34.0.rc2.393.gf8c9666880-goog
+Subject: [PATCH 0/3] binder: Prevent untranslated sender data from being
+ copied to target
+From: Todd Kjos <tkjos@google.com>
+To: tkjos@google.com, gregkh@linuxfoundation.org, christian@brauner.io, 
+ arve@android.com, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+ maco@google.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,42 +86,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: dwood9456@gmail.com
+Cc: joel@joelfernandes.org, kernel-team@android.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-Greetings,
+Binder copies transactions directly from the sender buffer
+to the target buffer and then fixes up BINDER_TYPE_PTR and
+BINDER_TYPE_FDA objects. This means there is a brief time
+when sender pointers and fds are visible to the target
+process.
 
-How are you doing today?
+This series reworks the the sender to target copy to
+avoid leaking any untranslated sender data from being
+visible in the target.
 
-I came across your e-mail contact prior a private search while in need
-of your assistance. My name is  Mr David Wood I work with the
-department of Audit and accounting manager here in the Bank of Africa,
-There is this fund that was  keep in my custody years ago and I need
-your assistance for the transferring  of this fund to your bank
-account for both of us benefit for life time  investment and the
-amount is (US $3,500. Million Dollars).
+Todd Kjos (3):
+  binder: defer copies of pre-patched txn data
+  binder: read pre-translated fds from sender buffer
+  binder: avoid potential data leakage when copying txn
 
-I have every inquiry details to make the bank believe you and release
-the fund to your bank account in within 7 banking working days with
-your full co-operation with me after success Note 40% for you while
-60% for me after success of the transfer of the funds to your bank
-account. Below information is what I need from you so we can be
-reaching each other,
-
-Here is my mobile number email  davidwoodb2538@gmail.com
-
-
-1) Full name ...
-2) Private telephone number....,
-Receiver Country..,
-Occupation..,
-
-Thanks.
-Mr David Wood
+ drivers/android/binder.c | 442 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 387 insertions(+), 55 deletions(-)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
