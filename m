@@ -1,76 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29DFF45C940
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Nov 2021 16:54:45 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 560A345CDAF
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Nov 2021 21:11:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 21C3A615F9;
-	Wed, 24 Nov 2021 15:54:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9208F40922;
+	Wed, 24 Nov 2021 20:11:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rC16cy3BPqbR; Wed, 24 Nov 2021 15:54:42 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Earz4kFbZsP0; Wed, 24 Nov 2021 20:11:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 70EED607D6;
-	Wed, 24 Nov 2021 15:54:41 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1B6A140915;
+	Wed, 24 Nov 2021 20:11:54 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 17B911BF41A
- for <devel@linuxdriverproject.org>; Wed, 24 Nov 2021 15:54:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9C6841BF616
+ for <devel@linuxdriverproject.org>; Wed, 24 Nov 2021 20:11:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 067A540364
- for <devel@linuxdriverproject.org>; Wed, 24 Nov 2021 15:54:31 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9889240915
+ for <devel@linuxdriverproject.org>; Wed, 24 Nov 2021 20:11:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=google.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SBDc7nKOLn3x for <devel@linuxdriverproject.org>;
- Wed, 24 Nov 2021 15:54:29 +0000 (UTC)
+ with ESMTP id xNAqgh2SVk19 for <devel@linuxdriverproject.org>;
+ Wed, 24 Nov 2021 20:11:44 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lj1-x234.google.com (mail-lj1-x234.google.com
- [IPv6:2a00:1450:4864:20::234])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A4DEE40357
- for <devel@driverdev.osuosl.org>; Wed, 24 Nov 2021 15:54:29 +0000 (UTC)
-Received: by mail-lj1-x234.google.com with SMTP id b16so6367643ljf.12
- for <devel@driverdev.osuosl.org>; Wed, 24 Nov 2021 07:54:29 -0800 (PST)
+Received: from mail-lf1-x135.google.com (mail-lf1-x135.google.com
+ [IPv6:2a00:1450:4864:20::135])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E2FCC402BE
+ for <devel@driverdev.osuosl.org>; Wed, 24 Nov 2021 20:11:43 +0000 (UTC)
+Received: by mail-lf1-x135.google.com with SMTP id k37so10327850lfv.3
+ for <devel@driverdev.osuosl.org>; Wed, 24 Nov 2021 12:11:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nSz945VXF1BFd/e4+mBTzOYUtSdM9vLxyacs/e/UXtA=;
- b=HMMh1lFnHVBYVLj5nSyQ7W5ZiPNE2LdReg7O0nYSHcxSI6dDIN3iskk/kch7WCCf6t
- pe8Q/5trZO43uytv3Duw1OTa3HHCyeYJ5MY10uNzsy1QsoG5/GQ5/P43q76Q3aDA9GMA
- J7KDHl8tWX67Zx4WFs2cVZ1CdnwGN4cV5sa1hZ01pb3NqLRylqImWhd8eVBD3JJVBqKO
- pX9AsyRzjae8GHs/wABmK5NDOUEzvWG2UibwE217xS6iJEPPOs+8BB4mdOQTfAchlE2d
- vP6kB30kaO48NrVvPnF5rogpwPryXg5ZwsFzSQb/LTw0t2g9xN0hn37arfZhZnDwSx7D
- kJbw==
+ :cc; bh=p7+nz+d0O2KsjI45EJDPKEH22C4YsE6p71ZBSyN6O34=;
+ b=qE8Z007HokAZKK5WJ3/ggWkoeHTPrnv53wPZA4dOawT7uYth8b4e2Jbbi/eLD+JYAW
+ 8J9yDisDSo9RsSbBenbFP180nKbmZU3mOUW3/ITqiKtJScJ/F7qJ5m14o7hj/rlomqD1
+ DuwBjcUUX0j0Fy0ZZ9qgZXghV3MKmLVmeXUcq+ofPjMRYma2bKVeMkFb5Aehf7cdeOmY
+ MHr1Vi8a3IJwGB4aJ+4yhRTb0Sm/Hoy51XLvHscmwtgocX2MIKIm/27umFtC26RuLLEs
+ wLwyILx3Oy+iP2LjDqYzrFjbE4g2/Hr50Pi5AZvTOlJhokRqgBqca3BYdFCOvkMcYAFp
+ WQpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=nSz945VXF1BFd/e4+mBTzOYUtSdM9vLxyacs/e/UXtA=;
- b=wIKS3raRrOHg7xpfTjW0M8LSH7nQnLtlJ+E4l6dM8yEJhZiiQjnyJTPheNXknEYn9t
- 1oga6oZgQQBs2luOinWoAk5qn5a8K7ohaKh9TUeC4SuAAcu+tvHs9SsTs+pb8aDdyGuZ
- +e1geKW1HxhUFyw3oziy7gfQ7v0oLqE6QkR/njGcpooSfjUWct11/XxnO8GB9SLIFTGf
- szZ2MXe5hn9slSuh61W0UowlffMdWtS55Qv7jopAGK3BjTGg5RP3F9i8+QamtjpCbzt+
- /MNXhOPepkgjPmyprOTX2RSIKP9PbI6RgsYhiYAGnhgNVCea9NCDqrML4bnL04uRoWLx
- rr+w==
-X-Gm-Message-State: AOAM532hqBIK8kS2rB9cYegKKYbjEwEbBnWEg1av5fN+1kU3nNzOQD1C
- A0/s/tNYye4v8Z9bbpnmxdGV6YaDu5s+nUEWAw8J+g==
-X-Google-Smtp-Source: ABdhPJxTZLNHOiJ4eL2gf7D6zLLVMvlKtcLTjtR8pcGzZtlPWJnSIWYCWTowlExoLRv9qU1zcJihPVr0e1wMYCu5GOE=
-X-Received: by 2002:a2e:7616:: with SMTP id r22mr16689430ljc.391.1637769267387; 
- Wed, 24 Nov 2021 07:54:27 -0800 (PST)
+ bh=p7+nz+d0O2KsjI45EJDPKEH22C4YsE6p71ZBSyN6O34=;
+ b=pwpxEsu2qqOn+Z6adMb/MRPWzTmxJPmbLuO7DFDHBeCOWfnTFUTAQC1dZ3h/jwX92j
+ 45OFET4Ybnvag9gz6ciRKupIAbvV26hss5sOLjCgyheCVezbTvUzyM5tLW22Ek4qvQvT
+ aX2dzGecgtLh0rDo4xeMxCh9UYO+ci/vNDtZOlCK7YkK1QJMzlzpQkbHVOaqHiMJw13e
+ kUhtj1J4ev3J6/ft0D2vkfSoMIo6fHH4XgjOYFs2oh6Yj6xOUq95c6DL+cZj4NiANezP
+ JPuCgd1xCkv0Jw/zJPiQKBHGsXDH/51fneJfdTqa+yErHkvDAv1wfrIJZwQJov4CQxWG
+ tS/g==
+X-Gm-Message-State: AOAM532oJHGCJ45qksgb2MFMcgo6ldwofBw269MrPSiXXJ7+b9iP3USr
+ 6iKOC3Q5xfeA+dd85k+wyTxJe1fT14g0/25qyxw9KA==
+X-Google-Smtp-Source: ABdhPJzpcVU/KymiI6k3iLbMjLX31V/8O0TsCpf1d6Lsp75R7AlqzB55CN7UWmmrxpEXx+e27qWr5uwUHh7JKO1vEl8=
+X-Received: by 2002:a19:7417:: with SMTP id v23mr18329865lfe.19.1637784701487; 
+ Wed, 24 Nov 2021 12:11:41 -0800 (PST)
 MIME-Version: 1.0
 References: <20211123191737.1296541-1-tkjos@google.com>
- <YZ3y/aYUeC5HSXk0@kroah.com>
-In-Reply-To: <YZ3y/aYUeC5HSXk0@kroah.com>
+ <20211123191737.1296541-2-tkjos@google.com>
+ <20211124130104.GI6514@kadam>
+In-Reply-To: <20211124130104.GI6514@kadam>
 From: Todd Kjos <tkjos@google.com>
-Date: Wed, 24 Nov 2021 07:54:15 -0800
-Message-ID: <CAHRSSEy527aTTHGeQxD2OiagxTtmyV2kZ5Rfh8JxWA84LxYT-Q@mail.gmail.com>
-Subject: Re: [PATCH 0/3] binder: Prevent untranslated sender data from being
- copied to target
-To: Greg KH <gregkh@linuxfoundation.org>
+Date: Wed, 24 Nov 2021 12:11:29 -0800
+Message-ID: <CAHRSSEzKbKuuoUi1DkH6e7mbUSawt0Zi591TsiYBt1b9j69CFQ@mail.gmail.com>
+Subject: Re: [PATCH 1/3] binder: avoid potential data leakage when copying txn
+To: Dan Carpenter <dan.carpenter@oracle.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,45 +81,73 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, arve@android.com,
- maco@google.com, joel@joelfernandes.org, kernel-team@android.com,
- christian@brauner.io
+Cc: devel@driverdev.osuosl.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, arve@android.com, maco@google.com,
+ joel@joelfernandes.org, kernel-team@android.com, christian@brauner.io
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Nov 24, 2021 at 12:08 AM Greg KH <gregkh@linuxfoundation.org> wrote:
+On Wed, Nov 24, 2021 at 5:01 AM Dan Carpenter <dan.carpenter@oracle.com> wrote:
 >
-> On Tue, Nov 23, 2021 at 11:17:34AM -0800, Todd Kjos wrote:
-> > Binder copies transactions directly from the sender buffer
-> > to the target buffer and then fixes up BINDER_TYPE_PTR and
-> > BINDER_TYPE_FDA objects. This means there is a brief time
-> > when sender pointers and fds are visible to the target
-> > process.
+> On Tue, Nov 23, 2021 at 11:17:35AM -0800, Todd Kjos wrote:
+> > Transactions are copied from the sender to the target
+> > first and objects like BINDER_TYPE_PTR and BINDER_TYPE_FDA
+> > are then fixed up. This means there is a short period where
+> > the sender's version of these objects are visible to the
+> > target prior to the fixups.
 > >
-> > This series reworks the the sender to target copy to
-> > avoid leaking any untranslated sender data from being
-> > visible in the target.
+> > Instead of copying all of the data first, copy data only
+> > after any needed fixups have been applied.
 > >
-> > Todd Kjos (3):
-> >   binder: defer copies of pre-patched txn data
-> >   binder: read pre-translated fds from sender buffer
-> >   binder: avoid potential data leakage when copying txn
-> >
-> >  drivers/android/binder.c | 442 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++----------------
-> >  1 file changed, 387 insertions(+), 55 deletions(-)
 >
-> Are these changes needed now in 5.16-final and also in stable kernels?
->
-> Or can they wait until 5.17-rc1?
+> This patch needs a fixes tag.
 
-They can wait until 5.17-rc1.
+Sure, it goes back to the original submission, so I'll add:
+
+Fixes: 457b9a6f09f0 ("Staging: android: add binder driver")
 
 >
-> thanks,
+> So this patch basically fixes the simple part of the info leak and
+> patch 3 fixes the complicated part.  Have I understood that correctly?
+
+Yes.
+
 >
-> greg k-h
+> > @@ -2956,7 +2984,11 @@ static void binder_transaction(struct binder_proc *proc,
+> >                       }
+> >                       ret = binder_translate_fd_array(fda, parent, t, thread,
+> >                                                       in_reply_to);
+> > -                     if (ret < 0) {
+> > +                     if (ret < 0 ||
+> > +                         binder_alloc_copy_to_buffer(&target_proc->alloc,
+> > +                                                     t->buffer,
+> > +                                                     object_offset,
+> > +                                                     fda, sizeof(*fda))) {
+> >                               return_error = BR_FAILED_REPLY;
+> >                               return_error_param = ret;
+>
+> "ret" is not a negative error code if binder_translate_fd_array()
+> succeeds but binder_alloc_copy_to_buffer() fails.
+
+You are right. return_error_param would be 0 in this case. Will
+capture the return of binder_alloc_copy_to_buffer(). Thanks.
+
+>
+>
+> >                               return_error_line = __LINE__;
+> > @@ -3028,6 +3060,19 @@ static void binder_transaction(struct binder_proc *proc,
+> >                       goto err_bad_object_type;
+> >               }
+> >       }
+>
+> regards,
+> dan carpenter
+>
+> --
+> To unsubscribe from this group and stop receiving emails from it, send an email to kernel-team+unsubscribe@android.com.
+>
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
