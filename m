@@ -1,167 +1,170 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3678D45BDAF
-	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Nov 2021 13:38:04 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F2D2345BE60
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Nov 2021 13:44:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 05C5040242;
-	Wed, 24 Nov 2021 12:38:02 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1CBF081A64;
+	Wed, 24 Nov 2021 12:44:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VgEDUXEKwZ2y; Wed, 24 Nov 2021 12:38:01 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1srrxaW-vJec; Wed, 24 Nov 2021 12:44:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F09EB4018A;
-	Wed, 24 Nov 2021 12:37:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8677980CD8;
+	Wed, 24 Nov 2021 12:44:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A69051BF426
- for <devel@linuxdriverproject.org>; Wed, 24 Nov 2021 12:37:50 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0C2DD1BF426
+ for <devel@linuxdriverproject.org>; Wed, 24 Nov 2021 12:44:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 951DA60787
- for <devel@linuxdriverproject.org>; Wed, 24 Nov 2021 12:37:50 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 06F51401C0
+ for <devel@linuxdriverproject.org>; Wed, 24 Nov 2021 12:44:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=oracle.com header.b="oa9fLBxN";
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=oracle.com header.b="JrD1n54R";
  dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com
- header.b="uzs2xi5e"
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NCTGYhwYANVi for <devel@linuxdriverproject.org>;
- Wed, 24 Nov 2021 12:37:49 +0000 (UTC)
+ header.b="MIEh2Tyd"
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pdoaFK1Lk7AB for <devel@linuxdriverproject.org>;
+ Wed, 24 Nov 2021 12:44:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com
  [205.220.165.32])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6038C60618
- for <devel@driverdev.osuosl.org>; Wed, 24 Nov 2021 12:37:49 +0000 (UTC)
-Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1AOBiuCt012791; 
- Wed, 24 Nov 2021 12:37:46 GMT
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 990774014D
+ for <devel@driverdev.osuosl.org>; Wed, 24 Nov 2021 12:44:11 +0000 (UTC)
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1AOBNfbF006304; 
+ Wed, 24 Nov 2021 12:44:08 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=date : from : to : cc
  : subject : message-id : references : content-type : in-reply-to :
  mime-version; s=corp-2021-07-09;
- bh=Ym4++ZCw/gkzLFQtOP4Wlh9kdGrbT3nkzEcPoGt18nI=;
- b=oa9fLBxNz4S/QS2yHmhDLjGV3rbeZfdqVGnMosCxVOqpAMYVPw+UPMjo0+7nmUcFn0mg
- SPA8Qf96x22DJeZqmKrkLAfi0LYZ9hUIrpmnipOZ7jaG9JpYTkXRMnM0ygbwbjvdU+Gj
- 0L1LQk955kWRv6+ykaXrhduPioNYcWV0ZCyVkfphD7xMHZYwDHFHPBJ8krm1/PUuNUSk
- GmST8y99egdWbu+XNBf3NN9SaGvZk3S6C8l+/X8LIwp5eIjrI54xpjrf4Jq03Mx7KIq8
- jTa6+qrP6KqHOYfERUME79qst6PkhWjCgvcnifBhEz2QiNSRCc1EtYpWIc/h3RSXIGWE Qw== 
+ bh=GxO4TSafaDLgYTDnDTQKYfzhJmNj6eUKOuXGQiS4ZlQ=;
+ b=JrD1n54R1b7sxm7l5s9//ex4RmBHbAY9f/WHkZE/Ao2SjLerppbH7F6iknFQ7wWxjH9N
+ OaQYwJmayufQOC2rMn4bm/ziH42/FVxwZZ36L79laXh+r36NGD2Kkudw5cs0kV8zY8Lg
+ ocqUSHfcH/p8lMUHcizdRId9YW8gGht+n3tMl4MrN1L/rPNtskxEpTEqwjvIb6BlAUIi
+ 1mvOaF/D+zjSxbMA7sodASy1AKLaO0yi8Fw9yzt0Y9q3mnuyf1kAETnaE4yDLLMNa/JC
+ /e6mPlfLjGrlctgnkudIqpq7uOFPzXqodMTSRlE2PJLl6K6PCom3uWO+K/8vCUNHJnFo cA== 
 Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by mx0b-00069f02.pphosted.com with ESMTP id 3chj7g15en-1
+ by mx0b-00069f02.pphosted.com with ESMTP id 3cg5gjgm19-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 24 Nov 2021 12:37:45 +0000
+ Wed, 24 Nov 2021 12:44:08 +0000
 Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1AOCV598065973;
- Wed, 24 Nov 2021 12:37:44 GMT
-Received: from nam10-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam10lp2104.outbound.protection.outlook.com [104.47.58.104])
- by aserp3030.oracle.com with ESMTP id 3ceq2fx5nq-1
+ by aserp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1AOCepDn114042;
+ Wed, 24 Nov 2021 12:43:51 GMT
+Received: from nam10-bn7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10lp2104.outbound.protection.outlook.com [104.47.70.104])
+ by aserp3030.oracle.com with ESMTP id 3ceq2fxetu-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 24 Nov 2021 12:37:43 +0000
+ Wed, 24 Nov 2021 12:43:51 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ab61FHXgLO/Y3VQ/0zCH+DTZn3BP9r2aCA/vHsn63bNv8NLdAdiysTqyNWDcUJjFEr4sZzlvMZQ65iAHupG2PldNfqdWN9VVzntUqbq8HpvKzpG6b9pVbQW7cxUckrx+Z3wEeawcHRbJd/9RKK6t/W/IUM+kwBse98gaRwVV1FjInvo6hgwepGoX5hrdjif6AXPYcqLud5YkcfE4j963COZQ6YIk+NTrjxfy9SA61xz5PvQ6Mz5DbCwZjWMsekDytkeZjc2EEk/UxsJgDq+u80qSgfOnoE5nC3OW1OMjei1Uhs/d9s/0s/PFDZUcQcn30yVnPgS7kuVkKJqthNK3Ww==
+ b=bJE+km87/izYDQ7rJr9K9VPbnKmF40Y/vsR0+9gIvD3ybBpVGMSMmspKLLykDXogSdTxk7gj9txeEPaGgOMWRlWIB+8veFAwTuxTmVRxG8L0tVCEy786juNsybsIkTdBqglSyEfMtATrv3d8ro/kunpQAQqOMgDwCfwoEPRi7M8EZW9a5iDzoNJiKSj+He4e5B7SpvnqGclPrWYg6q/USzpNgA5TbJUF6K4qi+JZctpxj6/dugK/reG7XMkNn23u1HaZ+JInqK4iHc54gF4vJ46VSVm+iPgEfQ0oqawclqNQYIieFpZEXfDlFtHh0Fijl7Lz9kALPSAn+jhochUv0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Ym4++ZCw/gkzLFQtOP4Wlh9kdGrbT3nkzEcPoGt18nI=;
- b=hbm2haUjl0M2nNwxIX+NY8taEFB+RN6flmXYW23W7zmrrjOJACT4xpnVD9hRRGsEIXZVndiBHjdQ7S0hYhCvPfciuz0pPV7omz5ezvS9K3CvjJQFpFQ/56CBaAJBtBuIsLqddl0vKqdwMMBI73sk8I4gMt02UYyNuoWoRCU7weKEXAnS5kdrfmI581Yg/wplN7tDP1aVMjDOjfNu32rP5LHgv2iKzy9uA/3bG8JRHECwRvYvnrd8pyv3KXeRrCLe22yIYgVfTDfJVkogG7IQdUkhic3hjUcwjXgTdBw7L8jIlt1OETTHCeIS83SQviYlhLWi6ti6HKG+JBjd98wIew==
+ bh=GxO4TSafaDLgYTDnDTQKYfzhJmNj6eUKOuXGQiS4ZlQ=;
+ b=m+/56sMSOw8daMZj7VpjEYj8dRFMRVuWvpHojSUn7A6gaDUZbU9bDYBBkITM698LtmWQfxOzSlV7fXO/7+qJ/wyFQrD6cs4pjfrS1et4SXsRNAmnDJKkiSITKGQZEQzaW+BnWPj2+1SC0A8ODoZ0kuxuSFoxs3NfGh+PJzQPvdmE5M7WS1bzcfJQU21KWKGRwbUP/4W4Ml3cG8LZwR570+ntxCR5xydg7tClfVs6UhW4fbV9W25wVMPoDJWY0K3e37aK8yo57YtR0xPtDljrvO84pqmj1pq6OjXAXs8OF24tcq15wpB4SSHiW3/3/PRJ52wN3YkDsb/1NNmgm5bMbg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
  dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ym4++ZCw/gkzLFQtOP4Wlh9kdGrbT3nkzEcPoGt18nI=;
- b=uzs2xi5edI7btJBKodACGXCKn8xFxHGjkllayebV/WbcFuMqihjf8Ojvjdah2Qhl4hon/U0rbawtoUvr1AMuFYGio5hhZ0qECRNJLXv+Qo9mOd7x4vP6lYmIgLZia5wsbm+UobAx2E9ab1CKIm6JLSkQ923ro3h+BtDor2l1zEw=
-Authentication-Results: google.com; dkim=none (message not signed)
- header.d=none;google.com; dmarc=none action=none header.from=oracle.com;
+ bh=GxO4TSafaDLgYTDnDTQKYfzhJmNj6eUKOuXGQiS4ZlQ=;
+ b=MIEh2TydM+MjOBlWqyr6eMpV0HRbJdqxXzzfpPYGUS0UBt0jaYb57TNvIgInQHamB9pT0m7MWRHp1caFT+a0dIGSwpDeijYXdf6p7GQXacuSjb6peL70kJ8F7LPLfOjlewZeR8E3tuXJwmmS5BUNe0YjC9bn+a8yLZ9Dd6FRbz0=
 Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by MW5PR10MB5713.namprd10.prod.outlook.com
- (2603:10b6:303:19a::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4523.15; Wed, 24 Nov
- 2021 12:37:41 +0000
+ (2603:10b6:301:2d::28) by MWHPR1001MB2256.namprd10.prod.outlook.com
+ (2603:10b6:301:31::26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.20; Wed, 24 Nov
+ 2021 12:43:35 +0000
 Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
  ([fe80::7194:c377:36cc:d9f0]) by MWHPR1001MB2365.namprd10.prod.outlook.com
  ([fe80::7194:c377:36cc:d9f0%6]) with mapi id 15.20.4734.022; Wed, 24 Nov 2021
- 12:37:41 +0000
-Date: Wed, 24 Nov 2021 15:37:19 +0300
+ 12:43:35 +0000
+Date: Wed, 24 Nov 2021 15:43:13 +0300
 From: Dan Carpenter <dan.carpenter@oracle.com>
 To: Todd Kjos <tkjos@google.com>
-Subject: Re: [PATCH 2/3] binder: read pre-translated fds from sender buffer
-Message-ID: <20211124123719.GG6514@kadam>
+Subject: Re: [PATCH 3/3] binder: defer copies of pre-patched txn data
+Message-ID: <20211124124313.GH6514@kadam>
 References: <20211123191737.1296541-1-tkjos@google.com>
- <20211123191737.1296541-3-tkjos@google.com>
+ <20211123191737.1296541-4-tkjos@google.com>
 Content-Disposition: inline
-In-Reply-To: <20211123191737.1296541-3-tkjos@google.com>
+In-Reply-To: <20211123191737.1296541-4-tkjos@google.com>
 User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: JNAP275CA0031.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4d::7)
+X-ClientProxiedBy: JNAP275CA0066.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4f::10)
  To MWHPR1001MB2365.namprd10.prod.outlook.com
  (2603:10b6:301:2d::28)
 MIME-Version: 1.0
 Received: from kadam (102.222.70.114) by
- JNAP275CA0031.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4d::7) with Microsoft
+ JNAP275CA0066.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4f::10) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4713.21 via Frontend Transport; Wed, 24 Nov 2021 12:37:34 +0000
+ 15.20.4734.20 via Frontend Transport; Wed, 24 Nov 2021 12:43:28 +0000
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 137593b9-b649-4611-73ba-08d9af473466
-X-MS-TrafficTypeDiagnostic: MW5PR10MB5713:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MW5PR10MB57139F25894861B912DDC5C88E619@MW5PR10MB5713.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
+X-MS-Office365-Filtering-Correlation-Id: 53352a7a-7be6-42a8-2556-08d9af4807b7
+X-MS-TrafficTypeDiagnostic: MWHPR1001MB2256:
+X-Microsoft-Antispam-PRVS: <MWHPR1001MB2256278D03D589D25D27E6D28E619@MWHPR1001MB2256.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2201;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 4O5LPeLoODlN+pqmiDCn80pq+/3KqQ/M/imAjOLOJ/Yb07I4FvoMABJSK58dP1KJ2TcTmzwc2CsDkpE0U2e6LJ5qNiaewW0OorwzyltLlIUhukzPqcQNL46ggAjWJ9E7KXt/UYNLgpj4KZJGlUfX/WbJV/YU+WDkuuWCvbeSxTD1KSHWTwf3fqidnZU6Awd2ccOCnPKnnfelEt5tVR8ufInD2L/awcj8SXvsUv4xkXDU/8DpZrOAeZm42f7oimfmIsHrPc8z9D8A0iNuiWn4oKXy+OwmXniOc+LVMz1BYzppmomd7szTaa4XGpXMmuk/HGv4MeukyEcdsL4YAe3fPigm+fj0Qn5rjXMYv9lzWFkYt0D1Ov7S/hBWe/cdvvcXkOx7yuOuWtYRfO9cueAl+GFnXrk9V4iqA2r1ekg7pIAyBBW+Pcguv51KCojnG5qJ1HRw+MLMAZmoJ/AVmF/axbkBrR3EXuGwcgTPxIv0JW2QvBTuFuB2HO3+w6OheoeXuuWeOOwlrKuJy5k7NXbldWrzUVvxl1cSZ6mM6NIIxCHeSE0K5jpwOviP6Z8l+4/3RGDOcwsntKtmzWAwEC751N2NB8V/WZJ+2tZNVdtfyOOk1BoB3/ImXzib6N8lRbrKu8zuWx4Oxw77AJERBQ3Hz+7YKi3wG+zhTdb9gzBFAbpoB6n7j7B405yhDMMFgTKR0C7Z0+YOdpps4xllaQuiTg==
+X-Microsoft-Antispam-Message-Info: YxiLPwl/IalLUCujWcDKVWW3RXagesuExoueqJUtwXlYonUSuawQON99Z7hlCKOM5+Ib6Da3EpvXT03MfP8KIU1y8i0gKfDox3gC2xkri9zt6ZFZ1Oa+ct9VfWetI1t11NgAPPHc9LiojVqHntfwTgNxEATPBwRjpg7PGqT8JmOP96T7XSZC0lFrSjKea9eMhIdytn+lHAJYPWl4xagFWmROZJCtl2hc5xp8qsPNbGVDrfyirK69JAcrtFrgPAovhLI2Nm15Sn2qEwhjO8xy+1pCzsOTbJb+IRZFdPbWOPqFujJS71hO3SYEg5k+8KpcFQC45eJLZbVXH+XhyA1ICsQmdPWk5vHH9I0VD51T+hhpOsKj5NahtS6i8KMSJOTTH3Mir1QpOlGxvSReto7thvMbVaJ8NlZMR+t8W5ZMs5BY2XOxOiT1WYQqedSbPqVXikUrEM3Lysagv2a6zW1cot5bGhqLD+3AY4ACUPfLRONgt95xAz/DtZpw/ccE3kpUdab2hKVaa+Cm8/ZS0CopeWxBroA5Q+PbnYKbG6mzTMNTdxIDcc7fT/yKZoiJb1fG/zSi93dMh8Sh3vjmfuUWKavNreLfAaTZAPfz/tIsiOUfaEZQMkdnSIwgyLLBCL1YVQp+lKZQqmx1zQb8d1B1cF3VUemzOMHcgNoZ303knYjcb9uubLPP64nmcPEqPHDjNIe7pHnO+ZcdM0faVGGhEw==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(4326008)(9576002)(508600001)(8936002)(8676002)(6666004)(26005)(316002)(44832011)(956004)(83380400001)(9686003)(5660300002)(86362001)(6916009)(1076003)(2906002)(55016003)(6496006)(52116002)(33716001)(38350700002)(38100700002)(186003)(66556008)(66946007)(66476007)(33656002);
+ SFS:(366004)(86362001)(4744005)(9576002)(8936002)(508600001)(66476007)(4326008)(5660300002)(66946007)(33656002)(83380400001)(316002)(956004)(26005)(1076003)(6496006)(38350700002)(8676002)(186003)(6666004)(6916009)(55016003)(52116002)(2906002)(66556008)(38100700002)(9686003)(44832011)(33716001);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?lEpU+7Q7MGEpsxrc8mmY+6u6848HocHl6fvz9v22Dizfin81FOIrBVtw5JI9?=
- =?us-ascii?Q?BY78dezeWjG4kK9skJbHkdqxfJFq4kBD1w3/b8+ftctSkUK0b7I/XHTrT89k?=
- =?us-ascii?Q?Z9RIXwAddiP3Dux1k+vR40rfKMlUPVOddHs3rWiMMNB+Yjde2+XWbUzpEGTh?=
- =?us-ascii?Q?DoBIbxVqnuh0xPI04lOyAv5/fnEH5vvGP+mWI7fZTMdcCf05Fb4TFMXwuA0u?=
- =?us-ascii?Q?50UGtg63ejn3WxOj/M67DHTNidl5AfbUiYquxN2eNYmkbyn1acFSfxtHjurD?=
- =?us-ascii?Q?g8av0bYLCuGZzkv1LzGx/njWjRsIomWoBj4UbdcfSsnuwB7Ka2x6wkOP9r2q?=
- =?us-ascii?Q?nCJfXMX4Bx4J/mKzqGEKVTOrzFnGS0aVPld1Dv8IWgdDsW1pfZsGvwuC6nGn?=
- =?us-ascii?Q?c+iuOnZ2+N2BpPW2wkPl86fBurAle/NO/xKcBsLCDcdFi2AFNT3mGyp1K+df?=
- =?us-ascii?Q?TqI+kfnCdF5cw+5OS1Vcwm+ANaNUSvkbc4zjPgd+WOShu1KcXFTLCt4KW2sa?=
- =?us-ascii?Q?NcRflDUfvrRWU0PKfVv6ebuqfWqemnoAHXxgVlkzee8vSkuQ6yClPhM/VB1S?=
- =?us-ascii?Q?EYepSuRBp3DntRlCV+dma0hv2YVWdhHcR4EzebIOZ2iVmkTdEP66u3sX+Tz+?=
- =?us-ascii?Q?iyQYG9i+3Fd2HGs5Dj719tDr08HBoMAYRMEwMiEt0z4+CEv4V87rYrgho7M+?=
- =?us-ascii?Q?OzMLlZ7ffoQpGqA2odEdUQ9EEzxsfni43RFbQvLSoNcYB5nHDpWYTVJ+2CbO?=
- =?us-ascii?Q?IPEXHjyMLbrWkJGUuHHuLaSMJNFEG/l3ntT33yaX0QVPuHVk/ATuG3+UMes4?=
- =?us-ascii?Q?Ld69Z/jj+WyxXIzDu0uthAtCGy+6czP0gvndNvgNn1T2UBtOiviu5KRGenIO?=
- =?us-ascii?Q?3cE1bKghhOscawQKfZXH19tJ4CLsT/pWp7KyKj/RwO/euS6yKZ772SH9pMeu?=
- =?us-ascii?Q?CO0SlKd9ODvKRXkON+sjVqguzmUjvexnOVa6wN30qEhDSAbTNKyZ55XcpNsV?=
- =?us-ascii?Q?4CwBXWcF/NHRLW5XFKT6mq2Y0m/vPc3QKrYlqkxtjOh8lcrwinzZFS195UQH?=
- =?us-ascii?Q?mcZFpFdNq/gi5KIwB9dDOHN+aJutDAOsHvXSF6lzIBmLTybm5+vZtL2a/ZQi?=
- =?us-ascii?Q?QGlJACb4ixbdZJq9+4unjm7IGxjWARZINtJ6/HDJDh7AZsCKjOz1yvkXy7id?=
- =?us-ascii?Q?3fov8xojNHjd/7+Iaptd7P+PHwvzqATRlDWE0WADOykdIoWYVC3r1LeMUrEw?=
- =?us-ascii?Q?CdLcRO7egPCRf6Wz0lSIBMUNJ1ExszPfDpugFEnQt7EHMH8J8J1ZrRl/7WRs?=
- =?us-ascii?Q?14lTvLDnl4N1uOY3Gto8+DWR?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?4oGq9YMj4NJjScWJpq3qfhg7ZdjVRWdAPMjulzR4S0pt9SSM0UYTMsvLkxWW?=
+ =?us-ascii?Q?uCyRzWxmV3M7ebAx5JSsgzhAjVR+iujjfSnTRpzfsoYIsiqo3EXT6ikD0pfj?=
+ =?us-ascii?Q?vfxN1Ha0IdlH4Pr1U8k+9XoEs2xeKThQyw29s/qMGgtB7d4thJ76fB9O5PmL?=
+ =?us-ascii?Q?1zTtySq7EYdFpLvOzYUCcX9Fj/di1wIXqRBNs1WuLPXvwtdM1JAPehL+vGvI?=
+ =?us-ascii?Q?4a4XhkXRsyObSI/cyqVOA2dBRZWF3IuqnVjl5RuaSIjhK72ZxP5tvampr9hj?=
+ =?us-ascii?Q?iYkda05D27/nFAkHblkui4nEOvRq+A8L4/Y/SYcmK73MynVk7Yiu3IybpY9+?=
+ =?us-ascii?Q?NSNyvyauyZVWh8DtnqlaL+gXiQ1iEY661G0bPtF331e4DPonwalAYBe4TUu3?=
+ =?us-ascii?Q?PrdhD3C7fXNhsuaVTNSnthIeh7YJWYrzRBX4gmwQ7l+FOQGAYw0Zwa+5NJ3m?=
+ =?us-ascii?Q?OYjvN80HSPd6ytRg7rP59tCsZgVgKkuFqEcQAvqPcDWmokG3sRZFZr92EXo7?=
+ =?us-ascii?Q?0yNhwsjkEe89mmcGGg3Q/AsOJ3O3y1Ob4oBQKU/PbFczbBbMvgQzsh1P2Nsa?=
+ =?us-ascii?Q?VjJu5ZzwXO7TJw+CrOgj0Hg4/Cb3vpW1y/kfOiH8MyRUpDzJ45oKVaEKXt5G?=
+ =?us-ascii?Q?xvbhsns+m4/WD/oF20fi0lDdAVatJhXt0Kz9Ccz1us1vGbLQAMY4l4c1BsRU?=
+ =?us-ascii?Q?zHdRtpK5yUplD3dL/Y5sbxNvAMHxXRSVlQCiW11tro56TJpbmJWtyRiEbDj4?=
+ =?us-ascii?Q?ysg5AYUzkTwQPADb2Y5Ob8bYFab+dQrGKlQGov/vu7DaPJskinVT300/DDhJ?=
+ =?us-ascii?Q?d4EKxj/mSKBDJZZSKcSYOiY/G2j6PKBruUPiihQd4NMho0GM/CvmF2rgsjLb?=
+ =?us-ascii?Q?qDp3wAPsf83JG9BSZYZbdXHLzes1AjZ9gxrxFJ92biFFfMQCl+SGnBFw6aTQ?=
+ =?us-ascii?Q?PCmoFDwimgrvP1vf+b9+vzsjqVU98IZq4f5xfAQozbHl68o2K/LgLnhQP3My?=
+ =?us-ascii?Q?ICWM7COonULkZU9BmdEvsS2ruf5t22SOpbJVxUaTYuY1E3C6Ju1cAsaeSXAW?=
+ =?us-ascii?Q?WE8v0N2tU53O12CMnTmbd2vUatz2e8j/zEl5UE8aINH9IBd/11UxXVdiFCIx?=
+ =?us-ascii?Q?wOym5222s2sWzny5aFZNUQ8q3yQXpZz5vdLUKXuRue4/q4SEz4Ixl3z5Pmi1?=
+ =?us-ascii?Q?S0eZ6FyVa/OmOxdCz0+j7BNgUbJzWmVcTUegsxmMOUtNQ6zwzCf/6x+SWGJC?=
+ =?us-ascii?Q?oHtQLJ0lGM+EGwItzZowo7LiySEDJb1GLFvRPZ93w4S23RLY/xSxVbnSmgkf?=
+ =?us-ascii?Q?coq9GCSE1RCKrm+fmgmnIsIj4UPMLGdFOp2NbmMjWvcDVp7jOHtThIMCh+38?=
+ =?us-ascii?Q?NhqGChn3Wv3qaYpMahq0y3r6vQx1pRbRLu1/8Y/pxWTHTp6xaO7uPDtL62Wr?=
+ =?us-ascii?Q?JOMDhsAEPYUPH4RraNUmhw/grx26qXEFyHLwNsZ2BWAj/bfAuQJB6l0UOMQ9?=
+ =?us-ascii?Q?DLqT2XaDed4oN0WPN53M/KOe5pjjsaQ2c8pQXt7UucYBwmJb0chU7S7VGudf?=
+ =?us-ascii?Q?p5EIryVmy1dKvYelsnGl4mUTZI5/yqAXTv46h8hmoBywRb/qLBh0KvTWLSVp?=
+ =?us-ascii?Q?x7IYHLVZeub7vPiXN93N/zz/E/Wf4fhFKAjVAoFGBhOdUcykSedN4suruOIO?=
+ =?us-ascii?Q?lvGQn/oQ3nB++bZwclYm3Qb1t1E=3D?=
 X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 137593b9-b649-4611-73ba-08d9af473466
+X-MS-Exchange-CrossTenant-Network-Message-Id: 53352a7a-7be6-42a8-2556-08d9af4807b7
 X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Nov 2021 12:37:40.9972 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Nov 2021 12:43:35.6332 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: yWqk6smELWL39y5ytPrFKAiq93Q3nphwt2CTNvou5fnmcMITCB2sM5Q4wd6jfY8liSSVOVqufOVtBTC7v4fM8VZdPkfDF1ryrCpCp6ZHtaM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR10MB5713
+X-MS-Exchange-CrossTenant-UserPrincipalName: 9M1oTZFuKEX+hWy2xn36zSxUK/u3G692wVYdndq01IFRzoxr2djkvHjvWsk0AlEgD51aM0ckAmTsS4vvHRu0gVhLCAbqyCcQO/3Y5/UTvtc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1001MB2256
 X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10177
  signatures=668683
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
  adultscore=0 spamscore=0
- bulkscore=0 suspectscore=0 mlxscore=0 mlxlogscore=999 phishscore=0
+ bulkscore=0 suspectscore=0 mlxscore=0 mlxlogscore=872 phishscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
- definitions=main-2111240070
-X-Proofpoint-ORIG-GUID: NiSeaDl8giGX16aNUfCEap0djvomBQAp
-X-Proofpoint-GUID: NiSeaDl8giGX16aNUfCEap0djvomBQAp
+ definitions=main-2111240071
+X-Proofpoint-GUID: e4aixtxB-8ByQd1qxuKkf6Aaz1E1-Z-P
+X-Proofpoint-ORIG-GUID: e4aixtxB-8ByQd1qxuKkf6Aaz1E1-Z-P
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -182,141 +185,34 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Nov 23, 2021 at 11:17:36AM -0800, Todd Kjos wrote:
-> Since we are no longer going to copy the pre-fixup
-> data from the target buffer, we need to read
-> pre-translated FD array information from the source
-> buffer.
-> 
-
-The commit message is really misleading.  From the commit message it
-sounds like the commit is changing runtime but it's not.  What I want is
-a commit message like this:
-
-  This patch is to prepare for an up coming patch where we read
-  pre-translated fds from the sender buffer and translate them before
-  copying them to the target.  It does not change run time.
-
-  The patch adds two new parameters to binder_translate_fd_array() to
-  hold the sender buffer and sender buffer parent.  These parameters let
-  us call copy_from_user() directly instead of using
-  binder_alloc_copy_from_buffer() which is a cleanup.  Also the patch
-  adds some new alignment checks.  Previously the alignment checks would
-  have been done in a different place, but this lets us print more
-  useful error messages.
-
-
-> Signed-off-by: Todd Kjos <tkjos@google.com>
-> ---
->  drivers/android/binder.c | 40 +++++++++++++++++++++++++++++++++-------
->  1 file changed, 33 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-> index 571d3c203557..2300fa8e09d5 100644
-> --- a/drivers/android/binder.c
-> +++ b/drivers/android/binder.c
-> @@ -2234,15 +2234,17 @@ static int binder_translate_fd(u32 fd, binder_size_t fd_offset,
->  }
->  
->  static int binder_translate_fd_array(struct binder_fd_array_object *fda,
-> +				     const void __user *u,
-
-I wish we could use sender/target terminology everywhere.  Please change
-every place that has "u" or "user" to either "sender" or "target" as
-appropriate.
-
->  				     struct binder_buffer_object *parent,
-> +				     struct binder_buffer_object *uparent,
-                                                                  ^
-
->  				     struct binder_transaction *t,
->  				     struct binder_thread *thread,
->  				     struct binder_transaction *in_reply_to)
->  {
->  	binder_size_t fdi, fd_buf_size;
->  	binder_size_t fda_offset;
-> +	const void __user *ufda_base;
-                           ^
-
->  	struct binder_proc *proc = thread->proc;
-> -	struct binder_proc *target_proc = t->to_proc;
->  
->  	fd_buf_size = sizeof(u32) * fda->num_fds;
->  	if (fda->num_fds >= SIZE_MAX / sizeof(u32)) {
-> @@ -2266,7 +2268,10 @@ static int binder_translate_fd_array(struct binder_fd_array_object *fda,
->  	 */>  	fda_offset = (parent->buffer - (uintptr_t)t->buffer->user_data) +
->  		fda->parent_offset;
-> -	if (!IS_ALIGNED((unsigned long)fda_offset, sizeof(u32))) {
-> +	ufda_base = (void __user *)uparent->buffer + fda->parent_offset;
+On Tue, Nov 23, 2021 at 11:17:37AM -0800, Todd Kjos wrote:
+> +static int binder_do_deferred_txn_copies(struct binder_alloc *alloc,
+> +					 struct binder_buffer *buffer,
+> +					 struct list_head *sgc_head,
+> +					 struct list_head *pf_head)
+> +{
+> +	int ret = 0;
+> +	struct list_head *entry, *tmp;
+> +	struct binder_ptr_fixup *pf =
+> +		list_first_entry_or_null(pf_head, struct binder_ptr_fixup,
+> +					 node);
 > +
-> +	if (!IS_ALIGNED((unsigned long)fda_offset, sizeof(u32)) ||
-> +	    !IS_ALIGNED((unsigned long)ufda_base, sizeof(u32))) {
->  		binder_user_error("%d:%d parent offset not aligned correctly.\n",
->  				  proc->pid, thread->pid);
->  		return -EINVAL;
-> @@ -2275,10 +2280,9 @@ static int binder_translate_fd_array(struct binder_fd_array_object *fda,
->  		u32 fd;
->  		int ret;
->  		binder_size_t offset = fda_offset + fdi * sizeof(fd);
-> +		binder_size_t uoffset = fdi * sizeof(fd);
->  
-> -		ret = binder_alloc_copy_from_buffer(&target_proc->alloc,
-> -						    &fd, t->buffer,
-> -						    offset, sizeof(fd));
-> +		ret = copy_from_user(&fd, ufda_base + uoffset, sizeof(fd));
->  		if (!ret)
->  			ret = binder_translate_fd(fd, offset, t, thread,
->  						  in_reply_to);
-
-This is something from the original code but if the copy_from_user()
-fails, then we just skip that "fd" without informing the user.  It feels
-wrong.  Does that not lead to a bug in the target app?
+> +	list_for_each_safe(entry, tmp, sgc_head) {
+        ^^^^^^^^^^^^^^^^^^^
+All the list_for_each() loops can be changed to list_for_each_entry().
 
 
-> @@ -2951,6 +2955,8 @@ static void binder_transaction(struct binder_proc *proc,
->  		case BINDER_TYPE_FDA: {
->  			struct binder_object ptr_object;
->  			binder_size_t parent_offset;
-> +			struct binder_object user_object;
-> +			size_t user_parent_size;
->  			struct binder_fd_array_object *fda =
->  				to_binder_fd_array_object(hdr);
->  			size_t num_valid = (buffer_offset - off_start_offset) /
-> @@ -2982,8 +2988,28 @@ static void binder_transaction(struct binder_proc *proc,
->  				return_error_line = __LINE__;
->  				goto err_bad_parent;
->  			}
-> -			ret = binder_translate_fd_array(fda, parent, t, thread,
-> -							in_reply_to);
-> +
-> +			/*
-> +			 * We need to read the user version of the parent
-> +			 * object to get the original user offset
-> +			 */
-> +			user_parent_size =
-> +				binder_get_object(proc, user_buffer, t->buffer,
-> +						  parent_offset, &user_object);
-> +			if (user_parent_size != sizeof(user_object.bbo)) {
-> +				binder_user_error("%d:%d invalid ptr object size: %lld vs %lld\n",
-
-Apparently %lld breaks the build on my .config.  The correct format for
-size_t is %zd.
-
-> +						  proc->pid, thread->pid,
-> +						  user_parent_size,
-> +						  sizeof(user_object.bbo));
-> +				return_error = BR_FAILED_REPLY;
-> +				return_error_param = -EINVAL;
-> +				return_error_line = __LINE__;
-> +				goto err_bad_parent;
-> +			}
-> +			ret = binder_translate_fd_array(fda, user_buffer,
-> +							parent,
-> +							&user_object.bbo, t,
-> +							thread, in_reply_to);
+	list_for_each_entry_safe(sgc, tmp, sgc_head, node) {
 
 regards,
 dan carpenter
+
+
+
+> +		size_t bytes_copied = 0;
+> +		struct binder_sg_copy *sgc =
+> +			container_of(entry, struct binder_sg_copy, node);
+> +
 
 _______________________________________________
 devel mailing list
