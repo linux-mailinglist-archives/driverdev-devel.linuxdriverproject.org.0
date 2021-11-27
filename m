@@ -1,62 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2DBF45FE97
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Nov 2021 13:35:19 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 90F824601D2
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Nov 2021 22:58:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 527E84035F;
-	Sat, 27 Nov 2021 12:35:18 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5BD6560669;
+	Sat, 27 Nov 2021 21:58:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e1GladIyQ1_u; Sat, 27 Nov 2021 12:35:15 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QPoxECc02xXp; Sat, 27 Nov 2021 21:58:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 185E64035D;
-	Sat, 27 Nov 2021 12:35:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B7A7B6061C;
+	Sat, 27 Nov 2021 21:58:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 619231BF2BB
- for <devel@linuxdriverproject.org>; Sat, 27 Nov 2021 12:35:03 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 205711BF5A7
+ for <devel@linuxdriverproject.org>; Sat, 27 Nov 2021 21:58:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4E5E44035D
- for <devel@linuxdriverproject.org>; Sat, 27 Nov 2021 12:35:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0BBF580EF6
+ for <devel@linuxdriverproject.org>; Sat, 27 Nov 2021 21:58:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iDgwmHmdBLEy for <devel@linuxdriverproject.org>;
- Sat, 27 Nov 2021 12:35:01 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2FD204035F
- for <devel@driverdev.osuosl.org>; Sat, 27 Nov 2021 12:35:01 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 5A8E360B74;
- Sat, 27 Nov 2021 12:35:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DE64C53FBF;
- Sat, 27 Nov 2021 12:34:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1638016499;
- bh=jb/ZlziW/ARZpgwcr87flKEhHIOp3WDNdhQFwQJ353Y=;
- h=Subject:To:Cc:From:Date:In-Reply-To:From;
- b=VL++J1UXCVGU62yQ1Uzt2jnTEahNtJdqDGfxPlDqJNkWxeJIWLZy/2gx0UDfnpsf4
- wp6tFNEUVkbd+Im6psYcJd/nvkAFNOrhyOdxP5Z0lmJw5qqS1NVSOq84DO9cGdSap0
- M7+df2yAF0OU9N2OnjxqGx4LsTISpquptc4z/b8Y=
-Subject: Patch "staging: ion: Prevent incorrect reference counting behavour"
- has been added to the 4.9-stable tree
-To: arve@android.com, dan.carpenter@oracle.com, devel@driverdev.osuosl.org,
- gregkh@linuxfoundation.org, labbott@redhat.com, lee.jones@linaro.org,
- riandrews@android.com, sumit.semwal@linaro.org
-From: <gregkh@linuxfoundation.org>
-Date: Sat, 27 Nov 2021 13:34:57 +0100
-In-Reply-To: <20211126103335.880816-1-lee.jones@linaro.org>
-Message-ID: <163801649718287@kroah.com>
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cfiK3fxpDsVC for <devel@linuxdriverproject.org>;
+ Sat, 27 Nov 2021 21:58:13 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-io1-xd30.google.com (mail-io1-xd30.google.com
+ [IPv6:2607:f8b0:4864:20::d30])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 71E0680D93
+ for <devel@driverdev.osuosl.org>; Sat, 27 Nov 2021 21:58:13 +0000 (UTC)
+Received: by mail-io1-xd30.google.com with SMTP id b187so4888934iof.11
+ for <devel@driverdev.osuosl.org>; Sat, 27 Nov 2021 13:58:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=Qxa1VPbD4iRACjuGwaVkmeOrXfoNdyRVdr9Wp5Nogdk=;
+ b=kueSHKcavW4CcPseo17g04hfZhpPz2gTp4YRYfMe6g57dU3w6nSAZulP06Stg/SI3m
+ O6b4S/259g59nnQk800UYCmhyr5qWOBhRZG4Egs7ZQoD4mLI4t44tR/s2qoIFCMsZr2q
+ FjWTuSRJnHdLgIbuIawYjNSomYXz2tQoR45rnDf+WEPO+CC6HiNWCSX4B2HnmcEeTKms
+ xDcJTDYrvmNT7fukFaKPE8l+v5IRjArPGPtTzV9OwXIB1QbRT7gRYARD0Ut5Hs6gTt43
+ KBwk4VHLLelcnSBunCHDLqtv1qhA//j6ynziOqtNhTa7+q66xCp+QLON2ztReQdHBMWa
+ 6qgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=Qxa1VPbD4iRACjuGwaVkmeOrXfoNdyRVdr9Wp5Nogdk=;
+ b=ep55eolvFkAZ+OtBec9JcwPkHjZM9eW1462QqgUVqqYfkOOOtNnQoCct5uWb4glvi8
+ ooad0Hgv2dAkmfXCsxejQwZDoDp8CjlKHUeGlTTrl1X/q3BN61cxiqTquPTBJ7p10oYw
+ ptRcEOtExID2WtstAhCYgpmKF4rtuFf5MknYf6G5I/nHbkWbw9aC99ibWFHf76M5JXco
+ V3/4Cb0ttdcO7D0TGkv6IPRSXGgQLLmKcEohcpTtb7yBM8hmiQznqDhPlM4BQYQQJZmK
+ FzZ+0z/kAozRl/gt0EQGWweDbuPfv1C2IeQPxHG7I1pV9UwspkzBE4l1bqd0jhtTS71g
+ U/2A==
+X-Gm-Message-State: AOAM530GI0At9Hd8rJVYm9iUjwmRKMsWUXWaDa7YaZxs6H3Fq84zF34f
+ /i6oI4sjm5ZgwssiXAAWwcMq8zvcpZB8OObcfp4=
+X-Google-Smtp-Source: ABdhPJxvQnxH7w+0myNO0a7KV7603fA8PNzvbelTehWkM5vAzybRBUKRzBAAi9kPa8wIgjHIfVTDArOVmKLTXN44fok=
+X-Received: by 2002:a05:6602:2b83:: with SMTP id
+ r3mr50364430iov.8.1638050292537; 
+ Sat, 27 Nov 2021 13:58:12 -0800 (PST)
 MIME-Version: 1.0
-X-stable: commit
-X-Patchwork-Hint: ignore 
+Received: by 2002:a4f:2408:0:0:0:0:0 with HTTP; Sat, 27 Nov 2021 13:58:12
+ -0800 (PST)
+From: "Miss.Mmamie Shimirah" <nspector205@gmail.com>
+Date: Sat, 27 Nov 2021 13:58:12 -0800
+Message-ID: <CABJaD1gdaEX34noi0akZ0CfV1GDdskTWFXjPphzCXbJq9hxTjA@mail.gmail.com>
+Subject: Regarding Of My Late Father's Fund $10,200,000,
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,76 +82,36 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: stable-commits@vger.kernel.org
+Reply-To: mmamie_shimirah@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+dear,
 
-This is a note to let you know that I've just added the patch titled
+I am Mmamie Shimirah from FreeTown Capital of Sierra Leone, Time of
+opposed to the government of President Ahmad Tejan Kebbah the
+ex-leader since 21st November 2005 But I am current residing in Calavi
+Benin due to war of my country, my mother killed on 04/01/2002 for
+Sierra Leone civilian war and I am only child for my family bad news
+that my father passed away on 25/11/2018. During the war my father
+made a lot of money through the illegal sales of Diamonds to the tune
+of $10,200,000.
 
-    staging: ion: Prevent incorrect reference counting behavour
+This money is currently and secretly kept in ECOWAS security company
+in Porto-Novo Benin, but because of the political turmoil which still
+exists in Africa, I can not invest the money by myself, hence am
+soliciting your help to help me take these funds into your custody for
+invest.
 
-to the 4.9-stable tree which can be found at:
-    http://www.kernel.org/git/?p=linux/kernel/git/stable/stable-queue.git;a=summary
+I want to add here that if agreed 35% that's $3,570,000 of the total
+worth of the fund will be yours minus your total expenses incurred
+during the clearing of the fund in Porto Novo Benin.
 
-The filename of the patch is:
-     staging-ion-prevent-incorrect-reference-counting-behavour.patch
-and it can be found in the queue-4.9 subdirectory.
-
-If you, or anyone else, feels it should not be added to the stable tree,
-please let <stable@vger.kernel.org> know about it.
-
-
-From lee.jones@linaro.org  Sat Nov 27 12:56:17 2021
-From: Lee Jones <lee.jones@linaro.org>
-Date: Fri, 26 Nov 2021 10:33:35 +0000
-Subject: staging: ion: Prevent incorrect reference counting behavour
-To: lee.jones@linaro.org
-Cc: devel@driverdev.osuosl.org, arve@android.com, stable@vger.kernel.org, riandrews@android.com, labbott@redhat.com, sumit.semwal@linaro.org, Dan Carpenter <dan.carpenter@oracle.com>
-Message-ID: <20211126103335.880816-1-lee.jones@linaro.org>
-
-From: Lee Jones <lee.jones@linaro.org>
-
-Supply additional checks in order to prevent unexpected results.
-
-Fixes: b892bf75b2034 ("ion: Switch ion to use dma-buf")
-Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
-Signed-off-by: Lee Jones <lee.jones@linaro.org>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
----
- drivers/staging/android/ion/ion.c |    6 ++++++
- 1 file changed, 6 insertions(+)
-
---- a/drivers/staging/android/ion/ion.c
-+++ b/drivers/staging/android/ion/ion.c
-@@ -489,6 +489,9 @@ static void *ion_buffer_kmap_get(struct
- 	void *vaddr;
- 
- 	if (buffer->kmap_cnt) {
-+		if (buffer->kmap_cnt == INT_MAX)
-+			return ERR_PTR(-EOVERFLOW);
-+
- 		buffer->kmap_cnt++;
- 		return buffer->vaddr;
- 	}
-@@ -509,6 +512,9 @@ static void *ion_handle_kmap_get(struct
- 	void *vaddr;
- 
- 	if (handle->kmap_cnt) {
-+		if (handle->kmap_cnt == INT_MAX)
-+			return ERR_PTR(-EOVERFLOW);
-+
- 		handle->kmap_cnt++;
- 		return buffer->vaddr;
- 	}
-
-
-Patches currently in stable-queue which might be from lee.jones@linaro.org are
-
-queue-4.9/staging-ion-prevent-incorrect-reference-counting-behavour.patch
+I would like to invest on heavy duty agricultural equipment and earth
+moving machines to enable me go into a full scale mechanized farming.
+l wait to hear from you
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
