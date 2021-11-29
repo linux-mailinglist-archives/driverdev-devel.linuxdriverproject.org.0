@@ -1,74 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 89919460659
-	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Nov 2021 14:07:40 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D57F3460BA9
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Nov 2021 01:29:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7F06E4015C;
-	Sun, 28 Nov 2021 13:07:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 13EA4410A8;
+	Mon, 29 Nov 2021 00:29:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BzFn1G5TcHjQ; Sun, 28 Nov 2021 13:07:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VygFBgxTC8rS; Mon, 29 Nov 2021 00:29:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C016D40019;
-	Sun, 28 Nov 2021 13:07:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 63559409FD;
+	Mon, 29 Nov 2021 00:29:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E4F671BF2CF
- for <devel@linuxdriverproject.org>; Sun, 28 Nov 2021 13:07:23 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 47AA01BF96B
+ for <devel@linuxdriverproject.org>; Mon, 29 Nov 2021 00:28:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D349C606EE
- for <devel@linuxdriverproject.org>; Sun, 28 Nov 2021 13:07:23 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 34976402AA
+ for <devel@linuxdriverproject.org>; Mon, 29 Nov 2021 00:28:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VKZSg1LU3jW6 for <devel@linuxdriverproject.org>;
- Sun, 28 Nov 2021 13:07:23 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AhcNd3AELjbH for <devel@linuxdriverproject.org>;
+ Mon, 29 Nov 2021 00:28:51 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com
- [IPv6:2a00:1450:4864:20::52c])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 322C960673
- for <devel@driverdev.osuosl.org>; Sun, 28 Nov 2021 13:07:23 +0000 (UTC)
-Received: by mail-ed1-x52c.google.com with SMTP id o20so59772322eds.10
- for <devel@driverdev.osuosl.org>; Sun, 28 Nov 2021 05:07:23 -0800 (PST)
+Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com
+ [IPv6:2a00:1450:4864:20::341])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 48FD7400BF
+ for <devel@driverdev.osuosl.org>; Mon, 29 Nov 2021 00:28:51 +0000 (UTC)
+Received: by mail-wm1-x341.google.com with SMTP id
+ o19-20020a1c7513000000b0033a93202467so11200197wmc.2
+ for <devel@driverdev.osuosl.org>; Sun, 28 Nov 2021 16:28:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:sender:from:date:message-id:subject:to;
- bh=W6HF8+a6zTsY4rv6PtkRLbmbCGOOj5493cLaXYHrusE=;
- b=WnP0Z0puYoMTR7HPpDaNWb309gQNQQpYzLcUn7B7amILMybZghH60ydb1XBvjoxSZE
- HEIoMwmryjEAgGscTIufkE6W4KO0bu7Y+8fstNM6YUII0kAoSbjBeBUniCtY/d/exBia
- 06clXf1oImmnBhyb8HtURkiIhTRMbGb3WsUtWZ6W52ACHeG5+EQHFQoEmgHluthjQKub
- PcsgxD5y9hPkmUz1LcjVBp3DyEjZTqA2cqNZDqXqKkM6l1uIF2HPppxqtcg3lNEbv5Nu
- bz5xGlzA/xBl5q/XrfNnCLxFkFQVbmGyoNTmHK6IU6V/Li0oar5L8oIQw8X0qRQm8CO5
- zr7A==
+ bh=PIeTQDgX4DdJU+utbnrKItP+hY/ENzxpPET9Xz8CjHA=;
+ b=jJUHgBlYsLjq5p0e2UecMIRa637xSAxfnSya64YZ6bA2GinNm9x09+sW1569Pm2vJF
+ lmHy9I0qlrtWnuAP/ZOb9WJ4nJ3Yli/1GtJb9Z/m/92OGCKzzp9WDQZEU1L/mtbevMEB
+ L7a6S1RT5TKdqo2M6CwYQ0QiRYOEWC9Nejg7zMeA6EWYd8Iq/0xXHau0FVAj45LhRjOk
+ siZQ/rG9qfKfIU6yOxGsvAnhioZfKZB5P/nc50PuIc28sl85bsQLU/pA+PbhcUxWczbX
+ PwWodyfJpeY+dbfQYrAwwBP014G5t2wI7D32sA9rqz3VjVQVrHh5gPEtXn92nPqx+ota
+ s5cQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
- :to; bh=W6HF8+a6zTsY4rv6PtkRLbmbCGOOj5493cLaXYHrusE=;
- b=6TKdGL4Sh05tCcVBeIcORNXdjhSWSsR0qJMNPaGaA4LUdy+azAvs/ku/XQz30TuXDv
- b8qosPKLcRtgSGTw7OGXx5mXhAHfxjtj5ysUgpIlI5wZx3ocgFcnLcVvFKc9w2oqrnG9
- l9IEcnUswXyeT3YbqcW8AXoITE/DS0/rjvLTSvm/Lhaug0f9Td/xE+BWXi/yFsmdkb3R
- jvIsWfu8KZcOz+GhgouCHngXuGx5pJMYNASB1Pbko92i0J4bKDGtLTN6r2Fejl0Zp5uW
- BpzEVGeh5wyZRTeYreTD6ahXUur3JY5WayFptopsuHrv21If2/7/f+QdWwxW94BK/AFD
- q7aw==
-X-Gm-Message-State: AOAM531ASPBEZR1GKLBWmuxOT9fOrel4jd4H2DT2aKysqCCK8Lo4g+6o
- rvM2f5yO43EIapaSpiJuFrsc0OTaLVFRY0k01TA=
-X-Google-Smtp-Source: ABdhPJw9kqhNk0L4hRnTf+c/JP01j/4hxQaZFqcfYc+uH9V1jggROpBJyNGPX9JG2+U1b7opEJnqHekeAiska8sLlkg=
-X-Received: by 2002:a17:906:4c9:: with SMTP id
- g9mr51919271eja.172.1638104841057; 
- Sun, 28 Nov 2021 05:07:21 -0800 (PST)
+ :to; bh=PIeTQDgX4DdJU+utbnrKItP+hY/ENzxpPET9Xz8CjHA=;
+ b=BuJy/u1+eqWT2o7I4IUBGUFrCub1oblpxz4jMCU+Y0KQGlXEO7O9vYJA+Bfq2H7NQM
+ 6EuFzrv5gx4FTd4TfBzc+UDiXhgf9sNTxJYdFD6w5HrW+mWe6W6G5eocDB0hfYq6FrIY
+ 5oWM7nL76m7ySxgxQk2AuTr29UQubWu0uo+ii6zKLDhmye0VTet6J+Is+4PD5eYv/IBF
+ XPXRl9wx9UqowX2T9QEniYYZNY2RwKlElL3VylRCs7ijwRX86lYJyzkT0xRHRkJaeoHB
+ 5+c6bc2sp6CUNqloaph/iXhXn8qNmruVrnk1wv36qg5VtjTGlGsT8h/f+OuAYP6uwsCZ
+ FLaA==
+X-Gm-Message-State: AOAM530GXyr42iIDkj8pe2oWcFxr5JAUOuN8Yq2W2KkOZ9I8jC6IOanU
+ dxmfoUFIDrzbowVNYKtg5RFPmrQYUAk8H88zsU0=
+X-Google-Smtp-Source: ABdhPJwszEs9mBfb3jyJyXY93CwUmG7QN9LRdlr4gJD7zong1QrxL+EIsgasJIWHXOdYn6lER7ZMBESVxn8hovuST+s=
+X-Received: by 2002:a1c:4b0b:: with SMTP id y11mr32885454wma.9.1638145729159; 
+ Sun, 28 Nov 2021 16:28:49 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a54:30c5:0:0:0:0:0 with HTTP; Sun, 28 Nov 2021 05:07:20
+Received: by 2002:adf:f0c4:0:0:0:0:0 with HTTP; Sun, 28 Nov 2021 16:28:48
  -0800 (PST)
-From: Mrs Carlsen Monika <carlsen.monika@gmail.com>
-Date: Sun, 28 Nov 2021 14:07:20 +0100
-X-Google-Sender-Auth: 5Lo7yyTK_UHW5gBOWxAMqtayrFI
-Message-ID: <CANWjYXiN76xmY85BDXmg+BOL1stuj3saB9MEXtZtdCT1veUapw@mail.gmail.com>
-Subject: Hello
+From: "mrs.sophia.robin" <mrs.sophiar.robin424@gmail.com>
+Date: Mon, 29 Nov 2021 01:28:48 +0100
+X-Google-Sender-Auth: JjlOCGTTyo7nPrR2ComeEgc3DS8
+Message-ID: <CAERXgTnOw-yvnq1Te7b0RfB83RNh0mE8OMr2KLdCf8bmUGe3rA@mail.gmail.com>
+Subject: Hello My Dearest
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -87,32 +87,39 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-  I sent this mail praying it will found you in a good condition of
-health,since I myself are in a very critical health condition in which
-I sleep every night without knowing if I may be alive to see the next
-day.I'm Mrs.Monika John Carlsen,wife of late Mr John Carlsen, a widow
-suffering from long time illness. I have some funds I inherited from
-my late husband,the sum of($11.000.000,eleven million dollars)my
-Doctor told me recently that I have serious sickness  which is cancer
-problem. What disturbs me most is my stroke sickness.Having known my
-condition, I decided to donate this fund to a good person that will
-utilize it the way i am going to instruct herein.I need a very honest
-and God fearing person who can claim this money and use it for Charity
-works,for orphanages,widows and also build schools for less privileges
-that will be named after my late husband if possible and to promote
-the word of God and the effort that the house of God is maintained.
+im Mrs.Sophia Robin,a citizen of the united state of America,I work at
+HSBC Bank in Milan Italy,as Telex Manager charge of wire transfer
+department,i'm contacting you personally for investment assistance and
+a long term business relationship in your Country.i'm contacting you
+for an important and  urgent business transaction,I want the bank to
+transfer the money left by Dr.Cheng Chao,a Chinese Politician who
+died,March 17th 2020,without any trace of his family members,he used
+our bank to launder money overseas through the help of their Political
+advisers.and most of the funds which they transferred out of the
+shores of China, were gold and oil money that was supposed to have
+been used to develop the continent.
 
-I do not want a situation where this money will be used in an ungodly
-manner. That's why I'm taking this decision. I'm not afraid of death
-so I know where I'm going. I accept this decision because I do not
-have any child who will inherit this money after I die. Please I want
-your sincerely and urgent answer to know if you will be able to
-execute this project, and I will give you more information on how the
-fund will be transferred to your bank account. I am waiting for your
-reply.
+Can you invest this money and also help the poor? The amount value at
+$15.5million Dollars($US15,500,000),left in his account still
+unclaimed,if you know that you are capable to invest this fund into
+any profitable business in your country kindly send me your details
+information as listed below to enable me draft you an application form
+of claim along with the deposit certificate which you are going to
+fill with your bank account detail necessary and contact the HSBC Bank
+in Italy for immediate transfer of the Amounted sum into your bank
+account direct. Percentage share will be 60,for me/40,for you.
 
-Best Regards,
-Mrs.Monika John Carlsen
+(1) Your full name.....................
+(2) Your address................
+(3) Your Nationality...............
+(4) Your Age / Sex.....................
+(5) Your  Occupation.......................
+(6) Your marital status........................
+(7) Your direct telephone number..................
+(8) Your photo..................
+
+Thanks with my best regards.Mrs.Sophia Robin,
+Telex Manager Milan Italy,(H.S.B.C)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
