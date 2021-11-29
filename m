@@ -1,56 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A2434620CF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Nov 2021 20:44:38 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88C904621F6
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Nov 2021 21:14:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 627CA4042F;
-	Mon, 29 Nov 2021 19:44:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1D03C40449;
+	Mon, 29 Nov 2021 20:14:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Yg1k10X0o-Kz; Mon, 29 Nov 2021 19:44:34 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VB1Z15UKKpnY; Mon, 29 Nov 2021 20:14:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DF14040401;
-	Mon, 29 Nov 2021 19:44:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B62FC403EB;
+	Mon, 29 Nov 2021 20:14:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BFB9E1BF3A3
- for <devel@linuxdriverproject.org>; Mon, 29 Nov 2021 19:44:22 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4E0AD1BF390
+ for <devel@linuxdriverproject.org>; Mon, 29 Nov 2021 20:13:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AF3DE60A84
- for <devel@linuxdriverproject.org>; Mon, 29 Nov 2021 19:44:22 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 39F4E40417
+ for <devel@linuxdriverproject.org>; Mon, 29 Nov 2021 20:13:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7rr26NEjFm6c for <devel@linuxdriverproject.org>;
- Mon, 29 Nov 2021 19:44:21 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9A05A60A4E
- for <devel@driverdev.osuosl.org>; Mon, 29 Nov 2021 19:44:21 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6200,9189,10183"; a="235885831"
-X-IronPort-AV: E=Sophos;i="5.87,273,1631602800"; d="scan'208";a="235885831"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Nov 2021 11:44:20 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,273,1631602800"; d="scan'208";a="540115887"
-Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
- by orsmga001.jf.intel.com with ESMTP; 29 Nov 2021 11:44:18 -0800
-Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mrmZW-000CH8-4G; Mon, 29 Nov 2021 19:44:18 +0000
-Date: Tue, 30 Nov 2021 03:43:55 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS
- 24cd719712aeb5b5e4562f37ef5f7ba33040b59f
-Message-ID: <61a52d7b.3Lyf8tZg8EJYQSKb%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id U7XngIGmK1rD for <devel@linuxdriverproject.org>;
+ Mon, 29 Nov 2021 20:13:55 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ed1-x534.google.com (mail-ed1-x534.google.com
+ [IPv6:2a00:1450:4864:20::534])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D106C401F7
+ for <devel@driverdev.osuosl.org>; Mon, 29 Nov 2021 20:13:54 +0000 (UTC)
+Received: by mail-ed1-x534.google.com with SMTP id v1so76958773edx.2
+ for <devel@driverdev.osuosl.org>; Mon, 29 Nov 2021 12:13:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=fi42U/2jTpx4BPkiel0v3NDRtd9dtjlNx3pYLf3HPek=;
+ b=Cp149vpQac3NuayyncHRgVWAufJASCZmcQmiC8wTWF0gcADkg5OetNokGVSlko2U5V
+ wu95zs4NSFS4Zef9eezxIxUyrXSwLKbBAQod5t5j8q51tKRtYf+I9C35RQ7He8CjsOGj
+ ozkkesanML5s0T/kTEQASrhj+zaxg1f4wLkX3jQMn6XnmzMl8ITbNwUe2xP6Ewk887Bg
+ bPoCn8Y9V5lj9fxOnFBtkW/ITEqk0Ng7XMbBVgSAsb8aYsMu85Bt71uJpF1a7A1SuXIp
+ 1EzEILVjPx8v9ChnM9Gioa5D+yd/pSWgze8wHFEQM7jbT5DHLUkfT5lg1Sw0/K69pveF
+ 25tw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=fi42U/2jTpx4BPkiel0v3NDRtd9dtjlNx3pYLf3HPek=;
+ b=iBNaaLhAiFBuWEko4b/ZZ72mgsBkTqI50QqdXmXZJpvJLo5Aud3RrVvKVf+z/ffxot
+ dgC0IU5RtGiW3W6BB4cLLYYfn9ypZ0VC5H7zNLRJzw1RuBUhkZtWbo6qowOOsKJCzEXV
+ AAJtQgo5F9RGZ5DT4bCBKvi8ih5Iq10Jn5NcmZ3lncZOwEruWKGwHw+CY4+etMq6ShXZ
+ aE9nkOvk1iIIH9D3Acg/+mDoAIx9lFAOn9QluKyD0KW+k9FdYiuFM1nycYITvxRcsmsL
+ 4sRXvH90RSX7AvOdszw0w95ojc79cwxbhKyrfawbnff9KGRqBwAiEWEYJvEelf+LMJcL
+ kHlA==
+X-Gm-Message-State: AOAM531mzyzBa6LpHDy0y0FQa1H1HVwPbSgaS94cXLQdaWpIb23jK0/I
+ p5gKM9nCfFAhro1yiGodZ410d0NjezeH5YVf/Gs=
+X-Google-Smtp-Source: ABdhPJxomutnM/GNTZ/jmxeBw2lYvQB2BV61no9JvRS0JnbN0CtivcJkvJEPPqNAW7GUtFRbx/PgSf3ryQizZel12NE=
+X-Received: by 2002:a05:6402:3595:: with SMTP id
+ y21mr78068428edc.332.1638216832876; 
+ Mon, 29 Nov 2021 12:13:52 -0800 (PST)
 MIME-Version: 1.0
+References: <20210407073534.376722-1-benjamin.gaignard@collabora.com>
+ <20210407073534.376722-3-benjamin.gaignard@collabora.com>
+In-Reply-To: <20210407073534.376722-3-benjamin.gaignard@collabora.com>
+From: Adam Ford <aford173@gmail.com>
+Date: Mon, 29 Nov 2021 14:13:41 -0600
+Message-ID: <CAHCN7x+HOMoVNq-swqA2p3ddGKft_8QkB2qm00-CN8Dujaw52Q@mail.gmail.com>
+Subject: Re: [PATCH v9 02/13] dt-bindings: media: nxp, imx8mq-vpu: Update the
+ bindings for G2 support
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,240 +84,173 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Cc: kernel@collabora.com, devel@driverdev.osuosl.org,
+ Rob Herring <robh@kernel.org>, Lee Jones <lee.jones@linaro.org>,
+ "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>,
+ Chen-Yu Tsai <wens@csie.org>, NXP Linux Team <linux-imx@nxp.com>,
+ Chris Healy <cphealy@gmail.com>, linux-media <linux-media@vger.kernel.org>,
+ devicetree <devicetree@vger.kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>,
+ mripard@kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ arm-soc <linux-arm-kernel@lists.infradead.org>,
+ Jernej Skrabec <jernej.skrabec@siol.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, emil.l.velikov@gmail.com,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ paul.kocialkowski@bootlin.com, Sascha Hauer <kernel@pengutronix.de>,
+ hverkuil-cisco@xs4all.nl, Shawn Guo <shawnguo@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
-branch HEAD: 24cd719712aeb5b5e4562f37ef5f7ba33040b59f  Merge 5.16-rc3 into staging-next
+On Wed, Apr 7, 2021 at 2:37 AM Benjamin Gaignard
+<benjamin.gaignard@collabora.com> wrote:
+>
+> Introducing the G2 hevc video decoder requires modifications of the bindings to allow
+> one node per VPU.
+>
+> VPUs share one hardware control block which is provided as a phandle on
+> a syscon.
+> Each node has now one reg and one interrupt.
+> Add a compatible for G2 hardware block: nxp,imx8mq-vpu-g2.
+>
+> To be compatible with older DT the driver is still capable to use the 'ctrl'
+> reg-name even if it is deprecated now.
+>
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 
-elapsed time: 722m
+I need to edit the yaml file to add support the imx8mm, but it doesn't
+appear that this series has gone anywhere.  I know there is still some
+waiting on the vpu-blk-ctrl driver, but it seems like the 8mq could
+split the codecs out using syscon in place of the blk-ctrl until that
+driver is available.  If that doesn't work, I might have to introduce
+a separate yaml file for mini which could be somehow merged with the
+8mq in the future.  I am just not sure which way to go right now.
 
-configs tested: 208
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20211128
-nios2                            alldefconfig
-arm                        shmobile_defconfig
-mips                      fuloong2e_defconfig
-arc                            hsdk_defconfig
-powerpc                    ge_imp3a_defconfig
-mips                         bigsur_defconfig
-riscv                    nommu_virt_defconfig
-mips                        bcm47xx_defconfig
-powerpc                   bluestone_defconfig
-sh                          rsk7269_defconfig
-sh                          sdk7780_defconfig
-powerpc                   lite5200b_defconfig
-powerpc                        warp_defconfig
-s390                          debug_defconfig
-arm                         axm55xx_defconfig
-sh                             espt_defconfig
-sh                        apsh4ad0a_defconfig
-arm                     davinci_all_defconfig
-mips                malta_qemu_32r6_defconfig
-powerpc                      cm5200_defconfig
-mips                        qi_lb60_defconfig
-mips                         cobalt_defconfig
-sh                           se7619_defconfig
-sh                   rts7751r2dplus_defconfig
-powerpc                        icon_defconfig
-arm                              alldefconfig
-powerpc                     akebono_defconfig
-powerpc                 xes_mpc85xx_defconfig
-powerpc                       ebony_defconfig
-mips                          rm200_defconfig
-sh                   sh7770_generic_defconfig
-arm                          lpd270_defconfig
-mips                         tb0219_defconfig
-arm                            qcom_defconfig
-mips                           xway_defconfig
-parisc                generic-64bit_defconfig
-powerpc                      makalu_defconfig
-arm                             rpc_defconfig
-mips                      malta_kvm_defconfig
-mips                            ar7_defconfig
-mips                       lemote2f_defconfig
-powerpc                  iss476-smp_defconfig
-s390                       zfcpdump_defconfig
-mips                      pic32mzda_defconfig
-sparc64                          alldefconfig
-arm                           viper_defconfig
-arc                        vdk_hs38_defconfig
-arm                            lart_defconfig
-mips                         mpc30x_defconfig
-powerpc                         ps3_defconfig
-powerpc                      ep88xc_defconfig
-powerpc                 linkstation_defconfig
-mips                           mtx1_defconfig
-arm                            dove_defconfig
-arm                          pxa168_defconfig
-arm                        mvebu_v7_defconfig
-x86_64                              defconfig
-arm                       versatile_defconfig
-microblaze                      mmu_defconfig
-arm                         orion5x_defconfig
-mips                           ip22_defconfig
-arm                       imx_v4_v5_defconfig
-sh                                  defconfig
-arm                         s3c6400_defconfig
-powerpc                      ppc40x_defconfig
-arm                      jornada720_defconfig
-sh                           se7722_defconfig
-mips                        omega2p_defconfig
-parisc                           allyesconfig
-arc                                 defconfig
-powerpc                     redwood_defconfig
-powerpc                    socrates_defconfig
-arm                     am200epdkit_defconfig
-powerpc                     ksi8560_defconfig
-powerpc                     tqm8541_defconfig
-i386                             alldefconfig
-sh                           se7712_defconfig
-mips                    maltaup_xpa_defconfig
-mips                           ip32_defconfig
-mips                           gcw0_defconfig
-arm                       imx_v6_v7_defconfig
-mips                           rs90_defconfig
-arm                           h5000_defconfig
-m68k                        m5307c3_defconfig
-arm                           h3600_defconfig
-mips                     loongson1c_defconfig
-mips                      maltaaprp_defconfig
-openrisc                            defconfig
-arm                          pcm027_defconfig
-mips                 decstation_r4k_defconfig
-arm                          simpad_defconfig
-arm                         socfpga_defconfig
-ia64                          tiger_defconfig
-powerpc64                        alldefconfig
-arm                   milbeaut_m10v_defconfig
-sh                            shmin_defconfig
-m68k                        m5272c3_defconfig
-arm                        trizeps4_defconfig
-powerpc                       maple_defconfig
-openrisc                  or1klitex_defconfig
-xtensa                              defconfig
-powerpc                 mpc837x_rdb_defconfig
-arm                         cm_x300_defconfig
-powerpc                     ep8248e_defconfig
-arm                         shannon_defconfig
-sh                          rsk7203_defconfig
-arm                           u8500_defconfig
-arm                        cerfcube_defconfig
-arm                  randconfig-c002-20211128
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                                defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-i386                 randconfig-a001-20211129
-i386                 randconfig-a002-20211129
-i386                 randconfig-a006-20211129
-i386                 randconfig-a005-20211129
-i386                 randconfig-a004-20211129
-i386                 randconfig-a003-20211129
-x86_64               randconfig-a011-20211128
-x86_64               randconfig-a014-20211128
-x86_64               randconfig-a012-20211128
-x86_64               randconfig-a016-20211128
-x86_64               randconfig-a013-20211128
-x86_64               randconfig-a015-20211128
-i386                 randconfig-a015-20211128
-i386                 randconfig-a016-20211128
-i386                 randconfig-a013-20211128
-i386                 randconfig-a012-20211128
-i386                 randconfig-a014-20211128
-i386                 randconfig-a011-20211128
-arc                  randconfig-r043-20211128
-s390                 randconfig-r044-20211128
-riscv                randconfig-r042-20211128
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
-
-clang tested configs:
-s390                 randconfig-c005-20211128
-i386                 randconfig-c001-20211128
-riscv                randconfig-c006-20211128
-arm                  randconfig-c002-20211128
-powerpc              randconfig-c003-20211128
-x86_64               randconfig-c007-20211128
-mips                 randconfig-c004-20211128
-x86_64               randconfig-a001-20211128
-x86_64               randconfig-a006-20211128
-x86_64               randconfig-a003-20211128
-x86_64               randconfig-a005-20211128
-x86_64               randconfig-a004-20211128
-x86_64               randconfig-a002-20211128
-i386                 randconfig-a001-20211128
-i386                 randconfig-a002-20211128
-i386                 randconfig-a006-20211128
-i386                 randconfig-a005-20211128
-i386                 randconfig-a004-20211128
-i386                 randconfig-a003-20211128
-i386                 randconfig-a015-20211129
-i386                 randconfig-a016-20211129
-i386                 randconfig-a013-20211129
-i386                 randconfig-a012-20211129
-i386                 randconfig-a014-20211129
-i386                 randconfig-a011-20211129
-hexagon              randconfig-r045-20211129
-hexagon              randconfig-r041-20211129
-s390                 randconfig-r044-20211129
-riscv                randconfig-r042-20211129
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+adam
+> ---
+> version 9:
+>  - Corrections in commit message
+>
+> version 7:
+>  - Add Rob and Philipp reviewed-by tag
+>  - Change syscon phandle name to nxp,imx8m-vpu-ctrl (remove 'q' to be
+>    usable for iMX8MM too)
+>
+> version 5:
+> - This version doesn't break the backward compatibilty between kernel
+>   and DT.
+>
+>  .../bindings/media/nxp,imx8mq-vpu.yaml        | 53 ++++++++++++-------
+>  1 file changed, 34 insertions(+), 19 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> index 762be3f96ce9..18e7d40a5f24 100644
+> --- a/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> +++ b/Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> @@ -15,22 +15,18 @@ description:
+>
+>  properties:
+>    compatible:
+> -    const: nxp,imx8mq-vpu
+> +    oneOf:
+> +      - const: nxp,imx8mq-vpu
+> +      - const: nxp,imx8mq-vpu-g2
+>
+>    reg:
+> -    maxItems: 3
+> -
+> -  reg-names:
+> -    items:
+> -      - const: g1
+> -      - const: g2
+> -      - const: ctrl
+> +    maxItems: 1
+>
+>    interrupts:
+> -    maxItems: 2
+> +    maxItems: 1
+>
+>    interrupt-names:
+> -    items:
+> +    oneOf:
+>        - const: g1
+>        - const: g2
+>
+> @@ -46,14 +42,18 @@ properties:
+>    power-domains:
+>      maxItems: 1
+>
+> +  nxp,imx8m-vpu-ctrl:
+> +    description: Specifies a phandle to syscon VPU hardware control block
+> +    $ref: "/schemas/types.yaml#/definitions/phandle"
+> +
+>  required:
+>    - compatible
+>    - reg
+> -  - reg-names
+>    - interrupts
+>    - interrupt-names
+>    - clocks
+>    - clock-names
+> +  - nxp,imx8m-vpu-ctrl
+>
+>  additionalProperties: false
+>
+> @@ -62,18 +62,33 @@ examples:
+>          #include <dt-bindings/clock/imx8mq-clock.h>
+>          #include <dt-bindings/interrupt-controller/arm-gic.h>
+>
+> -        vpu: video-codec@38300000 {
+> +        vpu_ctrl: syscon@38320000 {
+> +                 compatible = "nxp,imx8mq-vpu-ctrl", "syscon";
+> +                 reg = <0x38320000 0x10000>;
+> +        };
+> +
+> +        vpu_g1: video-codec@38300000 {
+>                  compatible = "nxp,imx8mq-vpu";
+> -                reg = <0x38300000 0x10000>,
+> -                      <0x38310000 0x10000>,
+> -                      <0x38320000 0x10000>;
+> -                reg-names = "g1", "g2", "ctrl";
+> -                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+> -                             <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+> -                interrupt-names = "g1", "g2";
+> +                reg = <0x38300000 0x10000>;
+> +                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
+> +                interrupt-names = "g1";
+> +                clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
+> +                         <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
+> +                         <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
+> +                clock-names = "g1", "g2", "bus";
+> +                power-domains = <&pgc_vpu>;
+> +                nxp,imx8m-vpu-ctrl = <&vpu_ctrl>;
+> +        };
+> +
+> +        vpu_g2: video-codec@38310000 {
+> +                compatible = "nxp,imx8mq-vpu-g2";
+> +                reg = <0x38300000 0x10000>;
+> +                interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+> +                interrupt-names = "g2";
+>                  clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
+>                           <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
+>                           <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
+>                  clock-names = "g1", "g2", "bus";
+>                  power-domains = <&pgc_vpu>;
+> +                nxp,imx8m-vpu-ctrl = <&vpu_ctrl>;
+>          };
+> --
+> 2.25.1
+>
+>
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
