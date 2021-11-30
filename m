@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFB5E463E24
-	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Nov 2021 19:52:46 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 090A7463E25
+	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Nov 2021 19:53:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 57484615F2;
-	Tue, 30 Nov 2021 18:52:44 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A3F48404BE;
+	Tue, 30 Nov 2021 18:52:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eg82BELeR_pE; Tue, 30 Nov 2021 18:52:43 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DDlbs9HdZhS1; Tue, 30 Nov 2021 18:52:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1A3306060B;
-	Tue, 30 Nov 2021 18:52:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 229B2403CE;
+	Tue, 30 Nov 2021 18:52:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F12D81BF5AA
- for <devel@linuxdriverproject.org>; Tue, 30 Nov 2021 18:52:18 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A8FA1BF5AA
+ for <devel@linuxdriverproject.org>; Tue, 30 Nov 2021 18:52:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E10664092C
- for <devel@linuxdriverproject.org>; Tue, 30 Nov 2021 18:52:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 39A776060B
+ for <devel@linuxdriverproject.org>; Tue, 30 Nov 2021 18:52:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=google.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S_17UWeSn-R2 for <devel@linuxdriverproject.org>;
- Tue, 30 Nov 2021 18:52:18 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 84fUbj4wlWwZ for <devel@linuxdriverproject.org>;
+ Tue, 30 Nov 2021 18:52:19 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-yb1-xb4a.google.com (mail-yb1-xb4a.google.com
- [IPv6:2607:f8b0:4864:20::b4a])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0153540928
- for <devel@driverdev.osuosl.org>; Tue, 30 Nov 2021 18:52:17 +0000 (UTC)
-Received: by mail-yb1-xb4a.google.com with SMTP id
- t1-20020a5b03c1000000b005f6ee3e97easo30614959ybp.16
- for <devel@driverdev.osuosl.org>; Tue, 30 Nov 2021 10:52:17 -0800 (PST)
+Received: from mail-pf1-x44a.google.com (mail-pf1-x44a.google.com
+ [IPv6:2607:f8b0:4864:20::44a])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9B6AF605CE
+ for <devel@driverdev.osuosl.org>; Tue, 30 Nov 2021 18:52:19 +0000 (UTC)
+Received: by mail-pf1-x44a.google.com with SMTP id
+ q19-20020a056a00151300b004a4ca777976so13341319pfu.19
+ for <devel@driverdev.osuosl.org>; Tue, 30 Nov 2021 10:52:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
- :cc; bh=of0clxo+OUXJ+D9ZQAgRKxW9x8/3qof7PuEyD5JF4z0=;
- b=V4Z5gcj0BYi4gx7/YsjqicwVo1l0VNNMxRonM2GjGzGw6k9NcPd1nW8lwTW4Xcalo0
- qndlcHRRimUz8jAL3AGwu21xTSx6fGAQFBHTx5QdUNiLV93dJxq+9tKZSpq6Um5AHyEv
- /v2gqA0HxEdQcryEhGG22ykkVgYrCOSIaT1h4mpzuRxErzfEAlkS7nKmXusruXye2KD5
- fnNWg1Pwi90P9fclLml3cD89IK6l2ANOHwPYQAFgLZ3wJRdb1cCvuWf2VqVfBzs6uCI0
- nsMm7D5feU+hGxoFBzFzLZJLqc9CwxnOitpnBuuO4B5yrs2YkX2DAa0BWzY9TYZPuXPY
- kV1w==
+ :cc; bh=/x4shhy8P1gipGO2qyj7usThSAMQkMN2iF2OByB0V/o=;
+ b=Cm70hsrsrudib05kVHncJdIXwt6nBgtVsgNJLvRu5+nP7ySNiBQHA6knfFo5Zo0P7P
+ RQd5P7GtM4j5zTf0V8XMRWtPa88Z0mu5ESP1SKG2dBgb0R7GEP/zLsJ45fyZRBITs+56
+ TEYjZ06WFKNSOdRakC2H1MTsxQ4fuQGd4aqxw96wjnS4s4RGNsLFjuKzBBZpbmXiEVjU
+ 9oU+hprXKEytuQRgSzyVsNCGZQa5fLxFSocGhRmOSOKFN0C+Vpo+YX50RFNF538hjl+z
+ j9MBs3VMuuZEqwSKi+dDa8xaeAWq8Fq67dZ+iVDWihBwUoIYZ1VCJsn1tIBRy/Z7mlKT
+ yxWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=of0clxo+OUXJ+D9ZQAgRKxW9x8/3qof7PuEyD5JF4z0=;
- b=hUajmy34Wyg78O7K48mYOIgd6yyaz2gRUzfjal1mAK6B8DkrTSxxZXD36KjZ4jYhw4
- bI7WGLUeE7mUtgLZwV1RT3EvbFuLaXAjtAhSVzUIhiH6q3ueQdXMQPccgtzcf6BK6Cps
- k1/XaHKedtOns0WALpPkH91ZnMkodkMox3NkWn2RK8cnAz50XNrAgsSoG7iSS/NyypuB
- CvECG9u6h9vL2XdcNSWWDmb4uLMa07Dfq3LiN0z3RebDAPFBLdqzThcQ65wjTVlasNfL
- sizpAG4QFprHn8LZ+11srzYicQJ3eJNALkyedPVaXGMurEgz3yCoCB/WFR7NK2WCgq1P
- z3Nw==
-X-Gm-Message-State: AOAM531wqfE0zx4mEjE/MOL2QmOLLywzAjQGuSul1NL5b0H9ZHA48Va/
- dwywc1QDzUTV8930x5xOibBlVtsL6Q==
-X-Google-Smtp-Source: ABdhPJwtVbLnTCydZzXC3IHcaUyY3GTePtB88YcCxKR6GlEHVVb4quJRWNPr3ZLNIGkjLwxfgxoFjX2i9g==
+ bh=/x4shhy8P1gipGO2qyj7usThSAMQkMN2iF2OByB0V/o=;
+ b=1h7Dra9n+sPiLhcBzLK5toOm1vgYmVXzrWtCl1FgOZCp/PDhJ2urLyKlnYbIQZ4fSm
+ lz0M18lLUf9MRTj+Md4anjwmoHgneKeXL+nt60A0UOlwzU4wYKMkA5k5erPRpcVZ7HXC
+ YMh0tv7IZdaVi5TRVq6R8mSwFunaLkuTXJ+LuIh6qr9jc4T26v2mogbBqrN5AbVsYxhf
+ 6UKv1ORVPHmT2crzeJ4hbN8ll41NIv1W335gdvshNMHGYAoysYYYwootEtn2gBW+h/qF
+ AkK+aqpPlNNBQvBfgslvFBnWSDxLc1XnjTASDCfsagVwl41EjWdOck4ca2Fyp3rDKX6M
+ o/5A==
+X-Gm-Message-State: AOAM530fvjNws2VamnwPdki5gLi8qSW5SvpR/iYov/msG52mT4IxHAxW
+ kUsXxO6L0qVd9qyvKpq9KlDbLfiu7Q==
+X-Google-Smtp-Source: ABdhPJztoFBmzaSNYWw1ElKlHnlfHYTXIpGjHCyNGky8A6Kva9DQSRjCflRUk31qgXugJ4QQE9QH3npnWw==
 X-Received: from tkjos-desktop.mtv.corp.google.com
  ([2620:15c:211:200:2355:b4ef:3d57:5d7d])
- (user=tkjos job=sendgmr) by 2002:a25:42:: with SMTP id
- 63mr1034493yba.218.1638298336836; 
- Tue, 30 Nov 2021 10:52:16 -0800 (PST)
-Date: Tue, 30 Nov 2021 10:51:50 -0800
+ (user=tkjos job=sendgmr) by 2002:aa7:9575:0:b0:49f:ddab:dcdb with SMTP id
+ x21-20020aa79575000000b0049fddabdcdbmr818875pfq.13.1638298339025; Tue, 30 Nov
+ 2021 10:52:19 -0800 (PST)
+Date: Tue, 30 Nov 2021 10:51:51 -0800
 In-Reply-To: <20211130185152.437403-1-tkjos@google.com>
-Message-Id: <20211130185152.437403-3-tkjos@google.com>
+Message-Id: <20211130185152.437403-4-tkjos@google.com>
 Mime-Version: 1.0
 References: <20211130185152.437403-1-tkjos@google.com>
 X-Mailer: git-send-email 2.34.0.rc2.393.gf8c9666880-goog
-Subject: [PATCH v2 2/4] binder: avoid potential data leakage when copying txn
+Subject: [PATCH v2 3/4] binder: read pre-translated fds from sender buffer
 From: Todd Kjos <tkjos@google.com>
 To: tkjos@google.com, gregkh@linuxfoundation.org, christian@brauner.io, 
  arve@android.com, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
@@ -95,226 +95,116 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Transactions are copied from the sender to the target
-first and objects like BINDER_TYPE_PTR and BINDER_TYPE_FDA
-are then fixed up. This means there is a short period where
-the sender's version of these objects are visible to the
-target prior to the fixups.
+This patch is to prepare for an up coming patch where we read
+pre-translated fds from the sender buffer and translate them before
+copying them to the target.  It does not change run time.
 
-Instead of copying all of the data first, copy data only
-after any needed fixups have been applied.
+The patch adds two new parameters to binder_translate_fd_array() to
+hold the sender buffer and sender buffer parent.  These parameters let
+us call copy_from_user() directly from the sender instead of using
+binder_alloc_copy_from_buffer() to copy from the target.  Also the patch
+adds some new alignment checks.  Previously the alignment checks would
+have been done in a different place, but this lets us print more
+useful error messages.
 
-Fixes: 457b9a6f09f0 ("Staging: android: add binder driver")
 Reviewed-by: Martijn Coenen <maco@android.com>
 Signed-off-by: Todd Kjos <tkjos@google.com>
 ---
-v2: addressed comments from Dan Carpenter
-- added Fixes tag
-- fixed incorrect handling of binder_alloc_copy_to_buffer() error
+v2: Addressed comments from Dan Carpenter
+- Re-wrote commit message as suggested
+- renamed "u" and "user" locals to "sender_*" for clarity
 - fixed printk format for size_t
 
- drivers/android/binder.c | 94 ++++++++++++++++++++++++++++++----------
- 1 file changed, 70 insertions(+), 24 deletions(-)
+ drivers/android/binder.c | 39 ++++++++++++++++++++++++++++++++-------
+ 1 file changed, 32 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/android/binder.c b/drivers/android/binder.c
-index 984e6263dcc7..3cd3e82866aa 100644
+index 3cd3e82866aa..9eb24d8a4d2f 100644
 --- a/drivers/android/binder.c
 +++ b/drivers/android/binder.c
-@@ -1608,15 +1608,21 @@ static void binder_cleanup_transaction(struct binder_transaction *t,
- /**
-  * binder_get_object() - gets object and checks for valid metadata
-  * @proc:	binder_proc owning the buffer
-+ * @u:		sender's user pointer to base of buffer
-  * @buffer:	binder_buffer that we're parsing.
-  * @offset:	offset in the @buffer at which to validate an object.
-  * @object:	struct binder_object to read into
-  *
-- * Return:	If there's a valid metadata object at @offset in @buffer, the
-+ * Copy the binder object at the given offset into @object. If @u is
-+ * provided then the copy is from the sender's buffer. If not, then
-+ * it is copied from the target's @buffer.
-+ *
-+ * Return:	If there's a valid metadata object at @offset, the
-  *		size of that object. Otherwise, it returns zero. The object
-  *		is read into the struct binder_object pointed to by @object.
-  */
- static size_t binder_get_object(struct binder_proc *proc,
-+				const void __user *u,
- 				struct binder_buffer *buffer,
- 				unsigned long offset,
- 				struct binder_object *object)
-@@ -1626,10 +1632,16 @@ static size_t binder_get_object(struct binder_proc *proc,
- 	size_t object_size = 0;
+@@ -2234,15 +2234,17 @@ static int binder_translate_fd(u32 fd, binder_size_t fd_offset,
+ }
  
- 	read_size = min_t(size_t, sizeof(*object), buffer->data_size - offset);
--	if (offset > buffer->data_size || read_size < sizeof(*hdr) ||
--	    binder_alloc_copy_from_buffer(&proc->alloc, object, buffer,
--					  offset, read_size))
-+	if (offset > buffer->data_size || read_size < sizeof(*hdr))
- 		return 0;
-+	if (u) {
-+		if (copy_from_user(object, u + offset, read_size))
-+			return 0;
-+	} else {
-+		if (binder_alloc_copy_from_buffer(&proc->alloc, object, buffer,
-+						  offset, read_size))
-+			return 0;
-+	}
+ static int binder_translate_fd_array(struct binder_fd_array_object *fda,
++				     const void __user *sender_ubuffer,
+ 				     struct binder_buffer_object *parent,
++				     struct binder_buffer_object *sender_uparent,
+ 				     struct binder_transaction *t,
+ 				     struct binder_thread *thread,
+ 				     struct binder_transaction *in_reply_to)
+ {
+ 	binder_size_t fdi, fd_buf_size;
+ 	binder_size_t fda_offset;
++	const void __user *sender_ufda_base;
+ 	struct binder_proc *proc = thread->proc;
+-	struct binder_proc *target_proc = t->to_proc;
  
- 	/* Ok, now see if we read a complete object. */
- 	hdr = &object->hdr;
-@@ -1702,7 +1714,7 @@ static struct binder_buffer_object *binder_validate_ptr(
- 					  b, buffer_offset,
- 					  sizeof(object_offset)))
- 		return NULL;
--	object_size = binder_get_object(proc, b, object_offset, object);
-+	object_size = binder_get_object(proc, NULL, b, object_offset, object);
- 	if (!object_size || object->hdr.type != BINDER_TYPE_PTR)
- 		return NULL;
- 	if (object_offsetp)
-@@ -1767,7 +1779,8 @@ static bool binder_validate_fixup(struct binder_proc *proc,
- 		unsigned long buffer_offset;
- 		struct binder_object last_object;
- 		struct binder_buffer_object *last_bbo;
--		size_t object_size = binder_get_object(proc, b, last_obj_offset,
-+		size_t object_size = binder_get_object(proc, NULL, b,
-+						       last_obj_offset,
- 						       &last_object);
- 		if (object_size != sizeof(*last_bbo))
- 			return false;
-@@ -1882,7 +1895,7 @@ static void binder_transaction_buffer_release(struct binder_proc *proc,
- 		if (!binder_alloc_copy_from_buffer(&proc->alloc, &object_offset,
- 						   buffer, buffer_offset,
- 						   sizeof(object_offset)))
--			object_size = binder_get_object(proc, buffer,
-+			object_size = binder_get_object(proc, NULL, buffer,
- 							object_offset, &object);
- 		if (object_size == 0) {
- 			pr_err("transaction release %d bad object at offset %lld, size %zd\n",
-@@ -2455,6 +2468,7 @@ static void binder_transaction(struct binder_proc *proc,
- 	binder_size_t off_start_offset, off_end_offset;
- 	binder_size_t off_min;
- 	binder_size_t sg_buf_offset, sg_buf_end_offset;
-+	binder_size_t user_offset = 0;
- 	struct binder_proc *target_proc = NULL;
- 	struct binder_thread *target_thread = NULL;
- 	struct binder_node *target_node = NULL;
-@@ -2469,6 +2483,8 @@ static void binder_transaction(struct binder_proc *proc,
- 	int t_debug_id = atomic_inc_return(&binder_last_id);
- 	char *secctx = NULL;
- 	u32 secctx_sz = 0;
-+	const void __user *user_buffer = (const void __user *)
-+				(uintptr_t)tr->data.ptr.buffer;
- 
- 	e = binder_transaction_log_add(&binder_transaction_log);
- 	e->debug_id = t_debug_id;
-@@ -2780,19 +2796,6 @@ static void binder_transaction(struct binder_proc *proc,
- 	t->buffer->clear_on_free = !!(t->flags & TF_CLEAR_BUF);
- 	trace_binder_transaction_alloc_buf(t->buffer);
- 
--	if (binder_alloc_copy_user_to_buffer(
--				&target_proc->alloc,
--				t->buffer, 0,
--				(const void __user *)
--					(uintptr_t)tr->data.ptr.buffer,
--				tr->data_size)) {
--		binder_user_error("%d:%d got transaction with invalid data ptr\n",
--				proc->pid, thread->pid);
--		return_error = BR_FAILED_REPLY;
--		return_error_param = -EFAULT;
--		return_error_line = __LINE__;
--		goto err_copy_data_failed;
--	}
- 	if (binder_alloc_copy_user_to_buffer(
- 				&target_proc->alloc,
- 				t->buffer,
-@@ -2837,6 +2840,7 @@ static void binder_transaction(struct binder_proc *proc,
- 		size_t object_size;
- 		struct binder_object object;
- 		binder_size_t object_offset;
-+		binder_size_t copy_size;
- 
- 		if (binder_alloc_copy_from_buffer(&target_proc->alloc,
- 						  &object_offset,
-@@ -2848,8 +2852,27 @@ static void binder_transaction(struct binder_proc *proc,
- 			return_error_line = __LINE__;
- 			goto err_bad_offset;
- 		}
--		object_size = binder_get_object(target_proc, t->buffer,
--						object_offset, &object);
+ 	fd_buf_size = sizeof(u32) * fda->num_fds;
+ 	if (fda->num_fds >= SIZE_MAX / sizeof(u32)) {
+@@ -2266,7 +2268,10 @@ static int binder_translate_fd_array(struct binder_fd_array_object *fda,
+ 	 */
+ 	fda_offset = (parent->buffer - (uintptr_t)t->buffer->user_data) +
+ 		fda->parent_offset;
+-	if (!IS_ALIGNED((unsigned long)fda_offset, sizeof(u32))) {
++	sender_ufda_base = (void __user *)sender_uparent->buffer + fda->parent_offset;
 +
-+		/*
-+		 * Copy the source user buffer up to the next object
-+		 * that will be processed.
-+		 */
-+		copy_size = object_offset - user_offset;
-+		if (copy_size && (user_offset > object_offset ||
-+				binder_alloc_copy_user_to_buffer(
-+					&target_proc->alloc,
-+					t->buffer, user_offset,
-+					user_buffer + user_offset,
-+					copy_size))) {
-+			binder_user_error("%d:%d got transaction with invalid data ptr\n",
-+					proc->pid, thread->pid);
-+			return_error = BR_FAILED_REPLY;
-+			return_error_param = -EFAULT;
-+			return_error_line = __LINE__;
-+			goto err_copy_data_failed;
-+		}
-+		object_size = binder_get_object(target_proc, user_buffer,
-+				t->buffer, object_offset, &object);
- 		if (object_size == 0 || object_offset < off_min) {
- 			binder_user_error("%d:%d got transaction with invalid offset (%lld, min %lld max %lld) or object.\n",
- 					  proc->pid, thread->pid,
-@@ -2861,6 +2884,11 @@ static void binder_transaction(struct binder_proc *proc,
- 			return_error_line = __LINE__;
- 			goto err_bad_offset;
- 		}
-+		/*
-+		 * Set offset to the next buffer fragment to be
-+		 * copied
-+		 */
-+		user_offset = object_offset + object_size;
++	if (!IS_ALIGNED((unsigned long)fda_offset, sizeof(u32)) ||
++	    !IS_ALIGNED((unsigned long)sender_ufda_base, sizeof(u32))) {
+ 		binder_user_error("%d:%d parent offset not aligned correctly.\n",
+ 				  proc->pid, thread->pid);
+ 		return -EINVAL;
+@@ -2275,10 +2280,9 @@ static int binder_translate_fd_array(struct binder_fd_array_object *fda,
+ 		u32 fd;
+ 		int ret;
+ 		binder_size_t offset = fda_offset + fdi * sizeof(fd);
++		binder_size_t sender_uoffset = fdi * sizeof(fd);
  
- 		hdr = &object.hdr;
- 		off_min = object_offset + object_size;
-@@ -2956,9 +2984,14 @@ static void binder_transaction(struct binder_proc *proc,
- 			}
- 			ret = binder_translate_fd_array(fda, parent, t, thread,
- 							in_reply_to);
--			if (ret < 0) {
-+			if (!ret)
-+				ret = binder_alloc_copy_to_buffer(&target_proc->alloc,
-+								  t->buffer,
-+								  object_offset,
-+								  fda, sizeof(*fda));
-+			if (ret) {
- 				return_error = BR_FAILED_REPLY;
--				return_error_param = ret;
-+				return_error_param = ret > 0 ? -EINVAL : ret;
+-		ret = binder_alloc_copy_from_buffer(&target_proc->alloc,
+-						    &fd, t->buffer,
+-						    offset, sizeof(fd));
++		ret = copy_from_user(&fd, sender_ufda_base + sender_uoffset, sizeof(fd));
+ 		if (!ret)
+ 			ret = binder_translate_fd(fd, offset, t, thread,
+ 						  in_reply_to);
+@@ -2951,6 +2955,8 @@ static void binder_transaction(struct binder_proc *proc,
+ 		case BINDER_TYPE_FDA: {
+ 			struct binder_object ptr_object;
+ 			binder_size_t parent_offset;
++			struct binder_object user_object;
++			size_t user_parent_size;
+ 			struct binder_fd_array_object *fda =
+ 				to_binder_fd_array_object(hdr);
+ 			size_t num_valid = (buffer_offset - off_start_offset) /
+@@ -2982,8 +2988,27 @@ static void binder_transaction(struct binder_proc *proc,
  				return_error_line = __LINE__;
- 				goto err_translate_failed;
+ 				goto err_bad_parent;
  			}
-@@ -3028,6 +3061,19 @@ static void binder_transaction(struct binder_proc *proc,
- 			goto err_bad_object_type;
- 		}
- 	}
-+	/* Done processing objects, copy the rest of the buffer */
-+	if (binder_alloc_copy_user_to_buffer(
-+				&target_proc->alloc,
-+				t->buffer, user_offset,
-+				user_buffer + user_offset,
-+				tr->data_size - user_offset)) {
-+		binder_user_error("%d:%d got transaction with invalid data ptr\n",
-+				proc->pid, thread->pid);
-+		return_error = BR_FAILED_REPLY;
-+		return_error_param = -EFAULT;
-+		return_error_line = __LINE__;
-+		goto err_copy_data_failed;
-+	}
- 	if (t->buffer->oneway_spam_suspect)
- 		tcomplete->type = BINDER_WORK_TRANSACTION_ONEWAY_SPAM_SUSPECT;
- 	else
+-			ret = binder_translate_fd_array(fda, parent, t, thread,
+-							in_reply_to);
++			/*
++			 * We need to read the user version of the parent
++			 * object to get the original user offset
++			 */
++			user_parent_size =
++				binder_get_object(proc, user_buffer, t->buffer,
++						  parent_offset, &user_object);
++			if (user_parent_size != sizeof(user_object.bbo)) {
++				binder_user_error("%d:%d invalid ptr object size: %zd vs %zd\n",
++						  proc->pid, thread->pid,
++						  user_parent_size,
++						  sizeof(user_object.bbo));
++				return_error = BR_FAILED_REPLY;
++				return_error_param = -EINVAL;
++				return_error_line = __LINE__;
++				goto err_bad_parent;
++			}
++			ret = binder_translate_fd_array(fda, user_buffer,
++							parent,
++							&user_object.bbo, t,
++							thread, in_reply_to);
+ 			if (!ret)
+ 				ret = binder_alloc_copy_to_buffer(&target_proc->alloc,
+ 								  t->buffer,
 -- 
 2.34.0.rc2.393.gf8c9666880-goog
 
