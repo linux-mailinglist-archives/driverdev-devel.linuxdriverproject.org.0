@@ -1,61 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 22511467334
-	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Dec 2021 09:19:27 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DEC54679BA
+	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Dec 2021 15:49:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1545C40239;
-	Fri,  3 Dec 2021 08:19:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 71C194040A;
+	Fri,  3 Dec 2021 14:49:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d-_EIrUWSQkM; Fri,  3 Dec 2021 08:19:24 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RLbooeSt1qRR; Fri,  3 Dec 2021 14:49:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C2C3A4013F;
-	Fri,  3 Dec 2021 08:19:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B960A40408;
+	Fri,  3 Dec 2021 14:49:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 15FAD1BF41D
- for <devel@linuxdriverproject.org>; Fri,  3 Dec 2021 08:19:12 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 20AE61BF2F2
+ for <devel@linuxdriverproject.org>; Fri,  3 Dec 2021 14:49:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 03EAC4016E
- for <devel@linuxdriverproject.org>; Fri,  3 Dec 2021 08:19:12 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 00CBB82521
+ for <devel@linuxdriverproject.org>; Fri,  3 Dec 2021 14:49:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dsLnyWnD44uU for <devel@linuxdriverproject.org>;
- Fri,  3 Dec 2021 08:19:10 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A99AF4013F
- for <devel@driverdev.osuosl.org>; Fri,  3 Dec 2021 08:19:10 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 143DBB825D9;
- Fri,  3 Dec 2021 08:19:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46CA3C53FD0;
- Fri,  3 Dec 2021 08:19:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1638519546;
- bh=JEQsdvKn7dOFlzTlau83wZYpYEdRcaF0jGaeVn1/UDI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=sYEK4ohGDFpWyN3NRLlUcA2VgetuNrQ+Zu5AjSXUaX1OqveXmnjbioFYOBp+ZGg+e
- ci4BsUrSptcB/xQ5PkZJfa+44EgxOv92fUmfUO24klXnknQVoLUnaTC/OiPNG1GTFg
- osHNifiir3ra9ALzboaCWmDkVhJ5zkoIkrRJ8+ew=
-Date: Fri, 3 Dec 2021 09:19:04 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: kernel test robot <lkp@intel.com>
-Subject: Re: [driver-core:hid_is_usb 4/4] nios2-linux-ld:
- hid-prodikeys.c:undefined reference to `usb_hid_driver'
-Message-ID: <YanS+GtWEaYNoT7z@kroah.com>
-References: <202112030506.aNZw7UPL-lkp@intel.com>
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LaspZCYr8QW6 for <devel@linuxdriverproject.org>;
+ Fri,  3 Dec 2021 14:49:27 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pf1-x42c.google.com (mail-pf1-x42c.google.com
+ [IPv6:2607:f8b0:4864:20::42c])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6A656824E3
+ for <devel@driverdev.osuosl.org>; Fri,  3 Dec 2021 14:49:27 +0000 (UTC)
+Received: by mail-pf1-x42c.google.com with SMTP id p13so3146934pfw.2
+ for <devel@driverdev.osuosl.org>; Fri, 03 Dec 2021 06:49:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:sender:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=WOyJjkaw0a1yWtfZg+K+NoUdaW9a96/iScerTzC0GVA=;
+ b=VTbAKG7bfu4pgymo9hZl9cUV4vv0XHTUFoMJVuwVmmc7x6+naZ+pjCBfoSbqACoFRE
+ sv+X3rCuAjxOjoVVPsrJnGUz3ow8VbplD7NtqeqW/Ke70t9b2ODOUwxOXNnU17mbXj5G
+ rl9QRZkav1K8HIP2DoAndks7CXKW9USAt06IyqnEEHISsbQ/ukoy0Pg7u6cfrIdsKPTM
+ 1Mo7PNUCFqQgp/Zu+idpZi6iuhIbCON2quj62CT0yvjYQe1m/9ttFXYCSA4dEk+vfDJK
+ y177Sn++BkmVsX17WdzgBEIeAX2pIb/lJVN0nE72//T423Iq/digjKkD5NMMC4djF3Qp
+ YdUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:sender:from:date
+ :message-id:subject:to:content-transfer-encoding;
+ bh=WOyJjkaw0a1yWtfZg+K+NoUdaW9a96/iScerTzC0GVA=;
+ b=d3r6bVMVvQtLaAUiPPtIZyPzUUi4dLbYXV2C1Z1Kx/m9L1xtnR8qfXEfwuIHAbn2EX
+ fywBdxFjOunqbfVXwmEx6hE6pos9iOaSndh66qJJYEgsnmGpmgoQHcg37EZHw2DoKhFl
+ UmYcqd+P5jhm7IemBOxipOC0EgFXZS5WpjAgwsRPjUexXBlsiknqkHvV57DWILFgCg38
+ o3U/hZ5h2iLbI+tCLl6xQosLUAJcC4V31QSVtNobmu3/Youlksx37sCk+UlEpUuHn+4P
+ UAQAgG+RHYWppqA7cK9/u2BFl3DO7i1uNbyfLasmRjp/XZpNi6vtL5x2kQvYCrEYpB86
+ tg6A==
+X-Gm-Message-State: AOAM532ZVUlWCsc4QAbOzaD3d/Vu/NeWXfZZVOPe4Hs+tCPFFUbxKdKr
+ 8XuIJ5k42jVIAXJgihYwYsFCKC2oAgBaM6Qf7eA=
+X-Google-Smtp-Source: ABdhPJx8xWqMzEFYBt+Y+wPmSFAvWVkdm/ghkvL9Mg9B7JTsy16VNyOcKdtNPOTObKPDEghksTagmIApwL4Lakz0yTk=
+X-Received: by 2002:a05:6a00:cd0:b0:49f:b198:97a5 with SMTP id
+ b16-20020a056a000cd000b0049fb19897a5mr19837933pfv.80.1638542966610; Fri, 03
+ Dec 2021 06:49:26 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <202112030506.aNZw7UPL-lkp@intel.com>
+Received: by 2002:a17:90a:ee88:0:0:0:0 with HTTP; Fri, 3 Dec 2021 06:49:26
+ -0800 (PST)
+From: "Mrs.Christine Marran " <christinemarran77@gmail.com>
+Date: Fri, 3 Dec 2021 06:49:26 -0800
+X-Google-Sender-Auth: gIWLUkYGxRt6Q-BxUpMzs5Tzluk
+Message-ID: <CAN3+5f5P0eskphy90=kP=tbA8dFQUXVkUxTakfJ-+LxQqEYDew@mail.gmail.com>
+Subject: Greetings Dear,
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,45 +84,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kbuild-all@lists.01.org,
- linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: christinemarran77@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Fri, Dec 03, 2021 at 05:07:11AM +0800, kernel test robot wrote:
-> tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git hid_is_usb
-> head:   be29771805ee7d748ac02a0df3e1e10f5ead521f
-> commit: be29771805ee7d748ac02a0df3e1e10f5ead521f [4/4] HID: add USB_HID dependancy on some USB HID drivers
-> config: nios2-randconfig-r015-20211202 (https://download.01.org/0day-ci/archive/20211203/202112030506.aNZw7UPL-lkp@intel.com/config)
-> compiler: nios2-linux-gcc (GCC) 11.2.0
-> reproduce (this is a W=1 build):
->         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
->         chmod +x ~/bin/make.cross
->         # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?id=be29771805ee7d748ac02a0df3e1e10f5ead521f
->         git remote add driver-core https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git
->         git fetch --no-tags driver-core hid_is_usb
->         git checkout be29771805ee7d748ac02a0df3e1e10f5ead521f
->         # save the config file to linux build tree
->         mkdir build_dir
->         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=nios2 SHELL=/bin/bash
-> 
-> If you fix the issue, kindly add following tag as appropriate
-> Reported-by: kernel test robot <lkp@intel.com>
-> 
-> All errors (new ones prefixed by >>):
-> 
->    nios2-linux-ld: drivers/hid/hid-chicony.o: in function `ch_probe':
->    hid-chicony.c:(.text+0x4): undefined reference to `usb_hid_driver'
->    nios2-linux-ld: hid-chicony.c:(.text+0x8): undefined reference to `usb_hid_driver'
->    nios2-linux-ld: drivers/hid/hid-prodikeys.o: in function `pk_probe':
->    hid-prodikeys.c:(.text+0x1150): undefined reference to `usb_hid_driver'
-> >> nios2-linux-ld: hid-prodikeys.c:(.text+0x1154): undefined reference to `usb_hid_driver'
-
-Thanks, patch posted for this:
-	https://lore.kernel.org/r/20211203081231.2856936-1-gregkh@linuxfoundation.org
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R3JlZXRpbmdzIERlYXIsCgoKSSdtIGEgNzUgeWVhciBvbGQgQnJpdGlzaCB3b21hbi4gSSB3YXMg
+Ym9ybiBhbiBvcnBoYW4gYW5kIEdPRCBibGVzc2VkCm1lIGFidW5kYW50bHkgd2l0aCByaWNoZXMg
+YnV0IG5vIGNoaWxkcmVuIG5vciBodXNiYW5kIHdoaWNoIG1ha2VzIG1lCmFuIHVuaGFwcHkgd29t
+YW4uIE5vdyBJIGFtIGFmZmVjdGVkIHdpdGggY2FuY2VyIG9mIHRoZSBsdW5nIGFuZCBicmVhc3QK
+d2l0aCBhIHBhcnRpYWwgc3Ryb2tlIHdoaWNoIGhhcyBhZmZlY3RlZCBteSBzcGVlY2guIEkgY2Fu
+IG5vIGxvbmdlcgp0YWxrIHdlbGwgYW5kIGhhbGYgb2YgbXkgYm9keSBpcyBwYXJhbHl6ZWQsIEkg
+c2VudCB0aGlzIGVtYWlsIHRvIHlvdQp3aXRoIHRoZSBoZWxwIG9mIG15IHByaXZhdGUgZmVtYWxl
+IG51cnNlLgoKQWZ0ZXIgZ29pbmcgdGhyb3VnaCB5b3VyIHByb2ZpbGUsIEkgZGVjaWRlZCB0byBt
+YWtlIG15IGxhc3QgZG9uYXRpb24Kb2YgVGVuIE1pbGxpb24gRml2ZSBIdW5kcmVkIFRob3VzYW5k
+IFVuaXRlZCBLaW5nZG9tIFBvdW5kcwooVUvCozEwLjUwMCwgMDAwLCAwMCkgdG8geW91IGFzIG15
+IGludmVzdG1lbnQgbWFuYWdlci4gSSB3YW50IHlvdSB0bwpidWlsZCBhbiBPcnBoYW5hZ2UgaG9t
+ZSB3aXRoIG15IG5hbWUgKCAgTXJzLkNocmlzdGluZSBNYXJyYW4gICkgaW4KeW91ciBjb3VudHJ5
+LgoKSWYgeW91IGFyZSB3aWxsaW5nIGFuZCBhYmxlIHRvIGRvIHRoaXMgdGFzayBmb3IgdGhlIHNh
+a2Ugb2YgaHVtYW5pdHkKdGhlbiBzZW5kIG1lIGJlbG93IGluZm9ybWF0aW9uIGZvciBtb3JlIGRl
+dGFpbHMgdG8gcmVjZWl2ZSB0aGUgZnVuZHMuCgoxLiBOYW1lLi4uLi4uLi4uLi4uLi4uLi4uLi4u
+Li4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uCgoyLiBQaG9uZSBudW1iZXIuLi4uLi4uLi4u
+Li4uLi4uLi4uLi4uLi4uLi4uLi4uCgozLiBBZGRyZXNzLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4u
+Li4uLi4uLi4uLi4uLi4uLi4uLi4uCgo0LiBDb3VudHJ5IG9mIE9yaWdpbiBhbmQgcmVzaWRlbmNl
+CgpNcnMuQ2hyaXN0aW5lIE1hcnJhbiAgICwKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJv
+amVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
