@@ -1,74 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7ACBF468A3E
-	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Dec 2021 10:11:53 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BEB0E468AC0
+	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Dec 2021 13:17:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8B8BB405BB;
-	Sun,  5 Dec 2021 09:11:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B7DF940429;
+	Sun,  5 Dec 2021 12:17:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id is1SGQRRpmqR; Sun,  5 Dec 2021 09:11:50 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E175A40577;
-	Sun,  5 Dec 2021 09:11:49 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B45E91BF591
- for <devel@linuxdriverproject.org>; Sun,  5 Dec 2021 09:11:40 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AF5BE4015E
- for <devel@linuxdriverproject.org>; Sun,  5 Dec 2021 09:11:40 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1B3QrWKWYJ_K for <devel@linuxdriverproject.org>;
- Sun,  5 Dec 2021 09:11:39 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pf1-x430.google.com (mail-pf1-x430.google.com
- [IPv6:2607:f8b0:4864:20::430])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E526B40105
- for <devel@linuxdriverproject.org>; Sun,  5 Dec 2021 09:11:39 +0000 (UTC)
-Received: by mail-pf1-x430.google.com with SMTP id o4so7227485pfp.13
- for <devel@linuxdriverproject.org>; Sun, 05 Dec 2021 01:11:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=/KhWWRRAoW3dkM2eqyChNKw46QC19qAqY37jEFbhBOI=;
- b=pEvNL6XNrEod1H8kH2aFE0wHHGXHX+qrVo5LFuySGxOaZVoqje0kXgh/5I7IFn/uBr
- /8Se4jEs9+6eAKYcwO1tOz5rJtN6s2F+8sig1jAKeOdgHd7KnXcLFEQi2dtlsAlU13H6
- ay2Nb3NziTdvZvHYcdDj6oR7yNksWgidGrGDFbrGpqoQVzUnIalgusFDCU9x6KVHxo5q
- hlrCBgTTKL9Vyar1ZunlFlJ+mZnBMw8BRKaKQcvclABOfcKujjrXXbhrM10UqysfsXdK
- DLIeuUHvKzy7YSj4kO83dSYYFTXVoScFBemzDxY42NehH1CCWJaiseaneKwNzwcfU6ub
- IAhw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=/KhWWRRAoW3dkM2eqyChNKw46QC19qAqY37jEFbhBOI=;
- b=wePuWLUYoUbgikTW9oRr/j+7FuSIrRa0yVYL0vl+iXmKMIf7eM7QPwlIhXXNxU4+mp
- Gnzm1mluK7UjgXCPZsze0ifLUyU7Q7QEZSBXrbbDAsVhcGqpZn00ztYipYWtX1Dig1cr
- ctv0vbbsB1cFvXQNgHb1Qavy7lkUtFsvFXvo/OtiWeMBBEHyzHAJG7ZLNv0CjiJntkfS
- fJzI6q0C+LfXESpZs4oRVKlMnWe4Et25dSo8XaA4iuHO7DjWMxNjBEDmqccHs9RnVM7i
- YvifiEcO26N+RAitzGxLoTCd4tPoaymvIh02GKdRLFQ3dcuVrdTjFGXcLcI6Hs/bxguA
- TGTw==
-X-Gm-Message-State: AOAM5308mXgIZlYWLlGZf8x+YARemUPL3COkuuLBJfK1JC0rqQL/8Vpe
- x8VRw/W/2dwr/O14WFmf0ZpQgj8BMsnGQIH8Oes=
-X-Google-Smtp-Source: ABdhPJyveRL4MB+t9z2/RMuCFyom7NowdoRk83006SXV8Dq4lJuxbh517INww1NFnPZE1NnvAbqJf9DWDU72+N0wfFA=
-X-Received: by 2002:a63:4664:: with SMTP id v36mr13116650pgk.147.1638695499004; 
- Sun, 05 Dec 2021 01:11:39 -0800 (PST)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yUbiB3pX9go8; Sun,  5 Dec 2021 12:17:11 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id A8620401B8;
+	Sun,  5 Dec 2021 12:17:10 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 22FB81BF3D2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  5 Dec 2021 12:17:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 126F260A41
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  5 Dec 2021 12:17:01 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ac3A9b9v-JPY
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  5 Dec 2021 12:16:59 +0000 (UTC)
+X-Greylist: delayed 00:06:39 by SQLgrey-1.8.0
+Received: from c5.hpms1.jp (c5.hpms1.jp [183.90.183.23])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D966960612
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  5 Dec 2021 12:16:58 +0000 (UTC)
+Received: (qmail 874779 invoked by uid 89); 5 Dec 2021 21:10:16 +0900
+Received: from unknown (HELO www.g-hideout.jp)
+ (info@g-hideout.jp@183.90.183.23)
+ by c5.hpms1.jp with SMTP; 5 Dec 2021 21:10:16 +0900
+Date: Sun, 5 Dec 2021 12:10:15 +0000
+To: driverdev-devel@linuxdriverproject.org
+From: hair&grooming salon HIDE OUT <info@g-hideout.jp>
+Subject: =?UTF-8?B?44GK5ZWP44GE5ZCI44KP44Gb44GC44KK44GM44Go44GG44GU44GW44GE44G+?=
+ =?UTF-8?B?44GX44Gf?=
+Message-ID: <cb24caf652fa4bbf06af02bc93c2b653@www.g-hideout.jp>
+X-Mailer: WPMailSMTP/Mailer/smtp 1.2.5
 MIME-Version: 1.0
-Received: by 2002:a05:6a11:10c:0:0:0:0 with HTTP; Sun, 5 Dec 2021 01:11:38
- -0800 (PST)
-From: Eric Benie <jhdjfu9@gmail.com>
-Date: Sun, 5 Dec 2021 01:11:38 -0800
-Message-ID: <CAGe5cHzzRp0dwvpxqeEuEwrrdhai9bK61B8COsXjC=0gwLmHdA@mail.gmail.com>
-Subject: 
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,24 +59,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: luistimo1921@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: info@g-hideout.jp
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I have registered the ATM MASTER CARD with DHL COMPANY this morning
-as we agreed and the delivery will take off this week based on my
-agreement with .Dr Luis Timo  contact phone
-+229 99501447. MOST IMPORTANT: reconfirm your DHL delivery address
-to him include your phone number then contact Dr Luis Timo via the following
-email: luistimo1921@gmail.com  I will not be reached till november 24th,
-2022,Note that you will pay for official keeping charges only so
-ask them where to send the fee and Your amount in the Card is
-US$7.2Million.
-
-Eric A benie
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+44GK5ZWP44GE5ZCI44KP44Gb44GC44KK44GM44Go44GG44GU44GW44GE44G+44GX44GfCgog44Oh
+44OD44K744O844K45pys5paHCiDigLvjgZPjgaHjgonjga7jg6Hjg7zjg6vjga/oh6rli5XnmoTj
+gavjgYrpgIHjgorjgZfjgabjgYTjgb7jgZnjgIIKIOacrOODoeODvOODq+OBq+WvvuOBl+OBpui/
+lOS/oeOBquOBleOCieOBquOBhOOCiOOBhuOBq+OBiumhmOOBhOiHtOOBl+OBvuOBmeOAggoKIOKd
+pO+4jyBBbm5ldHRlIHdhbnQgdG8gbWVldCB5b3UhIENsaWNrIEhlcmU6IGh0dHA6Ly9iaXQuZG8v
+ZlNNVlM/dm4zIOKdpO+4j+anmAoKIOOBk+OBruW6puOBr+OBiuWVj+OBhOWQiOOCj+OBm+OBhOOB
+n+OBoOOBjeOBguOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAggog5Lul5LiL44Gu5YaF5a65
+44Gr44Gm5Y+X44GR5LuY44GR44G+44GX44Gf44CCCgog44CQ44GK5a6i5qeY5oOF5aCx44CRCiAt
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLQoKIOOBiuWQjeWJjQog4p2k77iPIEFubmV0dGUgd2FudCB0byBtZWV0
+IHlvdSEgQ2xpY2sgSGVyZTogaHR0cDovL2JpdC5kby9mU01WUz92bjMg4p2k77iPCgog44Oh44O8
+44Or44Ki44OJ44Os44K5CiBkcml2ZXJkZXYtZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwoK
+IOmbu+ipseeVquWPtwogNTk1MjQzODg4NTI4Cgog44GK5ZWP44GE5ZCI44KP44Gb5YaF5a65CiA0
+Z292eHdiCgoKIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiDkuIroqJjlhoXlrrnjgpLnorroqo3lvozjgIHo
+v73jgaPjgabjg6Hjg7zjg6vjgavjgabjgZTpgKPntaHjgZXjgZvjgabjgYTjgZ/jgaDjgY3jgb7j
+gZnjgIIKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
+dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
+ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
+ZXZlbAo=
