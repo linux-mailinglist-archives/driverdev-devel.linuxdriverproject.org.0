@@ -1,49 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04ABA472A7A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Dec 2021 11:43:19 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 219C0473172
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Dec 2021 17:18:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C64D840230;
-	Mon, 13 Dec 2021 10:43:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 46F4C6F489;
+	Mon, 13 Dec 2021 16:18:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QguBD0mwrMLy; Mon, 13 Dec 2021 10:43:16 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qDW0ldNH78Ve; Mon, 13 Dec 2021 16:18:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 34CB1408C6;
-	Mon, 13 Dec 2021 10:43:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A3FA260F48;
+	Mon, 13 Dec 2021 16:18:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BFE001BF403
- for <devel@linuxdriverproject.org>; Mon, 13 Dec 2021 10:43:04 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9F7291BF361
+ for <devel@linuxdriverproject.org>; Mon, 13 Dec 2021 16:17:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A541640A03
- for <devel@linuxdriverproject.org>; Mon, 13 Dec 2021 10:43:04 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 99B5085AC7
+ for <devel@linuxdriverproject.org>; Mon, 13 Dec 2021 16:17:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KuiHgwQCBr6R for <devel@linuxdriverproject.org>;
- Mon, 13 Dec 2021 10:43:04 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 68llg3BCQfvy for <devel@linuxdriverproject.org>;
+ Mon, 13 Dec 2021 16:17:55 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from fontke.com (unknown [117.27.143.36])
- by smtp2.osuosl.org (Postfix) with ESMTPS id AA0AB409EF
- for <devel@linuxdriverproject.org>; Mon, 13 Dec 2021 10:43:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D4B0080D64
+ for <devel@driverdev.osuosl.org>; Mon, 13 Dec 2021 16:17:54 +0000 (UTC)
 MIME-Version: 1.0
 From: "LifePoints Research, Inc" <LifePointsResearchInc@outlook.com>
-To: devel@linuxdriverproject.org
+To: devel@driverdev.osuosl.org
 Priority: urgent
 Importance: high
-Date: 5 Dec 2021 07:54:58 +0000
+Date: 5 Dec 2021 07:54:56 +0000
 Subject: [Alert]: ASSIGNMENT ($500)
 Received: from localhost (Unknown [127.0.0.1])
  by fontke.com (Haraka/2.8.27) with ESMTP id
- 937F1D4C-06D3-492D-9D15-532C8DD19E1D.16
+ 937F1D4C-06D3-492D-9D15-532C8DD19E1D.15
  envelope-from <LifePointsResearchInc@outlook.com>;
- Sun, 05 Dec 2021 07:54:58 +0000
-Message-Id: <937F1D4C-06D3-492D-9D15-532C8DD19E1D.16@fontke.com>
+ Sun, 05 Dec 2021 07:54:53 +0000
+Message-Id: <937F1D4C-06D3-492D-9D15-532C8DD19E1D.15@fontke.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
