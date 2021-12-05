@@ -1,52 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEB0E468AC0
-	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Dec 2021 13:17:14 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 675FE468CDC
+	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Dec 2021 19:55:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B7DF940429;
-	Sun,  5 Dec 2021 12:17:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A36E340533;
+	Sun,  5 Dec 2021 18:55:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yUbiB3pX9go8; Sun,  5 Dec 2021 12:17:11 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id D8_mtq2wJza1; Sun,  5 Dec 2021 18:55:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A8620401B8;
-	Sun,  5 Dec 2021 12:17:10 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2972F40426;
+	Sun,  5 Dec 2021 18:55:43 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 22FB81BF3D2
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Dec 2021 12:17:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C96361BF46D
+ for <devel@linuxdriverproject.org>; Sun,  5 Dec 2021 18:55:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 126F260A41
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Dec 2021 12:17:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B90586070E
+ for <devel@linuxdriverproject.org>; Sun,  5 Dec 2021 18:55:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ac3A9b9v-JPY
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Dec 2021 12:16:59 +0000 (UTC)
-X-Greylist: delayed 00:06:39 by SQLgrey-1.8.0
-Received: from c5.hpms1.jp (c5.hpms1.jp [183.90.183.23])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D966960612
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Dec 2021 12:16:58 +0000 (UTC)
-Received: (qmail 874779 invoked by uid 89); 5 Dec 2021 21:10:16 +0900
-Received: from unknown (HELO www.g-hideout.jp)
- (info@g-hideout.jp@183.90.183.23)
- by c5.hpms1.jp with SMTP; 5 Dec 2021 21:10:16 +0900
-Date: Sun, 5 Dec 2021 12:10:15 +0000
-To: driverdev-devel@linuxdriverproject.org
-From: hair&grooming salon HIDE OUT <info@g-hideout.jp>
-Subject: =?UTF-8?B?44GK5ZWP44GE5ZCI44KP44Gb44GC44KK44GM44Go44GG44GU44GW44GE44G+?=
- =?UTF-8?B?44GX44Gf?=
-Message-ID: <cb24caf652fa4bbf06af02bc93c2b653@www.g-hideout.jp>
-X-Mailer: WPMailSMTP/Mailer/smtp 1.2.5
+ with ESMTP id 5F0F9gOmr0Da for <devel@linuxdriverproject.org>;
+ Sun,  5 Dec 2021 18:55:33 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-lf1-x132.google.com (mail-lf1-x132.google.com
+ [IPv6:2a00:1450:4864:20::132])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 122E360706
+ for <devel@driverdev.osuosl.org>; Sun,  5 Dec 2021 18:55:32 +0000 (UTC)
+Received: by mail-lf1-x132.google.com with SMTP id c32so19991580lfv.4
+ for <devel@driverdev.osuosl.org>; Sun, 05 Dec 2021 10:55:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=qztlLTDQmmEb0Xq8BgFUWcdE0xJC0fnWX5znumDPlIQ=;
+ b=LQ/0+22XOyZkoeBjLMvHiyJfNAlUMp3OirXDfxLK3Xm110rDGBu7q6c315XJPV3YmV
+ R4yGhhcl+Ed3ZZz/QHB0Mz4e3fGtqgNJ8I1bBFxhmQJvJ3e9Wq2IeXl/s5UZyGZZK8B6
+ PKpA9R3jHxly7EWbBf8ua61EAuhRW3TCh7zZN7eyrXxSBDn6ctMN5hILTAfODdGIBl5H
+ dctxeFznco7T69FNSRjbByZbughAqJJKClaCx0STB/LT5UY+mgO7R7n0GX1uFhOvZIOE
+ 6J/aAhfmShsZrJrCCqNKO2fCKALfm738Nhhf8oSsjTiTaG6lRPhlF8DRSHpZfZ21T0HP
+ 1NTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=qztlLTDQmmEb0Xq8BgFUWcdE0xJC0fnWX5znumDPlIQ=;
+ b=RIEUYIG60ATgIfeMfEb4kqBw/hVbUivTlTBFTgUvEgbLrfPZY227eh8IbOimq3ao0D
+ ggWXpj82JtIjLA5J07CAplKoIEkL2qzhy0yslLv2IjfMoK4u3hIqtOUhsXeDk5vaRCLh
+ cXzUBP9ldiRt2B5xjGSyry6578SJhwuEl8rxIy0HzGiNqMbSe2ravrNrjtxUa+ar1TPA
+ q/nMniaoKxKiED+kAcuP2ayY2XnVMNcfEqZoW3TGQNJmASV3JGVuweh91GDP4NIHaq7w
+ 2Z9YT7BgRZygR9lN5jxvfzkyBHpwR6pUR/S+Rj2wiw7G5TDTrPz8nQ+sUJyZx189/ivv
+ dmew==
+X-Gm-Message-State: AOAM531zGBcVgGGeAdA5OIHoCWhuqro/C/+F/rjM4VIdii8PkXPt5NEX
+ 9Jvm9L+hBA8Bi/TuV6FxX0Z10fVNLqZaw7vOPlU=
+X-Google-Smtp-Source: ABdhPJyid9uDG6f94DLIjVxZVRa/YCeBnGmfwdCqlywAVjp5F4SR8gXjWgQmdIytfY+ty+THNQl90KQ03SsGYGrX7JU=
+X-Received: by 2002:a05:6512:31ca:: with SMTP id
+ j10mr30752958lfe.643.1638730530820; 
+ Sun, 05 Dec 2021 10:55:30 -0800 (PST)
 MIME-Version: 1.0
+Received: by 2002:ab3:6bd1:0:0:0:0:0 with HTTP;
+ Sun, 5 Dec 2021 10:55:30 -0800 (PST)
+From: MRS Salem Chantal Lawrence <favourlaboso@gmail.com>
+Date: Sun, 5 Dec 2021 10:55:30 -0800
+Message-ID: <CACrC5j3fVBX1+qtCEUhNyzEhrr0K_Xurqn5czu8BmqLuazCeeQ@mail.gmail.com>
+Subject: ATM VISA DAPARTCARD
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,29 +82,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: info@g-hideout.jp
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: salemchantal@mail.ee
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-44GK5ZWP44GE5ZCI44KP44Gb44GC44KK44GM44Go44GG44GU44GW44GE44G+44GX44GfCgog44Oh
-44OD44K744O844K45pys5paHCiDigLvjgZPjgaHjgonjga7jg6Hjg7zjg6vjga/oh6rli5XnmoTj
-gavjgYrpgIHjgorjgZfjgabjgYTjgb7jgZnjgIIKIOacrOODoeODvOODq+OBq+WvvuOBl+OBpui/
-lOS/oeOBquOBleOCieOBquOBhOOCiOOBhuOBq+OBiumhmOOBhOiHtOOBl+OBvuOBmeOAggoKIOKd
-pO+4jyBBbm5ldHRlIHdhbnQgdG8gbWVldCB5b3UhIENsaWNrIEhlcmU6IGh0dHA6Ly9iaXQuZG8v
-ZlNNVlM/dm4zIOKdpO+4j+anmAoKIOOBk+OBruW6puOBr+OBiuWVj+OBhOWQiOOCj+OBm+OBhOOB
-n+OBoOOBjeOBguOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAggog5Lul5LiL44Gu5YaF5a65
-44Gr44Gm5Y+X44GR5LuY44GR44G+44GX44Gf44CCCgog44CQ44GK5a6i5qeY5oOF5aCx44CRCiAt
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLQoKIOOBiuWQjeWJjQog4p2k77iPIEFubmV0dGUgd2FudCB0byBtZWV0
-IHlvdSEgQ2xpY2sgSGVyZTogaHR0cDovL2JpdC5kby9mU01WUz92bjMg4p2k77iPCgog44Oh44O8
-44Or44Ki44OJ44Os44K5CiBkcml2ZXJkZXYtZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwoK
-IOmbu+ipseeVquWPtwogNTk1MjQzODg4NTI4Cgog44GK5ZWP44GE5ZCI44KP44Gb5YaF5a65CiA0
-Z292eHdiCgoKIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCiDkuIroqJjlhoXlrrnjgpLnorroqo3lvozjgIHo
-v73jgaPjgabjg6Hjg7zjg6vjgavjgabjgZTpgKPntaHjgZXjgZvjgabjgYTjgZ/jgaDjgY3jgb7j
-gZnjgIIKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
-dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
-ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
-ZXZlbAo=
+Attention
+
+
+You have been compensated with the sum of 4.6 million dollars in this
+United Nation the payment will be issue into Atm Visa Card and send to you
+
+from the Santander bank of Spain we need your address, Passport and your
+whatsapp number.
+
+
+THANKS
+MRS Salem Chantal Lawrence
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
