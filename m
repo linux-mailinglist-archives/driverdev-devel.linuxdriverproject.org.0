@@ -1,76 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB5D046AE4D
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Dec 2021 00:16:21 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB1D346C75B
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Dec 2021 23:20:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2DBCA84C0A;
-	Mon,  6 Dec 2021 23:16:20 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 932A94096E;
+	Tue,  7 Dec 2021 22:20:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tu-4tCIe_fXL; Mon,  6 Dec 2021 23:16:19 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cdCm4w7LpYJx; Tue,  7 Dec 2021 22:20:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A35C584BCF;
-	Mon,  6 Dec 2021 23:16:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C38F94059E;
+	Tue,  7 Dec 2021 22:20:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BF5AA1BF21A
- for <devel@linuxdriverproject.org>; Mon,  6 Dec 2021 23:16:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 04D0B1BF421
+ for <devel@linuxdriverproject.org>; Tue,  7 Dec 2021 22:20:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id BC11084BCF
- for <devel@linuxdriverproject.org>; Mon,  6 Dec 2021 23:16:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id F360941D5B
+ for <devel@linuxdriverproject.org>; Tue,  7 Dec 2021 22:20:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id t8UAqL1BuKuP for <devel@linuxdriverproject.org>;
- Mon,  6 Dec 2021 23:16:05 +0000 (UTC)
-X-Greylist: delayed 01:16:00 by SQLgrey-1.8.0
-Received: from server.vpimport.com (server.vpimport.com [198.50.205.68])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7B69F84BCE
- for <devel@driverdev.osuosl.org>; Mon,  6 Dec 2021 23:16:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=mobiliare.com.br; s=default; h=Content-Transfer-Encoding:Content-Type:
- MIME-Version:Message-ID:Reply-To:From:Date:Subject:To:Sender:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=qnrxEHyI6NI0b2IU4SnWBygjrhbYoIP54gVu5aN50WI=; b=SG8M40KEiUihhFkIimWMadNGf4
- DKu/S2oLQlbkdeI88Rz/LAG8ToAHcMZ1N6JfdpnrYXGKkdJT3WGrgp/3igeKTEOCh14zi0i878s+0
- /EK/OwyXkRLwkSbEafN/xCE9n+XES9fBDumEcneMxNvoyWRcAg9lN7r5gw7l6Pc3lTSigHgnc8FGd
- obHv7aLXymnDTmGMpJQ876Kc46esMG/rmoWfNWBbbmQfxGKImEgASlRtIvVkKkhQl1v2wr4UoNX0Y
- LIwTzDtBAxZMLmhH2IA+m856DcpN7Dq2w27JEzkBqa+3VG11qApIXlLhWYuxGyT20qI4BhqMEpHbS
- kTM0Nn+Q==;
-Received: from mobiliarecom by server.vpimport.com with local (Exim 4.94.2)
- (envelope-from <support@mobiliare.com.br>) id 1muM1g-000Viq-Au
- for devel@driverdev.osuosl.org; Mon, 06 Dec 2021 19:00:00 -0300
-To: devel@driverdev.osuosl.org
-Subject: REFERENZ NUMMER:#20213097036552199/EU
-X-PHP-Script: mobiliare.com.br/VTsbKvcjEfo.php for 51.210.138.82
-X-PHP-Originating-Script: 1011:VTsbKvcjEfo.php(3) : eval()'d code(1) :
- eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) :
- eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) :
- eval()'d code(1) : eval()'d code(1) : eval()'d code(1) : eval()'d code(1) :
- eval()'d code(1) : eval()'d code(1) : eval()'d code(16) : eval()'d code
-Date: Mon, 6 Dec 2021 19:00:00 -0300
-From: =?UTF-8?Q?Rechtsanw=C3=A4ltin_Bernhard___=26_Co_B=C3=BCro_Assoziiert?=
- <support@mobiliare.com.br>
-Message-ID: <217aa71fa10be84b9d88c997114adeb1@mobiliare.com.br>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DMMYVozSvX2j for <devel@linuxdriverproject.org>;
+ Tue,  7 Dec 2021 22:20:18 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D9E3141D56
+ for <devel@driverdev.osuosl.org>; Tue,  7 Dec 2021 22:20:17 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6200,9189,10191"; a="235213396"
+X-IronPort-AV: E=Sophos;i="5.87,295,1631602800"; d="scan'208";a="235213396"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Dec 2021 14:20:17 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,295,1631602800"; d="scan'208";a="461468169"
+Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
+ by orsmga003.jf.intel.com with ESMTP; 07 Dec 2021 14:20:15 -0800
+Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1muioo-000N1e-QZ; Tue, 07 Dec 2021 22:20:14 +0000
+Date: Wed, 08 Dec 2021 06:19:22 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ b07f55053557946d77d33ff6bc854058bb10621c
+Message-ID: <61afddea.JW+GwUtvsZ04LbOh%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - server.vpimport.com
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
-X-AntiAbuse: Originator/Caller UID/GID - [1011 994] / [47 12]
-X-AntiAbuse: Sender Address Domain - mobiliare.com.br
-X-Get-Message-Sender-Via: server.vpimport.com: authenticated_id:
- mobiliarecom/from_h
-X-Authenticated-Sender: server.vpimport.com: support@mobiliare.com.br
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,196 +63,236 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: promogewinnmdrid@spainmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-UmVjaHRzYW53w6RsdGluIEJlcm5oYXJkIFNjaG1pZHQgICYgQ28gQsO8cm8gQXNzb3ppaWVydApJ
-TlRFUk5BVElPTkFMIExPVEVSw41BIERFIE5BVklEQUQuT1JHLkVTCiMjIyMjIyMjIyMjIyMjIyMj
-IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjCkFWL0RFIEdSQU4gVklBIE5PLjM4aywgMjgwMDggTUFE
-UklELiAgU1BBSU4KVEVMOiggMzQpIDYwMiA4MTAgMTg1LCBlbWFpbDogc3BhaW5sb3R0b2VzQHNv
-Y2lhbHdvcmtlci5uZXQKUkVGRVJFTlogTlVNTUVSOiMyMDIxMzA5NzAzNjU1MjE5OS9FVQpUSUNL
-RVQvIEJBVENIIE5VTU1FUjogSERCVyBIMjAyMUcyMDIyIC8gRVNQLgoKCklobmVuIHdpcmQgZW1w
-Zm9obGVuLCBkaWUgZm9sZ2VuZGVuIEluZm9ybWF0aW9uZW4gYW4gSWhyZSBCZXZvbGxtw6RjaHRp
-Z3RlIHp1IHNlbmRlbi4gUmVjaHRzYW53w6RsdGluIEJlcm5oYXJkIFNjaG1pZHQgICYgQ28gQsO8
-cm8gQXNzb3ppaWVydCBFUk3DlkdMSUNIVCBJSE5FTiBESUUgRlJFSUdBQkUgSUhSRVMgRk9ORFM6
-V2lyIGJpdHRlbiBkcmluZ2VuZCwgSWhyZSBFLU1haWxzIGFuIHVuc2VyZSBCw7xyby1FLU1haWwg
-enUgYmVhbnR3b3J0ZW4sIHByb21vZ2V3aW5ubWRyaWRAc3BhaW5tYWlsLmNvbQoKCldpciBncmF0
-dWxpZXJlbiB1bmQgaW5mb3JtaWVyZW4gU2llIMO8YmVyIGRpZSBBdXN3YWhsIGRlcyBHZWxkcHJl
-aXNlcyDigqwxLDEwMC4wMDAsIDE1IENFTlQsIExPVEVSw41BIERFIE5BVklEQUQgR0zDnENLU0ZB
-TEwgIEVMIEdPUkRPIERFIExBIFBSSU1JVElWQSBMT1RURVJJRSBJTiBWRVJCSU5EVU5HIE1JVCBF
-VVJPTUlMTElPTlMgRVNQQcORQSBJTlRFUk5BVElPTkFMIExPVFRFUklFIEJFRsOWUkRFUlVORyBQ
-Uk9HUkFNTSBNYWRyaWQgU3BhbmllbgoKCkF1Zm1lcmtzYW1rZWl0OiBHZXdpbm5lciwKCgpXaXIg
-bcO2Y2h0ZW4gU2llIGluZm9ybWllcmVuLCBkYXNzIGRhcyBCw7xybyBkZXMgbmljaHQgQmVhbnNw
-cnVjaHRlbiBQcmVpc2dlbGRlcyBpbiBTcGFuaWVuLHVuc2VyZSBBbndhbHRza2FuemxlaSBlcm5h
-bm50IGhhdCwgYWxzIGdlc2V0emxpY2hlIEJlcmF0ZXIgenUgaGFuZGVsbiwgaW4gZGVyIFZlcmFy
-YmVpdHVuZyB1bmQgZGVyIFphaGx1bmcgZWluZXMgUHJlaXNnZWxkZXMsIGRhcyBhdWYgSWhyZW0g
-TmFtZW4gZ3V0Z2VzY2hyaWViZW4gd3VyZGUsIHVuZCBudW4gc2VpdCDDvGJlciB6d2VpIEphaHJl
-biBuaWNodCBiZWFuc3BydWNodCB3dXJkZS4KCgpEZXIgR2VzYW10YmV0cmFnIGRlciBpaG5lbiB6
-dXN0ZWh0IGJldHLDpGd0IG1vbWVudGFuIOKCrDEsMTAwLjAwMCwgMTUsIGNlbnQuCkRlciBHZXNh
-bXRiZXRyYWcgZGVyIGlobmVuIHp1c3RlaHQgYmV0csOkZ3QgbW9tZW50YW4gIOKCrDEsMTAwLjAw
-MCwxNSAsIGNlbnQsIEVJTkUgTUlMTElPTiBIVU5ERVJUVEFVU0VOREbDnE5GWkVITkhVTkRFUlRG
-w5xORlpJRywgRGFzIHVyc3Byw7xuZ2xpY2hlIFByZWlzZ2VsZCBiZXJ0dWcg4oKsOTkxLjAwMCwg
-RVVST1MuIE5FVU5IVU5ERVJURUlOVU5ETkVVTlpJR1RBVVNFTkQgRVVSTyBEaWVzZSBTdW1tZSB3
-dXJkZSBmdWVyIG51biBtZWhyIGFscyB6d2VpIEphaHJlLEdld2lubmJyaW5nZW5kICBhbmdlbGVn
-dCxkYWhlciBkaWUgYXVmc3RvY2t1bmcgYXVmIGRpZSBvYmVuIGdlbmFubnRlIEdlc2FtdHN1bW1l
-LkVudHNwcmVjaGVuZCBkZW0gQsO8cm9zIGRlcyBuaWNodCBCZWFuc3BydWNodGVuICBQcmVpc2dl
-bGRlcyx3dXJkZSBkaWVzZXMgR2VsZCBhbHMgbmljaHQgYmVhbnNwcnVjaHRlbiBHZXdpbm4gZWlu
-ZXIgTG90dGVyaWUgRmlybWEgYmVpIGlobmVuIHp1bSB2ZXJ3YWx0ZW4gbmllZGVyZ2VsZWd0IHVu
-ZCAgaW4gaWhyZW0gbmFtZW4gdmVyc2ljaGVydC4gTmFjaCBBbnNpY2h0IGRlciBMb3R0ZXJpZSBG
-aXJtYSB3dXJkZSBpaG5lbiBkYXMgR2VsZCBuYWNoIGVpbmVyIFdlaWhuYWNodHMgRsO2cmRlcnVu
-ZyBMb3R0ZXJpZSAgenVnZXNwcm9jaGVuLgoKCkRpZSBLdXBvbnMgd3VyZGVuIHZvbiBlaW5lciBJ
-bnZlc3RtZW50Z2VzZWxsc2NoYWZ0IGdla2F1ZnQuTmFjaCBBbnNpY2h0IGRlciBMb3R0ZXJpZSBG
-aXJtYSB3dXJkZW4gc2llIGRhbWFscyBBbmdlc2NocmllYmVuIHVtIFNpZSDDvGJlciBkaWVzZXMg
-R2VsZCB6dSBpbmZvcm1pZXJlbiBlcyBoYXQgc2ljaCBhYmVyIGxlaWRlciBiaXMgenVtIEFibGF1
-ZiAgZGVyICBnZXNldHp0ZW4gIEZyaXN0ICBrZWluZXIgZ2VtZWxkZXQgdW0gZGVuIEdld2lubiB6
-dSBCZWFuc3BydWNoZW4uIERpZXNlcyB3YXIgZGVyIEdydW5kIHdlc2hhbGIgZGFzIEdlbGQgenVt
-IHZlcndhbHRlbiBuaWVkZXJnZWxlZ3Qgd3VyZGUuIEdlbWFiIGRlcyBTcGFuaXNjaGVuIEdlc2V0
-emVzIG11c3MgZGVyIGluaGFiZXIgYWxsZSB6d2VpIEphaHJlIHVlYmVyIHNlaW5lbiB2b3JoYW5k
-ZW4gR2V3aW5uIGluZm9ybWllcnQgd2VyZGVuLlNvbGx0ZSBkYXNzIEdlbGQgd2llZGVyIG5pY2h0
-IGJlYW5zcHJ1Y2h0IHdlcmRlbiwud2lyZCBkZXIgR2V3aW5uIGFiZXJtYWxzIHVlYmVyIGVpbmUg
-SW52ZXN0aWVydW5nIGdlc2VsbHNjaGFmdCBmdXIgZWluZSB3ZWl0ZXJlIFBlcmlvZGUgdm9uIHp3
-ZWkgSmFocmVuIGFuZ2VsZWd0IHdlcmRlbi5XaXIgc2luZCBkYWhlciwgZHVyY2ggZGFzIEJ1cm8g
-ZGVzIG5pY2h0IEJlYW5zcHJ1Y2h0ZW4gUHJlaXNnZWxkcyBiZWF1ZnRyYWd0IHdvcmRlbiBzaWUg
-YW56dXNjaHJlaWJlbi5EaWVzIGlzdCBlaW5lIE5vdGlmaWthdGlvbiBmw7xyIGRhcyBCZWFuc3By
-dWNoZW4gZGllc2VzIEdlbGRzLgoKCldpciBtw7ZjaHRlbiBzaWUgZGFyYXVmIGhpbndlaXNlbiwg
-ZGFzcyBkaWUgTG90dGVyaWVnZXNlbGxzY2hhZnQgw7xiZXJwcsO8ZmVuIHVuZCBiZXN0w6R0aWdl
-biB3aXJkIG9iIGlocmUgSWRlbnRpdMOkdCAgw7xiZXJlaW5zdGltbXQgYmV2b3IgaWhuZW4gaWhy
-IEdlbGQgYXVzYmV6YWhsdCB3aXJkLldpciB3ZXJkZW4gc2llIGJlcmF0ZW4gd2llIHNpZSBpaHJl
-biBBbnNwcnVjaCBnZWx0ZW5kIG1hY2hlbi5CaXR0ZSAgc2V0emVuIHNpZSBzaWNoIGRhZnVlciBt
-aXQgdW5zZXJlciBEZXV0c2NoIFNwYW5pc2NoIG9kZXIgRW5nbGlzY2ggU3ByYWNoaWdlbiBSZWNo
-dHNhbndhbHQgaW4gVmVyYmluZHVuZyBSZWNodHNhbnfDpGx0aW46ICBCZXJuaGFyZCBTY2htaWR0
-ICAmIENvICBCw7xybyBBc3NvemlpZXJ0IFRFTCggMzQpIDYwMiA4MTAgMTg1ICZFbWFpbCwgcHJv
-bW9nZXdpbm5tZHJpZEBzcGFpbm1haWwuY29tICkgSWhyZSBBbnR3b3J0IHNvbGx0ZSBhbiBkaWVz
-ZSBFLU1BSUwtQWRyZXNzZSBnZXJpY2h0ZXQsIChwcm9tb2dld2lubkBzcGFpbm1haWwuY29tKWlz
-dCB6dXN0YWVuZGlnIGZ1ZXIgIEF1c3phaGx1bmdlbiBpbnMgQXVzbGFuZCB1bmQgd2lyZCBpaG5l
-biBpbiBkaWVzZXIgc2FjaGUgenVyIHNlaXRlIHN0ZWhlbi4gRGVyIEFuc3BydWNoIHNvbGx0ZSB2
-b3IgZGVuIDMxIEF1Z3VzdCAyMDIxIGdlbHRlbmQgIGdlbWFjaHQgd2VyZGVuLGRhIHNvbnN0IGRh
-c3MgR2VsZCB3aWVkZXIgYW5nZWxlZ3Qgd2VyZGVuIHd1ZXJkZS5XaXIgZnJldWVuIHVucywgdm9u
-IElobmVuIHp1IGjDtnJlbiwgd8OkaHJlbmQgd2lyIElobmVuICB1bnNlcmUgUmVjaHRzaGlsZmUg
-VmVyc2ljaGVybi4KCgpOYWNoZGVtIFNpZSBkaWUgdm9uIElobmVuIGdlZm9yZGVydGVuIERhdGVu
-IGJlcmVpdGdlc3RlbGx0IGhhYmVuLCBrw7ZubmVuIFNpZSBkYXZvbiBhdXNnZWhlbiwgZGFzcyBT
-aWUgaW5uZXJoYWxiIHdlbmlnZXIgIFN0dW5kZW4gZGlyZWt0IHZvbiBkaWVzZW0gQsO8cm8gZXJm
-YWhyZW4gd2VyZGVuLiBCaXMgZGFoaW4gbcO8c3NlbiB3aXIgSWhyZSBJbmZvcm1hdGlvbmVuIHZl
-cmFyYmVpdGV0IHVuZCBJaHJlIEZvbmRzIEFrdGUgZsO8ciAgZGllIFp1c3RlbGx1bmcgdm9yYmVy
-ZWl0ZXQgaGFiZW4sIHVtIFZlcnrDtmdlcnVuZ2VuIHp1IHZlcm1laWRlbi4KCgpXaXIgZ2VoZW4g
-ZGF2b24gYXVzLCBkYXNzIFNpZSBkaWUgZXJsw6R1dGVybmRlbiBBbndlaXN1bmdlbiB1bmQgQW53
-ZWlzdW5nZW4gZsO8ciBkZW4gRXJoYWx0IElocmVyIFByw6RtaWVuICjigqwxLDEwMC4wMDAsMTUs
-Q2VudCkgdmVyc3RlaGVuLCBkaWUgSWhuZW4gdm9uIGRlciBzcGFuaXNjaGVuICwgTE9URVLDjUEg
-REUgTkFWSURBRCBHTMOcQ0tTRkFMTCAgRXVybyBNaWxsb25lcyAvRWwgR29yZG8gZGUgbGEgUHJp
-bWl0aXZhIEludGVybmF0aW9uYWwgbG90dGVyaWUgTWFkcmlkIFNwYWluIGxlZ2FsIHp1Z2VzcHJv
-Y2hlbiB3ZXJkZW4uCgoKSElOV0VJUzogVW0gdW5uw7Z0aWdlIFZlcnrDtmdlcnVuZ2VuIHp1IHZl
-cm1laWRlbiwgd2VubiBlcyBlaW5lIMOEbmRlcnVuZyBJaHJlciBBZHJlc3NlIG9kZXIgS29tcGxp
-a2F0aW9uZW4gZ2ViZW4sIGluZm9ybWllcmVuIFNpZSBJaHJlbiBBZ2VudGVuIHNvIHNjaG5lbGwg
-d2llIG3DtmdsaWNoLCBJaHIgQWdlbnQgd2lyZCAxMCUgZGVzIFByZW1pdW0gUHJlaXNlcyBiZXph
-aGx0LCBkYSBkaWUgUHJvdmlzaW9uIE5BQ0ggRGVtLCB3YXMgU2llIElociBHZWxkIGF1ZiBJaHIg
-a29zdGVucGZsaWNodGlnZXMgS29udG8gZXJoYWx0ZW4gaGFiZW4uIERhcyBaYWhsdW5nc2JlYXJi
-ZWl0dW5nIEZvcm11bGFyIGlzdCBtaXQgZWluZXIgRm90b2tvcGllIElocmVzIEF1c3dlaXNlcyBh
-dXN6dWbDvGxsZW4gdW5kIHp1ciDDnGJlcnByw7xmdW5nIHBlciBGYXhudW1tZXIgenUgc2VuZGVu
-OiAmIEUtTWFpbDogV2lyIGJpdHRlbiBkcmluZ2VuZCwgSWhyZSBFLU1haWxzIGFuIHVuc2VyZSBC
-w7xyby1FLU1haWwgenUgYmVhbnR3b3J0ZW4sIHByb21vZ2V3aW5ubWRyaWRAc3BhaW5tYWlsLmNv
-bQoKCk1pdCBGcmV1bmRsaWNoZW4gR3LDvMOfZW4KSnVzdGljZSBBbm5hIEhlcm5hbmRlcyBTcgoK
-CkFOTUVMREVGT1JNVUxBUiBGw5xSIERFTiBHRVdJTk5BTlNQUlVDSCBWb20gMzEuIEF1Z3VzdCBi
-aXMgMjIuIERFWkVNQkVSICAyMDIxCkhpbndlaXMgYml0dGUgZ2ViZW4gU2llIGRpZSBmb2xnZW5k
-ZW4gSW5mb3JtYXRpb25lbiwgd2llIHVudGVuIGdlZm9yZGVydCwgIGUgbWFpbDogcHJvbW9nZXdp
-bm5tZHJpZEBzcGFpbm1haWwuY29tLGVzIHp1csO8Y2sgaW4gbWVpbiBCw7xybyBzb2ZvcnQgZsO8
-ciB1bnMgaW4gZGVyIExhZ2UgenUgc2VpbiBkaWUgTGVnYWxpc2llcnVuZyBQcm96ZXNzIElocmVy
-ICBQZXJzw7ZubGljaGUgaW52ZXN0aWVydGVzIFByZWlzZ2VsZCB6dSB2ZXJ2b2xsc3TDpG5kaWdl
-biwgdW5kIGRhcyBHZWxkIHdpcmQgSWhuZW4gdm9uIFplbnRyYWxiYW5rIHNwYWluIEludCAgYXVz
-Z2V6YWhsdC4gIEFsbGUgUHJvemVzcyDDnGJlcnByw7xmdW5nIGR1cmNoIHVuc2VyZSBLYW56bGVp
-IGlzdCBmw7xyIFNpZSBrb3N0ZW5sb3MsIHdlaWwgdW5zZXJlIEtvc3RlbiB3ZXJkZW4gdm9uIGRl
-ciBpbnRlcm5hdGlvbmFsZW4gIExvdHRvIEtvbW1pc3Npb24gYW0gRW5kZSBkZXMgUHJvemVzc2Vz
-IHp1IHphaGxlbiwgd2VubiBTaWUgSWhyIEdlbGQgZXJoYWx0ZW4uV2VubiBTaWUgbmljaHQgZGll
-IGVyZm9yZGVybGljaGVuICBJbmZvcm1hdGlvbmVuIHZvciBkZXIgWmVpdCBnZWdlYmVuIGhhdCwg
-a8O2bm5lbiBpc3QgQW53YWx0c2thbnpsZWkgbmljaHQgaGFmdGJhciBnZW1hY2h0IHdlcmRlbiwg
-d2VubiBJaHIgR2VsZCByZWludmVzdGllcnQgIHd1cmRlLgoKCkVpbiBCZXN0w6R0aWd1bmdzc2No
-cmVpYmVuIHdpcmQgSWhuZW4gZ2VmYXh0IHdlcmRlbiBzb2ZvcnQgd2VubiB3aXIga29tcGxldHRl
-IMOcYmVycHLDvGZ1bmcgZGVyIEluZm9ybWF0aW9uZW4gZGllIFNpZSB1bnMgenVyICBWZXJmw7xn
-dW5nIHN0ZWxsZW4gaGFiZSwgSWNoIHdlcmRlIGRpZSBJbnZlc3RtZW50YmFuayB1bnZlcnrDvGds
-aWNoIMO8YmVyIGRpZSB2b24gSWhuZW4gYW5nZWdlYmVuZSBJbmZvcm1hdGlvbmVuIHp1IGtvbW1l
-biwgIGJldm9yIHNpZSB3ZXJkZW4gbWl0IElobmVuIEtvbnRha3QgYXVmbmVobWVuIGbDvHIgZGll
-IGF1c1phaGx1bmcgdm9uIElocmVtIEdlbGQgLiBJaHJlIERhdGVuIHdlcmRlbiB2ZXJ0cmF1bGlj
-aCBnZWhhbHRlbiAgbmFjaCBkZXIgRXVyb3DDpGlzY2hlbiBVbmlvbiBEYXRlbnNjaHV0enJlY2h0
-LgoKCiJBbnR3b3J0ZW4gU2llIG5pY2h0IGF1ZiBkaWUgQWJzZW5kZXJhZHJlc3NlIG9kZXIgZGll
-IFF1ZWxsLUUtTWFpbC1BZHJlc3NlLCBlcyB3aXJkIMO8YmVyIGRlbiBDb21wdXRlciBnZXNlbmRl
-dCB2aXJ0dWVsbGUgIEhpbGZlIGbDvHIgZGllIEFudHdvcnQgd2lyZCAgbmljaHQgbWVpbmUgbWVu
-c2NobGljaGUgc29uZGVybiBDb21wdXRlciIgRGFoZXIgbcO8c3NlbiBTaWUgZGllIFRyZXVow6Ru
-ZGVyIMO8YmVyIFRlbGVmb24gdW5kIEUtIE1haWwtQWRyZXNzZSBvYmVuIiAoQUNIVFVORyBXaXIg
-KGJpdHRlbiBTaWUsIGF1ZiBkaWVzZSBFLU1haWwtQWRyZXNzZSB6dSBhbnR3b3J0ZW4sIChwcm9t
-b2dld2lubm1kcmlkQHNwYWlubWFpbC5jb20pCgoKUkVGLk5SOuKApuKApuKApuKApuKApuKApuKA
-puKApuKApuKApuKApuKAplNUQVBFTE4gU2llIE5SOuKApuKApuKApuKApuKApuKApuKApuKApuKA
-puKApgpWb3JuYW1lOuKApuKApuKApuKApuKApuKApuKApuKAplZvci1OQUNITkFNReKApuKApuKA
-puKApuKApuKApuKApuKApuKApuKApuKApuKApuKApgpHRUJVUlRTREFUVU064oCm4oCm4oCm4oCm
-4oCm4oCm4oCm4oCm4oCm4oCm4oCmQkVSVUY64oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm
-4oCmClNUUkFTU0U64oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm
-UExaL09SVOKApuKApuKApuKApuKApuKApuKApuKApuKApuKApgpBRFJFU1NFOuKApuKApuKApuKA
-puKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKA
-puKApuKApuKApuKApuKApuKApgpURUxFRk9OOihfX18p4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm
-SEFORFk6KF9fKeKApuKApuKApuKApuKApuKApkZBWCAoX18p4oCm4oCm4oCmCkVNQUlMOuKApuKA
-puKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKApuKA
-puKApk5hdGlvbmFsaXRpdDrigKbigKbigKbigKbigKbigKYKCgpISU5XRUlTOiBCQU5LVkVSQklO
-RFVORyBJU1QgTlVSIEVSRk9SREVSTElDSCwgV0VOTiBTSUUgQkVTQ0hMSUXDn0VOLCBJSFJFTiBH
-RVdJTk4gWlUgRVJIQUxURU4gUEVSIMOcQkVSV0VJU1VORwpOYWNoZGVtIFNpZSBkaWUgdm9uIElo
-bmVuIGdlZm9yZGVydGVuIERhdGVuIGJlcmVpdGdlc3RlbGx0IGhhYmVuLCBrw7ZubmVuIFNpZSBk
-YXZvbiBhdXNnZWhlbiwgZGFzcyBTaWUgaW5uZXJoYWxiIHdlbmlnZXIgIFN0dW5kZW4gZGlyZWt0
-IHZvbiBkaWVzZW0gQsO8cm8gZXJmYWhyZW4gd2VyZGVuLiBCaXMgZGFoaW4gbcO8c3NlbiB3aXIg
-SWhyZSBJbmZvcm1hdGlvbmVuIHZlcmFyYmVpdGV0IHVuZCBJaHJlIEZvbmRzIEFrdGUgZsO8ciAg
-ZGllIFp1c3RlbGx1bmcgdm9yYmVyZWl0ZXQgaGFiZW4sIHVtIFZlcnrDtmdlcnVuZ2VuIHp1IHZl
-cm1laWRlbi4gV2lyIGdlaGVuIGRhdm9uIGF1cywgZGFzcyBTaWUgZGllIGVya2zDpHJlbmRlbiBB
-bndlaXN1bmdlbiAgdW5kIEFud2Vpc3VuZ2VuIHp1bSBFaW5ob2xlbiB1bmQgRWluaG9sZW4gSWhy
-ZXIgQXVzemVpY2hudW5nZW4gKOKCrDEsMTAwLDAwMC4xNSBjZW50KSB2ZXJzdGVoZW4sIGRpZSBJ
-aG5lbiB2b20gc3BhbmlzY2hlbiBFdXJvIE1pbGxvbmVzIC9lbCBHb3JkbyBkZSBMYSBQcmltaXRp
-dmEgSW50ZXJuYXRpb25hbCBNYWRyaWQgbGVnYWwgenVnZXNwcm9jaGVuIHd1cmRlbgoKCkJpdHRl
-IGJlZm9sZ2VuIFNpZSBkaWUgZm9sZ2VuZGVuIEFud2Vpc3VuZ2VuLCBkYW1pdCB3aXIgSWhyZSBT
-b2ZvcnTDvGJlcndlaXN1bmcgYmVlaW5mbHVzc2VuIGvDtm5uZW4sIHdpciBoYWJlbiB6d2VpIE9w
-dGlvbmVuIGRlciBBdXN6YWhsdW5nc3phaGx1bmcgKEVGVCBCYW5rw7xiZXJ3ZWlzdW5nICYgQmFu
-ayB6ZXJ0aWZpemllcnRlciBTY2hlY2sgdW5kIFZvcmF1c2JlemFobHQgIE1laXN0ZXIgS2FydGUg
-TGFzdHNjaHJpZnQKZ2VsZGF1dG9tYXQtS2FydGUpLCBkaWUgZGlyZWt0IGFuIElocmUgQWRyZXNz
-ZSBwZXIgREhMIG9kZXIgZWluZW0gYmVsaWViaWdlbiBCZXN0ZWxsa3VyaWVyZGllbnN0IGF1c2dl
-c3RlbGx0IHVuZCBnZXNlbmRldCB3ZXJkZW4ga8O2bm5lbiwgZ2ViZW4gU2llIHVudGVuIElocmUg
-YmV2b3J6dWd0ZSBPcHRpb24gYW4uIEJhbmvDvGJlcndlaXN1bmcgZGF1ZXJ0IDQ4IGJpcyA3MiBB
-cmJlaXRzc3R1bmRlbiwgd8OkaHJlbmQgZGllIExpZWZlcnVuZyB2b24gRGViaXRrYXJ0ZW4gNSBi
-aXMgNiBXZXJrdGFnZSBkYXVlcnQuIEJlbcO8aGVuIFNpZSBzaWNoLCBJaHJlIFphaGx1bmdzcmVm
-ZXJlbnpudW1tZXIgc2VociB2ZXJ0cmF1bGljaCB6dSBiZWhhbmRlbG4uIEdlYmVuIFNpZSBGb2xn
-ZW5kZXMgZsO8ciBJaHJlIGpld2VpbGlnZW4KCgpaYWhsdW5nc29wdGlvbmVuIGFuLikgWkFITFVO
-R1NPUFRJT046IChBKSBCRVNUw4RUSUdURVIgU0NIRUNLIChCRVpBSExFTiBTaWUgw5xCRVJUUkFH
-VU5HIEVJTgoKCkJFVFLDhEdFIEdFV09OTkVOOiDigKbigKbigKbigKbigKbigKbigKbigKbigKbi
-gKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKYKTkFNRSBERVIgQkFOSzrigKbigKbigKbi
-gKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbi
-gKYKS09OVE9OVU1NRVI64oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCm4oCmU1dJRlQtQ09ERTri
-gKbigKbigKbigKbigKbigKbigKYKQURSRVNTRSBERVIgQkFOSyDigKbigKbigKbigKbigKbigKbi
-gKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKbigKYKR0VCLURBVFVN
-OuKApuKApuKApuKAplVudGVyc2NocmlmdCDigKbigKbigKbigKYoRXJzdCBiZWkgaG1lQWJuYSkK
-CgpSZWNodHNhbnfDpGx0aW4gIEJlcm5oYXJkIFNjaG1pZHQgICYgQ28gQsO8cm8gQXNzb3ppaWVy
-dCAgQXNvY2lhZG9zLCBBYm9nYWRvcywgRmlzY2FsIFkgQWNjZXNvcmlvcyBob3JhcmlvIGRlIGNv
-bnN1bHRhcyBMdW5lcy5iaXMgU2Ftc3RhZyBEZS4gMDkgLSAxNi4zMCBVaHIgIDY1NDI4MCAvIE1M
-QSAmIChTZWllbiBTaWUgaW5mb3JtaWVydCwgZGFzcyBJaHIgVmVydHJldGVyIDEwJSBkZXMgUHJl
-aXNlcyBhbHMgUHJvdmlzaW9uIGVyaMOkbHQsIHdlbm4gU2llIElociBHZWxkIGF1ZiBJaHJlbSAg
-YW5nZWdlYmVuZW4gS29udG8gZXJoYWx0ZW4gaGFiZW4pIE1pdGdsaWVkIGRlcyBDb25zZWpvIGRl
-IENvbnN0aXR1Y2lvbmFsIGRlIEVzcGHDsWEsIChBQ0hUVU5HIFdpciBiaXR0ZW4gU2llLCBhdWYg
-ZGllc2UgRS1NYWlsLUFkcmVzc2UgenUgYW50d29ydGVuIChwcm9tb2dld2lubm1kcmlkQHNwYWlu
-bWFpbC5jb20pIELDnFJPLUtPTlRPSU5GT1JNQVRJT05FTi1TZWtyZXTDpHIgTkFNRSBKVUxJQSwg
-SUJBTjogRVM1NyAyMTAwIDM4MTkgOTEyMCAwMDAxIDA0OTAsQklDOiBDQUlYRVNCQlhYWCwgQURS
-RVNTRTogQVZFTklEQSBNQSAxNSwgMjk0MDAgUk9VTkRBIE1BRFJJRC1TUEFOSUVOCkNPUFlSSUdI
-VCAyMDIwLkxPVEVSSUEgU1BBTklFTi4gQWxsZSBSZWNodGUgdm9yYmVoYWx0ZW4uIE5VVFpVTkdT
-QkVESU5HVU5HRU4gSEFOREVMU1BPTElUSUsgREFURU5TQ0hVVFogVk9OIEJFU0NIV0VSREVOCgpE
-aWVzZSBFLU1haWwgaXN0IGbDvHIgZGVuIHZvcmdlc2VoZW5lbiBFbXBmw6RuZ2VyIGJlc3RpbW10
-IHVuZCBlbnRow6RsdCBJbmZvcm1hdGlvbmVuLCBkaWUgdmVydHJhdWxpY2ggc2VpbiBrw7ZubmVu
-LiBXZW5uIFNpZSBuaWNodCBkZXIgYmVhYnNpY2h0aWd0ZSBFbXBmw6RuZ2VyIFNpbmQsIGJlbmFj
-aHJpY2h0aWdlbiBTaWUgYml0dGUgZGVuIEFic2VuZGVyIHBlciBFLU1haWwgdW5kIGzDtnNjaGVu
-IFNpZSBkaWVzZSBFLU1haWwgYXVzIElocmVtIFBvc3RlaW5nYW5nLiBKZWRlIHVuYmVmdWd0ZSBO
-dXR6dW5nIG9kZXIgVmVyYnJlaXR1bmcgZGllc2VyIEUtTWFpbCwgZ2FueiBvZGVyIHRlaWx3ZWlz
-ZSwgaXN0IHN0cmVuZ3N0ZW5zIHVudGVyc2FndCB1bmQga2FubiByZWNodHN3aWRyaWcgc2Vpbi4g
-QWxsZSBpbiBkaWVzZXIgRS1NYWlsIGVudGhhbHRlbmVuIFByZWlzYW5nZWJvdGUgc2luZCBudXIg
-aW5kaWthdGl2IHVuZCBmw7xocmVuIHp1IGtlaW5lciByZWNodGxpY2ggYmluZGVuZGVuIG9kZXIg
-ZHVyY2hzZXR6YmFyZW4gVmVycGZsaWNodHVuZy4gU29mZXJuIG5pY2h0IGF1c2Ryw7xja2xpY2gg
-YWxzIGJlYWJzaWNodGlndGVyIEUtVmVydHJhZyBiZXplaWNobmV0LCBzdGVsbHQgZGllc2UgRS1N
-YWlsIGtlaW4gVmVydHJhZ3NhbmdlYm90LCBrZWluZSBWZXJ0cmFnc8OkbmRlcnVuZyBvZGVyIGVp
-bmUgQW5uYWhtZSBlaW5lcyBWZXJ0cmFnc2FuZ2Vib3RzIGRhci4KV1dXLkdPUkRPLyBFVVJPTUlM
-TElPTlMgRVNQQcORQSAgU2l0eiBkZXIgR2VzZWxsc2NoYWZ0OiBUb3JyZSBFdXJvcGEgUGFzZW8g
-ZGUgbGEgQmFyY2Vsb25hIDE1LiBQbGFudGEgMTYgMjgwMDYg4oCiIE1hZHJpZCBTcGFuaWVuKQoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFp
-bGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5s
-aW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: b07f55053557946d77d33ff6bc854058bb10621c  staging: r8188eu: convert/remove DBG_88E calls in core/rtw_cmd.c
+
+elapsed time: 722m
+
+configs tested: 203
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20211207
+arm                         axm55xx_defconfig
+sh                         microdev_defconfig
+mips                     loongson1c_defconfig
+s390                             allmodconfig
+sh                     sh7710voipgw_defconfig
+powerpc                  iss476-smp_defconfig
+arm                       omap2plus_defconfig
+sh                             sh03_defconfig
+arm                       cns3420vb_defconfig
+mips                           rs90_defconfig
+powerpc                     skiroot_defconfig
+sh                                  defconfig
+m68k                             alldefconfig
+arc                           tb10x_defconfig
+arm                           tegra_defconfig
+powerpc                 mpc837x_rdb_defconfig
+csky                                defconfig
+powerpc                 mpc836x_rdk_defconfig
+m68k                            q40_defconfig
+riscv                            alldefconfig
+arm                           u8500_defconfig
+mips                        workpad_defconfig
+m68k                        m5307c3_defconfig
+m68k                         apollo_defconfig
+m68k                          atari_defconfig
+arm                       multi_v4t_defconfig
+xtensa                  nommu_kc705_defconfig
+h8300                            allyesconfig
+h8300                     edosk2674_defconfig
+mips                      maltasmvp_defconfig
+nds32                            alldefconfig
+powerpc                     redwood_defconfig
+sh                          sdk7786_defconfig
+arm                           h5000_defconfig
+powerpc                mpc7448_hpc2_defconfig
+powerpc                     ppa8548_defconfig
+mips                      malta_kvm_defconfig
+riscv                    nommu_virt_defconfig
+powerpc                     taishan_defconfig
+arm                          iop32x_defconfig
+arm                         mv78xx0_defconfig
+arc                     nsimosci_hs_defconfig
+arm                         bcm2835_defconfig
+sh                        apsh4ad0a_defconfig
+arm                         vf610m4_defconfig
+sh                          lboxre2_defconfig
+sh                           se7705_defconfig
+mips                           xway_defconfig
+powerpc                      cm5200_defconfig
+sparc64                             defconfig
+powerpc                         wii_defconfig
+mips                          rm200_defconfig
+mips                        maltaup_defconfig
+mips                          ath79_defconfig
+arm                         lpc32xx_defconfig
+h8300                    h8300h-sim_defconfig
+sh                   rts7751r2dplus_defconfig
+powerpc                   motionpro_defconfig
+parisc                           alldefconfig
+arm                           h3600_defconfig
+mips                      loongson3_defconfig
+sh                  sh7785lcr_32bit_defconfig
+mips                           ip22_defconfig
+arm                        shmobile_defconfig
+powerpc                 mpc8313_rdb_defconfig
+arm                       imx_v4_v5_defconfig
+arm                           sama7_defconfig
+arm                           omap1_defconfig
+powerpc                       holly_defconfig
+arm                      pxa255-idp_defconfig
+openrisc                         alldefconfig
+powerpc                   lite5200b_defconfig
+mips                         mpc30x_defconfig
+sh                             espt_defconfig
+arm                      footbridge_defconfig
+powerpc                      acadia_defconfig
+sh                           se7721_defconfig
+powerpc                 xes_mpc85xx_defconfig
+parisc                generic-64bit_defconfig
+m68k                       bvme6000_defconfig
+sh                              ul2_defconfig
+arc                         haps_hs_defconfig
+sparc                            alldefconfig
+arm                         s5pv210_defconfig
+powerpc                     stx_gp3_defconfig
+riscv             nommu_k210_sdcard_defconfig
+sh                         ecovec24_defconfig
+arm                         orion5x_defconfig
+sh                           se7780_defconfig
+xtensa                generic_kc705_defconfig
+arm                        mvebu_v7_defconfig
+xtensa                  audio_kc705_defconfig
+powerpc                    ge_imp3a_defconfig
+powerpc                   microwatt_defconfig
+mips                         tb0226_defconfig
+arm                          pxa910_defconfig
+powerpc                     pq2fads_defconfig
+mips                        omega2p_defconfig
+arm                        keystone_defconfig
+arm                        cerfcube_defconfig
+mips                     decstation_defconfig
+powerpc                        fsp2_defconfig
+powerpc                 mpc836x_mds_defconfig
+powerpc                     powernv_defconfig
+arc                      axs103_smp_defconfig
+mips                     cu1000-neo_defconfig
+arm                  colibri_pxa270_defconfig
+sh                           se7722_defconfig
+arm                          moxart_defconfig
+nds32                             allnoconfig
+powerpc                     tqm8548_defconfig
+sh                        sh7757lcr_defconfig
+mips                  cavium_octeon_defconfig
+mips                           mtx1_defconfig
+sh                   sh7770_generic_defconfig
+alpha                               defconfig
+arm                      jornada720_defconfig
+sh                 kfr2r09-romimage_defconfig
+arm                         at91_dt_defconfig
+sparc                               defconfig
+mips                       rbtx49xx_defconfig
+arm                  randconfig-c002-20211207
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a006-20211207
+x86_64               randconfig-a005-20211207
+x86_64               randconfig-a001-20211207
+x86_64               randconfig-a002-20211207
+x86_64               randconfig-a004-20211207
+x86_64               randconfig-a003-20211207
+i386                 randconfig-a001-20211207
+i386                 randconfig-a005-20211207
+i386                 randconfig-a002-20211207
+i386                 randconfig-a003-20211207
+i386                 randconfig-a006-20211207
+i386                 randconfig-a004-20211207
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-c007-20211207
+arm                  randconfig-c002-20211207
+riscv                randconfig-c006-20211207
+mips                 randconfig-c004-20211207
+i386                 randconfig-c001-20211207
+powerpc              randconfig-c003-20211207
+s390                 randconfig-c005-20211207
+x86_64               randconfig-a016-20211207
+x86_64               randconfig-a011-20211207
+x86_64               randconfig-a013-20211207
+x86_64               randconfig-a014-20211207
+x86_64               randconfig-a015-20211207
+x86_64               randconfig-a012-20211207
+i386                 randconfig-a016-20211207
+i386                 randconfig-a013-20211207
+i386                 randconfig-a011-20211207
+i386                 randconfig-a014-20211207
+i386                 randconfig-a012-20211207
+i386                 randconfig-a015-20211207
+hexagon              randconfig-r045-20211207
+s390                 randconfig-r044-20211207
+riscv                randconfig-r042-20211207
+hexagon              randconfig-r041-20211207
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
