@@ -1,57 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C69F47072C
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Dec 2021 18:29:27 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 83D1E470DB1
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Dec 2021 23:26:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 306074127D;
-	Fri, 10 Dec 2021 17:29:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0C7C385641;
+	Fri, 10 Dec 2021 22:26:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4vwZ7DSmYniu; Fri, 10 Dec 2021 17:29:24 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LvO0v0M70iyr; Fri, 10 Dec 2021 22:26:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F241541275;
-	Fri, 10 Dec 2021 17:29:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5B7018563A;
+	Fri, 10 Dec 2021 22:26:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BF6AE1BF35D
- for <devel@linuxdriverproject.org>; Fri, 10 Dec 2021 17:29:10 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 389191BF3D6
+ for <devel@linuxdriverproject.org>; Fri, 10 Dec 2021 22:26:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AEC46401FB
- for <devel@linuxdriverproject.org>; Fri, 10 Dec 2021 17:29:10 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 26CC461B61
+ for <devel@linuxdriverproject.org>; Fri, 10 Dec 2021 22:26:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=gruposerys.net
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LD42RF8BBhib for <devel@linuxdriverproject.org>;
- Fri, 10 Dec 2021 17:29:10 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.foescog.net (unknown [5.56.56.209])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 11317401F6
- for <devel@driverdev.osuosl.org>; Fri, 10 Dec 2021 17:29:09 +0000 (UTC)
-Received: from 42.91-116-32.dynamic.clientes.euskaltel.es (unknown
- [91.116.32.42])
- by mail.foescog.net (Postfix) with ESMTPSA id 048901EB2FA
- for <devel@driverdev.osuosl.org>; Fri, 10 Dec 2021 18:29:07 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gruposerys.net;
- s=default; t=1639157348;
- bh=xUrfVs0SwqMa4XF9Lpvuw2aBNh65XgM2+voF5q808Ko=; h=From:To:Subject;
- b=qW3zuIoMjjgFbvO3flys5BownMa1erQ4fmDsqGcE11KkkQC+VSgjXA4/FtbEMjtqM
- YyJxBcyoqcjMiJbhUchWP9s6qpj8vD569o1yuT4fW20cP5GM97ar2aksuUCbK599JD
- G2VS1ANEVryReK9YnL9nmeAQe+RTphUx2vWrwM1g=
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id n1SysG9U-ySp for <devel@linuxdriverproject.org>;
+ Fri, 10 Dec 2021 22:26:17 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-lf1-x144.google.com (mail-lf1-x144.google.com
+ [IPv6:2a00:1450:4864:20::144])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4944F61B60
+ for <devel@driverdev.osuosl.org>; Fri, 10 Dec 2021 22:26:17 +0000 (UTC)
+Received: by mail-lf1-x144.google.com with SMTP id z7so20472463lfi.11
+ for <devel@driverdev.osuosl.org>; Fri, 10 Dec 2021 14:26:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=ZVpcPi7LQ5gLudij66lYK6TBzgF1A80F+pTBmMWakuY=;
+ b=buW/XzG0h3SKGofyc5FDJkrlXM+1OfEEND7H3Hvod0+XIboBRMilj5Ho8K4MXYpErp
+ JSOdzoXcsZu7ExX2W3kCxzveoVW5cdMGVzKJ1N/S5yFGv73QydT/dp5Xh7YDeH69wMy4
+ mCthdl5gFt62kEqkMjZHbzlRAnLNPmOelQKpw1NtXyoHEWERbVUxUFK0EdD3TtjYQLtV
+ v7OP2ITHxIEAijplwktIv9I5U4kDpfA0xSv+dCT8ke7vEjkGj0DJy6fTZDIBGuNy1sTX
+ 0WJrz5LynbG68njzLz7u9PjF2epHoT6D5NYEuKpdOJT+PETYwBCRXa+7Xb3HK+CZ+Gys
+ vndw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=ZVpcPi7LQ5gLudij66lYK6TBzgF1A80F+pTBmMWakuY=;
+ b=z29Q32JQ+F1NLqntek1iJcuOANlk0bUCqJoAGKpj5cd3RG25IJoUM9QVXg41F1Ec/p
+ pL9KITj7ld7l9AIOXnNCyAd0iS9ZNIbNniOY1HQj496jm3CwzIXc/G0HkEqAm10Jqjin
+ lti/aCnoeLRPh6LxXmUZNUtK1a9bWD5Rk/GEPwNd44XRzD7zuvTqRHU8vxtOrSpiA3Zi
+ lHEjmi4Py9jjXBhTV8JFkDnMZ7NMvZTSzR0V6yHWPdPBBwYtIcibkNhBHq8XeaAylSn9
+ uZB1jnqswiDhGlMXFPFFGSohP7GJ4vsS8nQB7By0D+pmOdNptCae8VsuGUZyKaCBX30+
+ 39QQ==
+X-Gm-Message-State: AOAM531A5TJtryHPEdWeI32Pr853L0389sMZr1jBUdLdsoxCdJULWPNp
+ 8+OYQYJovLXpOvIr/KwiZskhwEmoEjwo+UWhvIQ=
+X-Google-Smtp-Source: ABdhPJysO4CuGQjo2Ds2jurN/PJ0LXfLuMX+LP/Ckr58b5pdj9EevwQk108o0/hV0FREQFHDYQLdrety5EI1IfidqHk=
+X-Received: by 2002:a05:6512:3a8d:: with SMTP id
+ q13mr14358932lfu.73.1639175174907; 
+ Fri, 10 Dec 2021 14:26:14 -0800 (PST)
 MIME-Version: 1.0
-From: "SERYS" <info7@gruposerys.net>
-To: devel@driverdev.osuosl.org
-Subject: Consulta
-X-Mailer: Smart_Send_4_4_2
-Date: Fri, 10 Dec 2021 18:29:09 +0100
-Message-ID: <52284881682481115129277@DESKTOP-TDQ7H1S>
-X-Priority: 1
-X-MSMail-Priority: High
+Received: by 2002:a05:6512:1090:0:0:0:0 with HTTP; Fri, 10 Dec 2021 14:26:14
+ -0800 (PST)
+From: Aisha Gaddafi <katelabo02@gmail.com>
+Date: Fri, 10 Dec 2021 14:26:14 -0800
+Message-ID: <CAMfHZNLFxoKFYHWS=GuaZ6OhOaV7WKRazttzzH5EeAvdTJqe3Q@mail.gmail.com>
+Subject: Hello Dear
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,71 +82,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: info7@gruposerys.net
-Content-Type: multipart/mixed; boundary="===============1879026986082124658=="
+Reply-To: aishagaddafilibya5@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============1879026986082124658==
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-Buenos d=EDas
+Assalamu Alaikum Wa Rahmatullahi Wa Barakatuh,
 
 
-
-Desde SERYS ENERGIA estamos informando a todas las empresas, particulares y=
- entidades p=FAblicas acerca del servicio de autoconsumo el=E9ctrico median=
-te la instalaci=F3n totalmente financidada de placas solares fotovoltaicas.
+Hello Dear
 
 
-Por este motivo rogamos pod=E1is respondernos indicando una de la siguiente=
-s respuestas:
+How are you doing today,I came across your contact prior a
+private search while in need of your assistance.
+I hope my mail meet you in good condition of health? Dear I have
+decided to contact you after much thought considering the fact that we
+have not meet before, but because of some circumstance obliged me, I
+decided to contact you due to the urgency of my present situation here
+in the refugee camp for your rescue and also for a serious
+relationship and a business
+venture/project which I need your assistant in this business
+establishment in your country as my foreign partner as well as my
+legal appointed trustee.
 
+I am Aisha Muammar Gaddafi, the only daughter of the embattled
+president of Libya, Hon. Muammar Gaddafi. Am a single Mother and a
+Widow with three Children.
+I am currently residing in Burkina Faso unfortunately as a refugee. I
+am writing this mail with tears and sorrow from my heart asking for
+your urgent help. I have passed through pains and sorrowful moment
+since the death of my late father.
 
-1 - Precisamos recibir presupuesto personalizado y sin compromiso (Indicar =
-por favor nombre y tel=E9fono de contacto).
+At the meantime, my family is the target of Western nations led by
+Nato who wants to destroy my father at all costs. Our investments and
+bank accounts in several countries are their targets to freeze. My
+Father of blessed memory deposited the sum of Twenty Seven Million,
+Five Hundred Thousand, Dollars ($27.500.000.000) in Bank Of Africa
+Burkina Faso which he used my name as the next of kin. I have been
+commissioned by the Bank to present an interested foreign
+investor/partner who can stand as my trustee and receive the fund in
+his account for a possible investment in his country due to my refugee
+status here in Burkina Faso.
 
-2 - No precisamos recibir informaci=F3n, disponemos ya de una instalaci=F3n=
- fotovoltaica.
+I am in search of an honest and reliable person who will help me and
+stand as my trustee so that I will present him to the Bank for the
+transfer of the fund to his bank account overseas. I have chosen to
+contact you after my prayers and I believe that you will not betray my
+trust. But rather take me as your own sister or daughter. I am willing
+to negotiate investment/business profit sharing ratio with you base on
+the future investment earning profits.
+Apologetic for my pictures I will enclose it in my next mail and more
+about me when I hear from you okay. Please I want you to contact me
+here (aishagaddafilibya5@gmail.com) for more details.
 
-3 - No precisamos recibir informaci=F3n, no nos interesa cambiar.
-
-
-Gracias por vuestra colaboraci=F3n, quedamos a la espera de vuestra respues=
-ta.
-
-
-Saludos cordiales.
-
-
-Departamento de autoconsumo y renovables
-SERYS CONSULTING ESPA=D1A
-Tel. 604213428
-Email. info@serys-energia.com
-
-www.serys-energia.com
-
-Antes de imprimir este e-mail piense bien si es necesario hacerlo. De confo=
-rmidad con lo dispuesto en el Reglamento Europeo del 2016/679, del 27 de Ab=
-ril de 2016 le informamos que la informaci=F3n transmitida en este mensaje =
-est=E1 dirigida solamente a las personas o entidades que figuran en el enca=
-bezamiento y contiene informaci=F3n confidencial, por lo que, si usted lo r=
-ecibiera por error, por favor destr=FAyalo sin copiarlo, usarlo ni distribu=
-irlo, comunic=E1ndolo inmediatamente al emisor del mensaje.=20
-
-Puede solicitar BAJA en el env=EDo de correos electr=F3nicos "PULSANDO AQUI=
-" <mailto:bajas@serys.net=3FSubject=3DBAJA%20CORREOS> y "ENVIAR".
-
---===============1879026986082124658==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+best regard
+Yours Sincerely.
+Aisha Gaddafi
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============1879026986082124658==--
