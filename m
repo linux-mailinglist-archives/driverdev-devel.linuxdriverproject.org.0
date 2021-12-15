@@ -1,72 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0DA84744A5
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Dec 2021 15:18:27 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0B9B6475284
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Dec 2021 07:07:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B04E960BB3;
-	Tue, 14 Dec 2021 14:18:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 20A9E81495;
+	Wed, 15 Dec 2021 06:07:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7mSEzHJJKjGT; Tue, 14 Dec 2021 14:18:24 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id api9hlP5MTKX; Wed, 15 Dec 2021 06:07:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1121360BAF;
-	Tue, 14 Dec 2021 14:18:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6D1DB81499;
+	Wed, 15 Dec 2021 06:07:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9B9761BF2A5
- for <devel@linuxdriverproject.org>; Tue, 14 Dec 2021 14:18:14 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1A0AB1BF2F1
+ for <devel@linuxdriverproject.org>; Wed, 15 Dec 2021 06:07:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8AD1360BAF
- for <devel@linuxdriverproject.org>; Tue, 14 Dec 2021 14:18:14 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 09B6940200
+ for <devel@linuxdriverproject.org>; Wed, 15 Dec 2021 06:07:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qH0HDvwEmIXt for <devel@linuxdriverproject.org>;
- Tue, 14 Dec 2021 14:18:12 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TgBFuyh80yXZ for <devel@linuxdriverproject.org>;
+ Wed, 15 Dec 2021 06:07:29 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ed1-x543.google.com (mail-ed1-x543.google.com
- [IPv6:2a00:1450:4864:20::543])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CC0F160BAD
- for <devel@driverdev.osuosl.org>; Tue, 14 Dec 2021 14:18:11 +0000 (UTC)
-Received: by mail-ed1-x543.google.com with SMTP id b7so4276260edd.6
- for <devel@driverdev.osuosl.org>; Tue, 14 Dec 2021 06:18:11 -0800 (PST)
+Received: from mail-lf1-x130.google.com (mail-lf1-x130.google.com
+ [IPv6:2a00:1450:4864:20::130])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2FD53401FF
+ for <devel@driverdev.osuosl.org>; Wed, 15 Dec 2021 06:07:29 +0000 (UTC)
+Received: by mail-lf1-x130.google.com with SMTP id m6so29292298lfu.1
+ for <devel@driverdev.osuosl.org>; Tue, 14 Dec 2021 22:07:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=KzLgDz7d2Gll4mrNvllKXj4KFgN8S+Ovisil7/bb6fs=;
- b=KNdeQjCrgndTL0c1dZk/ospbXyl9Nuz0BNovCOe/U2B0WBL8DtunppiqRoOX/na6KP
- Lo/hEyvt8U5EqOSypzZcH3FIhDg1PXSc0UyAJUkKilgDkhZrrYdqLngtaXiK6gfgxis3
- IeDnUtbDBPAUbeCsq4428YhR+lZk8O8q/IBufA8GsCv266Imx0TbeoaG1FarrG+7Avri
- RyIV60xxMmxQPTl6GqkmtrdW8M//sRla/66Z4Kv4zcSUL6BB7D6HxamXynBqnTTPXMy1
- +Oilw3VQSgR63V49JsiJefkwLU+5vlc/EOE++3Q3vWyLxnIAA1+kiahCdnkcimCrjuOS
- NpHA==
+ h=mime-version:reply-to:sender:from:date:message-id:subject:to;
+ bh=UAOvT72nEzyjB3EaBfIB4vBLAlWNhJb9FUU2K5PC8fM=;
+ b=pVa8vsJTkUnqK0OmiREZrKx+H1dF7EjfMbEg0pSXvyexYbfUvlAEqMtLqypO1wcrtD
+ zwOEHZyKr2dxSjme03cSx0RObzuOmszxMV1IAHFBM7uMJ9RUySoekkvNcgp7seBCcG3k
+ jHcFsG660ywJ88dCWIJ2iDxIm7wg6WIOwZmx6r57z13UJIa7YVUiqtF47fWoAylkhsof
+ Tr+7czTG5MKBeE6B2nP5pFU5/1SWdsXqNvpmFJJpRENHRKxLSMw/V3OTzI0wvixnOMgy
+ yaEwE3nh5SEBCnYospEwK5yA82S6LkXxxceiYDsTFNJGtD8jmsovc1ZeimChc5ppApQX
+ RzlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=KzLgDz7d2Gll4mrNvllKXj4KFgN8S+Ovisil7/bb6fs=;
- b=WgnLnlKSqhsFLfpBhgEigg53oamXfYoDpZdAGZa7kGBzv/mJM4aQY4xaQBvkYmGePC
- hqEH/vvYhljzJFDgsMQMpL/TkiJCF73fi2qYbSoJeu3mGcHRAJzf/+Mmd7pFq2B8CrFA
- T4amwjHupI5wxhsiiPq1bKdmQTOMG5crCSTyM6htucUl5N6zYch2rFQHvY+htos6e9LZ
- 34xj40SSuET4ueKVMZ2u5IGfymPodfXsqWCUbZtr8lnMm/oSwv5T/VmyoTEnekbIOa5a
- M0RpOt/arDI2oYdR/spMNJnxt39fhQQwTmei6cbsiiX8CqFfn+7hZPzpB2yuopZt7dmY
- Svtg==
-X-Gm-Message-State: AOAM532fiWwLGIDceZ/Y7xZvbijfT1CH+XF69oDe015cfMbo7MlQhBJA
- PsqwpdpV38kVzIlHPApxFdMTEQPQNfHUUurorLA=
-X-Google-Smtp-Source: ABdhPJwgOwwsQX/ehD9f3V3iRpTpn2L+rjApR0KolBVbIGb8PozFpLBsrotl38Us/FfiFZ3on9MlMVFjddobZf+VFmc=
-X-Received: by 2002:a17:906:538d:: with SMTP id
- g13mr6276216ejo.62.1639491487294; 
- Tue, 14 Dec 2021 06:18:07 -0800 (PST)
+ h=x-gm-message-state:mime-version:reply-to:sender:from:date
+ :message-id:subject:to;
+ bh=UAOvT72nEzyjB3EaBfIB4vBLAlWNhJb9FUU2K5PC8fM=;
+ b=A7qZth7AVMjAqaWMTwhunum8JRNMgqJ+p57CfBazrNAtsB/nEISI4Rv916Nge/KaEr
+ VHfwJQdGMwlD9+kGIQrkl+SrSXyypbDTUkjzwrFMez2s3HNQXBg/jSCRl93phGuKM93Y
+ h0+gopXHPzG6D8PovqTzLrYzo69x7mX8i+7dEsO/qAAbVMawwWiX9xtuYzeFuJCCrb8+
+ MBGNeGX/skM8Tzb4Jwx2sHyIpso/iWlSxDCA1duRB1soyzGKUkidjBt1gA7Gp9+1VpOu
+ U4E6dcMoSTbi13HMLVI/p1FlTrW2yM0sYSFQvY0IsEB51O7Lv5Tadc8mJ/z7zH5EuraK
+ Xz2w==
+X-Gm-Message-State: AOAM5337YnaCXk+jMeu/MS5UwbldmOIPTiG3HQtNTEv0tVYoAm8CQzli
+ IxxZ5Hg2dKYHI1jecrwlzzWZal0u99AgB7rVNFs=
+X-Google-Smtp-Source: ABdhPJyqpdikGr2+q1WQ73pMrnsVBOY2R0fiDbUECtsgYbGLz8wFgy24vDSaHTFM8S+pRDZu9qOY4O8Vw3lMTsYBmW0=
+X-Received: by 2002:a05:6512:3451:: with SMTP id
+ j17mr8484372lfr.356.1639548446800; 
+ Tue, 14 Dec 2021 22:07:26 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a54:3842:0:0:0:0:0 with HTTP; Tue, 14 Dec 2021 06:18:06
- -0800 (PST)
-From: uchenna <okeyyoyopa@gmail.com>
-Date: Tue, 14 Dec 2021 06:18:06 -0800
-Message-ID: <CAHTws=LK4rSB2LHiL7P7_fJt5FZzgJmntHr3sQZ=jTuvC1zUrA@mail.gmail.com>
-Subject: 
+Received: by 2002:aa6:c548:0:b0:14d:2009:1adf with HTTP; Tue, 14 Dec 2021
+ 22:07:26 -0800 (PST)
+From: Mrs Jenny Bezos <jennybezos1@gmail.com>
+Date: Wed, 15 Dec 2021 06:07:26 +0000
+X-Google-Sender-Auth: BHTwoHNuyvAq-FG4HycdVhUxr_I
+Message-ID: <CALv6sK_j9F=mpA4WP3VFV6PPdzPOQJo5Qef19tUGe=CG+uuBuA@mail.gmail.com>
+Subject: Dearest One
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -80,46 +83,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: uchennailobitenone@gmail.com
+Reply-To: jennybezoss14@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-May the Almighty Lord be with you....
-Am A WIDOW TO LATE MR David HOLLAND,  I AM 59 .YEARS OLD. My name is
-Josephine HOLLAND.  I am married to Late Mr. David HOLLAND, who worked
-in the France Embassy a here in Lome -Togo West Africa for nine years
-before he died in the
-year 2019.
+-- 
+Dearest Friend,
 
-You are chosen to Receive A Donation Cash Grant of my late husband
-that funds $5.7,000,  000,00 (Five Million Seven Hundred Thousand
-United States Dollars) to help the poor and orphanages through your
-sincere help before my death. I am suffering from long time cancer of
-the Breast, from all indication my conditions is really deteriorating
-and it is quite obvious that I wouldn't live any more longer according
-to my doctor because the cancer has gotten to a very bad stage that no
-hope for me to be a living person again, All i need from you is your
-sincerity to use this funds to do this project as i desired and I need
-your information as where My Bank will be sending the funds,
+I am Mrs. Jenny Bezos from America  USA, I decided to donate what I
+have to you  for investment towards the good work of charity
+organizations, and also  to help the motherless and the less
+privileged ones and to carry out charitable works in your Country and
+around the World on my Behalf.
 
-such as:
-Receiver's name:_ Address:_ Phone
-number:_ Country:_
+I am diagnosing of throat Cancer, hospitalize for good 2 years and
+some months now and quite obvious that I have few days to live, and I
+am a Widow no child; I decided to will/donate the sum of $7.8 million
+to you for the good work of God, and also to help the motherless and
+less privilege and also forth assistance of the widows. At the moment
+I cannot take any telephone calls right now due to the fact that my
+relatives (who have squandered the funds for this purpose before) are
+around me and my health also. I have adjusted my will and my Bank  is
+aware.
 
-Please do not be offended by the way or manner I came to you as a
-stranger to do this, it is about the only way I could get to you after
-going through your contacts Id. I shall give you the contacts of the
-bank. For legitimacy with  a letter of authority that will establish
-you as my appointed beneficiary of this money.
+ I have willed those properties to you by quoting my Personal File
+Routing and Account Information. And I have also notified the bank
+that I am willing to give that property to you for good, effective and
+prudent work. It is right to say that I have been directed to do this
+by God. I will be going in for a surgery soon and I want to make sure
+that I make this donation before undergoing this surgery.  I will need
+your support to make this dream come through, could you let me know
+your interest to enable me to give you further information. And I
+hereby advise you to contact me by this email address.
 
-I am waiting for your reply.
-From Sister Josephine HOLLAND.
-
-You should contact me through my private email address:
-
-mrsjosephineoneholland@gmail.com
+Thanks
+Mrs. Jenny Bezos.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
