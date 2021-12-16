@@ -1,57 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F125476C47
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Dec 2021 09:56:37 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 088D4476CB7
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Dec 2021 10:01:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 24A2A416DC;
-	Thu, 16 Dec 2021 08:56:35 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5D42040AF2;
+	Thu, 16 Dec 2021 09:01:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eeGZ6A1bnbLm; Thu, 16 Dec 2021 08:56:34 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Sh1yLZCwT6d4; Thu, 16 Dec 2021 09:01:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 77481416BD;
-	Thu, 16 Dec 2021 08:56:33 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4131B40AE1;
+	Thu, 16 Dec 2021 09:01:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5E49B1BF2B4
- for <devel@linuxdriverproject.org>; Thu, 16 Dec 2021 08:56:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E00B01BF2B4
+ for <devel@linuxdriverproject.org>; Thu, 16 Dec 2021 09:01:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4AAF640AE5
- for <devel@linuxdriverproject.org>; Thu, 16 Dec 2021 08:56:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DD780416E0
+ for <devel@linuxdriverproject.org>; Thu, 16 Dec 2021 09:01:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=webdeluxgroup.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ynLvkivGoTdZ for <devel@linuxdriverproject.org>;
- Thu, 16 Dec 2021 08:56:22 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EdqqKk5LVcOH for <devel@linuxdriverproject.org>;
+ Thu, 16 Dec 2021 09:01:10 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.webdeluxgroup.com (mail.webdeluxgroup.com [51.195.117.175])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6381B40AE1
- for <devel@driverdev.osuosl.org>; Thu, 16 Dec 2021 08:56:22 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 46358416DC
+ for <devel@linuxdriverproject.org>; Thu, 16 Dec 2021 09:01:10 +0000 (UTC)
 Received: by mail.webdeluxgroup.com (Postfix, from userid 1002)
- id A1BB7A22A7; Thu, 16 Dec 2021 08:56:18 +0000 (UTC)
+ id 0E3B0A1DC5; Thu, 16 Dec 2021 09:01:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=webdeluxgroup.com;
- s=mail; t=1639644979;
+ s=mail; t=1639645268;
  bh=Ikssx+VmDQhoHuLzKgesrzZ3VGIyKr0VUFS/Kpp5X4A=;
  h=Date:From:To:Subject:From;
- b=T5l+RN+ML9/snp6N5BNJBa7NpDK187uqmh4y6S4zgF8WMbrVrkKQML1GlFWuJv74u
- zgl9EzO7JAk4W/sth2QKAsvASRKQ0mzYpZ4VBH1YScB5rn0aMGJ2udRNmRE36g87No
- qKaFK3OxUedMm6Mc2tGDRxyyRxUAo0kYctV4OHL41Y/IiyOfqAblIjAnurVNxL5MiI
- JNSZsRXfsD4TPVkuG3oB2lbpZ1OpCPWnr/qpuDOJcMNx6/mH1cQENdlU13x59oAMnO
- Lr968MCVrV4/29Gw+KzQM+rCwPAKl/O5DO4jLuYe1wRmKsIlq6OxzxtO/pzUbyGhum
- 0C8Uvzy6Zqh/A==
-Received: by mail.webdeluxgroup.com for <devel@driverdev.osuosl.org>;
- Thu, 16 Dec 2021 08:56:16 GMT
-Message-ID: <20211216074500-0.1.3t.axwy.0.j9av3c9qmo@webdeluxgroup.com>
-Date: Thu, 16 Dec 2021 08:56:16 GMT
+ b=geaD/fa5o6WeY+i9ZRkfuK1G1c10ZJsCDCEvsxh9gWwVfH+7wIBaudF3PVjIkimZA
+ 1HQXcfOb4poW/xt4y6A53n0UcOO+IIr/rBt+CjeUxX7qDoJy7OIWeP2bAQlrVsm6+t
+ k//zGtocINwPr0C7aDgg3DmKaGrMX7+OCE3awq7Z798ZDMg6eia6YZ/4dhxAb9WLBp
+ SPwz5y0QE98TIL5jH+MJtSceUvwzJA7UupnyAWo+1CiR4q7Kx01IyupW53HosAh4AM
+ 0k64UPO8CkGLVkBbXVOc1/2YLNUNj1gXJVO6JC5tBxXUwBne53UkYG7dXYCeACR2h+
+ xZ97e+sqVc5dQ==
+Received: by mail.webdeluxgroup.com for <devel@linuxdriverproject.org>;
+ Thu, 16 Dec 2021 09:01:05 GMT
+Message-ID: <20211216074500-0.1.3t.ay76.0.fbq43ywpet@webdeluxgroup.com>
+Date: Thu, 16 Dec 2021 09:01:05 GMT
 From: =?UTF-8?Q?"Ji=C5=99=C3=AD_Novotn=C3=BD"?=
  <jiri.novotny@webdeluxgroup.com>
-To: <devel@driverdev.osuosl.org>
+To: <devel@linuxdriverproject.org>
 Subject: =?UTF-8?Q?=C3=9Asp=C4=9Bch_kampan=C4=9B?=
 X-Mailer: mail.webdeluxgroup.com
 MIME-Version: 1.0
