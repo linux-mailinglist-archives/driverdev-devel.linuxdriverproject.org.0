@@ -1,74 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD9A047760F
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Dec 2021 16:37:45 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FD95477CF6
+	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Dec 2021 21:02:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E781B40B37;
-	Thu, 16 Dec 2021 15:37:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 232CF417CD;
+	Thu, 16 Dec 2021 20:02:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zv7AXUHQOjMX; Thu, 16 Dec 2021 15:37:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Yontb4hwYH5H; Thu, 16 Dec 2021 20:02:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9499840B27;
-	Thu, 16 Dec 2021 15:37:41 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 93B3C41793;
+	Thu, 16 Dec 2021 20:02:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id F36CB1BF3BF
- for <devel@linuxdriverproject.org>; Thu, 16 Dec 2021 15:37:31 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 50A361BF3A9
+ for <devel@linuxdriverproject.org>; Thu, 16 Dec 2021 20:02:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DB61F40B27
- for <devel@linuxdriverproject.org>; Thu, 16 Dec 2021 15:37:31 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3C9FC6103B
+ for <devel@linuxdriverproject.org>; Thu, 16 Dec 2021 20:02:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id E2JZtEtLUi7Z for <devel@linuxdriverproject.org>;
- Thu, 16 Dec 2021 15:37:30 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bBM4ijW0YC7D for <devel@linuxdriverproject.org>;
+ Thu, 16 Dec 2021 20:02:44 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ot1-x32d.google.com (mail-ot1-x32d.google.com
- [IPv6:2607:f8b0:4864:20::32d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9520D400D1
- for <devel@driverdev.osuosl.org>; Thu, 16 Dec 2021 15:37:29 +0000 (UTC)
-Received: by mail-ot1-x32d.google.com with SMTP id
- n17-20020a9d64d1000000b00579cf677301so29397623otl.8
- for <devel@driverdev.osuosl.org>; Thu, 16 Dec 2021 07:37:29 -0800 (PST)
+Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com
+ [IPv6:2a00:1450:4864:20::52c])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8C82B61032
+ for <devel@driverdev.osuosl.org>; Thu, 16 Dec 2021 20:02:44 +0000 (UTC)
+Received: by mail-ed1-x52c.google.com with SMTP id z5so91712111edd.3
+ for <devel@driverdev.osuosl.org>; Thu, 16 Dec 2021 12:02:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=5ELhc8/aZCbsDztqXXKQeUc8BkABjFmel9iGt8HoW10=;
- b=gCW+IGJqLBGT61EOEdzBPtd74V2o4UHlpTCF4RpgDPdC2JCeKUm9kJ4uhtoDzhIeR1
- rLMIVHWvifXihSuKiGJzOw4PgSwdIbhvI95YjbyRBL8sasTkjWcXvzGV1/VwZa8FF0Ue
- EctecTM3TWKzF3/LnhiAVicJFzK+NEh7jZV/BMf9Ubgtl36Lfe455zuGBYeivJetsHLZ
- BDTn34II5n4ONkW2kzIeACUO7DZ9zJEOl/Ver/cMSniOC3LThDLtI0JPApRbjc/6g6Qg
- j92yNQoj0chFQ6rO3W8GS5bSYegXgUhkFkJtRwEJdnn+iAtBxyxG1WEcRwcVZ997EiB5
- tEfA==
+ h=mime-version:reply-to:sender:from:date:message-id:subject:to;
+ bh=rvQADyFM1/yISroyAfFtZJinl4CMDkOypzF/AS5Ef8E=;
+ b=M8fJA+YfYTfoYVKlsTV7uVSIp06TmhmScDJ5+PgYIPpDu9a+ktzaUVrNT59EXEbrGX
+ 2J10raD+hqxWuLnWy//ewPUIxNQORBozzRktBRd9SJJc5fZBd8vmiX2TDDC05XHQi8Oo
+ +zYEGismYZjpuz1j9oQ2kougAtpUAAc4S1a46FaII88o9v2US/JG55ks5OnHfXQVe3to
+ EZSrqvGv+5cyZ/cenl5zeM+57vfBhFH2za+4o7O23PMuG0JZ5SdV4XkkVHfQgQHlXGcZ
+ EUgP0S/nd9X72sCjiJjkvsff9JCVscmfjMroE3xMxkidkp9s6dmGYXuZCqrQ5mF2V3yA
+ 2EGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=5ELhc8/aZCbsDztqXXKQeUc8BkABjFmel9iGt8HoW10=;
- b=MAQQI8ZY1KbZsjV85HBHXd2ldS8LBJjnq8J4mN/nlgYEE9UzS23qjZiRADJmwFMVO4
- Ks2wJHG5E4WA9xfAjMY9YFlohbY467bd492Wxw7ZMUHdNihqmv4DvBiT7jhNDiQfx5Nu
- DkC88bwzsLlsBzw6gIFh/WcQClUW7wfsSpgTSCk/Y+IawqKam5AZ8u6ReQeC+rKUYBw+
- fBvl/QVD8eljLW9uuyZcmAZls+Oc1I9G1BOLRVpCVOavR0m5GKOTeEM0av5F+XxuTlcn
- swZ90Anl3KuVQa/dAyc9OdhHLokD5aVU7CA0gVCsoY2lAo64Hx9X9HHsoDFd3dw9WNce
- tdvQ==
-X-Gm-Message-State: AOAM530bM0VY3/84E4hijuJuKYsFndPThhF8tQGVerHw6L20ocwT71Jl
- R1j/h4gXLoHeSMsnWjzo4a5whCLgNKq/3diwpV4=
-X-Google-Smtp-Source: ABdhPJwDxXKomkhBMSZecfzqXbfPInY8YEevgMyZjYng1L5idOKeaMBhcvKqCXedhJHL0x9jetycvuxj0lBTXrhqv+M=
-X-Received: by 2002:a05:6830:2366:: with SMTP id
- r6mr12980007oth.376.1639669048743; 
- Thu, 16 Dec 2021 07:37:28 -0800 (PST)
+ h=x-gm-message-state:mime-version:reply-to:sender:from:date
+ :message-id:subject:to;
+ bh=rvQADyFM1/yISroyAfFtZJinl4CMDkOypzF/AS5Ef8E=;
+ b=dKAEglYVXsF+hz6axtvDZLbWQKHraI8evnVHv15whJtFexz6a3BNv+dOvv9ta4Uzh3
+ 6yMElsvEmBI/kRX/NQKtbPm6RIlKohFLHix/RIFE7JHBnw4JyJ9bO+zcvw68Mg1X+LQD
+ +MMcgi1uswhD7x9kRzYu7FW/+DmdseeAR4EafhbZ51Xaneq6sTmXaCGeZax7CZT13dzy
+ lly8ywN+WsHxqr3tgNGceufJpV6ZMPXjujjPvH9ZY/zPSluqviZdS4UZgRQzb9WlEzMd
+ hQtUH0ap6ODzsybNpNFFnIjfwl88k25dXd6gUYtV3A6CdDVPVXZGW++c1VA+nt9k+LZE
+ Ay3g==
+X-Gm-Message-State: AOAM533G7XbmTNLsE5vsybCZ0pCVLV92nAST3VuCUAyVDVVQn+nPEAL9
+ B5u7AI6MlVRKCUSHn5He2rkuc+nB+PJF0JAP010=
+X-Google-Smtp-Source: ABdhPJzvyiL09domCT1VDVgeRuvMHd7r0quHKgLxRbsfTYaY6F1t+ZQ9smerRjySwXtmRKTMP3lzeHge660kEBY+o8I=
+X-Received: by 2002:aa7:cc82:: with SMTP id p2mr21855009edt.201.1639684962486; 
+ Thu, 16 Dec 2021 12:02:42 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a05:6830:4cf:0:0:0:0 with HTTP; Thu, 16 Dec 2021 07:37:28
+Received: by 2002:a17:906:9c84:0:0:0:0 with HTTP; Thu, 16 Dec 2021 12:02:41
  -0800 (PST)
-From: Mrmohammed shamekh <azizissaa101@gmail.com>
-Date: Thu, 16 Dec 2021 07:37:28 -0800
-Message-ID: <CALbx=XRcCv2Bbk2WNXSxGXrHDP6YnvUC+yOfwoyusgSA5xXsJg@mail.gmail.com>
-Subject: URGENTBUSINESSPROPOSAL
+From: "Dr. Joseph Mark " <josephmark00011@gmail.com>
+Date: Thu, 16 Dec 2021 20:02:41 +0000
+X-Google-Sender-Auth: pPQKcQ7kBjCq8itKT2yzCSFIYCc
+Message-ID: <CAP1hxC69-t_t8Ginq1EvSwo1q5TeK9NpvSKazvQ7Ma=s+3eGAA@mail.gmail.com>
+Subject: Dear Friend
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -82,37 +82,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mohammedshamekh24@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: josephmarks20201@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-LS0gClNpci9NcnMuCgpHb29kIERheSwKCldlIHRoZSBXb3JsZCBCYW5rIEdyb3VwIExpYWlzb24g
-b2ZmaWNlIGluIEJ1cmtpbmEgRmFzby1PdWFnYWRvdWdvdSBCRgp3aXNoZXMgdG8gYnJpbmcgdG8g
-YmFzZSBvbiB0aGUgaW5zdHJ1Y3Rpb24gYnkgdGhlIEVjb25vbWljIENvbW11bml0eQpvZiBXZXN0
-IEFmcmljYW4gU3RhdGVzIChFQ08tV0FTKSBhbmQgQWZyaWNhbiBVbmlvbiBpbmNsdWRpbmcgdGhl
-IHdvcmxkCmJhbmsgR3JvdXAgR2VuZXZhIG9mZmljZSBpbiBTd2l0emVybGFuZCB3aXNoZXMgdG8g
-aW5mb3JtIHlvdSB0aGF0IHlvdQpoYXZlIGJlZW4gY29tcGVuc2F0ZSB3aXRoIGNhc2ggcmV3YXJk
-IGNhcmQgdmFsdWVkIG9mIHskODAwLjAwMC4wMH0KYmVjYXVzZSB5b3VyIGZpbGUgd2FzIHBhc3Nl
-ZCB0byBvdXIgb2ZmaWNlIHlvdSBhcmUgYW1vbmcgdGhlIHZpY3RpbSBvZgpmcmF1ZCBhbmQgc2Nh
-bSBpbiBBZnJpY2EgLyBCdXJraW5hIEZhc28g4oCTT3VhZ2Fkb3Vnb3UuCgpZb3VyIGZ1bmQgeyQ4
-MDAuMDAwLjAwfSB0byBjYXNoIHJld2FyZCBhdG0gdmlzYSBjYXJkIGxlZ2FsbHkKYXBwcm92ZWQg
-Ynkgb3VyIGNvcnJlc3BvbmRlbmNlIGJhbmsgb2YgQW1lcmljYSB2aWV3IHRoZSB3ZWIgbGluayBi
-ZWxvdwpEaXJlY3RvciBhcHByb3ZlZCDCrChodHRwczovL25ld3Nyb29tLmJhbmtvZmFtZXJpY2Eu
-Y29tL3BhdWwtZG9ub2ZyaW8pIC4KUEVBU0UgRk9SV0FSRCBZT1VSIElORk9STUFUSU9OIFRPIE1y
-ICBtb2hhbW1lZCAgIHNoYW1la2ggLAoxLiBGdWxsIE5hbWU6Li4uLi4uLi4uCjIuIENvdW50cnk6
-Li4uLi4uLi4KMy4gRGVsaXZlcnkgQWRkcmVzczouLi4uLi4uLi4uCjQuIFRlbGVwaG9uZTouLi4u
-Li4uLi4uLi4uLiYgT2NjdXBhdGlvbi4uLi4uLi4KNS4gWW91ciBBZ2UuLi4uLi4gL1NleC4uLi4u
-Li4uLi4KCk5PVEU6IEZvciB0aGUgaW1tZWRpYXRlIGNvbGxlY3Rpb24gb2YgeW91ciBDQVNIIFJF
-V0FSRCBDQVJEIGNvbnRhY3QKb3VyIHJlcHJlc2VudGF0aXZlIEFnZW50LiBNciAgbW9oYW1tZWQg
-ICBzaGFtZWtoICwgTGlhaXNvbiBvZmZpY2UgaW4gQnVya2luYQpGYXNvLU91YWdhZG91Z291IEJG
-IHRvIGVuYWJsZSB5b3UgY29uZmlybSB5b3VyIHBheW1lbnQgd2l0aG91dCBmdXJ0aGVyCmRlbGF5
-IGFuZCBub3RlIGFueSBvdGhlciBjb250YWN0IHlvdSBtYWRlIG91dHNpZGUgaGlzIG9mZmljZSBp
-cyBhdCBvZgp5b3VyIG93biByaXNrLgoKS2luZGx5IHJlcGx5IG1lIGJhY2sgdG8gbXkgYWx0ZXJu
-YXRpdmUgZW1haWwKYWRkcmVzcyhNciBtb2hhbW1lZHNoYW1la2gyNEBnbWFpbC5jb20pIE1yICBt
-b2hhbW1lZCAgIHNoYW1la2gKCgpUaGFua3MKTXIgIG1vaGFtbWVkICAgc2hhbWVraCAsCkNvLWNv
-b3JkaW5hdG9yCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9k
-cml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRl
-di1kZXZlbAo=
+-- 
+Dear Friend,
+
+I am Dr. Joseph Mark Work in bank.I Discovered the sum of seven
+million, two hundred thousand dollars (usd7.2) belonging to a deceased
+customer of this bank the fund has been lying in a suspense account
+without anybody coming to put claim over the money since the account
+late owner from Lebanese who was involved in car crash.
+
+Therefore, I am soliciting for your assistance to come forward as the
+next of kin. I have agreed that 40% of this money will be for you as
+the beneficiary respect of the provision of your account and service
+rendered, 60% will be for me. Then immediately the money transferred
+to your account from this bank, I will proceed to your country for the
+sharing of the fund.  If you think you are capable and will be
+committed to making this deal successes send me an email as soon as
+possible to confirm your interest.
+
+Yours faithful,
+Dr. Joseph Mark
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
