@@ -1,74 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7004F47A6AB
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Dec 2021 10:14:57 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AD81547B359
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Dec 2021 20:02:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A0A26607DE;
-	Mon, 20 Dec 2021 09:14:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F219160E36;
+	Mon, 20 Dec 2021 19:02:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bDduFwRPtNHJ; Mon, 20 Dec 2021 09:14:54 +0000 (UTC)
+	with ESMTP id lsUp_IbP474e; Mon, 20 Dec 2021 19:02:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 11A3160BC1;
-	Mon, 20 Dec 2021 09:14:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4ED4F60AF0;
+	Mon, 20 Dec 2021 19:02:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 64B341BF3F6
- for <devel@linuxdriverproject.org>; Mon, 20 Dec 2021 09:14:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E90BB1BF2F2
+ for <devel@linuxdriverproject.org>; Mon, 20 Dec 2021 19:02:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5457B4177A
- for <devel@linuxdriverproject.org>; Mon, 20 Dec 2021 09:14:44 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E23C8402BE
+ for <devel@linuxdriverproject.org>; Mon, 20 Dec 2021 19:02:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
+ dkim=pass (2048-bit key) header.d=google.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MpbjB1LBYyyu for <devel@linuxdriverproject.org>;
- Mon, 20 Dec 2021 09:14:43 +0000 (UTC)
+ with ESMTP id I3CvYwQWKa4P for <devel@linuxdriverproject.org>;
+ Mon, 20 Dec 2021 19:02:04 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x433.google.com (mail-wr1-x433.google.com
- [IPv6:2a00:1450:4864:20::433])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B73F74176D
- for <devel@driverdev.osuosl.org>; Mon, 20 Dec 2021 09:14:43 +0000 (UTC)
-Received: by mail-wr1-x433.google.com with SMTP id s1so13251220wra.6
- for <devel@driverdev.osuosl.org>; Mon, 20 Dec 2021 01:14:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=h8PSSRHrHL7EZamTJ1PmpoLIiZ6v+wZ4VV6s2+7PO3k=;
- b=e2vuvhcIAv3QxTvMQBvPvkIWr3uQFbaLQXJYw0bcPR4PmBWlrsjGuwHjllgaJWbjW2
- FaAtzHTbb3rG6SNGthpsd9gMDOobdw7FSwDqJ998n0M5jk5oPP14Qg7wvQ0f0MZj/k1C
- KNXQE32Lmo6d6VkNT5idOVYoPGBNQbSjcrJHNoW8Ml3lvJDtdZpfJOu/BlHxJibm2K1K
- KDYZjLmjEBRPK3uDzdhYQ8CCVXo70SVUia3Kl98NyCQnFU8JC/24tjrYSMCRIhZ0O45D
- jw0N8i5G5CzIHpTeNQGOAeQ9pkeASUK3ALFjBui16WoHir4GeZpC3cZ4YtfZ+CfA98Wm
- Y9cg==
+Received: from mail-yb1-xb49.google.com (mail-yb1-xb49.google.com
+ [IPv6:2607:f8b0:4864:20::b49])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4045940294
+ for <devel@driverdev.osuosl.org>; Mon, 20 Dec 2021 19:02:04 +0000 (UTC)
+Received: by mail-yb1-xb49.google.com with SMTP id
+ j18-20020a258152000000b006000d292a42so21292353ybm.0
+ for <devel@driverdev.osuosl.org>; Mon, 20 Dec 2021 11:02:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=Tap7nBAM0h0L8VrB9lLDO+R7RMvpcS4S2PLyP50CL8w=;
+ b=UcUzIg+ZujUKm8Nx/UydFFi+uMvumbtNCxprjcJkB01d9AJrO6NJPDVVzuERlTxtoo
+ O0qsQou5K98cO5aXEfF7StBWN2OD2N2Ruy5v+ZsYRMvEagNADmvgQdir0ZW1D13+mle1
+ jrS33OHIGUH/+y3ah7lppcTv6FOZjU4gieOL9hEPdxCjiZKdeHaQBpua6b2XJCshuWD/
+ 0TrRAV/tx7tDmDUo+GXyiZFehOJMqe7FwPbaRBkPAuG+AktfcTU+Z+zDOpvaUUK0aW3M
+ R8FJyCnv6fEkO+fiqyV0n8mBlyH9hM9PjUUscNVeD7G5HBY5M8QUDPt2NsTBRIk+zIsb
+ z9MA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=h8PSSRHrHL7EZamTJ1PmpoLIiZ6v+wZ4VV6s2+7PO3k=;
- b=MmZlcRplCYnrZZXpkurzNapj4x0Y9j/iwrXoiDXelYsESzxPrE/YHoXaXDeGUO3O7L
- exjmRyAfU/m3nF+pImybOOqXUVHdtDqHEqpxBHFpbtZLdZl3TWXzq+h2r7MyZFieg/AQ
- DHMwdMjecwW/6mU7mrzyBxaM+nKL3apipVEOHcQ7Y4AAfodaKSgFHZOhXslx3RBl0dqu
- dfDx2hGUiYvFSeHPBeg3YyxgW/AxXuj05SAa22Ggosyo2UtKr4jl+WMrjQN7QnfKonbP
- 3JHAjnWLfMqVWCzePoXM449PQqXPYvbqllTqo3fQoRKTtHCwraGk1ek2CreRunQxKDwy
- 7m2w==
-X-Gm-Message-State: AOAM532qBWCEIgYvn/ucTiP15rAxYPPwXd9KkLh3I+G6lOTmtwRgbY8w
- Mb85zHkMpN6fkGIqVpdSyc6RUstUv2oJBkCkllM=
-X-Google-Smtp-Source: ABdhPJxc/j63PIZaYaydcSLFiVze3yOPnDrije/i3re086hVsK53u8DTo2RtsazhwXlRsifqVBwcTHyOtyq2hWwvROg=
-X-Received: by 2002:a5d:5984:: with SMTP id n4mr12079659wri.563.1639991681869; 
- Mon, 20 Dec 2021 01:14:41 -0800 (PST)
-MIME-Version: 1.0
-Received: by 2002:a05:6000:110c:0:0:0:0 with HTTP; Mon, 20 Dec 2021 01:14:41
- -0800 (PST)
-From: Mr Ahmed Hassan <drhajizongohza@gmail.com>
-Date: Mon, 20 Dec 2021 10:14:41 +0100
-Message-ID: <CAPnt5yTtcg_A19QAdTJKnYrbWbWajR1FcdJ-q+TRvDDww0-n7g@mail.gmail.com>
-Subject: Please respond urgently
-To: undisclosed-recipients:;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=Tap7nBAM0h0L8VrB9lLDO+R7RMvpcS4S2PLyP50CL8w=;
+ b=xUfr89pKLfgsWQF7LnHy4LpHP5/RZc7LEr0BxMdIeKtz07vo25dAwwvh6aK9SBsui/
+ YMfPjqwRzUTM8aAMBQ9GAXZ+qGBG2kKlLbhHhaHeTvQyxwg04ws/KqoH3+5yQ5oR3Trt
+ yAKZ0//Q8XHfsHW1sUYTX4zCsalIKmzyix7ynx5cUFEYlTXsEdZFyuErXiBZeLmYhSzc
+ fn/GC4tewfp7bm6iVqH8TPbtWq88w1b2QE77KXfU53Iqps0zKbMW7QcWaGgajri2VkFA
+ kFjWVrltguD4Vkraw0Ofi5wkffxT8vdkYWj6LfzZFRqTDlfSkU8J1yVWhkSpLOHexg+i
+ IkeQ==
+X-Gm-Message-State: AOAM530aLl3fOZTyuGvAKL+rNkWT6+LLsrpDK3LjXMrwZE65YeZGMvaO
+ rPs64fDv9iRWrAL8E4aq7C2XR0bNDQ==
+X-Google-Smtp-Source: ABdhPJxZdayCcLgGEvMgK9ZDeJlqsTgjaZ1M/Le/NEE1z5TpUoR902tFNIT9OoDe4Yfw9al4vallvqy71g==
+X-Received: from tkjos-desktop.mtv.corp.google.com
+ ([2620:15c:211:200:1cee:d72d:c926:e290])
+ (user=tkjos job=sendgmr) by 2002:a25:850f:: with SMTP id
+ w15mr26872987ybk.373.1640026923099; 
+ Mon, 20 Dec 2021 11:02:03 -0800 (PST)
+Date: Mon, 20 Dec 2021 11:01:50 -0800
+Message-Id: <20211220190150.2107077-1-tkjos@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.34.1.307.g9b7440fafd-goog
+Subject: [PATCH] binder: fix async_free_space accounting for empty parcels
+From: Todd Kjos <tkjos@google.com>
+To: tkjos@google.com, gregkh@linuxfoundation.org, christian@brauner.io, 
+ arve@android.com, devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org, 
+ maco@google.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,33 +85,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: alahmedhassan5602@gmail.com
+Cc: joel@joelfernandes.org, kernel-team@android.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greetings,
+In 4.13, commit 74310e06be4d ("android: binder: Move buffer out of area shared with user space")
+fixed a kernel structure visibility issue. As part of that patch,
+sizeof(void *) was used as the buffer size for 0-length data payloads so
+the driver could detect abusive clients sending 0-length asynchronous
+transactions to a server by enforcing limits on async_free_size.
 
-I am contacting you independently of my investigation and no one is
-informed of this communication. I need your urgent assistance in
-transferring the sum of $11.3million immediately to your private
-account.The money has been here in our Bank lying dormant for years
-now without anybody coming for the claim of it.
+Unfortunately, on the "free" side, the accounting of async_free_space
+did not add the sizeof(void *) back. The result was that up to 8-bytes of
+async_free_space were leaked on every async transaction of 8-bytes or
+less.  These small transactions are uncommon, so this accounting issue
+has gone undetected for several years.
 
-I want to release the money to you as a relative to our deceased
-customer (the account owner) who died along with his supposed NEXT OF
-KIN on 16th October 2005. The Banking laws here do not allow such
-money to stay more than 17 years, because the money will be recalled
-to the Bank treasury account as unclaimed funds.
+The fix is to use "buffer_size" (the allocated buffer size) instead of
+"size" (the logical buffer size) when updating the async_free_space
+during the free operation. These are the same except for this
+corner case of asynchronous transactions with payloads < 8 bytes.
 
-By indicating your interest I will send you the full details on how
-the business will be executed.
+Fixes: 74310e06be4d ("android: binder: Move buffer out of area shared with user space")
+Signed-off-by: Todd Kjos <tkjos@google.com>
+---
+ drivers/android/binder_alloc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Please respond urgently and delete if you are not interested.
+diff --git a/drivers/android/binder_alloc.c b/drivers/android/binder_alloc.c
+index 340515f54498..47bc74a8c7b6 100644
+--- a/drivers/android/binder_alloc.c
++++ b/drivers/android/binder_alloc.c
+@@ -671,7 +671,7 @@ static void binder_free_buf_locked(struct binder_alloc *alloc,
+ 	BUG_ON(buffer->user_data > alloc->buffer + alloc->buffer_size);
+ 
+ 	if (buffer->async_transaction) {
+-		alloc->free_async_space += size + sizeof(struct binder_buffer);
++		alloc->free_async_space += buffer_size + sizeof(struct binder_buffer);
+ 
+ 		binder_alloc_debug(BINDER_DEBUG_BUFFER_ALLOC_ASYNC,
+ 			     "%d: binder_free_buf size %zd async free %zd\n",
+-- 
+2.34.1.307.g9b7440fafd-goog
 
-Best Regards,
-Mr. Ahmed Hassan
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
