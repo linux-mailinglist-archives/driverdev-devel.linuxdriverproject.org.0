@@ -1,76 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B15447BF44
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Dec 2021 13:02:52 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 39F8E47C973
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Dec 2021 23:59:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 73930823CF;
-	Tue, 21 Dec 2021 12:02:50 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7F3B040605;
+	Tue, 21 Dec 2021 22:59:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XlmMPZUwJ8Cy; Tue, 21 Dec 2021 12:02:49 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id y48dICVVUfyF; Tue, 21 Dec 2021 22:59:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E90728190B;
-	Tue, 21 Dec 2021 12:02:48 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id AA3D240210;
+	Tue, 21 Dec 2021 22:59:33 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BA4201BF35F
- for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 12:02:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9E0191BF292
+ for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 22:59:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B68FE60E8C
- for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 12:02:38 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8D41060F81
+ for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 22:59:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
+ dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HbGJx7vADuUr for <devel@linuxdriverproject.org>;
- Tue, 21 Dec 2021 12:02:37 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com
- [IPv6:2607:f8b0:4864:20::529])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 95A8360E52
- for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 12:02:37 +0000 (UTC)
-Received: by mail-pg1-x529.google.com with SMTP id r5so12149671pgi.6
- for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 04:02:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=7QGtLFawEUiArnP/F0NTtTDw9l8TEUGBGlmBpy3N6sU=;
- b=Fb8Z91wUKSdANXC7p8M0ICWdjdtynC6ZpDwBrfVHSDHLJJmXWkGM7uCIGJx7+g++96
- 7duOE8syWegbRooUV/EzrVFW6kSD/k3XPHGr8pLF64DUv+GqNRo/IJ0VOCmGpxfXxa2J
- olLXMpvuhiFVDTiZnJNDhUsXuvsKBMXPm38w4jbQopr3uDH3veLnBr/V6EqH3Dx0bDfD
- ddVOdV74/QOGp8fTsmJLm8cSHIeIKGwQkLPNxJB+2X9iaWVov/OCq/yWZAc/5Gvv9zhp
- sFBKo288pE3EHm0ekoV3J4RjJt7Fti4qubtp1pteYFQ/690m20cE9wBbkHIZRE1EGjSc
- XlHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=7QGtLFawEUiArnP/F0NTtTDw9l8TEUGBGlmBpy3N6sU=;
- b=JZNyWiesvTkMZ+obbUiTLTbp3HyIUMdgulWKMJV/xG+Rt6U3htnxWIlHDLkgY8+zg8
- 6eKnNmXO2NovH0Wc5QjCmIbUFxB7v5D/IV1MYOzjOzEg+hzpq5Nib2jmPfryuca/SHPT
- LidkAyB8uEpSK5IkvhNqBM5iD1NTFumiciWKXuH8OsewI3qDlmJKWRYRMyIZ7klcy0nc
- 382Dtdrq9eVaJ2useN3pfU66CohsVmG7SauDjFlOZT3///iunbuh2yY2fxRgXpJj9DXY
- sS/Vp1fWdY3bcWa1Ypt6p+eIwPyX1dhfbETpozjVoBxajTTK1O/NN5MqdyF09Y9nafzy
- 50rg==
-X-Gm-Message-State: AOAM533B9MBDbt0zI7jRI0HF0Y53Niaxyo1qgCJxaDcHg0rkWTzOYPHV
- WSYjXwMTMGgHKq0Rf40U2kJ3VcwgBcWCgAn02Kw=
-X-Google-Smtp-Source: ABdhPJzDzmtQCdOUxLozfMD8puz2/V4TybmPW7vn85EsQReB68vpUtMSgKut5fcfQt5S6kdWy9vDlyht/M+iogJLXkI=
-X-Received: by 2002:a05:6a00:10d2:b0:4a8:3613:c475 with SMTP id
- d18-20020a056a0010d200b004a83613c475mr2929292pfu.0.1640088156541; Tue, 21 Dec
- 2021 04:02:36 -0800 (PST)
+ with ESMTP id a69Qw77ZrXck for <devel@linuxdriverproject.org>;
+ Tue, 21 Dec 2021 22:59:22 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 017E560F13
+ for <devel@driverdev.osuosl.org>; Tue, 21 Dec 2021 22:59:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1640127561; x=1671663561;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Wgr9LpWI7sLx0pVKkhx+kLzC2mva4BPFqO9PQ5a+DdY=;
+ b=nb8C9Q8G/g+7RIsAN6xuDfyJnHk+cQqhS0/TRrnYpQ6guktNKHkqnbX5
+ iw6GG1iwA9cxSVZbFJh7B6HCIgSNQuG0Eze3bdCVPXUjFCoTYcu+zfW3Y
+ xSqANbrxp8oLa/uPto80+zJmBXCeZVcdA6LkU6iA4KjYg0gxIxci9AyRn
+ kKU8XofgohCBMune9vzs9th8cM9e0E/fQ9NVQtUH06K2gVIlHL2RcJJun
+ iwGvVfHIhWdgr6dVEWhBDVCu6pUJybbfUtdglfAjhV06Z5zWCIYgJHLK7
+ ZU6RHhRB+Ff6+nIVe4k33PKTiAjkXYSqxrH6Bslzv2SDM/38n3KeRewKy Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10205"; a="227356502"
+X-IronPort-AV: E=Sophos;i="5.88,224,1635231600"; d="scan'208";a="227356502"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Dec 2021 14:59:21 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,224,1635231600"; d="scan'208";a="521443310"
+Received: from lkp-server02.sh.intel.com (HELO 9f38c0981d9f) ([10.239.97.151])
+ by orsmga008.jf.intel.com with ESMTP; 21 Dec 2021 14:59:19 -0800
+Received: from kbuild by 9f38c0981d9f with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1mzo6J-0009dA-9n; Tue, 21 Dec 2021 22:59:19 +0000
+Date: Wed, 22 Dec 2021 06:59:02 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:driver-core-testing] BUILD SUCCESS
+ 79f1c7304295bbbc611bc53cfd5425b777b3e840
+Message-ID: <61c25c36.5We5hhXeASX+r4LW%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Received: by 2002:a05:6a10:654b:0:0:0:0 with HTTP; Tue, 21 Dec 2021 04:02:36
- -0800 (PST)
-From: Debora Kareem <deborakareeem@gmail.com>
-Date: Tue, 21 Dec 2021 13:02:36 +0100
-Message-ID: <CAGYZk4g=uNGHot9ftVX7BhoyHAoo6=1WaRBcNG7MNkCHPdLPVg@mail.gmail.com>
-Subject: HI
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,18 +77,189 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SSBhbSBEZWJvcmEgS2FyZWVtLCBJIGhhdmUgc29tZXRoaW5ncyBJIG5lZWQgdG8gc2hhcmUgd2l0
-aCB5b3UgdGhhdApoYXZlIGJlZW4gYm9yZGVyaW5nIG15IGhlYXJ0LCBJIGhvcGUgeW91IGNhbiBn
-aXZlIHRoZSBwZXJtaXNzaW9uIHRvIGRvCnRoYXQuIMKgc28gcGxlYXNlIGFtIG5vdCBvbmxpbmUg
-bm93IHNvIGtpbmRseSBjb250YWN0IGUgbm93IHdpdGggbXkKcHJpdmF0ZSBlbWFpbCBhZGRlc3Mg
-YXTCoGRlYm9yYWthcmVlZW1AZ21haWwuY29twqBzbyB0aGF0IGkgY2FuIHRlbGwgeW91Cm1vcmUg
-YWJvdXQgbWUgb2sKCldhaXRpbmcgdG8gaGVhciBmcm9tIHlvdS4KClRoYW5raW5nIHlvdSBmb3Ig
-eW91ciB0aW1lLgoKRGVib3JhCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3Jn
-Cmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2RyaXZlcmRldi1kZXZlbAo=
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
+branch HEAD: 79f1c7304295bbbc611bc53cfd5425b777b3e840  kernfs: Replace kernel.h with the necessary inclusions
+
+elapsed time: 722m
+
+configs tested: 158
+configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+arm                                 defconfig
+sh                      rts7751r2d1_defconfig
+arc                     haps_hs_smp_defconfig
+sh                ecovec24-romimage_defconfig
+ia64                        generic_defconfig
+powerpc                 mpc837x_rdb_defconfig
+sh                             espt_defconfig
+mips                     loongson1c_defconfig
+arm                        realview_defconfig
+powerpc                  storcenter_defconfig
+sh                        edosk7705_defconfig
+powerpc                    amigaone_defconfig
+arm                           sama5_defconfig
+openrisc                            defconfig
+arm                          imote2_defconfig
+arm                          moxart_defconfig
+mips                        qi_lb60_defconfig
+arm                        magician_defconfig
+mips                           ip32_defconfig
+mips                         rt305x_defconfig
+mips                           gcw0_defconfig
+mips                       bmips_be_defconfig
+powerpc                     skiroot_defconfig
+mips                      maltaaprp_defconfig
+mips                      bmips_stb_defconfig
+um                               alldefconfig
+arm                          ixp4xx_defconfig
+nds32                             allnoconfig
+sh                            shmin_defconfig
+arm                     eseries_pxa_defconfig
+riscv                    nommu_virt_defconfig
+xtensa                          iss_defconfig
+arm                         at91_dt_defconfig
+mips                            ar7_defconfig
+powerpc                     tqm8548_defconfig
+sh                        sh7785lcr_defconfig
+sh                           se7206_defconfig
+mips                        jmr3927_defconfig
+mips                       capcella_defconfig
+powerpc                 canyonlands_defconfig
+sh                        dreamcast_defconfig
+mips                           ci20_defconfig
+m68k                            q40_defconfig
+powerpc                   lite5200b_defconfig
+arm                          pcm027_defconfig
+powerpc                      katmai_defconfig
+arm                         assabet_defconfig
+m68k                          amiga_defconfig
+arm                        mvebu_v5_defconfig
+arm                     am200epdkit_defconfig
+mips                          rb532_defconfig
+openrisc                 simple_smp_defconfig
+powerpc                    sam440ep_defconfig
+m68k                        m5407c3_defconfig
+sh                           se7780_defconfig
+nios2                         3c120_defconfig
+powerpc                 mpc834x_itx_defconfig
+powerpc                      pmac32_defconfig
+xtensa                         virt_defconfig
+arm                         bcm2835_defconfig
+mips                      pic32mzda_defconfig
+arm                             ezx_defconfig
+xtensa                              defconfig
+arm                  randconfig-c002-20211220
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                               defconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a001-20211220
+x86_64               randconfig-a003-20211220
+x86_64               randconfig-a005-20211220
+x86_64               randconfig-a006-20211220
+x86_64               randconfig-a004-20211220
+x86_64               randconfig-a002-20211220
+i386                 randconfig-a006-20211220
+i386                 randconfig-a004-20211220
+i386                 randconfig-a002-20211220
+i386                 randconfig-a003-20211220
+i386                 randconfig-a005-20211220
+i386                 randconfig-a001-20211220
+x86_64               randconfig-a013-20211221
+x86_64               randconfig-a015-20211221
+x86_64               randconfig-a014-20211221
+x86_64               randconfig-a011-20211221
+x86_64               randconfig-a012-20211221
+x86_64               randconfig-a016-20211221
+i386                 randconfig-a013-20211219
+i386                 randconfig-a011-20211219
+i386                 randconfig-a016-20211219
+i386                 randconfig-a015-20211219
+i386                 randconfig-a014-20211219
+i386                 randconfig-a012-20211219
+arc                  randconfig-r043-20211221
+riscv                randconfig-r042-20211221
+s390                 randconfig-r044-20211221
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+
+clang tested configs:
+x86_64               randconfig-a013-20211220
+x86_64               randconfig-a015-20211220
+x86_64               randconfig-a014-20211220
+x86_64               randconfig-a012-20211220
+x86_64               randconfig-a011-20211220
+x86_64               randconfig-a016-20211220
+i386                 randconfig-a012-20211220
+i386                 randconfig-a011-20211220
+i386                 randconfig-a014-20211220
+i386                 randconfig-a016-20211220
+i386                 randconfig-a015-20211220
+i386                 randconfig-a013-20211220
+hexagon              randconfig-r041-20211220
+hexagon              randconfig-r045-20211220
+riscv                randconfig-r042-20211220
+s390                 randconfig-r044-20211220
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
