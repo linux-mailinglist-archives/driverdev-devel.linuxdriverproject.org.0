@@ -1,62 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A26747BDE5
-	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Dec 2021 11:08:34 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B15447BF44
+	for <lists+driverdev-devel@lfdr.de>; Tue, 21 Dec 2021 13:02:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C414E60E9C;
-	Tue, 21 Dec 2021 10:08:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 73930823CF;
+	Tue, 21 Dec 2021 12:02:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4pdWszroSurC; Tue, 21 Dec 2021 10:08:31 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XlmMPZUwJ8Cy; Tue, 21 Dec 2021 12:02:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 23D4F60E79;
-	Tue, 21 Dec 2021 10:08:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E90728190B;
+	Tue, 21 Dec 2021 12:02:48 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E12DE1BF5F6
- for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 10:08:19 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BA4201BF35F
+ for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 12:02:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CD5644057F
- for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 10:08:19 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B68FE60E8C
+ for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 12:02:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=linuxfoundation.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kWSU0-UFt7Y3 for <devel@linuxdriverproject.org>;
- Tue, 21 Dec 2021 10:08:18 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 76C234016B
- for <devel@driverdev.osuosl.org>; Tue, 21 Dec 2021 10:08:18 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 753E0B815AD;
- Tue, 21 Dec 2021 10:08:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABF4FC36AE7;
- Tue, 21 Dec 2021 10:08:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1640081294;
- bh=8AahsyAAdbIIs+LjbWgpR4ejk9iJEuNEWcPUIzojxBM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Z20uJ1tMGoHzR+wy8jlwrdVumtQs6mhmN7asH7LPz70xQwichsTexF+7oKVHL91mB
- wfvnlul/SYAVtRnWtOmEOUyfdbYTtMU1MK96Qs+u5AHpyMlmx6K7X6i7YCNKXbYooI
- VuLNCWG+Z9QtdMVdlB1Jto3yqTdyO3+U0QJFd28U=
-Date: Tue, 21 Dec 2021 11:08:11 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Todd Kjos <tkjos@google.com>
-Subject: Re: [PATCH] binder: fix async_free_space accounting for empty parcels
-Message-ID: <YcGnizJKAQ9pxGBY@kroah.com>
-References: <20211220190150.2107077-1-tkjos@google.com>
- <CAHRSSExTHHOdqEnRF0g435BrO5L-X6M3pxPg3OmLz8xUWDuNKA@mail.gmail.com>
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id HbGJx7vADuUr for <devel@linuxdriverproject.org>;
+ Tue, 21 Dec 2021 12:02:37 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com
+ [IPv6:2607:f8b0:4864:20::529])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 95A8360E52
+ for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 12:02:37 +0000 (UTC)
+Received: by mail-pg1-x529.google.com with SMTP id r5so12149671pgi.6
+ for <devel@linuxdriverproject.org>; Tue, 21 Dec 2021 04:02:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=7QGtLFawEUiArnP/F0NTtTDw9l8TEUGBGlmBpy3N6sU=;
+ b=Fb8Z91wUKSdANXC7p8M0ICWdjdtynC6ZpDwBrfVHSDHLJJmXWkGM7uCIGJx7+g++96
+ 7duOE8syWegbRooUV/EzrVFW6kSD/k3XPHGr8pLF64DUv+GqNRo/IJ0VOCmGpxfXxa2J
+ olLXMpvuhiFVDTiZnJNDhUsXuvsKBMXPm38w4jbQopr3uDH3veLnBr/V6EqH3Dx0bDfD
+ ddVOdV74/QOGp8fTsmJLm8cSHIeIKGwQkLPNxJB+2X9iaWVov/OCq/yWZAc/5Gvv9zhp
+ sFBKo288pE3EHm0ekoV3J4RjJt7Fti4qubtp1pteYFQ/690m20cE9wBbkHIZRE1EGjSc
+ XlHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=7QGtLFawEUiArnP/F0NTtTDw9l8TEUGBGlmBpy3N6sU=;
+ b=JZNyWiesvTkMZ+obbUiTLTbp3HyIUMdgulWKMJV/xG+Rt6U3htnxWIlHDLkgY8+zg8
+ 6eKnNmXO2NovH0Wc5QjCmIbUFxB7v5D/IV1MYOzjOzEg+hzpq5Nib2jmPfryuca/SHPT
+ LidkAyB8uEpSK5IkvhNqBM5iD1NTFumiciWKXuH8OsewI3qDlmJKWRYRMyIZ7klcy0nc
+ 382Dtdrq9eVaJ2useN3pfU66CohsVmG7SauDjFlOZT3///iunbuh2yY2fxRgXpJj9DXY
+ sS/Vp1fWdY3bcWa1Ypt6p+eIwPyX1dhfbETpozjVoBxajTTK1O/NN5MqdyF09Y9nafzy
+ 50rg==
+X-Gm-Message-State: AOAM533B9MBDbt0zI7jRI0HF0Y53Niaxyo1qgCJxaDcHg0rkWTzOYPHV
+ WSYjXwMTMGgHKq0Rf40U2kJ3VcwgBcWCgAn02Kw=
+X-Google-Smtp-Source: ABdhPJzDzmtQCdOUxLozfMD8puz2/V4TybmPW7vn85EsQReB68vpUtMSgKut5fcfQt5S6kdWy9vDlyht/M+iogJLXkI=
+X-Received: by 2002:a05:6a00:10d2:b0:4a8:3613:c475 with SMTP id
+ d18-20020a056a0010d200b004a83613c475mr2929292pfu.0.1640088156541; Tue, 21 Dec
+ 2021 04:02:36 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAHRSSExTHHOdqEnRF0g435BrO5L-X6M3pxPg3OmLz8xUWDuNKA@mail.gmail.com>
+Received: by 2002:a05:6a10:654b:0:0:0:0 with HTTP; Tue, 21 Dec 2021 04:02:36
+ -0800 (PST)
+From: Debora Kareem <deborakareeem@gmail.com>
+Date: Tue, 21 Dec 2021 13:02:36 +0100
+Message-ID: <CAGYZk4g=uNGHot9ftVX7BhoyHAoo6=1WaRBcNG7MNkCHPdLPVg@mail.gmail.com>
+Subject: HI
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,44 +83,18 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- stable <stable@vger.kernel.org>, arve@android.com, maco@google.com,
- joel@joelfernandes.org, kernel-team@android.com, christian@brauner.io
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Mon, Dec 20, 2021 at 11:06:09AM -0800, Todd Kjos wrote:
-> On Mon, Dec 20, 2021 at 11:02 AM Todd Kjos <tkjos@google.com> wrote:
-> >
-> > In 4.13, commit 74310e06be4d ("android: binder: Move buffer out of area shared with user space")
-> > fixed a kernel structure visibility issue. As part of that patch,
-> > sizeof(void *) was used as the buffer size for 0-length data payloads so
-> > the driver could detect abusive clients sending 0-length asynchronous
-> > transactions to a server by enforcing limits on async_free_size.
-> >
-> > Unfortunately, on the "free" side, the accounting of async_free_space
-> > did not add the sizeof(void *) back. The result was that up to 8-bytes of
-> > async_free_space were leaked on every async transaction of 8-bytes or
-> > less.  These small transactions are uncommon, so this accounting issue
-> > has gone undetected for several years.
-> >
-> > The fix is to use "buffer_size" (the allocated buffer size) instead of
-> > "size" (the logical buffer size) when updating the async_free_space
-> > during the free operation. These are the same except for this
-> > corner case of asynchronous transactions with payloads < 8 bytes.
-> >
-> > Fixes: 74310e06be4d ("android: binder: Move buffer out of area shared with user space")
-> > Signed-off-by: Todd Kjos <tkjos@google.com>
-> 
-> I forgot to CC stable. This applies to all stable branches back to 4.14.
-> Cc: stable@vger.kernel.org # 4.14+
-
-Thanks, I've added that to the patch when committing it.
-
-greg k-h
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SSBhbSBEZWJvcmEgS2FyZWVtLCBJIGhhdmUgc29tZXRoaW5ncyBJIG5lZWQgdG8gc2hhcmUgd2l0
+aCB5b3UgdGhhdApoYXZlIGJlZW4gYm9yZGVyaW5nIG15IGhlYXJ0LCBJIGhvcGUgeW91IGNhbiBn
+aXZlIHRoZSBwZXJtaXNzaW9uIHRvIGRvCnRoYXQuIMKgc28gcGxlYXNlIGFtIG5vdCBvbmxpbmUg
+bm93IHNvIGtpbmRseSBjb250YWN0IGUgbm93IHdpdGggbXkKcHJpdmF0ZSBlbWFpbCBhZGRlc3Mg
+YXTCoGRlYm9yYWthcmVlZW1AZ21haWwuY29twqBzbyB0aGF0IGkgY2FuIHRlbGwgeW91Cm1vcmUg
+YWJvdXQgbWUgb2sKCldhaXRpbmcgdG8gaGVhciBmcm9tIHlvdS4KClRoYW5raW5nIHlvdSBmb3Ig
+eW91ciB0aW1lLgoKRGVib3JhCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3Jn
+Cmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaXZlcmRldi1kZXZlbAo=
