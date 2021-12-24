@@ -1,70 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7E2C47EA78
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Dec 2021 03:10:46 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E486447EDF8
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Dec 2021 10:43:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D1F1740AE1;
-	Fri, 24 Dec 2021 02:10:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BA57860ABC;
+	Fri, 24 Dec 2021 09:43:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jHZNnvVG7EVx; Fri, 24 Dec 2021 02:10:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yztTn68zI2Sm; Fri, 24 Dec 2021 09:43:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2D59540235;
-	Fri, 24 Dec 2021 02:10:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D27FC6059F;
+	Fri, 24 Dec 2021 09:43:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 430A21BF275
- for <devel@linuxdriverproject.org>; Fri, 24 Dec 2021 02:10:30 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 629781BF372
+ for <devel@linuxdriverproject.org>; Fri, 24 Dec 2021 09:43:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2DF0983459
- for <devel@linuxdriverproject.org>; Fri, 24 Dec 2021 02:10:30 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5E9E56059F
+ for <devel@linuxdriverproject.org>; Fri, 24 Dec 2021 09:43:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FNOf8bfICTRN for <devel@linuxdriverproject.org>;
- Fri, 24 Dec 2021 02:10:29 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 342628343E
- for <devel@driverdev.osuosl.org>; Fri, 24 Dec 2021 02:10:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1640311829; x=1671847829;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=ATGwa4jy+/jSAOW+u4RsLDeZMwvqXs8D3vY3Ubciano=;
- b=SLMd7zxTT5DUWy8AQjUtMttznqfCZhQLAwGjodvlC1IBWBopCslVn75C
- ff3SOoaThHwKWBR1xVFzq9YZcxzSvuOiACN7lyA5sB9VcoPur0PXoPAkV
- D95Hz8a2vie9UJVhulBCdsmEMFgmQqAkjaifvN5o8kziX1S2BOo/eZGXA
- Dh5CKdSD/qJmsfnC1d+EBM4ti4Fz/11e+SpEhciqgSUDpTzH4XafjJS8n
- R8t+NVUdwjAWmA/MUTXc1ty71plYmqWOZAmBkH4gF8ve0YQ/gG5rkEwKH
- RvG3gpWaRYObyS2WOJEtW42g0r+JYC6nqLQwaYOW1Rygx9k4C6E1hLUTv A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10207"; a="221587904"
-X-IronPort-AV: E=Sophos;i="5.88,231,1635231600"; d="scan'208";a="221587904"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Dec 2021 18:10:27 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,231,1635231600"; d="scan'208";a="587464692"
-Received: from lkp-server01.sh.intel.com (HELO e357b3ef1427) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 23 Dec 2021 18:10:26 -0800
-Received: from kbuild by e357b3ef1427 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1n0a2M-0002VO-1O; Fri, 24 Dec 2021 02:10:26 +0000
-Date: Fri, 24 Dec 2021 10:10:14 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:kobject-const] BUILD SUCCESS
- 3230b957cac5f596b36c7939fe81b4f54c6d1bb3
-Message-ID: <61c52c06.a5OwtiENMcLobv7p%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CPNXVHhGatsS for <devel@linuxdriverproject.org>;
+ Fri, 24 Dec 2021 09:43:24 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-qk1-x742.google.com (mail-qk1-x742.google.com
+ [IPv6:2607:f8b0:4864:20::742])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A2EFF600CA
+ for <devel@driverdev.osuosl.org>; Fri, 24 Dec 2021 09:43:24 +0000 (UTC)
+Received: by mail-qk1-x742.google.com with SMTP id m2so6283727qkd.8
+ for <devel@driverdev.osuosl.org>; Fri, 24 Dec 2021 01:43:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=DA2RfWm5BfTc8dY4tRUxJejPvziWb2AgHmDwtjqgqi8=;
+ b=P5Qd+BPKTr3I+Do4OC70tdf0v+QiBCg7MTdO3Md1Zw9sg2dl/5Osd3vwjgi4sUbJMj
+ Hc6tHdBTOxud3jyCq3u5P9OE3vEioW4SLBGJo8++XSTQBofztcLCQ8kybgg8qtP9CSuH
+ 4f9krOekkhy2eA2S7Rz466KDQvgZLCb8xGis/gZgz5Hi9JEaYcC5wo72XvSz9AQDU1D+
+ 7S43zxju9VCRZPUFhoq/m9XGCad0b4ssi6GyvXslcwZvlM4zsQqtDWXAOanz/4WPK4HC
+ g0QvseeHBtUrsay0q/aX/8JHX5cyHvoqkK/rw3wuDFwhh9yJ8lRl2qAMSkFUSx60SPOQ
+ /DVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=DA2RfWm5BfTc8dY4tRUxJejPvziWb2AgHmDwtjqgqi8=;
+ b=E6MHjKx5bK/CGoEMLokvQggwISV2tQxhkytG8f+nDJIbFhup+5aEc1bHYn75p3W6bm
+ JSruftfQ9f/su2thv5gWfYq3CyGfnwYRaeP3BwfFlWhzU8PZDQOiojXwjoJsUdeplbBr
+ FxsJcp2w//AXDoaAMgQe7vRkrKRb1stFryEbzLQIpn6RBvIuqtzdWOuYQl4YMGf78Z7k
+ YdgWLPTuNhOx03Mp6HrWWYXta3KgOGd+UBNFiMRJo8xCo+WQ6kBEayKkCFGnWhlnAtUO
+ /JsvUOiGe49Z+ugdcCLbmlulB81Enaokvz7wE4vgDA5WzFiOvubbFgJtwxqyJ1sn75zK
+ T9dw==
+X-Gm-Message-State: AOAM530MXvKh920B5/xv/AFWY2UTB0ILfwUGInNH6lQRwAPqOkRy66d/
+ 0hcnrUxU8DcE6WCxPEppLAkPKlWWoV1C4vIyKik=
+X-Google-Smtp-Source: ABdhPJxOFyIbcuUoQkqLEOD0blyfPHbVzcVEVXfZHHcBczjQlF33Osl6/5XOvTNmqVfOAoBi95lYkCmhB5ab67zHpAk=
+X-Received: by 2002:a05:620a:12e2:: with SMTP id
+ f2mr4119057qkl.343.1640339003339; 
+ Fri, 24 Dec 2021 01:43:23 -0800 (PST)
 MIME-Version: 1.0
+Received: by 2002:ad4:5c62:0:0:0:0:0 with HTTP; Fri, 24 Dec 2021 01:43:23
+ -0800 (PST)
+From: MISS WILLIAMS <info.turvateealfastar@gmail.com>
+Date: Fri, 24 Dec 2021 01:43:23 -0800
+Message-ID: <CAM-qQYZEpxxSx8D5OgQgnR0TbPk4tRuWJk3JOO_rqk2_US+_sA@mail.gmail.com>
+Subject: Greetings Dearest One,
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,162 +80,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: williamsreneta2019@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const
-branch HEAD: 3230b957cac5f596b36c7939fe81b4f54c6d1bb3  kobject: mark ktype * const in struct kobject
+Greetings Dearest One,
 
-elapsed time: 723m
+How are you today, together with your family?Hope fine.I would like to
+use this opportunity to introduce myself to you. I am Miss Reneta
+Williams, From Benin Republic, West Africa. And my late parents are
+Mr. and Mrs. Dikko Williams; my father was a highly reputable business
+magnet who operated in Benin Republic during his days.
 
-configs tested: 132
-configs skipped: 3
+I am writing this mail to you with tears and sorrow from my heart.
+With due respect trust and humanity, I know this mail will come to you
+as a surprise since we haven't known or come across each other before,
+considering the fact that I sourced your email contact through the
+Internet in search of trusted person who can be trusted and will
+assist me.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+It is sad to say that he passed away mysteriously in France during one
+of his business trips abroad. Though his sudden death was linked or
+rather suspected to have been masterminded by an uncle of his who
+traveled with him at that time. But God knows the truth! My mother
+died when I was just 6yrs old, and since then my father took me so
+special.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20211223
-sh                      rts7751r2d1_defconfig
-arm                         lubbock_defconfig
-arm                   milbeaut_m10v_defconfig
-mips                             allmodconfig
-m68k                        mvme147_defconfig
-arm                            qcom_defconfig
-arm                          iop32x_defconfig
-arc                          axs103_defconfig
-powerpc                      mgcoge_defconfig
-powerpc                    mvme5100_defconfig
-m68k                         amcore_defconfig
-alpha                            alldefconfig
-sh                           se7343_defconfig
-arm                       spear13xx_defconfig
-arm                      integrator_defconfig
-mips                        vocore2_defconfig
-arm                          simpad_defconfig
-mips                         tb0219_defconfig
-powerpc                      pcm030_defconfig
-powerpc                    amigaone_defconfig
-powerpc                      arches_defconfig
-arm                           sunxi_defconfig
-sh                        apsh4ad0a_defconfig
-m68k                          hp300_defconfig
-openrisc                         alldefconfig
-mips                      bmips_stb_defconfig
-um                                  defconfig
-arm                           corgi_defconfig
-powerpc                     redwood_defconfig
-powerpc                 mpc836x_mds_defconfig
-powerpc                     powernv_defconfig
-powerpc                 mpc832x_rdb_defconfig
-sh                        edosk7760_defconfig
-mips                     cu1000-neo_defconfig
-arm                           stm32_defconfig
-powerpc                       ppc64_defconfig
-sh                           se7724_defconfig
-mips                     loongson1b_defconfig
-powerpc                 mpc8313_rdb_defconfig
-sh                           se7721_defconfig
-arm                     eseries_pxa_defconfig
-powerpc64                           defconfig
-arm                        neponset_defconfig
-arm                         lpc18xx_defconfig
-sh                ecovec24-romimage_defconfig
-m68k                            mac_defconfig
-arm                          exynos_defconfig
-sh                          lboxre2_defconfig
-arm                  randconfig-c002-20211223
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-nios2                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-arc                                 defconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-i386                                defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-sparc                               defconfig
-sparc                            allyesconfig
-mips                             allyesconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a011-20211223
-x86_64               randconfig-a012-20211223
-x86_64               randconfig-a014-20211223
-x86_64               randconfig-a013-20211223
-x86_64               randconfig-a015-20211223
-x86_64               randconfig-a016-20211223
-i386                 randconfig-a012-20211223
-i386                 randconfig-a011-20211223
-i386                 randconfig-a013-20211223
-i386                 randconfig-a015-20211223
-i386                 randconfig-a014-20211223
-i386                 randconfig-a016-20211223
-arc                  randconfig-r043-20211223
-s390                 randconfig-r044-20211223
-riscv                randconfig-r042-20211223
-riscv                    nommu_k210_defconfig
-riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-riscv                          rv32_defconfig
-riscv                            allmodconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-um                             i386_defconfig
-x86_64                           allyesconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
+Before his death, he called me and informed me that he has the sum of
+Eighteen Million Five Hundred , United State Dollar
+(USD$18.500,000.00) left in fixed deposit account in one of the
+leading banks in Africa. He further told me that he deposited the
+money in my name, and also gave me all the necessary but legal
+documents to this fund with the bank.
 
-clang tested configs:
-x86_64               randconfig-a001-20211223
-x86_64               randconfig-a003-20211223
-x86_64               randconfig-a005-20211223
-x86_64               randconfig-a006-20211223
-x86_64               randconfig-a004-20211223
-x86_64               randconfig-a002-20211223
-i386                 randconfig-a006-20211223
-i386                 randconfig-a004-20211223
-i386                 randconfig-a002-20211223
-i386                 randconfig-a003-20211223
-i386                 randconfig-a005-20211223
-i386                 randconfig-a001-20211223
-hexagon              randconfig-r041-20211223
-hexagon              randconfig-r045-20211223
+I am 21 years old and a university undergraduate and really don't know
+what to do. Now I want an account overseas where I can transfer this
+funds and after the transaction I will come and reside permanently in
+your country till such a time that it will be convenient for me to
+return back home if I so desire.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+The death of my father actually brought sorrow to my life. I also want
+to invest the fund under your care because I am ignorant of business
+world. I am in a sincere desire of your humble assistance in this
+regards. Your suggestions and ideas will be highly regarded.
+
+Now permit me to ask these few questions:
+
+1. Can you honestly help me from your heart?
+
+2. Can I completely trust you?
+
+3. What percentage of the total amount in question will be good for
+you after the money is in your account?
+
+Please, consider this and get back to me as soon as
+possible.Immediately and confirm your willingness on this my
+email(williamsreneta2019@gmail.com), here is one of my Picture and
+also i will inform you more details involved in this matter.
+
+Regards,
+
+Miss Reneta Williams.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
