@@ -2,69 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35D5E480FDB
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Dec 2021 06:16:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0672C481099
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Dec 2021 08:13:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A1E06405D6;
-	Wed, 29 Dec 2021 05:16:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 365C5405C5;
+	Wed, 29 Dec 2021 07:13:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H7tsmJWAA-xB; Wed, 29 Dec 2021 05:16:01 +0000 (UTC)
+	with ESMTP id gfMtFwbWts9B; Wed, 29 Dec 2021 07:13:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C97954018E;
-	Wed, 29 Dec 2021 05:15:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 10A174014D;
+	Wed, 29 Dec 2021 07:13:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3408C1BF2E4
- for <devel@linuxdriverproject.org>; Wed, 29 Dec 2021 05:15:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 37F291BF8A8
+ for <devel@linuxdriverproject.org>; Wed, 29 Dec 2021 07:12:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1E8444087D
- for <devel@linuxdriverproject.org>; Wed, 29 Dec 2021 05:15:49 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2DFB640442
+ for <devel@linuxdriverproject.org>; Wed, 29 Dec 2021 07:12:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id o0hTbAqDJu1M for <devel@linuxdriverproject.org>;
- Wed, 29 Dec 2021 05:15:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E0C6E4087C
- for <devel@driverdev.osuosl.org>; Wed, 29 Dec 2021 05:15:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1640754948; x=1672290948;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=2Ewnpj05b0mii3woz4rKh+aEODuJZsIFQ5cCmTMcFNM=;
- b=brRE8qp6cPh+MGZCuaWdEYe0baoHAiKZuTxlu5ncoohvzjTmlZlqYiwm
- nSNn4kSkQixlyJqls1jtwDOJAPQVfSxoNRaJApIU06O+8f457S0NloouY
- Dov1UFtBkeHDWFjkm7hUsBwOfsv3DHHnC+LDU/fbzhfy6/jLm6O8ZQL+0
- Ye7Fmo7fNllO3Q4xWEc9MGuttI8nn3tGtwj7o8I4rLdqT+yt495DRQNZo
- oCsc93V1cSKt56J+NgCGBzohzfaBNIbCcMAMqh33Hk/vEyI6mG/8ncEDv
- hYlU67cu9hNW0iw9WyjCSmg9LIpUf0/XdQeEnB/XjEX02G21B0KdlJWnf w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10211"; a="241677024"
-X-IronPort-AV: E=Sophos;i="5.88,244,1635231600"; d="scan'208";a="241677024"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Dec 2021 21:15:46 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,244,1635231600"; d="scan'208";a="468375885"
-Received: from lkp-server01.sh.intel.com (HELO e357b3ef1427) ([10.239.97.150])
- by orsmga003.jf.intel.com with ESMTP; 28 Dec 2021 21:15:45 -0800
-Received: from kbuild by e357b3ef1427 with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1n2RJQ-0008Yi-Nm; Wed, 29 Dec 2021 05:15:44 +0000
-Date: Wed, 29 Dec 2021 13:15:10 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 20a77667bbd7c28ec4f76c3c811dc22c65b4bee6
-Message-ID: <61cbeede.hd9exsinmyPnG25R%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+ with ESMTP id gWVNYQ5dpME7 for <devel@linuxdriverproject.org>;
+ Wed, 29 Dec 2021 07:12:50 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ed1-x544.google.com (mail-ed1-x544.google.com
+ [IPv6:2a00:1450:4864:20::544])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D2B7740438
+ for <devel@driverdev.osuosl.org>; Wed, 29 Dec 2021 07:12:49 +0000 (UTC)
+Received: by mail-ed1-x544.google.com with SMTP id j21so82754431edt.9
+ for <devel@driverdev.osuosl.org>; Tue, 28 Dec 2021 23:12:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:sender:from:date:message-id:subject:to;
+ bh=RY4Ck/FbAOXQAIlJ7NzArEMRakTYUxJxSeRPJiZEvjY=;
+ b=ezWDGn8K2NRqGZpW3xCbhRYEl9CA0tf/GFW1H/ER9p20VC/+9xBIJKeZaSIdLgZqXj
+ 9Lv+HbhmagWNlnaM57yGkfo0e57kXxl5spiC/s29AXAYaOdxJ+gTX+pUBp05FStqrHCD
+ VsvwZvtAnSlG4mY1/5TSYR/inj5Jblm078mn40HXrnlR+7wxEVEFjMxWoP6QoqI1/Dr6
+ bv20Z80oVcJgYFqHvsASGWC92M1YEE+OzzSH3pOPVPf7FvtW7u9bV9SEiG0cBGhVrq4X
+ JBuSoCGoeD4qZfX1qvgFgFa8aDe+0kLTTvV537a7GZoxcuAM5nTdt6r7DotquLUZ7fy3
+ XRaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
+ :to; bh=RY4Ck/FbAOXQAIlJ7NzArEMRakTYUxJxSeRPJiZEvjY=;
+ b=SBZPTX4apwRcsvS7IMjkAWX4T7WeMrDSvwUhzk5YMOfrKJmGfxUK/heu+AVuj4ZKeN
+ TihVhz3lh2U4DF7ABawSwDjjpa/rLearwSzB0EBL11zOxMm9cGIIUEbsX+pOGjRgi1uQ
+ mIY2+nl/0LNOoV+c4BisOmOvKnaseDzIqZgzkXylFaR2BLcg/q76dRJFUfcd7Vuwb9n0
+ Sewp5wAU8UZQHfJDtXFUtIUaG3Wm1LT+gLj1vFbPB/k6SWFWWOef6CYw6nrXIXzDfCvn
+ 8XR7qvdqPanoh3J52v5roYmeGhhgQpzmlHcgOkoVtkg4buSz4EEOi5oZ9snLwA9ZK5ZV
+ 5j5g==
+X-Gm-Message-State: AOAM530Jjlwu8/LA8x4qkuZdTLwfGJUQaztnTwugaEjv6wpNgxVIGfxD
+ wk9wo08NxOIhwMx05kmLz+rs7BSSH+zuAAXJgwg=
+X-Google-Smtp-Source: ABdhPJweAXWdUh5Rj6T+VKz68wlSnsLW0Cozip/y68to4cCVgUuIJ2Udu5FZM4aesRDOG6VgR+mLejhNopZVkas+XrQ=
+X-Received: by 2002:a05:6402:51d0:: with SMTP id
+ r16mr6424437edd.271.1640761967871; 
+ Tue, 28 Dec 2021 23:12:47 -0800 (PST)
 MIME-Version: 1.0
+Received: by 2002:a54:3202:0:0:0:0:0 with HTTP; Tue, 28 Dec 2021 23:12:47
+ -0800 (PST)
+From: Aisha Al-Qaddafi <aishaqadafi77@gmail.com>
+Date: Wed, 29 Dec 2021 08:12:47 +0100
+X-Google-Sender-Auth: MaQitg13yzCaC26dTXuDTbZCPpY
+Message-ID: <CAArXt4rnd2q6xfqPxh865T3AR7bPhAQVwT==H_LRsdNX6npY1w@mail.gmail.com>
+Subject: Dear Friend,
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,213 +82,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: 20a77667bbd7c28ec4f76c3c811dc22c65b4bee6  staging: r8188eu: merge _ReadLEDSetting() into ReadAdapterInfo8188EU()
+Dear I Need An Investment Partner
 
-elapsed time: 723m
+Assalamu Alaikum Wa Rahmatullahi Wa Barakatuh
 
-configs tested: 183
-configs skipped: 4
+Dear Friend,
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+I came across your e-mail contact prior to a private search while in
+need of your assistance. I am Aisha Al-Qaddafi, the only biological
+Daughter of Former President of Libya Col. Muammar Al-Qaddafi. Am a
+single Mother and a Widow with three Children.
 
-gcc tested configs:
-arm                                 defconfig
-arm64                            allyesconfig
-arm64                               defconfig
-arm                              allyesconfig
-arm                              allmodconfig
-i386                 randconfig-c001-20211228
-powerpc              randconfig-c003-20211229
-i386                 randconfig-c001-20211229
-arc                     haps_hs_smp_defconfig
-mips                         db1xxx_defconfig
-arm                             mxs_defconfig
-parisc                generic-32bit_defconfig
-arm                          simpad_defconfig
-powerpc                     mpc5200_defconfig
-arc                                 defconfig
-m68k                        mvme16x_defconfig
-riscv                    nommu_virt_defconfig
-mips                         tb0226_defconfig
-um                             i386_defconfig
-mips                        workpad_defconfig
-mips                           gcw0_defconfig
-arm                        clps711x_defconfig
-powerpc               mpc834x_itxgp_defconfig
-mips                           ip32_defconfig
-mips                       lemote2f_defconfig
-mips                     decstation_defconfig
-h8300                    h8300h-sim_defconfig
-arm                         nhk8815_defconfig
-parisc                generic-64bit_defconfig
-arm                       versatile_defconfig
-sh                           se7724_defconfig
-arm                          exynos_defconfig
-xtensa                       common_defconfig
-powerpc                     mpc512x_defconfig
-arm                          pxa168_defconfig
-mips                     loongson2k_defconfig
-powerpc                     taishan_defconfig
-powerpc                 mpc837x_mds_defconfig
-powerpc                 mpc834x_mds_defconfig
-mips                  cavium_octeon_defconfig
-h8300                     edosk2674_defconfig
-powerpc                    ge_imp3a_defconfig
-arm                             rpc_defconfig
-ia64                            zx1_defconfig
-powerpc                 mpc836x_mds_defconfig
-arm                         axm55xx_defconfig
-mips                         bigsur_defconfig
-mips                          rm200_defconfig
-riscv                            allyesconfig
-powerpc                         wii_defconfig
-arm                         hackkit_defconfig
-powerpc                      arches_defconfig
-sh                           se7619_defconfig
-i386                                defconfig
-mips                         cobalt_defconfig
-openrisc                            defconfig
-sh                         ecovec24_defconfig
-sh                        edosk7705_defconfig
-powerpc                         ps3_defconfig
-powerpc                       maple_defconfig
-mips                        maltaup_defconfig
-arm                            xcep_defconfig
-mips                          ath79_defconfig
-powerpc                  mpc885_ads_defconfig
-arm                         lpc18xx_defconfig
-powerpc                     pq2fads_defconfig
-arm                           sama5_defconfig
-arm                       imx_v6_v7_defconfig
-arm                          pxa910_defconfig
-s390                       zfcpdump_defconfig
-sparc64                             defconfig
-arm                         lpc32xx_defconfig
-ia64                         bigsur_defconfig
-arc                        nsimosci_defconfig
-arm                              alldefconfig
-h8300                       h8s-sim_defconfig
-openrisc                         alldefconfig
-m68k                          atari_defconfig
-m68k                          sun3x_defconfig
-arm                             ezx_defconfig
-powerpc                     tqm5200_defconfig
-powerpc                     sequoia_defconfig
-arm                            hisi_defconfig
-riscv                            allmodconfig
-arm                        shmobile_defconfig
-arc                    vdk_hs38_smp_defconfig
-csky                             alldefconfig
-riscv             nommu_k210_sdcard_defconfig
-arm                     davinci_all_defconfig
-powerpc                    amigaone_defconfig
-powerpc                          g5_defconfig
-m68k                        m5272c3_defconfig
-sh                   sh7770_generic_defconfig
-mips                          rb532_defconfig
-mips                       rbtx49xx_defconfig
-powerpc                      ppc44x_defconfig
-arm                  randconfig-c002-20211228
-arm                  randconfig-c002-20211229
-ia64                             allmodconfig
-ia64                                defconfig
-ia64                             allyesconfig
-m68k                             allmodconfig
-m68k                                defconfig
-m68k                             allyesconfig
-nios2                               defconfig
-arc                              allyesconfig
-nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
-csky                                defconfig
-alpha                               defconfig
-alpha                            allyesconfig
-xtensa                           allyesconfig
-h8300                            allyesconfig
-sh                               allmodconfig
-parisc                              defconfig
-s390                             allyesconfig
-s390                             allmodconfig
-parisc                           allyesconfig
-s390                                defconfig
-i386                             allyesconfig
-sparc                            allyesconfig
-sparc                               defconfig
-i386                   debian-10.3-kselftests
-i386                              debian-10.3
-mips                             allyesconfig
-mips                             allmodconfig
-powerpc                          allyesconfig
-powerpc                          allmodconfig
-powerpc                           allnoconfig
-x86_64               randconfig-a005-20211228
-x86_64               randconfig-a001-20211228
-x86_64               randconfig-a003-20211228
-x86_64               randconfig-a006-20211228
-x86_64               randconfig-a004-20211228
-x86_64               randconfig-a002-20211228
-i386                 randconfig-a006-20211228
-i386                 randconfig-a004-20211228
-i386                 randconfig-a002-20211228
-i386                 randconfig-a003-20211228
-i386                 randconfig-a001-20211228
-i386                 randconfig-a005-20211228
-x86_64               randconfig-a011-20211229
-x86_64               randconfig-a012-20211229
-x86_64               randconfig-a016-20211229
-riscv                    nommu_k210_defconfig
-riscv                             allnoconfig
-riscv                               defconfig
-x86_64                    rhel-8.3-kselftests
-um                           x86_64_defconfig
-x86_64                              defconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-x86_64                          rhel-8.3-func
-x86_64                                  kexec
+I have investment funds worth Twenty Seven Million Five Hundred
+Thousand United State Dollar ($27.500.000.00 ) and i need a trusted
+investment Manager/Partner because of my current refugee status,
+however, I am interested in you for investment project assistance in
+your country, may be from there, we can build business relationship in
+the nearest future.
 
-clang tested configs:
-x86_64               randconfig-a005-20211229
-x86_64               randconfig-a004-20211229
-i386                 randconfig-a002-20211229
-i386                 randconfig-a003-20211229
-i386                 randconfig-a001-20211229
-i386                 randconfig-a006-20211229
-i386                 randconfig-a004-20211229
-i386                 randconfig-a005-20211229
-x86_64               randconfig-a015-20211228
-x86_64               randconfig-a013-20211228
-x86_64               randconfig-a012-20211228
-x86_64               randconfig-a011-20211228
-x86_64               randconfig-a016-20211228
-x86_64               randconfig-a014-20211228
-i386                 randconfig-a012-20211228
-i386                 randconfig-a011-20211228
-i386                 randconfig-a014-20211228
-i386                 randconfig-a016-20211228
-i386                 randconfig-a013-20211228
-i386                 randconfig-a015-20211228
-x86_64               randconfig-a001-20211229
-x86_64               randconfig-a003-20211229
-x86_64               randconfig-a006-20211229
-x86_64               randconfig-a002-20211229
-hexagon              randconfig-r045-20211228
-hexagon              randconfig-r041-20211228
-riscv                randconfig-r042-20211228
-s390                 randconfig-r044-20211228
+I am willing to negotiate an investment/business profit sharing ratio
+with you based on the future investment earning profits.
 
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+If you are willing to handle this project on my behalf kindly reply
+urgently to enable me to provide you more information about the
+investment funds.
+
+Your Urgent Reply Will Be Appreciated
+
+Best Regards
+Mrs Aisha Al-Qaddafi
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
