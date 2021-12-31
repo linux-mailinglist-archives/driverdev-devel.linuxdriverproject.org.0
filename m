@@ -1,67 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E985C482544
-	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Dec 2021 18:09:22 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3866C48258C
+	for <lists+driverdev-devel@lfdr.de>; Fri, 31 Dec 2021 19:40:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 957F0408A6;
-	Fri, 31 Dec 2021 17:09:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 145928195C;
+	Fri, 31 Dec 2021 18:40:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bzYQ45u_28QH; Fri, 31 Dec 2021 17:09:19 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id i70FCmqNFq3s; Fri, 31 Dec 2021 18:40:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E842E4033B;
-	Fri, 31 Dec 2021 17:09:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 00FA3817A8;
+	Fri, 31 Dec 2021 18:40:23 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 676B51BF399
- for <devel@linuxdriverproject.org>; Fri, 31 Dec 2021 17:09:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8A21A1BF30C
+ for <devel@linuxdriverproject.org>; Fri, 31 Dec 2021 18:40:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5117781A99
- for <devel@linuxdriverproject.org>; Fri, 31 Dec 2021 17:09:08 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 74FC2817A8
+ for <devel@linuxdriverproject.org>; Fri, 31 Dec 2021 18:40:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7tmorHioJL29 for <devel@linuxdriverproject.org>;
- Fri, 31 Dec 2021 17:09:05 +0000 (UTC)
+ with ESMTP id EOVxwAzWpy8w for <devel@linuxdriverproject.org>;
+ Fri, 31 Dec 2021 18:40:11 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5526981A30
- for <devel@driverdev.osuosl.org>; Fri, 31 Dec 2021 17:09:05 +0000 (UTC)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CA84E81776
+ for <devel@driverdev.osuosl.org>; Fri, 31 Dec 2021 18:40:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1640970545; x=1672506545;
+ t=1640976011; x=1672512011;
  h=date:from:to:cc:subject:message-id:mime-version;
- bh=mDXZTBMOVLtUoZSEauTALat78Hj4BDtqet/RojZ9xSc=;
- b=Vu38dQIFTi/c/L7R2KYxUsAnTwraJ2DsMMI7A87zMuZf5mhzNSSXaL5s
- ipYDTi+NK6y8T7syJ7c/qGWzN4wDnC2tJU0oTtyxIo/y6FFA3Uy8Vlbvv
- SOo/UdtwxqnucygEjLBGKd+VuLEATa4vP+4lYohyyrBcO1+Nk5VwlMIIG
- DuF4xYJ1G8rrgdfSa9WDywU3LfP8sxaQOpQd1NXUtuKCZBR4RMmx+9OaQ
- 2iR0YNHsR1CAoUNRH+hhJwp4kTPH1vxo+0u2EKMCcwiWdkApjX8OPdXls
- +L0LPEQMNl9MxZ92r0czgRXR7pgP0jzFvAfRzG+puqw9DJkvaanO1/IWe w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10213"; a="221825322"
-X-IronPort-AV: E=Sophos;i="5.88,252,1635231600"; d="scan'208";a="221825322"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Dec 2021 09:09:04 -0800
+ bh=i4uYOErvRuvFDVWYo1iht0NarJIwmWWFMe42e8U0gHY=;
+ b=ZpHcChQCm3u5ZvCu8iyaFqDAwBpNXpAuncRg6/yi3K8fI50idgE5R/i1
+ PQbzvuEbb1trPIUtqk3mvqIxz5agoUy8fPToYIMY38JjTeEX1HS4bRmUm
+ i0+jO0s24KzVwtVs8O7zWTPML+QIw7wiqjxEueaZ7aD2uI5Wf8GTEQ018
+ 7m5VymHBVKa6jXOmRW9xbPtjtluXMxvRfxO6NUYX6Qyy4pI3e+tlEAfDt
+ 2+8sen0AA1giMmQwZQm2zUd+Qbnv/wbP3twa5CL/efvios0uJ9z9LRXii
+ S3ELknPCg2dvfeuXTk24/E8sq9f0O1vH4yr9KBLxUD2ozE8jYQMrv6iK0 Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10213"; a="241635675"
+X-IronPort-AV: E=Sophos;i="5.88,252,1635231600"; d="scan'208";a="241635675"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Dec 2021 10:40:11 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,252,1635231600"; d="scan'208";a="619676116"
+X-IronPort-AV: E=Sophos;i="5.88,252,1635231600"; d="scan'208";a="687550961"
 Received: from lkp-server01.sh.intel.com (HELO e357b3ef1427) ([10.239.97.150])
- by orsmga004.jf.intel.com with ESMTP; 31 Dec 2021 09:09:03 -0800
+ by orsmga005.jf.intel.com with ESMTP; 31 Dec 2021 10:40:09 -0800
 Received: from kbuild by e357b3ef1427 with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1n3LOo-000BR3-EB; Fri, 31 Dec 2021 17:09:02 +0000
-Date: Sat, 1 Jan 2022 01:08:41 +0800
+ id 1n3Moy-000Bal-OS; Fri, 31 Dec 2021 18:40:08 +0000
+Date: Sat, 1 Jan 2022 02:40:03 +0800
 From: kernel test robot <lkp@intel.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup 4/5] fs/d_path.c:59 prepend() warn:
- unsigned 'p->len' is never less than zero.
-Message-ID: <202201010156.bJvO7Gaw-lkp@intel.com>
+Subject: [driver-core:debugfs_cleanup 5/5]
+ drivers/base/firmware_loader/main.c:811:1: error: redefinition of
+ 'request_firmware'
+Message-ID: <202201010250.AR5OyFBm-lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 User-Agent: Mutt/1.10.1 (2018-07-13)
@@ -86,47 +85,304 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
 head:   a04bbe0a2c7e98669e11a47f94e53dd8228bbeba
-commit: e95d5bed5d58c2f5352969369827e7135fa2261e [4/5] fs: make d_path-like functions all have unsigned size
-config: i386-randconfig-m031-20211228 (https://download.01.org/0day-ci/archive/20220101/202201010156.bJvO7Gaw-lkp@intel.com/config)
-compiler: gcc-9 (Debian 9.3.0-22) 9.3.0
+commit: a04bbe0a2c7e98669e11a47f94e53dd8228bbeba [5/5] firmware: remove old CONFIG_FW_LOADER_MODULE test
+config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20220101/202201010250.AR5OyFBm-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 11.2.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?id=a04bbe0a2c7e98669e11a47f94e53dd8228bbeba
+        git remote add driver-core https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git
+        git fetch --no-tags driver-core debugfs_cleanup
+        git checkout a04bbe0a2c7e98669e11a47f94e53dd8228bbeba
+        # save the config file to linux build tree
+        mkdir build_dir
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=sh SHELL=/bin/bash drivers/base/firmware_loader/
 
 If you fix the issue, kindly add following tag as appropriate
 Reported-by: kernel test robot <lkp@intel.com>
 
-smatch warnings:
-fs/d_path.c:59 prepend() warn: unsigned 'p->len' is never less than zero.
+All errors (new ones prefixed by >>):
 
-vim +59 fs/d_path.c
+>> drivers/base/firmware_loader/main.c:811:1: error: redefinition of 'request_firmware'
+     811 | request_firmware(const struct firmware **firmware_p, const char *name,
+         | ^~~~~~~~~~~~~~~~
+   In file included from drivers/base/firmware_loader/main.c:26:
+   include/linux/firmware.h:58:19: note: previous definition of 'request_firmware' with type 'int(const struct firmware **, const char *, struct device *)'
+      58 | static inline int request_firmware(const struct firmware **fw,
+         |                   ^~~~~~~~~~~~~~~~
+>> drivers/base/firmware_loader/main.c:838:5: error: redefinition of 'firmware_request_nowarn'
+     838 | int firmware_request_nowarn(const struct firmware **firmware, const char *name,
+         |     ^~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/base/firmware_loader/main.c:26:
+   include/linux/firmware.h:65:19: note: previous definition of 'firmware_request_nowarn' with type 'int(const struct firmware **, const char *, struct device *)'
+      65 | static inline int firmware_request_nowarn(const struct firmware **fw,
+         |                   ^~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/base/firmware_loader/main.c:863:5: error: redefinition of 'request_firmware_direct'
+     863 | int request_firmware_direct(const struct firmware **firmware_p,
+         |     ^~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/base/firmware_loader/main.c:26:
+   include/linux/firmware.h:91:19: note: previous definition of 'request_firmware_direct' with type 'int(const struct firmware **, const char *, struct device *)'
+      91 | static inline int request_firmware_direct(const struct firmware **fw,
+         |                   ^~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/base/firmware_loader/main.c:887:5: error: redefinition of 'firmware_request_platform'
+     887 | int firmware_request_platform(const struct firmware **firmware,
+         |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/base/firmware_loader/main.c:26:
+   include/linux/firmware.h:72:19: note: previous definition of 'firmware_request_platform' with type 'int(const struct firmware **, const char *, struct device *)'
+      72 | static inline int firmware_request_platform(const struct firmware **fw,
+         |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/base/firmware_loader/main.c:941:1: error: redefinition of 'request_firmware_into_buf'
+     941 | request_firmware_into_buf(const struct firmware **firmware_p, const char *name,
+         | ^~~~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/base/firmware_loader/main.c:26:
+   include/linux/firmware.h:98:19: note: previous definition of 'request_firmware_into_buf' with type 'int(const struct firmware **, const char *, struct device *, void *, size_t)' {aka 'int(const struct firmware **, const char *, struct device *, void *, unsigned int)'}
+      98 | static inline int request_firmware_into_buf(const struct firmware **firmware_p,
+         |                   ^~~~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/base/firmware_loader/main.c:970:1: error: redefinition of 'request_partial_firmware_into_buf'
+     970 | request_partial_firmware_into_buf(const struct firmware **firmware_p,
+         | ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/base/firmware_loader/main.c:26:
+   include/linux/firmware.h:104:19: note: previous definition of 'request_partial_firmware_into_buf' with type 'int(const struct firmware **, const char *, struct device *, void *, size_t,  size_t)' {aka 'int(const struct firmware **, const char *, struct device *, void *, unsigned int,  unsigned int)'}
+     104 | static inline int request_partial_firmware_into_buf
+         |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/base/firmware_loader/main.c:992:6: error: redefinition of 'release_firmware'
+     992 | void release_firmware(const struct firmware *fw)
+         |      ^~~~~~~~~~~~~~~~
+   In file included from drivers/base/firmware_loader/main.c:26:
+   include/linux/firmware.h:87:20: note: previous definition of 'release_firmware' with type 'void(const struct firmware *)'
+      87 | static inline void release_firmware(const struct firmware *fw)
+         |                    ^~~~~~~~~~~~~~~~
+>> drivers/base/firmware_loader/main.c:1054:1: error: redefinition of 'request_firmware_nowait'
+    1054 | request_firmware_nowait(
+         | ^~~~~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/base/firmware_loader/main.c:26:
+   include/linux/firmware.h:79:19: note: previous definition of 'request_firmware_nowait' with type 'int(struct module *, bool,  const char *, struct device *, gfp_t,  void *, void (*)(const struct firmware *, void *))' {aka 'int(struct module *, _Bool,  const char *, struct device *, unsigned int,  void *, void (*)(const struct firmware *, void *))'}
+      79 | static inline int request_firmware_nowait(
+         |                   ^~~~~~~~~~~~~~~~~~~~~~~
 
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  55  
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  56  static bool prepend(struct prepend_buffer *p, const char *str, int namelen)
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  57  {
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  58  	// Already overflowed?
-b0cfcdd9b9672e Linus Torvalds 2021-07-16 @59  	if (p->len < 0)
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  60  		return false;
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  61  
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  62  	// Will overflow?
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  63  	if (p->len < namelen) {
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  64  		// Fill as much as possible from the end of the name
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  65  		str += namelen - p->len;
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  66  		p->buf -= p->len;
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  67  		prepend_copy(p->buf, str, p->len);
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  68  		p->len = -1;
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  69  		return false;
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  70  	}
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  71  
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  72  	// Fits fully
-ad08ae586586ea Al Viro        2021-05-12  73  	p->len -= namelen;
-ad08ae586586ea Al Viro        2021-05-12  74  	p->buf -= namelen;
-b0cfcdd9b9672e Linus Torvalds 2021-07-16  75  	return prepend_copy(p->buf, str, namelen);
-7a5cf791a74764 Al Viro        2018-03-05  76  }
-7a5cf791a74764 Al Viro        2018-03-05  77  
 
-:::::: The code at line 59 was first introduced by commit
-:::::: b0cfcdd9b9672ea90642f33d6c0dd8516553adf2 d_path: make 'prepend()' fill up the buffer exactly on overflow
+vim +/request_firmware +811 drivers/base/firmware_loader/main.c
 
-:::::: TO: Linus Torvalds <torvalds@linux-foundation.org>
-:::::: CC: Linus Torvalds <torvalds@linux-foundation.org>
+4e0c92d015235d drivers/base/firmware_class.c       Takashi Iwai      2013-01-31   789  
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   790  /**
+c35f9cbb1df8f1 drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   791   * request_firmware() - send firmware request and wait for it
+eb8e317998e55d drivers/base/firmware_class.c       Randy Dunlap      2005-10-30   792   * @firmware_p: pointer to firmware image
+eb8e317998e55d drivers/base/firmware_class.c       Randy Dunlap      2005-10-30   793   * @name: name of firmware file
+eb8e317998e55d drivers/base/firmware_class.c       Randy Dunlap      2005-10-30   794   * @device: device for which firmware is being loaded
+eb8e317998e55d drivers/base/firmware_class.c       Randy Dunlap      2005-10-30   795   *
+eb8e317998e55d drivers/base/firmware_class.c       Randy Dunlap      2005-10-30   796   *      @firmware_p will be used to return a firmware image by the name
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   797   *      of @name for device @device.
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   798   *
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   799   *      Should be called from user context where sleeping is allowed.
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   800   *
+312c004d36ce6c drivers/base/firmware_class.c       Kay Sievers       2005-11-16   801   *      @name will be used as $FIRMWARE in the uevent environment and
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   802   *      should be distinctive enough not to be confused with any other
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   803   *      firmware image for this or any other device.
+0cfc1e1e7b5347 drivers/base/firmware_class.c       Ming Lei          2012-08-04   804   *
+0cfc1e1e7b5347 drivers/base/firmware_class.c       Ming Lei          2012-08-04   805   *	Caller must hold the reference count of @device.
+6a927857d89065 drivers/base/firmware_class.c       Ming Lei          2012-11-03   806   *
+6a927857d89065 drivers/base/firmware_class.c       Ming Lei          2012-11-03   807   *	The function can be called safely inside device's suspend and
+6a927857d89065 drivers/base/firmware_class.c       Ming Lei          2012-11-03   808   *	resume callback.
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   809   **/
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   810  int
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06  @811  request_firmware(const struct firmware **firmware_p, const char *name,
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   812  		 struct device *device)
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   813  {
+d6c8aa3906d5d0 drivers/base/firmware_class.c       Ming Lei          2013-06-06   814  	int ret;
+d6c8aa3906d5d0 drivers/base/firmware_class.c       Ming Lei          2013-06-06   815  
+d6c8aa3906d5d0 drivers/base/firmware_class.c       Ming Lei          2013-06-06   816  	/* Need to pin this module until return */
+d6c8aa3906d5d0 drivers/base/firmware_class.c       Ming Lei          2013-06-06   817  	__module_get(THIS_MODULE);
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   818  	ret = _request_firmware(firmware_p, name, device, NULL, 0, 0,
+3f72271233943c drivers/base/firmware_class.c       Luis R. Rodriguez 2017-11-20   819  				FW_OPT_UEVENT);
+d6c8aa3906d5d0 drivers/base/firmware_class.c       Ming Lei          2013-06-06   820  	module_put(THIS_MODULE);
+d6c8aa3906d5d0 drivers/base/firmware_class.c       Ming Lei          2013-06-06   821  	return ret;
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   822  }
+f494513ff1b3f6 drivers/base/firmware_class.c       Daniel Mack       2013-05-23   823  EXPORT_SYMBOL(request_firmware);
+6e3eaab02028c4 drivers/base/firmware_class.c       Abhay Salunke     2005-09-06   824  
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   825  /**
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   826   * firmware_request_nowarn() - request for an optional fw module
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   827   * @firmware: pointer to firmware image
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   828   * @name: name of firmware file
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   829   * @device: device for which firmware is being loaded
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   830   *
+2fce60be06ca68 drivers/base/firmware_loader/main.c Wolfram Sang      2020-07-03   831   * This function is similar in behaviour to request_firmware(), except it
+2fce60be06ca68 drivers/base/firmware_loader/main.c Wolfram Sang      2020-07-03   832   * doesn't produce warning messages when the file is not found. The sysfs
+2fce60be06ca68 drivers/base/firmware_loader/main.c Wolfram Sang      2020-07-03   833   * fallback mechanism is enabled if direct filesystem lookup fails. However,
+2fce60be06ca68 drivers/base/firmware_loader/main.c Wolfram Sang      2020-07-03   834   * failures to find the firmware file with it are still suppressed. It is
+2fce60be06ca68 drivers/base/firmware_loader/main.c Wolfram Sang      2020-07-03   835   * therefore up to the driver to check for the return value of this call and to
+2fce60be06ca68 drivers/base/firmware_loader/main.c Wolfram Sang      2020-07-03   836   * decide when to inform the users of errors.
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   837   **/
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10  @838  int firmware_request_nowarn(const struct firmware **firmware, const char *name,
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   839  			    struct device *device)
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   840  {
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   841  	int ret;
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   842  
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   843  	/* Need to pin this module until return */
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   844  	__module_get(THIS_MODULE);
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   845  	ret = _request_firmware(firmware, name, device, NULL, 0, 0,
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   846  				FW_OPT_UEVENT | FW_OPT_NO_WARN);
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   847  	module_put(THIS_MODULE);
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   848  	return ret;
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   849  }
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   850  EXPORT_SYMBOL_GPL(firmware_request_nowarn);
+7dcc01343e483e drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   851  
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   852  /**
+c35f9cbb1df8f1 drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   853   * request_firmware_direct() - load firmware directly without usermode helper
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   854   * @firmware_p: pointer to firmware image
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   855   * @name: name of firmware file
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   856   * @device: device for which firmware is being loaded
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   857   *
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   858   * This function works pretty much like request_firmware(), but this doesn't
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   859   * fall back to usermode helper even if the firmware couldn't be loaded
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   860   * directly from fs.  Hence it's useful for loading optional firmwares, which
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   861   * aren't always present, without extra long timeouts of udev.
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   862   **/
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02  @863  int request_firmware_direct(const struct firmware **firmware_p,
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   864  			    const char *name, struct device *device)
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   865  {
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   866  	int ret;
+ea31003ccb2d68 drivers/base/firmware_class.c       Andrei Oprea      2015-03-08   867  
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   868  	__module_get(THIS_MODULE);
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   869  	ret = _request_firmware(firmware_p, name, device, NULL, 0, 0,
+3f72271233943c drivers/base/firmware_class.c       Luis R. Rodriguez 2017-11-20   870  				FW_OPT_UEVENT | FW_OPT_NO_WARN |
+85db1cde825344 drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   871  				FW_OPT_NOFALLBACK_SYSFS);
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   872  	module_put(THIS_MODULE);
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   873  	return ret;
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   874  }
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   875  EXPORT_SYMBOL_GPL(request_firmware_direct);
+bba3a87e982ad5 drivers/base/firmware_class.c       Takashi Iwai      2013-12-02   876  
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   877  /**
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   878   * firmware_request_platform() - request firmware with platform-fw fallback
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   879   * @firmware: pointer to firmware image
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   880   * @name: name of firmware file
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   881   * @device: device for which firmware is being loaded
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   882   *
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   883   * This function is similar in behaviour to request_firmware, except that if
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   884   * direct filesystem lookup fails, it will fallback to looking for a copy of the
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   885   * requested firmware embedded in the platform's main (e.g. UEFI) firmware.
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   886   **/
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15  @887  int firmware_request_platform(const struct firmware **firmware,
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   888  			      const char *name, struct device *device)
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   889  {
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   890  	int ret;
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   891  
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   892  	/* Need to pin this module until return */
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   893  	__module_get(THIS_MODULE);
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   894  	ret = _request_firmware(firmware, name, device, NULL, 0, 0,
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   895  				FW_OPT_UEVENT | FW_OPT_FALLBACK_PLATFORM);
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   896  	module_put(THIS_MODULE);
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   897  	return ret;
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   898  }
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   899  EXPORT_SYMBOL_GPL(firmware_request_platform);
+e4c2c0ff00ecaf drivers/base/firmware_loader/main.c Hans de Goede     2020-01-15   900  
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   901  /**
+c35f9cbb1df8f1 drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   902   * firmware_request_cache() - cache firmware for suspend so resume can use it
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   903   * @name: name of firmware file
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   904   * @device: device for which firmware should be cached for
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   905   *
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   906   * There are some devices with an optimization that enables the device to not
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   907   * require loading firmware on system reboot. This optimization may still
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   908   * require the firmware present on resume from suspend. This routine can be
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   909   * used to ensure the firmware is present on resume from suspend in these
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   910   * situations. This helper is not compatible with drivers which use
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   911   * request_firmware_into_buf() or request_firmware_nowait() with no uevent set.
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   912   **/
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   913  int firmware_request_cache(struct device *device, const char *name)
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   914  {
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   915  	int ret;
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   916  
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   917  	mutex_lock(&fw_lock);
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   918  	ret = fw_add_devm_name(device, name);
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   919  	mutex_unlock(&fw_lock);
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   920  
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   921  	return ret;
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   922  }
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   923  EXPORT_SYMBOL_GPL(firmware_request_cache);
+5d42c96e1cf98b drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-21   924  
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   925  /**
+c35f9cbb1df8f1 drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   926   * request_firmware_into_buf() - load firmware into a previously allocated buffer
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   927   * @firmware_p: pointer to firmware image
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   928   * @name: name of firmware file
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   929   * @device: device for which firmware is being loaded and DMA region allocated
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   930   * @buf: address of buffer to load firmware into
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   931   * @size: size of buffer
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   932   *
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   933   * This function works pretty much like request_firmware(), but it doesn't
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   934   * allocate a buffer to hold the firmware data. Instead, the firmware
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   935   * is loaded directly into the buffer pointed to by @buf and the @firmware_p
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   936   * data member is pointed at @buf.
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   937   *
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   938   * This function doesn't cache firmware either.
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   939   */
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   940  int
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02  @941  request_firmware_into_buf(const struct firmware **firmware_p, const char *name,
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   942  			  struct device *device, void *buf, size_t size)
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   943  {
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   944  	int ret;
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   945  
+995e8695f65db7 drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-10   946  	if (fw_cache_is_setup(device, name))
+995e8695f65db7 drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-10   947  		return -EOPNOTSUPP;
+995e8695f65db7 drivers/base/firmware_loader/main.c Luis R. Rodriguez 2018-03-10   948  
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   949  	__module_get(THIS_MODULE);
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   950  	ret = _request_firmware(firmware_p, name, device, buf, size, 0,
+3f72271233943c drivers/base/firmware_class.c       Luis R. Rodriguez 2017-11-20   951  				FW_OPT_UEVENT | FW_OPT_NOCACHE);
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   952  	module_put(THIS_MODULE);
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   953  	return ret;
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   954  }
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   955  EXPORT_SYMBOL(request_firmware_into_buf);
+a098ecd2fa7db8 drivers/base/firmware_class.c       Stephen Boyd      2016-08-02   956  
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   957  /**
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   958   * request_partial_firmware_into_buf() - load partial firmware into a previously allocated buffer
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   959   * @firmware_p: pointer to firmware image
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   960   * @name: name of firmware file
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   961   * @device: device for which firmware is being loaded and DMA region allocated
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   962   * @buf: address of buffer to load firmware into
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   963   * @size: size of buffer
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   964   * @offset: offset into file to read
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   965   *
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   966   * This function works pretty much like request_firmware_into_buf except
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   967   * it allows a partial read of the file.
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   968   */
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   969  int
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02  @970  request_partial_firmware_into_buf(const struct firmware **firmware_p,
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   971  				  const char *name, struct device *device,
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   972  				  void *buf, size_t size, size_t offset)
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   973  {
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   974  	int ret;
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   975  
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   976  	if (fw_cache_is_setup(device, name))
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   977  		return -EOPNOTSUPP;
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   978  
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   979  	__module_get(THIS_MODULE);
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   980  	ret = _request_firmware(firmware_p, name, device, buf, size, offset,
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   981  				FW_OPT_UEVENT | FW_OPT_NOCACHE |
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   982  				FW_OPT_PARTIAL);
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   983  	module_put(THIS_MODULE);
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   984  	return ret;
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   985  }
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   986  EXPORT_SYMBOL(request_partial_firmware_into_buf);
+59cdb23ca2dfef drivers/base/firmware_loader/main.c Scott Branden     2020-10-02   987  
+^1da177e4c3f41 drivers/base/firmware_class.c       Linus Torvalds    2005-04-16   988  /**
+c35f9cbb1df8f1 drivers/base/firmware_loader/main.c Andres Rodriguez  2018-05-10   989   * release_firmware() - release the resource associated with a firmware image
+eb8e317998e55d drivers/base/firmware_class.c       Randy Dunlap      2005-10-30   990   * @fw: firmware resource to release
+^1da177e4c3f41 drivers/base/firmware_class.c       Linus Torvalds    2005-04-16   991   **/
+bcb9bd18e397ea drivers/base/firmware_class.c       Dmitry Torokhov   2010-03-13  @992  void release_firmware(const struct firmware *fw)
+^1da177e4c3f41 drivers/base/firmware_class.c       Linus Torvalds    2005-04-16   993  {
+^1da177e4c3f41 drivers/base/firmware_class.c       Linus Torvalds    2005-04-16   994  	if (fw) {
+48d09e97876bed drivers/base/firmware_loader/main.c Luis Chamberlain  2021-10-21   995  		if (!firmware_is_builtin(fw))
+dd336c554d8926 drivers/base/firmware_class.c       David Woodhouse   2010-05-02   996  			firmware_free_data(fw);
+^1da177e4c3f41 drivers/base/firmware_class.c       Linus Torvalds    2005-04-16   997  		kfree(fw);
+^1da177e4c3f41 drivers/base/firmware_class.c       Linus Torvalds    2005-04-16   998  	}
+^1da177e4c3f41 drivers/base/firmware_class.c       Linus Torvalds    2005-04-16   999  }
+f494513ff1b3f6 drivers/base/firmware_class.c       Daniel Mack       2013-05-23  1000  EXPORT_SYMBOL(release_firmware);
+^1da177e4c3f41 drivers/base/firmware_class.c       Linus Torvalds    2005-04-16  1001  
+
+:::::: The code at line 811 was first introduced by commit
+:::::: 6e3eaab02028c4087a92711b20abb9e72cc803a7 [PATCH] modified firmware_class.c to support no hotplug
+
+:::::: TO: Abhay Salunke <Abhay_Salunke@dell.com>
+:::::: CC: Linus Torvalds <torvalds@g5.osdl.org>
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
