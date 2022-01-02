@@ -1,51 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CD634828FE
-	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Jan 2022 04:43:11 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B1B3482C23
+	for <lists+driverdev-devel@lfdr.de>; Sun,  2 Jan 2022 17:45:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 023A860DFC;
-	Sun,  2 Jan 2022 03:43:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BC2B3401C9;
+	Sun,  2 Jan 2022 16:45:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T3riyffaLSI4; Sun,  2 Jan 2022 03:43:08 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hQR_c_nPhVbu; Sun,  2 Jan 2022 16:45:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6617C60DF9;
-	Sun,  2 Jan 2022 03:43:07 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9266A40153;
+	Sun,  2 Jan 2022 16:45:41 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6D8B41BF35B
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  2 Jan 2022 03:42:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B960B1BF3FC
+ for <devel@linuxdriverproject.org>; Sun,  2 Jan 2022 16:45:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6215F40165
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  2 Jan 2022 03:42:57 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A6FF740153
+ for <devel@linuxdriverproject.org>; Sun,  2 Jan 2022 16:45:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5qFPrNsjmKNg
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  2 Jan 2022 03:42:55 +0000 (UTC)
-X-Greylist: delayed 00:06:13 by SQLgrey-1.8.0
-Received: from srv1.bayarpake.com (srv1.bayarpake.com [202.157.184.7])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B81384013C
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  2 Jan 2022 03:42:55 +0000 (UTC)
-Received: by srv1.bayarpake.com (Postfix, from userid 1001)
- id A247D82DB7; Sun,  2 Jan 2022 10:36:37 +0700 (WIB)
-To: driverdev-devel@linuxdriverproject.org
-Subject: =?utf-8?Q?Detail_Akun_untuk_=E2=9D=A4=EF=B8=8F_You_have_unread_messages_f?=
- =?utf-8?Q?rom_Nikki_(2)!_Click_Here:_http://inx.lv/pIaX=3Fe96_=E2=9D=A4?=
- =?utf-8?Q?=EF=B8=8F_pada_Abi_Ummi?=
-X-PHP-Originating-Script: 1001:class.phpmailer.php
-Date: Sun, 2 Jan 2022 03:36:37 +0000
-From: Abi Ummi <admin@abiummi.org>
-Message-ID: <0c21273e466dca0e3fbd9dd468623fe3@abiummi.org>
+ with ESMTP id wyATo1XREI0e for <devel@linuxdriverproject.org>;
+ Sun,  2 Jan 2022 16:45:27 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.npsheriff.net (mail.npsheriff.net [104.243.174.17])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1E67540144
+ for <devel@linuxdriverproject.org>; Sun,  2 Jan 2022 16:45:27 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.npsheriff.net (Postfix) with ESMTP id D375D53A2C54;
+ Sun,  2 Jan 2022 04:23:39 -0600 (CST)
+Received: from mail.npsheriff.net ([127.0.0.1])
+ by localhost (mail.npsheriff.net [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id nwfFJYKx4vUA; Sun,  2 Jan 2022 04:23:39 -0600 (CST)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.npsheriff.net (Postfix) with ESMTP id 2269A53A2EF3;
+ Sun,  2 Jan 2022 04:23:15 -0600 (CST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.npsheriff.net 2269A53A2EF3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=npsheriff.net;
+ s=B3A28A16-C926-11E5-A900-7C9EBCD90555; t=1641118995;
+ bh=ZvJQWUas0vmOopGm7LJf4nPo90x9owWZr8N5CCYgtQw=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=fisGndN/XYcP1HM1UArzvSTclPweBD9CYLMUz3qeAewrImuJKCSwLwZK/XYfl45MN
+ QlxMMApqY/NrkkvYlH3QfDJ8i7yMs2tUHi4PGWVPwFloX1l/0Y1h4cxc5gd6FcIHGb
+ OsJJw5jMsYcVmrqbKHyKFb5bkvwrsKYTrdvYLl/Q=
+X-Virus-Scanned: amavisd-new at mail.npsheriff.net
+Received: from mail.npsheriff.net ([127.0.0.1])
+ by localhost (mail.npsheriff.net [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id 5pRuGmePVjIM; Sun,  2 Jan 2022 04:23:14 -0600 (CST)
+Received: from DESKTOP-CJHK18M.home (unknown [185.245.84.56])
+ by mail.npsheriff.net (Postfix) with ESMTPSA id 7CD4D53A2D71;
+ Sun,  2 Jan 2022 04:20:10 -0600 (CST)
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: Re:
+To: Recipients <tstewart@npsheriff.net>
+From: "Mackenzie Scott" <tstewart@npsheriff.net>
+Date: Sun, 02 Jan 2022 18:26:19 +0800
+Message-Id: <20220102102010.7CD4D53A2D71@mail.npsheriff.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,25 +74,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: info@extraservice.info
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGFsbyDinaTvuI8gWW91IGhhdmUgdW5yZWFkIG1lc3NhZ2VzIGZyb20gTmlra2kgKDIpISBDbGlj
-ayBIZXJlOiBodHRwOi8vaW54Lmx2L3BJYVg/ZTk2IOKdpO+4jywKClRlcmltYSBrYXNpaCB0ZWxh
-aCBtZW5kYWZ0YXIgcGFkYSBBYmkgVW1taS4gQWt1biBBbmRhIHRlbGFoIGRpYnVhdCBkYW4gaGFy
-dXMgZGl2ZXJpZmlrYXNpIHNlYmVsdW0gQW5kYSBiaXNhIG1lbmdndW5ha2FubnlhLgpVbnR1ayB2
-ZXJpZmlrYXNpIGFrdW4sIGtsaWsgdGF1dGFuIGJlcmlrdXQgYXRhdSBzYWxpbiBkYW4gdGVtcGVs
-a2FuIGtlIHBlcmFtYmFuIEFuZGE6CiBodHRwOi8vYWJpdW1taS5vcmcvY29tcG9uZW50L3VzZXJz
-Lz90YXNrPXJlZ2lzdHJhdGlvbi5hY3RpdmF0ZSZhbXA7dG9rZW49NmMyOTYxYWI4NGUxZDc5NjFk
-MTkyZWM2MjE2ZDM5MmMmYW1wO0l0ZW1pZD0yMjYgCgpTZXRlbGFoIHZlcmlmaWthc2ksIEFkbWlu
-aXN0cmF0b3IgYWthbiBtZW1wZXJpbmdhdGthbiBBbmRhIHVudHVrIG1lbmdha3RpZmthbiBha3Vu
-IEFuZGEuIEFuZGEgYWthbiBtZW5lcmltYSBrb25maXJtYXNpIHNldGVsYWggc2VtdWFueWEgc2Vs
-ZXNhaS4KU2FhdCBha3VuIHRlcnNlYnV0IHRlbGFoIGRpYWt0aWZrYW4sIEFuZGEgYmlzYSBtYXN1
-ayBrZSBodHRwOi8vYWJpdW1taS5vcmcvIGRlbmdhbiBtZW5nZ3VuYWthbiBuYW1hIHBlbmdndW5h
-IGRhbiBzYW5kaSBiZXJpa3V0OgoKTmFtYSBwZW5nZ3VuYToga3E1MHowClNhbmRpOiBWeWJ5SnAy
-MXpMN0IKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRl
-dmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2
-ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1k
-ZXZlbAo=
+Hei,
+                          =
+
+Olen Mackenzie Scott, Amazonin toimitusjohtajan ja perustajan entinen vaimo=
+. Lahjoitan 4 miljardia dollaria hyv=E4ntekev=E4isyysj=E4rjest=F6ille, yksi=
+tyishenkil=F6ille, korkeakouluille ymp=E4ri maailmaa Scottin s=E4=E4ti=F6st=
+=E4 tarjotakseni v=E4lit=F6nt=E4 tukea ihmisille, jotka k=E4rsiv=E4t taloud=
+ellisesti COVID-19-pandemiasta ja sinulle. Olen yksi onnekkaista voittajist=
+a, minulla on $100,800,000,00 dollarin arvoinen lahjoitus sinulle. Voit ott=
+aa minuun yhteytt=E4 saadaksesi lis=E4tietoja, jos olet kiinnostunut.
+
+Terveiset,
+Mackenzie Scott.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
