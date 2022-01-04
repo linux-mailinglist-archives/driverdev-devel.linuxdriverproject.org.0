@@ -1,73 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF025483C1F
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Jan 2022 08:02:56 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 22501483FAA
+	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Jan 2022 11:16:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5531B825CA;
-	Tue,  4 Jan 2022 07:02:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2914140936;
+	Tue,  4 Jan 2022 10:16:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hmfhR50gbLNO; Tue,  4 Jan 2022 07:02:53 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id S9HafhA_5HFr; Tue,  4 Jan 2022 10:16:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8D69C81335;
-	Tue,  4 Jan 2022 07:02:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A21744050E;
+	Tue,  4 Jan 2022 10:16:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F3BA41BF29C
- for <devel@linuxdriverproject.org>; Tue,  4 Jan 2022 07:02:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 03F081BF27A
+ for <devel@linuxdriverproject.org>; Tue,  4 Jan 2022 10:16:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E2CBD40926
- for <devel@linuxdriverproject.org>; Tue,  4 Jan 2022 07:02:42 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E2F4A4050E
+ for <devel@linuxdriverproject.org>; Tue,  4 Jan 2022 10:16:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NpAY0coy1n1N for <devel@linuxdriverproject.org>;
- Tue,  4 Jan 2022 07:02:42 +0000 (UTC)
+ with ESMTP id Cy79EzFZPmwE for <devel@linuxdriverproject.org>;
+ Tue,  4 Jan 2022 10:16:07 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-yb1-xb2b.google.com (mail-yb1-xb2b.google.com
- [IPv6:2607:f8b0:4864:20::b2b])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0365F40925
- for <devel@driverdev.osuosl.org>; Tue,  4 Jan 2022 07:02:41 +0000 (UTC)
-Received: by mail-yb1-xb2b.google.com with SMTP id j83so86721878ybg.2
- for <devel@driverdev.osuosl.org>; Mon, 03 Jan 2022 23:02:41 -0800 (PST)
+Received: from mail-lf1-x135.google.com (mail-lf1-x135.google.com
+ [IPv6:2a00:1450:4864:20::135])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 43B7840509
+ for <devel@driverdev.osuosl.org>; Tue,  4 Jan 2022 10:16:07 +0000 (UTC)
+Received: by mail-lf1-x135.google.com with SMTP id x7so80713378lfu.8
+ for <devel@driverdev.osuosl.org>; Tue, 04 Jan 2022 02:16:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=GWdJLwDyWgSwoci0ReBaiGnuvGRxn02rgVfYL7Zf4ew=;
- b=UnETjje5c75D7CRpOfkz1y6kO4n+mD60vtJgsqcxlJQDUlDViTHdW77od2fylE0y27
- VcczPCGVRTYIsGDCbcuwBRKYvuCgEoCdF94A/USigWDOWeuOaFIqZknFDMxjrgjP/a43
- h6rKBNKn7XKvub5JezR1HebQ6aFzt1YAxU5PIap9V00eSFYiu7cJ6pyrjd1ZmsH/Yrjp
- YOEtg7Fp15iRbEhRv7IztmHoE6xun8hRP4mwZCTuWYyIydyQEtTnMXl2ll/hZevAAPUL
- gH9fT1iS62N/iL7Z6g1lkXGhWu+eWQfIdzPa18gQO2uas1hSqsbzOTmDai5lSVFDrYaA
- kfXA==
+ bh=t+9EIacgMZCghdTp+3bNVDSu5ncI7a3roAIq3fjaYYM=;
+ b=AqmX8nrx0Pj0FsB1KP0GEa8jCdISbki3Z4RdDhxAjvZv2NDorgKTIAkElYmk2SXGj8
+ fQ8UFS4xECbSJhXgx8r0Cxn8ir450b+M8dvdI/mwqxnpvX+lhDpBjAnjO/P6Ipk/o2jx
+ JgUVrdrdUqX0D2793r9I/zSpC99yc1F3yRc+WwfN1U3r/nZXOXZpmxDMJ/io7eUomPse
+ dgC4ebfrk5RdQP0BHAu1IkVLpscnxu3Yn5dfmxiyP2Yhm/+su9AInoVD838i+pkE8l8Y
+ aTprXH/MhP0XMKap3SMaUefypyowgwjP049hRlrxphpzpYF7oa7rF5qnR7U2atpqeQOS
+ IO7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
  :subject:to;
- bh=GWdJLwDyWgSwoci0ReBaiGnuvGRxn02rgVfYL7Zf4ew=;
- b=7Jn1uZHUAjgNM1/R8swQbgfSC16chEqPp5jKLdf+k0AL9z9kyUuFr2BBofPDUgQkbz
- UzOSdBFQ6foh8YBj0lXCaH8UzKO9M0mLbVCGoHS8dSYMBbnG/X4tIV3tmtxTMnV6Cvcu
- 5xPo+o26vers6EQjmpOlwEeGQdveobhnFtMMkGy6B4dpVYAg4TqPCmgnj4C+BMh9KNBx
- NJAIBNuXfqkaHvnrfGgJ1sv1oQxbfGM0R3mBqvI4m0AW4a++Hp8YHOMI/5whckRlQNCB
- QW28+4SiJON4X0a6/zcTGCnHER7tMtcwKbKVnIJk31uFym0sERf4j2v01vJOIjln1dCC
- 4r7w==
-X-Gm-Message-State: AOAM531Bh9K9chRKw1M2RPaE382Cj52D8/hkdFD69YrCOZE77FwvnlxD
- r8CxPcoomAfiV4fEbVfDdjsW0M8Gxcr0i2PV46U=
-X-Google-Smtp-Source: ABdhPJzGRSrU2tWOsonr/tU46ZtTDm9FZZ7X1++vVmA3eG+YnoJtS2Pf97hM8s3U/lb2oCl2jj9hhHasNQ2dcL3dTOc=
-X-Received: by 2002:a25:81d0:: with SMTP id n16mr47035932ybm.301.1641279760950; 
- Mon, 03 Jan 2022 23:02:40 -0800 (PST)
+ bh=t+9EIacgMZCghdTp+3bNVDSu5ncI7a3roAIq3fjaYYM=;
+ b=0+saF/h1X/XufiHs35M/QAShH/qlyBKo3MkfH7Kgcc0jhSfec0bhTzG2Xi0pv9Yzdi
+ Ag2bazL83k5C29wN4/ojScylRHkH5wlc1JeiMQmRCwGFose37+iZKQ1tbh0yRRYjKMZY
+ 3LVB9nw4XZD/BMSQ6n0eaHygoCnGBS8e/kMlSl63f3jlCGYBIcWwdLpp2wzAYpydOq44
+ YphVMoL/i/pq0Ywsm5Dd8K7FzaV/pWaK1zTK5FGt64H3pNRhSTzfX4AHPmz7f5FTNRvl
+ TNXOV4vlHiN5N5rsofpS8da+L7Gy3IY2/ceflciR6opsd+GbRUapuBKIUXjzbJU6Rh/a
+ ILGg==
+X-Gm-Message-State: AOAM530JUfGA+VfJ/MlmVg2fITW0ckrOMyEgjbcb9j8UfsvsjUczW4xa
+ cXakQ/6ZeWhYb0Xsmvmcb5HWImXcznJkS+vldZk=
+X-Google-Smtp-Source: ABdhPJyfo4WQST3Caz+5Vr55kbXDkKnJxLDSbKpm8IVnB7enx7xakrCez7TCEJyvd77RcJ1KoKM3AWHwGpQJVa0gkXk=
+X-Received: by 2002:a05:6512:3487:: with SMTP id
+ v7mr43177368lfr.94.1641291364789; 
+ Tue, 04 Jan 2022 02:16:04 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a05:7110:360a:b0:120:f2ec:3af6 with HTTP; Mon, 3 Jan 2022
- 23:02:40 -0800 (PST)
-From: Mrs Bill Chantal <harrisonfrank886@gmail.com>
-Date: Tue, 4 Jan 2022 01:02:40 -0600
-Message-ID: <CAM2iKDmHM4V0VpYJ9jfPxEB1+ajsPcTHfogbkie7x_psdSBndg@mail.gmail.com>
-Subject: URGENT ATTENTION
+Received: by 2002:a2e:7205:0:0:0:0:0 with HTTP;
+ Tue, 4 Jan 2022 02:16:04 -0800 (PST)
+From: "RGI CO.LTD" <mrfausto.70@gmail.com>
+Date: Mon, 3 Jan 2022 22:16:04 -1200
+Message-ID: <CAMk3qtyOh33zKNistZRVrRewb65A3yn0HwW2b+5H4QC8x5N5rw@mail.gmail.com>
+Subject: WE CAN DO BUSINESS TOGETHER
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -81,42 +80,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mrs.billchantallawrence@seznam.cz
+Reply-To: info.rgicompanyltd@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 -- 
-Dear Friend......
+Good Day.
 
-We bring greetings to you in the name of the lord. This message is
-sent to you as a notification that you have been chosen to benefit
-from our charity project aimed at touching lives and helping those
-that we can across the world as God has blessed us. I won the
-Powerball lottery of $150Million on November 2, 2019 and I have
-voluntarily decided to donate the sum of $75 Million to charity, I try
-to reach people randomly from different sources and modes so as to
-touch lives from different angles, Hence you are getting a message
-here.
+RGI Genealogical Investigators specializes in probate research to locate
+missing funds, inherited funds and consignment around the world. We can
+also help you find wills, obtain copies of certificates. Recently a woman
+from Rothschild family one of the richest and famous family in the city of
+Hesse-Kassel Frankfurt Germany that has been suffering from (hepatocellular
+of the liver) and unstable health challenge contacted our company that we
+should contact a trustworthy business minded person who is capable to
+invest her funds in a lucrative business.
 
-You have been listed as one of the lucky recipients to receive $ 8.5 M
-This donation is made out to you so to enable you strengthen your
-personal issues and mostly to generously help us extend hands of
-giving to the less privileged, orphans and charity organizations
-within your locality To verify
-https://www.powerball.com/winner-story/150-million-powerball-ticket-claimed
+Our service fee is 2% of the funds and we will be paid after you received
+the funds. The funds transfer process should take just a matter of days as
+we have the mechanism and expertise to get this done very quickly. Please
+if you find this letter offensive ignore it and accept our apologies, but
+if interested get back to us as soon as possible.
 
-Get back to me on how to receive the donation through our official
-email address below You can also contact us via our
-email address: ( mrs.billchantallawrence@seznam.cz)
+CONTACT ME FOR MORE INFORMATION:
 
- The earlier you contact our email the earlier
-you receive your donation
-
-Thanks
-
-Bill.Chantal Lawrence
+Warmest Regards,
+Dr.Ryan J.Wood, CEO
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
