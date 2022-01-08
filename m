@@ -1,45 +1,41 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD60948821D
-	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Jan 2022 08:22:45 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F05B48821E
+	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Jan 2022 08:22:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E3BCB60AB7;
-	Sat,  8 Jan 2022 07:22:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 806618141A;
+	Sat,  8 Jan 2022 07:22:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NkGd18T7otKI; Sat,  8 Jan 2022 07:22:43 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hyVZW1Q7B0yN; Sat,  8 Jan 2022 07:22:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 41E2760908;
-	Sat,  8 Jan 2022 07:22:42 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 00BF08141D;
+	Sat,  8 Jan 2022 07:22:51 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1DB0A1BF36B
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  8 Jan 2022 07:22:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2B4D81BF36B
+ for <devel@linuxdriverproject.org>; Sat,  8 Jan 2022 07:22:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0A7CE8175B
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  8 Jan 2022 07:22:32 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 57C428140C
+ for <devel@linuxdriverproject.org>; Sat,  8 Jan 2022 07:22:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xc3hfCZ_RYa3
- for <driverdev-devel@linuxdriverproject.org>;
+ with ESMTP id VZpg1_eTD7ks for <devel@linuxdriverproject.org>;
  Sat,  8 Jan 2022 07:22:31 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from consultant.com (unknown [141.98.10.33])
- by smtp1.osuosl.org (Postfix) with ESMTP id CBD0E8141A
- for <driverdev-devel@linuxdriverproject.org>;
- Sat,  8 Jan 2022 07:22:30 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 170B68141D
+ for <devel@linuxdriverproject.org>; Sat,  8 Jan 2022 07:22:30 +0000 (UTC)
 From: Joseph Craven <joseph-craven@consultant.com>
-To: driverdev-devel@linuxdriverproject.org
+To: devel@linuxdriverproject.org
 Subject: EARN PASSIVE INCOME AT EASE
-Date: 08 Jan 2022 08:22:29 +0100
-Message-ID: <20220108082229.B9C65407BCE4F923@consultant.com>
+Date: 08 Jan 2022 08:22:30 +0100
+Message-ID: <20220108082230.12C7A221E8BEC153@consultant.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
