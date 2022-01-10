@@ -1,76 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4DA4D488F20
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jan 2022 05:00:59 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 337F048905D
+	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jan 2022 07:47:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5D3B4408E1;
-	Mon, 10 Jan 2022 04:00:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 65CFC8141E;
+	Mon, 10 Jan 2022 06:47:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R6kFE46MLtLR; Mon, 10 Jan 2022 04:00:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DZtLRS53JHP0; Mon, 10 Jan 2022 06:47:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A82EA408D7;
-	Mon, 10 Jan 2022 04:00:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C198382730;
+	Mon, 10 Jan 2022 06:47:30 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6F5D71BF97C
- for <devel@linuxdriverproject.org>; Mon, 10 Jan 2022 04:00:43 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6638A1BF37C
+ for <devel@linuxdriverproject.org>; Mon, 10 Jan 2022 06:47:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5736960BF8
- for <devel@linuxdriverproject.org>; Mon, 10 Jan 2022 04:00:43 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6078C402FA
+ for <devel@linuxdriverproject.org>; Mon, 10 Jan 2022 06:47:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DUP52ubSQygn for <devel@linuxdriverproject.org>;
- Mon, 10 Jan 2022 04:00:42 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4GqXFuJZ-59H for <devel@linuxdriverproject.org>;
+ Mon, 10 Jan 2022 06:47:19 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-oo1-xc31.google.com (mail-oo1-xc31.google.com
- [IPv6:2607:f8b0:4864:20::c31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1094460792
- for <devel@driverdev.osuosl.org>; Mon, 10 Jan 2022 04:00:41 +0000 (UTC)
-Received: by mail-oo1-xc31.google.com with SMTP id
- k15-20020a4a850f000000b002dc3cdb0256so2848131ooh.3
- for <devel@driverdev.osuosl.org>; Sun, 09 Jan 2022 20:00:41 -0800 (PST)
+Received: from mail-wr1-x443.google.com (mail-wr1-x443.google.com
+ [IPv6:2a00:1450:4864:20::443])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3DBF6402F8
+ for <devel@driverdev.osuosl.org>; Mon, 10 Jan 2022 06:47:19 +0000 (UTC)
+Received: by mail-wr1-x443.google.com with SMTP id l25so13905935wrb.13
+ for <devel@driverdev.osuosl.org>; Sun, 09 Jan 2022 22:47:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:sender:from:date:message-id:subject:to;
- bh=dKFXRxFFjh9xw1vPCYWrhibJscdy5DYIaUyqlpaPFVc=;
- b=UGjAN0mYxpJTFw8BhXSQFiyFqHGSTBXDZ2uWsWa/6KX6mYVFHmNtNdjAo/A11/YxnL
- vHrk+ei8OvvRih+QDqqhTpKmY6L5irQkld/WUsi3JRoNU6tb/S8Mgvh+vveMqx0gpun3
- XgODVuJy0wZ42CB8GSl0Jkei7iTxPlv6HruWwgMJEVsjt0iESJaWY6iXcpOeVELePybN
- lep3ZPXWO3PniX+ZJT7SJJmbzXnYfOl5fy5jYizRrpRrCxdqQwpqCx995IRBrLPztPT8
- FObR2uSO6RG8CU3vrgu179qdGBP3fUgeNaNy1pMVH+Xd9lAriMgqmwbKM3SSHHEP5D0t
- DRFw==
+ h=message-id:from:mime-version:content-transfer-encoding
+ :content-description:subject:to:date:reply-to;
+ bh=JmmOHtUfXOguONiRPz6zWWPzjF2LOj+bCZ9OHWQzSKw=;
+ b=BHkrSy7pF5/qKfryHqZOPp8GI0tC/SYdfAXC4ltotPUFU+oXYGzeOG8TLnxcupUqft
+ FZRiXzGCrPXXuYwfVRs+O/L6G7wZm19CHTf9BaQ8CTLSL1IPvR9vVlcXyNUOxuSgFweM
+ fBXSUx+0s/xEYLSasxNF2bUq3Sl7QGxBIrT2IRsemjmcH7zectkfEcGKuXcuUZCU7SZT
+ 4HNxRlKhMNmFi6+BRJigGjp2IWR9YuYUBdwD08eLznkpX0sIoGIsVSPvPybVYjFhuleD
+ R1aF2J+qsnLAfE3oebJefW0Sj5Y/ZwnLW4M07ErP1kBxRV+749vlqP6Hi/rOUR+WLPtc
+ VRWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:sender:from:date
- :message-id:subject:to;
- bh=dKFXRxFFjh9xw1vPCYWrhibJscdy5DYIaUyqlpaPFVc=;
- b=jxuYqjlAuZ4FKl3A/TpadCuSNep2yAXEcxMo8mh5KBsbXRXk1Larp5ndNuDsj7ksmM
- Eb2MpMXnPmqYauSWNnBzwsGdh7sJIWYoTnAchpVpSPdcQ0/exRqudn+8xvPXXQuCM5km
- 6NlID2toB0tYtxkIFNjQHJ33Uzru4qpmkX5Kzqz5gT1Pqa+f4u5HFJWUsExp5XoBDlqq
- 2sqb8SJMtzV7OB29adMJNVbOTCQBM7OO300vZacl2U+jVvSI1KUjAekdfPcKfZvMvAfR
- pB/Wn8wwkW+7Z1kkEjWKkZq4F0tk53/4bRQAQmg1ZSlfC2HIhHWjuOE/RCLwDYhVvRpn
- lt2w==
-X-Gm-Message-State: AOAM533usni3o9JKFAQmTwocF4qw3dOAyHUeqWgpoFiVuXE4vW3IovFs
- cNUEv0xWXqWavWayP3haZaysOetPOV3nyth0VNk=
-X-Google-Smtp-Source: ABdhPJxrtdwJzVtg+gZKwXqdSzOaFmFAKaZYOOLNaABYkoFuUCxeFLeYGVeTHNoNAKBKWWkSlCyJmAAbdt75x4fC3JI=
-X-Received: by 2002:a4a:9568:: with SMTP id n37mr46262791ooi.73.1641787240696; 
- Sun, 09 Jan 2022 20:00:40 -0800 (PST)
+ h=x-gm-message-state:message-id:from:mime-version
+ :content-transfer-encoding:content-description:subject:to:date
+ :reply-to;
+ bh=JmmOHtUfXOguONiRPz6zWWPzjF2LOj+bCZ9OHWQzSKw=;
+ b=uc8FQNCp9kd8jSZC1Y9Zjk5wJ1FasQ6jRcJlIGFEuMP339sPi2h1bTI7dnt1WdlO1P
+ OJX0RcLcyouFtJRg05B74KNp64FB75q8lfPv9G/DithdK+m7WiLqo/5O37ZO7DQ3ceED
+ I+CUVTZrabaX6JdAC89yFBi4F/D0t/I3lSrdMqE2YY+w69NAOISvCXUTaSnIYaexH2og
+ yqkJpgJtdSLpaOnqMGWoibH3wyJNz6PAzHz5su99agj8saahqhUn2BADerNK+7pZ2fYB
+ j3D5sK81nQT3umy3jEeKinp07+h4atqaEF0lJMBfDLYJhinOM6yrSbnE1jk1og9Aj6Ry
+ 7QEA==
+X-Gm-Message-State: AOAM532j7FuQJBw1N1/pb1eDob7VkrXdiFpKsg8e5Jigb72Jw68/ZUIO
+ AzscAA60wkgYC76wg3BSrTo=
+X-Google-Smtp-Source: ABdhPJzN55AMiaoHufDY030tDTcZ/ic2iRZKF77+sXru7QngaBDAaQCYrShWlK4NJ7LHYum0/RH7jw==
+X-Received: by 2002:a5d:4e44:: with SMTP id r4mr5620265wrt.593.1641797237281; 
+ Sun, 09 Jan 2022 22:47:17 -0800 (PST)
+Received: from [192.168.16.94] ([197.210.70.225])
+ by smtp.gmail.com with ESMTPSA id t15sm5901436wrz.82.2022.01.09.22.47.12
+ (version=TLS1 cipher=AES128-SHA bits=128/128);
+ Sun, 09 Jan 2022 22:47:16 -0800 (PST)
+Message-ID: <61dbd674.1c69fb81.9a6ab.54dd@mx.google.com>
+From: chinonsomokwemicheal@gmail.com
+X-Google-Original-From: info@gmail.com
 MIME-Version: 1.0
-Received: by 2002:ac9:1329:0:0:0:0:0 with HTTP;
- Sun, 9 Jan 2022 20:00:40 -0800 (PST)
-From: Godwin Pete <godwinnpeter@gmail.com>
-Date: Mon, 10 Jan 2022 05:00:40 +0100
-X-Google-Sender-Auth: aEw5M8YnzKzsBXcwH-P_ApsJeq4
-Message-ID: <CA+8O8-ek9BBRYNTDeuJbx5th-v7nxospFMmnYdbqT7h8DmPEaQ@mail.gmail.com>
-Subject: This is for you
-To: undisclosed-recipients:;
+Content-Description: Mail message body
+Subject: =?utf-8?q?Herzlichen_Gl=C3=BCckwunsch_an_Sie_und_Ihre_Familie?=
+To: Recipients <info@gmail.com>
+Date: Sun, 09 Jan 2022 22:47:06 -0800
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,39 +87,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: godwinppter@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: schaefflermariaelisabeth5@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
 
-How are you doing? I am very happy to inform you about my success. I'm
-currently out of the country for an investment with part of my share,
-after completing the transfer with an Indian business man. But i will
-visit your country, next year, after the completion of my project.
-Please, contact my secretary to send you the (ATM) card which I've
-already credited with the sum of ($300,000.00). Just contact her to
-help you in receiving the (ATM) card. I've explained everything to her
-before my trip. This is what I can do for you because, you couldn't
-help in the transfer, but for the fact that you're the person whom
-I've contacted initially, for the transfer. I decided to give this
-($300,000.00) as a compensation for being contacted initially for the
-transfer. I always try to make the difference, in dealing with people
-any time I come in contact with them. I'm also trying to show that I'm
-quite a different person from others whose may have a different
-purpose within them. I believe that you will render some help to me
-when I, will visit your country, for another investment there. So
-contact my secretary for the card, Her contact are as follows,
+Ich bin Maria Elisabeth Schaeffler, eine deutsche Gesch=E4ftsfrau, Investor=
+in
+und Gesch=E4ftsf=FChrerin der Schaeffler Gruppe. Ich bin einer der Eigent=
+=FCmer
+der Schaeffler Gruppe. Ich habe 25 Prozent meines pers=F6nlichen Verm=F6gens
+f=FCr wohlt=E4tige Zwecke verschenkt. Und ich habe auch zugestimmt, die
+restlichen 25% in diesem Jahr 2022 an Einzelpersonen zu geben. Aufgrund des
+Ausbruchs des Corona-Virus in Europa und dem Rest der Welt habe ich
+beschlossen, Ihnen und einigen anderen zuf=E4lligen Personen 2.500.000.00 E=
+uro
+zu spenden. Kontaktieren Sie mich f=FCr weitere Informationen.
+Kontaktieren Sie uns einfach unter: schaefflermariaelisabeth5@gmail.com
 
-Full name: Mrs, Victoria Nyemuya,
-Country: Burkina Faso
-Email: victorynyemuya@gmail.com
-
-Thanks, and hope for a good corporation with you in future.
-
-Godwin Peter,
+Sie k=F6nnen auch mehr =FCber mich unter dem folgenden Link lesen: //
+en.wikipedia.org/wiki/Maria-Elisabeth_Schaeffler=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+Mit freundlichen Gr=FC=DFen,
+Frau Maria-Elisabeth Schaeffler,
+Gesch=E4ftsf=FChrerin der Schaeffler Gruppe
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
