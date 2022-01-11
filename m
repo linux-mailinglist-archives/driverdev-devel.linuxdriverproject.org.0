@@ -1,130 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C664C48AA21
-	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Jan 2022 10:07:09 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C50BE48AC4F
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Jan 2022 12:22:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4A271410CA;
-	Tue, 11 Jan 2022 09:07:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1A303410E6;
+	Tue, 11 Jan 2022 11:22:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EuJ14IGCIw5S; Tue, 11 Jan 2022 09:07:07 +0000 (UTC)
+	with ESMTP id 5p2u9bOS7T3D; Tue, 11 Jan 2022 11:22:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 56F0F408C9;
-	Tue, 11 Jan 2022 09:07:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5ED5D401EB;
+	Tue, 11 Jan 2022 11:22:53 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DA9F61BF276
- for <devel@linuxdriverproject.org>; Tue, 11 Jan 2022 09:06:54 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 09FCF1BF345
+ for <devel@linuxdriverproject.org>; Tue, 11 Jan 2022 11:22:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D3D5140375
- for <devel@linuxdriverproject.org>; Tue, 11 Jan 2022 09:06:54 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E999660ACE
+ for <devel@linuxdriverproject.org>; Tue, 11 Jan 2022 11:22:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=analogixsemi.onmicrosoft.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yXmAMF2dQipt for <devel@linuxdriverproject.org>;
- Tue, 11 Jan 2022 09:06:51 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wCGAVf0zPitg for <devel@linuxdriverproject.org>;
+ Tue, 11 Jan 2022 11:22:43 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on2070f.outbound.protection.outlook.com
- [IPv6:2a01:111:f400:7e89::70f])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DB46240143
- for <devel@driverdev.osuosl.org>; Tue, 11 Jan 2022 09:06:51 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dtxXJ0ueb3iavIIBCD0N2qk14r0gbmEV1aXzmWrJ9kvrQus2j3id5m9LsYYbZBGsYrncALVi5bSlxitvTNNRI+OBrSE+P7KPeB2IreNq5vO9FI5PkZu/frYhOwdx1INlmMN+KEYl3ihYzE2Gmdnp1gnaFpKY1g9VV48xsiS/N230g1WvLxAqQUSFisBP5vXmPVhyL8sqDdolMqZcOFiFR3i1X1m2x27p6571n9oVgV6gy1FAc0UyvZc+XCs8+F6gRXSlYjBYeaTYNqasGArejqq0pNIYRGi5RHLjGJ7zGARx5JY7n32+diJMhF8iMoKx086U4phWuo8yVg6r50rutA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xcMS0B8eKW/mQO1Q4cBTJ11DpPBhClngCeI6odJ+Amk=;
- b=h+XRFaSxXBdJ9qVkq32LYXEgT+4C1NB7iB3vvfXmJaKkblPtUfI3FJcsMQLBT1nvFkuj8Aw6zkFONNKmi7Lv2Mta0rhVvWqtIfhglIlB4Pc4un/qruAmx8wIzY9sKeIS6+iVgOwot3T611Dz9faCmiF+5oCdw9xvL02+8LWqhYrg3cTL1KqBnakFC8ffjvMz2SEnQQC79jyd9NJZ6kENe46/0gCCzCbxYiooLO6nQYODJAFKioBHTbhSZNka/Q5B/tkcH2xDNB/2JB7EN59Eg1hf+HjES7JQypBH6Bt3SQf29xYcC5T0EERFbPLXeh3Tmi76IcpoAKUejWE353+ilw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
- header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=xcMS0B8eKW/mQO1Q4cBTJ11DpPBhClngCeI6odJ+Amk=;
- b=hOFTy84bZqWKLsZYi748DKXzaXw4T3sKuRq77mbgqrzbrYfTspfTRCimmHPPlQouOqGmHg0ShZGZJkAKuWndd26Fu9+c9104Q8VpKNU39EjzC3gU0Uu4swiP9XO6Dtez1XhFC/CJoMeOZ3U60QLGZyYOoj7RyyHuXfgvUuFlk4U=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=analogixsemi.com;
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
- by BYAPR04MB5077.namprd04.prod.outlook.com (2603:10b6:a03:41::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4888.9; Tue, 11 Jan
- 2022 09:06:46 +0000
-Received: from BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::c25:c736:478a:b108]) by BY5PR04MB6739.namprd04.prod.outlook.com
- ([fe80::c25:c736:478a:b108%3]) with mapi id 15.20.4867.012; Tue, 11 Jan 2022
- 09:06:46 +0000
-Date: Tue, 11 Jan 2022 17:06:40 +0800
-From: Xin Ji <xji@analogixsemi.com>
-To: Robert Foss <robert.foss@linaro.org>,
- Nicolas Boichat <drinkcat@google.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>
-Subject: [PATCH v3 1/1] drm/bridge: anx7625: send DPCD command to downstream
-Message-ID: <1f36f8bf0a48fb2bba17bacec23700e58c1d407d.1641891874.git.xji@analogixsemi.com>
-Content-Disposition: inline
-X-ClientProxiedBy: HK2PR02CA0159.apcprd02.prod.outlook.com
- (2603:1096:201:1f::19) To BY5PR04MB6739.namprd04.prod.outlook.com
- (2603:10b6:a03:229::8)
+Received: from mail-lf1-x12f.google.com (mail-lf1-x12f.google.com
+ [IPv6:2a00:1450:4864:20::12f])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2536F60776
+ for <devel@driverdev.osuosl.org>; Tue, 11 Jan 2022 11:22:43 +0000 (UTC)
+Received: by mail-lf1-x12f.google.com with SMTP id g11so55120981lfu.2
+ for <devel@driverdev.osuosl.org>; Tue, 11 Jan 2022 03:22:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=/MpiwXY2Cxnetxkl+aSrR8Le+DvGL8ONNklKXSrObRA=;
+ b=DXHWapIVUwYl3wzK0MHapPqS4cmUKIwM5DatNtFw886Qa42XJW5L/7j2OECbK7ettT
+ jvjdkIp2ePWNGW5EN9cirxYyR1Tk/RxpSajgVvEa6u2/LpwZeVF7gVUDrNQoIB52mXQ2
+ prhW/RrLTy3hAVxQ+9vRZqkCooEo3fzxpcrvG4saoUIxErSc5jsRwyvgnT6T+Vj0dCJ8
+ mfwXFhsdNnjA97X9qouw2l6YSjDBkOW7c+RGCs7C3ee0AsnRv4l2dQXOX5OBZQbfUF/G
+ Gzw3el3VDNUYyMHLSTh3PYk2OiXXruXYpPmW76v7ZP7qK6PqmhF+VbwE8h5C341bRV/s
+ NsFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to:content-transfer-encoding;
+ bh=/MpiwXY2Cxnetxkl+aSrR8Le+DvGL8ONNklKXSrObRA=;
+ b=alnxdVqp3Sw11q1b5S6CAG7aTz8NnO1R7cIE7r+WC5KHctneLgZ5j1k52CX8D4SsMo
+ xo1dmYUhufOZCA1FsGZV/vISA0dASR9PujB47f0HAVVUB20OA1/amDmhHU4SccKm+uz0
+ YpCe2MfpT6PPBZThrLphfiq6CFHRBYLhPEeNltaNzugsPZBkHdFlX4KuCaG6feZOmhnm
+ tdAj4ZdYM0dXAaNOu4YRWM3VLx6EThSC78ST+PwPbqaP6P/UnVOPJbgBRTm5iXz5WU1i
+ NkTndcdLfuRNDu6N82hUPihvyvVIo2TyiTjeiDQUenJgH1ZF/S2SrhTZerfP4eERoLR7
+ AF5Q==
+X-Gm-Message-State: AOAM532jYLk1KTn0ri43b8JnAuKDGAHEmtiA7iHEmTk8ztr56bnEyb0Q
+ cMfuI2AV1uXtf9zLjFhVRRf3GNBJimShULObBsU=
+X-Google-Smtp-Source: ABdhPJzvkNEwfOve6RRHx+7e3hQgcCdgEpQi59WtxtJ9CFKfynXJkwVFeNzjiDj977AzRnUssKg190kzaf0NglEe7ic=
+X-Received: by 2002:a2e:2e0d:: with SMTP id u13mr2658389lju.235.1641900160625; 
+ Tue, 11 Jan 2022 03:22:40 -0800 (PST)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 5641bf6b-ffab-4a84-12db-08d9d4e1b18b
-X-MS-TrafficTypeDiagnostic: BYAPR04MB5077:EE_
-X-Microsoft-Antispam-PRVS: <BYAPR04MB5077762D3BF009706CA71AEAC7519@BYAPR04MB5077.namprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:644;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: b0FEmEaRHbZX1ApeyNjCzqCwpDHRVWkCJhZZHyJs/+qsfQDuXG3IRSwe4sCNkNVPQ0PoP72QGiYJWIkAZEt//nCA6Q594lNB9ouc758+LdYChvNfgPtzQdSMhU6cRDvoVbuCvfmznKAYXm+5Tss3DlVPnpYCotEETibrj04Kf16BaoUWJ5z2wXGl/xMaLcnPP1jk01JJ2PyVYfTLoe7amJ6vlUSM/YOAFJu0cz+Wsz7Uxc2rvkjNG1iYTJJOsajqV0MKRFLHowX/ehggw0vj/pln1wC/8BuLNE/qPZ2fDaR7P93x8T3jLQBm6TFklIksr7wwpS8784BFERGum50TzQLa9iLhmNyVS3KXaqVDWDy0aQZ1DhmI04logcP4/1abAbDbarvo7LnEfQ+VWrl7vL4eeZqqiH3csZ1BgfXi6cQaPm9mQc64AeezJrz/ugYsc2dMZiNJSJ8e5xapMDt72LdsGo4vDsUobKW0jp7FU4zniVfO2jP9Q9cgGVUbJklejdeE9+Z6pfeF1Hl4RigFOqW+UrACLefQAGh0/2jA7hGxoDwUwyR940fUf5flRKy4oV5i9qGHm5/jftTsxw60IuSQW73mC0jx8xjLRu82N/p3jsP2S/G7S9mDfPyKEPNW8d2sTVi7U8b/5CZIddchFuYCg9uTRqUIuCcOT9d6q/EtaRwz5klZzIhXVkirryjOkM36qXzwHYal5YZJ/zPMbA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(2616005)(2906002)(36756003)(6512007)(38100700002)(38350700002)(86362001)(6666004)(66946007)(8676002)(83380400001)(6506007)(66476007)(55236004)(26005)(52116002)(186003)(5660300002)(66556008)(6486002)(8936002)(508600001)(110136005)(7416002)(54906003)(4326008)(316002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?toG/hnpWILtQdH0gkOqTTN58db7geN1FfoXi1IuVJirjOWyCfoASr1jVjwLL?=
- =?us-ascii?Q?ojHu5Ghlje1moSfap3nyt1xgvjRwBN6FWp0ItgTGRQTSEr3STzlTWD0RyVsR?=
- =?us-ascii?Q?Tmvf1Z2J3X/WyaeXOLJM8yRFDTqkaJ1KyrC6ILxVudqbHxbzPMfHdHTFt7tp?=
- =?us-ascii?Q?Ho7V7qbKJRrlZ7T4D/j2t76nge7ms8CFCuLnYxCsimiyqf5PwszcYL2rs7jl?=
- =?us-ascii?Q?3EAU0cRBqz1kiJZ5GTlhMi9teHfyvskJNUGdjCkk0ZnQg9hdSzg7+TjIEOcm?=
- =?us-ascii?Q?hfsWdX2vw08JnAq7iHNty8xbZGIKviBg0N0gY3sJxL8VJuUwpWjUl5XP9qMM?=
- =?us-ascii?Q?F0Ar/pU3fese+upJGKpDZrGA0ue5phKOmTiADgfhO9U4K4/MtlQEL9vYsT1c?=
- =?us-ascii?Q?gi7kykjG9TKkSJJIKXZYnQ//y+PQKd+QWgWu2QsI9TUDSPN4/wyfJoixnq2F?=
- =?us-ascii?Q?TEGLydVqQlSqA6nnDvZ9LkW3G0eS/YPS2u9TanOpcvMPprWCpQlC9quRYU4d?=
- =?us-ascii?Q?HMX/MsLivfHCW8wmAK9e6qh6emcK+m0M02yfSk3RgB5cODnIceDTbAlE8t06?=
- =?us-ascii?Q?iX0Ji8OvayaloyHYjqMHTNmbqsKszzXi7bwe4trSPOqcwxFgUJp8XBxfvnEl?=
- =?us-ascii?Q?0O2wcsNgdm4nXzF4hxmZ79zrNEv906OertMFcWKWGdPyxrw+tSBYjK8RSP40?=
- =?us-ascii?Q?+avXwc/U+Cy60XCwINyTPJSnxNBcmuOTHVnO9P4r+wJbqpxb9l5nq19pHoNm?=
- =?us-ascii?Q?htqTSzSUbAgAAa9XNRlHMSy6JNDTfsCQhdagMhxqyNRBdl+TA597lZZSNGPK?=
- =?us-ascii?Q?BTu1Im7WCNhsvTvLZooJNj4OXSiA9SPNmdXbv3yxaP+33gJiWrBwkkxo7F0D?=
- =?us-ascii?Q?sR64t6T2heDeilEtbbX1eUAwkmLXvBR0hA8pjan4n80SV0X6TQCP3AqxkNjS?=
- =?us-ascii?Q?QJlLs333wD8D6cUkxyre1kx52LK8NP76PbkPIjeFD6A6SZg6HcDiziRa20pb?=
- =?us-ascii?Q?+8hg5twpb+CMx+Yn9MeXqvsRAvOv4+fZ81BUlh4jDsj+mAkY7cs0FhORGvBY?=
- =?us-ascii?Q?ixpYD5sHXiGK87QTF2S6wsF3jovKPULQAxTPeqPXv89Egx0XiDEjYgsmQ78t?=
- =?us-ascii?Q?h1iW2jRT9cr5Bo+7iujl+MIe5fvUMKmh4zsXqzi5OxvwN/pl6CCocL1hOe8W?=
- =?us-ascii?Q?urrgPjgcCSiBGAtZfb5m+ZHzUZllS0zr266vuI01lrO6A2uRPCuEQ2HxP5bd?=
- =?us-ascii?Q?Sm5vhihHNeTaJfjuMy2at0y+FBnmxB+LbnTgXRzbbAg4fOELVz1LAi29XtIp?=
- =?us-ascii?Q?XjIF+XQ47P8LCynLEI39P7YmsiGwxoOfTkBzEcsT54uMVN1m1NLr4fNb6jrC?=
- =?us-ascii?Q?FQ/VE/Cxk7k9LGBtUDysvARu21IDur+SfcAMsRCdiwVsDrm44hAhv31ZkX4G?=
- =?us-ascii?Q?i/LgeWe8TKiLc1t6HSUgHRx/+bjHj04bZBd9FsCBqm9U+8YI5isnA3gFzx52?=
- =?us-ascii?Q?9/WlQ0CT2uotKGgeAhmj9EOfy3TKWGPLDekUS8yzxT7KanVG5MneUN2cS2WA?=
- =?us-ascii?Q?nlkJPzrwy5Zx73t9wt/6iLZp3r8vCMpZMjQJTKZjBITwjR7+t0ATd7GoKZc+?=
- =?us-ascii?Q?xbZxkMsUxShhTKzN2yocZHw=3D?=
-X-OriginatorOrg: analogixsemi.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5641bf6b-ffab-4a84-12db-08d9d4e1b18b
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jan 2022 09:06:46.4015 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Wd2Zw3KsUVa3BhzXGRNpKwBG6EjabGTsZnSymVW19Eedy9MzdM3AiWbzUXBqmhRXBTyGv9TIbOfwHx5MT/5YhA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR04MB5077
+Received: by 2002:a05:6504:895:0:0:0:0 with HTTP; Tue, 11 Jan 2022 03:22:40
+ -0800 (PST)
+From: Nataicha Latifa Inossa <floranceyaogo@gmail.com>
+Date: Tue, 11 Jan 2022 11:22:40 +0000
+Message-ID: <CAH4ksUsfD1YFjJfwQAg47YYd_yvC0hPd3kJDvFXqNdwD8WKn3g@mail.gmail.com>
+Subject: Happy new year beloved.
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -137,140 +82,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Jonas Karlman <jonas@kwiboo.se>,
- David Airlie <airlied@linux.ie>, Bernie Liang <bliang@analogixsemi.com>,
- Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Vasily Khoruzhick <anarsoul@gmail.com>,
- Boris Brezillon <boris.brezillon@collabora.com>, Torsten Duwe <duwe@lst.de>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Sam Ravnborg <sam@ravnborg.org>, Dan Carpenter <dan.carpenter@oracle.com>,
- Marek Szyprowski <m.szyprowski@samsung.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: nataichalatifainossa@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Send DPCD command to downstream before anx7625 power down,
-let downstream monitor enter into standby mode.
-
-Signed-off-by: Xin Ji <xji@analogixsemi.com>
----
- drivers/gpu/drm/bridge/analogix/anx7625.c | 42 +++++++++++++++++++----
- 1 file changed, 35 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
-index 33383f83255d..0b858c78abe8 100644
---- a/drivers/gpu/drm/bridge/analogix/anx7625.c
-+++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
-@@ -129,6 +129,23 @@ static int anx7625_reg_write(struct anx7625_data *ctx,
- 	return ret;
- }
- 
-+static int anx7625_reg_block_write(struct anx7625_data *ctx,
-+				   struct i2c_client *client,
-+				   u8 reg_addr, u8 len, u8 *buf)
-+{
-+	int ret;
-+	struct device *dev = &client->dev;
-+
-+	i2c_access_workaround(ctx, client);
-+
-+	ret = i2c_smbus_write_i2c_block_data(client, reg_addr, len, buf);
-+	if (ret < 0)
-+		dev_err(dev, "write i2c block failed id=%x\n:%x",
-+			client->addr, reg_addr);
-+
-+	return ret;
-+}
-+
- static int anx7625_write_or(struct anx7625_data *ctx,
- 			    struct i2c_client *client,
- 			    u8 offset, u8 mask)
-@@ -214,8 +231,8 @@ static int wait_aux_op_finish(struct anx7625_data *ctx)
- 	return 0;
- }
- 
--static int anx7625_aux_dpcd_read(struct anx7625_data *ctx,
--				 u32 address, u8 len, u8 *buf)
-+static int anx7625_aux_dpcd_trans(struct anx7625_data *ctx, u8 op,
-+				  u32 address, u8 len, u8 *buf)
- {
- 	struct device *dev = &ctx->client->dev;
- 	int ret;
-@@ -231,8 +248,7 @@ static int anx7625_aux_dpcd_read(struct anx7625_data *ctx,
- 	addrm = (address >> 8) & 0xFF;
- 	addrh = (address >> 16) & 0xFF;
- 
--	cmd = DPCD_CMD(len, DPCD_READ);
--	cmd = ((len - 1) << 4) | 0x09;
-+	cmd = DPCD_CMD(len, op);
- 
- 	/* Set command and length */
- 	ret = anx7625_reg_write(ctx, ctx->i2c.rx_p0_client,
-@@ -246,6 +262,9 @@ static int anx7625_aux_dpcd_read(struct anx7625_data *ctx,
- 	ret |= anx7625_reg_write(ctx, ctx->i2c.rx_p0_client,
- 				 AP_AUX_ADDR_19_16, addrh);
- 
-+	if (op == DPCD_WRITE)
-+		ret |= anx7625_reg_block_write(ctx, ctx->i2c.rx_p0_client,
-+					       AP_AUX_BUFF_START, len, buf);
- 	/* Enable aux access */
- 	ret |= anx7625_write_or(ctx, ctx->i2c.rx_p0_client,
- 				AP_AUX_CTRL_STATUS, AP_AUX_CTRL_OP_EN);
-@@ -255,14 +274,17 @@ static int anx7625_aux_dpcd_read(struct anx7625_data *ctx,
- 		return -EIO;
- 	}
- 
--	usleep_range(2000, 2100);
--
- 	ret = wait_aux_op_finish(ctx);
- 	if (ret) {
- 		dev_err(dev, "aux IO error: wait aux op finish.\n");
- 		return ret;
- 	}
- 
-+	/* Write done */
-+	if (op == DPCD_WRITE)
-+		return 0;
-+
-+	/* Read done, read out dpcd data */
- 	ret = anx7625_reg_block_read(ctx, ctx->i2c.rx_p0_client,
- 				     AP_AUX_BUFF_START, len, buf);
- 	if (ret < 0) {
-@@ -845,7 +867,7 @@ static int anx7625_hdcp_enable(struct anx7625_data *ctx)
- 	}
- 
- 	/* Read downstream capability */
--	anx7625_aux_dpcd_read(ctx, 0x68028, 1, &bcap);
-+	anx7625_aux_dpcd_trans(ctx, DPCD_READ, 0x68028, 1, &bcap);
- 	if (!(bcap & 0x01)) {
- 		pr_warn("downstream not support HDCP 1.4, cap(%x).\n", bcap);
- 		return 0;
-@@ -918,6 +940,7 @@ static void anx7625_dp_stop(struct anx7625_data *ctx)
- {
- 	struct device *dev = &ctx->client->dev;
- 	int ret;
-+	u8 data;
- 
- 	DRM_DEV_DEBUG_DRIVER(dev, "stop dp output\n");
- 
-@@ -929,6 +952,11 @@ static void anx7625_dp_stop(struct anx7625_data *ctx)
- 	ret |= anx7625_write_and(ctx, ctx->i2c.tx_p2_client, 0x08, 0x7f);
- 
- 	ret |= anx7625_video_mute_control(ctx, 1);
-+
-+	dev_dbg(dev, "notify downstream enter into standby\n");
-+	/* Downstream monitor enter into standby mode */
-+	data = 2;
-+	ret |= anx7625_aux_dpcd_trans(ctx, DPCD_WRITE, 0x000600, 1, &data);
- 	if (ret < 0)
- 		DRM_DEV_ERROR(dev, "IO error : mute video fail\n");
- 
--- 
-2.25.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R3JlZXRpbmdzLApIb3cgYXJlIHlvdSBhbmQgeW91ciBsb3ZlbHkgZmFtaWx5IGRvaW5nIGkgaG9w
+ZSB5b3UgYXJlIGFsbCBpbiBnb29kIGhlYWx0aD8KaSBoYXZlIGEgYnVzaW5lc3MgcHJvcG9zYWwg
+aW4gZ29vZCBmYWl0aCBob3BpbmcgdGhhdCBpIHdpbGwgcmVseSBvbiB5b3UgaW4KdGhpcyB0cmFu
+c2FjdGlvbiB0aGF0IHJlcXVpcmVzIGFic29sdXRlIGNvbmZpZGVudGlhbGl0eSBhbmQgb2YgZ3Jl
+YXQKaW50ZXJlc3QgYW5kIGJlbmVmaXQgdG8gb3VyIGJvdGggZmFtaWxpZXMgd2hpY2ggaSByZXF1
+ZXN0IHlvdXIgY29vcGVyYXRpb24KaW4gbXkgZGVzaXJlIHRvIGZpbmQgYSBmb3JlaWduIHBhcnRu
+ZXIgd2hvIHdpbGwgYXNzaXN0IG1lIGluIHJlbG9jYXRpb24gYW5kCmludmVzdG1lbnQgb2YgYSBm
+aXhlZCBkZXBvc2l0IGZvciAzNiBtb250aHMsIHZhbHVlZCBvZiAoJDE5LjMgTWlsbGlvbikKTmlu
+ZXRlZW4gTWlsbGlvbiBUaHJlZSBIdW5kcmVkIFRob3VzYW5kIFVTIERvbGxhcnMgYXQgdGhlIGJh
+bmsgd2hlcmUgaSB3b3JrCmFuZCBpIHdhcyBoaXMgYWNjb3VudCBvZmZpY2VyLCBpbi13aGljaCB0
+aGUgbWF0dXJpdHkgZGF0ZSBmb3IgdGhpcyBkZXBvc2l0CmNvbnRyYWN0IHdhcyAyN3RoIG9mIFNl
+cHRlbWJlciAyMDEwLiBTYWRseSBNUi4gQUxJIE1PSVNJIEVMLVNBQUQgd2FzIGFtb25nCnRoZSBk
+ZWF0aCB2aWN0aW1zIGluIHRoZSBTZXB0ZW1iZXIgMjAwOSBlYXJ0aHF1YWtlIGluIEluZG9uZXNp
+YSB0aGF0IGxlZnQKb3ZlciAxLDIwMCBwZW9wbGUgZGVhZCB3aGlsZSBoZSB3YXMgdGhlcmUgb24g
+YSBidXNpbmVzcyB0cmlwLgoKTWVhbndoaWxlLCBpIGRvbuKAmXQga25vdyB5b3UgaW4gcGVyc29u
+IGJ1dCBpIGFtIDEwMCUgc3VyZSB0aGF0IHdlIGNhbiBqb2luCm91ciBoZWFkIHRvZ2V0aGVyIGFu
+ZCBhY2hpZXZlIHRoaXMgZ3JlYXQgb3Bwb3J0dW5pdHkgYmVjYXVzZSBpIGdvdCB5b3VyCmNvbnRh
+Y3QgYWRkcmVzcyB0aHJvdWdoIG15IENvdW50cnkgRS1tYWlsIERhdGEgRGlyZWN0b3J5IHdoaWxl
+IHNlYXJjaGluZwpmb3IgYSBjcmVkaWJsZSBhbmQgcmVsaWFibGUgZm9yZWlnbiBwYXJ0bmVyIHRv
+IHNoYXJlIHRoaXMgaW5mb3JtYXRpb24gd2l0aAp3aGljaCBpIGFtIGNvdW50aW5nIG9uIHlvdXIg
+c2Vuc2Ugb2YgY29uZmlkZW50aWFsaXR5IGFzIGkgZGVzaXJlIHRoYXQgeW91CmtlZXAgdGhpcyBi
+dXNpbmVzcyB0cmFuc2FjdGlvbiB0b3Agc2VjcmV0IG9ubHkgdG8geW91cnNlbGYgYmVjYXVzZSB0
+aGlzIGlzCmh1Z2UgYW1vdW50IG9mIG1vbmV5IGludm9sdmVkLgoKVGhhdOKAmXMgd2h5IGkgYW0g
+c2Vla2luZyB5b3VyIGNvb3BlcmF0aW9uIHRvIHByZXNlbnQgeW91IGFzIHRoZSBvbmUgdG8KYmVu
+ZWZpdCBmcm9tIHRoaXMgZnVuZCBhcyB0aGUgbmV4dCBvZiBraW4sIHNvIHRoYXQgbXkgYmFuayBo
+ZWFkcXVhcnRlcnMKd2lsbCBwYXkgdGhlIGZ1bmRzIGludG8geW91ciBiYW5rIGFjY291bnQuIEkg
+aGF2ZSBkb25lIGVub3VnaCBpbnNpZGUgdGhlCmJhbmsgYXJyYW5nZW1lbnQgYW5kIGkgb25seSBo
+YXZlIHRvIHB1dCBpbiB5b3VyIGRldGFpbHMgaW50byB0aGUKaW5mb3JtYXRpb24gbmV0d29yayBp
+biB0aGUgYmFuayBjb21wdXRlcnMgYW5kIGRvY3VtZW50IGFuZCByZWZsZWN0IHlvdSBhcwpoaXMg
+bmV4dCBvZiBraW4gYW5kIHRoZSBvbmx5IGJlbmVmaWNpYXJ5LCBpZiB5b3UgYWdyZWUgd2l0aCB0
+aGlzIHByb3Bvc2FsLgpZb3Ugd2lsbCBoYXZlIDQwJSBvZiB0aGUgdG90YWwgZnVuZHMgd2hpbGUg
+NjAlIHdpbGwgYmUgbWluZS4KClRoZXJlZm9yZSwgaWYgeW91IGFyZSBpbnRlcmVzdGVkIGFuZCB3
+aWxsaW5nIGZvciB1cyB0byBhY2hpZXZlIHRoaXMgZ3JlYXQKb3Bwb3J0dW5pdHkga2luZGx5IGdl
+dCBiYWNrIHRvIG1lIHdpdGhvdXQgZnVydGhlciBkZWxheSBmb3IgbW9yZSBkZXRhaWxzIG9uCmhv
+dyB3ZSBjb3VsZCBwcm9jZWVkIGFuZCBhY2hpZXZlIHRoZXNlIGdvYWxzIHN1Y2Nlc3NmdWxseS4K
+CkRJU0NMQUlNRVI6ClRoaXMgaXMgbm90IFNQQU0uIFlvdSBoYXZlIHJlY2VpdmVkIHRoaXMgZW1h
+aWwgYmVjYXVzZSB5b3Uga25vdyBpdCBsb29rcwpzYWZlIG1ha2UgYSBsYWJlbCBmb3IgeW91ciBp
+bmJveCBhbmQgbWFyayBpdCBhcyBub3Qgc3BhbSB0aGlzIGlzIG5vdApwaGlzaGluZy4KClRoYW5r
+cyBhbmQgQmVzdCByZWdhcmRzLApXYWl0aW5nIHRvIGhlYXIgZnJvbSB5b3UKTWFkYW0gTmF0YWlj
+aGEgTGF0aWZhIElub3NzYQpNeSBwcml2YXRlIFBob25lIG51bWJlciBvbiBXaGF0c0FwcCArMjI2
+LSA2NC0xOS03My05Ny4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0
+cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+dmVyZGV2LWRldmVsCg==
