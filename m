@@ -1,134 +1,134 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE73948C10B
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jan 2022 10:33:12 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A89748C19B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jan 2022 10:51:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 024F76FB9C;
-	Wed, 12 Jan 2022 09:33:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D37E983EE5;
+	Wed, 12 Jan 2022 09:51:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d-6WxxSJ4kYJ; Wed, 12 Jan 2022 09:33:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nfsjj7n7cZhl; Wed, 12 Jan 2022 09:51:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DAA9F6FB8F;
-	Wed, 12 Jan 2022 09:33:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 02ABD8124D;
+	Wed, 12 Jan 2022 09:51:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0F5BF1BF86D
- for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 09:32:58 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CDE511BF86D
+ for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 09:51:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F0D6E40199
- for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 09:32:57 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B96F360615
+ for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 09:51:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0CmLK2_-QFwV for <devel@linuxdriverproject.org>;
- Wed, 12 Jan 2022 09:32:56 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DYJiVICXFBrM for <devel@linuxdriverproject.org>;
+ Wed, 12 Jan 2022 09:51:14 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10on2062b.outbound.protection.outlook.com
- [IPv6:2a01:111:f400:7e88::62b])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6BF4A40184
- for <devel@driverdev.osuosl.org>; Wed, 12 Jan 2022 09:32:55 +0000 (UTC)
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam12on2061c.outbound.protection.outlook.com
+ [IPv6:2a01:111:f400:fe59::61c])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 25A7660601
+ for <devel@driverdev.osuosl.org>; Wed, 12 Jan 2022 09:51:14 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ndgEfX4B8/h8fBqOH6vftkHxjIuuNxihHzxH4ul0YL/fHwJ3fRi3+z1jhpu/sbguBEwwuknP8G5bx2P7yi8AYhypYvtQ+BIgzWJon3udt2MgBQ8vI7ADu04ldHmWzmeucyd4uhvPnd93eDR3QZSDmKE4inmtA6zlxF2Dxu2rPPDS4Aig+DIowXXGTs0/Wg0miYr+AwbwSkYyrEJZN4Yo8pEi/4dJoauULWKMsq1MJG29lSEVrb9V3Va1fc7rtrDKqaKurGYib04+EfOMKI2D9z4o7pnc4aPBrymD5IZLEwPq3gENsArPexBPwn3KEtNY+0CXf6297Vwzf35y7BRGfQ==
+ b=Y4tLZMosm7JsCM0jthqek01l+sisFK+ztFlo9lAvJ6YI0OjXPymPRcZV4U4I2HQjpIDOy+ycarRxs2M3O9F16LABzfagXeYjO3HvUsL2CkiBkoTQc159V1mznVAOHw30je2ArWA2Oym3zCiEc66KuyBB1/8YrS/mhFwGueI2NBpv4fDu2hlb99IGrjH3poZLT9dRWt0G21nCiMkcR23kYvemVvkndjsS2V6MH0/omGr2qx2dqgnQghl+KyVqXa83WYOHq5mJVIYDh4hMC9oEJEOwphJZN+DN1LcO/jA9BEkwUCeiulGtw4jUTbq1VLSXs2FZQg6If2Zv+ecl/Cp/GA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tdYfW70J0kQKjUhVSeg+NOH7s+EzkLGichRdwoCbEUc=;
- b=FN+H5vwstqR0RJE81+06a79u+eeFlKOdQkP/QEYSoof5SgHMtZx61yQ+BEYmDwlRz6QkixDE/UYsDYWlJYAJCOQPW73CVKgLFjSuALlGFfhMPN4YaM7xV00hahYjjNDZm8mDF0eCUdmvLzcTYrmqokm/eiFFB0wM/aD+1fva9oq6E8lL/8ZxGR/UGfJz+I+by+zALlW1EsjK6dryofTuGLyq9lOzPs2jdF+Qzdl4v7nzsCGPt2DUhLUCkyRU/D58V6ARrjiMmTeOW6IuRPMfYxMMi+D2TQKoKXigZYnPPp53H5CUc33TRTo60fWKsSgUnKnC2unPdcqZjdqIS1Mqdw==
+ bh=p8/Rcj7qksWxc80QpPxaFJ/P3yLApCmbm0qMbv9mKiE=;
+ b=kmqoI7dDYLcSoIurAivwbFd/eZxWNXbZluQn1n/rYuLZuZPRnis2CtcDmjIi2arShNgxuhH5rxH+I1USSWxCwy2jg7E5HuDLoYZkLXIDQXRhcCTXHGdfLKddOYD19WR3oGDUPAvpDiuAswBQVanprQVSU766aURjS50bm/6pqyEj06lwkpbJN3YS7AEXRWwWwRzIHeWH/N5bDgcSEV+asPRPkWxhdlkmfiErFBu9KJbl/mJh6adyNvvjwL9AswBUYZJj7E9wq1+0Mh9CXaIS1QQ8oKe1ruJDaBhoaDFwA0TBMm/TzCFetlCTaYLU0KB1grYYGAjLgO6UJzH5iqfViw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
  dkim=pass header.d=silabs.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tdYfW70J0kQKjUhVSeg+NOH7s+EzkLGichRdwoCbEUc=;
- b=ksZBOsu1hW0xxvZ9j4xzlaBdNSYYBUJOYKLdh7Be8d2+KFnlLfRa6hSkE1m0yakzeIz3Mz7FyF+NVB+Z8mk482vwTTpATi3lL3aZHpVRh4QYVMiK0nheuFMBMZAQKpQM+3mgCqCA+JxDxaFhjtmWRz9FSXqkG/LYbyVwkuqWP18=
+ bh=p8/Rcj7qksWxc80QpPxaFJ/P3yLApCmbm0qMbv9mKiE=;
+ b=VWXSRwbeW2d9DOIIK4j+wASNSSlhxUI+vesBJkDOKNxxaizR28BWQv6NRBy6MMflADAul7b8ihzNvJ/cP69ZH6mnllQPoh7KBP+2UOn1S7sK6q3U537XqgpXTW5XB6UdtgWLBbLqUdb/sToTLzP9I8YAMHQLpGiviCQGT4PO9yU=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=silabs.com;
 Received: from PH0PR11MB5657.namprd11.prod.outlook.com (2603:10b6:510:ee::19)
- by PH0PR11MB5577.namprd11.prod.outlook.com (2603:10b6:510:eb::15)
+ by PH0PR11MB5594.namprd11.prod.outlook.com (2603:10b6:510:e4::19)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4867.9; Wed, 12 Jan
- 2022 09:32:52 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4888.10; Wed, 12 Jan
+ 2022 09:51:12 +0000
 Received: from PH0PR11MB5657.namprd11.prod.outlook.com
  ([fe80::d031:da9e:71a:73e4]) by PH0PR11MB5657.namprd11.prod.outlook.com
  ([fe80::d031:da9e:71a:73e4%6]) with mapi id 15.20.4867.012; Wed, 12 Jan 2022
- 09:32:52 +0000
+ 09:51:12 +0000
 From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
-To: Kalle Valo <kvalo@kernel.org>
-Subject: Re: [PATCH v9 23/24] wfx: remove from the staging area
-Date: Wed, 12 Jan 2022 10:32:41 +0100
-Message-ID: <65681266.04G08nq4u0@pc-42>
+To: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v9 02/24] dt-bindings: introduce silabs,wfx.yaml
+Date: Wed, 12 Jan 2022 10:51:04 +0100
+Message-ID: <12255658.RqvdlaKrbL@pc-42>
 Organization: Silicon Labs
-In-Reply-To: <874k69jsv1.fsf@tynnyri.adurom.net>
+In-Reply-To: <Yd4CjAM+3/PmLSyY@robh.at.kernel.org>
 References: <20220111171424.862764-1-Jerome.Pouiller@silabs.com>
- <20220111171424.862764-24-Jerome.Pouiller@silabs.com>
- <874k69jsv1.fsf@tynnyri.adurom.net>
-X-ClientProxiedBy: PR3P195CA0004.EURP195.PROD.OUTLOOK.COM
- (2603:10a6:102:b6::9) To PH0PR11MB5657.namprd11.prod.outlook.com
+ <20220111171424.862764-3-Jerome.Pouiller@silabs.com>
+ <Yd4CjAM+3/PmLSyY@robh.at.kernel.org>
+X-ClientProxiedBy: PR3P192CA0017.EURP192.PROD.OUTLOOK.COM
+ (2603:10a6:102:56::22) To PH0PR11MB5657.namprd11.prod.outlook.com
  (2603:10b6:510:ee::19)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 568646f1-afa6-4286-5d6b-08d9d5ae8110
-X-MS-TrafficTypeDiagnostic: PH0PR11MB5577:EE_
-X-Microsoft-Antispam-PRVS: <PH0PR11MB557735AEC0D7454E5B3257E193529@PH0PR11MB5577.namprd11.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6790;
+X-MS-Office365-Filtering-Correlation-Id: d0b5add0-8b28-4bfc-b5c1-08d9d5b11104
+X-MS-TrafficTypeDiagnostic: PH0PR11MB5594:EE_
+X-Microsoft-Antispam-PRVS: <PH0PR11MB5594C645C44A5121B208B66793529@PH0PR11MB5594.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: YJrVeRdc22Qg0Wq9u/HC0TAxjTakj+liAHSv6bbGoOWOYZj4ZCueOZFT2pzDCAUXYvCwZvDKGbWE+pMZa7kVY5xZvI47dh9Lup+Rgi0hNRYZ2whRnkQliLtThIRYYjeHnlwr3uaA4R1y0jGJlF6V6Bx0WSMfgUMCvkPTEl9/x2kQZVSwznrnNHBq8g16+weBysDRQy0THHoi3VGWnipjmAr6vvWXHAal0X5h0S0STNoGO7OROsZB/8x79fq+G9uTto+J1ATSmRQv88Uss7F52aqKrVMfdUSYOgWZH3ZYbKbfs82VS1B15bEzhBbo0KsPiigUYn2vdwvWbjVMqzUyZpPNpxeiIEghUFG4fEO8lWKCsjRRuKpTLNHAua919Oh7/6q+UKD+lk0UYtSQwtLBwNKHu7hX5HGiHyd3OlJ71/jBpZ/JjBbFQquPyBbBGc1+tbr5HvZtDEBiooelVxkFVWuXTkrsXAfoaAOQCA/vRcTiuN2uIFD4zpkBrgD2/3rWWmrSET5lsgpYK7osl1mFd5zdcpPlnqL6NnR2TYoeqvEs4N5BlhfYLlb8DWfkKZassUIJ25D7CklzXAA1e6KiayBEzX67WqLvSsFltFdR6raMYqxZUk2LKpVbPM+73NDvKDAg5fDJCpYMoUqw0QFpYBwZg8xOsCG0+gibUsAHUMjxI8XAQPBTKYc6Tf2V7X2UCLSKDkixb2CmwFgw2pPUvKhmTE7tJrvhNiURccPwJT4BdQoYGd8ksbTSTPbElfTxL6k6X7RVJVR0zoiYi1hb2vKgpqlPV1ayxTvT98npock=
+X-Microsoft-Antispam-Message-Info: 5nR2V7HdTMc15dHBoj2O9L4q0+2PPwVKBgFrMoqkenKhaWhddJ079RwTtUgxWoKdSPZ7i50mGO58he3UAbRWsfiZrpkOgxFzcUBSXNys0wbivtatb5fbz0q7f7FNXOaC5RvN2UFNfYsOx+ORBPZPOhAKbKUxQcxOAZFeeIq+mEa/ouLcqUpqmzorAB8foBBTuwBwXioWKRn/JyZK1h0oxHN5P6gvQsI1AvoU8S8YUjQrIrYzQMVUIXmgbRdbl10HgVh3OCJEaRrIU9Sh3NGctYQxaWaimiW0Ol9lakMem1Uj7SyFtf44/w+udsXJfe6B3qLxACG5HHW8VYzhPSLbvtMCRRQ2QYnbw5Qu5zRE6BuGa7qO2P7hxmmCu9rFqfugRSEKowyzjBf+OKXSc//ZxbAi15XqNy/dT6FAmUlRALIg3aGS3kzqVOfkROWD1j8FIFNRSKjhG3JL5bi+s1natDtcyqcOxO9tTnx5AGHus2Zlp1h4Xn+npAPCboWiBY1spjpSNK/dV1IiMrzNWDV1kHlmUmLe8RN2SpZhe1CJH1r8pRr9Xi18z4tnb6JVx82hDedOZV8m3k4jgUDP1NzbJICnoO4cdTvaT9KUz3sMPd00wnAuYWCPMGeeuqItkzoDohEjd4YQAHBm/hhdtw9vFg==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:PH0PR11MB5657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(7916004)(366004)(186003)(7416002)(38100700002)(66556008)(2906002)(508600001)(9686003)(36916002)(5660300002)(8936002)(66476007)(6666004)(86362001)(54906003)(66574015)(83380400001)(33716001)(66946007)(6506007)(52116002)(8676002)(966005)(6512007)(4326008)(6916009)(316002)(6486002)(39026012);
+ SFS:(7916004)(366004)(508600001)(9686003)(6512007)(186003)(8936002)(66946007)(38100700002)(8676002)(6486002)(66556008)(4326008)(66476007)(36916002)(5660300002)(6666004)(52116002)(6506007)(33716001)(54906003)(66574015)(7416002)(2906002)(86362001)(6916009)(316002);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?g88XobbKW64fWCE9AQsJ8bYt5H+c3tgi1uUbcso84jvdsHbpSSWxPe/7mT?=
- =?iso-8859-1?Q?MFxf+RJ+usFlZcGQqR2rWxALwpjz8IyKGx8BkQRbF0q7XAFDWFG5tVpVsK?=
- =?iso-8859-1?Q?JiWwpINlRGeJQVcl++fmgtmcYv+hT70Y25m27OSy+INkkARftqHKxrIzT6?=
- =?iso-8859-1?Q?NqBA3s0W3cot85z/AV8l4RMlYd8CXopVDc/TdA0xHqiqOgbytQSnDvS+GZ?=
- =?iso-8859-1?Q?gV2K6c9+mtclJIyScsuSUbxp72WV8ly4FOzl0BnV5r2yIC5cgiIHHXGdc4?=
- =?iso-8859-1?Q?eTLZZVeiyYcg1E3eyXjtx54M4GJ1AOBY2iHt0JTD05Hd3bgY9xLgBOqUFD?=
- =?iso-8859-1?Q?oghSO9UdZt7U9NsK9o6ig+7c6RXYKggk2GdRrfpD8ZtCzZl2kCenwmsdVX?=
- =?iso-8859-1?Q?GfQRRZ+QbuBgmztyqv+6HpDhtHmVpdm2rELtwydoDOxdI1vgUXsIsJ+iMA?=
- =?iso-8859-1?Q?gKeQyIXImsblHixra8Juvz2qwKoGGsJB37zE4Ft+R55FP/fg9a1c3Dohy6?=
- =?iso-8859-1?Q?FacvU2BqbehkikvMGJFkgt/HGYrAbm+Fs//uxNhGDMZmutrGhk+ZPMUWOP?=
- =?iso-8859-1?Q?dg+YHTlk43LzlJZXI5/x0gTIt5R59OTGrSOwRwAGWnipwauNgSMKWO+snA?=
- =?iso-8859-1?Q?Gute8UXEU2+ugdOdMhE2ea6EDw3X8qoxk0Wo+3UB5Cv3oQWiAOp5ofqSfF?=
- =?iso-8859-1?Q?4kDXirscoXNFrCc/Rtb2Flf1wuRc11/2pmzaAL9miwWGHuHfxmiA+1hFjH?=
- =?iso-8859-1?Q?xXbGFPTD8NZMyk4B01dI0v5TkGOiF/FePTIws607vhltXG9L4yv1BIkjjj?=
- =?iso-8859-1?Q?4QlhNjCFWk7OoNz1euY9amalu7k6yfA6bKkE25XQz6u8GanufmfZ7ouKV+?=
- =?iso-8859-1?Q?AWdMCKr1Qqhygz+yybyPxxMiasEipBsZvvUo7kAMm0K12hyGQjGJQfzrIb?=
- =?iso-8859-1?Q?W12JP1EkcOgyypl6GIw4HWyPTCLYq0jRL31EV79gngq18L9NvF0Echv3it?=
- =?iso-8859-1?Q?EnOxiknumFJFdqJ34qpEhJZq7+VNlxRh/kQL9e2b8eFCPxDIsaCvT6Q3D5?=
- =?iso-8859-1?Q?2AVZ4AQJCg19TTxBNuwon237ydlbvZG0JvbNnqtA9aIGepmEiEoZbsoN55?=
- =?iso-8859-1?Q?jQD1T11WpHcs3f7SOta3eK2DlXvF7a2hdOzGcmyPdCCDG6MjnMv1s8Fp6K?=
- =?iso-8859-1?Q?rjvJKBs1JCZV6vcSdvbXX368VpFaejbAdUOcH8H5GdTnodVuMxeySR2OdL?=
- =?iso-8859-1?Q?kGJREb396zP8K6uTJh2obKk2dZJWYtbrmk923YSNT6chUSLX0g7FxP2Kl5?=
- =?iso-8859-1?Q?+F8IXIJGrLAnNafe4rFLUHi9GMBFSE62SDnf+6Gij23gIefTpZoqFeL01A?=
- =?iso-8859-1?Q?Wtc3tc9quELA9e8JtmUPV3T5PxMa1TC1gp9YVdCbqjrBJYLdPnzM1R1QNy?=
- =?iso-8859-1?Q?KfvPWt+lHi0h7qtCJz7qEKHKmWPjpTEBQxfT6CQIWb8QcfDICgDlmH/XsC?=
- =?iso-8859-1?Q?54EyQkUn3syAr0tBrolggIkzAt/VORtCsRCxcjmOETRjtO+eQ96M1Iip2l?=
- =?iso-8859-1?Q?gKYbnVNTEh4X4bNfcUUruTDMnnXfy/PKECudGtNHM3NAfJq36dR+yUgsNr?=
- =?iso-8859-1?Q?ltTKq0l2rzYK9pWXjHTRTbObRQ9K+70RDoWkG/pgw/PBE3V1jPhpyHIjM8?=
- =?iso-8859-1?Q?kBYixo3YJUoPPJDL0r/x2pg3sVe7w5RAlZ9e3KEPKUR779M8phfdjWAy/2?=
- =?iso-8859-1?Q?184dAqMCXtYQdGhozLDYyneok=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?1GZXGRrQLRCMPKJWhsHBXgIxf4NoDASfWEZiDvIe3dJG9dcoRKMxkqgUzH?=
+ =?iso-8859-1?Q?J6xpmYpj6oXx7RHYJNHqGGNKi879FfZ4ZGtfICnmIhgPuRSr61p3cePoN7?=
+ =?iso-8859-1?Q?MidA6jUTGiO+3NL8WKgv11kth3OLaF1qLVtJT3TM68hPcbwIPrxYdkKZzr?=
+ =?iso-8859-1?Q?rcuuZmZBypZj15BN7LvcZJ3EUblMeKVa14ZbZ9VgRfa1duOMZFtJPjB+CD?=
+ =?iso-8859-1?Q?BynV/vaAcCFkp41QXiKeShpwuU8+b3Uy6zoF+EVbYg0GYN2pbLAMvUTBDV?=
+ =?iso-8859-1?Q?o3ionqvt7/FPNvO8vepz1Ht3pLM6MrIQBXcv1H4ovF9Y6DU0P5JCQpmVUV?=
+ =?iso-8859-1?Q?+yCSIY01DY2ew2J1f5z4yDG3SBRCZ5hm+93jz9qDO+r2W2POeLW3SkhCmH?=
+ =?iso-8859-1?Q?BalFmzcmJc2o192kh758nVZGdKAjWWqhqRSpj0ys7q5B9yBoCeec+Zdcn0?=
+ =?iso-8859-1?Q?5xw2yohRHfvxNpwxyMO4+4lAOgwvBThYXwXMuQiYOXvesNTXN/xHjo6YoO?=
+ =?iso-8859-1?Q?vELiXf5hRfOPQLAznR/G8J5U5Nt2YCAm5DbyUW42/nbT3gbJnKKJpyNHSc?=
+ =?iso-8859-1?Q?TWKZdrUWi0UfwRUd96/6Mx44UQHuhX+ZU6xL2dwqxbQx6cW5/OUvw6pKsj?=
+ =?iso-8859-1?Q?cu8LdWW5QK7NkO58nd+YEWtzNxzk2srq+hUvfk4zzxuB656E4FirsiQLeG?=
+ =?iso-8859-1?Q?UyJhvuUMASHIN1RMs25gIRB8BRh2jsSbBx5y+KGoMU5e6mE1UfVAWytLmP?=
+ =?iso-8859-1?Q?LfeqVkbU/qXXVh+9kYC8fcQTR1BOZQ+h4yrbqlsrntA2/xUuCy15ywiQYr?=
+ =?iso-8859-1?Q?Zq9NgMKCrVoHF/+IF4AG4HYfaIvvgo9+7ORmQRha02+v3sEHsd81fDK7Mx?=
+ =?iso-8859-1?Q?nTVQKXsU1TGLeBokgfWY3+KTlRqtFpLCtp82B0e2lJxWfosw+ThHa2+8v+?=
+ =?iso-8859-1?Q?lvACBL0dWyvYpWlZkK3WcFCVZmwDvs43dre4ZCoZtQbXVRjlq1B4TvwDYZ?=
+ =?iso-8859-1?Q?5FqVGURBUGat0r/UN21yWDOwZF9PPiYHYqcNnOmQYatXdGVpK9uj8BYjFR?=
+ =?iso-8859-1?Q?OtWVfVpDqBH9kV+N8VA7xDyKOp5KlIpUVtpNb3pMEyvcloth+GdsFblUao?=
+ =?iso-8859-1?Q?UL2JSABUh/dLm5JJAf9Uc2bhNKUsKE1teeMk8nziO14cedAbuzQOasa7wT?=
+ =?iso-8859-1?Q?eomcNysWGdxKcf1GS6TTfrsdJdCVp/cNMDc/lG6/+tOJVaX+gQsrKGhFr/?=
+ =?iso-8859-1?Q?gNnF1aSD+R49I0xoWXDSKS91YItB9NErOEX3E1XgdkZIzoeCwqQQdOr1dz?=
+ =?iso-8859-1?Q?1fKURc7AQujWISlrePfPH9gWKjmqIcg76lzzq9WNc0xwABplDSHwO9f9Q3?=
+ =?iso-8859-1?Q?KbJR8Z8c67c6tm9SBvtMV5L9sbhFGClILKB3vMT9S2vyT+aJ1oW2sOK+Db?=
+ =?iso-8859-1?Q?0oc1bjbQIzm2ZD/h180aGUaIM/BFuzNlML4UnuKYRfdYwYqAmaXK0/K4K9?=
+ =?iso-8859-1?Q?zg7JavTD6yPTPyMvombEnBJ0TFCjzkaRtjhz8EKy78mbwgC9FiSDKcHRSR?=
+ =?iso-8859-1?Q?zTM+B3YsmZQcPeg4uWD8TZSIwWEHEf9Nwr2uL+Wkoxhq7Wi/j5La9/mFf+?=
+ =?iso-8859-1?Q?sPMVd4V/UMI4XgEJwKPgEI9s+pAkW1kXgjnpRlV0Nnj357ly6bNfJsDaBZ?=
+ =?iso-8859-1?Q?F1GIFie9giw7mlKk/90A1r3BIoFsfj2NXv8DepyEil6r+TpyXfM+oO/BoV?=
+ =?iso-8859-1?Q?qQAlT1CMwl5DoiL7b1/Ubiv2s=3D?=
 X-OriginatorOrg: silabs.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 568646f1-afa6-4286-5d6b-08d9d5ae8110
+X-MS-Exchange-CrossTenant-Network-Message-Id: d0b5add0-8b28-4bfc-b5c1-08d9d5b11104
 X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5657.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2022 09:32:52.0226 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2022 09:51:12.6083 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 9ASOYozi2ldoQuKKnja+CARYpZLmgtt7iOjOQz+8KfDgoAb9a3R/IxurTr6kJO3zihHA10So6Lj24jQj3SIOMw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5577
+X-MS-Exchange-CrossTenant-UserPrincipalName: 8bT9vkrQEQZknBRhVJF8DrgUa4KQcuBBJ3/wqM2ZVHHa8Weytg7j+NOdUAcOxuFWnZtPBy1UB/yNZkopKDCjhQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5594
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,126 +144,102 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
  Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
- "David S . Miller" <davem@davemloft.net>
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wednesday 12 January 2022 08:49:54 CET Kalle Valo wrote:
-> Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
-> =
-
+On Tuesday 11 January 2022 23:19:56 CET Rob Herring wrote:
+> On Tue, Jan 11, 2022 at 06:14:02PM +0100, Jerome Pouiller wrote:
 > > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> >
+> > Prepare the inclusion of the wfx driver in the kernel.
 > >
 > > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
 > > ---
-> >  .../bindings/net/wireless/silabs,wfx.yaml     | 125 ---
-> >  drivers/staging/wfx/Kconfig                   |   8 -
-> >  drivers/staging/wfx/Makefile                  |  25 -
-> >  drivers/staging/wfx/bh.c                      | 330 -------
-> >  drivers/staging/wfx/bh.h                      |  33 -
-> >  drivers/staging/wfx/bus.h                     |  38 -
-> >  drivers/staging/wfx/bus_sdio.c                | 272 ------
-> >  drivers/staging/wfx/bus_spi.c                 | 271 ------
-> >  drivers/staging/wfx/data_rx.c                 |  94 --
-> >  drivers/staging/wfx/data_rx.h                 |  18 -
-> >  drivers/staging/wfx/data_tx.c                 | 596 -------------
-> >  drivers/staging/wfx/data_tx.h                 |  68 --
-> >  drivers/staging/wfx/debug.c                   | 365 --------
-> >  drivers/staging/wfx/debug.h                   |  19 -
-> >  drivers/staging/wfx/fwio.c                    | 405 ---------
-> >  drivers/staging/wfx/fwio.h                    |  15 -
-> >  drivers/staging/wfx/hif_api_cmd.h             | 555 ------------
-> >  drivers/staging/wfx/hif_api_general.h         | 262 ------
-> >  drivers/staging/wfx/hif_api_mib.h             | 346 --------
-> >  drivers/staging/wfx/hif_rx.c                  | 416 ---------
-> >  drivers/staging/wfx/hif_rx.h                  |  17 -
-> >  drivers/staging/wfx/hif_tx.c                  | 513 -----------
-> >  drivers/staging/wfx/hif_tx.h                  |  60 --
-> >  drivers/staging/wfx/hif_tx_mib.c              | 324 -------
-> >  drivers/staging/wfx/hif_tx_mib.h              |  49 --
-> >  drivers/staging/wfx/hwio.c                    | 352 --------
-> >  drivers/staging/wfx/hwio.h                    |  75 --
-> >  drivers/staging/wfx/key.c                     | 241 -----
-> >  drivers/staging/wfx/key.h                     |  20 -
-> >  drivers/staging/wfx/main.c                    | 506 -----------
-> >  drivers/staging/wfx/main.h                    |  43 -
-> >  drivers/staging/wfx/queue.c                   | 307 -------
-> >  drivers/staging/wfx/queue.h                   |  45 -
-> >  drivers/staging/wfx/scan.c                    | 149 ----
-> >  drivers/staging/wfx/scan.h                    |  22 -
-> >  drivers/staging/wfx/sta.c                     | 833 =
+> >  .../bindings/net/wireless/silabs,wfx.yaml     | 138 ++++++++++++++++++
+> >  1 file changed, 138 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/net/wireless/sila=
+bs,wfx.yaml
+> >
+> > diff --git a/Documentation/devicetree/bindings/net/wireless/silabs,wfx.=
+yaml b/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml
+> > new file mode 100644
+> > index 000000000000..d12f262868cf
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/net/wireless/silabs,wfx.yaml
 
-------------------
-> >  drivers/staging/wfx/sta.h                     |  73 --
-> >  drivers/staging/wfx/traces.h                  | 501 -----------
-> >  drivers/staging/wfx/wfx.h                     | 164 ----
-> >  39 files changed, 8555 deletions(-)
-> >  delete mode 100644 drivers/staging/wfx/Documentation/devicetree/
-bindings/net/wireless/silabs,wfx.yaml
-> >  delete mode 100644 drivers/staging/wfx/Kconfig
-> >  delete mode 100644 drivers/staging/wfx/Makefile
-> >  delete mode 100644 drivers/staging/wfx/bh.c
-> >  delete mode 100644 drivers/staging/wfx/bh.h
-> >  delete mode 100644 drivers/staging/wfx/bus.h
-> >  delete mode 100644 drivers/staging/wfx/bus_sdio.c
-> >  delete mode 100644 drivers/staging/wfx/bus_spi.c
-> >  delete mode 100644 drivers/staging/wfx/data_rx.c
-> >  delete mode 100644 drivers/staging/wfx/data_rx.h
-> >  delete mode 100644 drivers/staging/wfx/data_tx.c
-> >  delete mode 100644 drivers/staging/wfx/data_tx.h
-> >  delete mode 100644 drivers/staging/wfx/debug.c
-> >  delete mode 100644 drivers/staging/wfx/debug.h
-> >  delete mode 100644 drivers/staging/wfx/fwio.c
-> >  delete mode 100644 drivers/staging/wfx/fwio.h
-> >  delete mode 100644 drivers/staging/wfx/hif_api_cmd.h
-> >  delete mode 100644 drivers/staging/wfx/hif_api_general.h
-> >  delete mode 100644 drivers/staging/wfx/hif_api_mib.h
-> >  delete mode 100644 drivers/staging/wfx/hif_rx.c
-> >  delete mode 100644 drivers/staging/wfx/hif_rx.h
-> >  delete mode 100644 drivers/staging/wfx/hif_tx.c
-> >  delete mode 100644 drivers/staging/wfx/hif_tx.h
-> >  delete mode 100644 drivers/staging/wfx/hif_tx_mib.c
-> >  delete mode 100644 drivers/staging/wfx/hif_tx_mib.h
-> >  delete mode 100644 drivers/staging/wfx/hwio.c
-> >  delete mode 100644 drivers/staging/wfx/hwio.h
-> >  delete mode 100644 drivers/staging/wfx/key.c
-> >  delete mode 100644 drivers/staging/wfx/key.h
-> >  delete mode 100644 drivers/staging/wfx/main.c
-> >  delete mode 100644 drivers/staging/wfx/main.h
-> >  delete mode 100644 drivers/staging/wfx/queue.c
-> >  delete mode 100644 drivers/staging/wfx/queue.h
-> >  delete mode 100644 drivers/staging/wfx/scan.c
-> >  delete mode 100644 drivers/staging/wfx/scan.h
-> >  delete mode 100644 drivers/staging/wfx/sta.c
-> >  delete mode 100644 drivers/staging/wfx/sta.h
-> >  delete mode 100644 drivers/staging/wfx/traces.h
-> >  delete mode 100644 drivers/staging/wfx/wfx.h
+[...]
+
+> > +properties:
+> > +  compatible:
+> > +    anyOf:
+> > +      - const: silabs,wf200    # Chip alone without antenna
+> > +      - const: silabs,brd4001a # WGM160P Evaluation Board
+> > +      - const: silabs,brd8022a # WF200 Evaluation Board
+> > +      - const: silabs,brd8023a # WFM200 Evaluation Board
 > =
 
-> I'm not sure what's your plan here, but with staging wireless drivers
-> there's usually a simple simple move (git mv) of the driver from
-> drivers/staging to drivers/net/wireless. An example here:
+> This still defines that compatible is a single entry. You need something
+> like:
 > =
 
-> https://git.kernel.org/linus/5625f965d764
+> items:
+>   - enum:
+>       - silabs,brd4001a
+>       - silabs,brd8022a
+>       - silabs,brd8023a
+>   - const: silabs,wf200
 > =
 
-> What you seem to do here is that you add a new driver to
-> drivers/net/wireless and then remove the old driver from
-> drivers/staging. And I'm guessing these two drivers are not identical
-> and have differences?
+> You need a separate 'items' list for different number of compatible
+> entries (e.g. if a single string is valid) and that is when you need to
+> use 'oneOf'. Plenty of examples in the tree.
 
-Until v7, I have more or less kept in sync this PR and the staging tree. =
+Ok.
 
-I have been a bit lazy from the v8.
+[...]
 
-However, I still have the patches in my local tree. I am going to
-clean-up them and send them to staging.
+> > +  interrupts:
+> > +    description: The interrupt line. Triggers IRQ_TYPE_LEVEL_HIGH and
+> > +      IRQ_TYPE_EDGE_RISING are both supported by the chip and the driv=
+er. When
+> =
+
+> Unless there is a mode you can configure, supporting both is wrong even
+> though edge will mostly work for a device that is really level.
+> =
+
+> What a driver supports is not relevant to the binding.
+
+hmm... right.
+
+> > +      SPI is used, this property is required. When SDIO is used, the "=
+in-band"
+> > +      interrupt provided by the SDIO bus is used unless an interrupt i=
+s defined
+> > +      in the Device Tree.
+> > +    maxItems: 1
+> > +
+> > +  reset-gpios:
+> > +    description: (SPI only) Phandle of gpio that will be used to reset=
+ chip
+> > +      during probe. Without this property, you may encounter issues wi=
+th warm
+> > +      boot. (For legacy purpose, the gpio in inverted when compatible =
+=3D=3D
+> > +      "silabs,wfx-spi")
+> =
+
+> What legacy? This is a new binding.
+
+This driver already exist in staging/. But, it is probably the right moment
+to drop this legacy binding.
+
+[...]
 
 -- =
 
