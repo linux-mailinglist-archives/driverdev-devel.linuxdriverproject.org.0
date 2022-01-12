@@ -1,77 +1,130 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD58748C6AC
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jan 2022 16:04:52 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 155A948C8B5
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jan 2022 17:46:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 315F640A45;
-	Wed, 12 Jan 2022 15:04:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A27F74289E;
+	Wed, 12 Jan 2022 16:46:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BoXgU96LEesx; Wed, 12 Jan 2022 15:04:49 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id k1qI9P7yxSMF; Wed, 12 Jan 2022 16:46:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A3BE540273;
-	Wed, 12 Jan 2022 15:04:47 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 02FE4428AA;
+	Wed, 12 Jan 2022 16:46:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id ED4C61BF5E6
- for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 15:04:36 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 24F1B1BF4E3
+ for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 16:45:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D9E74401B7
- for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 15:04:36 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0C78042877
+ for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 16:45:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FbHq7ayTGvc9 for <devel@linuxdriverproject.org>;
- Wed, 12 Jan 2022 15:04:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4wPcvtYon1Cx for <devel@linuxdriverproject.org>;
+ Wed, 12 Jan 2022 16:45:57 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-x136.google.com (mail-lf1-x136.google.com
- [IPv6:2a00:1450:4864:20::136])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5D733400CE
- for <devel@driverdev.osuosl.org>; Wed, 12 Jan 2022 15:04:35 +0000 (UTC)
-Received: by mail-lf1-x136.google.com with SMTP id u13so9055585lff.12
- for <devel@driverdev.osuosl.org>; Wed, 12 Jan 2022 07:04:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=swEbmnyLSeN7aiIoLnsPgDG3gh2KSMSrPSEJTJTzFbQ=;
- b=lvkw4cRKCOzBKAPvoz7fYi4Ww+7YlPfKoAgKVLsIgKF1EJ+8wEQe6UxECLKYwzDnLE
- B6oDSef20ebGk9u85lnz7rEBAUMWRtwpyuCT7L5tzcrfQOz8wh7TZ2HKYlneuRS6vvZL
- 2mzMh6se/ObK3+x60YBQABVSeb3VrI4eHRc1v7BRB2NV0kOKjry5g7lgbvmVmJtVueJ9
- KnDoZbh+45MmI7u5fj7DHOebV2iwZmI1uYwa1RpTgz0hD3M/CnW+fBXsXOOTtlYGu/16
- A5HG6WxtCNk9V2MKJTFdEJHaI/4RRxI0j/0ly6jrKbitmexN4vjhY8socp2Bkpl/gWCl
- FZYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=swEbmnyLSeN7aiIoLnsPgDG3gh2KSMSrPSEJTJTzFbQ=;
- b=QRaoBgbv1oZO7xddaHPl2/vpKudk5oysboPAYeCysFNw7EDEumZyOc3djUrh7dmtcS
- vjer8KSFmUG+HqJZUqlD68IhpJKleutzjofRnHIia2AEW7gFmaWIkacg1qBlmzwVUhbb
- lMeiW/qK+R42dhW74m+itgwAEtDe36zIMtdh6WOocS6ubKsVoJwAcl1CsoWzplHSNu9b
- yFoMKIfr+VwrKDYa0o2EbU+OSRvlkSzMpdYfknBcur8MNSqbv98O5cOVoH1MyLqMC5GL
- pcm+JIhjj+8psmxmVlwP5BrUnn+fWQ4xvO78cZTX+ZGG1VHr4sJFQfOm5iRr090SIrOx
- 429Q==
-X-Gm-Message-State: AOAM531kx9AQ+BZ/4BMCCh2Kp3Od6btGZ4IVE4GGvt/tG4dBAnMzymcP
- dNmUe/11+7IDdnEvR/heDRHVgUYZ6QjoMj/hsKgpxQ==
-X-Google-Smtp-Source: ABdhPJxWuTxHLQXjEWO9OANtBu36BWztuVV7d1EJLRw+gXvuvHBCzsnZLCgUQS4k1kJ8fOzX1Y3szncGvdkFuOkuwPI=
-X-Received: by 2002:a19:6748:: with SMTP id e8mr118080lfj.358.1641999873143;
- Wed, 12 Jan 2022 07:04:33 -0800 (PST)
-MIME-Version: 1.0
-References: <20220111171424.862764-1-Jerome.Pouiller@silabs.com>
- <20220111171424.862764-9-Jerome.Pouiller@silabs.com>
- <20220112105859.u4j76o7cpsr4znmb@pali>
- <42104281.b1Mx7tgHyx@pc-42> <20220112114332.jadw527pe7r2j4vv@pali>
-In-Reply-To: <20220112114332.jadw527pe7r2j4vv@pali>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Wed, 12 Jan 2022 16:03:56 +0100
-Message-ID: <CAPDyKFoMj1r+bEh-MqOdTVzs0C=LCFPPbXj3jHwB4Yty=bA03Q@mail.gmail.com>
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam12on2069.outbound.protection.outlook.com [40.107.243.69])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CBFD54154E
+ for <devel@driverdev.osuosl.org>; Wed, 12 Jan 2022 16:45:57 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=knoFmUsYUNHywddIbtZhh6EG9PlaBXqmjeZp4E7ZYKNs5bxusI+NeRI3q0b5s0+7l1mLn8JnK2gbiSopVp+DDJtIPeI8On9VS5Nw1Aoffg4B3jPc1/dhXA7b7hCIFnp2LyQe2DoLA14uKwZ2L9TeGJj3KF+3xxPiZBDUuNkx8asolJ9c/F4wMdOwYNh3YVtDtE1HzLnxXkzjQRAidhbXS2SMQPYn5CwXzIav/6u843tLyoYWJBdlT7lV446/C8/tEXkso8dAB8Pj5InDrj5aycpOFW/2ubRn3eUISF7tOaTesvVifRvYrPPJkC+Y7bkI7+xf0hQhAUjInqAzy/Ohwg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=YDeNQa4SFDno/K8JWcmwKAaGGXAJ5WPWwMn6ss4Ghns=;
+ b=gpHjsoDHCL177WntRokxiWQlL+uK6/Y1Z+DU3fiKb2cC6DiPlbjveok6yUGJaQgJ5QwFa+iO2HjBezNJEiT2ZejNSh0zQgvNWcReV3FxcGDp6zj9n/hnNHX6Byb+qLHPSk3rHdkFr4TowHOk4hRsHMNKirlef/DY3cwT2hwDL9kGFFzblGKmTEy0PqRW5Vs0zrIZdSaGdS0fQpweu9RpA6vTMELoXi/vPqbQSg5yMzKMEypBTmOvgYl7taV+5yMO6VS6QKRLrEnnPKZi7KwmxpyKf5xudD1//MCIIte6Lw82/t52dTskBs/zB/pHcKjVpLQFISgKuFe9y9lF3uO/GQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YDeNQa4SFDno/K8JWcmwKAaGGXAJ5WPWwMn6ss4Ghns=;
+ b=V+aebvifFhH1o8ya2Civkbvr4AVdc7vQ1+NIlqV2OtUV+i+G+IlKKc6oq9PceyZzjLbx+fPF4/hGMfYmRCWdeKQM7x7yucqGTVu6mFIlCVENvG3EkwzNdfiBh114oMmpagDgFQUIklBjEKuGRXY6pWZDou2xga6jPatFen83ZIM=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=silabs.com;
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com (2603:10b6:510:ee::19)
+ by SA2PR11MB5050.namprd11.prod.outlook.com (2603:10b6:806:fb::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4867.7; Wed, 12 Jan
+ 2022 16:45:54 +0000
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::d031:da9e:71a:73e4]) by PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::d031:da9e:71a:73e4%5]) with mapi id 15.20.4888.011; Wed, 12 Jan 2022
+ 16:45:54 +0000
+From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
+To: Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>
 Subject: Re: [PATCH v9 08/24] wfx: add bus_sdio.c
-To: =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>, 
- =?UTF-8?B?SsOpcsO0bWUgUG91aWxsZXI=?= <Jerome.Pouiller@silabs.com>
+Date: Wed, 12 Jan 2022 17:45:45 +0100
+Message-ID: <2680707.qJCEgCfB62@pc-42>
+Organization: Silicon Labs
+In-Reply-To: <20220112114332.jadw527pe7r2j4vv@pali>
+References: <20220111171424.862764-1-Jerome.Pouiller@silabs.com>
+ <42104281.b1Mx7tgHyx@pc-42> <20220112114332.jadw527pe7r2j4vv@pali>
+X-ClientProxiedBy: SA9PR13CA0091.namprd13.prod.outlook.com
+ (2603:10b6:806:24::6) To PH0PR11MB5657.namprd11.prod.outlook.com
+ (2603:10b6:510:ee::19)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f6b60885-4dbb-445c-becf-08d9d5eaffab
+X-MS-TrafficTypeDiagnostic: SA2PR11MB5050:EE_
+X-Microsoft-Antispam-PRVS: <SA2PR11MB5050AF88D65C0EA4D5B0B96C93529@SA2PR11MB5050.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: SkO9IUWTqTNja0QvuB+H8wqOft70gn5yQ2TGjVNxMwyDMYebDD6BRrn3bbpvKzyC3wFYh8yvSsHSDwC8XLnU3kSzERYttgucIQ7H7rzztESwSQfJP4qAGJBmVnIAfE3wTcEw68AF1kwnttphQJyrH03u04LGlg1YE/QNNU8xe9JZ/pQU2HFkcTP2Ie3xSJYcJW7bJYEboWXygp3eNmpFlifzQi4As6akn2nD8bkrT+rszne7QvuKyMK/6l9eaEJqKm6hbImM/2ldAp57b3/TK1JF5dqiKU4JIxszfoX7ECa2luuw0UOlhSsGZufrVhnWmoHDenCcpEgWrPArYl3yUosrNUVOXbkRXayWmdxndPILGDNgugtVk2G0oIwcXKUXgueMM8jUFS+SxltNAVSFECT0bgKcwuv16GQXijxcNBXUE0N77/3Iik1aZH32uSMKbwEvRiNJQO9pw1sqO+EreaCGSfZ8G6VoUJUoDa8zQY0+GiKuhabVd7WpV6+NsjRFqeJc1q+iix4eSHdHIzfvM+Ov7mxs5DlIQBhehz6rmYIGM8wuW3yJ9HDawpu2Vfc14LUUk2Oc2/HQnH955W/U+jAxABO7+BEi3/lu6KhE/GEB6gwYblSCdaBrL71V1VsbtNXVi90Trt2dV8aZJjiXVNpv75ENKMmimYmzSSQlhc/ZtubYGtShxHfPw1fJMC2i
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(7916004)(366004)(66946007)(36916002)(508600001)(2906002)(66556008)(52116002)(8676002)(4326008)(66476007)(86362001)(83380400001)(6666004)(8936002)(54906003)(66574015)(9686003)(33716001)(5660300002)(186003)(6916009)(38100700002)(7416002)(6486002)(316002)(6512007)(6506007)(39026012);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?8g8iL/wkP15z+4bEZd+hE4UYi6SBbhLuVqGhlLs/x/rQrlxvhzbYM9fPK/?=
+ =?iso-8859-1?Q?WW/bFxVWfReG5gCRPeEedA/dTmk5AlG9QgPGR/H7rNGh/E86qBRfLkWTx9?=
+ =?iso-8859-1?Q?v+7PYyAoJEJZV6/oaPsE5pcftePR6GnUPFufCg0rjiD2+tpdVGvNFf10GF?=
+ =?iso-8859-1?Q?wfVO+XrAduJo0e7Wzfl3+cl1aX3gdo6sdHU3WgROWDU+3ZARB2XMnqQ9yk?=
+ =?iso-8859-1?Q?755wA6W+iMh4BCccn41Tmc90zB+rWITQ/hNhPpVzLKnQ+5+EsnkTDe88He?=
+ =?iso-8859-1?Q?sUJWZn8cSw27HKN35l74vbl0oE8ar7uhnY4FOS4wBe1OXp7RxXNKSmIqBT?=
+ =?iso-8859-1?Q?C4tEyfyjQ7JL1k2Zu3scC0TcLKWS3Sq05dmswtfhXy/YEAtQm8hxMT1557?=
+ =?iso-8859-1?Q?Lf1ZrTKcIADQKd+KOksh8kuqzhYQ0wDhpDK1jGtkga0pdqBs3m5xzVFpGc?=
+ =?iso-8859-1?Q?0qUU+tGF/15UTIfLj7uIr0iFC9hoeaTANOOjSSYSKmcdymEaz1raCq75ss?=
+ =?iso-8859-1?Q?+8X1ASIvvGVqAyTEEpT9EtMqr3NdRTEiXlcEQO5w77TXWkssC8uG5bE4a3?=
+ =?iso-8859-1?Q?UcSG2fN74mZFWVoxsdtb/3tLOnKLbxffmyF4znJAwR2sCGlOQfpd2mdHi1?=
+ =?iso-8859-1?Q?8dshNLCTueatHjqK2I2bZpe8Pf3wAOU99h+E5hCGQvnDGtVVKnOc7821GH?=
+ =?iso-8859-1?Q?Ukas/9qRCs6qcNxumOv5be/yhYuqAajjoVtw7AWKNPK+FzwFSd3XOEl4TP?=
+ =?iso-8859-1?Q?AQsi8fQ3VR0DlV285CWa/vuxYzRlBGyZFL9f3o42wViqMCjI7YlEeEvI5h?=
+ =?iso-8859-1?Q?E2NCuFQansvar3hTQoLLQC2Nw9AGv7LwheUjchsNpOSPbYKgRt+e2Wc+Sp?=
+ =?iso-8859-1?Q?cXQQb38NWlTs2st99T9VPzmS/RgOvfWtbhp8gMXzRK01pvHhOL2KKdnece?=
+ =?iso-8859-1?Q?ir3AWfChqSOy5UnT3R+ExU/FNRDGRHqo/oNv/y3wILpA3KBHW69+K/YVG7?=
+ =?iso-8859-1?Q?VrntcOnABW4v1jxZ8S/fDk4t/4TnhhfYaa+Mtl9hLWnopSyt9WB933H/Ds?=
+ =?iso-8859-1?Q?pMTHU0h5hdUxvZRGH4WRlCzq5LjIhse9St5yOgmihT0+naYnj/ze43cMyJ?=
+ =?iso-8859-1?Q?nNgRuPuXhWEV7MdD+MtUgZ7vjTTf4mYmvF32yM2MkeEXfByV89yr9fwuqf?=
+ =?iso-8859-1?Q?HIGrzybk8X2tYbAm8olENelT06NjgKfPpdOlumS2ZwfagZYdI1Iwg04P/Q?=
+ =?iso-8859-1?Q?EmQ+g+tw4JKjW/GrpK9Xamg9736JbAKuF+LDYAotU+Wht8XrC/cy2KESzl?=
+ =?iso-8859-1?Q?CoF5Gw/Zobj4B5CMpbAd+Nx+RFad1/t24j1wbc7RK5LQe4/ZGsrw5lFipX?=
+ =?iso-8859-1?Q?mdc4x6S0s/fdP2OpxDZ3w55jPzUAEWDK/BOeTkPbP6jZQOmMrOkMTZ6TSm?=
+ =?iso-8859-1?Q?91GsPyVARDC11HgwPCE4DzYwiiCUQmEopyUeJ6fjWJH3AVaZuuH9acNXF2?=
+ =?iso-8859-1?Q?h8JqQFLMXyvoyRuZu4Rn/o9kcyd/NY4NXIv/TcbjQP2cXP40sFToP9GPYL?=
+ =?iso-8859-1?Q?8yZI/K4B0jIICn91fEkRpfaNgXKj94waXeJJ285VPW2GO9nblVdaDlC7ZK?=
+ =?iso-8859-1?Q?2BbQ8FbKNm9x2N4tZGpqlOoSSAsjPZrJR/5CwvsBedKM4cauc7rFeP1pQj?=
+ =?iso-8859-1?Q?P/uWUPSHmXOgh20G3t8BwvX2lq4K+ER3M9jR2SAiGYLNR//l+I8Cbek6hV?=
+ =?iso-8859-1?Q?nlSm9dIR3KbU2atuoNl7X+5Vs=3D?=
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f6b60885-4dbb-445c-becf-08d9d5eaffab
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5657.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2022 16:45:54.0956 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: gffBhxdBAmM/CO1mhQlHhtRYVFUPR/sWNdKBAkS8gewFmc5UJOW/ozqDeVHLrJMnPSz4iqWOhDsM8gp5GWPP+A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB5050
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,68 +138,67 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
  "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gV2VkLCAxMiBKYW4gMjAyMiBhdCAxMjo0MywgUGFsaSBSb2jDoXIgPHBhbGlAa2VybmVsLm9y
-Zz4gd3JvdGU6Cj4KPiBPbiBXZWRuZXNkYXkgMTIgSmFudWFyeSAyMDIyIDEyOjE4OjU4IErDqXLD
-tG1lIFBvdWlsbGVyIHdyb3RlOgo+ID4gT24gV2VkbmVzZGF5IDEyIEphbnVhcnkgMjAyMiAxMTo1
-ODo1OSBDRVQgUGFsaSBSb2jDoXIgd3JvdGU6Cj4gPiA+IE9uIFR1ZXNkYXkgMTEgSmFudWFyeSAy
-MDIyIDE4OjE0OjA4IEplcm9tZSBQb3VpbGxlciB3cm90ZToKPiA+ID4gPiArc3RhdGljIGNvbnN0
-IHN0cnVjdCBzZGlvX2RldmljZV9pZCB3Znhfc2Rpb19pZHNbXSA9IHsKPiA+ID4gPiArICAgICB7
-IFNESU9fREVWSUNFKFNESU9fVkVORE9SX0lEX1NJTEFCUywgU0RJT19ERVZJQ0VfSURfU0lMQUJT
-X1dGMjAwKSB9LAo+ID4gPiA+ICsgICAgIHsgfSwKPiA+ID4gPiArfTsKPiA+ID4KPiA+ID4gSGVs
-bG8hIElzIHRoaXMgdGFibGUgc3RpbGwgcmVxdWlyZWQ/Cj4gPgo+ID4gQXMgZmFyIGFzIEkgdW5k
-ZXJzdGFuZCwgaWYgdGhlIGRyaXZlciBkb2VzIG5vdCBwcm92aWRlIGFuIGlkX3RhYmxlLCB0aGUK
-PiA+IHByb2JlIGZ1bmN0aW9uIHdvbid0IGJlIG5ldmVyIGNhbGxlZCAoc2VlIHNkaW9fbWF0Y2hf
-ZGV2aWNlKCkpLgo+ID4KPiA+IFNpbmNlLCB3ZSByZWx5IG9uIHRoZSBkZXZpY2UgdHJlZSwgd2Ug
-Y291bGQgcmVwbGFjZSBTRElPX1ZFTkRPUl9JRF9TSUxBQlMKPiA+IGFuZCBTRElPX0RFVklDRV9J
-RF9TSUxBQlNfV0YyMDAgYnkgU0RJT19BTllfSUQuIEhvd2V2ZXIsIGl0IGRvZXMgbm90IGh1cnQK
-PiA+IHRvIGFkZCBhbiBleHRyYSBmaWx0ZXIgaGVyZS4KPgo+IE5vdyB3aGVuIHRoaXMgcGFydGlj
-dWxhciBpZCBpcyBub3QgcmVxdWlyZWQsIEknbSB0aGlua2luZyBpZiBpdCBpcyBzdGlsbAo+IHJl
-cXVpcmVkIGFuZCBpdCBpcyBhIGdvb2QgaWRlYSB0byBkZWZpbmUgdGhlc2UgU0RJT19WRU5ET1Jf
-SURfU0lMQUJTCj4gbWFjcm9zIGludG8ga2VybmVsIGluY2x1ZGUgZmlsZXMuIEFzIGl0IHdvdWxk
-IG1lYW4gdGhhdCBvdGhlciBicm9rZW4KPiBTRElPIGRldmljZXMgY291bGQgZGVmaW5lIHRoZXNl
-IGJvZ3VzIG51bWJlcnMgdG9vLi4uIEFuZCBoYXZpbmcgdGhlbSBpbgo+IGNvbW1vbiBrZXJuZWwg
-aW5jbHVkZXMgZmlsZXMgY2FuIGNhdXNlIGlzc3Vlcy4uLiBlLmcuIG90aGVyIGRldmVsb3BlcnMK
-PiBjb3VsZCB0aGluayB0aGF0IGl0IGlzIGNvcnJlY3QgdG8gdXNlIHRoZW0gYXMgdGhleSBhcmUg
-ZGVmaW5lZCBpbiBjb21tb24KPiBoZWFkZXIgZmlsZXMuIEJ1dCBhcyB0aGVzZSBudW1iZXJzIGFy
-ZSBub3QgcmVsaWFibGUgKG90aGVyIGJyb2tlbiBjYXJkcwo+IG1heSBoYXZlIHNhbWUgaWRzIGFz
-IHdmMjAwKSBhbmQgdGhlaXIgdXNhZ2UgbWF5IGNhdXNlIGlzc3VlcyBpbiBmdXR1cmUuCj4KPiBV
-bGYsIGFueSBvcGluaW9uPwoKVGhlIHNkaW9fbWF0Y2hfZGV2aWNlKCkgaXMgd2hhdCBpcyBiZWlu
-ZyB1c2VkIHRvIG1hdGNoIHRoZSBkZXZpY2UgdG8KaXRzIHNkaW9fZHJpdmVyLCB3aGljaCBpcyBi
-ZWluZyBjYWxsZWQgZnJvbSB0aGUgc2Rpb19idXNfdHlwZSdzCi0+bWF0Y2goKSBjYWxsYmFjay4K
-CkluIHJlZ2FyZHMgdG8gdGhlIERUIGNvbXBhdGlibGUgc3RyaW5ncyBmcm9tIGEgZHJpdmVycycK
-Lm9mX21hdGNoX3RhYmxlLCB0aGF0IGlzIGN1cnJlbnRseSBsZWZ0IHRvIGJlIG1hdGNoZWQgYnkg
-dGhlIHNkaW8KZHJpdmVyJ3MgLT5wcm9iZSgpIGZ1bmN0aW9uIGludGVybmFsbHksIGJ5IGNhbGxp
-bmcKb2ZfZHJpdmVyX21hdGNoX2RldmljZSgpLgoKSW4gb3RoZXIgd29yZHMsIEkgdGhpbmsgd2hh
-dCBKZXJvbWUgaGFzIHN1Z2dlc3RlZCBoZXJlIHNlZW1zCnJlYXNvbmFibGUgdG8gbWUuIE1hdGNo
-aW5nIG9uICJTRElPX0FOWV9JRCIgd291bGQgd29yayB0b28sIGJ1dCBJCnRoaW5rIGl0J3MgYmV0
-dGVyIHdpdGggYSBwb29yIGZpbHRlciBsaWtlIFNESU9fVkVORE9SX0lEX1NJTEFCUyosCnJhdGhl
-ciB0aGFuIG5vbmUuCgpBbiBlbnRpcmVseSBkaWZmZXJlbnQgYW5kIG5ldyBhcHByb2FjaCB3b3Vs
-ZCBiZSB0byBleHRlbmQKc2Rpb19tYXRjaF9kZXZpY2UoKSB0byBjYWxsIG9mX2RyaXZlcl9tYXRj
-aF9kZXZpY2UoKSB0b28uIEhvd2V2ZXIsIGluCnRoYXQgY2FzZSB3ZSB3b3VsZCBhbHNvIG5lZWQg
-dG8gYWRkIGEgbmV3IGNvcnJlc3BvbmRpbmcgLT5wcm9iZSgpCmNhbGxiYWNrIGZvciB0aGUgc2Rp
-b19kcml2ZXIsIGFzIHRoZSBjdXJyZW50IG9uZSB0YWtlcyBhIGNvbnN0IHN0cnVjdApzZGlvX2Rl
-dmljZV9pZCwgd2hpY2ggZG9lc24ndCB3b3JrIHdoZW4gbWF0Y2hpbmcgb24gRFQgY29tcGF0aWJs
-ZXMuCgo+Cj4gQnR3LCBpcyB0aGVyZSBhbnkgcHJvamVjdCB3aGljaCBtYWludGFpbnMgU0RJTyBp
-ZHMsIGxpa2UgdGhlcmUgaXMKPiBwY2ktaWRzLnVjdy5jeiBmb3IgUENJIG9yIHd3dy5saW51eC11
-c2Iub3JnL3VzYi1pZHMuaHRtbCBmb3IgVVNCPwo+Cj4gPiA+ID4gK01PRFVMRV9ERVZJQ0VfVEFC
-TEUoc2Rpbywgd2Z4X3NkaW9faWRzKTsKPiA+ID4gPiArCj4gPiA+ID4gK3N0cnVjdCBzZGlvX2Ry
-aXZlciB3Znhfc2Rpb19kcml2ZXIgPSB7Cj4gPiA+ID4gKyAgICAgLm5hbWUgPSAid2Z4LXNkaW8i
-LAo+ID4gPiA+ICsgICAgIC5pZF90YWJsZSA9IHdmeF9zZGlvX2lkcywKPiA+ID4gPiArICAgICAu
-cHJvYmUgPSB3Znhfc2Rpb19wcm9iZSwKPiA+ID4gPiArICAgICAucmVtb3ZlID0gd2Z4X3NkaW9f
-cmVtb3ZlLAo+ID4gPiA+ICsgICAgIC5kcnYgPSB7Cj4gPiA+ID4gKyAgICAgICAgICAgICAub3du
-ZXIgPSBUSElTX01PRFVMRSwKPiA+ID4gPiArICAgICAgICAgICAgIC5vZl9tYXRjaF90YWJsZSA9
-IHdmeF9zZGlvX29mX21hdGNoLAo+ID4gPiA+ICsgICAgIH0KPiA+ID4gPiArfTsKPiA+ID4gPiAt
-LQo+ID4gPiA+IDIuMzQuMQo+ID4gPiA+Cj4gPiA+Cj4gPgo+ID4KPiA+IC0tCj4gPiBKw6lyw7Rt
-ZSBQb3VpbGxlcgoKS2luZCByZWdhcmRzClVmZmUKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
-cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+On Wednesday 12 January 2022 12:43:32 CET Pali Roh=E1r wrote:
+> =
+
+> On Wednesday 12 January 2022 12:18:58 J=E9r=F4me Pouiller wrote:
+> > On Wednesday 12 January 2022 11:58:59 CET Pali Roh=E1r wrote:
+> > > On Tuesday 11 January 2022 18:14:08 Jerome Pouiller wrote:
+> > > > +static const struct sdio_device_id wfx_sdio_ids[] =3D {
+> > > > +     { SDIO_DEVICE(SDIO_VENDOR_ID_SILABS, SDIO_DEVICE_ID_SILABS_WF=
+200) },
+> > > > +     { },
+> > > > +};
+> > >
+> > > Hello! Is this table still required?
+> >
+> > As far as I understand, if the driver does not provide an id_table, the
+> > probe function won't be never called (see sdio_match_device()).
+> >
+> > Since, we rely on the device tree, we could replace SDIO_VENDOR_ID_SILA=
+BS
+> > and SDIO_DEVICE_ID_SILABS_WF200 by SDIO_ANY_ID. However, it does not hu=
+rt
+> > to add an extra filter here.
+> =
+
+> Now when this particular id is not required, I'm thinking if it is still
+> required and it is a good idea to define these SDIO_VENDOR_ID_SILABS
+> macros into kernel include files. As it would mean that other broken
+> SDIO devices could define these bogus numbers too... And having them in
+> common kernel includes files can cause issues... e.g. other developers
+> could think that it is correct to use them as they are defined in common
+> header files. But as these numbers are not reliable (other broken cards
+> may have same ids as wf200) and their usage may cause issues in future.
+
+In order to make SDIO_VENDOR_ID_SILABS less official, do you prefer to
+define it in wfx/bus_sdio.c instead of mmc/sdio_ids.h?
+
+Or even not defined at all like:
+
+    static const struct sdio_device_id wfx_sdio_ids[] =3D {
+         /* WF200 does not have official VID/PID */
+         { SDIO_DEVICE(0x0000, 0x1000) },
+         { },
+    };
+
+
+-- =
+
+J=E9r=F4me Pouiller
+
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
