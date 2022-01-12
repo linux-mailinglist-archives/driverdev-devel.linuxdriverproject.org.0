@@ -1,66 +1,134 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F80048BF3F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jan 2022 08:50:19 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE73948C10B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jan 2022 10:33:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1BD2683F53;
-	Wed, 12 Jan 2022 07:50:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 024F76FB9C;
+	Wed, 12 Jan 2022 09:33:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d8_FKEZL-vcW; Wed, 12 Jan 2022 07:50:16 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id d-6WxxSJ4kYJ; Wed, 12 Jan 2022 09:33:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2F8EC83F42;
-	Wed, 12 Jan 2022 07:50:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DAA9F6FB8F;
+	Wed, 12 Jan 2022 09:33:08 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0A8011BF38E
- for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 07:50:05 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0F5BF1BF86D
+ for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 09:32:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id ED0756FB73
- for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 07:50:04 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F0D6E40199
+ for <devel@linuxdriverproject.org>; Wed, 12 Jan 2022 09:32:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5zuyze7DW3FY for <devel@linuxdriverproject.org>;
- Wed, 12 Jan 2022 07:50:03 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9B51A6FB4F
- for <devel@driverdev.osuosl.org>; Wed, 12 Jan 2022 07:50:03 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 42A91B81E00;
- Wed, 12 Jan 2022 07:50:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0B24C36AEA;
- Wed, 12 Jan 2022 07:49:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1641973800;
- bh=/zzr28pbn0mYUQ3C33VgJ093abXpWPwu5+XYGnZ7HOI=;
- h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
- b=gOqryZE8ISgc3MSbb89OPqbHB6lIMKLRTWkJZLRLlDZHEJA/FQtD3G2PIsejf5vyO
- lxWl5kHtlDWx+2yc/6CJmmQfiG8ge1a5br3t/cLssV7rpwVrhnob4JaBH1U0JI8tgp
- 25eSYGvcuqTn0fJwoecvD18TO+bpXoyGmxgE6J843NfM0Dl99XRgKTfhkiHWwudeGs
- 7D+149LV6SKMnsY02KSCXxco7iYDswVneC5OEeIwsKfK+dPeBzBigILcjGp/cDqASq
- Qk5EMf32ZCO+TMplE91xnTN6iWxt2tL1yHcc5CzTv9Khp2Z5z2siK7vZ+2n2awVCAr
- 2SY6QAcVjlhug==
-From: Kalle Valo <kvalo@kernel.org>
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0CmLK2_-QFwV for <devel@linuxdriverproject.org>;
+ Wed, 12 Jan 2022 09:32:56 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam10on2062b.outbound.protection.outlook.com
+ [IPv6:2a01:111:f400:7e88::62b])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6BF4A40184
+ for <devel@driverdev.osuosl.org>; Wed, 12 Jan 2022 09:32:55 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ndgEfX4B8/h8fBqOH6vftkHxjIuuNxihHzxH4ul0YL/fHwJ3fRi3+z1jhpu/sbguBEwwuknP8G5bx2P7yi8AYhypYvtQ+BIgzWJon3udt2MgBQ8vI7ADu04ldHmWzmeucyd4uhvPnd93eDR3QZSDmKE4inmtA6zlxF2Dxu2rPPDS4Aig+DIowXXGTs0/Wg0miYr+AwbwSkYyrEJZN4Yo8pEi/4dJoauULWKMsq1MJG29lSEVrb9V3Va1fc7rtrDKqaKurGYib04+EfOMKI2D9z4o7pnc4aPBrymD5IZLEwPq3gENsArPexBPwn3KEtNY+0CXf6297Vwzf35y7BRGfQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=tdYfW70J0kQKjUhVSeg+NOH7s+EzkLGichRdwoCbEUc=;
+ b=FN+H5vwstqR0RJE81+06a79u+eeFlKOdQkP/QEYSoof5SgHMtZx61yQ+BEYmDwlRz6QkixDE/UYsDYWlJYAJCOQPW73CVKgLFjSuALlGFfhMPN4YaM7xV00hahYjjNDZm8mDF0eCUdmvLzcTYrmqokm/eiFFB0wM/aD+1fva9oq6E8lL/8ZxGR/UGfJz+I+by+zALlW1EsjK6dryofTuGLyq9lOzPs2jdF+Qzdl4v7nzsCGPt2DUhLUCkyRU/D58V6ARrjiMmTeOW6IuRPMfYxMMi+D2TQKoKXigZYnPPp53H5CUc33TRTo60fWKsSgUnKnC2unPdcqZjdqIS1Mqdw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tdYfW70J0kQKjUhVSeg+NOH7s+EzkLGichRdwoCbEUc=;
+ b=ksZBOsu1hW0xxvZ9j4xzlaBdNSYYBUJOYKLdh7Be8d2+KFnlLfRa6hSkE1m0yakzeIz3Mz7FyF+NVB+Z8mk482vwTTpATi3lL3aZHpVRh4QYVMiK0nheuFMBMZAQKpQM+3mgCqCA+JxDxaFhjtmWRz9FSXqkG/LYbyVwkuqWP18=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=silabs.com;
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com (2603:10b6:510:ee::19)
+ by PH0PR11MB5577.namprd11.prod.outlook.com (2603:10b6:510:eb::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4867.9; Wed, 12 Jan
+ 2022 09:32:52 +0000
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::d031:da9e:71a:73e4]) by PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::d031:da9e:71a:73e4%6]) with mapi id 15.20.4867.012; Wed, 12 Jan 2022
+ 09:32:52 +0000
+From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
+To: Kalle Valo <kvalo@kernel.org>
 Subject: Re: [PATCH v9 23/24] wfx: remove from the staging area
+Date: Wed, 12 Jan 2022 10:32:41 +0100
+Message-ID: <65681266.04G08nq4u0@pc-42>
+Organization: Silicon Labs
+In-Reply-To: <874k69jsv1.fsf@tynnyri.adurom.net>
 References: <20220111171424.862764-1-Jerome.Pouiller@silabs.com>
  <20220111171424.862764-24-Jerome.Pouiller@silabs.com>
-Date: Wed, 12 Jan 2022 09:49:54 +0200
-In-Reply-To: <20220111171424.862764-24-Jerome.Pouiller@silabs.com> (Jerome
- Pouiller's message of "Tue, 11 Jan 2022 18:14:23 +0100")
-Message-ID: <874k69jsv1.fsf@tynnyri.adurom.net>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+ <874k69jsv1.fsf@tynnyri.adurom.net>
+X-ClientProxiedBy: PR3P195CA0004.EURP195.PROD.OUTLOOK.COM
+ (2603:10a6:102:b6::9) To PH0PR11MB5657.namprd11.prod.outlook.com
+ (2603:10b6:510:ee::19)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 568646f1-afa6-4286-5d6b-08d9d5ae8110
+X-MS-TrafficTypeDiagnostic: PH0PR11MB5577:EE_
+X-Microsoft-Antispam-PRVS: <PH0PR11MB557735AEC0D7454E5B3257E193529@PH0PR11MB5577.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:6790;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: YJrVeRdc22Qg0Wq9u/HC0TAxjTakj+liAHSv6bbGoOWOYZj4ZCueOZFT2pzDCAUXYvCwZvDKGbWE+pMZa7kVY5xZvI47dh9Lup+Rgi0hNRYZ2whRnkQliLtThIRYYjeHnlwr3uaA4R1y0jGJlF6V6Bx0WSMfgUMCvkPTEl9/x2kQZVSwznrnNHBq8g16+weBysDRQy0THHoi3VGWnipjmAr6vvWXHAal0X5h0S0STNoGO7OROsZB/8x79fq+G9uTto+J1ATSmRQv88Uss7F52aqKrVMfdUSYOgWZH3ZYbKbfs82VS1B15bEzhBbo0KsPiigUYn2vdwvWbjVMqzUyZpPNpxeiIEghUFG4fEO8lWKCsjRRuKpTLNHAua919Oh7/6q+UKD+lk0UYtSQwtLBwNKHu7hX5HGiHyd3OlJ71/jBpZ/JjBbFQquPyBbBGc1+tbr5HvZtDEBiooelVxkFVWuXTkrsXAfoaAOQCA/vRcTiuN2uIFD4zpkBrgD2/3rWWmrSET5lsgpYK7osl1mFd5zdcpPlnqL6NnR2TYoeqvEs4N5BlhfYLlb8DWfkKZassUIJ25D7CklzXAA1e6KiayBEzX67WqLvSsFltFdR6raMYqxZUk2LKpVbPM+73NDvKDAg5fDJCpYMoUqw0QFpYBwZg8xOsCG0+gibUsAHUMjxI8XAQPBTKYc6Tf2V7X2UCLSKDkixb2CmwFgw2pPUvKhmTE7tJrvhNiURccPwJT4BdQoYGd8ksbTSTPbElfTxL6k6X7RVJVR0zoiYi1hb2vKgpqlPV1ayxTvT98npock=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(7916004)(366004)(186003)(7416002)(38100700002)(66556008)(2906002)(508600001)(9686003)(36916002)(5660300002)(8936002)(66476007)(6666004)(86362001)(54906003)(66574015)(83380400001)(33716001)(66946007)(6506007)(52116002)(8676002)(966005)(6512007)(4326008)(6916009)(316002)(6486002)(39026012);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?g88XobbKW64fWCE9AQsJ8bYt5H+c3tgi1uUbcso84jvdsHbpSSWxPe/7mT?=
+ =?iso-8859-1?Q?MFxf+RJ+usFlZcGQqR2rWxALwpjz8IyKGx8BkQRbF0q7XAFDWFG5tVpVsK?=
+ =?iso-8859-1?Q?JiWwpINlRGeJQVcl++fmgtmcYv+hT70Y25m27OSy+INkkARftqHKxrIzT6?=
+ =?iso-8859-1?Q?NqBA3s0W3cot85z/AV8l4RMlYd8CXopVDc/TdA0xHqiqOgbytQSnDvS+GZ?=
+ =?iso-8859-1?Q?gV2K6c9+mtclJIyScsuSUbxp72WV8ly4FOzl0BnV5r2yIC5cgiIHHXGdc4?=
+ =?iso-8859-1?Q?eTLZZVeiyYcg1E3eyXjtx54M4GJ1AOBY2iHt0JTD05Hd3bgY9xLgBOqUFD?=
+ =?iso-8859-1?Q?oghSO9UdZt7U9NsK9o6ig+7c6RXYKggk2GdRrfpD8ZtCzZl2kCenwmsdVX?=
+ =?iso-8859-1?Q?GfQRRZ+QbuBgmztyqv+6HpDhtHmVpdm2rELtwydoDOxdI1vgUXsIsJ+iMA?=
+ =?iso-8859-1?Q?gKeQyIXImsblHixra8Juvz2qwKoGGsJB37zE4Ft+R55FP/fg9a1c3Dohy6?=
+ =?iso-8859-1?Q?FacvU2BqbehkikvMGJFkgt/HGYrAbm+Fs//uxNhGDMZmutrGhk+ZPMUWOP?=
+ =?iso-8859-1?Q?dg+YHTlk43LzlJZXI5/x0gTIt5R59OTGrSOwRwAGWnipwauNgSMKWO+snA?=
+ =?iso-8859-1?Q?Gute8UXEU2+ugdOdMhE2ea6EDw3X8qoxk0Wo+3UB5Cv3oQWiAOp5ofqSfF?=
+ =?iso-8859-1?Q?4kDXirscoXNFrCc/Rtb2Flf1wuRc11/2pmzaAL9miwWGHuHfxmiA+1hFjH?=
+ =?iso-8859-1?Q?xXbGFPTD8NZMyk4B01dI0v5TkGOiF/FePTIws607vhltXG9L4yv1BIkjjj?=
+ =?iso-8859-1?Q?4QlhNjCFWk7OoNz1euY9amalu7k6yfA6bKkE25XQz6u8GanufmfZ7ouKV+?=
+ =?iso-8859-1?Q?AWdMCKr1Qqhygz+yybyPxxMiasEipBsZvvUo7kAMm0K12hyGQjGJQfzrIb?=
+ =?iso-8859-1?Q?W12JP1EkcOgyypl6GIw4HWyPTCLYq0jRL31EV79gngq18L9NvF0Echv3it?=
+ =?iso-8859-1?Q?EnOxiknumFJFdqJ34qpEhJZq7+VNlxRh/kQL9e2b8eFCPxDIsaCvT6Q3D5?=
+ =?iso-8859-1?Q?2AVZ4AQJCg19TTxBNuwon237ydlbvZG0JvbNnqtA9aIGepmEiEoZbsoN55?=
+ =?iso-8859-1?Q?jQD1T11WpHcs3f7SOta3eK2DlXvF7a2hdOzGcmyPdCCDG6MjnMv1s8Fp6K?=
+ =?iso-8859-1?Q?rjvJKBs1JCZV6vcSdvbXX368VpFaejbAdUOcH8H5GdTnodVuMxeySR2OdL?=
+ =?iso-8859-1?Q?kGJREb396zP8K6uTJh2obKk2dZJWYtbrmk923YSNT6chUSLX0g7FxP2Kl5?=
+ =?iso-8859-1?Q?+F8IXIJGrLAnNafe4rFLUHi9GMBFSE62SDnf+6Gij23gIefTpZoqFeL01A?=
+ =?iso-8859-1?Q?Wtc3tc9quELA9e8JtmUPV3T5PxMa1TC1gp9YVdCbqjrBJYLdPnzM1R1QNy?=
+ =?iso-8859-1?Q?KfvPWt+lHi0h7qtCJz7qEKHKmWPjpTEBQxfT6CQIWb8QcfDICgDlmH/XsC?=
+ =?iso-8859-1?Q?54EyQkUn3syAr0tBrolggIkzAt/VORtCsRCxcjmOETRjtO+eQ96M1Iip2l?=
+ =?iso-8859-1?Q?gKYbnVNTEh4X4bNfcUUruTDMnnXfy/PKECudGtNHM3NAfJq36dR+yUgsNr?=
+ =?iso-8859-1?Q?ltTKq0l2rzYK9pWXjHTRTbObRQ9K+70RDoWkG/pgw/PBE3V1jPhpyHIjM8?=
+ =?iso-8859-1?Q?kBYixo3YJUoPPJDL0r/x2pg3sVe7w5RAlZ9e3KEPKUR779M8phfdjWAy/2?=
+ =?iso-8859-1?Q?184dAqMCXtYQdGhozLDYyneok=3D?=
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 568646f1-afa6-4286-5d6b-08d9d5ae8110
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5657.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Jan 2022 09:32:52.0226 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 9ASOYozi2ldoQuKKnja+CARYpZLmgtt7iOjOQz+8KfDgoAb9a3R/IxurTr6kJO3zihHA10So6Lj24jQj3SIOMw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5577
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,105 +146,131 @@ Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
  Rob Herring <robh+dt@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
- Pali =?utf-8?Q?Roh?= =?utf-8?Q?=C3=A1r?= <pali@kernel.org>,
+ Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
  "David S . Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SmVyb21lIFBvdWlsbGVyIDxKZXJvbWUuUG91aWxsZXJAc2lsYWJzLmNvbT4gd3JpdGVzOgoKPiBG
-cm9tOiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5jb20+Cj4KPiBT
-aWduZWQtb2ZmLWJ5OiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5j
-b20+Cj4gLS0tCj4gIC4uLi9iaW5kaW5ncy9uZXQvd2lyZWxlc3Mvc2lsYWJzLHdmeC55YW1sICAg
-ICB8IDEyNSAtLS0KPiAgZHJpdmVycy9zdGFnaW5nL3dmeC9LY29uZmlnICAgICAgICAgICAgICAg
-ICAgIHwgICA4IC0KPiAgZHJpdmVycy9zdGFnaW5nL3dmeC9NYWtlZmlsZSAgICAgICAgICAgICAg
-ICAgIHwgIDI1IC0KPiAgZHJpdmVycy9zdGFnaW5nL3dmeC9iaC5jICAgICAgICAgICAgICAgICAg
-ICAgIHwgMzMwIC0tLS0tLS0KPiAgZHJpdmVycy9zdGFnaW5nL3dmeC9iaC5oICAgICAgICAgICAg
-ICAgICAgICAgIHwgIDMzIC0KPiAgZHJpdmVycy9zdGFnaW5nL3dmeC9idXMuaCAgICAgICAgICAg
-ICAgICAgICAgIHwgIDM4IC0KPiAgZHJpdmVycy9zdGFnaW5nL3dmeC9idXNfc2Rpby5jICAgICAg
-ICAgICAgICAgIHwgMjcyIC0tLS0tLQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L2J1c19zcGkuYyAg
-ICAgICAgICAgICAgICAgfCAyNzEgLS0tLS0tCj4gIGRyaXZlcnMvc3RhZ2luZy93ZngvZGF0YV9y
-eC5jICAgICAgICAgICAgICAgICB8ICA5NCAtLQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L2RhdGFf
-cnguaCAgICAgICAgICAgICAgICAgfCAgMTggLQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L2RhdGFf
-dHguYyAgICAgICAgICAgICAgICAgfCA1OTYgLS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL3N0YWdp
-bmcvd2Z4L2RhdGFfdHguaCAgICAgICAgICAgICAgICAgfCAgNjggLS0KPiAgZHJpdmVycy9zdGFn
-aW5nL3dmeC9kZWJ1Zy5jICAgICAgICAgICAgICAgICAgIHwgMzY1IC0tLS0tLS0tCj4gIGRyaXZl
-cnMvc3RhZ2luZy93ZngvZGVidWcuaCAgICAgICAgICAgICAgICAgICB8ICAxOSAtCj4gIGRyaXZl
-cnMvc3RhZ2luZy93ZngvZndpby5jICAgICAgICAgICAgICAgICAgICB8IDQwNSAtLS0tLS0tLS0K
-PiAgZHJpdmVycy9zdGFnaW5nL3dmeC9md2lvLmggICAgICAgICAgICAgICAgICAgIHwgIDE1IC0K
-PiAgZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfYXBpX2NtZC5oICAgICAgICAgICAgIHwgNTU1IC0t
-LS0tLS0tLS0tLQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl9hcGlfZ2VuZXJhbC5oICAgICAg
-ICAgfCAyNjIgLS0tLS0tCj4gIGRyaXZlcnMvc3RhZ2luZy93ZngvaGlmX2FwaV9taWIuaCAgICAg
-ICAgICAgICB8IDM0NiAtLS0tLS0tLQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl9yeC5jICAg
-ICAgICAgICAgICAgICAgfCA0MTYgLS0tLS0tLS0tCj4gIGRyaXZlcnMvc3RhZ2luZy93ZngvaGlm
-X3J4LmggICAgICAgICAgICAgICAgICB8ICAxNyAtCj4gIGRyaXZlcnMvc3RhZ2luZy93ZngvaGlm
-X3R4LmMgICAgICAgICAgICAgICAgICB8IDUxMyAtLS0tLS0tLS0tLQo+ICBkcml2ZXJzL3N0YWdp
-bmcvd2Z4L2hpZl90eC5oICAgICAgICAgICAgICAgICAgfCAgNjAgLS0KPiAgZHJpdmVycy9zdGFn
-aW5nL3dmeC9oaWZfdHhfbWliLmMgICAgICAgICAgICAgIHwgMzI0IC0tLS0tLS0KPiAgZHJpdmVy
-cy9zdGFnaW5nL3dmeC9oaWZfdHhfbWliLmggICAgICAgICAgICAgIHwgIDQ5IC0tCj4gIGRyaXZl
-cnMvc3RhZ2luZy93ZngvaHdpby5jICAgICAgICAgICAgICAgICAgICB8IDM1MiAtLS0tLS0tLQo+
-ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L2h3aW8uaCAgICAgICAgICAgICAgICAgICAgfCAgNzUgLS0K
-PiAgZHJpdmVycy9zdGFnaW5nL3dmeC9rZXkuYyAgICAgICAgICAgICAgICAgICAgIHwgMjQxIC0t
-LS0tCj4gIGRyaXZlcnMvc3RhZ2luZy93Zngva2V5LmggICAgICAgICAgICAgICAgICAgICB8ICAy
-MCAtCj4gIGRyaXZlcnMvc3RhZ2luZy93ZngvbWFpbi5jICAgICAgICAgICAgICAgICAgICB8IDUw
-NiAtLS0tLS0tLS0tLQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L21haW4uaCAgICAgICAgICAgICAg
-ICAgICAgfCAgNDMgLQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L3F1ZXVlLmMgICAgICAgICAgICAg
-ICAgICAgfCAzMDcgLS0tLS0tLQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L3F1ZXVlLmggICAgICAg
-ICAgICAgICAgICAgfCAgNDUgLQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L3NjYW4uYyAgICAgICAg
-ICAgICAgICAgICAgfCAxNDkgLS0tLQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L3NjYW4uaCAgICAg
-ICAgICAgICAgICAgICAgfCAgMjIgLQo+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5jICAgICAg
-ICAgICAgICAgICAgICAgfCA4MzMgLS0tLS0tLS0tLS0tLS0tLS0tCj4gIGRyaXZlcnMvc3RhZ2lu
-Zy93Zngvc3RhLmggICAgICAgICAgICAgICAgICAgICB8ICA3MyAtLQo+ICBkcml2ZXJzL3N0YWdp
-bmcvd2Z4L3RyYWNlcy5oICAgICAgICAgICAgICAgICAgfCA1MDEgLS0tLS0tLS0tLS0KPiAgZHJp
-dmVycy9zdGFnaW5nL3dmeC93ZnguaCAgICAgICAgICAgICAgICAgICAgIHwgMTY0IC0tLS0KPiAg
-MzkgZmlsZXMgY2hhbmdlZCwgODU1NSBkZWxldGlvbnMoLSkKPiAgZGVsZXRlIG1vZGUgMTAwNjQ0
-IGRyaXZlcnMvc3RhZ2luZy93ZngvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL25l
-dC93aXJlbGVzcy9zaWxhYnMsd2Z4LnlhbWwKPiAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMv
-c3RhZ2luZy93ZngvS2NvbmZpZwo+ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5n
-L3dmeC9NYWtlZmlsZQo+ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL3dmeC9i
-aC5jCj4gIGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvd2Z4L2JoLmgKPiAgZGVs
-ZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy93ZngvYnVzLmgKPiAgZGVsZXRlIG1vZGUg
-MTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy93ZngvYnVzX3NkaW8uYwo+ICBkZWxldGUgbW9kZSAxMDA2
-NDQgZHJpdmVycy9zdGFnaW5nL3dmeC9idXNfc3BpLmMKPiAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvc3RhZ2luZy93ZngvZGF0YV9yeC5jCj4gIGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
-L3N0YWdpbmcvd2Z4L2RhdGFfcnguaAo+ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFn
-aW5nL3dmeC9kYXRhX3R4LmMKPiAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy93
-ZngvZGF0YV90eC5oCj4gIGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvd2Z4L2Rl
-YnVnLmMKPiAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy93ZngvZGVidWcuaAo+
-ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL3dmeC9md2lvLmMKPiAgZGVsZXRl
-IG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy93ZngvZndpby5oCj4gIGRlbGV0ZSBtb2RlIDEw
-MDY0NCBkcml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl9hcGlfY21kLmgKPiAgZGVsZXRlIG1vZGUgMTAw
-NjQ0IGRyaXZlcnMvc3RhZ2luZy93ZngvaGlmX2FwaV9nZW5lcmFsLmgKPiAgZGVsZXRlIG1vZGUg
-MTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy93ZngvaGlmX2FwaV9taWIuaAo+ICBkZWxldGUgbW9kZSAx
-MDA2NDQgZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfcnguYwo+ICBkZWxldGUgbW9kZSAxMDA2NDQg
-ZHJpdmVycy9zdGFnaW5nL3dmeC9oaWZfcnguaAo+ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVy
-cy9zdGFnaW5nL3dmeC9oaWZfdHguYwo+ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFn
-aW5nL3dmeC9oaWZfdHguaAo+ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL3dm
-eC9oaWZfdHhfbWliLmMKPiAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy93Zngv
-aGlmX3R4X21pYi5oCj4gIGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvd2Z4L2h3
-aW8uYwo+ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL3dmeC9od2lvLmgKPiAg
-ZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy93Zngva2V5LmMKPiAgZGVsZXRlIG1v
-ZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy93Zngva2V5LmgKPiAgZGVsZXRlIG1vZGUgMTAwNjQ0
-IGRyaXZlcnMvc3RhZ2luZy93ZngvbWFpbi5jCj4gIGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
-L3N0YWdpbmcvd2Z4L21haW4uaAo+ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5n
-L3dmeC9xdWV1ZS5jCj4gIGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvd2Z4L3F1
-ZXVlLmgKPiAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy93Zngvc2Nhbi5jCj4g
-IGRlbGV0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvd2Z4L3NjYW4uaAo+ICBkZWxldGUg
-bW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuYwo+ICBkZWxldGUgbW9kZSAxMDA2
-NDQgZHJpdmVycy9zdGFnaW5nL3dmeC9zdGEuaAo+ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVy
-cy9zdGFnaW5nL3dmeC90cmFjZXMuaAo+ICBkZWxldGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFn
-aW5nL3dmeC93ZnguaAoKSSdtIG5vdCBzdXJlIHdoYXQncyB5b3VyIHBsYW4gaGVyZSwgYnV0IHdp
-dGggc3RhZ2luZyB3aXJlbGVzcyBkcml2ZXJzCnRoZXJlJ3MgdXN1YWxseSBhIHNpbXBsZSBzaW1w
-bGUgbW92ZSAoZ2l0IG12KSBvZiB0aGUgZHJpdmVyIGZyb20KZHJpdmVycy9zdGFnaW5nIHRvIGRy
-aXZlcnMvbmV0L3dpcmVsZXNzLiBBbiBleGFtcGxlIGhlcmU6CgpodHRwczovL2dpdC5rZXJuZWwu
-b3JnL2xpbnVzLzU2MjVmOTY1ZDc2NAoKV2hhdCB5b3Ugc2VlbSB0byBkbyBoZXJlIGlzIHRoYXQg
-eW91IGFkZCBhIG5ldyBkcml2ZXIgdG8KZHJpdmVycy9uZXQvd2lyZWxlc3MgYW5kIHRoZW4gcmVt
-b3ZlIHRoZSBvbGQgZHJpdmVyIGZyb20KZHJpdmVycy9zdGFnaW5nLiBBbmQgSSdtIGd1ZXNzaW5n
-IHRoZXNlIHR3byBkcml2ZXJzIGFyZSBub3QgaWRlbnRpY2FsCmFuZCBoYXZlIGRpZmZlcmVuY2Vz
-PwoKLS0gCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC13aXJlbGVz
-cy9saXN0LwoKaHR0cHM6Ly93aXJlbGVzcy53aWtpLmtlcm5lbC5vcmcvZW4vZGV2ZWxvcGVycy9k
-b2N1bWVudGF0aW9uL3N1Ym1pdHRpbmdwYXRjaGVzCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZl
-cnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Wednesday 12 January 2022 08:49:54 CET Kalle Valo wrote:
+> Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
+> =
+
+> > From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> >
+> > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> > ---
+> >  .../bindings/net/wireless/silabs,wfx.yaml     | 125 ---
+> >  drivers/staging/wfx/Kconfig                   |   8 -
+> >  drivers/staging/wfx/Makefile                  |  25 -
+> >  drivers/staging/wfx/bh.c                      | 330 -------
+> >  drivers/staging/wfx/bh.h                      |  33 -
+> >  drivers/staging/wfx/bus.h                     |  38 -
+> >  drivers/staging/wfx/bus_sdio.c                | 272 ------
+> >  drivers/staging/wfx/bus_spi.c                 | 271 ------
+> >  drivers/staging/wfx/data_rx.c                 |  94 --
+> >  drivers/staging/wfx/data_rx.h                 |  18 -
+> >  drivers/staging/wfx/data_tx.c                 | 596 -------------
+> >  drivers/staging/wfx/data_tx.h                 |  68 --
+> >  drivers/staging/wfx/debug.c                   | 365 --------
+> >  drivers/staging/wfx/debug.h                   |  19 -
+> >  drivers/staging/wfx/fwio.c                    | 405 ---------
+> >  drivers/staging/wfx/fwio.h                    |  15 -
+> >  drivers/staging/wfx/hif_api_cmd.h             | 555 ------------
+> >  drivers/staging/wfx/hif_api_general.h         | 262 ------
+> >  drivers/staging/wfx/hif_api_mib.h             | 346 --------
+> >  drivers/staging/wfx/hif_rx.c                  | 416 ---------
+> >  drivers/staging/wfx/hif_rx.h                  |  17 -
+> >  drivers/staging/wfx/hif_tx.c                  | 513 -----------
+> >  drivers/staging/wfx/hif_tx.h                  |  60 --
+> >  drivers/staging/wfx/hif_tx_mib.c              | 324 -------
+> >  drivers/staging/wfx/hif_tx_mib.h              |  49 --
+> >  drivers/staging/wfx/hwio.c                    | 352 --------
+> >  drivers/staging/wfx/hwio.h                    |  75 --
+> >  drivers/staging/wfx/key.c                     | 241 -----
+> >  drivers/staging/wfx/key.h                     |  20 -
+> >  drivers/staging/wfx/main.c                    | 506 -----------
+> >  drivers/staging/wfx/main.h                    |  43 -
+> >  drivers/staging/wfx/queue.c                   | 307 -------
+> >  drivers/staging/wfx/queue.h                   |  45 -
+> >  drivers/staging/wfx/scan.c                    | 149 ----
+> >  drivers/staging/wfx/scan.h                    |  22 -
+> >  drivers/staging/wfx/sta.c                     | 833 =
+
+------------------
+> >  drivers/staging/wfx/sta.h                     |  73 --
+> >  drivers/staging/wfx/traces.h                  | 501 -----------
+> >  drivers/staging/wfx/wfx.h                     | 164 ----
+> >  39 files changed, 8555 deletions(-)
+> >  delete mode 100644 drivers/staging/wfx/Documentation/devicetree/
+bindings/net/wireless/silabs,wfx.yaml
+> >  delete mode 100644 drivers/staging/wfx/Kconfig
+> >  delete mode 100644 drivers/staging/wfx/Makefile
+> >  delete mode 100644 drivers/staging/wfx/bh.c
+> >  delete mode 100644 drivers/staging/wfx/bh.h
+> >  delete mode 100644 drivers/staging/wfx/bus.h
+> >  delete mode 100644 drivers/staging/wfx/bus_sdio.c
+> >  delete mode 100644 drivers/staging/wfx/bus_spi.c
+> >  delete mode 100644 drivers/staging/wfx/data_rx.c
+> >  delete mode 100644 drivers/staging/wfx/data_rx.h
+> >  delete mode 100644 drivers/staging/wfx/data_tx.c
+> >  delete mode 100644 drivers/staging/wfx/data_tx.h
+> >  delete mode 100644 drivers/staging/wfx/debug.c
+> >  delete mode 100644 drivers/staging/wfx/debug.h
+> >  delete mode 100644 drivers/staging/wfx/fwio.c
+> >  delete mode 100644 drivers/staging/wfx/fwio.h
+> >  delete mode 100644 drivers/staging/wfx/hif_api_cmd.h
+> >  delete mode 100644 drivers/staging/wfx/hif_api_general.h
+> >  delete mode 100644 drivers/staging/wfx/hif_api_mib.h
+> >  delete mode 100644 drivers/staging/wfx/hif_rx.c
+> >  delete mode 100644 drivers/staging/wfx/hif_rx.h
+> >  delete mode 100644 drivers/staging/wfx/hif_tx.c
+> >  delete mode 100644 drivers/staging/wfx/hif_tx.h
+> >  delete mode 100644 drivers/staging/wfx/hif_tx_mib.c
+> >  delete mode 100644 drivers/staging/wfx/hif_tx_mib.h
+> >  delete mode 100644 drivers/staging/wfx/hwio.c
+> >  delete mode 100644 drivers/staging/wfx/hwio.h
+> >  delete mode 100644 drivers/staging/wfx/key.c
+> >  delete mode 100644 drivers/staging/wfx/key.h
+> >  delete mode 100644 drivers/staging/wfx/main.c
+> >  delete mode 100644 drivers/staging/wfx/main.h
+> >  delete mode 100644 drivers/staging/wfx/queue.c
+> >  delete mode 100644 drivers/staging/wfx/queue.h
+> >  delete mode 100644 drivers/staging/wfx/scan.c
+> >  delete mode 100644 drivers/staging/wfx/scan.h
+> >  delete mode 100644 drivers/staging/wfx/sta.c
+> >  delete mode 100644 drivers/staging/wfx/sta.h
+> >  delete mode 100644 drivers/staging/wfx/traces.h
+> >  delete mode 100644 drivers/staging/wfx/wfx.h
+> =
+
+> I'm not sure what's your plan here, but with staging wireless drivers
+> there's usually a simple simple move (git mv) of the driver from
+> drivers/staging to drivers/net/wireless. An example here:
+> =
+
+> https://git.kernel.org/linus/5625f965d764
+> =
+
+> What you seem to do here is that you add a new driver to
+> drivers/net/wireless and then remove the old driver from
+> drivers/staging. And I'm guessing these two drivers are not identical
+> and have differences?
+
+Until v7, I have more or less kept in sync this PR and the staging tree. =
+
+I have been a bit lazy from the v8.
+
+However, I still have the patches in my local tree. I am going to
+clean-up them and send them to staging.
+
+-- =
+
+J=E9r=F4me Pouiller
+
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
