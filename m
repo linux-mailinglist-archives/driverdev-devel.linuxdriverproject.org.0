@@ -1,75 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DD6248E08A
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jan 2022 23:43:21 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7276548E34A
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jan 2022 05:30:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 264B96FB7E;
-	Thu, 13 Jan 2022 22:43:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B91D160AFD;
+	Fri, 14 Jan 2022 04:30:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G3UdDyHBgxEu; Thu, 13 Jan 2022 22:43:18 +0000 (UTC)
+	with ESMTP id AEf_d4sTgxWn; Fri, 14 Jan 2022 04:30:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 914F160A91;
-	Thu, 13 Jan 2022 22:43:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CD9AA60AF2;
+	Fri, 14 Jan 2022 04:30:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2F0941BF476
- for <devel@linuxdriverproject.org>; Thu, 13 Jan 2022 22:43:07 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4D7551BF2B7
+ for <devel@linuxdriverproject.org>; Fri, 14 Jan 2022 04:30:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2AD4D4164E
- for <devel@linuxdriverproject.org>; Thu, 13 Jan 2022 22:43:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4551940183
+ for <devel@linuxdriverproject.org>; Fri, 14 Jan 2022 04:30:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kvh75foBe17I for <devel@linuxdriverproject.org>;
- Thu, 13 Jan 2022 22:43:06 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pg1-x544.google.com (mail-pg1-x544.google.com
- [IPv6:2607:f8b0:4864:20::544])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BA548414C1
- for <devel@driverdev.osuosl.org>; Thu, 13 Jan 2022 22:43:06 +0000 (UTC)
-Received: by mail-pg1-x544.google.com with SMTP id f8so1167922pgf.8
- for <devel@driverdev.osuosl.org>; Thu, 13 Jan 2022 14:43:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=YbEI3Q/NEjCtDTVCV1jkA7nYNYBH/Wfa2wk3IkVyJko=;
- b=jEdbi3g5rG8VBJFcbi+jVr5GHBmnFDB+4j3C7NEaOIWN99ezPINYRJXxrbAhVnBhge
- dTpRF4xCpq81hKJrhOiAkcWRRND4S/7atZrdyiVJnnA5AzuZTsSiJr1kgHblvGkE1gwK
- FMZzx1ti807ZU17uY1icDZgcPuhTPsy/nklfcTR6Rmu3Q28LEDVPpja+OmbQBB2AhNBT
- lxpH5225wSwX08Uxq8d4/0aPDqg3bxF9U/DsjaLHbTweXlfnWFP+o9DoP7jvpoaOUS4T
- UKgM8uhwPN1i+awhGT+Q43NXiYPaIDsDsE5S4YDHus0ZTEIsGKHL1gDuI9V6LbSLq5df
- Tyeg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=YbEI3Q/NEjCtDTVCV1jkA7nYNYBH/Wfa2wk3IkVyJko=;
- b=g1BdAXeFGuv21dsm4BjgG3jaxqeWCG54E3EsYYa3Uv/Bk7QVTn6kh8VBYX8rAzAdez
- JR5oG3Rx0JwB5ksKduvNDLsgxYjExS4XJdpp5IlP2l31Nwfo7bOc8JnG55JzM5xRQdjD
- uSBFzs3ZZziLWS7XpaUoTGktRTpMCEfvuno/GHGn1heKyt5HYIGXTcDEzDfT4rO9kQAR
- r5U32DEmTl1zhxb/xOJtfdBdjQugPv8YFVuf89D4XsuheYk0b6T65qTnhQpmLI3xsNYa
- dzP+0+o8Ts8/X1O/38auwLnxcnPe5o2xK9J9lfkMwHXuUmLeB71q689agb06ACaD8irE
- 5U5g==
-X-Gm-Message-State: AOAM532HThRDwFUXJ9B1HcqxxfTykDOg6PxrxwsAuOgMRUjHbMXzKJCp
- T2dT9fQRDjyYWDKvKKDA4L98Uvs/GhtTJBjRjR4=
-X-Google-Smtp-Source: ABdhPJzC1p2sRakG86QBjYrD+ATpOAvgqOL5hbzTs+MqEbm/iqT+eGzetJ0l2s9sX0BO+JsRtp3+IqhI81k4s3/jEEs=
-X-Received: by 2002:a05:6a00:2391:b0:4a2:cb64:2c97 with SMTP id
- f17-20020a056a00239100b004a2cb642c97mr6270162pfc.36.1642113786143; Thu, 13
- Jan 2022 14:43:06 -0800 (PST)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id gn3RPi00IFWu for <devel@linuxdriverproject.org>;
+ Fri, 14 Jan 2022 04:30:26 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 00F3740177
+ for <devel@driverdev.osuosl.org>; Fri, 14 Jan 2022 04:30:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1642134625; x=1673670625;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=O4wou2GTtBk8BbEXBxlSaMLxaMLT9P2JjMq6zyjDCfE=;
+ b=Ldw93M8UzvU69pH1SlcORaHidOG90Q7u2gV2//RcR0Q6ffLYxxqxRDNr
+ psu39JIVcR1k6pOQLXm/91RwEiFLXEJcaQWFwbJ8OthYnPevjsha3Ehjg
+ DywXcbk2XFwMd4kehTUFk5baoXSNtfqtoX/THAQFoL4KEabcWmi8+y74Z
+ KoMZPwvjObVDlGH9mBGNCUslBBVRMhABGaHnX3PiYvIIPbAkzEQchRcLR
+ 3CHDQHoDAiQ9MOx7P0LjyCVNCLYAPEYF9DqurAfzMiIYXcHzEpMidCyZh
+ CeHsGrTxexeZ6oNW0o5nP0ZyCvz398C7invUPGtrBVa4jh+PAIK6EAa1a w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10226"; a="307524738"
+X-IronPort-AV: E=Sophos;i="5.88,287,1635231600"; d="scan'208";a="307524738"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jan 2022 20:30:25 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,287,1635231600"; d="scan'208";a="491370847"
+Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
+ by orsmga002.jf.intel.com with ESMTP; 13 Jan 2022 20:30:24 -0800
+Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1n8EEJ-00085d-9b; Fri, 14 Jan 2022 04:30:23 +0000
+Date: Fri, 14 Jan 2022 12:29:22 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:module_ns] BUILD SUCCESS
+ deb840fd0e26842a054ac319ead15c6ba3eb3d76
+Message-ID: <61e0fc22.Vn7UZ7U9rWiI/uZ/%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Received: by 2002:a05:6a10:f38c:0:0:0:0 with HTTP; Thu, 13 Jan 2022 14:43:05
- -0800 (PST)
-From: Marcus Galois <marcus.galois@gmail.com>
-Date: Thu, 13 Jan 2022 23:43:05 +0100
-Message-ID: <CANqBaXVyTFcov3oJmiL7YzhLMerdrb2yC8QizOG6MOyH4KVVvw@mail.gmail.com>
-Subject: Good News Finally.
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,37 +77,145 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mchristophdaniel@gmail.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello friend.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git module_ns
+branch HEAD: deb840fd0e26842a054ac319ead15c6ba3eb3d76  module.h: allow #define strings to work with MODULE_IMPORT_NS
 
-You might find it so difficult to remember me, though it is indeed a
-very long time, I am much delighted to contact you again after a long
-period of time, I remember you despite circumstances that made things
-not worked out as we projected then. I want to inform you that the
-transaction we're doing together then finally worked out and I decided
-to contact you and to let you know because of your tremendous effort
-to make things work out then.
+elapsed time: 1144m
 
-Meanwhile I must inform you that I'm presently in Caribbean Island for
-numerous business negotiation with some partners. with my sincere
-heart i have decided to compensate you with USD$900,000 for your
-dedication then on our transaction, you tried so much that period and
-I appreciated your effort. I wrote a cheque/check on your name, as
-soon as you receive it, you let me know.
+configs tested: 113
+configs skipped: 3
 
-Contact my secretary now on his email: mchristophdaniel@gmail.com
-Name: Mr. Christoph Daniel
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-You are to forward to him your Name........ Address.......,Phone
-number......for shipment/dispatch of the cheque/Check to you
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                          randconfig-c001
+mips                       capcella_defconfig
+arm                         axm55xx_defconfig
+arm                           h5000_defconfig
+sh                          landisk_defconfig
+csky                             alldefconfig
+xtensa                          iss_defconfig
+arm                           sunxi_defconfig
+powerpc                      pasemi_defconfig
+sh                               j2_defconfig
+arc                              alldefconfig
+mips                           ci20_defconfig
+arm                            qcom_defconfig
+arm                            pleb_defconfig
+ia64                        generic_defconfig
+sh                   rts7751r2dplus_defconfig
+sh                      rts7751r2d1_defconfig
+sh                          kfr2r09_defconfig
+um                           x86_64_defconfig
+mips                        jmr3927_defconfig
+sh                                  defconfig
+i386                             alldefconfig
+sh                          sdk7786_defconfig
+arm                           tegra_defconfig
+sh                         microdev_defconfig
+powerpc                       ppc64_defconfig
+arm                  randconfig-c002-20220113
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nds32                               defconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+nios2                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64                        randconfig-a006
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+riscv                randconfig-r042-20220113
+arc                  randconfig-r043-20220113
+s390                 randconfig-r044-20220113
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                            allmodconfig
+riscv                    nommu_k210_defconfig
+riscv                            allyesconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+x86_64                    rhel-8.3-kselftests
+um                             i386_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
 
-Regards,
-Mr. Marcus Galois
+clang tested configs:
+arm                  randconfig-c002-20220113
+x86_64                        randconfig-c007
+riscv                randconfig-c006-20220113
+powerpc              randconfig-c003-20220113
+i386                          randconfig-c001
+mips                 randconfig-c004-20220113
+mips                           ip28_defconfig
+arm                          pxa168_defconfig
+powerpc                     ppa8548_defconfig
+powerpc                     mpc5200_defconfig
+mips                            e55_defconfig
+powerpc                 mpc836x_mds_defconfig
+x86_64                        randconfig-a005
+x86_64                        randconfig-a003
+x86_64                        randconfig-a001
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+i386                          randconfig-a011
+i386                          randconfig-a013
+i386                          randconfig-a015
+hexagon              randconfig-r045-20220113
+hexagon              randconfig-r041-20220113
+
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
