@@ -1,41 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E6E8948FFCF
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jan 2022 01:52:54 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E2BCB48FFD0
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jan 2022 01:53:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0D3CF81434;
-	Mon, 17 Jan 2022 00:52:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3A0D9405B3;
+	Mon, 17 Jan 2022 00:53:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Dz2C_dU28l06; Mon, 17 Jan 2022 00:52:52 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wmJ4goaV7ImF; Mon, 17 Jan 2022 00:53:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7242A814B7;
-	Mon, 17 Jan 2022 00:52:51 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4D0B6404F9;
+	Mon, 17 Jan 2022 00:53:01 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 760691BF97D
- for <devel@linuxdriverproject.org>; Mon, 17 Jan 2022 00:52:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9EB331BF97D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jan 2022 00:52:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5DBAB81434
- for <devel@linuxdriverproject.org>; Mon, 17 Jan 2022 00:52:41 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id EBB2781434
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jan 2022 00:52:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C-1pxHlf2oNl for <devel@linuxdriverproject.org>;
- Mon, 17 Jan 2022 00:52:40 +0000 (UTC)
+ with ESMTP id vpkeC_mcXIL1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jan 2022 00:52:41 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from [103.153.79.64] (unknown [103.153.79.64])
- by smtp1.osuosl.org (Postfix) with ESMTP id 48F61813E8
- for <devel@driverdev.osuosl.org>; Mon, 17 Jan 2022 00:52:40 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0A759813E9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jan 2022 00:52:40 +0000 (UTC)
 From: Nasser Rashid<nasserrashid.ae@gmail.com>
-To: devel@driverdev.osuosl.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: EXPO 2020 BUSINESS PROPOSAL 
 Date: 16 Jan 2022 16:52:43 -0800
-Message-ID: <20220116165242.0D32B85EA94CE6B5@gmail.com>
+Message-ID: <20220116165243.3E76C80D029225C6@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
