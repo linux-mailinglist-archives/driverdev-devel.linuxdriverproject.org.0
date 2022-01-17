@@ -1,68 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7EA66490032
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jan 2022 03:26:38 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1C95C490033
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jan 2022 03:26:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A23B540306;
-	Mon, 17 Jan 2022 02:26:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 650B78174F;
+	Mon, 17 Jan 2022 02:26:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ya3JxU5PTDtP; Mon, 17 Jan 2022 02:26:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LihKL8llLhN9; Mon, 17 Jan 2022 02:26:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D7B5D402E5;
-	Mon, 17 Jan 2022 02:26:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8368A81309;
+	Mon, 17 Jan 2022 02:26:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B6B681BF361
- for <devel@linuxdriverproject.org>; Mon, 17 Jan 2022 02:26:24 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 298FC1BF361
+ for <devel@linuxdriverproject.org>; Mon, 17 Jan 2022 02:26:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A3652400F8
- for <devel@linuxdriverproject.org>; Mon, 17 Jan 2022 02:26:24 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 133B280C7B
+ for <devel@linuxdriverproject.org>; Mon, 17 Jan 2022 02:26:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HinOe_9Fm4is for <devel@linuxdriverproject.org>;
- Mon, 17 Jan 2022 02:26:23 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XNbedXrt_cTG for <devel@linuxdriverproject.org>;
+ Mon, 17 Jan 2022 02:26:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 62027400CB
- for <devel@driverdev.osuosl.org>; Mon, 17 Jan 2022 02:26:23 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3B1AE80BB7
+ for <devel@driverdev.osuosl.org>; Mon, 17 Jan 2022 02:26:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1642386383; x=1673922383;
+ t=1642386387; x=1673922387;
  h=date:from:to:cc:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=sDcPPzXKaJiGs419SxEHpVT5FneJ9soKOQKJICaNvvA=;
- b=IsNkBUJhtkDZ/h5A/RP20guf9ov2VywVxp0MSkr4VSb/NmTQou1imtlO
- fOUDFaEEjr2A8zN8/TW+0DWPIuox4uXvuRWn74d4/Hs9RrFpJCD1tSQ9b
- IMFQlBOdI5ESv68rm1ZZjyZJzya/pBAI5isQ86ClMGhMlZt1s/jKmn6te
- 8+3faX7qSlh14mG8T9BaTokMXL+IllLom4jyEs0b9lndZgnhtLlTaitNU
- BgIqSOFmbqLchVCkvsLTaqmcONmBp6eePWPCTOeud5AZRXHunbcR95zuN
- rUQcNIioYtBnfXk45cj49Ik6ihO59+3mBud4slVGg19PSNZlc5ZmDR2oX A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10229"; a="244495476"
-X-IronPort-AV: E=Sophos;i="5.88,294,1635231600"; d="scan'208";a="244495476"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ bh=gRfoBmmj0DiOIzy7I5Skvnna07YTQf3EsiK/Tyvd6cE=;
+ b=lYMnERln7B0cShPQNj5eHfXTGB+f89oE3nsbxJltVieuDQPWNhRHnxRf
+ JM8CgQD/8cEsmv7Un3ZN7G8chRN/ZOvmxq7U+PUBajE8dBAaeB08mboOx
+ W3jlYWP5xhmOodWpgtXr6s8Y/PpuIvYvQU+JvYyvJPhyNoRo4tGwSbsRd
+ w29Od7t8/V2bX4hs8fnyEjCmYWGLj+J+rTEkUthd5EICL/sWvM+Kb73Km
+ ZexehReSFRpY3lW7284U3TD8DqypsZdpWnMOg7FvOtv7LGV/gxy9r0zny
+ KNh13FlIQh9AQSuLZ9NleqUCb+65Mo3vO+Dit6GoleMLjtLI6cgpPDTuW g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10229"; a="225220265"
+X-IronPort-AV: E=Sophos;i="5.88,294,1635231600"; d="scan'208";a="225220265"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  16 Jan 2022 18:26:22 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,294,1635231600"; d="scan'208";a="517241225"
+X-IronPort-AV: E=Sophos;i="5.88,294,1635231600"; d="scan'208";a="492223660"
 Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
- by orsmga007.jf.intel.com with ESMTP; 16 Jan 2022 18:26:21 -0800
+ by orsmga002.jf.intel.com with ESMTP; 16 Jan 2022 18:26:21 -0800
 Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1n9Hiu-000BB6-Q9; Mon, 17 Jan 2022 02:26:20 +0000
-Date: Mon, 17 Jan 2022 10:26:11 +0800
+ id 1n9Hiu-000BBE-T8; Mon, 17 Jan 2022 02:26:20 +0000
+Date: Mon, 17 Jan 2022 10:26:14 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:module_ns] BUILD SUCCESS
- 382c6c331abea0a9b1eff5176543fdf2ff97fcb9
-Message-ID: <61e4d3c3.5S+f3f0L0gVQ24TI%lkp@intel.com>
+Subject: [driver-core:kobject-const] BUILD SUCCESS
+ 6ea40495426a013e80b5aea160f12b1b2bc8b92b
+Message-ID: <61e4d3c6.FyHSv9d2eek207tb%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -83,10 +81,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git module_ns
-branch HEAD: 382c6c331abea0a9b1eff5176543fdf2ff97fcb9  module.h: allow #define strings to work with MODULE_IMPORT_NS
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const
+branch HEAD: 6ea40495426a013e80b5aea160f12b1b2bc8b92b  moxart: fix potential use-after-free on remove path
 
-elapsed time: 727m
+elapsed time: 728m
 
 configs tested: 160
 configs skipped: 3
@@ -160,11 +158,11 @@ m68k                             allyesconfig
 nios2                               defconfig
 arc                              allyesconfig
 nds32                             allnoconfig
-nds32                               defconfig
-nios2                            allyesconfig
 csky                                defconfig
 alpha                               defconfig
+nds32                               defconfig
 alpha                            allyesconfig
+nios2                            allyesconfig
 h8300                            allyesconfig
 sh                               allmodconfig
 parisc                              defconfig
@@ -232,15 +230,15 @@ powerpc                 mpc832x_rdb_defconfig
 mips                        omega2p_defconfig
 powerpc                    gamecube_defconfig
 powerpc                 mpc8313_rdb_defconfig
+x86_64                        randconfig-a003
+x86_64                        randconfig-a001
+x86_64                        randconfig-a005
 x86_64               randconfig-a005-20220117
 x86_64               randconfig-a004-20220117
 x86_64               randconfig-a001-20220117
 x86_64               randconfig-a006-20220117
 x86_64               randconfig-a002-20220117
 x86_64               randconfig-a003-20220117
-x86_64                        randconfig-a005
-x86_64                        randconfig-a003
-x86_64                        randconfig-a001
 i386                          randconfig-a002
 i386                          randconfig-a006
 i386                          randconfig-a004
