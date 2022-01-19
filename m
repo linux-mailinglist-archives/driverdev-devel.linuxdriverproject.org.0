@@ -1,66 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DC7B349333E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jan 2022 03:57:44 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1589B49333F
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jan 2022 03:57:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 19217408DA;
-	Wed, 19 Jan 2022 02:57:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9A7D681BA9;
+	Wed, 19 Jan 2022 02:57:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mdWFVaIOJEyR; Wed, 19 Jan 2022 02:57:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7F1NHN6vqfuW; Wed, 19 Jan 2022 02:57:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2520E408F4;
-	Wed, 19 Jan 2022 02:57:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B679E819BC;
+	Wed, 19 Jan 2022 02:57:50 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9CA071BF376
- for <devel@linuxdriverproject.org>; Wed, 19 Jan 2022 02:57:18 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 174A91BF376
+ for <devel@linuxdriverproject.org>; Wed, 19 Jan 2022 02:57:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8981340283
- for <devel@linuxdriverproject.org>; Wed, 19 Jan 2022 02:57:17 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1078360E99
+ for <devel@linuxdriverproject.org>; Wed, 19 Jan 2022 02:57:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7IOtuu7DX6q6 for <devel@linuxdriverproject.org>;
- Wed, 19 Jan 2022 02:57:16 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id a0d0005-Rhnx for <devel@linuxdriverproject.org>;
+ Wed, 19 Jan 2022 02:57:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BE7E540632
- for <devel@driverdev.osuosl.org>; Wed, 19 Jan 2022 02:57:16 +0000 (UTC)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id AC96D60E8F
+ for <devel@driverdev.osuosl.org>; Wed, 19 Jan 2022 02:57:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1642561036; x=1674097036;
+ t=1642561047; x=1674097047;
  h=date:from:to:cc:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=7t9DQ0JT3XJR8SbxQSWJ29ibH3RwvCxDJE8DxdmSWjQ=;
- b=TP2lqhVW2lRZPX7IEPrK8cF9KI/gzLNZRCa8Q2tOnkm4zYH2EyH/DldW
- 2GknTPVrIEzM5iTqSv8kNInv0LOGfI6JOuObnLo7q/67YqVB0jwwJw+9t
- w/0J2MZUs52VHhDBUNuwmRZd4E+yI7Ta9zfkIe2VwOBIg72TF249Srmas
- 074Pv6QY3P8qrkzZVBVoIbnwaFvYHkiUkgxTicpx9/XOw/0fSjkEngCkB
- MmNE3gKE9JQaJlpKEvmelyLexeiPZMo0PdqnirkuHj0tOM5+ECTsGlOdH
- XQWBRSeTbaRjNXeG1kies6I14hD7S5F4rDq0l8tace5GWqkn/du/ioEJG Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10231"; a="245165566"
-X-IronPort-AV: E=Sophos;i="5.88,298,1635231600"; d="scan'208";a="245165566"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jan 2022 18:57:16 -0800
+ bh=xOfqngsWx/ZoQZQhtKfCT2Pa/ZiWRc65sOh58mzvoXI=;
+ b=PNV3j3gCpTDlXGaLvOBpe/CnFNRdWgloXnIbBzQXOMRMm0I6O47/JG93
+ LZkhKuqUQoDVQBlroIRMkolTMKDeSD/0WJ/Xyx1/3OlJnW1yNxJkKzu77
+ 4dYANux7fBVm0+ByhsAnlvNY4rREWC89w36+AviyYAVI8yA3b1OUT2td5
+ EaisOyIObL5lc5iko797Rrp4lpA6EpCemBrdQxh3NWryElmMbaC+N7Fj/
+ 1LvI4v6rWd1QNP5u+C9qmT+IswQKI8K58kZsLIsEZGZKJi53gUj83tAt/
+ AFaSD0JLky/NnqV0+rKZnZ/OuZbpGNJBYC7MTqQMyHfaRzI2+UqmnJWtD w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10231"; a="244763892"
+X-IronPort-AV: E=Sophos;i="5.88,298,1635231600"; d="scan'208";a="244763892"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jan 2022 18:57:17 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,298,1635231600"; d="scan'208";a="477212675"
+X-IronPort-AV: E=Sophos;i="5.88,298,1635231600"; d="scan'208";a="595261563"
 Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 18 Jan 2022 18:57:14 -0800
+ by fmsmga004.fm.intel.com with ESMTP; 18 Jan 2022 18:57:15 -0800
 Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1nA19u-000DAk-9F; Wed, 19 Jan 2022 02:57:14 +0000
-Date: Wed, 19 Jan 2022 10:56:11 +0800
+ id 1nA19u-000DAx-Bo; Wed, 19 Jan 2022 02:57:14 +0000
+Date: Wed, 19 Jan 2022 10:56:17 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:module_ns] BUILD SUCCESS
- bb0c845b25ed7e3653c81cd00bb8fe8ede74d871
-Message-ID: <61e77dcb.6REXEj/QSvFRva53%lkp@intel.com>
+Subject: [driver-core:kobject-const] BUILD SUCCESS
+ a7eea8a2625456bfd5e22b9d7ee175b92ce68d91
+Message-ID: <61e77dd1.Lv0pap8kdBJSLd+F%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -81,12 +83,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git module_ns
-branch HEAD: bb0c845b25ed7e3653c81cd00bb8fe8ede74d871  export: fix string handling of namespace in EXPORT_SYMBOL_NS
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const
+branch HEAD: a7eea8a2625456bfd5e22b9d7ee175b92ce68d91  moxart: fix potential use-after-free on remove path
 
 elapsed time: 723m
 
-configs tested: 142
+configs tested: 150
 configs skipped: 4
 
 The following configs have been built successfully.
@@ -106,14 +108,11 @@ sh                ecovec24-romimage_defconfig
 powerpc                     asp8347_defconfig
 powerpc                 mpc834x_mds_defconfig
 sh                           se7721_defconfig
+mips                         db1xxx_defconfig
+arm64                            alldefconfig
+sh                        dreamcast_defconfig
 m68k                          atari_defconfig
 mips                  decstation_64_defconfig
-arm64                            alldefconfig
-mips                       bmips_be_defconfig
-mips                           ci20_defconfig
-powerpc                 mpc834x_itx_defconfig
-powerpc                      ppc40x_defconfig
-mips                      loongson3_defconfig
 mips                        bcm47xx_defconfig
 sh                            shmin_defconfig
 h8300                    h8300h-sim_defconfig
@@ -163,11 +162,11 @@ nios2                               defconfig
 arc                              allyesconfig
 nds32                             allnoconfig
 i386                             allyesconfig
-sparc                            allyesconfig
 sparc                               defconfig
 i386                                defconfig
 i386                   debian-10.3-kselftests
 i386                              debian-10.3
+sparc                            allyesconfig
 mips                             allyesconfig
 mips                             allmodconfig
 powerpc                          allyesconfig
@@ -187,16 +186,17 @@ i386                 randconfig-a013-20220117
 riscv                randconfig-r042-20220117
 arc                  randconfig-r043-20220116
 arc                  randconfig-r043-20220117
-s390                 randconfig-r044-20220117
 arc                  randconfig-r043-20220118
+s390                 randconfig-r044-20220117
 riscv                randconfig-r042-20220119
 s390                 randconfig-r044-20220119
 arc                  randconfig-r043-20220119
-riscv                    nommu_k210_defconfig
 riscv                            allyesconfig
-riscv                    nommu_virt_defconfig
 riscv                             allnoconfig
+riscv                          rv32_defconfig
 riscv                            allmodconfig
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
 x86_64                    rhel-8.3-kselftests
 um                           x86_64_defconfig
 um                             i386_defconfig
@@ -240,6 +240,16 @@ i386                 randconfig-a003-20220117
 i386                          randconfig-a002
 i386                          randconfig-a006
 i386                          randconfig-a004
+hexagon              randconfig-r045-20220116
+hexagon              randconfig-r045-20220117
+hexagon              randconfig-r045-20220118
+riscv                randconfig-r042-20220116
+hexagon              randconfig-r041-20220118
+s390                 randconfig-r044-20220118
+s390                 randconfig-r044-20220116
+hexagon              randconfig-r041-20220116
+hexagon              randconfig-r041-20220117
+riscv                randconfig-r042-20220118
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
