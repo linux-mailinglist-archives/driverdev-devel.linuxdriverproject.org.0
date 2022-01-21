@@ -1,49 +1,41 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C749B4958E7
-	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Jan 2022 05:28:03 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 84908495BD5
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Jan 2022 09:23:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F02984167C;
-	Fri, 21 Jan 2022 04:28:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DF16160BD7;
+	Fri, 21 Jan 2022 08:23:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id t2yF4oChY1Dz; Fri, 21 Jan 2022 04:28:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id KVd-gtsKHNq9; Fri, 21 Jan 2022 08:23:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F07DD4166D;
-	Fri, 21 Jan 2022 04:27:58 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4D09C605A0;
+	Fri, 21 Jan 2022 08:23:25 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E99061BF855
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 21 Jan 2022 04:27:48 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A50771BF83C
+ for <devel@linuxdriverproject.org>; Fri, 21 Jan 2022 08:23:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DE7884164A
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 21 Jan 2022 04:27:48 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8365A401ED
+ for <devel@linuxdriverproject.org>; Fri, 21 Jan 2022 08:23:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Z0ymNYfMqU4s
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 21 Jan 2022 04:27:47 +0000 (UTC)
-X-Greylist: delayed 00:05:55 by SQLgrey-1.8.0
-Received: from web.activeinteractive.nl (web.activeinteractive.nl
- [195.201.145.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7F8C641608
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 21 Jan 2022 04:27:47 +0000 (UTC)
-Received: by web.activeinteractive.nl (Postfix, from userid 1010)
- id 0CB4E84F6A; Fri, 21 Jan 2022 05:21:45 +0100 (CET)
-To: driverdev-devel@linuxdriverproject.org
-Subject: Opgave PloegerRangFestival
-Date: Fri, 21 Jan 2022 04:21:45 +0000
-From: "Ploegers.nl" <wordpress@ploegers.nl>
-Message-ID: <sMKbMtbF2RXtOHJ92dyagM37SMTpS3xSwvpmkpSW0@ploegers.nl>
-X-Mailer: PHPMailer 6.5.0 (https://github.com/PHPMailer/PHPMailer)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id POqL25N9WE1A for <devel@linuxdriverproject.org>;
+ Fri, 21 Jan 2022 08:23:15 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from [103.153.79.64] (unknown [103.153.79.64])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5F485404F5
+ for <devel@driverdev.osuosl.org>; Fri, 21 Jan 2022 08:23:14 +0000 (UTC)
+From: Nasser Rashid<hussam.abudhabicapital.ae@gmail.com>
+To: devel@driverdev.osuosl.org
+Subject: UAE EXPO 2020 BUSINESS  PROPOSAL 
+Date: 21 Jan 2022 00:22:52 -0800
+Message-ID: <20220121002252.C2FB72CC1E8C8AFE@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -57,21 +49,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: jeugd@ploegers.nl
+Reply-To: Nasser Rashid <nasserrashid.uae@gmail.com>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGVlbG5lbWVyIDE6IOKdpO+4jyBBcmlhIGxpa2VkIHlvdSEgQ2xpY2sgSGVyZTogaHR0cDovL2lu
-eC5sdi9EUWVTPzduN3ZsIOKdpO+4jwpEZWVsbmVtZXIgMjogdTZzODJ1CkRlZWxuZW1lciAzOiBi
-ZXR1anZqZApEZWVsbmVtZXIgNDogNjhuMjJ3NgpEZWVsbmVtZXIgNTogeTdoZmtjaApEZWVsbmVt
-ZXIgNjogNTRmOGh5NApTb29ydCBkZWVsbmFtZTogcGxheWJhY2tlbgpUaXRlbDogNzEyNTYzNTg0
-MTgyCkFydGllc3Q6IHVzYWh0awpFbWFpbDogZHJpdmVyZGV2LWRldmVsQGxpbnV4ZHJpdmVycHJv
-amVjdC5vcmcKVGVsZWZvb25udW1tZXI6IDcxMjU2MzU4NDE4MgpHcm9lcDogR3JvZXAgNyBlbiA4
-CkJpanpvbmRlcmhlZGVuOiA5MjFvdGsydwoKLS0KRGV6ZSBlLW1haWwgaXMgdmVyem9uZGVuIHZh
-bnVpdCBoZXQgY29udGFjdGZvcm11bGllciBvcCBQbG9lZ2Vycy5ubCBodHRwczovL3Bsb2VnZXJz
-Lm5sL3Bsb2VnZXJ0amVzL3Bsb2VnZXJyYW5nLwoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
-cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
-YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+R3JlZXRpbmdzIQoKSSdtIE5hc3NlcsKgUmFzaGlkLMKgYSBidXNpbmVzcyBmaW5hbmNpYWwgc3Bl
+Y2lhbGlzdCBhbmQgaW52ZXN0bWVudCAKZXhwZXJ0LiBjb25zdWx0YW50IGV4cGVyaWVuY2VkIGlu
+IGZpbmFuY2lhbCBmdW5kaW5nIHNlcnZpY2VzLiBJIApoYXZlIGEKCkkgaGF2ZSBhIHNlcmlvdXMg
+YnVzaW5lc3MgaW52ZXN0bWVudCBvcHBvcnR1bml0eSB0byBkaXNjdXNzIHdpdGggCnlvdS4gQ2Vu
+dHVyeSBGaW5hbmNpYWwgRHViYWkgaXMgdGhlIGhvbWUgb2YgZGlzY2VybmluZyBpbnZlc3RvcnMu
+IApXZQoKV2Ugb2ZmZXIgaW5kZXBlbmRlbnQgZmluYW5jaWFsIGFkdmljZSBhbmQgYXNzaXN0IG91
+ciBjbGllbnRzIGluIAptYWtpbmcgc291bmQgaW52ZXN0bWVudCBkZWNpc2lvbnMgZnJvbSBhIHZh
+cmlldHkgb2YgCmludmVzdG1lbnTCoG9wdGlvbnMuCgpPcHBvcnR1bml0aWVzIGFyZSBhdmFpbGFi
+bGUuCgpPdXIgY29tcGFueSBpcyBzdHJ1Y3R1cmVkIHRvIHByb3ZpZGUgcGVyc29uYWxpemVkIHNl
+cnZpY2VzIHRvIEFzIAphIHJlc3VsdCwgY2FwaXRhbCBzZWN1cml0eSBhbmQgYWRlcXVhdGUgZnVu
+ZGluZyBhcmUgZW5zdXJlZC4KCnJldHVybnMgb27CoGludmVzdG1lbnQuIE91ciBpbnZlc3RvcnMg
+YXJlIHJlYWR5IHRvIHByb3ZpZGUgZnVuZGluZyAKZm9yIHlvdXIgYnVzaW5lc3MgZXhwYW5zaW9u
+LCBzdWNoIGFzIGRlYnQgYW5kIGVxdWl0eS4KCmZpbmFuY2luZy4gSWYgeW91IHJlcXVpcmUgZnVu
+ZGluZywgd2Ugd291bGQgYmUgYWJsZSB0byBwYXJ0bmVyIAp3aXRoIHlvdS4gV2UgbG9vayBmb3J3
+YXJkIHRvIHlvdXIgcmVzcG9uc2UuCgpUaGFuayB5b3UgYW5kIHN0YXkgc2FmZSwKCk5hc3NlciBS
+YXNoaWQsIENGQSwKCkNlbnR1cnkgRmluYW5jaWFswqAKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRy
+aXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
