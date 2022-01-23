@@ -2,65 +2,65 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C7C0496FAA
-	for <lists+driverdev-devel@lfdr.de>; Sun, 23 Jan 2022 04:03:30 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C9E2496FAC
+	for <lists+driverdev-devel@lfdr.de>; Sun, 23 Jan 2022 04:03:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E6616408AE;
-	Sun, 23 Jan 2022 03:03:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2453A408D4;
+	Sun, 23 Jan 2022 03:03:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7o3r4s-IFmsy; Sun, 23 Jan 2022 03:03:27 +0000 (UTC)
+	with ESMTP id N12TQ3bR_b4H; Sun, 23 Jan 2022 03:03:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0D84740896;
-	Sun, 23 Jan 2022 03:03:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id ABF8A40878;
+	Sun, 23 Jan 2022 03:03:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 602791BF3A3
- for <devel@linuxdriverproject.org>; Sun, 23 Jan 2022 03:03:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5FD1D1BF3A3
+ for <devel@linuxdriverproject.org>; Sun, 23 Jan 2022 03:03:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3E14740878
- for <devel@linuxdriverproject.org>; Sun, 23 Jan 2022 03:03:16 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2B4EB402FD
+ for <devel@linuxdriverproject.org>; Sun, 23 Jan 2022 03:03:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BGEr08Eq8KsZ for <devel@linuxdriverproject.org>;
- Sun, 23 Jan 2022 03:03:14 +0000 (UTC)
+ with ESMTP id DhebHckByQDs for <devel@linuxdriverproject.org>;
+ Sun, 23 Jan 2022 03:03:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C2948402EC
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EB827402F8
  for <devel@driverdev.osuosl.org>; Sun, 23 Jan 2022 03:03:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1642906994; x=1674442994;
  h=date:from:to:cc:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=dMLMr5+AGbt/NqTf4ST4bInKRr38ziEzSiN+lY9lb9U=;
- b=R2j03PDIYkLYO5n6bvHDs0n9RAp0VXKaNTt6TdNMoMMbGK8g/UEgcveL
- HrMdOkpKNmM2vCuNWnuredXFX3AMo/7yuqRlGwuQmr5YovEBeJYQuxjAi
- 3eE0x2BLEZNtgSdQf9BJfaNU9yNyqZXGYCVyxFjlAAWE6c0SPHNNQcaKN
- NPGRd4F8XEOaRD12THCg+6sGIbQYC6VGQ3WtaFFTI/zzj5X0BxhmtOkW5
- iMn7SgYgxqy1uZn9q/3TO5qEQ8U1K+YUylX0Gna70xdhJKLMeWDpNMfjr
- rhPZcR/ImK+JNpVQWR0ieOyyqaeUWgxrVJRH1s2M50PRsjrd94MjSeHL5 A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10235"; a="226538411"
-X-IronPort-AV: E=Sophos;i="5.88,309,1635231600"; d="scan'208";a="226538411"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ bh=wkfeuVzozYDFXGCWEomKfwu30PqvKE8pv0ZETp2fM5M=;
+ b=jeR/ac7qkvMmwfS/s4DBmmHGiGg0ugdbQBmCqVhz7jVAyARCvbToSvAV
+ runxD7/v264GaD65mpSWdO/xQJS9dtT5GhO6WXdBvkET0ixSYYPd2xLLf
+ Oj3mqnIQ/2tBqBYNgpptAlHpIiglC2kkbg8L1MWwHZAiDAUpOr8jsoVSb
+ 11tYmNHvaGWePqi/7NUBwnLS8IN31fR658o/yKrjHT+59RyLcx6dPh2nQ
+ +1Ldj7gtrjPlN1uJwSwDxvWfHqdGSfhtSRRR3FS3tCMVg7dIFHe9KL0eX
+ LMFFCHQGKxxBSlGmg1LdHkESLxt8fXW93sbCGZB7I5+dpR8QWVfS1pT6+ g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10235"; a="244690198"
+X-IronPort-AV: E=Sophos;i="5.88,309,1635231600"; d="scan'208";a="244690198"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  22 Jan 2022 19:03:13 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,309,1635231600"; d="scan'208";a="579992970"
+X-IronPort-AV: E=Sophos;i="5.88,309,1635231600"; d="scan'208";a="673298287"
 Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 22 Jan 2022 19:03:12 -0800
+ by fmsmga001.fm.intel.com with ESMTP; 22 Jan 2022 19:03:12 -0800
 Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1nBT9s-000Gvn-0y; Sun, 23 Jan 2022 03:03:12 +0000
-Date: Sun, 23 Jan 2022 11:02:16 +0800
+ id 1nBT9s-000Gvp-1Z; Sun, 23 Jan 2022 03:03:12 +0000
+Date: Sun, 23 Jan 2022 11:02:22 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:module_ns] BUILD SUCCESS
- b39a8bd86fa65ef5523601f82ca5731e0f64504c
-Message-ID: <61ecc538.rCn3Ln6XFLChn9TG%lkp@intel.com>
+Subject: [driver-core:kobject-const] BUILD SUCCESS
+ 2c53d2e11a6d7bcfc84914afa1a1a1772a5b12a2
+Message-ID: <61ecc53e.PhfqXP8NWAIVK/vn%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -81,12 +81,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git module_ns
-branch HEAD: b39a8bd86fa65ef5523601f82ca5731e0f64504c  export: fix string handling of namespace in EXPORT_SYMBOL_NS
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const
+branch HEAD: 2c53d2e11a6d7bcfc84914afa1a1a1772a5b12a2  moxart: fix potential use-after-free on remove path
 
-elapsed time: 724m
+elapsed time: 725m
 
-configs tested: 146
+configs tested: 150
 configs skipped: 4
 
 The following configs have been built successfully.
@@ -114,7 +114,11 @@ m68k                       m5475evb_defconfig
 powerpc                    klondike_defconfig
 arm64                            alldefconfig
 powerpc                  iss476-smp_defconfig
+alpha                            alldefconfig
 powerpc                 mpc8540_ads_defconfig
+sh                         apsh4a3a_defconfig
+openrisc                            defconfig
+parisc                generic-32bit_defconfig
 m68k                       m5208evb_defconfig
 arm                            lart_defconfig
 xtensa                              defconfig
