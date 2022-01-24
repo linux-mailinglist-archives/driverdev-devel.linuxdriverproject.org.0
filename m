@@ -1,48 +1,42 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0384497D2D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Jan 2022 11:29:32 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D3ADC497C04
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Jan 2022 10:34:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 251C283EB5;
-	Mon, 24 Jan 2022 10:29:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7A9A34051F;
+	Mon, 24 Jan 2022 09:34:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HX8YinLSOFor; Mon, 24 Jan 2022 10:29:30 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NdByXuN2zqRI; Mon, 24 Jan 2022 09:34:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A305983E1D;
-	Mon, 24 Jan 2022 10:29:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1E4CC40568;
+	Mon, 24 Jan 2022 09:34:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 88FE61BF3A4
- for <devel@linuxdriverproject.org>; Mon, 24 Jan 2022 10:29:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B23AF1BF3DB
+ for <devel@linuxdriverproject.org>; Mon, 24 Jan 2022 09:33:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 85B0A83E18
- for <devel@linuxdriverproject.org>; Mon, 24 Jan 2022 10:29:19 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A0DBA81D5F
+ for <devel@linuxdriverproject.org>; Mon, 24 Jan 2022 09:33:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8sgyu864qFnR for <devel@linuxdriverproject.org>;
- Mon, 24 Jan 2022 10:29:18 +0000 (UTC)
-X-Greylist: delayed 03:35:39 by SQLgrey-1.8.0
-Received: from vmi557870.contaboserver.net (benokitconsult.com
- [75.119.150.125])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 553A482768
- for <devel@driverdev.osuosl.org>; Mon, 24 Jan 2022 10:29:18 +0000 (UTC)
-Received: from DESKTOP-RDNH33A.iballbatonwifi.com (unknown [45.117.183.34])
- by vmi557870.contaboserver.net (Postfix) with ESMTPSA id 9DD1B838B9;
- Sun, 23 Jan 2022 12:50:26 +0100 (CET)
+ with ESMTP id viYID5fuJHhG for <devel@linuxdriverproject.org>;
+ Mon, 24 Jan 2022 09:33:47 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from [103.153.79.64] (unknown [103.153.79.64])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E482181387
+ for <devel@linuxdriverproject.org>; Mon, 24 Jan 2022 09:33:46 +0000 (UTC)
+From: Nasser Rashid <hussam.abudhabicapital.ae@gmail.com>
+To: devel@linuxdriverproject.org
+Subject: EXPO 2020 BUSINESS PROPOSAL
+Date: 24 Jan 2022 01:33:49 -0800
+Message-ID: <20220124013348.5B43CA8CBDE91BF1@gmail.com>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: REPLY
-To: Recipients <info@gabkoexpresslogistics.com>
-From: =?utf-8?q?=22J=C3=B8rgen_H_Allen=22=3Cinfo=40gabkoexpresslogistics=2Ecom?=@osuosl.org,
- =?utf-8?q?=3E?=@osuosl.org
-Date: Sun, 23 Jan 2022 03:50:15 -0800
-Message-Id: <20220124102919.85B0A83E18@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,16 +49,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: jorgenallen403@gmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: Nasser Rashid <nasserrashid.uae@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good Day Friend,
+Greetings!
 
-My name is J=F8rgen H. Allen, I have an important discussion for you. Pleas=
-e revert back to me ASAP for it worth. Thanks
+I'm Nasser Rashid, a business financial specialist and investment 
+expert. consultant experienced in financial funding services. I 
+have a
+
+I have a serious business investment opportunity to discuss with 
+you. Century Financial Dubai is the home of discerning investors.
+We
+
+We offer independent financial advice and assist our clients in 
+making sound investment decisions from a variety of investment 
+options.
+
+Opportunities are available.
+
+Our company is structured to provide personalized services to As 
+a result, capital security and adequate funding are ensured.
+
+returns on investment. Our investors are ready to provide funding 
+for your business expansion, such as debt and equity.
+
+financing. If you require funding, we would be able to partner 
+with you. We look forward to your response.
+
+Thank you and stay safe,
+
+Nasser Rashid, CFA,
+
+Century Financial
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
