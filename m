@@ -1,68 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86A4E497DD0
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Jan 2022 12:20:57 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 460A7497F85
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Jan 2022 13:27:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 35773408CB;
-	Mon, 24 Jan 2022 11:20:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A471A84B1F;
+	Mon, 24 Jan 2022 12:27:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CSLf7gclvQcI; Mon, 24 Jan 2022 11:20:55 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ERi0uJ4J9WJe; Mon, 24 Jan 2022 12:27:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A573640734;
-	Mon, 24 Jan 2022 11:20:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4E81283E80;
+	Mon, 24 Jan 2022 12:27:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5D1911BF215
- for <devel@linuxdriverproject.org>; Mon, 24 Jan 2022 11:20:42 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 45A171BF3D1
+ for <devel@linuxdriverproject.org>; Mon, 24 Jan 2022 12:27:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4BBB360E16
- for <devel@linuxdriverproject.org>; Mon, 24 Jan 2022 11:20:42 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4125F4136C
+ for <devel@linuxdriverproject.org>; Mon, 24 Jan 2022 12:27:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VZkmkvoTe8qj for <devel@linuxdriverproject.org>;
- Mon, 24 Jan 2022 11:20:41 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id MFK6S2QjRSt4 for <devel@linuxdriverproject.org>;
+ Mon, 24 Jan 2022 12:27:44 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 391A260E31
- for <devel@driverdev.osuosl.org>; Mon, 24 Jan 2022 11:20:41 +0000 (UTC)
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 12102410E7
+ for <devel@driverdev.osuosl.org>; Mon, 24 Jan 2022 12:27:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1643023241; x=1674559241;
+ t=1643027264; x=1674563264;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:content-transfer-encoding:in-reply-to;
- bh=z5+zKDyv2t6O/MjLljgEyWIANm+BRD/wDU22TyFSZvw=;
- b=WbP1mabZ6jXKI57Ml7+XhSiwIBg+xlyFePd8pUdjE8ua4uFo2tCktly6
- 9Dk+feXl5siwUvIUHOg+NsuYFsdqYmp1wXuGf09JjYUZgcqZwks91k7Rm
- 13RYWQgdV5h+1ugJxZ9drJrL4H0ADgfKlAkGy8BQYThdgj686u6R6FWSl
- hZjaJDVsd5UBSRKUpFd6mnpgv62bynwwWWlygAfvewz7ZB2NstiXQ+Bhp
- nKFRdlzgGcq/31DTgJ1+PLTiCtS4sCNY1JGYPBOTWFE8A+ia7/dSdEjOm
- +ULGgLYgvUX65mXKxWYD6NrcET3YdG3ZyE/4IceEe3fJl475QIdh3ZISx Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10236"; a="244856742"
-X-IronPort-AV: E=Sophos;i="5.88,311,1635231600"; d="scan'208";a="244856742"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jan 2022 03:20:40 -0800
+ bh=EqQHn0ZoeAwD8HgVv8SNasFoJD4otEaUKuLOFtUS8Kk=;
+ b=ffzdcqbrSi6RkIZt39BDeP+fOcv+TmX4j3/wGrFXnuuPsCzgUlqV+mZg
+ CbyvodbwKjG7AliXfg2rtGosKU9leqvMnTIIGokOREYh2lvVIwtIJ9lmw
+ Mmd4VlZbeEnaHoK4Bw9OtBqkKINzozIvxwZ4zh6hxo9CMxRVs22WqpCrz
+ KLWNY49SgXorEiD5aEbbd0DATVAurzj4lkzcCtO+zFj0YrZV4MRu3Pc25
+ K/dXkjXUEfvOaVno6w2FsCcirSV5Z75wG76ezKoDm4ZmETd91KSOoSH3+
+ hD8bq3j7FAWWlRkfmu3Rrf18u1C0hTvpRI9y1SD25BsZwWNyA1yqh0jiI g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10236"; a="245814779"
+X-IronPort-AV: E=Sophos;i="5.88,311,1635231600"; d="scan'208";a="245814779"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jan 2022 04:27:43 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,311,1635231600"; d="scan'208";a="580334598"
+X-IronPort-AV: E=Sophos;i="5.88,311,1635231600"; d="scan'208";a="617217124"
 Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 24 Jan 2022 03:20:38 -0800
+ by FMSMGA003.fm.intel.com with ESMTP; 24 Jan 2022 04:27:40 -0800
 Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1nBxOn-000IEl-EG; Mon, 24 Jan 2022 11:20:37 +0000
-Date: Mon, 24 Jan 2022 19:20:27 +0800
+ id 1nByRf-000IJH-Es; Mon, 24 Jan 2022 12:27:39 +0000
+Date: Mon, 24 Jan 2022 20:27:22 +0800
 From: kernel test robot <lkp@intel.com>
 To: ratnesh-r1 <me.ratnesh682@gmail.com>
 Subject: Re: [PATCH] staging: android: ashmem: Declared file operation with
  const keyword
-Message-ID: <202201241907.69JG769L-lkp@intel.com>
+Message-ID: <202201242027.9RTdyW5P-lkp@intel.com>
 References: <1643008187-75859-1-git-send-email-me.ratnesh682@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
@@ -82,7 +82,7 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
  me.ratnesh682@gmail.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-kernel@vger.kernel.org,
+ llvm@lists.linux.dev, linux-kernel@vger.kernel.org,
  Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
  Joel Fernandes <joel@joelfernandes.org>, kbuild-all@lists.01.org,
  Martijn Coenen <maco@android.com>, Christian Brauner <christian@brauner.io>
@@ -101,10 +101,16 @@ url:    https://github.com/0day-ci/linux/commits/ratnesh-r1/staging-android=
 -ashmem-Declared-file-operation-with-const-keyword/20220124-151116
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git =
 fa783154524a71ab74e293cd8251155e5971952b
-config: x86_64-randconfig-a002-20220124 (https://download.01.org/0day-ci/ar=
-chive/20220124/202201241907.69JG769L-lkp@intel.com/config)
-compiler: gcc-9 (Debian 9.3.0-22) 9.3.0
+config: riscv-randconfig-c006-20220124 (https://download.01.org/0day-ci/arc=
+hive/20220124/202201242027.9RTdyW5P-lkp@intel.com/config)
+compiler: clang version 14.0.0 (https://github.com/llvm/llvm-project 2e58a1=
+8910867ba6795066e044293e6daf89edf5)
 reproduce (this is a W=3D1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/=
+make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install riscv cross compiling tool for clang build
+        # apt-get install binutils-riscv64-linux-gnu
         # https://github.com/0day-ci/linux/commit/c24fe2afe4abdf6436628abd1=
 3a0109ec420f373
         git remote add linux-review https://github.com/0day-ci/linux
@@ -113,29 +119,42 @@ Declared-file-operation-with-const-keyword/20220124-151116
         git checkout c24fe2afe4abdf6436628abd13a0109ec420f373
         # save the config file to linux build tree
         mkdir build_dir
-        make W=3D1 O=3Dbuild_dir ARCH=3Dx86_64 SHELL=3D/bin/bash
+        COMPILER_INSTALL_PATH=3D$HOME/0day COMPILER=3Dclang make.cross W=3D=
+1 O=3Dbuild_dir ARCH=3Driscv SHELL=3D/bin/bash drivers/staging/android/
 
 If you fix the issue, kindly add following tag as appropriate
 Reported-by: kernel test robot <lkp@intel.com>
 
 All errors (new ones prefixed by >>):
 
-   drivers/staging/android/ashmem.c: In function 'ashmem_mmap':
->> drivers/staging/android/ashmem.c:431:16: error: assignment of read-only =
-variable 'vmfile_fops'
-     431 |    vmfile_fops =3D *vmfile->f_op;
-         |                ^
->> drivers/staging/android/ashmem.c:432:21: error: assignment of member 'mm=
-ap' in read-only object
-     432 |    vmfile_fops.mmap =3D ashmem_vmfile_mmap;
-         |                     ^
->> drivers/staging/android/ashmem.c:433:34: error: assignment of member 'ge=
-t_unmapped_area' in read-only object
-     433 |    vmfile_fops.get_unmapped_area =3D
-         |                                  ^
+>> drivers/staging/android/ashmem.c:431:16: error: cannot assign to variabl=
+e 'vmfile_fops' with const-qualified type 'const struct file_operations'
+                           vmfile_fops =3D *vmfile->f_op;
+                           ~~~~~~~~~~~ ^
+   drivers/staging/android/ashmem.c:380:38: note: variable 'vmfile_fops' de=
+clared const here
+           static const struct file_operations vmfile_fops;
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+   drivers/staging/android/ashmem.c:432:21: error: cannot assign to variabl=
+e 'vmfile_fops' with const-qualified type 'const struct file_operations'
+                           vmfile_fops.mmap =3D ashmem_vmfile_mmap;
+                           ~~~~~~~~~~~~~~~~ ^
+   drivers/staging/android/ashmem.c:380:38: note: variable 'vmfile_fops' de=
+clared const here
+           static const struct file_operations vmfile_fops;
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+   drivers/staging/android/ashmem.c:433:34: error: cannot assign to variabl=
+e 'vmfile_fops' with const-qualified type 'const struct file_operations'
+                           vmfile_fops.get_unmapped_area =3D
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+   drivers/staging/android/ashmem.c:380:38: note: variable 'vmfile_fops' de=
+clared const here
+           static const struct file_operations vmfile_fops;
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+   3 errors generated.
 
 
-vim +/vmfile_fops +431 drivers/staging/android/ashmem.c
+vim +431 drivers/staging/android/ashmem.c
 
 6d67b0290b4b84 Suren Baghdasaryan 2020-01-27  377  =
 
@@ -225,9 +244,9 @@ VM_BUG_ON check for f_ops modification.
  {
 6d67b0290b4b84 Suren Baghdasaryan 2020-01-27 @431  			vmfile_fops =3D *vmfi=
 le->f_op;
-6d67b0290b4b84 Suren Baghdasaryan 2020-01-27 @432  			vmfile_fops.mmap =3D =
+6d67b0290b4b84 Suren Baghdasaryan 2020-01-27  432  			vmfile_fops.mmap =3D =
 ashmem_vmfile_mmap;
-6d67b0290b4b84 Suren Baghdasaryan 2020-01-27 @433  			vmfile_fops.get_unmap=
+6d67b0290b4b84 Suren Baghdasaryan 2020-01-27  433  			vmfile_fops.get_unmap=
 ped_area =3D
 6d67b0290b4b84 Suren Baghdasaryan 2020-01-27  434  					ashmem_vmfile_get_u=
 nmapped_area;
