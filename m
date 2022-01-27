@@ -1,57 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4EDD449EB4B
-	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jan 2022 20:47:55 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BD0F49EDA1
+	for <lists+driverdev-devel@lfdr.de>; Thu, 27 Jan 2022 22:44:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 48B224003A;
-	Thu, 27 Jan 2022 19:47:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3C510400E5;
+	Thu, 27 Jan 2022 21:44:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x-rANv8g0ugW; Thu, 27 Jan 2022 19:47:52 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id my13Vnbt8pMZ; Thu, 27 Jan 2022 21:44:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D999D41610;
-	Thu, 27 Jan 2022 19:47:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 44CDB40145;
+	Thu, 27 Jan 2022 21:44:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4275E1BF3C3
- for <devel@linuxdriverproject.org>; Thu, 27 Jan 2022 19:47:48 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 140D21BF369
+ for <devel@linuxdriverproject.org>; Thu, 27 Jan 2022 21:44:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2EAA360B9A
- for <devel@linuxdriverproject.org>; Thu, 27 Jan 2022 19:47:48 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 01C7241B4B
+ for <devel@linuxdriverproject.org>; Thu, 27 Jan 2022 21:44:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=bonificablesfoesco.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qGON3YGypttu for <devel@linuxdriverproject.org>;
- Thu, 27 Jan 2022 19:47:47 +0000 (UTC)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id F7S7xjf7senB for <devel@linuxdriverproject.org>;
+ Thu, 27 Jan 2022 21:44:21 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from bonificablesfoesco.net (unknown [195.114.216.239])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6D33F60AD4
- for <devel@driverdev.osuosl.org>; Thu, 27 Jan 2022 19:47:47 +0000 (UTC)
-Received: from 42.91-116-32.dynamic.clientes.euskaltel.es (unknown
- [91.116.32.42])
- by bonificablesfoesco.net (Postfix) with ESMTPSA id C8AF51F0CF9
- for <devel@driverdev.osuosl.org>; Thu, 27 Jan 2022 20:47:44 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bonificablesfoesco.com; s=default; t=1643312864;
- bh=JaL3vgEQf4BsgBGuJmwHprWCLwPukQyLjCTSewL3BZA=; h=From:To:Subject;
- b=leZczaJhubbFTOqY1tdC6JHbl+CMgngh342vPe2txbk3Z5vQPtUZpdGNbXgSetpXo
- rJSp1YA3KA33/MoTZYbtmZX/iUBkF/6+gV+Z9QD6078m7cUNUfRJ1bF/t5HyIWvbtu
- uslC9v+pjiB0ykFSYhuAuEwpGNp5Ue6aQ8sJGNKc=
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EE55341B43
+ for <devel@driverdev.osuosl.org>; Thu, 27 Jan 2022 21:44:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1643319860; x=1674855860;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=XJDwRxEkz3lhctg8bwUaH6rF3K9rc4Ote16sC18IveI=;
+ b=D+OU+hpxL9qHB/QkQg94QJV+tWXlhPN8pakFt2IJ4dAE5GxFnrBn202r
+ 0ATdVFSVIc0BFpGmqwz7rOGd7WcgcgqK+rP8dkLV3DyzsYv9mI93APUqc
+ uO4KGdbWJYuB+GhJQrjtVZj1+CoB0fIG9LXylbR2uQu949eomhvPmYMq1
+ 2n7p5AufjMo2V1lzJ0HhuDUsIM8k9kXkVAJS4etP6Cs9tZ0tqPoKOmwZ4
+ 9h8RO1E3dQIsM7bFWmi12rc2hCQuHFAuMtHgvvdHyW6BfelhhsOUQzIj9
+ IShigzOHfpxGdWhhayLf86F98J9tj8fbu4AakZqErLDqvpSESYPBGMxi5 g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10239"; a="226948183"
+X-IronPort-AV: E=Sophos;i="5.88,321,1635231600"; d="scan'208";a="226948183"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jan 2022 13:44:20 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,321,1635231600"; d="scan'208";a="696819751"
+Received: from lkp-server01.sh.intel.com (HELO 276f1b88eecb) ([10.239.97.150])
+ by orsmga005.jf.intel.com with ESMTP; 27 Jan 2022 13:44:18 -0800
+Received: from kbuild by 276f1b88eecb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nDCYz-000N4N-Md; Thu, 27 Jan 2022 21:44:17 +0000
+Date: Fri, 28 Jan 2022 05:43:23 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:kobject-const] BUILD SUCCESS
+ 3165b089f8738dd893935faa24a9876d34e397e6
+Message-ID: <61f311fb.B9HB1ICbYU+ZeOgd%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-From: "Foesco" <admon35@bonificablesfoesco.com>
-To: devel@driverdev.osuosl.org
-Subject: Respuesta FOESCO
-X-Mailer: Smart_Send_4_4_2
-Date: Thu, 27 Jan 2022 20:47:45 +0100
-Message-ID: <7760471067784318723353@DESKTOP-T54DLSB>
-X-Priority: 1
-X-MSMail-Priority: High
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,109 +77,229 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: admon35@bonificablesfoesco.com
-Content-Type: multipart/mixed; boundary="===============6050259553346620670=="
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============6050259553346620670==
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const
+branch HEAD: 3165b089f8738dd893935faa24a9876d34e397e6  moxart: fix potential use-after-free on remove path
 
-Buenos d=EDas
+elapsed time: 722m
 
+configs tested: 193
+configs skipped: 3
 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Adjuntamos en PDF el listado de Cursos Bonificables E-learning disponibles =
-para la convocatoria FEBRERO 2022.
+gcc tested configs:
+arm                                 defconfig
+arm64                            allyesconfig
+arm64                               defconfig
+arm                              allyesconfig
+arm                              allmodconfig
+i386                 randconfig-c001-20220124
+i386                          randconfig-c001
+powerpc              randconfig-c003-20220124
+m68k                         apollo_defconfig
+arc                    vdk_hs38_smp_defconfig
+mips                  decstation_64_defconfig
+sh                         ecovec24_defconfig
+powerpc                 mpc834x_itx_defconfig
+arm                         at91_dt_defconfig
+mips                         mpc30x_defconfig
+xtensa                              defconfig
+mips                        vocore2_defconfig
+um                             i386_defconfig
+h8300                    h8300h-sim_defconfig
+m68k                            q40_defconfig
+powerpc                 linkstation_defconfig
+arm                         s3c6400_defconfig
+m68k                           sun3_defconfig
+arm                        oxnas_v6_defconfig
+m68k                          multi_defconfig
+nios2                         10m50_defconfig
+xtensa                  audio_kc705_defconfig
+powerpc                      ppc40x_defconfig
+powerpc                 mpc837x_mds_defconfig
+sparc                            allyesconfig
+powerpc                       ppc64_defconfig
+m68k                        stmark2_defconfig
+xtensa                  nommu_kc705_defconfig
+mips                         rt305x_defconfig
+arm                            zeus_defconfig
+arc                        vdk_hs38_defconfig
+sh                          rsk7269_defconfig
+ia64                        generic_defconfig
+sh                           sh2007_defconfig
+um                                  defconfig
+parisc                generic-64bit_defconfig
+mips                        bcm47xx_defconfig
+arm                           sunxi_defconfig
+arm                        multi_v7_defconfig
+sparc                       sparc64_defconfig
+m68k                          hp300_defconfig
+nds32                               defconfig
+sh                ecovec24-romimage_defconfig
+m68k                       m5249evb_defconfig
+arm                             rpc_defconfig
+sh                               allmodconfig
+powerpc                  storcenter_defconfig
+arm                        keystone_defconfig
+sh                     sh7710voipgw_defconfig
+sh                 kfr2r09-romimage_defconfig
+parisc                generic-32bit_defconfig
+arm                           viper_defconfig
+arm                            xcep_defconfig
+sh                            shmin_defconfig
+ia64                      gensparse_defconfig
+arm                         lubbock_defconfig
+riscv                            allyesconfig
+powerpc                     rainier_defconfig
+mips                    maltaup_xpa_defconfig
+sh                   sh7724_generic_defconfig
+arc                            hsdk_defconfig
+arm                            hisi_defconfig
+powerpc                      ppc6xx_defconfig
+arc                              alldefconfig
+arc                        nsimosci_defconfig
+powerpc                 mpc837x_rdb_defconfig
+powerpc                      tqm8xx_defconfig
+h8300                            alldefconfig
+h8300                     edosk2674_defconfig
+powerpc                     pq2fads_defconfig
+sh                             shx3_defconfig
+sh                             espt_defconfig
+arm                           corgi_defconfig
+arm                          pxa910_defconfig
+powerpc                  iss476-smp_defconfig
+arm                  randconfig-c002-20220127
+arm                  randconfig-c002-20220124
+ia64                             allmodconfig
+ia64                                defconfig
+ia64                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+m68k                             allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+nds32                             allnoconfig
+nios2                            allyesconfig
+csky                                defconfig
+alpha                               defconfig
+alpha                            allyesconfig
+xtensa                           allyesconfig
+h8300                            allyesconfig
+arc                                 defconfig
+parisc                              defconfig
+s390                             allyesconfig
+s390                             allmodconfig
+parisc                           allyesconfig
+s390                                defconfig
+i386                             allyesconfig
+sparc                               defconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+x86_64               randconfig-a002-20220124
+x86_64               randconfig-a003-20220124
+x86_64               randconfig-a001-20220124
+x86_64               randconfig-a004-20220124
+x86_64               randconfig-a005-20220124
+x86_64               randconfig-a006-20220124
+i386                 randconfig-a002-20220124
+i386                 randconfig-a005-20220124
+i386                 randconfig-a003-20220124
+i386                 randconfig-a004-20220124
+i386                 randconfig-a001-20220124
+i386                 randconfig-a006-20220124
+x86_64                        randconfig-a006
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+riscv                randconfig-r042-20220127
+arc                  randconfig-r043-20220127
+arc                  randconfig-r043-20220124
+s390                 randconfig-r044-20220127
+riscv                    nommu_k210_defconfig
+riscv                    nommu_virt_defconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+riscv                            allmodconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                               rhel-8.3
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
 
-Todos los cursos impartidos son 100% Bonificables con cargo al Cr=E9dito de=
- Formaci=F3n 2022 y van dirigidos a empleados, no aut=F3nomos.
+clang tested configs:
+arm                  randconfig-c002-20220124
+riscv                randconfig-c006-20220124
+i386                 randconfig-c001-20220124
+powerpc              randconfig-c003-20220124
+mips                 randconfig-c004-20220124
+x86_64               randconfig-c007-20220124
+mips                         tb0219_defconfig
+mips                          malta_defconfig
+powerpc                 mpc836x_mds_defconfig
+powerpc                   bluestone_defconfig
+mips                           ip27_defconfig
+powerpc                      ppc44x_defconfig
+arm                     davinci_all_defconfig
+arm                   milbeaut_m10v_defconfig
+powerpc                          allmodconfig
+arm                    vt8500_v6_v7_defconfig
+powerpc                          g5_defconfig
+powerpc                      acadia_defconfig
+arm                        magician_defconfig
+mips                     cu1830-neo_defconfig
+mips                        omega2p_defconfig
+i386                             allyesconfig
+powerpc                      walnut_defconfig
+powerpc                     kilauea_defconfig
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+x86_64               randconfig-a011-20220124
+x86_64               randconfig-a013-20220124
+x86_64               randconfig-a015-20220124
+x86_64               randconfig-a016-20220124
+x86_64               randconfig-a014-20220124
+x86_64               randconfig-a012-20220124
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+i386                 randconfig-a011-20220124
+i386                 randconfig-a016-20220124
+i386                 randconfig-a013-20220124
+i386                 randconfig-a014-20220124
+i386                 randconfig-a015-20220124
+i386                 randconfig-a012-20220124
+riscv                randconfig-r042-20220124
+s390                 randconfig-r044-20220124
+hexagon              randconfig-r045-20220124
+hexagon              randconfig-r045-20220127
+hexagon              randconfig-r041-20220124
+hexagon              randconfig-r041-20220127
+hexagon              randconfig-r045-20220125
+hexagon              randconfig-r041-20220125
 
-Para poder consultar a FUNDAE vuestro cr=E9dito de formaci=F3n disponible s=
-e ha de cumplimentar y firmar el documento adjunto CONTRATO DE ENCOMIENDA y=
- mandarlo a esta misma direcci=F3n de correo electr=F3nico.
-
-
-INSTRUCCIONES DE SOLICITUD:
-
-Se han de cumplimentar =FAnicamente los siguientes datos de la FICHA DE INS=
-CRIPCI=D3N adjunta (1 impreso por curso) y se ha de mandar escaneado o en f=
-otograf=EDa a esta misma direcci=F3n de correo electr=F3nico.
-
--  Curso a realizar
--  Nombre completo y DNI del alumno
--  N=FAmero de afiliaci=F3n a la Seguridad Social del alumno (Dato indicado=
- en las n=F3minas)
--  Tel=E9fono y e-mail del alumno
--  Nombre y CIF de la empresa
--  Direcci=F3n de la empresa
--  Tel=E9fono y e-mail de la empresa
--  Tel=E9fono y e-mail del gestor de la empresa
--  Cta. Cotizaci=F3n a la seguridad social de la empresa (Dato indicado en =
-las n=F3minas)
--  A=F1o de creaci=F3n de la empresa
--  Nombre completo y DNI de un representante legal de la empresa
--  Firma del representante legal de la empresa.
--  Sello de la empresa.
--  Firma del alumno.
-
-
-Seg=FAn el Real Decreto 18/2021 referente a los ERTES, necesitaremos adem=
-=E1s vuestra respuesta a las siguientes cuestiones:
-
--  N=FAmero de empleados en activo en la empresa:
--  N=FAmero de empleados en situaci=F3n de ERTE en la empresa:
--  Indique si su empresa ha renovado ERTE a partir del 1 de noviembre de 20=
-21 hasta el 28 de febrero 2022:
-
-
-Quedamos a la espera de vuestra respuesta.
-
-
-Un cordial saludo.
-
-
-Departamento de Formaci=F3n Bonificable
-FOESCO Formaci=F3n Estatal Continua.
-Empresa inscrita en el Registro de empresas de Formaci=F3n.
-
-www.foesco.com
-e-mail:     cursos@foesco.net
-Tel:          910 323 794
-
-(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
-
-FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
- cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
-pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
-ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
-
-Antes de imprimir este e-mail piense bien si es necesario hacerlo. La infor=
-maci=F3n transmitida en este mensaje est=E1 dirigida solamente a las person=
-as o entidades que figuran en el encabezamiento y contiene informaci=F3n co=
-nfidencial, por lo que, si usted lo recibiera por error, por favor destr=FA=
-yalo sin copiarlo, usarlo ni distribuirlo, comunic=E1ndolo inmediatamente a=
-l emisor del mensaje. De conformidad con lo dispuesto en el Reglamento Euro=
-peo del 2016/679, del 27 de Abril de 2016, FOESCO le informa que los datos =
-por usted suministrados ser=E1n tratados con las medidas de seguridad confo=
-rmes a la normativa vigente que se requiere. Dichos datos ser=E1n empleados=
- con fines de gesti=F3n. Para el ejercicio de sus derechos de transparencia=
-, informaci=F3n, acceso, rectificaci=F3n, supresi=F3n o derecho al olvido, =
-limitaci=F3n del tratamiento , portabilidad de datos y oposici=F3n de sus d=
-atos de car=E1cter personal deber=E1 dirigirse a la direcci=F3n del Respons=
-able del tratamiento a C/ LAGUNA DEL MARQUESADO N=BA10, 28021, MADRID, "PUL=
-SANDO AQUI" <mailto:bajas@foesco.com=3FSubject=3DBAJA%20CORREOS> y "ENVIAR".
-
---===============6050259553346620670==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============6050259553346620670==--
