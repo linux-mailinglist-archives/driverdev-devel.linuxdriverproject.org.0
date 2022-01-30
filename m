@@ -2,73 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F1694A37EC
-	for <lists+driverdev-devel@lfdr.de>; Sun, 30 Jan 2022 18:50:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id ABC894A37EF
+	for <lists+driverdev-devel@lfdr.de>; Sun, 30 Jan 2022 18:55:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2EEA44018B;
-	Sun, 30 Jan 2022 17:50:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C3C7F401A1;
+	Sun, 30 Jan 2022 17:55:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AafJ9Chu0vsN; Sun, 30 Jan 2022 17:50:50 +0000 (UTC)
+	with ESMTP id PdAv3Z6lbU34; Sun, 30 Jan 2022 17:55:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C607F400E6;
-	Sun, 30 Jan 2022 17:50:49 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3C37C4018B;
+	Sun, 30 Jan 2022 17:55:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 67D531BF335
- for <devel@linuxdriverproject.org>; Sun, 30 Jan 2022 17:50:46 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9270A1BF335
+ for <devel@linuxdriverproject.org>; Sun, 30 Jan 2022 17:55:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5639760D80
- for <devel@linuxdriverproject.org>; Sun, 30 Jan 2022 17:50:46 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8010A401A1
+ for <devel@linuxdriverproject.org>; Sun, 30 Jan 2022 17:55:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7k95PsQS0UqO for <devel@linuxdriverproject.org>;
- Sun, 30 Jan 2022 17:50:45 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jO204TgJ_bhD for <devel@linuxdriverproject.org>;
+ Sun, 30 Jan 2022 17:55:27 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pl1-x62b.google.com (mail-pl1-x62b.google.com
- [IPv6:2607:f8b0:4864:20::62b])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3D16C60B55
- for <devel@driverdev.osuosl.org>; Sun, 30 Jan 2022 17:50:45 +0000 (UTC)
-Received: by mail-pl1-x62b.google.com with SMTP id d18so10563592plg.2
- for <devel@driverdev.osuosl.org>; Sun, 30 Jan 2022 09:50:45 -0800 (PST)
+Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com
+ [IPv6:2607:f8b0:4864:20::442])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AE8FC4018B
+ for <devel@driverdev.osuosl.org>; Sun, 30 Jan 2022 17:55:27 +0000 (UTC)
+Received: by mail-pf1-x442.google.com with SMTP id e28so10875181pfj.5
+ for <devel@driverdev.osuosl.org>; Sun, 30 Jan 2022 09:55:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:sender:from:date:message-id:subject:to;
- bh=f48feGfxQWpJ2NAu1tA2D8IedOIveV78iujaMUpDyjw=;
- b=jgVXTYSp+NBr2oSvlhr/oRMV41qP/ZsxqeifHGXvq3uclvOeBzNUmDiIUaE0F66IHY
- 3ugK3MskEt18rnq/Vp0a0fhCiagnV/fgtiPbPDX3RIAf2VmKid5qPLDy8tsP9szf3B9k
- rQHjklN9gzSTiG23k6GjFldqmypXn9gENFV4GNASE66R7p81QgGuurWeoElA9S7/JlPj
- D7xq9X87ugKXh88ChSOkdECV5Lnd2AIXktD1geoXTsGGJATE0FueAtvnmGNS0k3JbD7b
- 1AWas46MEQEYTqgUm2AnomPeb+wdUKSnzXgJDAJ/FizrmJusGpcUcPbq8aLNr7+x7UB9
- lmrw==
+ h=mime-version:reply-to:sender:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=FHRMrChk+pAdJ8vLmfVIpAL8adX/NHuyOVbfwNVkL7E=;
+ b=cL273jwpvvv/16YUaHxoYUuwJWBlVbw/lwQIzM88cyhYKOKY5qQhIB7A9oc0pXv8il
+ 1tE+e0Rt2RXayGyQXZtS/CXbz9wYG4oIqiJRGwqMT/nBGQccx5DhFYeXM9lNWufHJEvD
+ HBk/2r6Nym1e0h/eIMtSnAkkIisPQJDRKMar1UcBV7rWI81asMOdKRUu1I/Ga0b/jZXf
+ vUHXM/wxnDixkXkA/9XLzLA7sQh3NpfgH8QdBvJDp69pnNjr/rZldbHrqaHgipYIS/e+
+ Gez/GkGcX1H2H9Jhz/M7Pmk7adRv0j+sYjcp+2cE5YKp95/kfJ+/qrUOtVDkIMFizfFY
+ qcHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
- :to; bh=f48feGfxQWpJ2NAu1tA2D8IedOIveV78iujaMUpDyjw=;
- b=fGyNWJfpaoVtcNz3zfR5okSIpYgnGZMVyif84g3nv3SGleH1CS5Qh+vEmWfGCBJh5V
- 3S+Yt+WOo9HNKs5eLEuZc/sTr1NPsRaDdodEeS0EJqyAF0HbACCPe9T/Jd5JqKaAvM4D
- gGcUJiTIY99NhZI2+gxVoEN2HIrlgxX5JhRl4n0KNEHG05T6rxH4i7sYeHldHbNnr74C
- BzlUPLyTjjJKfkTuzl5s5q4Vr0gO0h83ArfVkiJZywDOJcyLpSCUrx1GpQqkoX00Cc2o
- 1pXq6JuWMQBrwp8P2f7epnZi9FoI6ET7LEqbrzdl/lY83JgkzRO1C//eE4R274G9Kium
- I24g==
-X-Gm-Message-State: AOAM530agUEUXcGM6/DH0m9Ckt5mmNctWHxivYRihyM+xWxRalnl/0cJ
- fcGe4YTHyQbC0CYKXC01+MV32rBSeaLIfMkM4fE=
-X-Google-Smtp-Source: ABdhPJz//4stSKwrV8oSw4Fn4E+e2mUHLGCFFVqWfAbRmjnmUahVhjsA7lBa4ai5S3zF78RBrWYygizIvQv7F9WGWRU=
-X-Received: by 2002:a17:90a:e2ca:: with SMTP id
- fr10mr20498309pjb.51.1643565044547; 
- Sun, 30 Jan 2022 09:50:44 -0800 (PST)
+ h=x-gm-message-state:mime-version:reply-to:sender:from:date
+ :message-id:subject:to:content-transfer-encoding;
+ bh=FHRMrChk+pAdJ8vLmfVIpAL8adX/NHuyOVbfwNVkL7E=;
+ b=QtSVGUQ/Ns782rtcBJqow/A/V0rrCfwzZx9XBa+0Ve0He5Pao+YFTo34V7gaoSagQi
+ NQ+rIhH6v2XPab8sXU+IUE90oYppbPe/IKZOSxyzQsw5WoiE+tuzj/SJIEBMRCjWBLy/
+ uEy8xktvG2XnMVrdhNc2MBc5cqrfOt41dmeMSZe8jcj9ja183mW0Ny+bp+WDm71rHFDA
+ WAZfTYdw/yjY79vFeEEtwRlFge4/CKUu7+auLes5Sl+kXb+FMp23tQU+3GKXFohzyfvN
+ qQRHX+IU4AYTCScz9i1VtKZgKpLra73I4RLef+Cksh/VHoB2ama0wNS7wBP9X0J/Lptv
+ qrjA==
+X-Gm-Message-State: AOAM532ax4lyU2Qpy0L8IcmxYn0A+qDAjPgDWOftCd2UodqV6RKTnN7b
+ TYQGJklKUgG+mOAkFV6CIOM+bRBQxJFDEP+u5YY=
+X-Google-Smtp-Source: ABdhPJyplW1v4I/AIiaJOJYM9qnA1f94XQ2Be287+fSyOKhvjxBDwFrtY1QYD+EoNBh1yh+QPWI/4QWAzODrbI8HfX0=
+X-Received: by 2002:a05:6a00:130a:: with SMTP id
+ j10mr16167109pfu.32.1643565326379; 
+ Sun, 30 Jan 2022 09:55:26 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a05:6a10:5ca:0:0:0:0 with HTTP; Sun, 30 Jan 2022 09:50:44
+Received: by 2002:a17:90a:e7c6:0:0:0:0 with HTTP; Sun, 30 Jan 2022 09:55:25
  -0800 (PST)
-From: Alicia Collins <aliciacollins634@gmail.com>
-Date: Sun, 30 Jan 2022 09:50:44 -0800
-X-Google-Sender-Auth: cDmNqUpCiDPCBZ5d3ADebnNd1jY
-Message-ID: <CAK6zzsHQJRu1SMiuEz1KcBjV_rF=fT7-VF+hqN0Ab-k6aLtg7g@mail.gmail.com>
-Subject: Hello
+From: Shehata Ibrahim <shirinrehim@gmail.com>
+Date: Sun, 30 Jan 2022 17:55:25 +0000
+X-Google-Sender-Auth: aT9NWjY8SmjyPB07hfNUy9sIrCQ
+Message-ID: <CAOFs0uFzoSvLztg3k_Pv84bmexjAaouX0YZpAzbUBNDkGTJMmw@mail.gmail.com>
+Subject: Your E-mail ID is among the scam Victims listed to be compensated.
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -82,59 +82,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: shirinrehim@hotmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello my dear,
-
-With due respect to your person and much sincerity of purpose I wish
-to write to you today, seeking for your urgent assistance in this
-humanitarian social investment project to be establish in your country
-for the mutual benefit of the orphans and the less privileged ones,
-haven't known each other or met before, I know that everything is
-controlled by God as there is nothing impossible to him. I believe
-that you and I can cooperate together in the service of the Lord,
-please open your heart to assist me in carrying out this benevolent
-project in your country/position. I am Mrs.Alicia Collins, a dying
-widow hospitalized undergoing treatment for brain tumor disease, I
-believe that you will not expose or betray this trust and confidence
-that I am about to entrust to you for the mutual benefit of the
-orphans and the less privileged ones. My late husband made a
-substantial deposit with the Bank which I have decided to hand over
-and entrust the sum of ($ 12,500,000.00 Dollars) in the account under
-your custody for you to invest it into any social charitable project
-in your location or your country. Based on my present health status I
-am permanently indisposed to handle finances or any financial related
-project.
-
- This is the reason why I decided to contact you for your support and
-help to stand as my rightful beneficiary and claim the money for
-humanitarian purposes for the mutual benefits of the less privileged
-ones. Because If the money remains unclaimed with the bank after my
-death, those greedy bank executives will place the money as an
-unclaimed Fund and share it for their selfish and worthless ventures.
-However I need your sincerity and ability to carry out this
-transaction and fulfill my final wish in implementing the charitable
-investment project in your country as it requires absolute trust and
-devotion without any failure. Meanwhile It will be my pleasure to
-compensate you with part of the total money as my Investment
-manager/partner for your effort in handling the transaction, while the
-remaining amount shall be invested into any charity project of your
-choice there in your country.
-
-Your early response will be appreciated to enable me to send you
-further details and the bank contact details where the fund has been
-deposited for you to contact the Bank for immediate release and
-transfer of the fund into your bank account as my rightful
-beneficiary.
-Thank you very much for your kind consideration and I wish you well
-and God enlighten you in this social humanitarian project.
-
-Best regards and God bless you.
-Sincerely Mrs.Alicia Collins.
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+fn5+fn5gYGBgCkRlYXIgdmFsdWVkIGN1c3RvbWVyLCBTaXIvTWFkYW0sIENvbXBsaW1lbnQgb2Yg
+dGhlIGRheTsgdGhpcyBpcyB0bwppbmZvcm0geW91IHRoYXQgdGhlIElNRi9Xb3JsZCBCYW5rIGF1
+ZGl0b3JzIGhhcyBhcHByb3ZlZCBhCmNvbXBlbnNhdGlvbiBwYXltZW50IHRvIGNvbXBlbnNhdGUg
+c29tZSBvZiB0aGUgc2NhbSB2aWN0aW1zIGFuZCwgWW91cgpFLW1haWwgSUQgaXMgYW1vbmcgdGhl
+IHNjYW0gVmljdGltcyBsaXN0ZWQgdG8gYmUgY29tcGVuc2F0ZWQgYnkgV29ybGQKQmFuay9JTUYg
+dmFsdWVkIGF0IFVTJCAzIE1pbGxpb24gZWFjaC4KCk5vdGUsIHdlIGhhdmUgcmVjZWl2ZWQgZnJv
+bSB0aGUgY3VzdG9keSBvZiAoSU1GIGFuZCBXb3JsZCBCYW5rKSB0aGUKbmVjZXNzYXJ5IGRvY3Vt
+ZW50cyBiYWNraW5nIGFuZCBwcm92aW5nIHlvdSBhcyB0aGUgYmVuZWZpY2lhcnkgb2YgdGhlCiQz
+IE1pbGxpb24gVXMgRG9sbGFycyB0aGF0IHdlIGFyZSBhYm91dCB0byByZWxlYXNlIHRvIHlvdSBh
+cyBhCmNvbXBlbnNhdGlvbiBwYXltZW50LiBUaGlzIGNvbXBlbnNhdGlvbiBpcyBmb3IgdGhvc2Ug
+d2hvIGV4cGVyaWVuY2UKdmljdGltIG9mIHNjYW0gd29ybGR3aWRlLgoKSSBhbSBmdWxseSBpbi1j
+aGFyZ2UsIGFuZCBvcmRlcmVkIGJ5IHRoZSBNYW5hZ2VtZW50IE9mIFUuSyBzdWItcmVnaW9uClVu
+aXQgKDEpIEludGVybmF0aW9uYWwgTW9uZXRhcnkgRnVuZCAoSU1GKSBUaGUgb2ZmaWNpYWxzIG9m
+IEV4dGVybmFsClJlbGF0aW9ucyBJbnRlcm5hdGlvbmFsIE1vbmV0YXJ5IEZ1bmQgKElNRikgSW50
+ZXJuYWwgQXVkaXQgTW9uaXRvcmluZwphbmQgSW52ZXN0aWdhdGluZyB1bml0IGFsc28gd2FudCB0
+byB1c2UgdGhpcyBvcHBvcnR1bml0eSB0byBhbm5vdW5jZQp0byBhbGwgdGhlIGJlbmVmaWNpYXJp
+ZXMgbGlzdGVkL2luZGljYXRlZCBpbiBvdXIgaW50ZXJuYXRpb25hbApvdXRzdGFuZGluZyBwYXlt
+ZW50IGxpc3QgYXMgeW91ciB1bmNsYWltZWQgZnVuZCBpbmRpY2F0ZWQgaW4gb3VyCnBheW1lbnQg
+bGlzdC4gIC4KCkZvbGxvd2VkIHRvIHRoZSByZWNlbnQgIGluc3RydWN0aW9ucyAgZnJvbSB0aGUg
+Zm9yZWlnbiAgZW1iYXNzaWVzLCBhbmQKIHdpdGggaGVscCBvZiB0aGUgQnJpdGlzaCBpbnZlc3Rp
+Z2F0aW9uIFVuaXQsIGFuZCBzZXJpZXMgb2YgcmVwb3J0Cmxpc3RlZCBmcm9tIG91ciBmb3JlaWdu
+IHJlbWl0dGFuY2Ugb2ZmaWNlcywgYW5kIHJlY2VudCByZXBvcnRzIGZyb20Kb3VyIGNvcnJlc3Bv
+bmRpbmcgVW5pdCBVbmRlciBJbnRlcm5hdGlvbmFsIE1vbmV0YXJ5IEZ1bmQgKElNRiksCgpTZXJp
+ZXMgb2YgcmVwb3J0IGFuZCBjb21wbGFpbiByZWNlaXZlZCBmcm9tIEluZGl2aWR1YWxzIG1haW5s
+eSBmcm9tClVuaXRlZCBTdGF0ZXMgT2YgQW1lcmljYSwgQ2FuYWRpYW5zLCBBdXN0cmFsaWFucywg
+U2luZ2Fwb3JlLApQaGlsaXBwaWFucywgQnJhemlsLCBNZXhpY2FucywgRWd5cHQsIFNhdWRpIEFy
+YWJpYW5zLCBFdXJvcGVhbnMsCkluZGlhbnMsIE5ldyBaZWFsYW5kIGFuZCBvdGhlciBwYXJ0cyBv
+ZiB0aGUgd29ybGQgcmVwb3J0aW5nICB0aGF0CnRoZWlyIGluaGVyaXRhbmNlIGNvbnRyYWN0IGZ1
+bmRzLCB3aW5pbmcgbG90dG8ncywgYW5kIGNvbXBlbnNhdGlvbnMKYXJlIGJlaW5nIHdpdGhoZWxk
+IGluIHZhcmlvdXMgQmFua3MsIGxvdHRv4oCZcyAgd2lubmluZyBhZ2VuY2llcywKY291cmllciBj
+b21wYW5pZXMsIGFuZCBvdGhlciBhZ2VuY2llcyBpbiBwYXJ0IG9mIEFmcmljYS4KCllvdSBhcmUg
+aW5zdHJ1Y3RlZCB0byBmaWxsIG91ciBwYXltZW50IGFwcGxpY2F0aW9uIGZvcm0gYXMgb3V0bGlu
+ZWQKYmVsb3cgY29ycmVjdGx5IHRvIGF2b2lkIGFueSBlcnJvciBpbiByZWxlYXNpbmcgeW91ciBw
+YXltZW50IGFuZCBiZWFyCmluIG1pbmQgdGhhdCB3ZSB3aWxsIGNvbW1lbmNlIHlvdXIgcGF5bWVu
+dCBhcyBzb29uIGFzIHdlIHJlY2VpdmUgdGhlCmluZm9ybWF0aW9uIGZyb20geW91LgoKUmVjb25m
+aXJtIHRoZSBmb2xsb3dpbmcgaW5mb3JtYXRpb24gZm9yIHNlY3VyaXR5IHJlYXNvbi4KCjEuKSBG
+dWxsIG5hbWU6CjIuKSBBZ2U6CjMuKSBTZXg6CjQuKSBBZGRyZXNzOgo1LikgWmlwL3Bvc3RhbCBj
+b2RlOgo2LikgU3RhdGUvcHJvdmluY2U6CjcuKSBDb3VudHJ5Ogo4LikgUmVzaWRlbnRpYWwgQ291
+bnRyeToKOS4pIFBob25lL3M6CjEwLikgT2NjdXBhdGlvbi9wb3NpdGlvbjoKCllvdXJzIGZhaXRo
+ZnVsbHksCk1yOiBTaGVoYXRhIElicmFoaW0KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJv
+amVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
