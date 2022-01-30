@@ -1,47 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D44CB4A31AC
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Jan 2022 20:49:39 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C0F14A3386
+	for <lists+driverdev-devel@lfdr.de>; Sun, 30 Jan 2022 04:32:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C112B81772;
-	Sat, 29 Jan 2022 19:49:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 795A8829B6;
+	Sun, 30 Jan 2022 03:32:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1dr87tnWprjG; Sat, 29 Jan 2022 19:49:34 +0000 (UTC)
+	with ESMTP id JDIO7EOHFUUE; Sun, 30 Jan 2022 03:32:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0EA35817BA;
-	Sat, 29 Jan 2022 19:49:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3A919828F2;
+	Sun, 30 Jan 2022 03:32:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1193D1BF3DC
- for <devel@linuxdriverproject.org>; Sat, 29 Jan 2022 19:49:31 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5C4F21BF488
+ for <devel@linuxdriverproject.org>; Sun, 30 Jan 2022 03:32:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0CBC1400F1
- for <devel@linuxdriverproject.org>; Sat, 29 Jan 2022 19:49:31 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3F0144087E
+ for <devel@linuxdriverproject.org>; Sun, 30 Jan 2022 03:32:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ViCXl5t8yVSD for <devel@linuxdriverproject.org>;
- Sat, 29 Jan 2022 19:49:28 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from smtpdua.matrix.net.id (smtpdua.matrix.net.id [202.59.163.98])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 179E4400E4
- for <devel@driverdev.osuosl.org>; Sat, 29 Jan 2022 19:49:27 +0000 (UTC)
-Received: from [127.0.1.1] (unknown [10.19.53.1])
- by smtpdua.matrix.net.id (Postfix) with ESMTP id 3427851342;
- Sat, 29 Jan 2022 16:44:04 +0700 (WIB)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9CuEmvm06RVk for <devel@linuxdriverproject.org>;
+ Sun, 30 Jan 2022 03:32:22 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ed1-x535.google.com (mail-ed1-x535.google.com
+ [IPv6:2a00:1450:4864:20::535])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7EE224087D
+ for <devel@driverdev.osuosl.org>; Sun, 30 Jan 2022 03:32:22 +0000 (UTC)
+Received: by mail-ed1-x535.google.com with SMTP id m11so19358786edi.13
+ for <devel@driverdev.osuosl.org>; Sat, 29 Jan 2022 19:32:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=B5teSI3NqSzeGu7ngV/22RiyR60khzQ8THYZDZ9DX3Q=;
+ b=HWabEwckgDZHF/shbOFnizSAhGklicI2ARDkB0DIL/Y5r/rKoYSNkr355bi9N4jGWb
+ O7a2Sysr1Rx5L04oi4an0UWxZlAR2CMyQC7qJkFNn+uqz+S1FpTQzjS5YXnnv2GV45pH
+ qMDlaye+/jrf6IkWEkgV7GU1gVR0BXLA/PTG6YNwFxQskv8Cb+bhTSyZsUOlTaDsrWLj
+ J7AigrRgiSZ3cezYitNVWJTHH+yZhYLji++P8JyUB0rzTS+WEP6CnD0v68UyWrGcCoIq
+ M2c/x/Mnh985g00sKhIkz0fqCLcl2sccA0NWjMAfncKLd/sh6z4TBzDARFar1hdrR8Ez
+ yd6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=B5teSI3NqSzeGu7ngV/22RiyR60khzQ8THYZDZ9DX3Q=;
+ b=ONGvjSYrpv4Xomy5xx3i2OgX5iL3USSxVebVl0aAd/uu51d5zH0luzCTFsI6DjmEO7
+ MYC5xUviYdZ9d+4s4I7pxz8ZcAy58v1v4BQYM3bfS8wwX63wv8MmHd855tn8CJL3X6On
+ wueH+lY2nOGoiKEru9I+E2vJ6aAigTpuFEOZ4UstIDe1cn01fg12NE6TriJ8EcjL3UZx
+ jtZI5qd2XZQnuquVVnAKlVW1u/Mpj8I5y68GAhVIBM89W+w2I2AtqB6u+R4bPrIDoUjl
+ 5SjLDnx09de3BdmerxNlATLtVtNJJ22151ZoOW8AsoUeuJxcX2c8ZD6AjvCAU9uGt3VX
+ 959A==
+X-Gm-Message-State: AOAM532KyNm77CKNUjC1D3j5djepw29x8/pndtUAyyLVg5nENcpAVdTZ
+ T2NUepEu+21+p1rK8pSZLtQBsU08uEOMB2kKgtg=
+X-Google-Smtp-Source: ABdhPJwanF3U8w7E0VUYTAeA3JUGZAPspFHrspDHwg3WE+FiggEWGxud8PybamU5qAj7cXSExIK+tNT23aFodMxKVYc=
+X-Received: by 2002:aa7:c0d6:: with SMTP id j22mr15279375edp.240.1643513540645; 
+ Sat, 29 Jan 2022 19:32:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Incremente exponencialmente sus ventas este 2022
-To: recipients <goldene@matrix.net.id>
-From: Directorio Empresarial<goldene@matrix.net.id>
-Date: Sat, 29 Jan 2022 03:44:01 -0600
-X-Mailer: outlook
-Message-Id: <20220129194931.0CBC1400F1@smtp2.osuosl.org>
+Received: by 2002:a17:906:4fcd:0:0:0:0 with HTTP; Sat, 29 Jan 2022 19:32:19
+ -0800 (PST)
+From: Mrs  Chantal <moummarmrschantal@gmail.com>
+Date: Sun, 30 Jan 2022 04:32:19 +0100
+Message-ID: <CAFg=ZoyEPrzU-w9ptHcc4eSxcyoScHQNgnOO07m3mdWvqjrSYg@mail.gmail.com>
+Subject: Hello....
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,81 +81,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: mrs.bill.chantalone01@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-CkRJUkVDVE9SSU8gRU1QUkVTQVJJQUwgTUVYSUNBTk8gMjAyMgpOVUVWQSBFRElDSU9OIEFNUExJ
-QURBIFkgUkVOT1ZBREEKClNFIElOQ0xVWUVOIElOQ0xVWUUgMiBESVJFQ1RPUklPUyBDT01QTEVU
-T1M6CgpBKSBEaXJlY3RvcmlvIEVtcHJlc2FyaWFsIGRlIG1hcyBkZSAyIG1pbGxvbmVzIGRlIGVt
-cHJlc2FzIGEgbml2ZWwgbmFjaW9uYWwgZW4gZm9ybWF0byBFeGNlbCBjb24gREFUT1MgQ09NUExF
-VE9TLiAKKE5vbWJyZSBFbXByZXNhLCBDb250YWN0bywgRS1tYWlsLCBUZWxlZm9ubywgRGlyZWNj
-aW9uLCBQdWVzdG8sIEdpcm8sIFBhZ2luYSBXZWIsIFRhbWHDsW8gZGUgRW1wcmVzYSwgRVRDLikg
-CgpCKSAgRGlyZWN0b3JpbyBFbXByZXNhcmlhbCBkZSAxOCBtaWxsb25lcyBkZSBtYWlscyBlbXBy
-ZXNhcmlhbGVzIGRpdmlkaWRvcyBwb3IgRVNUQURPOgo5MDAsMDAwIGVtcHJlc2FzIGRlbCBELkYu
-IHkgRWRvLiBkZSBNZXhpY28gCjYsMDAwIFRlcXVpbGVyYXMgYSBOaXZlbCBuYWNpb25hbAozMDAs
-MDAwIGVtcHJlc2FzIGVuIEd1YWRhbGFqYXJhCjUwMCwwMDAgZW1wcmVzYXMgYSBuaXZlbCBuYWNp
-b25hbCAoZ3JhbmRlLCBtZWRpYW5hIHkgcGVxdWXDsWEpIAoxNDAsMDAwIGVtcHJlc2FzIGVuIE1v
-bnRlcnJleQoxMzAsMDAwIFB5bWVzIGEgbml2ZWwgbmFjaW9uYWwKNDAsMDAwIGVtcHJlc2FzIGRl
-IGxhIGluZHVzdHJpYSB0dXJpc3RpY2EgYSBuaXZlbCBuYWNpb25hbCAKNTcsMDAwIGVtcHJlc2Fz
-IGRlIGxhIGluZHVzdHJpYSBtYW51ZmFjdHVyZXJhIGEgbml2ZWwgbmFjaW9uYWwKMzYsMDAwIGVt
-cHJlc2FzIGNvbiBvcmdhbmlncmFtYSBhIG5pdmVsIG5hY2lvbmFsCjYwLDAwMCBlbXByZXNhcyBk
-ZWwgc2VjdG9yIGRlIGxhIGNvbnN0cnVjY2lvbiBhIG5pdmVsIG5hY2lvbmFsIAozLDAwMCBlbXBy
-ZXNhcyBlbiBzaXN0ZW1hcwoyLDAwMCBEYXRvcyBkZSB1bml2ZXJzaWRhZGVzIGEgbml2ZWwgbmFj
-aW9uYWwKMTUsMDAwIGVtcHJlc2FzIG1lZGlhbmFzIGNvbiBudW1lcm8gZGUgZW1wbGVhZG9zIAox
-MSwwMDAgZW1wcmVzYXMgaW1wb3J0YW50ZXMgZW4gTWV4aWNvIChnb2JpZXJubywgaW5zdGl0dWNp
-b25lcyBiYW5jYXJpYXMsIGV0Yy4pCjIwLDAwMCBhcmVhcyBzYWx1ZCBhIG5pdmVsIG5hY2lvbmFs
-IAoxMCwwMDAgZW1wcmVzYXMgZGVsIHNlY3RvciBkZSBhZ3JpY3VsdHVyYSBlbiBNZXhpY28KNDUs
-MDAwIGVtcHJlc2FzIG1lZGlhbmFzIGVuIGVsIEVkby4gRGUgTWV4aWNvCjgsMDAwIGZyYW5xdWlj
-aWFzIGVuIE1leGljbwoxLjUgTWlsbG9uZXMgZGUgZWplY3V0aXZvcyBkaXZpZGlkb3MgZW4gMyBz
-ZWN0b3JlcyBlbXByZXNhcmlhbGVzIChVTklDQU1FTlRFIENPUlJFT1MpCjIgbWlsbG9uZXMgZGUg
-bWFpbHMgZGUgZGlmZXJlbnRlcyBleHBvcyBlbiBNZXhpY28gKFVOSUNBTUVOVEUgQ09SUkVPUykg
-CjMuNSBtaWxsb25lcyBkZSBtYWlscyB2YXJpYXMgaW5kdXN0cmlhcyBlbiB0b2RvIE1leGljbyAo
-VU5JQ0FNRU5URSBDT1JSRU9TKSAKNTAsMDAwIEluZHVzdHJpYSBGYXJtYWNldXRpY2EgKFVOSUNB
-TUVOVEUgQ09SUkVPUykgCjE3NSwwMDAgTW9udGVycmV5IChVTklDQU1FTlRFIENPUlJFT1MpCjM1
-LDAwMCBRdWVyZXRhcm8gKFVOSUNBTUVOVEUgQ09SUkVPUykgCjU1LDAwMCBHdWFkYWxhamFyYSAg
-KFVOSUNBTUVOVEUgQ09SUkVPUykKMTUsMDAwIEFyZWEgQmFuY2FyaWEgKFVOSUNBTUVOVEUgQ09S
-UkVPUykgCjEzMCwwMDAgbWFpbHMgZW1wcmVzYXJpYWxlcyBkaXZpZGlkb3MgcG9yIGVzdGFkbyAo
-VU5JQ0FNRU5URSBDT1JSRU9TKQoxMiwwMDAgbWFpbHMgQ2FtYXJhcyBkZSBDb21lcmNpbyAoVU5J
-Q0FNRU5URSBDT1JSRU9TKSAKMzAsMDAwIG1haWxzIGRpdmlkaWRvcyBwb3IgcnVicm9zIChVTklD
-QU1FTlRFIENPUlJFT1MpCjQ1LDAwMCBtYWlscyBJbmR1c3RyaWEgQ29uc3RydWN0b3JhIChVTklD
-QU1FTlRFIENPUlJFT1MpCjIzLDAwMCBtYWlscyBJbmR1c3RyaWEgVGVjbm9sb2dpY2EgKFVOSUNB
-TUVOVEUgQ09SUkVPUykgCjkwLDAwMCBweW1lcyBELkYuIHkgRWRvLiBNZXhpY28gKFVOSUNBTUVO
-VEUgQ09SUkVPUykgCjI1LDAwMCBWaXNpdGFudGVzIGEgRXhwb3MgZW4gRnJhbnF1aWNpYXMgKFVO
-SUNBTUVOVEUgQ09SUkVPUykKNjUwLDAwMCBUYXJqZXRhIEhhYmllbnRlcyBBTUVYIHkgZGlzdGlu
-dG9zIGJhbmNvcyAoQ09OIERBVE9TIEFESUNJT05BTEVTKQoKWSBNVUNIQVMgQkFTRVMgTUFTCgpT
-b2xvIFZhbGlkbyBIQVNUQSBlbCBWaWVybmVzIDI4IGRlIEVuZXJvIDIwMjIuCgpQcmVjaW8gcG9y
-IHByb21vY2lvbjogOCw5MDAuMDAgKyBJVkEgClByZWNpbyBub3JtYWw6IDIxLDUwMC4wMCArIElW
-QQoKMTAwJSBEaXJlY3RvcmlvcyBFbXByZXNhcmlhbGVzLiBDb250YW1vcyBjb24gcmVmZXJlbmNp
-YXMgY29tZXJjaWFsZXMuICAgCk5vIGxvIHBpZW5zZSBtYXMsIHNvbG8gcG9yIHVub3MgZGlhcyBt
-YXMgcG9kcmEgYWRxdWlyaXIgbGEgYmFzZSBtYXMgY29tcGxldGEgZW4gTWV4aWNvIGEgdW4gcHJl
-Y2lvIGJhc3RhbnRlIGJham8gcXVlIG5vIHNlIHZvbHZlcmEgYSByZXBldGlyLiAgCgoKClBhcmEg
-YWRxdWlyaXJsYToKCi0tLSBGYXZvciBkZSByZXNwb25kZXIgYWwgY29ycmVvOiBiYXNlcy5zZWdt
-ZW50YWRhcy5tZXhpY29AZ21haWwuY29tIC0tLQoKTk9UQSBJTVBPUlRBTlRFOiBTb2xvIHNlIHJl
-c3BldGFyYSBlbCBwcmVjaW8gYSBsYXMgcGVyc29uYXMgcXVlIGVudmllbiBzdXMgZGF0b3MgeSBy
-ZWFsaWNlbiBlbCBkZXBvc2l0byBtYXhpbW8gZWwgVmllcm5lcyAyOCBkZSBFbmVybyBkZWwgMjAy
-Mi4KCgoKUFJFR1VOVEFTIEZSRUNVRU5URVM6CgpFbiBxdWUgZm9ybWF0byB2aWVuZSBsYSBiYXNl
-PyAKUj0gRXhjZWwgeSBUeHQKCkhhc3RhIHF1ZSBmZWNoYSBlc3RhbiBhY3R1YWxpemFkYXMgbGFz
-IGJhc2VzPyAKUj0gQSBFbmVybyAyMDIyCgpFbnZpYW4gYmFzZXMgbXVlc3RyYSBwYXJhIHN1IGV2
-YWx1YWNpb24/IApSPSBTaSwgc29sbyBlcyBuZWNlc2FyaW8gbm9zIGluZGlxdWUgYSBxdWUgY3Vl
-bnRhIGRlIGNvcnJlbyBzZSBsbyBoYWNlbW9zIGxsZWdhci4gCgpDdWVudGFuIGNvbiByZWZlcmVu
-Y2lhcyBjb21lcmNpYWxlcz8gClI9IFNpLCBlbnRyZSBudWVzdHJvcyBjbGllbnRlcyBzZSBlbmN1
-ZW50cmFuIEVNUFJFU0FTIElNUE9SVEFOVEVTIGVuIE1leGljby4gCgpDdWVudGFuIGNvbiBhbGd1
-bmEgZ2FyYW50aWE/IApSPSBTaSwgZW52aWFtb3MgR0FSQU5USUEgREUgRU5WSU8gWSBFRkVDVElW
-SURBRCBERUwgRElSRUNUT1JJTy4gCgpEb25kZSBvYnR1dmllcm9uIGxvcyBkYXRvcz8gClI9IFNv
-bW9zIHVuYSBlbXByZXNhIHF1ZSB0YW1iaWVuIGltcGFydGUgY3Vyc29zIHkgc2VtaW5hcmlvcyBk
-ZSBjaWVycmUgZGUgdmVudGFzIHkgc2VydmljaW8gYWwgY2xpZW50ZSwgY29udGludWFtZW50ZSBl
-c3RhbW9zIHByZXNlbnRlcyBlbiBldmVudG9zIGVtcHJlc2FyaWFsZXMgZW4gZG9uZGUgQURRVUlS
-SU1PUyBOVUVWQVMgQkFTRVMsIGFzaSBjb21vIHRhbWJpZW4gaW50ZXJjYW1iaWFtb3MgYmFzZXMg
-Y29uIG90cmFzIGVtcHJlc2FzLiAKCkVuIHF1ZSB0aWVtcG8gbWUgbGxlZ2EgZWwgRGlyZWN0b3Jp
-byB1bmEgdmV6IHBhZ2Fkbz8gClI9IElubWVkaWF0YW1lbnRlIG1lZGlhbnRlIHVuIGxpbmsgZGUg
-ZGVzY2FyZ2EgcGFyYSBzdSBQQy4KClRhbWJpZW4gcmVhbGl6YW4gZW52aW9zIGRlIGNvcmVvcyBt
-YXNpdm9zPwpSPSBOdWVzdHJvIHByb2R1Y3RvIG1hcyBjb21wbGV0byBsZSBwZXJtaXRlIGVudmlh
-ciBoYXN0YSAzIG1pbGxvbmVzIGRlIGNvcnJlb3MgRGlhcmlvcyBkZXNkZSBzdSBlcXVpcG8gZGUg
-b2ZpY2luYSBwYXJhIHByb21vY2lvbmFyIGEgc3UgZW1wcmVzYSwgcHJvZHVjdG8gbyBuZWdvY2lv
-LgogCgpGQVZPUiBERSBJTkRJQ0FSIEVOIEFTVU5UTyBTSSBERVNFQSBTRVIgUkVNT1ZJRE8uCk9m
-ZXJ0YSB2YWxpZGEgcG9yIHRpZW1wbyBsaW1pdGFkby4KCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRy
-aXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+You have been compensated with the sum of 9.5 million dollars in this
+united nation the payment will be issue into atm visa  card and send
+to you from the santander bank we need your address and your
+Whatsapp number  + 1 6465853907  this my email.ID
+( mrs.bill.chantal.roland@gmail.com )  contact  me
+
+Thanks my
+
+mrs bill chantal
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
