@@ -1,49 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D29DF4A560C
-	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Feb 2022 06:08:11 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 78F534A59B5
+	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Feb 2022 11:13:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C9F4960D7B;
-	Tue,  1 Feb 2022 05:08:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1C52840126;
+	Tue,  1 Feb 2022 10:13:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b7-Owf9zsQYs; Tue,  1 Feb 2022 05:08:09 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gkKdeLfD9m2d; Tue,  1 Feb 2022 10:13:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5353D60B00;
-	Tue,  1 Feb 2022 05:08:08 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 94FBE40996;
+	Tue,  1 Feb 2022 10:13:28 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E4AE01BF310
- for <devel@linuxdriverproject.org>; Tue,  1 Feb 2022 05:08:05 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C8031BF5DF
+ for <devel@linuxdriverproject.org>; Tue,  1 Feb 2022 10:13:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D30CB812B6
- for <devel@linuxdriverproject.org>; Tue,  1 Feb 2022 05:08:05 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 99722606E7
+ for <devel@linuxdriverproject.org>; Tue,  1 Feb 2022 10:13:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ypgNATqV6cqD for <devel@linuxdriverproject.org>;
- Tue,  1 Feb 2022 05:08:05 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from polbangtanmalang.localdomain (unknown [36.92.132.146])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 01AC8812FA
- for <devel@linuxdriverproject.org>; Tue,  1 Feb 2022 05:08:04 +0000 (UTC)
-Received: from User (static-100-12-12-202.nycmny.fios.verizon.net
- [100.12.12.202])
- by polbangtanmalang.localdomain (Postfix) with ESMTPA id 477C83F561D;
- Thu, 27 Jan 2022 23:08:02 +0700 (WIB)
-From: "I.L.T.S"<testing@polbangtanmalang.com>
-Subject: CLAIM YOUR WINNING !!!
-Date: Thu, 27 Jan 2022 10:07:54 -0600
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wuduVMXU3cPJ for <devel@linuxdriverproject.org>;
+ Tue,  1 Feb 2022 10:13:25 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-ed1-x543.google.com (mail-ed1-x543.google.com
+ [IPv6:2a00:1450:4864:20::543])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 03986605E8
+ for <devel@linuxdriverproject.org>; Tue,  1 Feb 2022 10:13:24 +0000 (UTC)
+Received: by mail-ed1-x543.google.com with SMTP id j23so33060382edp.5
+ for <devel@linuxdriverproject.org>; Tue, 01 Feb 2022 02:13:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=6fJ+fZY5GiZZHwpcXYOHVxRnu3uQZSG9RLn+T0JVJ8M=;
+ b=HxBwAu5O0e+r9huSuPhHoqs9KuAFV6zUZ9+J9kDkj2gxMQ4B1HcbJn6OJOiEDnIQb7
+ n98zxL8s2vwqqp+TBymW68iHaiUxOF/2oEwtIwjJwDXfSv5jkZh/EcZhpxB04gukH7I5
+ PAIVdxQThoBYt+EFNHntuF0oclpH2Aa08NeKQPJ5Pq6aV8m48ySuOwwtXEaj5nZLq1Z0
+ ciiBKwkwNKFO+SW+2T4xCuT4z87fx0hRS0dkuNbXsFydSWhR6wb8FVgNcxC9A6qoNXDD
+ cErcfLjn9VVI1+kZlEf7Rq8DSIMm4kDq7Q8U9F+T1VSPCSuQ6cNijIQg+YaHJJZdtuMs
+ wDmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=6fJ+fZY5GiZZHwpcXYOHVxRnu3uQZSG9RLn+T0JVJ8M=;
+ b=H3BbVlGBC1kOQ9vCvImt175c+tvbSEsrkRZ3rNUTDAHt8wlfquUQqerutvHPPZ25ER
+ KY/U0YajNVvOl/o2A0HTWKsWq6d3grozNNFsKAMKQsKzw4ybsXPDrfoBqgvhGMd71E9Q
+ WlmXPv6VM2ty4oobPcZOi/WVmq+qpdNOaUihakE1zTcYnOXf62/7yH+WZGiBPa7QrH30
+ c34zdYGHU0nc+U0QpUPJ8VI4Lmmb8Bst8CPlL12CUBE/MTIcwljMo+M5I//VyKl9MHTy
+ oRoL5dzugyPxd/IaQWoy1KpgFU+sTfv5IviB3U7uXyF3ZDYiP+BJLju6tQYI3o2h2jwV
+ JXHw==
+X-Gm-Message-State: AOAM533O3rmLhEhrwL3zpJRV4sdAjeOCMsZXMF70TyXQJ1IyyLrEGYtk
+ k+yJ9qa7BEoyr0K9EvFuVkuv3TtNr64QbWabUGo=
+X-Google-Smtp-Source: ABdhPJzmlnGyjGdKgP0pJmIY9HXfKr7Z5/4A4PoqpOePa/4IwQg0utBnWHSfFbvGknAtsdDRyCsb21/ij+Ge2mMmbZo=
+X-Received: by 2002:a05:6402:2549:: with SMTP id
+ l9mr12281909edb.129.1643710403098; 
+ Tue, 01 Feb 2022 02:13:23 -0800 (PST)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220201050805.D30CB812B6@smtp1.osuosl.org>
+Received: by 2002:a54:3708:0:0:0:0:0 with HTTP;
+ Tue, 1 Feb 2022 02:13:22 -0800 (PST)
+From: Kelly Myers <kellymyers006@gmail.com>
+Date: Tue, 1 Feb 2022 02:13:22 -0800
+Message-ID: <CA+bRPitaz2ryMpGi9HTq2NYqU6V6UCzTa_Q66w2rWSAd9foZPA@mail.gmail.com>
+Subject: Dear Email ID Owner.(USD$4000 IMF COMPENSATION FUND TO PICK UP TODAY).
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,55 +82,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: andrresaysh@gmail.com
+Reply-To: westerunion909@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-International Lottery & Totalizator Systems, Inc.
-2310 Cousteau Court Vista,
-CA 92081 United States
- 
-Dear email owner ,
- 
-This is to inform you that you won a prize money of Five Million,five hundred thousand United states [$8,500,000,00] for the 2021 International E-mail Draw Awards, organized by International Lottery & TotalizatorSystems, Inc(ILTS).
- 
-ILTS collects all the email addresses of people who are active on the Internet , between the millions of people that are subscribed to Yahoo, Hotmail, AOL, Walla, Gmail, mail.Cz, American Mail, Mail Russian,Indian Mail, Arabic Mail, Italian mails, and only few from other e-mail providers. Six people are selected each year take advantage of this offer and you are one of the selected persons.
- 
-PAYMENT OF PRIZE AND CLAIM
- 
-The winners will be paid in accordance of the Settlement Center.ILTS awards must be claimed no later than 15 days from the date of notification Draw. Any prize not claimed within this period will be forfeited.
- 
- 
-Listed below is your identification number:QE/XGS/16-DD2751144
+Dear Email ID Owner.
 
-These figures, which fall within the America Location file [ALF], you are asked to contact our fiduciary agent in the United States.
- 
-Agent Name:ANDRE SAYEGH 
- 
-E-Mail: andrresaysh@gmail.com
+The IMF is compensating all the email address that was funds as one of
+the ward win Victims and your email address and your name is among the
+listed one of approved to pay the sum of $3.6 million U.S Dollars. We
+have concluded to effect your own payment through Western Union Money
+Transfer for easy pick-up of those funds in good condition,$4000 twice
+daily,till the $3.6 million is completely transferred to you.We now
+need your information where we will be sending the funds,such
+as;Receiver name(Your full Name)address and phone number.Contact
+Western Union agent with this Email: ( westerunion995@gmail.com  ) for
+your payment fund.
 
-Lottery winners form of payment requests.
- 
-FullName :
-Date of Birth :
-ADDRESS :
-SEX :
-AGE :
-State :
-Occupation :
-TELEPHONE :
-EMAIL :
- 
-The winner's reference / batch No :031-146-4618-750 (for Approval) .This would begin the process that will permit the release of your prize money.
+Ms.Maria Zatto
+E-mail:westerunion995@gmail.com
+Telephone: +229 682 97 169
 
-NOTE: In order to avoid unnecessary delays and complications, please remember to quote your reference and batch numbers in every one of your correspondences with your claim agent. Furthermore, should there be any change of your address, do inform your claim agent as soon as possible.
- 
-Congratulations!!!
- 
-Kind Regards,
-(International Lottery & Totalizator Systems, Inc 2022)
+Contact Ms.Maria,immediately you get this mail through western union
+email address above to enable her speed-up.your payment and release
+the $4000 dollars MTCN today for you to pick up the payment OK.
+
+You are expected to provide us with the details as prescribed below to
+enable safe and easy release of your funds today.
+
+(1)Your Full name:
+(2)Your Phone number:
+(3)Your Country:
+(4)Your Age:
+
+Thank you,
+Dr.Kelly Myers.
+Contact Dir.Western Union Money Transfer,
+Cotonou-Benin Republic.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
