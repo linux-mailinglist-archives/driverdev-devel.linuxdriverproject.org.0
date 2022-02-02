@@ -1,57 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B5A74A5DEA
-	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Feb 2022 15:04:55 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A35754A7903
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Feb 2022 20:53:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 79DFE409C9;
-	Tue,  1 Feb 2022 14:04:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8CF7283365;
+	Wed,  2 Feb 2022 19:53:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3AIKXZ87ZsH9; Tue,  1 Feb 2022 14:04:52 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id x-82u5q7b3OA; Wed,  2 Feb 2022 19:53:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E56F2400A6;
-	Tue,  1 Feb 2022 14:04:51 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4F92283300;
+	Wed,  2 Feb 2022 19:53:16 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CC86C1BF34B
- for <devel@linuxdriverproject.org>; Tue,  1 Feb 2022 14:04:48 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id CB57E1BF364
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  2 Feb 2022 19:53:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B3F5B60F74
- for <devel@linuxdriverproject.org>; Tue,  1 Feb 2022 14:04:48 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B9D1440297
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  2 Feb 2022 19:53:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=bonificablesfoesco.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W89KzGxiPJMd for <devel@linuxdriverproject.org>;
- Tue,  1 Feb 2022 14:04:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7ByvSInDq2jg
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  2 Feb 2022 19:53:13 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from bonificablesfoesco.net (unknown [195.114.216.51])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 131CD600D4
- for <devel@driverdev.osuosl.org>; Tue,  1 Feb 2022 14:04:48 +0000 (UTC)
-Received: from 42.91-116-32.dynamic.clientes.euskaltel.es (unknown
- [91.116.3.246])
- by bonificablesfoesco.net (Postfix) with ESMTPSA id AD0FB22D32E
- for <devel@driverdev.osuosl.org>; Tue,  1 Feb 2022 15:04:45 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bonificablesfoesco.com; s=default; t=1643724285;
- bh=N3nZ8pjPRz6IulACRF3D/Zx6Spa7uuBZYb3FtWdmXwg=; h=From:To:Subject;
- b=lmkfBkcFpbCvHgdnbHcc3MhPDIsT5he8AJR1F1+qP4epHLFpbm5UbsSnElPDZRvMw
- cvihBmirm1Bd/NQc6/959QNLGYYeo9MXVY5QgjzJLwkosPLa5LUXgSf5KennyHuNEn
- vCP7XzyS/iz1J+/exmSy0nF3picQvNKjqtnc/GKQ=
+Received: from mail.mppolice.gov.in (mail.mppolice.gov.in [210.212.145.115])
+ by smtp4.osuosl.org (Postfix) with ESMTP id C674140238
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  2 Feb 2022 19:53:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.mppolice.gov.in (Postfix) with ESMTP id 2FB7A18623645;
+ Thu,  3 Feb 2022 01:23:11 +0530 (IST)
+Received: from mail.mppolice.gov.in ([127.0.0.1])
+ by localhost (mail.mppolice.gov.in [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id JoEIrzO8Yx6j; Thu,  3 Feb 2022 01:23:10 +0530 (IST)
+Received: from mail.mppolice.gov.in (localhost [127.0.0.1])
+ by mail.mppolice.gov.in (Postfix) with ESMTP id A4BEB1862363E;
+ Thu,  3 Feb 2022 01:23:10 +0530 (IST)
+Received: from [172.23.224.1] (unknown [102.32.30.63])
+ by mail.mppolice.gov.in (Postfix) with ESMTPSA id B2AAA1862363F;
+ Thu,  3 Feb 2022 01:22:55 +0530 (IST)
 MIME-Version: 1.0
-From: "FOESCO" <admon18@bonificablesfoesco.com>
-To: devel@driverdev.osuosl.org
-Subject: Febrero 2022
-X-Mailer: Smart_Send_4_4_2
-Date: Tue, 1 Feb 2022 15:04:48 +0100
-Message-ID: <6404492231480101047766@DESKTOP-HGD3EM4>
-X-Priority: 1
-X-MSMail-Priority: High
+Content-Description: Mail message body
+Subject: 
+To: Recipients <ravi.kuswah@mppolice.gov.in>
+From: "Huang Jinping" <ravi.kuswah@mppolice.gov.in>
+Date: Thu, 03 Feb 2022 05:52:43 +1000
+X-Antivirus: AVG (VPS 220202-4, 2/2/2022), Outbound message
+X-Antivirus-Status: Clean
+Message-Id: <20220202195256.B2AAA1862363F@mail.mppolice.gov.in>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,76 +68,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: admon18@bonificablesfoesco.com
-Content-Type: multipart/mixed; boundary="===============1916012980965579708=="
+Reply-To: receiver@winghang.info
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============1916012980965579708==
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Mi dispiace inviarti questa email, che =E8 arrivata nella tua cartella spam=
+ come email non richiesta. Mi chiamo Huang Jinping. Ho una proposta commerc=
+iale per te. So che saresti interessato a questa proposta commerciale. Cont=
+attatemi per maggiori informazioni
 
-Buenos d=EDas
+-- =
 
-
-
-Desde FOESCO (Formaci=F3n Estatal Continua) queremos informar a vuestra emp=
-resa acerca de la actual convocatoria de Cursos Bonificables para empleados=
- (Febrero 2022).
-
-
-Adjuntamos en PDF el listado de m=E1s de 1000 Cursos disponibles e impreso =
-de solicitud, todos los cursos impartidos son 100% Bonificables con cargo a=
-l Cr=E9dito de Formaci=F3n 2022.
-
-
-
-Quedamos a vuestra disposici=F3n.
-
-
-Un cordial saludo.
-
-
-Departamento de Formaci=F3n Bonificable
-FOESCO Formaci=F3n Estatal Continua.
-Empresa inscrita en el Registro de empresas de Formaci=F3n.
-
-www.foesco.com
-e-mail:     cursos@foesco.net
-Tel:          910 323 794
-
-(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
-
-FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
- cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
-pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
-ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
-
-Antes de imprimir este e-mail piense bien si es necesario hacerlo. La infor=
-maci=F3n transmitida en este mensaje est=E1 dirigida solamente a las person=
-as o entidades que figuran en el encabezamiento y contiene informaci=F3n co=
-nfidencial, por lo que, si usted lo recibiera por error, por favor destr=FA=
-yalo sin copiarlo, usarlo ni distribuirlo, comunic=E1ndolo inmediatamente a=
-l emisor del mensaje. De conformidad con lo dispuesto en el Reglamento Euro=
-peo del 2016/679, del 27 de Abril de 2016, FOESCO le informa que los datos =
-por usted suministrados ser=E1n tratados con las medidas de seguridad confo=
-rmes a la normativa vigente que se requiere. Dichos datos ser=E1n empleados=
- con fines de gesti=F3n. Para el ejercicio de sus derechos de transparencia=
-, informaci=F3n, acceso, rectificaci=F3n, supresi=F3n o derecho al olvido, =
-limitaci=F3n del tratamiento , portabilidad de datos y oposici=F3n de sus d=
-atos de car=E1cter personal deber=E1 dirigirse a la direcci=F3n del Respons=
-able del tratamiento a C/ LAGUNA DEL MARQUESADO N=BA10, 28021, MADRID, "PUL=
-SANDO AQUI" <mailto:bajas@foesco.com=3FSubject=3DBAJA%20CORREOS> y "ENVIAR".
-
---===============1916012980965579708==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+This email has been checked for viruses by AVG.
+https://www.avg.com
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============1916012980965579708==--
