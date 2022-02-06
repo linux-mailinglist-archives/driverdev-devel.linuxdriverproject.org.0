@@ -1,66 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7010E4AB225
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Feb 2022 21:43:12 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 82DE84AB24E
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Feb 2022 22:21:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E608940207;
-	Sun,  6 Feb 2022 20:43:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0CC0D81376;
+	Sun,  6 Feb 2022 21:21:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id q1_azvAtEoHZ; Sun,  6 Feb 2022 20:43:09 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 08c-uIFrn8Kc; Sun,  6 Feb 2022 21:21:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 47D0E4023B;
-	Sun,  6 Feb 2022 20:43:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B67758136F;
+	Sun,  6 Feb 2022 21:21:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 788A21BF360
- for <devel@linuxdriverproject.org>; Sun,  6 Feb 2022 20:43:05 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BF18D1BF44A
+ for <devel@linuxdriverproject.org>; Sun,  6 Feb 2022 21:21:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6EE3060B0C
- for <devel@linuxdriverproject.org>; Sun,  6 Feb 2022 20:43:05 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id AC74440201
+ for <devel@linuxdriverproject.org>; Sun,  6 Feb 2022 21:21:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=activehotline.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id u4orw6GlWfx1 for <devel@linuxdriverproject.org>;
- Sun,  6 Feb 2022 20:43:04 +0000 (UTC)
-X-Greylist: delayed 04:17:06 by SQLgrey-1.8.0
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sLg5-16gou4x for <devel@linuxdriverproject.org>;
+ Sun,  6 Feb 2022 21:21:09 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from xerohosting.co.uk (xerohosting.co.uk [95.154.196.55])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2BD4B60ADC
- for <devel@driverdev.osuosl.org>; Sun,  6 Feb 2022 20:43:04 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5FDE2400E3
+ for <devel@driverdev.osuosl.org>; Sun,  6 Feb 2022 21:21:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=activehotline.com; s=default; h=Content-Transfer-Encoding:Content-Type:
  MIME-Version:Message-ID:Reply-To:From:Date:Subject:To:Sender:Cc:Content-ID:
  Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
  :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=nsDb8UELhQ6j7d/+vQyVRqrvR08EenhJN8lUd77ig+I=; b=1OO8VykyhxTETlQXpSlW+GxHOr
- VBvaXRJkjetiMmZTmHCAdaMi3DMbyig7DkeEJ25AM0obKca5JyWbK67APWCPA591r+fX3N8NfVO2y
- /+sQh7+dHAeGF+33P9aLXABC2P5bnrQcFhWIKjnrL3yByNBcHumbYB1Kui9z9X9JVr91hgUJ9ZV11
- 7e8UmWGBymNQSptshwcQVC5SMOviaUIZPsUTCoIb1GJHDs7N+bpH5KmCy3cTY/tjkwGHdDtPVxvsl
- 7zE1AmeqljPs86bOXBrL6smLUV6e6KSYbT92iaQuaRoL8gVa80zz6nFYxRHqidE1zFNkA+y8ae3Kk
- pv5NUD3Q==;
+ bh=KDMT9RiHK4aHP2Sv6VDHv6Na1XUApU/dU2kezyflUKg=; b=zES89dFyooZAEnWi1lzbyHVbPE
+ WQMeytI07x/um0lwMX3nhFeEIQyjfOTpLhPut4+9EO6tJPTwNaw8jgcvkGNiQm2Dg3L4bf8pxoB0j
+ fWTUC4grT/APiN0zxMANtBGKVJKQhMwO83aOvo9/3QKTpxx/uOk3uUUR8wx70eAUI1uZrgJfrtcex
+ j9dzYcHZbfXVS4bjI1PoKltyEDFkPtnxMb2mhBktnB17Umc/P7Ysj0nlIFCh0fK9DWdGqmaoBM0xx
+ ft42iW31WB7xchc5A91c4HuRk99xXXtnUcojkT/p0uIHRCOpqAnuK94m64YQj8B7iVd+kfwtz4UKp
+ AK/8yE1Q==;
 Received: from activehotline by uk.whitelabelservers.co.uk with local (Exim
  4.94.2) (envelope-from <activehotline@uk.whitelabelservers.co.uk>)
- id 1nGkMN-0001Qp-6Y
- for devel@driverdev.osuosl.org; Sun, 06 Feb 2022 16:25:55 +0000
+ id 1nGkMM-0001QG-NE
+ for devel@driverdev.osuosl.org; Sun, 06 Feb 2022 16:25:54 +0000
 To: devel@driverdev.osuosl.org
 Subject: =?us-ascii?Q?Active_Hotline_"[New_Entry_From_Subscriber_form?=
  =?us-ascii?Q?]"?=
-X-PHP-Script: activehotline.com/index.php for 193.189.100.202
+X-PHP-Script: activehotline.com/index.php for 185.220.100.248
 X-PHP-Originating-Script: 1216:PHPMailer.php
-Date: Sun, 6 Feb 2022 16:25:55 +0000
+Date: Sun, 6 Feb 2022 16:25:54 +0000
 From: Active Hotline <team@activehotline.com>
-Message-ID: <Mw4EdOKUMSW25eytDdhG7cmZ4LBv8PSTemiRW9jjos@activehotline.com>
+Message-ID: <VJnmnx6ZBWG9VYVxCCSxagg3vwnXgJ0UUMDOQHhI@activehotline.com>
 X-Mailer: PHPMailer 6.5.3 (https://github.com/PHPMailer/PHPMailer)
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="b1_Mw4EdOKUMSW25eytDdhG7cmZ4LBv8PSTemiRW9jjos"
+ boundary="b1_VJnmnx6ZBWG9VYVxCCSxagg3vwnXgJ0UUMDOQHhI"
 Content-Transfer-Encoding: 8bit
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
@@ -92,7 +92,7 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This is a multi-part message in MIME format.
 
---b1_Mw4EdOKUMSW25eytDdhG7cmZ4LBv8PSTemiRW9jjos
+--b1_VJnmnx6ZBWG9VYVxCCSxagg3vwnXgJ0UUMDOQHhI
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
@@ -117,7 +117,7 @@ Take care & talk soon,
 
 ActiveHotline Team
 
---b1_Mw4EdOKUMSW25eytDdhG7cmZ4LBv8PSTemiRW9jjos
+--b1_VJnmnx6ZBWG9VYVxCCSxagg3vwnXgJ0UUMDOQHhI
 Content-Type: application/pdf; name=dummy.pdf
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename=dummy.pdf
@@ -356,7 +356,7 @@ MDAwIG4gCnRyYWlsZXIKPDwvU2l6ZSAxNi9Sb290IDE0IDAgUgovSW5mbyAxNSAwIFIKL0lEIFsg
 PEY3RDc3QjNEMjJCOUY5MjgyOUQ0OUZGNUQ3OEI4RjI4Pgo8RjdENzdCM0QyMkI5RjkyODI5RDQ5
 RkY1RDc4QjhGMjg+IF0KPj4Kc3RhcnR4cmVmCjEyNzg3CiUlRU9GCg==
 
---b1_Mw4EdOKUMSW25eytDdhG7cmZ4LBv8PSTemiRW9jjos
+--b1_VJnmnx6ZBWG9VYVxCCSxagg3vwnXgJ0UUMDOQHhI
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -367,5 +367,5 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---b1_Mw4EdOKUMSW25eytDdhG7cmZ4LBv8PSTemiRW9jjos--
+--b1_VJnmnx6ZBWG9VYVxCCSxagg3vwnXgJ0UUMDOQHhI--
 
