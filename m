@@ -2,75 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D7774AFDE2
-	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Feb 2022 21:00:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F060B4AFE1C
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Feb 2022 21:18:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DD7A3408BE;
-	Wed,  9 Feb 2022 20:00:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5B56D40253;
+	Wed,  9 Feb 2022 20:18:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DeXQrAMLF7bM; Wed,  9 Feb 2022 20:00:13 +0000 (UTC)
+	with ESMTP id iY0pOjLjzucf; Wed,  9 Feb 2022 20:18:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 932A140923;
-	Wed,  9 Feb 2022 20:00:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 13F5E40247;
+	Wed,  9 Feb 2022 20:18:14 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BB7E11BF422
- for <devel@linuxdriverproject.org>; Wed,  9 Feb 2022 20:00:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E96EA1BF42C
+ for <devel@linuxdriverproject.org>; Wed,  9 Feb 2022 20:18:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A3AD8404F1
- for <devel@linuxdriverproject.org>; Wed,  9 Feb 2022 20:00:09 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id E3361401A1
+ for <devel@linuxdriverproject.org>; Wed,  9 Feb 2022 20:18:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bycn0XneAPfj for <devel@linuxdriverproject.org>;
- Wed,  9 Feb 2022 20:00:08 +0000 (UTC)
+ with ESMTP id pRcWtpTUsPch for <devel@linuxdriverproject.org>;
+ Wed,  9 Feb 2022 20:18:09 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-vs1-xe41.google.com (mail-vs1-xe41.google.com
- [IPv6:2607:f8b0:4864:20::e41])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B1577403A7
- for <devel@driverdev.osuosl.org>; Wed,  9 Feb 2022 20:00:08 +0000 (UTC)
-Received: by mail-vs1-xe41.google.com with SMTP id t184so3846513vst.13
- for <devel@driverdev.osuosl.org>; Wed, 09 Feb 2022 12:00:08 -0800 (PST)
+Received: from mail-io1-xd2d.google.com (mail-io1-xd2d.google.com
+ [IPv6:2607:f8b0:4864:20::d2d])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id ACDBF40150
+ for <devel@driverdev.osuosl.org>; Wed,  9 Feb 2022 20:18:09 +0000 (UTC)
+Received: by mail-io1-xd2d.google.com with SMTP id i62so4763762ioa.1
+ for <devel@driverdev.osuosl.org>; Wed, 09 Feb 2022 12:18:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:sender:from:date:message-id:subject:to
  :content-transfer-encoding;
  bh=lLqB5uXP4GxHC5TVmBdcUxwKILWbYUsnAsMtvOCXgPI=;
- b=FymC4tPqGY66YDReHX5COhUHMvjzppLh95nTUbwTlaLt8jemA6UCbTwaI+BemvvG53
- k18shnZQx5M5BJHQ7rTbTmNPDHN5nZq6R9wixKp++79+dpPRF6bub0pFSNQiGKC6MhhP
- S7VnXy7IyFwZANdULQUWeMYLsup96MWIx6z1xzFvkcS428bsmizbYNr3GwUoiIaoRYI/
- 1rO+32WsbIbGHYRqVQxg1Ta8LI8brz074Dua8lDebxjYFqbYidDZG120vzy/j7UdIV+5
- pu93RudUPZzGij6I1zB/9nhLWGavyr0tPiKGK2wKPs3pR3kAT3V1biQ+JZ4Wct8gYd3W
- 9GYw==
+ b=Po29oiXodJkoJRDiasNBCLuQtY6gBl38Jv1HIp4Kfgz/FSpwFoPDR5K+C6/jfyqf9x
+ k0xea0/cjhp1BpB7x2t4nva4QblX0C88ltLbhzm5QmY9Xk+pqavM4gHacY1/+CrQJ7Tz
+ 4CvKYbz17WG9HXAAnPvbZUSAxkJp1hWiL0FFhfyyVWBxeWcdMdpcgk3cr6y56VTpShqE
+ VbvREn803Ft10hOHlUjRV7cPgXWVHEBwvMSC2DW8eY51NELuVrwDufoBZLWEchL34Izp
+ DOuNmusYoka2yNvS87sVkPOCgJ1AM84H7JnnlSMJs0K28WlYKtN65ENQpfaYvhDcvjNE
+ zOaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
  :to:content-transfer-encoding;
  bh=lLqB5uXP4GxHC5TVmBdcUxwKILWbYUsnAsMtvOCXgPI=;
- b=5iiNUgFJWGaSHpHbEFmWaWzucFjNJc534rlTI8UParLAedo/CfKb72Pk/fnnha1iQ2
- gFuxHlMIgQNyWF3x8CjdGY4w5NgCj2AUyLM7qjpqlI2Wx/BKODKAbGeWXkgMIAiGvE02
- H9Wo5fOkQvuUzcK/iHbimisoaiAnOmO4OC0MFO1b0cebtJ609HCnrxQVP+acmpblP04o
- lLlLoEQI3SjTnG3bEj8tqVKZhYD70nZsoNHiZx+9fb8LMRxERQIuWSR1kAQSPkHnlhMP
- Mhd3rofEidXXZ4SI0p3K0sOv741KYLRQ4HLgETHjJN1F4TRS5L+rg0pKwgkDKT/Cj91C
- /hxA==
-X-Gm-Message-State: AOAM5306k1O5KgG/1sE0Q8cdmd25fHL507g4zaZufz1Bz+O+8w5Lhnnf
- ky/9RTZ9dZzCKetVofUig3Xjfgvmn2QJWe2KWU8=
-X-Google-Smtp-Source: ABdhPJzOWVD52CylOVIYTWVqAMkteEIQzDDSxn+BMWCepgd3NjevV+3NaIUAB5/6nHYqBA7Wr4BtStd/2zUVhKA/Ksg=
-X-Received: by 2002:a05:6102:1164:: with SMTP id
- k4mr884386vsg.18.1644436807508; 
- Wed, 09 Feb 2022 12:00:07 -0800 (PST)
+ b=6gC4wSi/8dn6+jrq/4g75orv8yShHe0tjvNx8dmh/qL7RpC+52yaUK5uFbiiql9NB2
+ lEM7h2QqWxbgrphi7CS6yN8yNFkoA87VPAIwW37fTLsWqWYYWnSzh64bEBNcT0PphaWU
+ oEEp+BFFxy56R418I2if0pej2oVRv8QggJt6QT1f560BsSpyPl1GC6RIu77fz8a5SgZ4
+ dz5hvpfd25l4W4wZI6DIjcCutxVgL0jeWlpfjQl20p4ySOrffyXfLtIvzRb5VG5ee+e7
+ DaikUNLo+funSIvNto4UayLM+b1KieKVZ2tCBB8U9lOkXdfFOIf40JATYM/PA2rkudwf
+ 7Qaw==
+X-Gm-Message-State: AOAM530Se7cMropedtDdhiyYE0pnGLdd/ZNiCXTzayFkMBU0EkqWHzwg
+ M8FRXDagUHKnfuQ7iGN2no6CpV0dTFmiNBgpVGQ=
+X-Google-Smtp-Source: ABdhPJwmGDCpuqz42DUqf1NPVmV86xXEUJFBkXjwhU0z20SKwniSQlJOhWiMrhEFcf04IKAlP2vm8gn7WxbwSLp1KYA=
+X-Received: by 2002:a6b:4e18:: with SMTP id c24mr1948877iob.189.1644437888731; 
+ Wed, 09 Feb 2022 12:18:08 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a59:dd14:0:b0:28c:12fb:1936 with HTTP; Wed, 9 Feb 2022
- 12:00:07 -0800 (PST)
+Received: by 2002:a5e:8302:0:0:0:0:0 with HTTP;
+ Wed, 9 Feb 2022 12:18:08 -0800 (PST)
 From: Mrs Aishia Al-Qaddafi <mrsaishaalqadd123@gmail.com>
-Date: Wed, 9 Feb 2022 12:00:07 -0800
-X-Google-Sender-Auth: WTGVXEwsdPg3PWPqMXO_OuKUw28
-Message-ID: <CAEO68yDmuDDGO4L4e-DqG5bh7GLYxpRXzmrK0EewqwicaKSyZw@mail.gmail.com>
-Subject: Hi there can i trust you
+Date: Wed, 9 Feb 2022 12:18:08 -0800
+X-Google-Sender-Auth: USHujOO-ht8XWIBgEEAS372QVZs
+Message-ID: <CALa244MjbUhDP2VF8F=vLFrFkL2_vebn4qyy7vA9yVDHShULNg@mail.gmail.com>
+Subject: Hello can i put my trust on you
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
