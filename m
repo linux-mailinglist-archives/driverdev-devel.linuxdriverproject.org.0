@@ -1,83 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 170544AF54A
-	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Feb 2022 16:32:04 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9ED6F4AF867
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Feb 2022 18:28:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8FE1F82F51;
-	Wed,  9 Feb 2022 15:32:02 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EF7E260AB2;
+	Wed,  9 Feb 2022 17:28:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 48pPMGstHD2d; Wed,  9 Feb 2022 15:32:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ahBH-xSMb8c4; Wed,  9 Feb 2022 17:28:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 484A382F49;
-	Wed,  9 Feb 2022 15:32:01 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BD9906059B;
+	Wed,  9 Feb 2022 17:28:25 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 22B0C1BF5AE
- for <devel@linuxdriverproject.org>; Wed,  9 Feb 2022 15:31:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2E7A61BF3F9
+ for <devel@linuxdriverproject.org>; Wed,  9 Feb 2022 17:28:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0FA3860A98
- for <devel@linuxdriverproject.org>; Wed,  9 Feb 2022 15:31:58 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1D08E60AE7
+ for <devel@linuxdriverproject.org>; Wed,  9 Feb 2022 17:28:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rl7XFSE7XqN5 for <devel@linuxdriverproject.org>;
- Wed,  9 Feb 2022 15:31:56 +0000 (UTC)
+ with ESMTP id zXqQD8CvbNwr for <devel@linuxdriverproject.org>;
+ Wed,  9 Feb 2022 17:28:21 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
- [IPv6:2a00:1450:4864:20::334])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BEF5660A88
- for <devel@driverdev.osuosl.org>; Wed,  9 Feb 2022 15:31:56 +0000 (UTC)
-Received: by mail-wm1-x334.google.com with SMTP id c192so1709103wma.4
- for <devel@driverdev.osuosl.org>; Wed, 09 Feb 2022 07:31:56 -0800 (PST)
+Received: from mail-vk1-xa2d.google.com (mail-vk1-xa2d.google.com
+ [IPv6:2607:f8b0:4864:20::a2d])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9058A60AB2
+ for <devel@driverdev.osuosl.org>; Wed,  9 Feb 2022 17:28:21 +0000 (UTC)
+Received: by mail-vk1-xa2d.google.com with SMTP id z15so1556034vkp.13
+ for <devel@driverdev.osuosl.org>; Wed, 09 Feb 2022 09:28:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id;
- bh=ZyAttm7EWbqNG67CUDg8UPYwEYfS+Y2vi8G1ZAG6NcE=;
- b=RDqrhnCrVs2cy1RLpuK6nwaQFgj423rToOLIXbkpypkJM667N2WSwDimCP0mSqPCeQ
- EGTvGluh8N/yHOL5mrdSr6/5y+WgJvk6BJeAneMtafAHX4dN5Jo+hlPJeEroJP46HMaU
- Ckej5RHBnY3v++NS1SvQbCdf8Rx3q0c+rNYsFVa3ncq0bIqmXi7MmOsGi35r9TTFqAuo
- rgm/9AlLh6Qw0lXbvKq8CSp4WIkj/KUeu5GjqydWvyAVHMw/tJqN6ymygtrSkJqm6BuS
- XStOlwNtwE4Z7E7vYJ0gaxrnXORdOeQVDuP4vFQYC1Z69VBMpg6dmzCvbR43jUeXIWt+
- 78IA==
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=/QhIhDoArxohnthko9E25EzdM1VnFk9yIV0xDfGXawQ=;
+ b=Cyd7uWpzM49PXZBfuKtWz47wHIXtQ4MK95z0QaHkdG9UMnoSH7CErbqfYpjk4Tvm9e
+ NqlFl7NiurIkKTYg1MWkF5+bZnKYBMrVzHYvYG61bRWC2hdS3uPSJuNXuu9gB4MlV0MH
+ 1Pgn5VW77VYK0xQbSkRwViI+CqsogMbxrMroheks7JMWNibENa7l8XjwALzGGX36lMne
+ f3b+JoxQ2zTuir3DlsYUfzfZLavGoLMQEn3PQ1SqGQBPTzZ3Iv2YPxXllPqetLbW6pYD
+ bOvA2RZINvSj7O3awJISxEp4ed7lTann1SJfX0YZXAt0LydGDXRr5zeUpHfIRHFy/72z
+ //rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=ZyAttm7EWbqNG67CUDg8UPYwEYfS+Y2vi8G1ZAG6NcE=;
- b=V41u4VVVSPgHdrKEL2AImd8/iLXTZhJWB8+KkT66vDxRKkLdrASe7TXXAy5klPzE5R
- qdg9MPKb/45QnPoYEnf6sL0KV8oMAfma2IrPuG6tV1NlINQb8wrg7hyT8lZejtSgcj/L
- 8CFkcnP3ZbNayGnht2EOZ6e5hsc0u9NR43qs0xFV2oNzpLbkgW5jVL2vJBD0AxOPAa1f
- 31GZhW1CtMIpc+qTOnkonp6FDWrogDiWBvVTzA8C2Y0Jh4SpdTqcfFxqxoT1+qCO91m1
- /iH8V//xDwsEyDePQvLzQIVjVBeD0SEKnjnP6h5RsJa06gruYx1XGW+tG//oiad9JEQm
- dRpA==
-X-Gm-Message-State: AOAM530PrFtzMc/olVB5oGm23C8WWZxvDBgOheeICklM0WurmIJdKwIi
- UzsRKocutQWGc4Cjd1GTuc8=
-X-Google-Smtp-Source: ABdhPJxG8wN3QTxvyDPuUUetA/tjTXSz97RI/agJ/gioycGkSAkQhODQCe4UpRBeH/mRvSk0Ax2veg==
-X-Received: by 2002:a05:600c:4f53:: with SMTP id
- m19mr2529899wmq.45.1644420714828; 
- Wed, 09 Feb 2022 07:31:54 -0800 (PST)
-Received: from localhost.localdomain ([87.200.95.144])
- by smtp.gmail.com with ESMTPSA id o125sm2875729wme.37.2022.02.09.07.31.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Feb 2022 07:31:54 -0800 (PST)
-From: Christian Hewitt <christianshewitt@gmail.com>
-To: Neil Armstrong <narmstrong@baylibre.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-media@vger.kernel.org, linux-amlogic@lists.infradead.org,
- devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] drivers: meson: vdec: add VP9 support to GXM
-Date: Wed,  9 Feb 2022 15:31:50 +0000
-Message-Id: <20220209153150.30688-1-christianshewitt@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to:content-transfer-encoding;
+ bh=/QhIhDoArxohnthko9E25EzdM1VnFk9yIV0xDfGXawQ=;
+ b=wY9hln5cY3KxruI5+bG3p3xFRPrx0DTD9mKJOSI3f/5xAkkojQw14bkNszVzEVZ/t+
+ sprxCvcnT1FoT6fP8G+DAVSqS5sae/jGOlxVMZ16FoQ9CWu//IDoPZCjLXQseX2KIDCO
+ 8oO2PThp37BOnWyMrdFzwXRJ8V/bWex+nYJJToQSTUfHWbJCI4xhEvh/dbFT1OJrdgZi
+ SKgb9TEyveWLMgMdaIDFeOZDtrN/ezb93XmOdWRSMAZ2XM/dEErKt5kLblKcSaANYKW+
+ 9jLqD6bnG/2n6K+SDZe68EYQj34dKn7tK1T3UCRXxriul5n3fqEizYUPd/u4b1KmdNUp
+ bi7Q==
+X-Gm-Message-State: AOAM530zeekTP+ZEm2Q7+PmiSvCEKVGjbqWtpL/oAOxyYSshANJIdRW+
+ SrI3HfLRfUvYOPqbwhJeiXRffkocdrUeyCc7aEc=
+X-Google-Smtp-Source: ABdhPJyWkOK6h7GjTQuuhXIHPoaPQ0lKHADdQKCkEikoXZP/S+2VEGeET/VvqJLQaCCH9qiz70Gt8FWWv/A8gKLC8Wg=
+X-Received: by 2002:a05:6122:983:: with SMTP id g3mr602609vkd.23.1644427700212; 
+ Wed, 09 Feb 2022 09:28:20 -0800 (PST)
+MIME-Version: 1.0
+Received: by 2002:a59:8fc5:0:b0:282:56bb:311c with HTTP; Wed, 9 Feb 2022
+ 09:28:19 -0800 (PST)
+From: orlando moris <barristermusa32@gmail.com>
+Date: Wed, 9 Feb 2022 17:28:19 +0000
+Message-ID: <CA+gLmc8MKWJcLe_Cs2ZaOYu1j0P55jEhG68VL_j_a-5ULN0dcg@mail.gmail.com>
+Subject: 
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,60 +80,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Christian Hewitt <christianshewitt@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: orlandomoris56@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-VP9 support for GXM appears to have been missed from the original
-codec submission [0] but it works well, so let's add support.
-
-[0] https://github.com/torvalds/linux/commit/00c43088aa680989407b6afbda295f67b3f123f1
-
-Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
----
-Tested with LibreELEC 11 nightly 'AMLGX' dev images for Khadas VIM2
-and WeTek Core2 GXM devices which can be found here [1]. The images
-combine Linux 5.16.y [2] with Kodi v20 [3] and FFmpeg 4.4 [4] which
-notably includes many V4L2 refinements for stability and usability.
-
-[1] https://test.libreelec.tv/
-[2] https://github.com/chewitt/linux/commits/amlogic-5.16.y
-[3] https://github.com/xbmc/xbmc/
-[4] https://github.com/jc-kynesim/rpi-ffmpeg/commits/dev/4.4/rpi_import_1
-
- drivers/staging/media/meson/vdec/vdec_platform.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/drivers/staging/media/meson/vdec/vdec_platform.c b/drivers/staging/media/meson/vdec/vdec_platform.c
-index eabbebab2da2..88c9d72e1c83 100644
---- a/drivers/staging/media/meson/vdec/vdec_platform.c
-+++ b/drivers/staging/media/meson/vdec/vdec_platform.c
-@@ -103,6 +103,18 @@ static const struct amvdec_format vdec_formats_gxl[] = {
- 
- static const struct amvdec_format vdec_formats_gxm[] = {
- 	{
-+		.pixfmt = V4L2_PIX_FMT_VP9,
-+		.min_buffers = 16,
-+		.max_buffers = 24,
-+		.max_width = 3840,
-+		.max_height = 2160,
-+		.vdec_ops = &vdec_hevc_ops,
-+		.codec_ops = &codec_vp9_ops,
-+		.firmware_path = "meson/vdec/gxl_vp9.bin",
-+		.pixfmts_cap = { V4L2_PIX_FMT_NV12M, 0 },
-+		.flags = V4L2_FMT_FLAG_COMPRESSED |
-+			 V4L2_FMT_FLAG_DYN_RESOLUTION,
-+	}, {
- 		.pixfmt = V4L2_PIX_FMT_H264,
- 		.min_buffers = 2,
- 		.max_buffers = 24,
--- 
-2.17.1
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+0KHTmdC70LXQvNC10YLRgdGW0Lcg0LHQtSwg0YHRltC30LTRltKjINC/0L7RiNGC0LAg0LbTmdGI
+0ZbQs9GW0qPRltC30LPQtSDQutC10LvQs9C10L0g0LHSsdC7INGN0LvQtdC60YLRgNC+0L3QtNGL
+0psg0YXQsNGCDQrSm9Cw0YLQtSDQtdC80LXRgSwg0LHRltGA0LDSmyDRgdGW0LfQtNGW0qMg0pvQ
+sNGA0LDRg9GL0qPRi9C3INKv0YjRltC9INCw0YDQvdCw0LnRiyDRgdGW0LfQs9C1INC20ZbQsdC1
+0YDRltC70LPQtdC90ZbQvQ0K0YXQsNCx0LDRgNC70LDQudC80YvQty4g0JzQtdC90LTQtSAoJDcu
+NTAwLjAwMC4wMCkg0rHRgdGL0L3Ri9GB0YvQvCDQsdCw0YAsINGB0ZbQt9Cx0LXQvSDQsNGC0YLQ
+sNGBLCDQsdKx0YDRi9C9DQrQvtGB0YvQvdC00LAg0JvQvtC80LUg0KLQvtCz0L7QtNCwINC20rHQ
+vNGL0YEg0ZbRgdGC0LXQs9C10L0g0LbTmdC90LUg0YLSsdGA0LDRgtGL0L0g0LzQsNGA0pvSsdC8
+INC60LvQuNC10L3RgtGW0Lwg0LjQvdC20LXQvdC10YANCtCa0LDRgNC70L7RgSDSm9Cw0LvQtNGL
+0YDQtNGLLiDQnNC10L3RltKjINC80LDRgNKb0rHQvCDQutC70LjQtdC90YLRltC8INC80LXQvSDQ
+vtGC0LHQsNGB0YvQvCDQttC+0Lsg0LDQv9Cw0YLRi9C90LAg0rHRiNGL0YDQsNC/LA0K0L7Qu9Cw
+0YDQtNGL0qMg06nQvNGW0YDRltC9INKb0LjQtNGLLiAuINCc0LXQvSDRgdGW0LfQsdC10L0g0LzQ
+sNGA0pvSsdC80L3Ri9KjINC20LDSm9GL0L0g0YLRg9GL0YHRgtCw0YDRiyDRgNC10YLRltC90LTQ
+tQ0K0YXQsNCx0LDRgNC70LDRgdGL0L8g0LbQsNGC0YvRgNC80YvQvSwg0YHQvtC90LTRi9Kb0YLQ
+sNC9INGB0ZbQtyDQsNKb0YjQsNC90Ysg0YjQsNKT0YvQvNC00LDRgNGL0qPRi9C3INCx0L7QudGL
+0L3RiNCwINCw0LvQsA0K0LDQu9Cw0YHRi9C3LiDQotC10Lcg0LbQsNGD0LDQvyDQsdC10YDQs9C1
+0L3QvdC10L0g0LrQtdC50ZbQvSDQvNC10L0g0YHRltC30LPQtSDRgNC10LbQuNC80LTQtdGAINGC
+0YPRgNCw0LvRiw0K0YXQsNCx0LDRgNC70LDQudC80YvQvQ0K0L7RgdGLINC60LXQu9GW0YHRltC8
+0L3RltKjINC+0YDRi9C90LTQsNC70YPRiy4sINC+0YHRiyDRjdC70LXQutGC0YDQvtC90LTRi9Kb
+INC/0L7RiNGC0LAg0LDRgNKb0YvQu9GLINC80LDSk9Cw0L0g0YXQsNCx0LDRgNC70LDRgdGL0qPR
+i9C3DQoob3JsYW5kb21vcmlzNTZAZ21haWwuY29tICkNCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRy
+aXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
