@@ -2,48 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B4024B1F9D
-	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Feb 2022 08:52:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 18B754B22C1
+	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Feb 2022 11:06:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9A3C741607;
-	Fri, 11 Feb 2022 07:52:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 835DF408FD;
+	Fri, 11 Feb 2022 10:06:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ETtZtORlOA8L; Fri, 11 Feb 2022 07:52:18 +0000 (UTC)
+	with ESMTP id wiw2FPksvdiI; Fri, 11 Feb 2022 10:06:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3E9C84091D;
-	Fri, 11 Feb 2022 07:52:18 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3CC464089D;
+	Fri, 11 Feb 2022 10:06:54 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CD49F1BF35A
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 11 Feb 2022 07:52:14 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 13AEC1BF336
+ for <devel@linuxdriverproject.org>; Fri, 11 Feb 2022 10:06:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C9EC7409A1
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 11 Feb 2022 07:52:14 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0244A831E3
+ for <devel@linuxdriverproject.org>; Fri, 11 Feb 2022 10:06:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MjjvimaVASOo
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 11 Feb 2022 07:52:13 +0000 (UTC)
-X-Greylist: delayed 00:08:15 by SQLgrey-1.8.0
-Received: from users216.phy.heteml.jp (users216.phy.heteml.jp [157.7.188.209])
- by smtp4.osuosl.org (Postfix) with ESMTPS id AFA174091D
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 11 Feb 2022 07:52:13 +0000 (UTC)
-Received: by users216.phy.heteml.jp (Postfix, from userid 995)
- id 4A569100416A1; Fri, 11 Feb 2022 16:43:55 +0900 (JST)
-To: driverdev-devel@linuxdriverproject.org
-Subject: =?ISO-2022-JP?B?GyRCIVpGfEtcNEQ2LTJKM1g4JjVmPWohWyQqTGQ5ZyRvJDskcj41JGokXiQ3JD8hIxsoQg==?=
-Date: Fri, 11 Feb 2022 07:43:55 +0000
-From: =?ISO-2022-JP?B?GyRCRnxLXDRENi0ySjNYOCY1Zj1qGyhC?= <bio@nihon-kankyo.com>
-Message-ID: <f41d6b96c771acac7b00cff47c4b7730@nihon-kankyo.com>
-X-Mailer: PHPMailer 5.2.22 (https://github.com/PHPMailer/PHPMailer)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id u1_fWS9DKL6P for <devel@linuxdriverproject.org>;
+ Fri, 11 Feb 2022 10:06:50 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.example.com (unknown [81.68.242.203])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BDDC9831DA
+ for <devel@driverdev.osuosl.org>; Fri, 11 Feb 2022 10:06:50 +0000 (UTC)
+Received: from User (r-70.47.62.5.ptr.avast.com [5.62.47.70])
+ by mail.example.com (Postfix) with ESMTPA id 78F76146BEA;
+ Fri, 11 Feb 2022 15:59:57 +0800 (CST)
+From: "James Whitherspoon"<admin@ovh.net>
+Subject: Seasons Greeting
+Date: Fri, 11 Feb 2022 09:01:06 +0100
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Spam: Yes
+Message-Id: <20220211100652.0244A831E3@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,55 +56,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-2022-jp"
+Reply-To: jameswhitherspoon123@gmail.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-?? Leah want to meet you! Click Here: https://clck.ru/b2nAH?jse1 ?? 
-[your-name] さま
+Season Greeting,
 
-日本環境科学研究所のホームページからお問合せいただき、
-ありがとうございました。
-後日、担当者より返信いたします。
+I need a trusted person who can invest my client fund.
 
-■会社名・店名
-?? Leah want to meet you! Click Here: https://clck.ru/b2nAH?jse1 ?? 
+I have investor who wishes to re-invest their funds by putting it into the management of private businessmen and corporations with good business ideas that can generate at least 10% ROI per Annul over a maximum of 5years duration.
 
-■業種・業態
-zd6q6a9f
+My Client has offered some terms which will be discussed when you show interest and make appointment for meeting to know more and understanding,
 
-■部署名
-vkyzj1jb
+Sincerely,
 
-■役職
-6iypgucx
-
-■ご担当者様
-j9yxay
-
-■ふりがな
-asoweqi
-
-■E-mail
-driverdev-devel@linuxdriverproject.org
-
-■お電話番号
-050794724210
-
-■お問合わせの種類 
-その他
-
-■お問合せ内容 
-6lbfos
-
-----------------------------------------------
- 日本環境科学研究所
-〒113-0033 東京都文京区本郷 5-25-16
-メールでのお問合わせ
-お問合わせ対応時間    平日 9:00〜17:00
-TEL：03-3813-0919  FAX：03-3813-0935
-
+Mr James Witherspoon
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
