@@ -1,72 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88FFB4B3C85
-	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Feb 2022 18:26:59 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA15A4B3E1C
+	for <lists+driverdev-devel@lfdr.de>; Sun, 13 Feb 2022 23:34:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DF76D60B91;
-	Sun, 13 Feb 2022 17:26:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 23587403FD;
+	Sun, 13 Feb 2022 22:34:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wse-_hLur-DY; Sun, 13 Feb 2022 17:26:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qiwyQyTdD5mI; Sun, 13 Feb 2022 22:34:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9BA6660A46;
-	Sun, 13 Feb 2022 17:26:56 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B391F403B9;
+	Sun, 13 Feb 2022 22:34:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 98A6A1BF37C
- for <devel@linuxdriverproject.org>; Sun, 13 Feb 2022 17:26:53 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 434731BF834
+ for <devel@linuxdriverproject.org>; Sun, 13 Feb 2022 22:34:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 78B2260B91
- for <devel@linuxdriverproject.org>; Sun, 13 Feb 2022 17:26:53 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3F80540203
+ for <devel@linuxdriverproject.org>; Sun, 13 Feb 2022 22:34:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OaWLzU5ergm6 for <devel@linuxdriverproject.org>;
- Sun, 13 Feb 2022 17:26:53 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-yb1-xb2a.google.com (mail-yb1-xb2a.google.com
- [IPv6:2607:f8b0:4864:20::b2a])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DFB6A60A46
- for <devel@driverdev.osuosl.org>; Sun, 13 Feb 2022 17:26:52 +0000 (UTC)
-Received: by mail-yb1-xb2a.google.com with SMTP id 124so11582397ybn.11
- for <devel@driverdev.osuosl.org>; Sun, 13 Feb 2022 09:26:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=/rL+TycpMQLfB5P4Zn9xgGfUWg8yPCNTwrE46ZNldMM=;
- b=JNBevpQydkd5xopZfGev9uP4QgWzls3vxLU2e4Aw0PYoEe1CuegA44GnQJMWZ6seYh
- kYPPyVqs9bnczR8G8pNTR3FiP+PsNT7SNrHsffl6NxncUN2C1rkFWR3VdgRN0VntONk2
- JyIH/2wLypMwGKiPg3iyp5qiIDIcG5WYt8dv91Cy8pcv64PZMqPhHovMokivQs9uxrAF
- /3/TbsN+ewlXWGIhQ9wUiyMpnv2ADEKSB4lF8AF1EufamCWl97xsKSgU3TrRWv5mUuGv
- U72Aidu5zkRFlUsT35ChWbxDBwysETnB1ghHGOMWxM57pX8qYerxolnu6F9FwgmazEdY
- 80DA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=/rL+TycpMQLfB5P4Zn9xgGfUWg8yPCNTwrE46ZNldMM=;
- b=m0ZPNOeOY8uWVtiWQx1FhM2pdvCY7qHKynGZBFyJsj4TCHGjSwrxUoksUxzBAZoH23
- yFrInXXxTjXY6308EN1L+cmpbcxACWIViFz10FFDEXkxYZz4oFeep3J/m4o1LmfBcidK
- EFbsy6dCvgkYe2gtSQyipSfOUD8UvOuEm5cvY98sy+oBCqNZfSc8ylo7+lNauB1hPG9j
- ir9cRmtjW+sF30Z5fNDLy5nfR3zbfPkrQO9Ax99GZwS23//pQGr2LmqVMp3aSFRzHSLq
- zt9/AFiJ2nLu7nL+sPvQKyPtAfjE8NZHVgEHLGNfOfA824AbRvYWED2zErN3f//Zm1PG
- +wNw==
-X-Gm-Message-State: AOAM532ZhLH+WMJZpiUl52rnUBQ5yctsL399mvmC8IFE1EvKcB5yPn5d
- AeQGNGcE/DFogo9xkw7mUb8iNbH6VhyKQxCZ9GE=
-X-Google-Smtp-Source: ABdhPJxp8iX6UBO2DGBXQ7+6vw6gbw4lMEeQ1qsg2e0cqZ4zAZ3TfWsWue5vMgS0VNdpjEbCTpRZ5L/yNYcpP3/PP9s=
-X-Received: by 2002:a81:3442:: with SMTP id b63mr10677907ywa.493.1644773211251; 
- Sun, 13 Feb 2022 09:26:51 -0800 (PST)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=cegisbd.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lxyN3sFKk2B3 for <devel@linuxdriverproject.org>;
+ Sun, 13 Feb 2022 22:34:31 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.cegisbd.com (mail.cegisbd.com [116.68.206.218])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9C9CA40200
+ for <devel@driverdev.osuosl.org>; Sun, 13 Feb 2022 22:34:31 +0000 (UTC)
+Received: from info.mhvqerywi4muvkclihzd3fbddg.qx.internal.cloudapp.net
+ (unknown [13.70.158.215]) (Authenticated sender: abedin)
+ by mail.cegisbd.com (Postfix) with ESMTPSA id 18B051D06445;
+ Sun, 13 Feb 2022 16:34:01 +0600 (+06)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.cegisbd.com 18B051D06445
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cegisbd.com;
+ s=dkimkey; t=1644748444;
+ bh=hsaDap56ZPPf6wgRpNQeQxs/WkAC83sFOgWBfwn7Vtc=;
+ h=Subject:To:From:Date:Reply-To:From;
+ b=yz/kZbmHOfUxtMUM+GRYx3Sox/rs+n/JsF+DEmZpOodQxYijVJdOf7IMYVQ5mbs3A
+ sVSWTpmiJ00l5E6X8HgtzmvdgTzZ/N0c6l21DeJ25XdwdnGqy5MAgnV6fAiVquJWJ8
+ HdIoLCeVCp1NMPGEwWO+NIkHuIUfvUZiAIaXPpQ0=
 MIME-Version: 1.0
-Received: by 2002:a05:7011:812:b0:1ff:f81d:242a with HTTP; Sun, 13 Feb 2022
- 09:26:50 -0800 (PST)
-From: Dr Ava Smith <gracebanneth@gmail.com>
-Date: Sun, 13 Feb 2022 09:26:50 -0800
-Message-ID: <CABo=7A3X01qQaaiHxRZLK5aGBiFMhb0SngWX2gHtG8wXqVtutQ@mail.gmail.com>
-Subject: GREETINGS FROM DR AVA SMITH
-To: undisclosed-recipients:;
+Content-Description: Mail message body
+Subject: Complete Transaction....
+To: Recipients <abedin@cegisbd.com>
+From: "Ms. R. Al-Hashimi" <abedin@cegisbd.com>
+Date: Sun, 13 Feb 2022 10:34:26 +0000
+Message-Id: <20220213223432.3F80540203@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,19 +64,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: dravasmith27@gmail.com
+Reply-To: reeninvestor111@kakao.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-Hello Dear,
-how are you today?hope you are fine
-My name is Dr Ava Smith ,Am an English and French nationalities.
-I will give you pictures and more details about me as soon as i hear from you
-Thanks
-Ava
+Hello Sir/Ma,
+
+My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus.
+
+I"m serving as a minister, there is a limit to my personal income and investment level, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+
+The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+
+
+If you can handle the fund in a good investment.Reply to: alhashimi123@yandex.com
+
+Regards,
+Reem
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
