@@ -1,55 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E1694B5641
-	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Feb 2022 17:30:34 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 338BA4B5ACF
+	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Feb 2022 21:06:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A887382416;
-	Mon, 14 Feb 2022 16:30:32 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qDr3oyDuhL6N; Mon, 14 Feb 2022 16:30:32 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7E11781368;
-	Mon, 14 Feb 2022 16:30:31 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1543E1BF383
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 14 Feb 2022 16:30:28 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F190D60B63
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 14 Feb 2022 16:30:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A228260E3B;
+	Mon, 14 Feb 2022 20:06:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3fCRviLc1e9E
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 14 Feb 2022 16:30:27 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from wp.imssuites.com (74-80-220-135.ic2net.net [74.80.220.135])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 13CCE60B14
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 14 Feb 2022 16:30:26 +0000 (UTC)
-Received: from wp.imssuites.com (localhost.localdomain [127.0.0.1])
- by wp.imssuites.com (8.14.4/8.14.4) with ESMTP id 21ELBgEF006161
- for <driverdev-devel@linuxdriverproject.org>; Mon, 14 Feb 2022 16:11:43 -0500
-Received: (from apache@localhost)
- by wp.imssuites.com (8.14.4/8.14.4/Submit) id 21ELBgcu006159;
- Mon, 14 Feb 2022 16:11:42 -0500
-To: driverdev-devel@linuxdriverproject.org
-Subject: Thank you for your message
-X-PHP-Originating-Script: 48:class-phpmailer.php
-Date: Mon, 14 Feb 2022 21:11:42 +0000
-From: IMS Executive Suites <info@imssuites.com>
-Message-ID: <794e1153a1549547e6cc86bfc6aec183@www.imssuites.com>
-X-Mailer: PHPMailer 5.2.22 (https://github.com/PHPMailer/PHPMailer)
-X-WPCF7-Content-Type: text/plain
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id njDn9rgzOSSc; Mon, 14 Feb 2022 20:06:26 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6B2FE60D79;
+	Mon, 14 Feb 2022 20:06:25 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6BB5C1BF348
+ for <devel@linuxdriverproject.org>; Mon, 14 Feb 2022 20:06:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 576EC410D8
+ for <devel@linuxdriverproject.org>; Mon, 14 Feb 2022 20:06:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KcGv3AYosQAJ for <devel@linuxdriverproject.org>;
+ Mon, 14 Feb 2022 20:06:21 +0000 (UTC)
+X-Greylist: delayed 00:10:07 by SQLgrey-1.8.0
+Received: from info.dwerwer.top (unknown [106.13.142.37])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 115B2410D5
+ for <devel@linuxdriverproject.org>; Mon, 14 Feb 2022 20:06:20 +0000 (UTC)
+Received: from DESKTOP-KBBBBHI (112.38.203.162) by info.dwerwer.top id
+ h1ar3q0e97ck for <devel@linuxdriverproject.org>;
+ Tue, 15 Feb 2022 03:56:04 +0800 (envelope-from <info12@dwerwer.top>)
+From: "Julie" <y13396250123@163.com>
+Subject: steel products
+To: devel@linuxdriverproject.org
 MIME-Version: 1.0
+Date: Tue, 15 Feb 2022 03:56:00 +0800
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
+Content-Disposition: inline
+Message-Id: <20220214200622.576EC410D8@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,20 +56,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: elizabethimssuites@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: y13396250123@163.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGVsbG8g4p2k77iPIFZhbGVyaWUgbGlrZWQgeW91ISBDbGljayBIZXJlOiBodHRwOi8vaW54Lmx2
-LzZpa24/M2xzIOKdpO+4jy4gVGhhbmsgeW91IGZvciBnZXR0aW5nIGluIHRvdWNoIQoKV2UgaGF2
-ZSByZWNlaXZlZCB5b3VyIG1lc3NhZ2UgYW5kIHdvdWxkIGxpa2UgdG8gdGhhbmsgeW91IGZvciBj
-b250YWN0aW5nIHVzLiBJZiB5b3VyIGlucXVpcnkgaXMgdXJnZW50LCBwbGVhc2UgY2FsbCB1cyBh
-dCB0aGUgbnVtYmVyIGxpc3RlZCBiZWxvdyB0byB0YWxrIHRvIG9uZSBvZiBvdXIgc3RhZmYgbWVt
-YmVycy4gT3RoZXJ3aXNlLCB3ZSB3aWxsIHJlcGx5IGJ5IGVtYWlsIGFzIHNvb24gYXMgcG9zc2li
-bGUuCgpUYWxrIHRvIHlvdSBzb29uLAoKRWxpemFiZXRoIEdvbnphbGV6CklNUyBFeGVjdXRpdmUg
-U3VpdGVzLCBJbmMuClBob25lOiAoNjI2KSA4MjEtMTg5OQoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4
-ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Dear Sir/Madam
+      we are one of the largest cotton yarn manufacturer in  China. Making sure the  products  with good quality and competitive price.
+Hope to cooperation with you .Thanks for taking your time.
+    Julie
+whatsapp:+8613361463501
+ 
+Thanks and best regards!
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
