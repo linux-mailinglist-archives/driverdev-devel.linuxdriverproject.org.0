@@ -1,48 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D64424B68E7
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Feb 2022 11:12:01 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A8BDF4B6FDA
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Feb 2022 16:38:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5DD31415BE;
-	Tue, 15 Feb 2022 10:12:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F14CB60B5A;
+	Tue, 15 Feb 2022 15:38:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8G_9XSGh2U_k; Tue, 15 Feb 2022 10:11:59 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 06nttjB57KYj; Tue, 15 Feb 2022 15:38:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 014C3415B9;
-	Tue, 15 Feb 2022 10:11:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CD87F60BA5;
+	Tue, 15 Feb 2022 15:38:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8BE001BF290
- for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 10:11:56 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B34311BF2C5
+ for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 15:38:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7AB0B815CC
- for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 10:11:56 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A191240940
+ for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 15:38:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8qYQnJ2_KGLR for <devel@linuxdriverproject.org>;
- Tue, 15 Feb 2022 10:11:55 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vA_LGWrnOo9e for <devel@linuxdriverproject.org>;
+ Tue, 15 Feb 2022 15:38:34 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from amorcoll.com.tw (1-34-190-217.hinet-ip.hinet.net [1.34.190.217])
- by smtp1.osuosl.org (Postfix) with ESMTP id 77C4A81432
- for <devel@driverdev.osuosl.org>; Tue, 15 Feb 2022 10:11:55 +0000 (UTC)
-Received: from [5.34.204.137] (account claudia@amorcoll.com.tw HELO User)
- by amorcoll.com.tw (CommuniGate Pro SMTP 6.1.16 _trial_)
- with ESMTPA id 482048; Tue, 15 Feb 2022 18:08:47 +0800
-From: "INOFO"<info@info.com>
-Subject: Info
-Date: Tue, 15 Feb 2022 02:08:40 -0800
+Received: from mail.09d24saludzona8.gob.ec (mail.09d24saludzona8.gob.ec
+ [186.178.4.59])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 18CBD4098C
+ for <devel@driverdev.osuosl.org>; Tue, 15 Feb 2022 15:38:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.09d24saludzona8.gob.ec (Postfix) with ESMTP id 7D8B32EE3A0F;
+ Tue, 15 Feb 2022 06:32:29 -0500 (-05)
+Received: from mail.09d24saludzona8.gob.ec ([127.0.0.1])
+ by localhost (mail.09d24saludzona8.gob.ec [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id aR70RHVFPM5u; Tue, 15 Feb 2022 06:32:29 -0500 (-05)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.09d24saludzona8.gob.ec (Postfix) with ESMTP id 6DFE02EA8844;
+ Tue, 15 Feb 2022 03:44:02 -0500 (-05)
+X-Virus-Scanned: amavisd-new at 09d24saludzona8.gob.ec
+Received: from mail.09d24saludzona8.gob.ec ([127.0.0.1])
+ by localhost (mail.09d24saludzona8.gob.ec [127.0.0.1]) (amavisd-new,
+ port 10026)
+ with ESMTP id MqMtppzONUkm; Tue, 15 Feb 2022 03:44:02 -0500 (-05)
+Received: from [192.168.8.101] (unknown [41.147.0.118])
+ by mail.09d24saludzona8.gob.ec (Postfix) with ESMTPSA id 0EF932E85F31;
+ Tue, 15 Feb 2022 01:53:53 -0500 (-05)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <auto-000000482048@amorcoll.com.tw>
+Content-Description: Mail message body
+Subject: Re:
+To: Recipients <>
+From: "manuel franco" <>
+Date: Tue, 15 Feb 2022 08:56:27 +0200
+Message-Id: <20220215065355.0EF932E85F31@mail.09d24saludzona8.gob.ec>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,76 +69,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: blog-alert@nmmemploymentlaw.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Reply-To: manuelfrancospende0@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-KlRoaXMgbWVzc2FnZSB3YXMgdHJhbnNmZXJyZWQgd2l0aCBhIHRyaWFsIHZlcnNpb24gb2YgQ29t
-bXVuaUdhdGUocikgUHJvKgoKCgoKCgpEZWFyIFNpciwgIAoKIAoKQnVzaW5lc3MgUHJvcG9zYWwK
-CiAKCkZpcnN0bHksIEkgbXVzdCBzb2xpY2l0IHlvdXIgY29uZmlkZW5jZSBpbiB0aGlzIHRyYW5z
-YWN0aW9uOyB0aGlzIGlzIGJ5IHZpcnR1ZSBvZiBpdHMgbmF0dXJlIGFzIGJlaW5nIHV0dGVybHkg
-Cgpjb25maWRlbnRpYWwgYW5kIHRvcCBzZWNyZXQuIFRob3VnaCBJIGtub3cgdGhhdCBhIHRyYW5z
-YWN0aW9uIG9mIHRoaXMgbWFnbml0dWRlIHdpbGwgbWFrZSBhbnkgb25lIGFwcHJlaGVuc2l2ZSAK
-CmFuZCB3b3JyaWVkLCBidXQgSSBhbSBhc3N1cmluZyB5b3UgdGhhdCBhbGwgd2lsbCBiZSB3ZWxs
-IGF0IHRoZSBlbmQgb2YgdGhlIGRheS4gTGV0IG1lIHN0YXJ0IGJ5IGZpcnN0IGludHJvZHVjaW5n
-IAoKbXlzZWxmIHByb3Blcmx5IHRvIHlvdS4gSXQgbWF5IHN1cnByaXNlIHlvdSByZWNlaXZpbmcg
-dGhpcyBsZXR0ZXIgZnJvbSBtZSwgc2luY2UgdGhlcmUgd2FzIG5vIHByZXZpb3VzIAoKY29ycmVz
-cG9uZGVuY2UgYmV0d2VlbiB1cyBNeSBOYW1lIGlzIEtBQkVFUiwgKExhd3llci9CdXNpbmVzc21h
-biBhbmQgRG9jdG9yIGluIExhdykgYSBwZXJzb25hbCBBdHRvcm5leSB0byBMYXRlIAoKTXIuIFBh
-dWwsIGFuIGV4cGF0cmlhdGUgZW5naW5lZXIgYW5kIGNvbnRyYWN0b3IKCiAKCk15IHB1cnBvc2Ug
-b2YgY29udGFjdGluZyB5b3UgaXMgZm9yIHlvdSB0byBoZWxwIG1lIHRvIHNlY3VyZSBoaXMgZnVu
-ZHMgZGVwb3NpdGVkIHdpdGggdGhlIEJhbmsgYmVmb3JlIGhlIGRpZWQsIHRvIAoKYXZvaWQgaXQg
-YmVpbmcgY29uZmlzY2F0ZWQgb3IgZGVjbGFyZWQgYXMgdW5jbGFpbWVkIGJ5IHRoZSBCYW5rLiBU
-aGUgZnVuZCB2YWx1ZSBpcyCAMTYsNTAwLCAwMDAuMDAgKFNpeHRlZW4gCgpNaWxsaW9uLCBGaXZl
-IEh1bmRyZWQgVGhvdXNhbmQgRXVyb3MpLCB0aGlzIG1vbmV5IHdhcyBkZXBvc2l0ZWQgYnkgbXkg
-bGF0ZSBjbGllbnQgYmVmb3JlIGhlIHBhc3NlZCBhd2F5LCBoZSBkaWVkIAoKYnkgc3Ryb2tlIGFu
-ZCBjYW5jZXIgb24gdGhlIDE2dGggQXByaWwgMjAxNCwgYW5kIHVwIHRpbGwgdG9kYXkgaGlzIHJl
-bGF0aXZlcyByZW1haW5lZCB1bmtub3duLgoKIAoKQWxsIHJlbGV2YW50IGRvY3VtZW50cyBhbmQg
-aW5mb3JtYXRpb24gYXMgcmVnYXJkcyB0byB0aGUgY2FzaCBkZXBvc2l0IGlzIGluIG15IHBvc3Nl
-c3Npb24gYXMgd2Ugc3BlYWsgdGhlcmVmb3JlIEkgCgpndWFyYW50ZWUgdGhlIHN1Y2Nlc3Mgb2Yg
-dGhpcyB0cmFuc2FjdGlvbiBpbiBhbGwgbGVnYWwgZGVmaW5pdGlvbnMuIEFzIGhpcyBhdHRvcm5l
-eSBJIGhhdmUgY29udGFjdGVkIHRoZSBiYW5rIGZvciAKCnRoZSBjbGFpbSBvZiB0aGUgZnVuZCBh
-bmQgdGhlIEJhbmsgaGFzIGlzc3VlZCBtZSBhIG5vdGljZSB0byBjb250YWN0IHRoZSBuZXh0IG9m
-IGtpbiBvciB0aGUgYWNjb3VudCB3aWxsIGJlIAoKZGVjbGFyZWQgdW5zZXJ2aWNlYWJsZSBhbmQg
-dGhlIGZ1bmQgd2lsbCBiZSByZXRpcmVkIGJ5IHRoZSBzdGF0ZS5UaGlzIHR5cGUgb2YgaW5jaWRl
-bnQgaXMgbm90IG5ldywgdGhlcmUgYXJlIG1hbnkgCgpwZW9wbGUgd2hvIHRyeSB0byBldmFkZSB0
-YXhlcyBpbiB0aGVpciBjb3VudHJ5IG9mIG9yaWdpbiBieSBkZXBvc2l0aW5nIHRoZWlyIG1vbmV5
-IGluIGEgZm9yZWlnbiBzZWNyZXQgYWNjb3VudHMgCgpidXQgSSBuZXZlciBrbmV3IG15IGxhdGUg
-Y2xpZW50IGhhZCBvbmUgdW50aWwgaGlzIGFjY2lkZW50YWwgZGVhdGggYW5kIHRoZSBldmVudHVh
-bCBkaXNjbG9zdXJlIGZyb20gbXkgY29udGFjdCBpbiAKCnRoZSBiYW5rLiBTaW5jZSB0aGlzIGFj
-Y291bnQgaXMgc2VjcmV0IGFuZCB0aGVyZSBpcyBubyBvbmUgbGVmdCB0byBjbGFpbSB0aGUgZnVu
-ZCBJIGFtIGNvbnRhY3RpbmcgeW91LiBJIGFtIAoKYWN0dWFsbHkgYXNraW5nIGZvciB5b3VyIGNv
-bnNlbnQgdG8gcHJlc2VudCB5b3UgdG8gdGhlIEJhbmsgYXMgdGhlIE5leHQgb2YgS2luL2JlbmVm
-aWNpYXJ5IG9mIG15IGxhdGUgY2xpZW50knMgCgpmdW5kLCBzaW5jZSB5b3UgaGF2ZSB0aGUgc2Ft
-ZSBsYXN0IG5hbWUsIHNvIHRoYXQgdGhlIGZ1bmQgd2lsbCBiZSByZWxlYXNlZCB0byB5b3UgYXMg
-aGlzIG5leHQgb2Yga2luLiBBbGwgdGhlIAoKbGVnYWwgZG9jdW1lbnRzIHRvIGJhY2sgdXAgeW91
-ciBjbGFpbSBhcyBteSBjbGllbnSScyBuZXh0IG9mIEtpbiBhcmUgd2l0aCBtZS4gQWxsIEkgcmVx
-dWlyZSBpcyB5b3VyIGhvbmVzdCAKCmNvb3BlcmF0aW9uIGFuZCBhYnNvbHV0ZSBjb25maWRlbnRp
-YWxpdHkgaW4gb3JkZXIgdG8gZ3VhcmFudGVlIHN1Y2Nlc3MuCgogCgpJIHdpc2ggdG8gcG9pbnQg
-b3V0IHRoYXQgSSB3YW50IDIwJSBvZiB0aGlzIG1vbmV5IHRvIGJlIHNoYXJlZCBhbW9uZyB0aGUg
-Q2hhcml0eSBPcmdhbml6YXRpb25zLCB3aGlsZSB0aGUgCgpyZW1haW5pbmcgaXMgc2hhcmVkIGVx
-dWFsbHkgYmV0d2VlbiB1cy4gVGhpcyB0cmFuc2FjdGlvbiBpcyBlbnRpcmVseSByaXNrIGZyZWUu
-IEkgd2lsbCB1c2UgbXkgcG9zaXRpb24gYXMgdGhlIAoKY2xpZW50knMgcGVyc29uYWwgYXR0b3Ju
-ZXkgdG8gZ3VhcmFudGVlIHRoZSBzdWNjZXNzZnVsIGV4ZWN1dGlvbiBvZiB0aGlzIHRyYW5zYWN0
-aW9uLiBJZiB5b3UgYXJlIGludGVyZXN0ZWQsIAoKcGxlYXNlIGNvbnRhY3QgbWUsIFByaXZhdGUg
-RW1haWw6IG92ZXJzZWFvZmZpY2VAeWFob28uY29tICB1cG9uIHlvdXIgcmVzcG9uc2UsIEkgc2hh
-bGwgdGhlbiBwcm92aWRlIHlvdSB3aXRoIG1vcmUgCgpkZXRhaWxzIGFuZCByZWxldmFudCBkb2N1
-bWVudHMgdGhhdCB3aWxsIGhlbHAgeW91IHVuZGVyc3RhbmQgbW9yZSBvbiB0aGlzIHRyYW5zYWN0
-aW9uLgoKIAoKVGhlIGludGVuZGVkIHRyYW5zYWN0aW9uIHdpbGwgYmUgcHJvY2Vzc2VkIHVuZGVy
-IGxlZ2l0aW1hY3ksd2hpY2ggd2lsbCBwcm90ZWN0IG1lIGFuZCB5b3UgZnJvbSBhbnkgdmlvbGF0
-aW9uIG9mIAoKbGF3LgoKSWYgeW91IHdpc2ggdG8gYWNoaWV2ZSB0aGUgZ29hbCB3aXRoIG1lLCBw
-bGVhc2Uga2luZGx5IGdldCBiYWNrIHRvIG1lIHdpdGggeW91ciBpbnRlcmVzdCBmb3IgZnVydGhl
-ciBleHBsYW5hdGlvbnMgCgphbmQgYmV0dGVyIHVuZGVyc3RhbmRpbmcuIEFsc28gYmUga2luZCB0
-byBsZXQgbWUga25vdyBpZiB5b3UgYXJlIG5vdCBpbnRlcmVzdGVkIHNvIHRoYXQgSSBjYW4gZnVy
-dGhlciBteSBzZWFyY2ggCgp0byBhbm90aGVyIENpdGl6ZW4gdGhhdCBoYXMgdGhlIHNhbWUgc3Vy
-bmFtZSB3aXRoIG15IGxhdGUgY2xpZW50LgoKIAoKS2luZGVzdCBSZWdhcmRzCgogCktBQkVFUgoK
-QXJlYSBvZiBQcmFjdGljZToKQWNjaWRlbnQgYW5kIEluanVyaWVzLCBBZG9wdGlvbiwgQWx0ZXJu
-YXRlIERpc3B1dGUgUmVzb2x1dGlvbiwKQW50aXRydXN0IGFuZCBUcmFkZSBSZWd1bGF0aW9uLCBC
-YWlsIGFuZCBCb25kLCBCYW5raW5nIGFuZCBGaW5hbmNlLApCYW5rcnVwdGN5LCBCdXNpbmVzcyBh
-bmQgQ29tbWVyY2lhbCwgQ2FyIEFjY2lkZW50LCBDaXZpbCBSaWdodCwKQ29weXJpZ2h0LCBDcmlt
-aW5hbCBMYXcKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-ZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2Ry
-aXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2
-LWRldmVsCg==
+Sie wurden f=FCr eine Spende in H=F6he von 2.000.000,00 Euro ausgew=E4hlt
+
+Mein Name ist Manuel Franco aus den Vereinigten Staaten.
+Ich habe die Amerika-Lotterie im Wert von 768 Millionen Dollar gewonnen und=
+ spende einen Teil davon an nur 5 gl=FCckliche Menschen und ein paar Waisen=
+h=E4user als Wohlwollen f=FCr die Menschheit. Melden Sie sich bei mir, um I=
+hre Spende zu erhalten.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
