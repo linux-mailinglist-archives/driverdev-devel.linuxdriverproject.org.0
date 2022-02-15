@@ -1,59 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 195EA4B5D92
-	for <lists+driverdev-devel@lfdr.de>; Mon, 14 Feb 2022 23:25:23 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 104A24B61D9
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Feb 2022 04:47:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 93A4660AE2;
-	Mon, 14 Feb 2022 22:25:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6118882662;
+	Tue, 15 Feb 2022 03:47:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JnpvYWzCPoUk; Mon, 14 Feb 2022 22:25:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3Rht22GwWN4g; Tue, 15 Feb 2022 03:47:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4C50160803;
-	Mon, 14 Feb 2022 22:25:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0951D81B7B;
+	Tue, 15 Feb 2022 03:47:32 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 587261BF271
- for <devel@linuxdriverproject.org>; Mon, 14 Feb 2022 22:25:17 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DF6EA1BF417
+ for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 03:47:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 541D140475
- for <devel@linuxdriverproject.org>; Mon, 14 Feb 2022 22:25:17 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CBF54414C1
+ for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 03:47:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new); dkim=neutral
- reason="invalid (public key: not available)" header.d=science.gov.tm
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kkHyVliDxHlM for <devel@linuxdriverproject.org>;
- Mon, 14 Feb 2022 22:25:16 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BVV-Oyg3FS9j for <devel@linuxdriverproject.org>;
+ Tue, 15 Feb 2022 03:47:28 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from web2.telecom.tm (web2.telecom.tm [217.174.238.74])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 77A7E40256
- for <devel@driverdev.osuosl.org>; Mon, 14 Feb 2022 22:25:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=science.gov.tm; s=dkim; h=Message-Id:Content-Transfer-Encoding:Content-Type
- :MIME-Version:Date:Subject:From:Reply-To:Sender:To:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=hsorkSUaIc43XfYKrpd72fmpLte4Epm1vINLmVJIoj0=; b=lvEgelD5WS3EOf8vOykQ74mrey
- PZiLEaXUDb+AIABmGhfJKSBmJH95NLZ/f0DQ8AJ2m8qvCJJsD+SGJtmJlbgs/LBSeRs5Ppk0q7Cpk
- KJo8fv0F6biX/k8Z18UTDRpT3GQWKkp2XIr6nPVm402i4r6k4oFiWAbKZUtsXC/5BGgM=;
-Received: from [13.70.158.215] (helo=User) by web2 with esmtpa (Exim 4.94)
- (envelope-from <tmerkez@science.gov.tm>)
- id 1nJjjf-0000NI-35; Tue, 15 Feb 2022 03:22:19 +0500
-From: "Reem  Al-Hashimi"<tmerkez@science.gov.tm>
-Subject: Partnership Request
-Date: Mon, 14 Feb 2022 22:22:17 -0000
+Received: from mail.misbit.com
+ (210-140-169-90.tesla.jp-east.compute.idcfcloud.net [210.140.169.90])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 04A2C414A2
+ for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 03:47:27 +0000 (UTC)
+Received: from WIN-V3IQ2QN968R.us-west-2.compute.internal
+ (ec2-54-200-231-58.us-west-2.compute.amazonaws.com [54.200.231.58])
+ by mail.misbit.com (Postfix) with ESMTPSA id 3AF3D2AFBAB9;
+ Tue, 15 Feb 2022 10:56:33 +0900 (JST)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <E1nJjjf-0000NI-35@web2>
+Content-Description: Mail message body
+Subject: RE-Business Beneficial
+To: Recipients <wsoo23012@gmail.com>
+From: wsoo23012@gmail.com
+Date: Tue, 15 Feb 2022 01:56:23 +0000
+Message-Id: <20220215034728.CBF54414C1@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,25 +55,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reeninvestor111@kakao.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Sir/Ma,
+Greetings,
+ How are you? hope you are doing great. My name is Miss. Julia
+Reez, I am the  Marketing manager of Alfamed MMC Pharmaceutical company in Baku, Azerbaijan, a major manufacturer of pharmaceutical products and one of the leading bio-pharmaceutical companies here in Azerbaijan. The reason I am contacting you is to discuss a viable business opportunity that will be exceptionally beneficial to you and I.
+I need a reliable foreign business associate to partner with me in sourcing a rare herbal oil extract used by Alfamed MMC Pharmaceutical  as a raw material in development/manufacturing high quality anti-viral vaccines, cancer treatments and various life-saving pharmaceutical products.
+This may not be your area of expertise but it will be another income generating stream out of your specialty, The scarcity of this raw material has hindered product developments in the  company. The previous supplier in Asia closed down due to the recent economic meltdown caused by COVID-19 pandemic.
 
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus.
+However, a retired colleague informed me of a source in Turkey. I made inquiries and found out that the manufacturer actually exists in Turkey and the herbal oil extract is sold at a cheap rate, in fact  cheaper than the company's previous purchases.
 
-I"m serving as a minister, there is a limit to my personal income and investment level, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+HERE IS MY PROPOSAL: I seek your consent to step-in as the middle person (new supplier) between the manufacturer and Alfamed MMC  Pharmaceutical to execute this project and you give me a commission after supply. I cannot bid for the supply contract myself because my employment agreement prohibits me from handling procurement of contracts and because I wouldn't want the company to have direct contact to the Turkey manufacturer.
+This will enable us to work together as partners and share profits (without breaking my employment agreement). We will discuss the profit sharing ratio, and crucial details you need to know about this raw material. Please if you are interested to carry out this contract do contact me  via my email:juliareez@yandex.com
+I look forward to hearing you.
 
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+Thanks for your time.
 
-
-If you can handle the fund in a good investment.Reply to: alhashimi123@yandex.com
-
-Regards,
-Reem
+Best regards
+Julia
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
