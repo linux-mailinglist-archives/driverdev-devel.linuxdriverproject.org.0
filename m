@@ -1,48 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 104A24B61D9
-	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Feb 2022 04:47:35 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DC224B64E9
+	for <lists+driverdev-devel@lfdr.de>; Tue, 15 Feb 2022 09:00:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6118882662;
-	Tue, 15 Feb 2022 03:47:33 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3Rht22GwWN4g; Tue, 15 Feb 2022 03:47:32 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0951D81B7B;
-	Tue, 15 Feb 2022 03:47:32 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DF6EA1BF417
- for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 03:47:28 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CBF54414C1
- for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 03:47:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9B18640920;
+	Tue, 15 Feb 2022 08:00:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BVV-Oyg3FS9j for <devel@linuxdriverproject.org>;
- Tue, 15 Feb 2022 03:47:28 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.misbit.com
- (210-140-169-90.tesla.jp-east.compute.idcfcloud.net [210.140.169.90])
- by smtp4.osuosl.org (Postfix) with ESMTP id 04A2C414A2
- for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 03:47:27 +0000 (UTC)
-Received: from WIN-V3IQ2QN968R.us-west-2.compute.internal
- (ec2-54-200-231-58.us-west-2.compute.amazonaws.com [54.200.231.58])
- by mail.misbit.com (Postfix) with ESMTPSA id 3AF3D2AFBAB9;
- Tue, 15 Feb 2022 10:56:33 +0900 (JST)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id p_g9zU-DvOVX; Tue, 15 Feb 2022 08:00:48 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3E3CE4091B;
+	Tue, 15 Feb 2022 08:00:48 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 458F01BF276
+ for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 08:00:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4216982ADD
+ for <devel@linuxdriverproject.org>; Tue, 15 Feb 2022 08:00:45 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VKveSMRM_bZm for <devel@linuxdriverproject.org>;
+ Tue, 15 Feb 2022 08:00:44 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-pj1-x102d.google.com (mail-pj1-x102d.google.com
+ [IPv6:2607:f8b0:4864:20::102d])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 652A1812F0
+ for <devel@driverdev.osuosl.org>; Tue, 15 Feb 2022 08:00:44 +0000 (UTC)
+Received: by mail-pj1-x102d.google.com with SMTP id om7so16750339pjb.5
+ for <devel@driverdev.osuosl.org>; Tue, 15 Feb 2022 00:00:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:sender:from:date:message-id:subject:to;
+ bh=oS24Odoo+YWXb21BnWQaYo70KmZfxZTyAbEDj6Qrlsc=;
+ b=TRLWswr9smNS9T12WvOU2znuaO4XoPzwVPDfPk1+BCYHPWFId1KvM1CUGI2SC1NqfB
+ +5/X40MpKZ15tFCu47UStBw4KlQa+VZoNOOVbPJW0G/Ac/oMpt/MCsZIvpMelc/R8zVf
+ mek8JfYI/KetBvFUfHdpTcYrRXhZ+BEsLw7iDE2AaJGCp01xDyxwzPnD3J8krb1GYnm2
+ PO8wskTDOOAAJrjLxgbb7/rfmLexNcLvQfGqiYBXzh3FT+HG1FjxydzmPfqMN7EP/3Df
+ lyzjaokWD8pagHscScRs+ftSxCAKTU77yCfoxWo+Zy3RlvTYL0vxqOORpKr0cNjZun1W
+ UMSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:sender:from:date
+ :message-id:subject:to;
+ bh=oS24Odoo+YWXb21BnWQaYo70KmZfxZTyAbEDj6Qrlsc=;
+ b=04OynmDaR1PfxQYR1NEUFWpphNbqErV9J0Oc0eOwG3VpsHPEbutxPUXgV/LXfUNd6r
+ yTDz45L9EgQyLbissJsT1N9qgJhv5XAjBfI/VVtin4XTwP1H+QxsbrI1D/9GDRGNaypz
+ 3Rmy60vskamr2LlYzRf/fQIStZ78mryfUqGkkqqdrHAnfraSh3wHMwuHkDLFqJi3hu9o
+ us40dPe4+d4YO6Aqli90HzJrH7H/UUiI2++fuljHK9htSY6YPoh1q5rrRaPv4TfprfUv
+ PoSGiUy1ztStiaJoWLjxQkJeRog+uyF7sWnQxdVFJ050xTITaSXIUFgHp1BEq7f5U+fV
+ fFuw==
+X-Gm-Message-State: AOAM532n/mOWfONeanHrFeoUdAK5sH4tYBlaE4QY6ISUmkhAwsefLTew
+ Kgs4aAHHvpcUjfBWM9RODyvRSWfWKZhTXtPtKpQ=
+X-Google-Smtp-Source: ABdhPJyE4PrFa9DGISTDtqS8JQWNNvANMPgWJuBMWOmCtLqbxRFmg4g9Wl4rP0RiEPNbwI8sZP8nuVArrYIK28VUMRo=
+X-Received: by 2002:a17:903:1212:: with SMTP id
+ l18mr3019592plh.7.1644912043156; 
+ Tue, 15 Feb 2022 00:00:43 -0800 (PST)
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: RE-Business Beneficial
-To: Recipients <wsoo23012@gmail.com>
-From: wsoo23012@gmail.com
-Date: Tue, 15 Feb 2022 01:56:23 +0000
-Message-Id: <20220215034728.CBF54414C1@smtp4.osuosl.org>
+Received: by 2002:a05:6a20:448b:b0:70:f80a:8033 with HTTP; Tue, 15 Feb 2022
+ 00:00:42 -0800 (PST)
+From: Mrs Elodie Antoine <mrselodieantoinea@gmail.com>
+Date: Tue, 15 Feb 2022 00:00:42 -0800
+X-Google-Sender-Auth: YYkVJXrTosc3MlJQpsa6MC8-YwM
+Message-ID: <CAOJar2LNzjVfg51YSKuy_EZnGfKwtJ5pnmqBSqNiUJwHMEYs0g@mail.gmail.com>
+Subject: Calvary Greetings
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,27 +83,57 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: mrselodieantonie778@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greetings,
- How are you? hope you are doing great. My name is Miss. Julia
-Reez, I am the  Marketing manager of Alfamed MMC Pharmaceutical company in Baku, Azerbaijan, a major manufacturer of pharmaceutical products and one of the leading bio-pharmaceutical companies here in Azerbaijan. The reason I am contacting you is to discuss a viable business opportunity that will be exceptionally beneficial to you and I.
-I need a reliable foreign business associate to partner with me in sourcing a rare herbal oil extract used by Alfamed MMC Pharmaceutical  as a raw material in development/manufacturing high quality anti-viral vaccines, cancer treatments and various life-saving pharmaceutical products.
-This may not be your area of expertise but it will be another income generating stream out of your specialty, The scarcity of this raw material has hindered product developments in the  company. The previous supplier in Asia closed down due to the recent economic meltdown caused by COVID-19 pandemic.
+CAN I TRUST YOU WITH  THIS (US$4.5 Million Dollars) FOR CHARITY WORKS,
 
-However, a retired colleague informed me of a source in Turkey. I made inquiries and found out that the manufacturer actually exists in Turkey and the herbal oil extract is sold at a cheap rate, in fact  cheaper than the company's previous purchases.
+Calvary Greetings in the name of the LORD Almighty and Our LORD JESUS
+CHRIST the giver of every good thing. Good day,i know this letter will
+definitely come to you as a huge surprise, but I implore you to take
+the time to go through it carefully as the decision you make will go
+off a long way to determine my future and continued existence. I am
+Mrs Elodie Antoine
+aging widow of 59 years old suffering from long time illness. I have
+some funds I inherited from my late husband,
 
-HERE IS MY PROPOSAL: I seek your consent to step-in as the middle person (new supplier) between the manufacturer and Alfamed MMC  Pharmaceutical to execute this project and you give me a commission after supply. I cannot bid for the supply contract myself because my employment agreement prohibits me from handling procurement of contracts and because I wouldn't want the company to have direct contact to the Turkey manufacturer.
-This will enable us to work together as partners and share profits (without breaking my employment agreement). We will discuss the profit sharing ratio, and crucial details you need to know about this raw material. Please if you are interested to carry out this contract do contact me  via my email:juliareez@yandex.com
-I look forward to hearing you.
+The sum of (US$4.5 Million Dollars) and I needed a very honest and God
+fearing  who can withdraw this money then use the funds for Charity
+works. I WISH TO GIVE THIS FUNDS TO YOU FOR CHARITY WORKS. I found
+your email address from the internet after honest prayers  to the LORD
+to bring me a helper and i decided to contact you if you may be
+willing and interested to handle these trust funds in good faith
+before anything happens to me.
+I accept this decision because I do not have any child who will
+inherit this money after I die. I want your urgent reply to me so that
+I will give you the deposit receipt which the  COMPANY issued to me as
+next of kin for immediate transfer of the money to your account in
+your country, to start the good work of God, I want you to use the
+15/percent of the total amount to help yourself in doing the project.
 
-Thanks for your time.
 
-Best regards
-Julia
+I am desperately in keen need of assistance and I have summoned up
+courage to contact you for this task, you must not fail me and the
+millions of the poor people in our todays WORLD. This is no stolen
+money and there are no dangers involved,100% RISK FREE with full legal
+proof. Please if you would be able to use the funds for the Charity
+works kindly let me know immediately.I will appreciate your utmost
+confidentiality and trust in this matter to accomplish my heart
+desire, as I don't want anything that will jeopardize my last wish. I
+want you to take 25 percent of the total money for your personal use
+while 75% of the money will go to charity.I will appreciate your
+utmost confidentiality and trust in this matter to accomplish my heart
+desire, as I don't want anything that will jeopardize my last wish.
+
+
+
+
+Thanks and God bless you,
+
+Mrs Elodie Antoine
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
