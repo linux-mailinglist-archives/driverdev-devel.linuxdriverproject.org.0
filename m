@@ -1,69 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE0124B84E2
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Feb 2022 10:51:50 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A78C4B85DC
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Feb 2022 11:36:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DBA6A400FB;
-	Wed, 16 Feb 2022 09:51:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CB33F4030F;
+	Wed, 16 Feb 2022 10:36:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y7DNJUDXItwL; Wed, 16 Feb 2022 09:51:47 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZiDRArHmUGSd; Wed, 16 Feb 2022 10:36:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4DB824002B;
-	Wed, 16 Feb 2022 09:51:47 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 63A4C4032C;
+	Wed, 16 Feb 2022 10:36:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 59BED1BF488
- for <devel@linuxdriverproject.org>; Wed, 16 Feb 2022 09:51:44 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8362F1BF5B3
+ for <devel@linuxdriverproject.org>; Wed, 16 Feb 2022 10:36:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 47A90415B1
- for <devel@linuxdriverproject.org>; Wed, 16 Feb 2022 09:51:44 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D655082A8F
+ for <devel@linuxdriverproject.org>; Wed, 16 Feb 2022 10:36:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Wyff1h7LDT6K for <devel@linuxdriverproject.org>;
- Wed, 16 Feb 2022 09:51:43 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1ED44410A8
- for <devel@driverdev.osuosl.org>; Wed, 16 Feb 2022 09:51:43 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 02902616FE;
- Wed, 16 Feb 2022 09:51:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BCCEC004E1;
- Wed, 16 Feb 2022 09:51:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1645005101;
- bh=jrCG01kuZtoWFzJMK4a9MI6BlNvCp9nP8W6TDqdJUAI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=VUio0Q9vJ7wTrHosofFUk73FdcSLNbwzOeAyvASdGD/Q4N7+9MJl+CTVhqiBNpg4S
- DGTKAi4HIUXaAR3ys4yo0utRqVdAWLfS4yYWUe3M8OwUWJ61wp8PSe7FFzU0X6cn65
- B8IFJjpTymndDJJJDQJYNFVGJPaxHYzt3oVJvIuKNu1XHTQYZIVPRMZ/gnHAh7ceUG
- lCrQHvRaaXU+ZqI33DQICXUdbQXJZJRcrukEfgk6QRr0KUxIWN3MXpO4PA7n09ds4O
- sNw33JAQyj3fSlwdvTaFreL703xgCLwy/YyqPa91IwU3K50xIQGIwVAfzVYB/W7pia
- /Y3vOfVtO88Ew==
-Received: by pali.im (Postfix)
- id 583107F4; Wed, 16 Feb 2022 10:51:39 +0100 (CET)
-Date: Wed, 16 Feb 2022 10:51:39 +0100
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
-Subject: Re: [PATCH 2/2] staging: wfx: apply the necessary SDIO quirks for
- the Silabs WF200
-Message-ID: <20220216095139.2oulgq2vwvpsmnan@pali>
-References: <20220216093112.92469-1-Jerome.Pouiller@silabs.com>
- <20220216093112.92469-3-Jerome.Pouiller@silabs.com>
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=linaro.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id X4-m2ZOUFB6E for <devel@linuxdriverproject.org>;
+ Wed, 16 Feb 2022 10:36:04 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-lf1-x134.google.com (mail-lf1-x134.google.com
+ [IPv6:2a00:1450:4864:20::134])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 978F8829F2
+ for <devel@driverdev.osuosl.org>; Wed, 16 Feb 2022 10:36:04 +0000 (UTC)
+Received: by mail-lf1-x134.google.com with SMTP id j15so2943232lfe.11
+ for <devel@driverdev.osuosl.org>; Wed, 16 Feb 2022 02:36:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=DPYWkKQW0nFWmY1xKFD4WRaxOqq/BeFHyxszPN5EPVU=;
+ b=sUG7rjTRD6NrI48dGWwKOWJyGgjS5g2H1DjFZUQiMmRJj/ir9Wv7S+f3pcYhwB3G21
+ jgW2ghTrDeTyWExposS8pU9olgt0OSFSsKqTWvFBrZtYeR1hzrMRB/QHZbRFsmF8Z2S0
+ H/h0PiEEIFA7GmMAI2JMN3sa/fyLmEXYE57MT9xMELnMPIGAArOM53KTMVRbp5J3baMB
+ isLqyWoSSBY1G4sXiIcXWs7lxW91pyd5h21jcWCoFLVEL0Fbk7le1PLdPy5uxaXftMdu
+ 5wLQBv6dJWYyW7H1/lavO2wyNL8O5n34jBSkfOXmCyy+T54Vr7Az+AHoRojt+05MRAOP
+ vMsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=DPYWkKQW0nFWmY1xKFD4WRaxOqq/BeFHyxszPN5EPVU=;
+ b=ju7qmQisR7aQpPO6yNPW+4y1SJShpJPaYya0XIg8/myZZrBahv3GtZg+NJxu1465Pn
+ T+Xwtc/bv5pREPkhm8Bs6aQdj3ge+QDPI7KjGKDObuLE8k6IvIiV7AEjInnhFyewwb5E
+ czZODMvnIJGtzSh22JWxG0tL4zT9AC8dwi1MnlRAnJPSNr8fZA2ThtiknBaMQNq19Gcd
+ yODxcr8mxMPwRPjkh7i07TyF7dLFe11b2VIqsFUGh3xG3YtZvIynqjGEfZIcRJfwYOq7
+ Ls27c2W21Sh0nQGgcLeRNwK9TMJOhi+ycV2GBerCLlJoSPnbzjMg0EUlBZmW2eHb6wdj
+ V/iw==
+X-Gm-Message-State: AOAM533yvHHbdQe9vTNPTDkjR2B5tal/RWVN/VqJrmJZDexzY2HbHh2p
+ EcN6KzTSh9hBXZIVpztxgCc8LjdAIkJl7yvZRiCMgw==
+X-Google-Smtp-Source: ABdhPJz9lTvKXYqNUYEUwJcowusuOCgV3hil3k2PW920Mo0Cq3dd/tLhknO2IA4VJElhIgGQWuFNWTFzEa2t3lXDQAk=
+X-Received: by 2002:a05:6512:388d:b0:443:6066:2c8d with SMTP id
+ n13-20020a056512388d00b0044360662c8dmr1552732lft.184.1645007762118; Wed, 16
+ Feb 2022 02:36:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220216093112.92469-3-Jerome.Pouiller@silabs.com>
-User-Agent: NeoMutt/20180716
+References: <20220216093112.92469-1-Jerome.Pouiller@silabs.com>
+In-Reply-To: <20220216093112.92469-1-Jerome.Pouiller@silabs.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 16 Feb 2022 11:35:25 +0100
+Message-ID: <CAPDyKFreMJigpAgE95EgkStNrE+r+_k9iRuTXsFk6t9d66e0TQ@mail.gmail.com>
+Subject: Re: [PATCH 0/2] staging: wfx: apply SDIO suggestions
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,50 +83,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Ulf Hansson <ulf.hansson@linaro.org>,
- netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-mmc@vger.kernel.org, "David S . Miller" <davem@davemloft.net>,
- Kalle Valo <kvalo@codeaurora.org>
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-mmc@vger.kernel.org,
+ =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-T24gV2VkbmVzZGF5IDE2IEZlYnJ1YXJ5IDIwMjIgMTA6MzE6MTIgSmVyb21lIFBvdWlsbGVyIHdy
-b3RlOgo+IEZyb206IErDqXLDtG1lIFBvdWlsbGVyIDxqZXJvbWUucG91aWxsZXJAc2lsYWJzLmNv
-bT4KPiAKPiBVbnRpbCBub3csIHRoZSBTRElPIHF1aXJrcyBhcmUgYXBwbGllZCBkaXJlY3RseSBm
-cm9tIHRoZSBkcml2ZXIuCj4gSG93ZXZlciwgaXQgaXMgYmV0dGVyIHRvIGFwcGx5IHRoZSBxdWly
-a3MgYmVmb3JlIGRyaXZlciBwcm9iaW5nLiBTbywKPiB0aGlzIHBhdGNoIHJlbG9jYXRlIHRoZSBx
-dWlya3MgaW4gdGhlIE1NQyBmcmFtZXdvcmsuCj4gCj4gTm90ZSB0aGF0IHRoZSBXRjIwMCBoYXMg
-bm8gdmFsaWQgU0RJTyBWSUQvUElELiBUaGVyZWZvcmUsIHdlIG1hdGNoIERUCj4gcmF0aGVyIHRo
-YW4gb24gdGhlIFNESU8gVklEL1BJRC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKw6lyw7RtZSBQb3Vp
-bGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5jb20+CgpSZXZpZXdlZC1ieTogUGFsaSBSb2jD
-oXIgPHBhbGlAa2VybmVsLm9yZz4KCj4gLS0tCj4gIGRyaXZlcnMvbW1jL2NvcmUvcXVpcmtzLmgg
-ICAgICB8IDUgKysrKysKPiAgZHJpdmVycy9zdGFnaW5nL3dmeC9idXNfc2Rpby5jIHwgMyAtLS0K
-PiAgMiBmaWxlcyBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gCj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvbW1jL2NvcmUvcXVpcmtzLmggYi9kcml2ZXJzL21tYy9jb3Jl
-L3F1aXJrcy5oCj4gaW5kZXggMjBmNTY4NzI3Mjc3Li5mODc5ZGM2M2Q5MzYgMTAwNjQ0Cj4gLS0t
-IGEvZHJpdmVycy9tbWMvY29yZS9xdWlya3MuaAo+ICsrKyBiL2RyaXZlcnMvbW1jL2NvcmUvcXVp
-cmtzLmgKPiBAQCAtMTQ5LDYgKzE0OSwxMSBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IG1tY19maXh1
-cCBfX21heWJlX3VudXNlZCBzZGlvX2ZpeHVwX21ldGhvZHNbXSA9IHsKPiAgc3RhdGljIGNvbnN0
-IHN0cnVjdCBtbWNfZml4dXAgX19tYXliZV91bnVzZWQgc2Rpb19jYXJkX2luaXRfbWV0aG9kc1td
-ID0gewo+ICAJU0RJT19GSVhVUF9DT01QQVRJQkxFKCJ0aSx3bDEyNTEiLCB3bDEyNTFfcXVpcmss
-IDApLAo+ICAKPiArCVNESU9fRklYVVBfQ09NUEFUSUJMRSgic2lsYWJzLHdmMjAwIiwgYWRkX3F1
-aXJrLAo+ICsJCQkgICAgICBNTUNfUVVJUktfQlJPS0VOX0JZVEVfTU9ERV81MTIgfAo+ICsJCQkg
-ICAgICBNTUNfUVVJUktfTEVOSUVOVF9GTjAgfAo+ICsJCQkgICAgICBNTUNfUVVJUktfQkxLU1pf
-Rk9SX0JZVEVfTU9ERSksCj4gKwo+ICAJRU5EX0ZJWFVQCj4gIH07Cj4gIAo+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL3N0YWdpbmcvd2Z4L2J1c19zZGlvLmMgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L2J1
-c19zZGlvLmMKPiBpbmRleCAzMTJkMmQzOTFhMjQuLjUxYTBkNThhOTA3MCAxMDA2NDQKPiAtLS0g
-YS9kcml2ZXJzL3N0YWdpbmcvd2Z4L2J1c19zZGlvLmMKPiArKysgYi9kcml2ZXJzL3N0YWdpbmcv
-d2Z4L2J1c19zZGlvLmMKPiBAQCAtMjE2LDkgKzIxNiw2IEBAIHN0YXRpYyBpbnQgd2Z4X3NkaW9f
-cHJvYmUoc3RydWN0IHNkaW9fZnVuYyAqZnVuYywgY29uc3Qgc3RydWN0IHNkaW9fZGV2aWNlX2lk
-ICppCj4gIAlidXMtPmZ1bmMgPSBmdW5jOwo+ICAJYnVzLT5vZl9pcnEgPSBpcnFfb2ZfcGFyc2Vf
-YW5kX21hcChucCwgMCk7Cj4gIAlzZGlvX3NldF9kcnZkYXRhKGZ1bmMsIGJ1cyk7Cj4gLQlmdW5j
-LT5jYXJkLT5xdWlya3MgfD0gTU1DX1FVSVJLX0xFTklFTlRfRk4wIHwKPiAtCQkJICAgICAgTU1D
-X1FVSVJLX0JMS1NaX0ZPUl9CWVRFX01PREUgfAo+IC0JCQkgICAgICBNTUNfUVVJUktfQlJPS0VO
-X0JZVEVfTU9ERV81MTI7Cj4gIAo+ICAJc2Rpb19jbGFpbV9ob3N0KGZ1bmMpOwo+ICAJcmV0ID0g
-c2Rpb19lbmFibGVfZnVuYyhmdW5jKTsKPiAtLSAKPiAyLjM0LjEKPiAKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
-QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
-Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+T24gV2VkLCAxNiBGZWIgMjAyMiBhdCAxMDozMSwgSmVyb21lIFBvdWlsbGVyCjxKZXJvbWUuUG91
+aWxsZXJAc2lsYWJzLmNvbT4gd3JvdGU6Cj4KPiBGcm9tOiBKw6lyw7RtZSBQb3VpbGxlciA8amVy
+b21lLnBvdWlsbGVyQHNpbGFicy5jb20+Cj4KPiBIaSBVbGYsIEdyZWcsCj4KPiBUaGUgc2Vjb25k
+IHBhdGNoIG9mIHRoaXMgc2VyaWVzIHRvdWNoIHRvIHRoZSBzdGFnaW5nIHRyZWUgYW5kIHRvIHRo
+ZSBNTUMKPiBmcmFtZXdvcmsuIEkgZG9uJ3Qga25vdyB3aGF0IGlzIHRoZSBydWxlIGZvciB0aGVz
+ZSBjYXNlcywgYnV0IEkgdGhpbmsgaXQKPiBtYWtlcyBtb3JlIHNlbnNlIHRvIGNhcnJ5IHRoaXMg
+cGF0Y2ggd2l0aCB0aGUgc3RhZ2luZyB0cmVlLgoKSSBkb24ndCBiZWxpZXZlIHRoZSBjaGFuZ2Vz
+IHRvIHRoZSBtbWMgY29yZSB3aWxsIGNhdXNlIGFueSBtZXJnZQpjb25mbGljdCwgc28gZmVlbCBm
+cmVlIHRvIGZ1bm5lbCB0aGlzIHRocm91Z2ggd2hhdGV2ZXIgdHJlZSBtYWtlcyBiZXN0CnNlbnNl
+LgoKRm9yIHRoZSBzZXJpZXM6ClJldmlld2VkLWJ5OiBVbGYgSGFuc3NvbiA8dWxmLmhhbnNzb25A
+bGluYXJvLm9yZz4KCktpbmQgcmVnYXJkcwpVZmZlCgo+Cj4KPiBKw6lyw7RtZSBQb3VpbGxlciAo
+Mik6Cj4gICBzdGFnaW5nOiB3Zng6IFdGMjAwIGhhcyBubyBvZmZpY2lhbCBTRElPIElEcwo+ICAg
+c3RhZ2luZzogd2Z4OiBhcHBseSB0aGUgbmVjZXNzYXJ5IFNESU8gcXVpcmtzIGZvciB0aGUgU2ls
+YWJzIFdGMjAwCj4KPiAgZHJpdmVycy9tbWMvY29yZS9xdWlya3MuaCAgICAgIHwgNSArKysrKwo+
+ICBkcml2ZXJzL3N0YWdpbmcvd2Z4L2J1c19zZGlvLmMgfCA4ICsrLS0tLS0tCj4gIDIgZmlsZXMg
+Y2hhbmdlZCwgNyBpbnNlcnRpb25zKCspLCA2IGRlbGV0aW9ucygtKQo+Cj4gLS0KPiAyLjM0LjEK
+PgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBt
+YWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2
+LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
