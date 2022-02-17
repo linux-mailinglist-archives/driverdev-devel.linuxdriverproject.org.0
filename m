@@ -1,57 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8F6D4B9BA2
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Feb 2022 10:03:04 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F8824B9CA0
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Feb 2022 10:59:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1B58183EAB;
-	Thu, 17 Feb 2022 09:03:03 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 14E9B4019A;
+	Thu, 17 Feb 2022 09:59:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vaENjvssJ7Cw; Thu, 17 Feb 2022 09:03:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wYC2ig2dM_z3; Thu, 17 Feb 2022 09:59:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AD19283EAA;
-	Thu, 17 Feb 2022 09:03:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8AE4340143;
+	Thu, 17 Feb 2022 09:59:37 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0F7211BF471
- for <devel@linuxdriverproject.org>; Thu, 17 Feb 2022 09:02:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6CED41BF20B
+ for <devel@linuxdriverproject.org>; Thu, 17 Feb 2022 09:59:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 01F5A40234
- for <devel@linuxdriverproject.org>; Thu, 17 Feb 2022 09:02:59 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5A9B44176F
+ for <devel@linuxdriverproject.org>; Thu, 17 Feb 2022 09:59:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=bonificablesfoesco.net
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SfGnS727ZYHR for <devel@linuxdriverproject.org>;
- Thu, 17 Feb 2022 09:02:58 +0000 (UTC)
+ with ESMTP id X7Ea1EyI2jZA for <devel@linuxdriverproject.org>;
+ Thu, 17 Feb 2022 09:59:33 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from bonificablesfoesco.net (unknown [195.114.217.130])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 568D9401F0
- for <devel@driverdev.osuosl.org>; Thu, 17 Feb 2022 09:02:58 +0000 (UTC)
-Received: from 246.91-116-3.dynamic.clientes.euskaltel.es (unknown
- [91.116.3.246])
- by bonificablesfoesco.net (Postfix) with ESMTPSA id B8F191FD565
- for <devel@driverdev.osuosl.org>; Thu, 17 Feb 2022 10:00:09 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bonificablesfoesco.net; s=default; t=1645088409;
- bh=asKVx0nWeiDVG22Vn/uMTni0drSHVXtNlmuzOc5s10k=; h=From:To:Subject;
- b=halGpKTyYWQRXzyG6S+McvZpGNMXjRYPqjKt3UWZ06k8qIkxejKA/v2/KsZJuhYoA
- VPy8SBum4juokF5+9duzfIAdskoleByNwixI/TQ+BpAcCu9Dw3Mr28JhdHdkM3OYsd
- rK6Q3gMymqJk549aXb0Gl1Bx/rWkY4rGPMdoYwNw=
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7986A41764
+ for <devel@driverdev.osuosl.org>; Thu, 17 Feb 2022 09:59:33 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 4F09661D50;
+ Thu, 17 Feb 2022 09:59:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 813D4C340E8;
+ Thu, 17 Feb 2022 09:59:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1645091971;
+ bh=kf4nnFyves4ytQtR0uAhDYL4Y82jWry/eJ/Oy/50d9g=;
+ h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+ b=aoR51P4HeOo98AzfA1TapyB9YI7tT3P9ywfw+wXKzjpii0A8E2uzQ2MVDBynYaq4T
+ TUaIW3z7dtG/pn3asWhT2WgjRrzUN/imlwFmrGPoyLGX0PCueTQJ2Cu4W2bsS8JefE
+ bFPfsTeez2m/81fUye372Xx2vtFL1ZDGKt2p9h1UoJ1eO65zyvtq0UlnUQ82Fcm7xy
+ 4c3F4yf8o20kLpgaPy/FlYlRY98+eUR9WrGOjLl4WlVYUibSm1GH0lkzJvnCemM2HR
+ DJRJYbXLUWKRW7fSl9OpPRk/7QqYZxU9zMFcs/gTEQ2G0Ea8M//whaCAyzJZn+Nvsa
+ vE0+yNEG4LIfg==
+From: Kalle Valo <kvalo@kernel.org>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH 2/2] staging: wfx: apply the necessary SDIO quirks for the
+ Silabs WF200
+References: <20220216093112.92469-1-Jerome.Pouiller@silabs.com>
+ <20220216093112.92469-3-Jerome.Pouiller@silabs.com>
+Date: Thu, 17 Feb 2022 11:59:24 +0200
+In-Reply-To: <20220216093112.92469-3-Jerome.Pouiller@silabs.com> (Jerome
+ Pouiller's message of "Wed, 16 Feb 2022 10:31:12 +0100")
+Message-ID: <878ru924qr.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-From: "Grupo Foesco" <admon46@bonificablesfoesco.net>
-To: devel@driverdev.osuosl.org
-Subject: Consulta Foesco
-X-Mailer: Smart_Send_4_4_2
-Date: Thu, 17 Feb 2022 10:00:12 +0100
-Message-ID: <53524614950962156529179@DESKTOP-HGD3EM4>
-X-Priority: 1
-X-MSMail-Priority: High
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,80 +75,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: admon46@bonificablesfoesco.net
-Content-Type: multipart/mixed; boundary="===============3123167898578101946=="
+Cc: devel@driverdev.osuosl.org, Ulf Hansson <ulf.hansson@linaro.org>,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-mmc@vger.kernel.org,
+ Pali =?utf-8?Q?Roh?= =?utf-8?Q?=C3=A1r?= <pali@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============3123167898578101946==
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-Buenos d=EDas
-
-
-
-Desde FOESCO estamos realizando la presente consulta a todas las empresas e=
-spa=F1olas.
-
-Querriamos saber si precis=E1is realizar formaci=F3n bonificable para vuest=
-ros empleados este a=F1o=3F
-
-Podemos mandaros la informaci=F3n correspondiente a la actual convocatoria,=
- contactar con vosotros por tel=E9fono para informaros o bien pod=E9is indi=
-carnos en que mes del a=F1o quer=E9is realizar la formaci=F3n.
-
-
-Todos los cursos impartidos son 100% Bonificables con cargo al Cr=E9dito de=
- Formaci=F3n 2022.
-
-
-
-Quedamos a la espera de vuestra respuesta.
-
-
-Un cordial saludo.
-
-
-Departamento de Formaci=F3n Bonificable
-FOESCO Formaci=F3n Estatal Continua.
-Empresa inscrita en el Registro de empresas de Formaci=F3n.
-
-www.foesco.com
-Tel:          910 323 794
-
-(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
-
-FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
- cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
-pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
-ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
-
-Antes de imprimir este e-mail piense bien si es necesario hacerlo. La infor=
-maci=F3n transmitida en este mensaje est=E1 dirigida solamente a las person=
-as o entidades que figuran en el encabezamiento y contiene informaci=F3n co=
-nfidencial, por lo que, si usted lo recibiera por error, por favor destr=FA=
-yalo sin copiarlo, usarlo ni distribuirlo, comunic=E1ndolo inmediatamente a=
-l emisor del mensaje. De conformidad con lo dispuesto en el Reglamento Euro=
-peo del 2016/679, del 27 de Abril de 2016, FOESCO le informa que los datos =
-por usted suministrados ser=E1n tratados con las medidas de seguridad confo=
-rmes a la normativa vigente que se requiere. Dichos datos ser=E1n empleados=
- con fines de gesti=F3n. Para el ejercicio de sus derechos de transparencia=
-, informaci=F3n, acceso, rectificaci=F3n, supresi=F3n o derecho al olvido, =
-limitaci=F3n del tratamiento , portabilidad de datos y oposici=F3n de sus d=
-atos de car=E1cter personal deber=E1 dirigirse a la direcci=F3n del Respons=
-able del tratamiento a C/ LAGUNA DEL MARQUESADO N=BA10, 28021, MADRID, "PUL=
-SANDO AQUI" <mailto:bajas@foesco.com=3FSubject=3DBAJA%20CORREOS> y "ENVIAR".
-
---===============3123167898578101946==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============3123167898578101946==--
+SmVyb21lIFBvdWlsbGVyIDxKZXJvbWUuUG91aWxsZXJAc2lsYWJzLmNvbT4gd3JpdGVzOgoKPiBG
+cm9tOiBKw6lyw7RtZSBQb3VpbGxlciA8amVyb21lLnBvdWlsbGVyQHNpbGFicy5jb20+Cj4KPiBV
+bnRpbCBub3csIHRoZSBTRElPIHF1aXJrcyBhcmUgYXBwbGllZCBkaXJlY3RseSBmcm9tIHRoZSBk
+cml2ZXIuCj4gSG93ZXZlciwgaXQgaXMgYmV0dGVyIHRvIGFwcGx5IHRoZSBxdWlya3MgYmVmb3Jl
+IGRyaXZlciBwcm9iaW5nLiBTbywKPiB0aGlzIHBhdGNoIHJlbG9jYXRlIHRoZSBxdWlya3MgaW4g
+dGhlIE1NQyBmcmFtZXdvcmsuCgpJdCB3b3VsZCBiZSBnb29kIHRvIGtub3cgaG93IHRoaXMgaXMg
+YmV0dGVyLCB3aGF0J3MgdGhlIGNvbmNyZXRlCmFkdmFudGFnZT8KCi0tIApodHRwczovL3BhdGNo
+d29yay5rZXJuZWwub3JnL3Byb2plY3QvbGludXgtd2lyZWxlc3MvbGlzdC8KCmh0dHBzOi8vd2ly
+ZWxlc3Mud2lraS5rZXJuZWwub3JnL2VuL2RldmVsb3BlcnMvZG9jdW1lbnRhdGlvbi9zdWJtaXR0
+aW5ncGF0Y2hlcwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8v
+ZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJk
+ZXYtZGV2ZWwK
