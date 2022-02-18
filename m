@@ -1,58 +1,137 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 674AC4BB6C3
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Feb 2022 11:21:48 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 50CA04BB74D
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Feb 2022 11:54:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DB2E241DB7;
-	Fri, 18 Feb 2022 10:21:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C94DA83EEC;
+	Fri, 18 Feb 2022 10:54:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iiT4n_mcCZeu; Fri, 18 Feb 2022 10:21:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Qk0P0uIknBb8; Fri, 18 Feb 2022 10:54:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8304941DB6;
-	Fri, 18 Feb 2022 10:21:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8C34183EB0;
+	Fri, 18 Feb 2022 10:54:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B5DD21BF311
- for <devel@linuxdriverproject.org>; Fri, 18 Feb 2022 10:21:42 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5ADD51BF36A
+ for <devel@linuxdriverproject.org>; Fri, 18 Feb 2022 10:54:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A397460C19
- for <devel@linuxdriverproject.org>; Fri, 18 Feb 2022 10:21:42 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 467B84060D
+ for <devel@linuxdriverproject.org>; Fri, 18 Feb 2022 10:54:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=mahdi.edu.sd
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HmLafs-xeEaD for <devel@linuxdriverproject.org>;
- Fri, 18 Feb 2022 10:21:42 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from ns55.mazinhost.net (static.220.85.216.95.clients.your-server.de
- [95.216.85.220])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 10D1C60BBD
- for <devel@driverdev.osuosl.org>; Fri, 18 Feb 2022 10:21:42 +0000 (UTC)
-Received: from User (unknown [13.70.158.215])
- by ns55.mazinhost.net (Postfix) with ESMTPA id 520524CD3EB2;
- Fri, 18 Feb 2022 02:57:08 -0500 (EST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mahdi.edu.sd;
- s=default; t=1645171043;
- bh=DmZ5/cKNRzxqCAiPiYyJZ3uvexbO55XqyUuq4oWdZsA=;
- h=Reply-To:From:Subject:Date;
- b=RhFB85OWHCSYLg+TRV9y3jfrKTU2m38Hw2SdRi7ZJhofAgE3h85psAur0LQA8QE2O
- HVDjMcQZMyOK/vJOhI7e6aKLa8McRlqzBtvkqEJjTVQ651YfkJmwL07Ur+fP10yd0J
- jY8LDYwjDXfnBReOJHG//8Bm+PkyJFiKpA6Sndkg=
-From: "Reem  Al-Hashimi"<sis@mahdi.edu.sd>
-Subject: Partnership With You
-Date: Fri, 18 Feb 2022 07:57:21 -0000
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Q-7zHlv461zz for <devel@linuxdriverproject.org>;
+ Fri, 18 Feb 2022 10:54:29 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam11on2085.outbound.protection.outlook.com [40.107.236.85])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A132840102
+ for <devel@driverdev.osuosl.org>; Fri, 18 Feb 2022 10:54:29 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=oRps0eD2OIkS9RYhumcTKgKUSaMjKHxUP3kF93J+rbzExXKAX40qDFTq3xCTbYD8aoggm9+d7okFYqkACw1wtgg0fuZA2G5FF6Ssam+lD8uQxFqKF3UpcrpYlzZakm5gJ+/JSmv1hBOxo7gCI6cuCfKh9X98JHlv92xaJTnxZJL8txme4QITvmhwCd/njLocI2FNnHUY8FgvHx/FRwGL927Vym00hkurWjvs2utG8TvLy5u4RezqYNXzy51TxKKI9AtBUmejbVokd0HnXxojCgpZHYAbl2qGnHTeYKlZPiITGEpk+mX9rmFsQBbNpWbVBul2DxSkHW9bps6UH75C4A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=C6486Dcz5hnZIsS+NWCT8cQAaujbHa05s8lfs45okOo=;
+ b=JQgPxdGwg7t6cR11P4F0jjSNrtl9+kTj6dvj798yftOi1L/0fQfr09Uzc6SkxH+mKX62Lbv4iBeKoGa5wYIWY+kiVCDMNAqU8z3ewvk4MW8UHsK5psL4rQptHmLZh4m7sUZ3AeLm3dJ8CxW6+UXKZU8XI+FfcR0g56qRx2eZlWuGYmbezNO+Mut3QyVObBHgOYRZ0nQtZx4Cp64Gpp0MDIAH0QRiITJdriO1abn7434g9pymThkNVjgEodpJ47kaM1wpQnjUkd9xRmrzuABtm5imMTI3AKa1BDm8JMG0UrC8fro6kO+TQGMho6DTXGVEJebhXAGAtrtZuHDuginyZw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=C6486Dcz5hnZIsS+NWCT8cQAaujbHa05s8lfs45okOo=;
+ b=CrgU9djm6Je9/7ORIL+DsfwqLTHSd9EH2qnGkINUMqd6STvqxUwQAayLT5e1xeNQOdBlQh22s2RgYVCrjQTK70I+hawKn05J6xinSLYD+WsEWvjTXhHGKxGoIhdulL9w/YbVU6t+T6ucv1rmTHSF+RPwc2IFVfrg6VecVe0iOWY=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=silabs.com;
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com (2603:10b6:510:ee::19)
+ by BN7PR11MB2771.namprd11.prod.outlook.com (2603:10b6:406:a9::30)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4995.14; Fri, 18 Feb
+ 2022 10:54:26 +0000
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::1b3:e483:7396:1f98]) by PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::1b3:e483:7396:1f98%3]) with mapi id 15.20.4995.024; Fri, 18 Feb 2022
+ 10:54:26 +0000
+From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+To: linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ Kalle Valo <kvalo@codeaurora.org>
+Subject: [PATCH] staging: wfx: fix scan with WFM200 and WW regulation
+Date: Fri, 18 Feb 2022 11:53:58 +0100
+Message-Id: <20220218105358.283769-1-Jerome.Pouiller@silabs.com>
+X-Mailer: git-send-email 2.34.1
+X-ClientProxiedBy: PR3P251CA0027.EURP251.PROD.OUTLOOK.COM
+ (2603:10a6:102:b5::13) To PH0PR11MB5657.namprd11.prod.outlook.com
+ (2603:10b6:510:ee::19)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220218102142.A397460C19@smtp3.osuosl.org>
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 3c254fe4-b687-444d-02e4-08d9f2cd07bb
+X-MS-TrafficTypeDiagnostic: BN7PR11MB2771:EE_
+X-Microsoft-Antispam-PRVS: <BN7PR11MB2771265B15AFA32A2876666C93379@BN7PR11MB2771.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:2582;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 6+8jboAO8WiXk2yjpbs+ZO/phECsD4N1BXEW4cPmLWAXTONqFGaorJIIlYJ3+FOAY6lmQ+uRX3NqbqjZYLQE7b4PcpsAF3haCKnNyLEwJhouEsQrq/083/bD1IE+WAoLZE1eCSxQtvED34467rblYwpGmbMrKDE/CcBRrnoT8+jAkz+BhTjQ4XNIemocmxsIh9jCRj+EMQQuRW2YamVDw/DhCgW1ymi8TxLUqKXVJ0waLKqd/hwe6ZVrbW+TaPhtBNx9qx6lmUId+nGu7okys+Q3dhfuwK/+UC30pzwX3rnJToOklWLk8ngf9sGWH8HH/5EAJmlXpeOLihqaVYRrGs01Nwg9xfC+3DELmZxYSam5VKI3w54JNpxQB4zWNwyelL7BwFFgE22KnY/8og4b4AltFdbD50Oh9eSjlzK+SxZKwFiWMNYoW9YT7ruMULaV0xOCkpWtF6ORLz85fdzsDhJ9aFLiQc8RRcHXXXJRA0qv0hWEgyBhE6bkCWUHBd6xTve6A0hShctDhNfbPDEA2dP9DVsoHu/rnT87Hreb7ABFfe9cdf3EX8Vlqq52BZTty4YSqQ7pnypZVA4ob0UQXxI5SIHobVx8PwjTZhUp32fIs7Rg6jUw85eiP6yvRMWdCiflmay4WgWjUBxlCuLUVHIIjWyTKQ/PiAZJkpm1Ii0LFeXVqaCr0ni8f2GF7OAEcH9Y4NXNoNg+47Az/5ZzDA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(316002)(186003)(52116002)(66556008)(4326008)(26005)(107886003)(83380400001)(1076003)(8676002)(5660300002)(54906003)(38100700002)(38350700002)(8936002)(36756003)(6512007)(6486002)(66946007)(6916009)(2616005)(6506007)(2906002)(66574015)(6666004)(508600001)(66476007)(86362001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TVl5TzJwZFZwdkg2NVFpN2pjNnErN0FuVGRuM292bkszSGgvNWtiY0NyNVho?=
+ =?utf-8?B?L05ocEJHREpPL1lUZDc2WjdiM09sMjZlVzh3VG50YXpXalArWFlydSszc1R0?=
+ =?utf-8?B?WktRL2ZxU2padEtOU0dJSFl0TXozODdzQVFTNUFoRDdNOWRDZmpVV0hkTXdt?=
+ =?utf-8?B?b0hxTVczLzRxN1NFajBiYzgrdlIvc0E5SWdYeFgxMmlYV0I1UTJ0UFR2OFlO?=
+ =?utf-8?B?RThQSFd0Y0lqSWJrMWVTeDlVcmJ5ZFhjVjd2cjhhVDd1dFFNVVJEZzBuM2lS?=
+ =?utf-8?B?ZW15QzYwUXBTaTVrNkZBSFRvRUsyaE5iUnpHR25KLzMrM2QwNTJ3Ky94QS8y?=
+ =?utf-8?B?aDZGdjl6WGVzaTUzU0VtakJyRFdOMWhuMmpiZ3NtcjJrZkFJY3JUZC84Y21u?=
+ =?utf-8?B?WVFGcXlJa3BNOHF6K2h4TC80VE5XRE1BYWdwRkwzamlnbWIwUUJCQ2NpWnAw?=
+ =?utf-8?B?YjVSUkk1cklMTlZIVnM3YW1yN0kvNjFDeHh4OEIyRUR4cEsvQjdzZXRwZzB0?=
+ =?utf-8?B?OFFWR3gzcG9ZUXVJVlVZY01PM2E2b045a0R4UFd5ZTJXL1l5QXhMbkdsd0ZZ?=
+ =?utf-8?B?OElCRjlqWXJFOURzZU9WdTloVjRmRS9xYlRydmFMZExMamFQa0JmRlNYOEU4?=
+ =?utf-8?B?VzU3ME1rdUIxc1VQRHhlS2ZWMmlhOUVwazB2V0t5aXNCZjJrVnBYSEhsejlz?=
+ =?utf-8?B?d1AvM0pORTN2ZklacXEyblRaWURya2Z1dUhnVWZCYUNpS3BjK0xnczN6WEVZ?=
+ =?utf-8?B?eW9MWEJyVldVNS85dUZjVnhJQ3lVZWZ6YlE3YkFPMEt3NzYzQkJ5L3YzOFh0?=
+ =?utf-8?B?YUN4L1RUV1RDblRjNUZvL0RPa3p6SVRnM1JKWndUZkhEZk1aMHZpNTVITUs3?=
+ =?utf-8?B?cXgyNUVaUHpjSUtvQVZGRDQ5NnFlZDNLRk90RFBLTFhNK2xabmorTjdGNGpl?=
+ =?utf-8?B?dnFITVBsbm5WZHdISFJYbFQ5V1FQRDl1MFVkSkVjT3FaNnJNTWZsc2IrQzRK?=
+ =?utf-8?B?RWtaYkUyTVRveGIwaXZoQUNKWHBPWmpMUHQ2T0hnOFNITVhId1p1WUtyTWdM?=
+ =?utf-8?B?Zzl2dy9PVnJEalVISEhiVG5Vb2MxRUh4ZWIwaWFSekJ4a1B1QzBYUmNsUXRI?=
+ =?utf-8?B?MlcvYkg0N2JLeW5tMFc2cGlwT09zZTA2ZjFnNCt2SHdaZGpITjFZTFlaSFpX?=
+ =?utf-8?B?VUFBdmlmZ0Q1L3NTajB0cDA2RjRpNzFEakpwWG51clEwTEptaEF0aXZ5elRs?=
+ =?utf-8?B?TlpXSW9XUGhueXhhcm5pS1hWcm1qb0o5WlVlbWdmYllUOGExa09wcjhTdUF5?=
+ =?utf-8?B?NFppQUNwcVlLSlpuQTlFNWFYd0Jpb0ZhQ3RLNXVhZCtaSk9pTkNDZUduOFZj?=
+ =?utf-8?B?NlBJWllhaHZyQ3ZPOEJlakdJMC9FN2JjN1hnU2NOZi81eDZWc1hoRXBDNHNS?=
+ =?utf-8?B?UExzKzBTLyt0STdIRC9tYWJXT0xPc3krWHIzdWtkSXhRS2hsYkJjN1ovbTFs?=
+ =?utf-8?B?VEJRNmNobTBZWS9ha3hPZDlKVmo3M1ovQ3BJNk9rM0w5SXFEZmxPbzZmRE9E?=
+ =?utf-8?B?OXhXR3U3bHc1YjEzMzdvUU5tWHMveTVSQ0haUUloZnN0NWw1QVhnQUR5V0FP?=
+ =?utf-8?B?ZStWamdOcjlENFBKdmVwaklkY2ppeHpsQ0xqdkx6MFZnSUNkUnBBb0Nyamhu?=
+ =?utf-8?B?WkdxbkUwRjIyUDJPTnRYLzd3eVp0QURtWHI4dHZkaUp4TCszbUNMTyt6Q3d5?=
+ =?utf-8?B?eXpQN3p2Vm9tajRVbFRZdmszTzhONEhESjJ0SjVPci9SSmRqVjE5MXFaTXVv?=
+ =?utf-8?B?MUxQaSs2K3p1UzR3Um1ndzVVUll0akdHNDdHZ3FOZDd6V25XUVZycTZ3M3ls?=
+ =?utf-8?B?cjZ5UWJVMUxGQ1d4NUEyN3lSVTJaL0hrSnBpSXVndzlIRUNtRHd6RFJMSVZa?=
+ =?utf-8?B?SXVqZUNTL1BzQkd1VFZoTlNUcG1xVWNhMkhTajN4NndWVE1kRWdMVFhSUVZh?=
+ =?utf-8?B?MFBuN0hnMnhxaS9pblFPd1lxWlV2TnFlbXdkMHlCVkVkTFZlaWZPVDYzZVlF?=
+ =?utf-8?B?cjE0MTBqMnkyQnRRRkNBblBOcjZhR0ZqeXFaOTU4Wm4yOWV1RStjNlZXYjYr?=
+ =?utf-8?B?KzUyNVZ2dHZuZE0wNmR5QzU0bzVBSVU3VU9HZUdOaUJvZFJSNm5LQ2JxTHZU?=
+ =?utf-8?Q?qnsXHJ58Y2kQTkpxEQXf0GE=3D?=
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3c254fe4-b687-444d-02e4-08d9f2cd07bb
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5657.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Feb 2022 10:54:26.4529 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: COhDC81AUz/NT2PYTNaTbOSAFF/uK+gebaA+jpCzdi9pQOgV8Z+fuGvdH9piGjfhYA69BUoVmnc1KIIUzj4M1Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR11MB2771
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,26 +144,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: alhashimi123@yandex.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Riccardo Ferrazzo <rferrazzo@came.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
+ "David S . Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Sir/Ma,
-
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus.
-
-I"m serving as a minister, there is a limit to my personal income and investment level, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
-
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
-
-
-If you can handle the fund in a good investment.Reply to: r3em.al@yandex.com
-
-Regards,
-Reem
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogUmljY2FyZG8gRmVycmF6em8gPHJmZXJyYXp6b0BjYW1lLmNvbT4KClNvbWUgdmFyaWFu
+dHMgb2YgdGhlIFdGMjAwIGRpc2FsbG93IGFjdGl2ZSBzY2FuIG9uIGNoYW5uZWwgMTIgYW5kIDEz
+LgpGb3IgdGhlc2UgcGFydHMsIHRoZSBjaGFubmVscyAxMiBhbmQgMTMgYXJlIG1hcmtlZCBJRUVF
+ODAyMTFfQ0hBTl9OT19JUi4KCkhvd2V2ZXIsIHRoZSBiZWFjb24gaGludCBwcm9jZWR1cmUgd2Fz
+IHJlbW92aW5nIHRoZSBmbGFnCklFRUU4MDIxMV9DSEFOX05PX0lSIGZyb20gY2hhbm5lbHMgd2hl
+cmUgYSBCU1MgaXMgZGlzY292ZXJlZC4gVGhpcyB3YXMKbWFraW5nIHN1YnNlcXVlbnQgc2NhbnMg
+dG8gZmFpbCBiZWNhdXNlIHRoZSBkcml2ZXIgd2FzIHRyeWluZyBhY3RpdmUKc2NhbnMgb24gcHJv
+aGliaXRlZCBjaGFubmVscy4KClNpZ25lZC1vZmYtYnk6IErDqXLDtG1lIFBvdWlsbGVyIDxqZXJv
+bWUucG91aWxsZXJAc2lsYWJzLmNvbT4KLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L21haW4uYyB8
+IDEgKwogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspCgpkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9zdGFnaW5nL3dmeC9tYWluLmMgYi9kcml2ZXJzL3N0YWdpbmcvd2Z4L21haW4uYwppbmRleCBk
+ODMyYTIyODUwYzcuLjU5OTllODFkYzQ0ZCAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL3dm
+eC9tYWluLmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL3dmeC9tYWluLmMKQEAgLTM4MSw2ICszODEs
+NyBAQCBpbnQgd2Z4X3Byb2JlKHN0cnVjdCB3ZnhfZGV2ICp3ZGV2KQogCX0KIAogCWlmICh3ZGV2
+LT5od19jYXBzLnJlZ2lvbl9zZWxfbW9kZSkgeworCQl3ZGV2LT5ody0+d2lwaHktPnJlZ3VsYXRv
+cnlfZmxhZ3MgfD0gUkVHVUxBVE9SWV9ESVNBQkxFX0JFQUNPTl9ISU5UUzsKIAkJd2Rldi0+aHct
+PndpcGh5LT5iYW5kc1tOTDgwMjExX0JBTkRfMkdIWl0tPmNoYW5uZWxzWzExXS5mbGFncyB8PQog
+CQkJSUVFRTgwMjExX0NIQU5fTk9fSVI7CiAJCXdkZXYtPmh3LT53aXBoeS0+YmFuZHNbTkw4MDIx
+MV9CQU5EXzJHSFpdLT5jaGFubmVsc1sxMl0uZmxhZ3MgfD0KLS0gCjIuMzQuMQoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0
+CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZl
+cnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
