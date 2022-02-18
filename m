@@ -1,75 +1,129 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA50C4BB911
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Feb 2022 13:23:25 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D78F54BBA62
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Feb 2022 15:05:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BBCA841D8D;
-	Fri, 18 Feb 2022 12:23:23 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 899C44014D;
+	Fri, 18 Feb 2022 14:05:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qBv_FjFhSNh5; Fri, 18 Feb 2022 12:23:23 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TX4wPnBjjHaL; Fri, 18 Feb 2022 14:05:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 856D340245;
-	Fri, 18 Feb 2022 12:23:22 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D2FFA40110;
+	Fri, 18 Feb 2022 14:05:05 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 940DD1BF2C3
- for <devel@linuxdriverproject.org>; Fri, 18 Feb 2022 12:23:19 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 811FD1BF4D5
+ for <devel@linuxdriverproject.org>; Fri, 18 Feb 2022 14:05:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7B21F611CB
- for <devel@linuxdriverproject.org>; Fri, 18 Feb 2022 12:23:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6DD934014D
+ for <devel@linuxdriverproject.org>; Fri, 18 Feb 2022 14:05:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NneOEYqUnR11 for <devel@linuxdriverproject.org>;
- Fri, 18 Feb 2022 12:23:19 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CLTJOlEP9LON for <devel@linuxdriverproject.org>;
+ Fri, 18 Feb 2022 14:04:59 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-wr1-x42e.google.com (mail-wr1-x42e.google.com
- [IPv6:2a00:1450:4864:20::42e])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E132F611C3
- for <devel@driverdev.osuosl.org>; Fri, 18 Feb 2022 12:23:18 +0000 (UTC)
-Received: by mail-wr1-x42e.google.com with SMTP id k1so14285096wrd.8
- for <devel@driverdev.osuosl.org>; Fri, 18 Feb 2022 04:23:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:sender:from:date:message-id:subject:to;
- bh=PROZB7sG//VojuSbbykFedWZkf/Ibq89AjlsH9oyab0=;
- b=hvBk1+RYEuls16L3TEt5VVAZhRMgewuhTUqfU31WvWcjPqY3Q33UiTMDi9n19h9pee
- VOJ8CY4GhbOAVrodOy87SjyCkEuMG37YL4Gq/e4cEMOc1Jge6rNlAxOzbHCjY1sESlj7
- uEQ2LN7r/o/pO6obTGQUVPhJ2NBp7H2OIis/Exzqv0hM35xDpR04ime83vg0oOm390Ub
- T5DXNba6KOxf+zGAF+BXGTZdYhqxdHkcig3OWXFTenU0F+FfwDgGG4QLCegS75RIkEEd
- s85TtM28m8wGERdc5DKGPqQZJQCyW8MNRFm6csyHknWzvqC3cOZf9cRX5Yphah9aiQZQ
- avkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
- :to; bh=PROZB7sG//VojuSbbykFedWZkf/Ibq89AjlsH9oyab0=;
- b=zirsoSN6nGUlzK1aVpip2z2mfGltPXrCvei92rN/RkGc6MVnf+bnDUgHQtgipKOvg1
- C6bxT7jPNQyTDFRWgSAJUndI5GwPH4jwdZe2L9/Bqq9X7vGEhJhkZFAeP/+KJPqpOsdJ
- tENs5MSobwvkmWjvOqROtuEtXVpgqVUnshnBVALQt+3fpYRznBrhDlJItYw/t1ScUOPk
- 8XwYxBeGo/+/noE0Ha1rE1cSgyKUzTj156DFQjiiO9Gy2LHZ6e1fugrfmpmqml3kHdtw
- SUfc1QhEfEmUDTA2xZ9dH6w+FiQZ7sNBET8aVC5YAuqbQdMIFhYgff20Gj96FUt+hP4i
- lQGQ==
-X-Gm-Message-State: AOAM531pE13hJYlRlx6GRDjyOyRsa/j9dkhYSm+IGEX9EoWFrsbG+bI1
- RWc5yPPQiEhNT7RlMj3A62IlTSpzshwsqVYFlGE=
-X-Google-Smtp-Source: ABdhPJydL1nBWu+Tg6WbCguAmVpLYgsFMUMSp7l3DH+Vap2e0Or79lOX6rOKPiBu7drgMev9vecbYMQL4Vk3GOxnv9M=
-X-Received: by 2002:adf:dd0d:0:b0:1e3:37ee:ab8 with SMTP id
- a13-20020adfdd0d000000b001e337ee0ab8mr6181109wrm.251.1645186996784; Fri, 18
- Feb 2022 04:23:16 -0800 (PST)
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam08on2082.outbound.protection.outlook.com [40.107.101.82])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 60C5E40110
+ for <devel@driverdev.osuosl.org>; Fri, 18 Feb 2022 14:04:59 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JM2aAH0uOIS1MGzZbM9ff+kNW219EYEVs005HfCqZi5pNWGcv5uxg+5aGugwQlIGGU3OXM7jukqfDA/2/6AqJIxSI1zcBWDpu3UC/rq3Vd5LAkLjZfcwp7BLrbUFH2XXEzp0mk/4QzJBfe9KJDwhs9xl7tGoZqFdOJ7I/fKt+akKH0ltxIfOcyQLEP0HpZjOJWVPi3oJ5na1bWSRNjlv8prHTQwrwLdzEf+UwVhAbvkZzFzMaIP/hI9Z+LFu+vXTb97AZrBiGYceqRe5gDpwxDU6I3aOjecnVkhlWJ12Apw7yeZvk99PeyuyCzQ2Lxl0+ts+8uKuQZkITEJ0zTg//w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=pnew7yp7Y/Pzd+vzAtd0A6WNvd8bwQHt3U5HIBuDuW0=;
+ b=HtHMVJz0JcsZw9MYJ8GaZ0p/e7yQ1wuOHv7K49lfKm1UlNmp9AMnXpgeZ8dTzfP9imXRlrrRDGhiAzvDKEEPPjO2KXHce5zd/NoMTY5x1DZdHwiZxCYHoRdRQwtNDl07WSBz4eGubT0km9M8NkhC+Tfgr6mNr1d7g/XeKxJVFHDOzS67B/tAIunpvovIgM6VePbsLJnjsnxNQYTsBtWFApLpN170b6oNGq1zFQSqRoYodk8Ly29aEL2U2+m+YLRfM75gyzL2cX8lPuaYfWkvV6Bn+zf7kPua03rWYYFNi28Ne/4EIgjxkBWT8+BbYgUTzlsLrOgbx/DrwZePz7IQwg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=pnew7yp7Y/Pzd+vzAtd0A6WNvd8bwQHt3U5HIBuDuW0=;
+ b=fzAeEhxlrRXBZPBHseQwlR0WqeOVbYvSvxkYEselxa+w4+LPVoZHyQnCTAGF0FDFTChsEYpUW9x53yq76Szv1rhlMfGzkwa5WUfvPAMiuNAbdiFBZvoo031y7PsN0xDRAhQAxMZOR0+HLNfhO7XQZkUgQuz5j1NZB2CPybTGJB8=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=silabs.com;
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com (2603:10b6:510:ee::19)
+ by BYAPR11MB3704.namprd11.prod.outlook.com (2603:10b6:a03:f9::29)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4951.18; Fri, 18 Feb
+ 2022 14:04:56 +0000
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::1b3:e483:7396:1f98]) by PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::1b3:e483:7396:1f98%3]) with mapi id 15.20.4995.024; Fri, 18 Feb 2022
+ 14:04:56 +0000
+From: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Riccardo Ferrazzo <rferrazzo@came.com>
+Subject: Re: [PATCH] staging: wfx: fix scan with WFM200 and WW regulation
+Date: Fri, 18 Feb 2022 15:04:48 +0100
+Message-ID: <3633390.6h3MoT29mx@pc-42>
+Organization: Silicon Labs
+In-Reply-To: <5feac65fc71f4060abb7421ee4571af4@came.com>
+References: <20220218105358.283769-1-Jerome.Pouiller@silabs.com>
+ <3527203.aO2mCyqpp7@pc-42> <5feac65fc71f4060abb7421ee4571af4@came.com>
+X-ClientProxiedBy: PR2P264CA0011.FRAP264.PROD.OUTLOOK.COM (2603:10a6:101::23)
+ To PH0PR11MB5657.namprd11.prod.outlook.com
+ (2603:10b6:510:ee::19)
 MIME-Version: 1.0
-Received: by 2002:a7b:c155:0:0:0:0:0 with HTTP; Fri, 18 Feb 2022 04:23:16
- -0800 (PST)
-From: "Mrs.Latifa Rassim Mohamad" <rassimlatifa400@gmail.com>
-Date: Fri, 18 Feb 2022 04:23:16 -0800
-X-Google-Sender-Auth: TGQ_Wcg-HM-LivMSUsRpAF1t-1U
-Message-ID: <CAO9H84Pa1pfhpO9Ypz7Q5bQTpS1aX2ywNGzhaBjhDc2CRvR3pg@mail.gmail.com>
-Subject: PLEASE CONFIRM YOUR EMAIL....
-To: undisclosed-recipients:;
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 3172c93f-98de-465a-0414-08d9f2e7a486
+X-MS-TrafficTypeDiagnostic: BYAPR11MB3704:EE_
+X-Microsoft-Antispam-PRVS: <BYAPR11MB3704BB7BE402CA15AB301EA393379@BYAPR11MB3704.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:483;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ciUzOWhqr2R600mr1djOi4uIob83khJAbuaWkXy9TlStpp+IW54/DFUhwHFsDoO9e1zZI35IHlDKRC5j6FVwTcw3q2uP7zruzTAijnma3DXKctIfMd+jITuKqfWqHCx/JcruD4dGdq7l49GnqLZ3F8x8uCbzFpKeyOOye4z5FuTeFvMatD/2l6ZSQYGhZiFY3kbKvHjtXAifVyQfnbJ3hnHlIsRRQvNO+yWa+CtjW1SkObRzztFi+i4Y2Qwy2p5ax9TSB5Y2U90M6FK2El/OqiGqxCIds86xbTGqCvpLVpiNdRoeMgU68WGU/0+385/HPBSjGnl/OpyUgi1nHK4veXnuwloPMwJFw3JtARUc4lag9gXuvymWa16ZX2YnWnbWf/TqfE4n4DX+LxvxTZD9fNiHWN3wZI4/wfkoYl7UR/u71jZiiSu9TLnLJzHoQLN8qf0uLxXd1FF7YAL5dYQgH+rquDF5A6KFODXuWdqdqQ8n684z3yeqIbiy0F/XBVDZ0tZH38Myq3SB72wjhPHNZ7vEVDUpZGJEaFdMQVzqzmJD4Mzt2KUmEKijYENRexx7pa6ItcKnXkpGJZTW2HPR6361pObARQTNn1bo8xk7fpITasi/vATjDSh4OfkS95a4u8Xb5WhO1K0MmOjHtUQFUQriX5XyiCgyUu5/rRlGHGZygIMdhlZZbAzMXSkGycgz/pSNZVdW1nmzAWtPgrf2Pk8teLv0eNXGPDkOe9UorfvPkz1CvpJOaK8O5yo8M2PVk88X0T4HyzqF4tW3uf5Uf9kvwUh6SLDVoMIBl69i+yd9+pYs6yAgkgsWxd/CKs++
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(7916004)(366004)(26005)(36916002)(66946007)(9686003)(5660300002)(508600001)(316002)(186003)(6486002)(66556008)(66476007)(966005)(54906003)(110136005)(8936002)(8676002)(4326008)(52116002)(33716001)(2906002)(6512007)(6506007)(38350700002)(38100700002)(86362001)(6666004)(39026012);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?ssmNS42NlWRfpJNn/FmEQMToFW1ErITwv6zVPZASSyeIvviK6qSbrVN5IJ?=
+ =?iso-8859-1?Q?w1GJAYnlIg9DDbfdZcUiUQb4vEsgoAx/dVUK74oKj38b+kGzhf2xUw3Klu?=
+ =?iso-8859-1?Q?9Xa2c7rqkZBlV6xYCJ6LcS8s7+o51Agbj32BPJNWInLtzJiIoKSa319p+c?=
+ =?iso-8859-1?Q?w4ZAZSr4mp3oRy/ocVjVsjqhX/EZ6jsrbCBZ0D5unpr1OGwWpIJMHU9Sp/?=
+ =?iso-8859-1?Q?VZnuq4n/gNnmJY28D+bh/kWks8NgUqFFSxyRd9KSk4W5a7aXMXYJoxrgb/?=
+ =?iso-8859-1?Q?BO4xfiJ6+2OqeamA5zYU6jey89cPCAeSaiWn/2VaWa+7TcKJgF/uG8bwUs?=
+ =?iso-8859-1?Q?9yuiNb/4s0spltGPseMLvHALu5gDr6QSsHjwjcA+HFq+YzOe+BqcdZXPtX?=
+ =?iso-8859-1?Q?0G6AUOS5irPzrRO5a4n1rQio3oLrk8+5+a2ZOaqkYCOF86tSYV3A4U8NLW?=
+ =?iso-8859-1?Q?0We/3mqQ/WKmYl1o8gpTKHHYMK7nen9ecOTKRvs5whulSaxCGPPWvMOPMS?=
+ =?iso-8859-1?Q?lQQ7y5Yryev4I+ThTr3grVsDOE9HzYnttYlrjjtdQ2v4T+G9pT9FHGGUxg?=
+ =?iso-8859-1?Q?u3o/UoOdlDcEzRGIMK9/h6OzV8ANB9c703210/YtvyWMAkXaSjkpVOOOHg?=
+ =?iso-8859-1?Q?F3JmGCNCj0zA01l5BGl+SR0IuCTKS4Jg/pB32fYH8ahKikSVByrHOD45vn?=
+ =?iso-8859-1?Q?rjzcfi+YD/WsBsZe49mhg8Tn/Ixts00zARmyP5/Bnz8b1d04cKI3ZOSqyS?=
+ =?iso-8859-1?Q?4rDzs361s+IPf0V4WEXEtfTKagBjTLvbETMpyVd3xfw603uGPn18xgYNxh?=
+ =?iso-8859-1?Q?O8RXJ8I4dRqibsmlPq1PP0WHmk6YZlfZCr2TmB4narTuKySyfZlLyTlJcT?=
+ =?iso-8859-1?Q?UW9DTThreglI84T5dsIOMpRN27XGoHN9fYHYW+/7kExtg8BJ5vCshHe/cv?=
+ =?iso-8859-1?Q?fVNNWRSZrvDbRyt/xrYcVOPOUTNiLh2HQCvStqropIm27kPG1BPhZQRO4N?=
+ =?iso-8859-1?Q?771bwsLxxjjqwpYaXIkSI2uhaTk3be9KyLDdjjHxheIUY+7OIprjiiPdeS?=
+ =?iso-8859-1?Q?UyUo6u/u5PKXDqZc//1qh4tYsjeEFBiAsbphi4g2P1FYNnQ0nZdkD2RFgo?=
+ =?iso-8859-1?Q?RFa9d9Zswjms6ezMJxxan56aGkirjCq4cBYaYVejadVvolfh+8WSGU+aMC?=
+ =?iso-8859-1?Q?94sVBIpNPb1DJ2E8Hb+PPla+NcoDejvXKH7jh9Zi9YLlloxTDF5Obo0I5H?=
+ =?iso-8859-1?Q?SE+ezeoa91TxR5GxDd6M3TbLI5AMZ4EcrW8wBgYc2KZXiPhHlNzdMtDHon?=
+ =?iso-8859-1?Q?ys5Y5UYgTB+kmo/nqn1xb7GKkqPfDD6INUD8rkAvdOYJv/1ZgvBCN5DKaa?=
+ =?iso-8859-1?Q?98M5K/tfVHDSms/VmwfEo7VpxaW87Lwp8fdInp4Tw02B2QvE/xTXzBadXy?=
+ =?iso-8859-1?Q?H2cE7b4AyARzbSL19l6aDosge43T0bpkn5Tci7lURES4CwvEdfhLy5I1ZC?=
+ =?iso-8859-1?Q?HM7WObp9IFPJzDqve34SFniGt8BhZlcKUZduHOSL6q6507n1jtxsZG7NdH?=
+ =?iso-8859-1?Q?3nBzWOWpSHFBLQHqnSjjp8GNYUby5Ar+ruC0vuf/B2/iGWKRbQWuuNShZQ?=
+ =?iso-8859-1?Q?HISUyQAjxdrbBbuFKh03basTgyumHQRzGwdmLTlk2eQloQ23ub11HC7rfq?=
+ =?iso-8859-1?Q?rinYxQKCXPX9mrRuZS4=3D?=
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3172c93f-98de-465a-0414-08d9f2e7a486
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5657.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Feb 2022 14:04:56.4074 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: PV4A3xYqbwssTetryvnCHDRs/l/QZOtedxrHEb/gC2qnZ//EYcIXBwMvpd+NtjDbDgdkJyb0DmJl70ur6rh2Gg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR11MB3704
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,17 +136,103 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "David S . Miller" <davem@davemloft.net>, Kalle Valo <kvalo@codeaurora.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good evening from here this evening and how are you doing today? My
-name is Mrs. Rassim Latifa Mohamad from Saudi Arabia, I have something
-very important and serious i will like to discuss with you privately,
-so i hope this is your private email?
+Hello Riccardo,
 
-Mrs. Latifa Rassim Mohamad.
+
+On Friday 18 February 2022 14:53:35 CET Riccardo Ferrazzo wrote:
+> =
+
+> Signed-off-by: Riccardo Ferrazzo <rferrazzo@came.com>
+> =
+
+> =
+
+> Sorry for the footer it is added automatically
+> =
+
+
+Your mail has probably not been received by everyone since you sent it
+in html[1] (try also to avoid top-posting).
+
+Nevertheless, Greg, is it sufficient for you?
+
+[1]: https://useplaintext.email/
+
+> On Friday 18 February 2022 12:00:54 CET Greg Kroah-Hartman wrote:
+> > On Fri, Feb 18, 2022 at 11:57:47AM +0100, J=E9r=F4me Pouiller wrote:
+> > > On Friday 18 February 2022 11:53:58 CET Jerome Pouiller wrote:
+> > > > From: Riccardo Ferrazzo <rferrazzo@came.com>
+> > > >
+> > > > Some variants of the WF200 disallow active scan on channel 12 and 1=
+3.
+> > > > For these parts, the channels 12 and 13 are marked IEEE80211_CHAN_N=
+O_IR.
+> > > >
+> > > > However, the beacon hint procedure was removing the flag
+> > > > IEEE80211_CHAN_NO_IR from channels where a BSS is discovered. This =
+was
+> > > > making subsequent scans to fail because the driver was trying active
+> > > > scans on prohibited channels.
+> > > >
+> > > > Signed-off-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> > >
+> > > I forgot to mention I have reviewed on this patch:
+> > >
+> > > Reviewed-by: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> >
+> > Reviwed-by is implied with signed-off-by.
+> >
+> > But what happened to the signed-off-by from the author of this change?
+> =
+
+> The author hasn't used format-patch to transmit this patch.
+> =
+
+> Riccardo, can you reply to this mail with the mention "Signed-off-by:
+> Your name <your-mail@dom.com>"? It certifies that you wrote it or
+> otherwise have the right to pass it on as an open-source patch[1].
+> =
+
+> =
+
+> [1]  https://urlsand.esvalabs.com/?u=3Dhttps%3A%2F%2Fwww.kernel.org%2Fdoc=
+%2Fhtml%2Fv4.17%2Fprocess%2Fsubmitting-patches.html%23sign-your-work-the-de=
+veloper-s-certificate-of-origin&e=3D09733f94&h=3De09f2efa&f=3Dy&p=3Dn<https=
+://urldefense.com/v3/__https://urlsand.esvalabs.com/?u=3Dhttps*3A*2F*2Fwww.=
+kernel.org*2Fdoc*2Fhtml*2Fv4.17*2Fprocess*2Fsubmitting-patches.html*23sign-=
+your-work-the-developer-s-certificate-of-origin&e=3D09733f94&h=3De09f2efa&f=
+=3Dy&p=3Dn__;JSUlJSUlJSUl!!N30Cs7Jr!GRgB_JlhZF2XzaDEB1ZDnSbLiMmD8XdrmC_uqyL=
+oczR5e05vvMlDCgyKlEu3XyI3PdJK$>
+> =
+
+> Thank you,
+> =
+
+> --
+> J=E9r=F4me Pouiller
+> =
+
+> =
+
+> =
+
+
+
+-- =
+
+J=E9r=F4me Pouiller
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
