@@ -1,75 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2BDE4BCF4C
-	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Feb 2022 16:17:03 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8840D4BD113
+	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Feb 2022 20:43:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7ABFC81458;
-	Sun, 20 Feb 2022 15:17:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 670234031C;
+	Sun, 20 Feb 2022 19:42:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VRt6bDn19WLD; Sun, 20 Feb 2022 15:17:01 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CqaaYjeid2bN; Sun, 20 Feb 2022 19:42:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2989681451;
-	Sun, 20 Feb 2022 15:17:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BA6DF40187;
+	Sun, 20 Feb 2022 19:42:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A6CE91BF303
- for <devel@linuxdriverproject.org>; Sun, 20 Feb 2022 15:16:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 23B631BF476
+ for <devel@linuxdriverproject.org>; Sun, 20 Feb 2022 19:42:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 941DC60BAA
- for <devel@linuxdriverproject.org>; Sun, 20 Feb 2022 15:16:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 109D84031C
+ for <devel@linuxdriverproject.org>; Sun, 20 Feb 2022 19:42:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hfgbQ-Qy3jMb for <devel@linuxdriverproject.org>;
- Sun, 20 Feb 2022 15:16:58 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-x144.google.com (mail-lf1-x144.google.com
- [IPv6:2a00:1450:4864:20::144])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CA8A7606E7
- for <devel@driverdev.osuosl.org>; Sun, 20 Feb 2022 15:16:57 +0000 (UTC)
-Received: by mail-lf1-x144.google.com with SMTP id bu29so14256634lfb.0
- for <devel@driverdev.osuosl.org>; Sun, 20 Feb 2022 07:16:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=SBsWmq+eSNqSrsYsyWCWH6gXGL5bAwqHKbMciEKnQI0=;
- b=lE0/7drF61gzB65SZJm81g+itzOOKhzscvu35InoHmUdFKJjO6V5Z50hCnKH+jZm54
- U+BJZRW3hialXcyOqzR/vx/0t7Rzs2lBoYJp8IHClhWIxfxxAGXNm5J2Ro3qWnvAxpDc
- 7ADGcxQrqGGVK4YrCOkNFOpChehIzJZvuVhxOeHtKqb4p+oe3OGdDQtkR4kBFmQlcBap
- mlTg7rfPXxqcUvib+qbx8sTiV4ErH7gO9+67juHQGlMwf4mL6J6feOW/J/3jSF2kRjnh
- cFKEpOhLQtPm8ZxRXldDyHauKocYTbhHTBWtL0CWFdqV7qmb4z+GK3C6+tUdx8eMJGWM
- kkdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=SBsWmq+eSNqSrsYsyWCWH6gXGL5bAwqHKbMciEKnQI0=;
- b=s5i3AsbRmQpReGdymmlvu3fGu6oT/UxkKPW22xsiHD98mPRyMrP1WqcziNbc9aDOcF
- nOuZufCujtIIAbE9mn+XPO3YTIh2yS59P2lrXTRf+ndGcl6pvtpx3aJDPrDbc06Rga6e
- LZ2Apq2A0HLMvRhk7xItzsnoX0Xc0+icrqoxncRDNaO/jKMi1BKfaLKSJ183F8ZR5eSP
- 3bXl6ZvxdrvTMbzvD0PEcwR75AS9Z0sIEoEmPtMucyJqwY4a2J5nYzfJFu0/ZDq9fCZG
- hurOfhwawI3XhJTC23jucj5okOJEZv5DfwAmTy4X2MT5tVizoFMsoqnCIfumr1YXlO0M
- TUaA==
-X-Gm-Message-State: AOAM532TFs36WM/WpVbPk85FwzxPeydWbyXRMKtTAGPHNbkx+OFciVZH
- fE8F9WZog5ZWeVao3Q39bI4v6yvvG30CoovYs2Y=
-X-Google-Smtp-Source: ABdhPJyQQCculooHW1S/KoQ8nNu14FnKdXN0BJs4+zhp5E9WnDH59YhGIE05FIXZD36oR/SgD4+x0G3FfJh1qzVJcns=
-X-Received: by 2002:ac2:4254:0:b0:443:3d0e:990c with SMTP id
- m20-20020ac24254000000b004433d0e990cmr12019033lfl.347.1645370215344; Sun, 20
- Feb 2022 07:16:55 -0800 (PST)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id P42wxaxNClmz for <devel@linuxdriverproject.org>;
+ Sun, 20 Feb 2022 19:42:53 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from hrast.sumfak.hr (hrast.sumfak.hr [31.147.204.33])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 47BDD40187
+ for <devel@driverdev.osuosl.org>; Sun, 20 Feb 2022 19:42:53 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by hrast.sumfak.hr (Postfix) with ESMTP id 298681D08F09;
+ Sun, 20 Feb 2022 20:34:30 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=sumfak.hr; s=default;
+ t=1645385670; bh=o9BBV28bahOEBAv5kPF7czLJyXlTgYMXDxLieqs4+ps=;
+ h=Subject:To:From:Date:Reply-To:From;
+ b=dWiyJbm9htmCzS0MvkR+GkZ6CBD0pY3xFftN4WLTuOZ1IWiycgz6T98iSjGcx441k
+ mL/vNl4vSzV10TtPCcq5nKmOnHp1G/MpPZiwrcMWYv1OtWBT+g3Wxt3tCjCoJFBTP8
+ ZlTEnQPR3YiJIwTbDJ6/MVcUhMQxEC0BLN8RIhW0UTl2B5Y2pSKzRKdfwNfPhLxJm9
+ 32bLNARcwtTb5P6vSqEOfiDE91e+pTwltby4V53G5jT6Vp1mAjR6AAbKe1eRzCCCye
+ QbbW3HsqdoOOorstC8fgiNmdYYDwzdCOtW//NJNFzbQeJaiMmOSb/eQAoexyLAoPDD
+ vzJ+mObEZmrHA==
+X-Virus-Scanned: Debian amavisd-new at hrast.sumfak.hr
+Received: from hrast.sumfak.hr ([127.0.0.1])
+ by localhost (hrast.sumfak.hr [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7dXHIVl2yIxz; Sun, 20 Feb 2022 20:34:27 +0100 (CET)
+Received: from info.mhvqerywi4muvkclihzd3fbddg.qx.internal.cloudapp.net
+ (unknown [13.70.158.215])
+ by hrast.sumfak.hr (Postfix) with ESMTPSA id E60691D085B2;
+ Sun, 20 Feb 2022 20:20:26 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=sumfak.hr; s=default;
+ t=1645384833; bh=o9BBV28bahOEBAv5kPF7czLJyXlTgYMXDxLieqs4+ps=;
+ h=Subject:To:From:Date:Reply-To:From;
+ b=sVh/cHT7nCOAtJxZU8TpG3sQBUqJF+RK455zAmgOlaQaZgC3uy4GF8mqd/kB+leaQ
+ T4QZhoYWKAEj1mIx84q6RLbE1fePypZZ0kCas9MvfJDXojnPQiCsNsdCSTJwqBUcvD
+ /nrOx1U4ZfUoSBUDKCrNMqLu+a/TgigKZA/iKtt0jwkQSEA8HDo0qxx94EIoyAYVoZ
+ cb3ROaXWgRzuHz84IIM+i6oEIxCx+RiUVLm1E/k5McH/29ma2KLcIdeWuJy6fuYbmx
+ /tlNc5I1rjSGYd5XEGxQQCFF0fQGbXLDGT/e7U7JfYCOmFUhECNIymbluN8yZMsDUS
+ tLuhmh4n2EUkw==
 MIME-Version: 1.0
-Received: by 2002:a05:6520:3693:b0:19c:ecd5:195f with HTTP; Sun, 20 Feb 2022
- 07:16:54 -0800 (PST)
-From: Mrs Aisha Al-Gaddafi <w1e1ndy@gmail.com>
-Date: Sun, 20 Feb 2022 07:16:54 -0800
-Message-ID: <CADc39_xDXYAg3wYa6XWBQqFJ3itm7zUwt1mpz5QPwt_c2ughRA@mail.gmail.com>
-Subject: I NEED YOUR URGENTLY ASSISTANCE
-To: undisclosed-recipients:;
+Content-Description: Mail message body
+Subject: Hello Friend
+To: Recipients <zspanjol@sumfak.hr>
+From: "Ms. R. Al-Hashimi" <zspanjol@sumfak.hr>
+Date: Sun, 20 Feb 2022 19:20:14 +0000
+Message-Id: <20220220193430.298681D08F09@hrast.sumfak.hr>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,37 +79,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mrsgaddafiaisha@homemail.com
+Reply-To: alhashimi123@yandex.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Dear Friend,
+Hello Sir/Ma,
 
-I am sending my greetings to you from the Sultanate of Oman,
-In the capital city of Muscat.
+My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus.
 
-I came across your e-mail contact prior a private search while in need
-of your assistance. I am Aisha Al- Gaddafi, the only biological
-Daughter of Former President of Libya Col. Muammar Al-Gaddafi. Am a
-single Mother and a Widow with three Children.
+I"m serving as a minister, there is a limit to my personal income and investment level, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
 
-I have investment funds worth Twenty Seven Million Five Hundred
-Thousand United State Dollar ($27.500.000.00 ) and i need a trusted
-investment Manager/Partner because of my current refugee status,
-however, I am interested in you for investment project assistance in
-your country, may be from there, we can build business relationship in
-the nearest future.
+The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
 
-I am willing to negotiate investment/business profit sharing ratio
-with you base on the future investment earning profits.If you are
-willing to handle this project on my behalf kindly reply urgent to
-enable me provide you more information about the investment funds.
 
-Your Urgent Reply Will Be Appreciated
-Best Regards
-Mrs Aisha Al-Gaddafi
+If you can handle the fund in a good investment.PLEASE REPLY ME ON THIS EMAIL: hashimirrr22@kakao.com 
+
+Regards,
+Reem
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
