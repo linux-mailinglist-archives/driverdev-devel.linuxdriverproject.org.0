@@ -1,67 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48C6A4BD1D5
-	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Feb 2022 22:19:02 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E3DAE4BD4D1
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Feb 2022 05:43:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 520D340156;
-	Sun, 20 Feb 2022 21:18:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 323B9401DE;
+	Mon, 21 Feb 2022 04:43:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0pj6-OHhLgm2; Sun, 20 Feb 2022 21:18:56 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id P8-N_1vfJ9Z8; Mon, 21 Feb 2022 04:43:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6ECCD4017C;
-	Sun, 20 Feb 2022 21:18:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9186D4020A;
+	Mon, 21 Feb 2022 04:43:10 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1CAB31BF3D7
- for <devel@linuxdriverproject.org>; Sun, 20 Feb 2022 21:18:53 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E2FCA1BF97D
+ for <devel@linuxdriverproject.org>; Mon, 21 Feb 2022 04:43:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 04B8540291
- for <devel@linuxdriverproject.org>; Sun, 20 Feb 2022 21:18:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D1D088140F
+ for <devel@linuxdriverproject.org>; Mon, 21 Feb 2022 04:43:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=metropolitassets.xyz
- header.b="CGmd8sPe"; dkim=pass (1024-bit key)
- header.d=metropolitassets.xyz header.b="CGmd8sPe"
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 90Xl7JwcUFmE for <devel@linuxdriverproject.org>;
- Sun, 20 Feb 2022 21:18:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id n-sRreVkIo2F for <devel@linuxdriverproject.org>;
+ Mon, 21 Feb 2022 04:43:03 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from host.metropolitassets.xyz (metropolitassets.xyz
- [62.173.139.111])
- by smtp4.osuosl.org (Postfix) with ESMTP id F09B84028C
- for <devel@driverdev.osuosl.org>; Sun, 20 Feb 2022 21:18:48 +0000 (UTC)
-Received: from metropolitassets.xyz (ec2-3-89-137-147.compute-1.amazonaws.com
- [3.89.137.147])
- by host.metropolitassets.xyz (Postfix) with ESMTPA id 90C3111FCCA3
- for <devel@driverdev.osuosl.org>; Sun, 20 Feb 2022 17:12:30 +0300 (MSK)
-DKIM-Filter: OpenDKIM Filter v2.11.0 host.metropolitassets.xyz 90C3111FCCA3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=metropolitassets.xyz; s=default; t=1645366351;
- bh=F0V0UwkGd3ilh52tQhqKWeOyepzfLAjwBRALY2kUnJA=;
- h=Reply-To:From:To:Subject:Date:From;
- b=CGmd8sPepvA/YpQa3O03JDSJ5d/5QfQnETQ8GnOUbYhz08qffIeGaQvB0A2lzElNU
- vaUYDV2nEFdKYBjvAHB4a39X4f0X0OThWylg58sxMDa9TEWAfyEaa6XUvpzZK809N5
- 13GTmX9ZJbS6SaX02N9DLjtcWly8QaQh18flet3s=
-DKIM-Filter: OpenDKIM Filter v2.11.0 host.metropolitassets.xyz 90C3111FCCA3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=metropolitassets.xyz; s=default; t=1645366351;
- bh=F0V0UwkGd3ilh52tQhqKWeOyepzfLAjwBRALY2kUnJA=;
- h=Reply-To:From:To:Subject:Date:From;
- b=CGmd8sPepvA/YpQa3O03JDSJ5d/5QfQnETQ8GnOUbYhz08qffIeGaQvB0A2lzElNU
- vaUYDV2nEFdKYBjvAHB4a39X4f0X0OThWylg58sxMDa9TEWAfyEaa6XUvpzZK809N5
- 13GTmX9ZJbS6SaX02N9DLjtcWly8QaQh18flet3s=
-From: E Matare <ematare05@metropolitassets.xyz>
-To: devel@driverdev.osuosl.org
-Subject: Did you get my last email
-Date: 20 Feb 2022 14:12:30 +0000
-Message-ID: <20220220141230.BD7DBCBCDEF5B942@metropolitassets.xyz>
-Mime-Version: 1.0
+Received: from s146.perm.ru (s146.perm.ru [212.33.246.57])
+ by smtp1.osuosl.org (Postfix) with ESMTP id C143D81409
+ for <devel@driverdev.osuosl.org>; Mon, 21 Feb 2022 04:43:03 +0000 (UTC)
+Received: from User (_gateway [10.146.0.253])
+ by s146.perm.ru (Postfix) with SMTP id A1CE6498EAF6;
+ Mon, 21 Feb 2022 03:13:46 +0500 (+05)
+From: "Mrs. Judith Peters"<info@s146.perm.ru>
+Subject: Attn:Dearest, Your GRANT Funds $5,500,000.00
+Date: Sun, 20 Feb 2022 14:14:00 -0800
+MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20220221044304.D1D088140F@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,27 +55,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ematare05@metropolitanassetmanager.com
+Reply-To: attorneygeorgewalter@aliyun.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good day. My name is Elliot Matare. I sent you a very important 
-business proposal last week but I am yet to receive a response 
-from you as of yet. I am not sure if you did receive the proposal 
-or not so if you would be so kind to confirm if you got my 
-previous email and if you are interested in what was being 
-proposed, I will appreciate it. On the hand, if you I can resend 
-it to you if you did not receive my previous message with the 
-proposal. Looking forward to your response.
+Attn: Dearest.
 
-Regards,
+I'm Mrs. Judith Peters a Successful business Woman dealing with Exportation, I got your mail contact through search to let you know my Ugly Situation Am a dying Woman here in Los Angeles California Hospital Bed in (USA), I Lost my Husband and my only Daughter for Covid-19 I'm dying with the same symptoms and more.
 
-Elliot Matare
-Metropolitan Asset Managers
-Telephone: 010 442 6203
-metropolitanassetmanager.com
+My Doctor open-up to me that he is Afraid to tell me my Condition and inside me, I already know that I'm not going to survive and I can't live alone without my Family on Earth, I have a project that I am about to hand over to you. And I already instructed the Heritage Bank to transfer my fund sum of $5,500,000.00 (Five Million and Five Hundred Thousand Dollars) to you as to enable you to give 50% to Charitable Home and take 50% for yourself.
+
+Don't think otherwise and why would anybody send someone you barely know to help you deliver a message, help me do this for the happiness of my soul and for God to mercy me and my Family and give us a good place.
+
+Please, do as I said there was someone from your State that I deeply love so very much and I miss her so badly I have no means to reach any Charitable Home there, that is why I go for a personal search of the Country and State and I got your mail contact through search to let you know my Bitterness and the situation that i am passing through.
+
+Please help me. I am getting Dark. I ask my Attorney to help me keep you notice failure for me to reach you in person.
+
+The Doctor said I have a few days to live, please contact my attorney with the following email address and phone number as soon as possible, I am finding it difficult to breathe now and I am not sure if I can stay up to 24 hours, please contact my attorney through his email below.
+
+Name Attorney George Walter.
+Email:attorneygeorgewalter@aliyun.com
+
+Please hurry up to contact my attorney so that he can direct you on how you will hand over 50% of the $5,500,000.00 to Charity, i really want to achieve that goal by helping the Charity organization before I die.
+
+My Regards.
+Mrs. Judith Peters.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
