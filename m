@@ -1,48 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 05BBA4BF0D4
-	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Feb 2022 05:11:52 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF3994BF016
+	for <lists+driverdev-devel@lfdr.de>; Tue, 22 Feb 2022 04:46:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7D4AD60E84;
-	Tue, 22 Feb 2022 04:11:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0C02E81429;
+	Tue, 22 Feb 2022 03:46:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cCEXsfswaG-m; Tue, 22 Feb 2022 04:11:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id xRJcoKZnfHuh; Tue, 22 Feb 2022 03:46:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 38F8360E7D;
-	Tue, 22 Feb 2022 04:11:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B342881425;
+	Tue, 22 Feb 2022 03:46:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9867A1BF392
- for <devel@linuxdriverproject.org>; Tue, 22 Feb 2022 04:11:46 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B8A2E1BF39C
+ for <devel@linuxdriverproject.org>; Tue, 22 Feb 2022 03:46:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 925584058C
- for <devel@linuxdriverproject.org>; Tue, 22 Feb 2022 04:11:46 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B4B1581429
+ for <devel@linuxdriverproject.org>; Tue, 22 Feb 2022 03:46:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Y6pl-TRlZuFT for <devel@linuxdriverproject.org>;
- Tue, 22 Feb 2022 04:11:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id em-ThjbP1xRN for <devel@linuxdriverproject.org>;
+ Tue, 22 Feb 2022 03:46:42 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from UB-FML.ubis.sd (mail.ubis.sd [196.29.172.218])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 711C540145
- for <devel@driverdev.osuosl.org>; Tue, 22 Feb 2022 04:11:45 +0000 (UTC)
-Received: from info.mhvqerywi4muvkclihzd3fbddg.qx.internal.cloudapp.net
- ([13.70.158.215])
- by UB-FML.ubis.sd  with ESMTP id 21K9QCBr009968-21K9QCEo009968
- (version=TLSv1.0 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
- Sun, 20 Feb 2022 11:45:12 +0200
-Message-Id: <202202200945.21K9QCBr009968-21K9QCEo009968@UB-FML.ubis.sd>
+Received: from mailgw.csun.com.tw (mailgw.csun.com.tw [59.124.119.134])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 24B8C81425
+ for <devel@driverdev.osuosl.org>; Tue, 22 Feb 2022 03:46:42 +0000 (UTC)
+Received: from mailgw.csun.com.tw (localhost [127.0.0.1])
+ by mailgw.csun.com.tw (Postfix) with ESMTP id 3E7DE16C3022;
+ Tue, 22 Feb 2022 09:19:04 +0800 (CST)
+Received: from mailgw.csun.com.tw (localhost [127.0.0.1])
+ by mailgw.csun.com.tw (NOPAM 20100526(G2)) with ESMTP id 079EABCD
+ Tue Feb 22 09:19:03 2022 (envelope-from <ping@csun.com.tw>)
+Received: from TP-EXCAS01.csun.com.tw (unknown [10.0.0.127])
+ (using TLSv1 with cipher AES128-SHA (128/128 bits))
+ (No client certificate requested)
+ by mailgw.csun.com.tw (Postfix) with ESMTPS id DC54716D4530;
+ Tue, 22 Feb 2022 07:19:15 +0800 (CST)
+Received: from [37.49.225.130] (37.49.225.130) by TP-EXCAS01.csun.com.tw
+ (10.0.0.127) with Microsoft SMTP Server (TLS) id 14.3.498.0; Tue, 22 Feb 2022
+ 07:19:09 +0800
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Hello Friend
-To: Recipients <tender@ubis.sd>
-From: "Ms. R. Al-Hashimi" <tender@ubis.sd>
-Date: Sun, 20 Feb 2022 09:45:51 +0000
+Subject: Attn: Sie haben eine Spende!!
+To: Recipient <ping@csun.com.tw>
+From: Garde Heller <ping@csun.com.tw>
+Date: Tue, 22 Feb 2022 00:19:03 +0100
+Message-ID: <4a182b0d-fa28-45d2-9758-c03edc2ea10a@TP-EXCAS01.csun.com.tw>
+X-NOPAM-Status: type=-7;
+X-NOPAM-DIAG: NullStr, NullStr, 
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,36 +66,15 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: alhashimi123@yandex.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: mikeweirsky444@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Sir/Ma,
-
-My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus.
-
-I"m serving as a minister, there is a limit to my personal income and investment level, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
-
-The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
-
-
-If you can handle the fund in a good investment.PLEASE REPLY ME ON THIS EMAIL: hashimirrr22@kakao.com 
-
-Regards,
-Reem
-
-DISCLAIMER: 
-The information contained in this email communication is intended only for the 
-personal and confidential use of the designated recipient named above. If the 
-reader of this message is not the intended recipient, you are hereby notified 
-that you have received this communication in error, and that any review, 
-dissemination, distribution, or copying of the message is strictly prohibited. 
-If you have received this transmission in error, please destroy this 
-transmission and notify  Unified Business Information Systems  immediately by 
-telephone and/or send an email to support@UBIS.sd
-
+Attn: Sie haben eine Spende in H=F6he von $1,500,000.00 USD von Herrn Micha=
+el J. Weirsky, einem Powerball-Jackpot-Lottogewinner von 273 Millionen USD.=
+ Bitte antworten Sie auf mikeweirsky444@gmail.com f=FCr den Anspruch.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
