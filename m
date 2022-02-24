@@ -1,59 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5389A4C2437
-	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Feb 2022 07:52:23 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9ED994C26A3
+	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Feb 2022 09:58:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C3D3382EBA;
-	Thu, 24 Feb 2022 06:52:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 089ED60B45;
+	Thu, 24 Feb 2022 08:58:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7O6vOplqnkk1; Thu, 24 Feb 2022 06:52:21 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8wa9pk_W1guh; Thu, 24 Feb 2022 08:58:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8E50682EB5;
-	Thu, 24 Feb 2022 06:52:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A800B60773;
+	Thu, 24 Feb 2022 08:57:59 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 63A111BF5E0
- for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 06:52:18 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B90B71BF45A
+ for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 08:57:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4BAA260ABF
- for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 06:52:18 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A6B3E40117
+ for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 08:57:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (1024-bit key) header.d=mailmangroups.club
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mSzWwASDxauQ for <devel@linuxdriverproject.org>;
- Thu, 24 Feb 2022 06:52:16 +0000 (UTC)
-X-Greylist: delayed 00:42:19 by SQLgrey-1.8.0
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TXwoQBmVMv9E for <devel@linuxdriverproject.org>;
+ Thu, 24 Feb 2022 08:57:54 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from hwsrv-943778.hostwindsdns.com (unknown
  [IPv6:2607:5501:3000:31::2])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 63DC860AAB
- for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 06:52:16 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 73751400AF
+ for <devel@driverdev.osuosl.org>; Thu, 24 Feb 2022 08:57:54 +0000 (UTC)
 Received: from mailmangroups.club (localhost [IPv6:::1])
- by hwsrv-943778.hostwindsdns.com (Postfix) with ESMTPA id D906E114984;
- Thu, 24 Feb 2022 06:05:13 +0000 (UTC)
+ by hwsrv-943778.hostwindsdns.com (Postfix) with ESMTPA id 6B0531149EA;
+ Thu, 24 Feb 2022 08:49:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailmangroups.club;
- s=202201; t=1645682714;
- bh=Tpc1rJjkCv/NTdLBs2dTA6SwUkS9ZBBEe5Q4lqQlOtk=;
+ s=202201; t=1645692588;
+ bh=S2T4ouQnMt5qEd0f0nAfX1lNSDCRJITgkPnwwSW3tSk=;
  h=Date:From:To:Subject:From;
- b=X+xM655IE9qlUgvmjBi8Ufv7fH7/FLgEtzKdBR7YfvWbNsCw/P+0v6nJYMkb7v7A7
- t9AgK2/dvNOdP3fI97sOIe0gm6daQ9wuwsbQikDVb0qy4EMc0qmxkh51CFQS3zAoMM
- 1rL47b+oHil8uzJPowhZ+a55u/T7Uxauq4hMwiWE=
+ b=lzE2tLvqA6kvxHCgInU31BwweCFbPVQHul/+308viQn47aTfXYD5IOkxFB2P3ztJm
+ gTgXWZ+PxDkStXMZnfqUEMHIqx/OCZAQpZWz0Qh7YTE8HsYWObX+5tncQd/QY+CfTT
+ xH0Il4hj+aeokDouLztPcKKTtf9JB5a0+Pu99BJE=
 MIME-Version: 1.0
-Date: Wed, 23 Feb 2022 22:05:13 -0800
+Date: Thu, 24 Feb 2022 00:49:48 -0800
 From: =?UTF-8?Q?Mat=C3=ADas_Pedro?= <yulia@mailmangroups.club>
 To: undisclosed-recipients:;
 Subject: Orden de venta Ak. Tec Marica # PO8810
 User-Agent: Roundcube Webmail/1.4.11
-Message-ID: <01d2efced6d9c8263451f235302bd24a@mailmangroups.club>
+Message-ID: <b910eece5a823402bf5ab3ea1705ad24@mailmangroups.club>
 X-Sender: yulia@mailmangroups.club
 Content-Type: multipart/mixed;
- boundary="=_cae55d7f460a073ce9579a91a715dd1a"
+ boundary="=_07b3c79946e31f2fff7465cbffd226f5"
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,7 +69,7 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---=_cae55d7f460a073ce9579a91a715dd1a
+--=_07b3c79946e31f2fff7465cbffd226f5
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset=UTF-8;
  format=flowed
@@ -105,7 +105,7 @@ Fax: 210 6209436
 correo electrónico: sales@tec-marica3.com
 
 Sitio web: www.tec-marica3.com
---=_cae55d7f460a073ce9579a91a715dd1a
+--=_07b3c79946e31f2fff7465cbffd226f5
 Content-Transfer-Encoding: base64
 Content-Type: application/msword;
  name=#PO8810.doc
@@ -298,7 +298,7 @@ Ng0NDTE4Cg0NNgoNDTFiMDJmNjAzMTAwZDA0OAoNDTcNDQ04NzMNDQ04Y2QKDQ04ODZlCg0NODkN
 DQ00NjNlZQoNDTAKCgphZA0KCmE2OWRjDQoKZgoKCmY2YTEwZAoKCjQyCgoKYTk2DQoKYmMxZAoK
 CjllCgoKNjUxYjdmNjI5ODQ3M2NiMmIxCgoKMjQKCgpjMTkyMmU0MA0KCmQ5CgoKNDEzYTAxCgoK
 ZWRmYg0KCmQ5ODI1MQoKCmYNCgo4CgoKZmQNCgo2MjM0CgoKZjINCgo2MjANCgowMDAwMDAwfX19
---=_cae55d7f460a073ce9579a91a715dd1a
+--=_07b3c79946e31f2fff7465cbffd226f5
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -309,4 +309,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---=_cae55d7f460a073ce9579a91a715dd1a--
+--=_07b3c79946e31f2fff7465cbffd226f5--
