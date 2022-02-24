@@ -1,75 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 999CC4C38B5
-	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Feb 2022 23:25:56 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B62B64C3BB8
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Feb 2022 03:27:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DF25183E94;
-	Thu, 24 Feb 2022 22:25:54 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 408E3403C4;
+	Fri, 25 Feb 2022 02:27:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id odXHrloAeNxp; Thu, 24 Feb 2022 22:25:54 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id b5rchAER16X5; Fri, 25 Feb 2022 02:27:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9AB2C83E5E;
-	Thu, 24 Feb 2022 22:25:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C6A234010C;
+	Fri, 25 Feb 2022 02:27:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 899AD1BF2FD
- for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 22:25:51 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6C47F1BF38C
+ for <devel@linuxdriverproject.org>; Fri, 25 Feb 2022 02:27:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 770F34179E
- for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 22:25:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 52ACB607C0
+ for <devel@linuxdriverproject.org>; Fri, 25 Feb 2022 02:27:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l0CJDMvP54Dw for <devel@linuxdriverproject.org>;
- Thu, 24 Feb 2022 22:25:51 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-yb1-xb29.google.com (mail-yb1-xb29.google.com
- [IPv6:2607:f8b0:4864:20::b29])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EB1CE41751
- for <devel@driverdev.osuosl.org>; Thu, 24 Feb 2022 22:25:50 +0000 (UTC)
-Received: by mail-yb1-xb29.google.com with SMTP id y189so2332833ybe.4
- for <devel@driverdev.osuosl.org>; Thu, 24 Feb 2022 14:25:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=wv9+lUDiUamCN2D56q0OJAqCtadhguvOfwApXNhEE00=;
- b=VlmKzCgvayWAOFQR+SbUHq9RIKA3UnqVDrhwyykBbwHzSHN9vEIAbPwHCU32tmFPAq
- /RdTuuNeND/WUHCi4I+oDvPbRYnEOSIuKDOVIIpd1gBQSTUiSqb0SrnNwHLs3cxfg0lm
- 0tmiyIBy3P+N95VrYdlYT5F+wkJwZMGo1VWV9rtEnPtJVlM9i4y5L+aWtDxyE5uk1cd0
- mrb/gpYqe0uzA1A940yi15NU+BbS1KW2Jii8oNv7+lzjcaZBho1M8L868VKz8vayvEW0
- TEN4XfDOo3pbrfOaU2ZZVnopnFU9FangH7/n7p2uki/MFtIPOvlYRKFmS6Rs6N4mNyyX
- J77w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=wv9+lUDiUamCN2D56q0OJAqCtadhguvOfwApXNhEE00=;
- b=ToDX24JykhSD/hyVhJJp7xE/Jpg26KDosVeh62Q+wthBANBe7qSSsk8UbD8CAoYVMV
- +19joTRe+hjYd01Zn5gAnvjAmQXP7vI60y6wPx04QQe5rwvV3bJiDQ5LcIOQuW13m4nN
- HPpS6Ht/hr2BLJYVGkTVmosiEj/jZqIW5Zc6y42udy/aGI1oFt2WGKZ9Ff2yAjhMw0II
- JFu08xirdA4F6SB/vWxO9G7L1H2Jrm9/nBvqC7S2CksE6ajAx31YgNPLBw8Go3JiVQP3
- Q1AesC8cMLkl4+flKtnrE74SFZkel9QEi6FNuqs2HyzYGUbb9IiD6Hpz1sX4yr5Lvv2B
- 6LZQ==
-X-Gm-Message-State: AOAM532vxkdPIPeyD7bd6p81N9bc9cnS5IxBFCU8faySeXE2AZYpg+HF
- T1QeqOd87vuSnym+ncfK1BDRLC1+SpLGG5HzgqY=
-X-Google-Smtp-Source: ABdhPJyJd5E7fX6TK1FY/kTC8icDB0KDzxJxyRBt+uyOQl7KNxqEU+xe5Q4cmdq5nCBBR6JSvPGrgcXryeMMjB9DvmQ=
-X-Received: by 2002:a25:d2c1:0:b0:61d:add9:f029 with SMTP id
- j184-20020a25d2c1000000b0061dadd9f029mr4514439ybg.312.1645741549780; Thu, 24
- Feb 2022 14:25:49 -0800 (PST)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id T1PGGbbSopFk for <devel@linuxdriverproject.org>;
+ Fri, 25 Feb 2022 02:27:06 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.julivet.net (unknown [93.176.166.208])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C19FB607CA
+ for <devel@driverdev.osuosl.org>; Fri, 25 Feb 2022 02:27:06 +0000 (UTC)
+Received: from User (unknown [192.168.203.1])
+ by mail.julivet.net (Postfix) with SMTP id 7DD9D165AC90;
+ Thu, 24 Feb 2022 08:18:10 +0000 (UTC)
+From: "Abu Usman"<au5869@ec.dev.animestore.docomo.ne.jp>
+Subject: Greeting, 
+Date: Thu, 24 Feb 2022 00:18:42 -0800
 MIME-Version: 1.0
-Received: by 2002:a05:7108:7616:0:0:0:0 with HTTP; Thu, 24 Feb 2022 14:25:49
- -0800 (PST)
-From: MR DAVID MORRIS <mrjohnwegener35@gmail.com>
-Date: Thu, 24 Feb 2022 14:25:49 -0800
-Message-ID: <CA+Kwxe-KBQ7_OonNrGku_1OdGDqB1QmfR1b+s_ZBBFXahuh_2g@mail.gmail.com>
-Subject: Dear Beneficiary
-To: undisclosed-recipients:;
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Spamd-Bar: +++++++++++++
+Authentication-Results: mail.julivet.net;
+	none
+X-Spam: Yes
+Message-Id: <20220225022707.52ACB607C0@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,28 +59,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mrdavidmorris1718@gmail.com
+Reply-To: au845869@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-I am MR DAVID MORRIS, Inspection Unit Manager United Nations,
-Inspection Agency in Hartsfield Jackson International Airport Atlanta,
-Georgia.During our investigation, I discovered An abandoned shipment through a
-Diplomat from United Kingdom which was transferred from JF Kennedy
-Airport to our facility here in Atlanta,
+Greeting,
 
-The ATM debit card is worth $8million,And I  Ascertain you
-that the consignment is in your name,you are advised to provide all
-detail for claim.
+I am indeed glad to be in contact with you even though this medium of communication (internet) has been grossly abused by criminal minded
+people making it difficult for people with genuine intention to correspond and exchange views without skepticism.
+
+In view of your outstanding profile and location,  I decided to write to you. I have decided that I seek your assistance in a matter that requires your urgent attention
+
+I'm Abu Usman from Afghanistan, and I am contacting you due to the ongoing takeover by the Taliban in my country.
+
+I need your urgent response to help me receive some funds for me.If this is something you can do, I will appreciate your early response, so that I can provide more and appropriate details of the entire proposal, given the fact that this is only a skeletal introduction.
+
+I will appreciate if you could let me have the following information
+
+1. Your Name
+2. Address
+3. Your cell Phone Number.
+4. Occupation
+
+Your positive response will be highly appreciated. As soon as I receive your response I will get back to you Asap.
 
 Sincerely,
 
-MR MORRIS
-
-CONTACT.......... mrdavidmorris1718@gmail.com
+Abu Usman
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
