@@ -1,76 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E64C34C2D28
-	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Feb 2022 14:33:59 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0428E4C2F6D
+	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Feb 2022 16:22:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4B360415C0;
-	Thu, 24 Feb 2022 13:33:58 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3571D409DB;
+	Thu, 24 Feb 2022 15:22:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PzjgzZbLDSB8; Thu, 24 Feb 2022 13:33:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XRGQ5qfV_qcJ; Thu, 24 Feb 2022 15:22:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 105E340928;
-	Thu, 24 Feb 2022 13:33:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7BD6340477;
+	Thu, 24 Feb 2022 15:22:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 412721BF5F6
- for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 13:33:54 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5A0041BF309
+ for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 15:22:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2FAAA812B5
- for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 13:33:54 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 55EA0611BA
+ for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 15:22:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Mr871qLivLcI for <devel@linuxdriverproject.org>;
- Thu, 24 Feb 2022 13:33:53 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-yw1-x112f.google.com (mail-yw1-x112f.google.com
- [IPv6:2607:f8b0:4864:20::112f])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8CCD581298
- for <devel@driverdev.osuosl.org>; Thu, 24 Feb 2022 13:33:53 +0000 (UTC)
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-2d646fffcc2so25380037b3.4
- for <devel@driverdev.osuosl.org>; Thu, 24 Feb 2022 05:33:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=1h98u/bN5joq7hLImj9Jy+kYtlUyjs0ZgzpFswkgYBo=;
- b=VoLMeYy4zYVCA3wVh64VKoEoppJ7YRylGWzrMuxBlEOgBQgrkFx/K9kVIAg4nnf38K
- CPUVf/+2Cr2aLRsih0PbK0E+irthYjj6p0tHrUlHuDJJfVOP7uw0oxw1pBFVTqb6cNT8
- difukMCyNuxbOUV5vPVwhCKE13VPT5EzoAZxNPbA9EDCkr/ZFep305YfxDNBowCRTj7f
- EyUNgjV+0kPeIyR+3rS0/21Cfki/v2rkZer6wzrfDb7B7rpETWl+FStkyrA6JOvPOai6
- y+pB5ItXDmGdMPpn4dh+G1ixw/uqihf9GBk7Z0eTLvYL/enIyeia12O0im66Z+5PPNMi
- MLmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=1h98u/bN5joq7hLImj9Jy+kYtlUyjs0ZgzpFswkgYBo=;
- b=TEUo8ETo/QJ3OAq4mOhhXOvXiMbOiYf9c/jqL2cABuXkjNK1iarjkJr4s1U6InmYMd
- WVvWDWXedkKqUnqiDYfQqnGeHJtfXBdEGOqmb2HRasYkhafApRTikzJz/ebp23IPcjTs
- tKxUm83CIOTg7WzePkj3hepwRWQ1p9jMAbKNIOWXwo5KKDQRbOijY0CNSkGLedihuKns
- sapYzIn7wZZxUkDoYW1VN4dphCtsFb8TaOUjrIRgYlsX7hmxj318pCgl06d3e/f9sX1P
- JAu3FlFL2yUArb2iwuQ6XIPQu9xdWOidQQgthETbU3QFULffVZjKggoe2/1ehz1ffUN0
- RK+A==
-X-Gm-Message-State: AOAM5335hJk6htXwfdPcdx/LHdhphLchUXGx0Aw25OE8TdJHXo10hhwU
- da4SLq9CVm4JJlpGR8CM9RYNBib42Oxn5IqGsbg=
-X-Google-Smtp-Source: ABdhPJwcruRcaAHfPgREOG/E/ZrZHXxCfGH1NMOUYcw7vapxlzf6ja605HpmNOszilOm/Hljl1cfKqGej1bHF/T7Pgo=
-X-Received: by 2002:a81:1803:0:b0:2ca:287c:6caa with SMTP id
- 3-20020a811803000000b002ca287c6caamr2384169ywy.335.1645709632560; Thu, 24 Feb
- 2022 05:33:52 -0800 (PST)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=kuaidi100.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GWo_rGIrTQGf for <devel@linuxdriverproject.org>;
+ Thu, 24 Feb 2022 15:22:09 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.kuaidi100.com (unknown [120.92.182.57])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 79E3A611B7
+ for <devel@driverdev.osuosl.org>; Thu, 24 Feb 2022 15:22:09 +0000 (UTC)
+Received: from localhost (unknown [127.0.0.1])
+ by mail.kuaidi100.com (Postfix) with ESMTP id 9EAFF8DC935;
+ Thu, 24 Feb 2022 15:12:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kuaidi100.com; h=
+ reply-to:date:date:from:from:to:subject:subject
+ :content-description:content-transfer-encoding:mime-version
+ :content-type:content-type; s=dkim; t=1645715571; x=1648307572;
+ bh=o9BBV28bahOEBAv5kPF7czLJyXlTgYMXDxLieqs4+ps=; b=ITttELdHrgU1
+ Q66FIikq3+cuuASdWukBw7LVTcLsAI4jmmjlN7hmu3vs6crc4L1OhRwYN/j5Wnjh
+ DJvoE1MTzubc0UBgJHWqFitYgXSd7C2pWqAizeduQNS4dno1VM17BhbZE0pW4RtH
+ 56YYEgO3XZcKt9/bcBFhYm3aWtwLAyU=
+X-Virus-Scanned: amavisd-new at kuaidi100.com
+Received: from mail.kuaidi100.com ([127.0.0.1])
+ by localhost (mail.kuaidi100.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id k1RN1g8BI49Q; Thu, 24 Feb 2022 23:12:51 +0800 (CST)
+Received: from info.mhvqerywi4muvkclihzd3fbddg.qx.internal.cloudapp.net
+ (unknown [13.70.158.215])
+ by mail.kuaidi100.com (Postfix) with ESMTPSA id 5B5D48DC947;
+ Thu, 24 Feb 2022 22:31:51 +0800 (CST)
 MIME-Version: 1.0
-Received: by 2002:a05:6918:9144:b0:a1:6ae3:a9ce with HTTP; Thu, 24 Feb 2022
- 05:33:52 -0800 (PST)
-From: "Howard F. Newell" <gracecomplete123@gmail.com>
-Date: Thu, 24 Feb 2022 14:33:52 +0100
-Message-ID: <CAPPAyq7pMY-=7aV5nciH83OTThsXPHK1H+VCv6wATJtZBEFoVQ@mail.gmail.com>
-Subject: RE
-To: undisclosed-recipients:;
+Content-Description: Mail message body
+Subject: Invest With Us...
+To: Recipients <hr@kuaidi100.com>
+From: "Ms. R. Al-Hashimi" <hr@kuaidi100.com>
+Date: Thu, 24 Feb 2022 14:34:09 +0000
+Message-Id: <20220224151256.9EAFF8DC935@mail.kuaidi100.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,20 +71,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: howardnewell406@gmail.com
+Reply-To: alhashimi123@yandex.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
-I want to know if you received my previous mail of 28th/01/2022
-concerning your compensation valued 681,200 dollars by the United
-Nations Compensation Program (UNCC). Please confirm as soon as
-possible.
-Warm regards!
-Howard Newell
-London WC2N 4JS, UK
+Hello Sir/Ma,
+
+My name is Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee. I am writing to you to stand as my partner to receive my share of gratification from foreign companies whom I helped during the bidding exercise towards the Dubai World Expo 2020 Committee and also i want to use this funds to assist Coronavirus.
+
+I"m serving as a minister, there is a limit to my personal income and investment level, I cannot receive such a huge sum back to my country or my personal account, so an agreement was reached with the foreign companies to direct the gratifications to an open beneficiary account with a financial institution where it will be possible for me to instruct further transfer of the fund to a third party account for investment purpose which is the reason i contacted you to receive the fund as my partner for investment in your country.
+
+The amount is valued at Euro 47,745,533.00 with a financial institution waiting my instruction for further transfer to a destination account as soon as I have your information indicating interest to receive and invest the fund, I will compensate you with 30% of the total amount and you will also get benefit from the investment.
+
+
+If you can handle the fund in a good investment.PLEASE REPLY ME ON THIS EMAIL: hashimirrr22@kakao.com 
+
+Regards,
+Reem
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
