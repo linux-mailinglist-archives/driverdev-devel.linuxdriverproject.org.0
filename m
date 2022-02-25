@@ -1,54 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 06D0D4C3D7D
-	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Feb 2022 06:02:33 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2EE824C3E3B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Feb 2022 07:08:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DA3BE40270;
-	Fri, 25 Feb 2022 05:02:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E4BA2409B2;
+	Fri, 25 Feb 2022 06:08:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PUr1nY_INOXs; Fri, 25 Feb 2022 05:02:31 +0000 (UTC)
+	with ESMTP id yaeKp0JsvX8o; Fri, 25 Feb 2022 06:08:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 630FD400F4;
-	Fri, 25 Feb 2022 05:02:30 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 775D6409AA;
+	Fri, 25 Feb 2022 06:08:29 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 07E501BF2CB
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 25 Feb 2022 05:02:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D3BF41BF5A5
+ for <devel@linuxdriverproject.org>; Fri, 25 Feb 2022 06:08:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DC1C183EA7
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 25 Feb 2022 05:02:26 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D019B83EB9
+ for <devel@linuxdriverproject.org>; Fri, 25 Feb 2022 06:08:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5w_GbomIT-3q
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 25 Feb 2022 05:02:25 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5F63083E99
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 25 Feb 2022 05:02:25 +0000 (UTC)
-Received: from User (unknown [197.185.107.78])
- by mail.service-fujitsu.com (Postfix) with ESMTPA id 8B0532A101D;
- Fri, 25 Feb 2022 12:42:56 +0800 (CST)
-From: "Nigerian National Petroleum Corporation
- (NNPC)"<dremmanuelibekachikwun20221@gmail.com>
-Subject: Re: PROJECT: From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
- Abuja
-Date: Fri, 25 Feb 2022 06:43:16 +0200
+ with ESMTP id vNzI210UqJIO for <devel@linuxdriverproject.org>;
+ Fri, 25 Feb 2022 06:08:24 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-yb1-xb42.google.com (mail-yb1-xb42.google.com
+ [IPv6:2607:f8b0:4864:20::b42])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9B0DD83EB7
+ for <devel@linuxdriverproject.org>; Fri, 25 Feb 2022 06:08:24 +0000 (UTC)
+Received: by mail-yb1-xb42.google.com with SMTP id c6so3929892ybk.3
+ for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 22:08:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=Y7X8uyaFI8LljuLAxhyM48+yTSBDN9zANH/IhPwl+SQ=;
+ b=iR4dT+/JYKXITK1dO6MFUBHdtmDPc9NPZJ90Uet+iE2SKSm0xbxphla78FMTE0WaEv
+ S4jXzKEqn6l+3A9ta43Rq8zrjmIZmxikjY4EQRoSjVgtjCz0HXXgIz+0L+aUHSBGokrf
+ XKIJUWWEUX+20/HiQPo1r5R3NEICYd4pvWVUsXj/Qa2/k30sveIrSEuvUJO4xUVX3TIG
+ S5JlbLLZFrhMqNX45BBucRCh84vSClVwO3xTz51kE9lgNPEYiFRMJLf0G5MWbpwwZjIu
+ lp+XRGRAcRv22aAckOJ9C9dEfYXLDIuDW/5LxgJhRdLyqe252BVn8lfrBSd+PWnj/QtC
+ JH7w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=Y7X8uyaFI8LljuLAxhyM48+yTSBDN9zANH/IhPwl+SQ=;
+ b=Mx4vwYk8rj7r/h0oStg7qSmcE3ANDoIicOlN3GabBUnc1KS0sxB3IhBmu3Fe8Skkgc
+ fubtUIoMx0eZ5JR9ikMSQgW+JtCLUZ/jfuoMyZpcHTYRiwRGCl7JFFeSC+I5Q42uDrfU
+ tpr2FVX1alWT3BBD6+8q5kwnyQn1ySSwEU0C71xxXrZvM5yG1TKypI606YPT6bqr7m1i
+ nZYmOFAzYpxpCaFpme7PLZc9lWjVjhe+P7El3vBqkQidDzpe6gNn19Ub3fpuFguLP3iX
+ p1gm8lqapRgSiy27By5GV1avD7iky+l/hNLhx9aoFfw6RZdwcNYTQUJNuqqzprULZ3Ka
+ ZBfQ==
+X-Gm-Message-State: AOAM530ummVM+dN08dK3IEiPl/nVi0lBnAEMiGyHhcJHfjPzaEQEBxMT
+ JozofYXbvi2dCaXk93xNnRRI//HT3h+ZBmSU7AY=
+X-Google-Smtp-Source: ABdhPJwQIWLFU7UyjW80MdD5ErC/o/bITG473KC3uLsTUlwbK1cfaG6qXNmNAGbpxZvt4sGBgciCmImouoCNUJU4VRo=
+X-Received: by 2002:a25:2a87:0:b0:623:8086:301a with SMTP id
+ q129-20020a252a87000000b006238086301amr6000232ybq.175.1645769303399; Thu, 24
+ Feb 2022 22:08:23 -0800 (PST)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220225050226.DC1C183EA7@smtp1.osuosl.org>
+Received: by 2002:a05:7110:700f:b0:15e:c6b3:3796 with HTTP; Thu, 24 Feb 2022
+ 22:08:22 -0800 (PST)
+From: Mark <georgejamesowus0@gmail.com>
+Date: Thu, 24 Feb 2022 22:08:22 -0800
+Message-ID: <CAP2m6DTeSrtEMpzSJfuuNtvHNNv70vaW5wXETt8G1+jAX4O0Hw@mail.gmail.com>
+Subject: Re: Greetings!
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,73 +82,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: dremmanuelibekachikwun2022@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Reply-To: markwillima00@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Tm5wYyBUb3dlcnMsIENlbnRyYWwgQnVzaW5lc3MgRGlzdHJpY3QsIEhlcmJlcnQgTWFjYXVsYXkg
-d2F5LCBQLm0uYi4gMTkwLCBHYXJraSwgQWJ1amEuCiAKRnJvbTogRHIuIEVtbWFudWVsIEliZSBL
-YWNoaWt3dSAoR01EKQpDb250cmFjdCBSZWYgTm86IE5OUEMvUEVELzE0NjIvS0FEUkVGLzkyKSAg
-ICAgIAogICAgICAgICAgICAgICAgICAgICAgICAKQXR0bjogQ2VvLAogCkkga25vdyB0aGF0IHRo
-aXMgcHJvcG9zYWwgbWF5IGNvbWUgdG8geW91IGFzIGEgc3VycHJpc2UgZXNwZWNpYWxseSBoYXZp
-bmcgdG8gY29tZSBmcm9tIHNvbWVvbmUgeW91IGhhdmUgbm90IG1ldCBiZWZvcmUuIEkgZ290IHlv
-dXIgaW5mb3JtYXRpb24gZnJvbSB5b3VyIGNvdW50cnkncyBjaGFtYmVyIG9mIGNvbW1lcmNlIGhl
-cmUgaW4gTmlnZXJpYS4KIApNeSBuYW1lIGlzIERyLiBFbW1hbnVlbCBJYmUgS2FjaGlrd3UsIFRo
-ZSBNaW5pc3RlciBvZiBTdGF0ZSBmb3IgUGV0cm9sZXVtIFJlc291cmNlcywgTmF0aW9uYWwgUGV0
-cm9sZXVtIENvcnBvcmF0aW9uIChOTlBDKS4gQmUgaW5mb3JtZWQgdGhhdCBteSBwYXJ0bmVyIERy
-LiBNYWlrYW50aSBCYXJ1IGFuZCBJIGF3YXJkZWQgYSBjb250cmFjdCB0byBhIGZvcmVpZ24gZmly
-bSAoU2hlbmcgWWFuZyBDb250cmFjdGlvbiBDb21wYW55KSB3aXRoIGNvbnRyYWN0IFJlZiBObzog
-Tk5QQy9QRUQvMTQ2Mi9LQURSRUYvOTIpIGZvciB0aGUgbWFpbnRlbmFuY2Ugb2YgdGhlIE5pZ2Vy
-aWEgcGV0cm9sZXVtLWNoZW1pY2FsIGNvbXBsZXggbG9jYXRlZCBhdCBLYWR1bmEsIE5pZ2VyaWEu
-CiAKSSBrbm93IHRoYXQgdGhpcyBwcm9wb3NhbCBtYXkgY29tZSB0byB5b3UgYXMgYSBzdXJwcmlz
-ZSBlc3BlY2lhbGx5IGhhdmluZyB0byBjb21lIGZyb20gc29tZW9uZSB5b3UgaGF2ZSBub3QgbWV0
-IGJlZm9yZSwgYnV0IEkgd291bGQgbGlrZSB5b3UgdG8gY28tb3BlcmF0ZSB3aXRoIG1lIHNvIHRo
-YXQgdGhpcyBVJEQ5OCwgMDAwLDAwMC4wMCB3aWxsIGJlIHJlbGVhc2VkIGFuZCB0cmFuc2ZlcnJl
-ZCBpbnRvIHlvdXIgYWNjb3VudCwgaXQgaXMgbWluZSBwcm9mb3VuZCBpbnRlbnRpb24gdG8gY29u
-dGFjdCB5b3UgZm9yIHRoaXMgdmVyeSBpbXBvcnRhbnQgYW5kIGhpZ2hseSBjb25maWRlbnRpYWwg
-dHJhbnNhY3Rpb24gZm9yIHRoZSB0cmFuc2ZlciBvZiAoVSREOTgsIDAwMCwwMDAuMDAgTmluZXR5
-LUVpZ2h0IE1pbGxpb24gVW5pdGVkIFN0YXRlcyBEb2xsYXJzIE9ubHkgaW50byB5b3VyIGJhbmsg
-YWNjb3VudC4KIApUaGUgY29udHJhY3QgaGFzIGJlZW4gc3VjY2Vzc2Z1bGx5IGV4ZWN1dGVkIGJ5
-IHRoZSBjb250cmFjdG9ycyBhbmQgdGhlaXIgY29udHJhY3Qgc3VtIGhhcyBiZWVuIHBhaWQgdG8g
-dGhlbSwgbGVhdmluZyB1cyBhbiBvdmVyZXN0aW1hdGVkIGJhbGFuY2Ugb2YgKFUkRDk4LCAwMDAs
-MDAwLjAwIE5pbmV0eS1FaWdodCBNaWxsaW9uIFVuaXRlZCBTdGF0ZXMgRG9sbGFycyBPbmx5KSBz
-dGlsbCBwZW5kaW5nIGF0IHRoZSBiYW5rLiBSaWdodCBub3csIHdlIGFyZSBsZWZ0IHdpdGggdGhp
-cyBvdmVyZXN0aW1hdGVkIGJhbGFuY2Ugb2YgKFUkRDk4LCAwMDAsMDAwLjAwKSB3aGljaCBpcyBz
-dGlsbCBmbG9hdGluZyBhdCB0aGUgZXNjcm93IGFjY291bnQgaW4gdGhlIENlbnRyYWwgQmFuayBv
-ZiBOaWdlcmlhIChDQk4pIHdhaXRpbmcgZm9yIGZpbmFsIHBheW1lbnQgdG8gYW55IHJlbGlhYmxl
-IGZvcmVpZ24gYmFuayBhY2NvdW50LCB5b3UgbWF5IHByb3ZpZGUuCiAKV2UsIGFzIGdvdmVybm1l
-bnQgb2ZmaWNpYWxzLCBhcmUgbm90IHBlcm1pdHRlZCB0byBvd24gb3Igb3BlcmF0ZSBmb3JlaWdu
-IGJhbmsgYWNjb3VudHMuIHRoZXJlZm9yZSwgd2UgbmVlZCByZWxpYWJsZSBwZXJzb24gd2hvIHdp
-bGwgcHJvdmlkZSB1cyB3aXRoIGEgZm9yZWlnbiBhY2NvdW50IHdoZXJlIHRvIHRyYW5zZmVyIGFu
-ZCBkZXBvc2l0IHRoaXMgVVMkOTgsMDAwLDAwMC4wMCwgdGhhdCBpcyB0aGUgcmVhc29uIHdlIGFy
-ZSBzb2xpY2l0aW5nIGZvciB5b3VyIHNpbmNlcmUgYXNzaXN0YW5jZSB0byBwcm92aWRlIHVzIHdp
-dGggYW4gYWNjb3VudCB3aGVyZSB0byB0cmFuc2ZlciB0aGlzIG1vbmV5IC5hbGwgbW9kYWxpdGll
-cyBmb3IgdGhlIGVhc3kgdHJhbnNmZXIgb2YgdGhpcyBtb25leSBpcyBub3cgaW4gcGxhY2UsIHRo
-ZSBwZXJpb2Qgb2YgdGhpcyB0cmFuc2FjdGlvbiBpcyBvbmx5IHR3byB3ZWVrcyBmcm9tIHRoZSBk
-YXkgd2UgcmVjZWl2ZSB5b3VyIGJhbmsgYWNjb3VudCBkZXRhaWxzLgogCk5vdGUgdGhhdCA1MCUg
-b2Ygb3VyIHNoYXJlIHdpbGwgYmUgaW52ZXN0ZWQgaW4geW91ciBjb3VudHJ5LCBhcyB3ZSBwcm9w
-b3NlIHRvIGdpdmUgeW91IDMwJSBvZiB0aGUgVSREOTgsIDAwMCwwMDAuMDAsIG15IHBhcnRuZXJz
-IGFuZCBJIHdpbGwgZ2V0IDYwJSBvZiB0aGUgbW9uZXkuCiAKVGhlIGJhbGFuY2Ugb2YgMTAlIHdp
-bGwgYmUgYWxsb2NhdGVkIHRvIGNvdmVyIGFsbCBleHBlbnNlcyBpbmN1cnJlZCBieSBib3RoIHBh
-cnRuZXJzLCBiZSBpbmZvcm1lZCB0aGF0IHRoaXMgcHJvcG9zYWwgaXMgdXJnZW50IGFuZCBjb25m
-aWRlbnRpYWwsIHBsZWFzZSBzZW5kIHRvIG1lIHlvdXIgYmFuayBhY2NvdW50IGRldGFpbHMgYW5k
-IGZ1bGwgYWRkcmVzcyBvZiBjb21wYW55IG5hbWUgYW5kIGFkZHJlc3MsIHlvdXIgcHJpdmF0ZSBw
-aG9uZSBhbmQgZmF4IG51bWJlciBmb3IgZWFzeSBjb21tdW5pY2F0aW9uIHdoaWNoIHdpbGwgYmUg
-dXNlZCBpbiBzZWN1cmluZyBhbGwgdGhlIG5lY2Vzc2FyeSBkb2N1bWVudHMgZm9yIGVhc3kgdHJh
-bnNmZXIgb2YgdGhlIGZ1bmQuCiAKIApBd2FpdGluZyB5b3VyIHVyZ2VudCByZXNwb25zZS4KIApC
-ZXN0IHJlZ2FyZHMuCgpEci4gRW1tYW51ZWwgSWJlIEthY2hpa3d1LgpUaGUgTWluaXN0ZXIgb2Yg
-U3RhdGUgZm9yIFBldHJvbGV1bSBSZXNvdXJjZXMsIE5pZ2VyaWFuIE5hdGlvbmFsIFBldHJvbGV1
-bSBDb3Jwb3JhdGlvbiAoTk5QQykKIApUaGlzIGVtYWlsIGFuZCBhbnkgYXR0YWNobWVudHMgdG8g
-aXQgbWF5IGJlIGNvbmZpZGVudGlhbCBhbmQgYXJlIGludGVuZGVkIHNvbGVseSBmb3IgdGhlIHVz
-ZSBvZiB0aGUgaW5kaXZpZHVhbCB0byB3aG9tIGl0IGlzIGFkZHJlc3NlZC4gQW55IHZpZXdzIG9y
-IG9waW5pb25zIGV4cHJlc3NlZCBhcmUgc29sZWx5IHRob3NlIG9mIHRoZSBhdXRob3IgYW5kIGRv
-IG5vdCBuZWNlc3NhcmlseSByZXByZXNlbnQgdGhvc2Ugb2YgTWFzdGVycGFnZa4uIElmIHlvdSBh
-cmUgbm90IHRoZSBpbnRlbmRlZCByZWNpcGllbnQgb2YgdGhpcyBlbWFpbCwgeW91IG11c3QgbmVp
-dGhlciB0YWtlIGFueSBhY3Rpb24gYmFzZWQgdXBvbiBpdHMgY29udGVudHMsIG5vciBjb3B5IG9y
-IHNob3cgaXQgdG8gYW55b25lLiBQbGVhc2UgY29udGFjdCB0aGUgc2VuZGVyIGlmIHlvdSBiZWxp
-ZXZlIHlvdSBoYXZlIHJlY2VpdmVkIHRoaXMgZW1haWwgaW4gZXJyb3IuCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2
-ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJv
-amVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Hello,
+
+The HSBC Bank is a financial institution in United Kingdom. We
+promotes long-term,sustainable and broad-based economic growth in
+developing and emerging countries by providing financial support like
+loans and investment to large, small and
+medium-sized companies (SMEs) as well as fast-growing enterprises
+which in turn helps to create secure and permanent jobs and reduce
+poverty.
+
+If you need fund to promotes your business, project(Project Funding),
+Loan, planning, budgeting and expansion of your business(s) , do not
+hesitate to indicate your interest as we are here to serve you better
+by granting your request.
+
+Thank you
+Mr:Mark
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
