@@ -1,75 +1,136 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2EE824C3E3B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Feb 2022 07:08:33 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 144504C4366
+	for <lists+driverdev-devel@lfdr.de>; Fri, 25 Feb 2022 12:24:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E4BA2409B2;
-	Fri, 25 Feb 2022 06:08:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 55D0F61244;
+	Fri, 25 Feb 2022 11:24:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yaeKp0JsvX8o; Fri, 25 Feb 2022 06:08:30 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Atp3vi7mt_hw; Fri, 25 Feb 2022 11:24:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 775D6409AA;
-	Fri, 25 Feb 2022 06:08:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0AEC5611BC;
+	Fri, 25 Feb 2022 11:24:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D3BF41BF5A5
- for <devel@linuxdriverproject.org>; Fri, 25 Feb 2022 06:08:25 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E79F71BF34C
+ for <devel@linuxdriverproject.org>; Fri, 25 Feb 2022 11:24:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D019B83EB9
- for <devel@linuxdriverproject.org>; Fri, 25 Feb 2022 06:08:25 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D49714011B
+ for <devel@linuxdriverproject.org>; Fri, 25 Feb 2022 11:24:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vNzI210UqJIO for <devel@linuxdriverproject.org>;
- Fri, 25 Feb 2022 06:08:24 +0000 (UTC)
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=silabs.onmicrosoft.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id J4jy_4Vj3K9Y for <devel@linuxdriverproject.org>;
+ Fri, 25 Feb 2022 11:24:37 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-yb1-xb42.google.com (mail-yb1-xb42.google.com
- [IPv6:2607:f8b0:4864:20::b42])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9B0DD83EB7
- for <devel@linuxdriverproject.org>; Fri, 25 Feb 2022 06:08:24 +0000 (UTC)
-Received: by mail-yb1-xb42.google.com with SMTP id c6so3929892ybk.3
- for <devel@linuxdriverproject.org>; Thu, 24 Feb 2022 22:08:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=Y7X8uyaFI8LljuLAxhyM48+yTSBDN9zANH/IhPwl+SQ=;
- b=iR4dT+/JYKXITK1dO6MFUBHdtmDPc9NPZJ90Uet+iE2SKSm0xbxphla78FMTE0WaEv
- S4jXzKEqn6l+3A9ta43Rq8zrjmIZmxikjY4EQRoSjVgtjCz0HXXgIz+0L+aUHSBGokrf
- XKIJUWWEUX+20/HiQPo1r5R3NEICYd4pvWVUsXj/Qa2/k30sveIrSEuvUJO4xUVX3TIG
- S5JlbLLZFrhMqNX45BBucRCh84vSClVwO3xTz51kE9lgNPEYiFRMJLf0G5MWbpwwZjIu
- lp+XRGRAcRv22aAckOJ9C9dEfYXLDIuDW/5LxgJhRdLyqe252BVn8lfrBSd+PWnj/QtC
- JH7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=Y7X8uyaFI8LljuLAxhyM48+yTSBDN9zANH/IhPwl+SQ=;
- b=Mx4vwYk8rj7r/h0oStg7qSmcE3ANDoIicOlN3GabBUnc1KS0sxB3IhBmu3Fe8Skkgc
- fubtUIoMx0eZ5JR9ikMSQgW+JtCLUZ/jfuoMyZpcHTYRiwRGCl7JFFeSC+I5Q42uDrfU
- tpr2FVX1alWT3BBD6+8q5kwnyQn1ySSwEU0C71xxXrZvM5yG1TKypI606YPT6bqr7m1i
- nZYmOFAzYpxpCaFpme7PLZc9lWjVjhe+P7El3vBqkQidDzpe6gNn19Ub3fpuFguLP3iX
- p1gm8lqapRgSiy27By5GV1avD7iky+l/hNLhx9aoFfw6RZdwcNYTQUJNuqqzprULZ3Ka
- ZBfQ==
-X-Gm-Message-State: AOAM530ummVM+dN08dK3IEiPl/nVi0lBnAEMiGyHhcJHfjPzaEQEBxMT
- JozofYXbvi2dCaXk93xNnRRI//HT3h+ZBmSU7AY=
-X-Google-Smtp-Source: ABdhPJwQIWLFU7UyjW80MdD5ErC/o/bITG473KC3uLsTUlwbK1cfaG6qXNmNAGbpxZvt4sGBgciCmImouoCNUJU4VRo=
-X-Received: by 2002:a25:2a87:0:b0:623:8086:301a with SMTP id
- q129-20020a252a87000000b006238086301amr6000232ybq.175.1645769303399; Thu, 24
- Feb 2022 22:08:23 -0800 (PST)
+Received: from NAM04-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam08on2058.outbound.protection.outlook.com [40.107.100.58])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CDF3440004
+ for <devel@driverdev.osuosl.org>; Fri, 25 Feb 2022 11:24:37 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QPTMG3EqFxjewv2TdYlx1XU9+olbN2OTij9Tw5Fa7rPsskDnGPJfeORGcXmPRB+TvqxFhtcPZtxT6o8MYfr8Po6RBi50CUfWAncOzr6y9UId/xlzvL8IaAyV/1j50cK3oX0+h+B4u/Jj0oQwm1paisXI37G/wwmiiNxA4MpgKimNqAbk8pw2Kf6sY82LDOFQRIUksM4OBNLAjIhAcl6dhFCTDMGAjw2li6/GXLAFJx7qaH4fqAvASaVAUqfb8xkFYpuzZERKZSTBffJdGyRb1JoXiSrPp2kZRlDWLYA4gOGUjC+nwtgMIQMBUwg3/QbDnh0a+maBdJzoqXEThdkHjQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=I179u1habwdSm5yQ2mS5LMrlzWQSEc1YWKeJfZu+ro0=;
+ b=joEVwuxbtfzD4JcDkrDRiaopzl2G3n3SEUv1HoGzwEENjzG6M1NwhAAHTq6Xgn/GTqEJgtkpqdIGhVak3SFxGp/dVL3ga+QserbpnpNJ7CXaEF83iwB6vwsrYa6s7Z+p6ZGfs0KoZoQphIRiW5pMxwirlrj04DyprPKx4dscH5Wncw4fFTOBLqLPO7fZ6XE4xXEoyQNGoHs1RJ64c/At9GpvhXXYEmKc1DL+kiLpIPoVczIxcyeFZzxqAJD+4KooMmSj7zLhQjfk5Qh9SXjRED24wYPTpGFjDsCuhhraRc+IOkYRbDA4fKFM3+hVZikvaVeel0+4WOfwctkuJIDxbg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=silabs.com; dmarc=pass action=none header.from=silabs.com;
+ dkim=pass header.d=silabs.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=silabs.onmicrosoft.com; s=selector2-silabs-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=I179u1habwdSm5yQ2mS5LMrlzWQSEc1YWKeJfZu+ro0=;
+ b=JJCoCHYxWXFTIofP5JMS/Ik7TEgXNKpvLkttWYSsh9Mo27NE4bkR1zEdhikXz5P7cHoqLla30wJs5JblJJh5hzWu/nW5O7eMAzc6xUPwsV/WGOIAI6CYTNxiRLW8jtx88AjoqawBd6BHEGvuc0gW6yhV9qtVhyPnBw4XKtnNUPE=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=silabs.com;
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com (2603:10b6:510:ee::19)
+ by DM6PR11MB4362.namprd11.prod.outlook.com (2603:10b6:5:1dd::27) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5017.22; Fri, 25 Feb
+ 2022 11:24:35 +0000
+Received: from PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::dd2e:8a4e:fc77:1e66]) by PH0PR11MB5657.namprd11.prod.outlook.com
+ ([fe80::dd2e:8a4e:fc77:1e66%5]) with mapi id 15.20.5017.023; Fri, 25 Feb 2022
+ 11:24:34 +0000
+From: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+To: linux-wireless@vger.kernel.org,
+	Kalle Valo <kvalo@kernel.org>
+Subject: [PATCH 00/10] staging: wfx: usual maintenance
+Date: Fri, 25 Feb 2022 12:23:55 +0100
+Message-Id: <20220225112405.355599-1-Jerome.Pouiller@silabs.com>
+X-Mailer: git-send-email 2.34.1
+X-ClientProxiedBy: PR3P189CA0052.EURP189.PROD.OUTLOOK.COM
+ (2603:10a6:102:53::27) To PH0PR11MB5657.namprd11.prod.outlook.com
+ (2603:10b6:510:ee::19)
 MIME-Version: 1.0
-Received: by 2002:a05:7110:700f:b0:15e:c6b3:3796 with HTTP; Thu, 24 Feb 2022
- 22:08:22 -0800 (PST)
-From: Mark <georgejamesowus0@gmail.com>
-Date: Thu, 24 Feb 2022 22:08:22 -0800
-Message-ID: <CAP2m6DTeSrtEMpzSJfuuNtvHNNv70vaW5wXETt8G1+jAX4O0Hw@mail.gmail.com>
-Subject: Re: Greetings!
-To: undisclosed-recipients:;
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 1a90d822-6064-4c69-aeac-08d9f851666e
+X-MS-TrafficTypeDiagnostic: DM6PR11MB4362:EE_
+X-Microsoft-Antispam-PRVS: <DM6PR11MB4362CAB8151D96C4188B0A5D933E9@DM6PR11MB4362.namprd11.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: S1gkSGuQqVwn+kWhfo9KfrL5bT6iIo+lw8bGI8guqaXx5YQ1pvWjYRUz6wpOJDjvIgmfz1uIk/0CzwOucb3OlbgiMFYm5TVeuX3dG+GsXEC5vCpoHPK8GNWsdlVcRw4L4rlfZat1iGJPjIWARiFEl60ibNKgDC5UQ+QSrmKT8MWl/Yvrv5avzxbtq3UAqStRuwhv+GYaDwwqPQGDV/KjhrtTt9JDwgJ+iZ4f/31hnt16gm4QCHzRIrAAbEH8NOCYIs4uWCrYTHnDqovci+0fgEITtFrv+aXhPyIaGXo6K9e7H9ZvjqAn9HhfKTzIp0CoCkKPLhiNMB5yg/ov1mPg/28zalSTpM/saWdedurh1lztYmpEMXVgsqecWrVzq4nueKmekZds+/ufoNxAabOw629fUxUentyo2/DkKxxmnptR5fchChIORw4xjYKxGZbB3XqwlzSBrLkgF1yoDL+CT9s9TwVUGDS58+unSiDL5L/WDsVfZ3u5p9p37PsXh2SaopPrUI60piuE14hiCfSlDLCbPzfyRA/xxzc6JzOUTO0YsIX+xCFzerDtIxqzeA0Xr3wgxJ7U0iWrk2bYwYo00z4/iJNfeOngMes7aGySQ7EUitQo29Tq3Tcb0UIPxGkCtycM+MJF+eloL1dllrWNKLTs48qXNUiRt8fkN3R9sw0euXO8ebbBPBWKWyxUehMy1lrS9McP1u/xJ+beHnRfJNY7bsO1AGyxKA09yncPReKTgJKXy/fu6luNY53drlPl
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(366004)(6512007)(6506007)(1076003)(66946007)(52116002)(8676002)(2616005)(66574015)(26005)(66476007)(5660300002)(66556008)(508600001)(2906002)(83380400001)(54906003)(38100700002)(4326008)(86362001)(6486002)(8936002)(186003)(6666004)(107886003)(36756003)(316002)(38350700002)(6916009);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aHR0akRoR0krZG9McWVvcUlCM3FZMXdaWkVhSkpnbHhmbFhXQzlJWHNhT0sr?=
+ =?utf-8?B?cjlZTEZUcGhQcVh3R0tLRlAvdk5ZVFY5UmpSdCt6RVVSSGNzdURBNmVKc1dK?=
+ =?utf-8?B?UXZnYUZUb1BaU0ZNaGRwNXg3a3oxSVpRbHlkVDJ2VXlOQzFMVDFqZk9oRFJ5?=
+ =?utf-8?B?RlQvM29WNVlJdWlsOVc0L0t4TFNBN2dVNXFBWmljM0F5Y0lsWi81ZVllNFR5?=
+ =?utf-8?B?RUNBY0VUdFd4YkFIZXNqQ2lQZ2Mvd1Z4OFg0czdZMzdwOVJkeDlmTXZvNEE1?=
+ =?utf-8?B?WjFHbFNGM2ZsYzFVVjFHZUpVTVdBVm0wZ0p0OUNESlk1ai9uaGgyZ3RMYkEz?=
+ =?utf-8?B?NllSbVhWVFJldlRwNWMrb2c0dFBONWU0ZzJMZ3dKSitoYmpmd1pxV2FZemFr?=
+ =?utf-8?B?T0xnWmk0QzZKbWZ6M2t6WDc0aHUwczJScC9iWHBOMStjc3lBWmdtd1hZclQ5?=
+ =?utf-8?B?ZFdJZE9LaTBmeHAwbTUzM28weEZxOWdxYVJGMjRaazU5VG83UW1RMnB2MWJ5?=
+ =?utf-8?B?SXNJcXFLNnpSRm9rWklERzR1dG9xejc5c25IM0hGaktNM3hrUkdIS0d4cURM?=
+ =?utf-8?B?VFB2aVo0NmRyZDg1ZkxVTUNxWWllWk9xQnJCTFlXVjBFbDRsaDNjc2RxVDJy?=
+ =?utf-8?B?V2kwZEgxT2xFTWl5QXFqcWh1UVVNY3M4czJYZk5GYjk0aldSZ1J6SkppdmVM?=
+ =?utf-8?B?RU1nTVdCWjNsYXR0WmV2alhjMlIrV0owU0dhTG9ieDFMRjRzc0hvQlU2QmF5?=
+ =?utf-8?B?dm4wd054K0p6WE9SY3podk13MlJvQXZuMVBDcy9hSVJKQUU2SnBJOFhteGhJ?=
+ =?utf-8?B?L0lZVERoQTZ3WkhqWUI2ekZDOWFoMm1jVGJPV2Y2eHoxRkFYaCt5Mm5xRkFu?=
+ =?utf-8?B?aHl3SEFTNEZwY1RPL0hFbTB1c1ZzVkRFblJLMTZZekwrS29kM0dxK3dlV2M2?=
+ =?utf-8?B?ejkzZGY0RVkxM21RYkw5aWQ3UFpoTnQ5YW9XcGNtT2o4bFBRY0VhZnZIWmZm?=
+ =?utf-8?B?Q1JxUkxMeG1OaE41SjhjVkkxclpPbjlyeW1tQi9NM3hJZ1dwSnpaY2RjVXlR?=
+ =?utf-8?B?dmp4cFk4VjZHM1F3OVJyZlZpMjRPcnFIUUlIeStoUEx4Si9aKy9heUtEc1Uv?=
+ =?utf-8?B?NmJiRHArcEVOSUFNV3NQQjNkSG5yeW90YUNtM3g1SFFNKzdSdWhYeXhMNms1?=
+ =?utf-8?B?YlVLcHVOTkNQTWE0bzRzZko2YmkyMzVuTUc3TWJ2c0c1dDZtb01XVzZjSndZ?=
+ =?utf-8?B?Z00vQSsrNzExVStKMVE2TkdRVzI3L0xhK1hOd1NNSUo0d1ZMZUNEWGowZGt1?=
+ =?utf-8?B?QWFwWE1aYWhyTko2S3BsZmh1NlgwN3JXSDZNSkUyN2tlMldzZjZscjEwMndH?=
+ =?utf-8?B?eUpLNnBuaEFna1g3VS9wZzhXL3YxMnFxR0pYaERFUWpGY2kxRm55SmRGRkl2?=
+ =?utf-8?B?YjJSMkpnKzZ5ZW5aSGU2ZHErYUJFWlZjVXg1bmoxcm9BWWNXSzhiRG5PQ0tV?=
+ =?utf-8?B?VTNxSmIzZ3I1emQvWDBkQnN2a2NwZ0FoRGw0VS93T2M1d3FPalhaTEIyakF3?=
+ =?utf-8?B?Zmo3L2tzOWtQcm5XUWVnaER4Z2RXdjJiUEE2S1NLQ1ZCK0JaZHNhZnVyOElj?=
+ =?utf-8?B?dEUvL254QXMzMkE4ZjFqSDZ0TW9nV0g1WENYRUFhVFlOWlZKS2RWcHhVelZU?=
+ =?utf-8?B?NHZiNjk5QVZ4NzNYY2h3NnBSTHBUNmk2K2x6bU0wR0FaaUJtVGxzVStXSGRG?=
+ =?utf-8?B?Y0Y5ZFZIQnhzbmNzQWVYQmZpb0Y4TmxGU0lOV2ZHdlZwd29QWVYxa0NlOElX?=
+ =?utf-8?B?Sy80MEtUNnl0RkZBT2RPTlQzTDFZa2F0YTRzbng5bWlxNk1SdGtRTlZ5akVS?=
+ =?utf-8?B?VXFuY2E1LzFqU3NYbVN6ZlhvdUVaQzlTTTQ2NWpUb0RBaWJ4VlNyWHJKOEYw?=
+ =?utf-8?B?STVVemVaQkR5MDZldVV0ZGZPc1NHVnJ0dEV0SEVLcXpFbkFsVUJJVGZkZ2tH?=
+ =?utf-8?B?OHFlZFVDSG5QNkdSVTlIT2dIZlIzeHRGK3E3T1A0b3hZM3pLYmVnU2tDaG5Z?=
+ =?utf-8?B?Zm4vOGpucGxKUWttNkJWK29SSlhBQmxUbDN4V3NIMWtWZVdJZ3ZtZjl6Umw5?=
+ =?utf-8?B?eHNYdmpEaGtRdnFJMDFJSVgzQW5yMFdKUnE1WnY4djVGam5RbjdvSG1pZUw2?=
+ =?utf-8?Q?QZB3HGOGqKp8cc+dIHq77es=3D?=
+X-OriginatorOrg: silabs.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1a90d822-6064-4c69-aeac-08d9f851666e
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5657.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Feb 2022 11:24:34.7016 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 54dbd822-5231-4b20-944d-6f4abcd541fb
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zj2emOFKFVy2ZyPBDrAMIJ5YQX3WVqkzRo/MMsslfHOZLCl3EnX+XcTFI0XDSncO0C+cEknd/4ALwkkpI03Ing==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4362
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,30 +143,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: markwillima00@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
-
-The HSBC Bank is a financial institution in United Kingdom. We
-promotes long-term,sustainable and broad-based economic growth in
-developing and emerging countries by providing financial support like
-loans and investment to large, small and
-medium-sized companies (SMEs) as well as fast-growing enterprises
-which in turn helps to create secure and permanent jobs and reduce
-poverty.
-
-If you need fund to promotes your business, project(Project Funding),
-Loan, planning, budgeting and expansion of your business(s) , do not
-hesitate to indicate your interest as we are here to serve you better
-by granting your request.
-
-Thank you
-Mr:Mark
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbTogSsOpcsO0bWUgUG91aWxsZXIgPGplcm9tZS5wb3VpbGxlckBzaWxhYnMuY29tPgoKVGhp
+cyBQUiBjb250YWlucyBmaXhlcyBmb3IgdmFyaW91cyBzbWFsbCBkZWZlY3RzIEkgaGF2ZSBzZWVu
+IHRoZXNlIGxhc3QKd2Vla3MuCgpKw6lyw7RtZSBQb3VpbGxlciAoMTApOgogIHN0YWdpbmc6IHdm
+eDogc3RhLm8gd2FzIGxpbmtlZCB0d2ljZQogIHN0YWdpbmc6IHdmeDogZml4IHN0cnVjdCBhbGln
+bm1lbnQKICBzdGFnaW5nOiB3Zng6IGZvcm1hdCBjb21tZW50cyBvbiAxMDAgY29sdW1ucwogIHN0
+YWdpbmc6IHdmeDogZm9ybWF0IGNvZGUgb24gMTAwIGNvbHVtbnMKICBzdGFnaW5nOiB3Zng6IHJl
+bW92ZSB1c2VsZXNzIHZhcmlhYmxlCiAgc3RhZ2luZzogd2Z4OiBkcm9wIHVzZWxlc3MgaW5jbHVk
+ZQogIHN0YWdpbmc6IHdmeDogcmVtb3ZlIGR1cGxpY2F0ZWQgY29kZSBpbiB3ZnhfY21kX3NlbmQo
+KQogIHN0YWdpbmc6IHdmeDogcHJlZmVyIHRvIHdhaXQgZm9yIGFuIGV2ZW50IGluc3RlYWQgdG8g
+c2xlZXAKICBzdGFnaW5nOiB3Zng6IGVuc3VyZSBISUYgcmVxdWVzdCBoYXMgYmVlbiBzZW50IGJl
+Zm9yZSBwb2xsaW5nCiAgc3RhZ2luZzogd2Z4OiBmbGFncyBmb3IgU1BJIElSUSB3ZXJlIGlnbm9y
+ZWQKCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L01ha2VmaWxlICAgICAgfCAgMSAtCiBkcml2ZXJzL3N0
+YWdpbmcvd2Z4L2JoLmMgICAgICAgICAgfCAgMSArCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2J1c19z
+cGkuYyAgICAgfCAzMCArKysrKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0KIGRyaXZlcnMvc3Rh
+Z2luZy93ZngvZGF0YV90eC5jICAgICB8ICA4ICsrLS0tLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4
+L2Z3aW8uYyAgICAgICAgfCAgMyArLS0KIGRyaXZlcnMvc3RhZ2luZy93ZngvaGlmX2FwaV9jbWQu
+aCB8ICAyIC0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L2hpZl9yeC5jICAgICAgfCAgMyArLS0KIGRy
+aXZlcnMvc3RhZ2luZy93ZngvaGlmX3R4LmMgICAgICB8IDEzICsrKysrKy0tLS0tLS0KIGRyaXZl
+cnMvc3RhZ2luZy93ZngvaGlmX3R4X21pYi5jICB8ICAzICstLQogZHJpdmVycy9zdGFnaW5nL3dm
+eC9od2lvLmMgICAgICAgIHwgIDkgKysrLS0tLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L3F1ZXVl
+LmMgICAgICAgfCAgOSArKysrLS0tLS0KIGRyaXZlcnMvc3RhZ2luZy93Zngvc3RhLmMgICAgICAg
+ICB8IDExICsrKysrLS0tLS0tCiBkcml2ZXJzL3N0YWdpbmcvd2Z4L3N0YS5oICAgICAgICAgfCAg
+MyArLS0KIDEzIGZpbGVzIGNoYW5nZWQsIDQwIGluc2VydGlvbnMoKyksIDU2IGRlbGV0aW9ucygt
+KQoKLS0gCjIuMzQuMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0
+cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
+dmVyZGV2LWRldmVsCg==
