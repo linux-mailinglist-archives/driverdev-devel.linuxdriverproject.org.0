@@ -1,75 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04ECA4C5519
-	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Feb 2022 11:12:44 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 143EA4C5532
+	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Feb 2022 11:41:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4B0E64098F;
-	Sat, 26 Feb 2022 10:12:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6F54560C20;
+	Sat, 26 Feb 2022 10:41:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oUVRlAwdHYLw; Sat, 26 Feb 2022 10:12:41 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id itN5qD7VzN8x; Sat, 26 Feb 2022 10:41:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0548340948;
-	Sat, 26 Feb 2022 10:12:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 28B8260B04;
+	Sat, 26 Feb 2022 10:41:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 646491BF484
- for <devel@linuxdriverproject.org>; Sat, 26 Feb 2022 10:12:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DCDC51BF484
+ for <devel@linuxdriverproject.org>; Sat, 26 Feb 2022 10:41:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 532984098F
- for <devel@linuxdriverproject.org>; Sat, 26 Feb 2022 10:12:38 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CAF95416AF
+ for <devel@linuxdriverproject.org>; Sat, 26 Feb 2022 10:41:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R6m17xzU6OTm for <devel@linuxdriverproject.org>;
- Sat, 26 Feb 2022 10:12:37 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-qv1-xf31.google.com (mail-qv1-xf31.google.com
- [IPv6:2607:f8b0:4864:20::f31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B683140948
- for <devel@driverdev.osuosl.org>; Sat, 26 Feb 2022 10:12:37 +0000 (UTC)
-Received: by mail-qv1-xf31.google.com with SMTP id h13so8581495qvk.12
- for <devel@driverdev.osuosl.org>; Sat, 26 Feb 2022 02:12:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:sender:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=vFTjJiHGJM/FRxpTUAc+ZEjBxdNeuAkjjy0Iu6vBYo8=;
- b=Yk5iCZdY9fDOpfP/09XgzrmsYfYl0pmB+QSFA/BQidWSFlpaLsUbjYTEdtoTAojyiY
- uRCAJltndPqGvHYIsQcP7obgtnHvVumBKIsV+FDnzCTuzrDa6YpaLYuXaYazQ7+Bb9kS
- z9NCekei69IbilTaZIXb745z1Zkjwh+GuunConFx0xf6n7tnjZLvZFELB91IiQPgaebt
- v0cs7MgFqDFV2OMMINGo3H+O71ibHUSlZr0hlfdMoiDKsK6cFqp2C3WLy46fRVk8+xOo
- ZYZmJ56P30ImlsM+2Kbkgv0O/25ybXDFfTvzaLbq1G30el2IbFMZkSSBEdLvuJ5OpbQV
- GghQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
- :to:content-transfer-encoding;
- bh=vFTjJiHGJM/FRxpTUAc+ZEjBxdNeuAkjjy0Iu6vBYo8=;
- b=tEh4UxUtvk0+s2LF2Hm2JONeyudUsDMKjfe7ZxpJxqsEb3bJZAwdGJeiDjpdSNdjta
- MTSO6KatljD+hIbGh6BXmw6zni7MhLOLa81Sa9LvaYfiPeXKTzJ87GrYjss54Zjmh7FG
- o9ftIMCO+csN5VDXIZjz4Z+CQQvhSiFDKDL9Ca+ma3eCieFVoJjcrDLNpO7RnixQvnpL
- 8Al0ZRbJ/bVsBnJlHgXAPTdJXO1M86Ow4ZJLv5VpXimWKqGv0ow1B1a+i2qxJXlyaWNG
- /OMdJK+p3i01+9oQqKf8UQJVjcLuArGwPEINHAX+4cawgtMarUbtj7pgbtK84vo0o72U
- GEng==
-X-Gm-Message-State: AOAM531jxQqPuEQHFiutvxtT9FOk9YijZEVnpV17zWRzUw0+pVy7WxuM
- uIQgEotLlvSdJQOeuo+q3t0waohl0f4jd1twIQo=
-X-Google-Smtp-Source: ABdhPJwEcxDMyNWquDuSyvTR2vH0SZ0izw0LXcPeEPI2QDpcwh6GCnARnxhpVA1yap7CGNbceerZ+kuxTHWuyuGbuuM=
-X-Received: by 2002:a05:6214:487:b0:432:3903:b4c5 with SMTP id
- ay7-20020a056214048700b004323903b4c5mr8728519qvb.22.1645870355830; Sat, 26
- Feb 2022 02:12:35 -0800 (PST)
+ with ESMTP id 54plZA9hjh7J for <devel@linuxdriverproject.org>;
+ Sat, 26 Feb 2022 10:41:52 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E29E6403CC
+ for <devel@driverdev.osuosl.org>; Sat, 26 Feb 2022 10:41:51 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id D8816B819F7;
+ Sat, 26 Feb 2022 10:41:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BAC31C340E8;
+ Sat, 26 Feb 2022 10:41:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1645872107;
+ bh=RFf42czOySTnAdGGfHvyOuXGvWEvEYYr8UHE78R9vog=;
+ h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
+ b=P0W4jnf8r/RLrt1ldnx1/CA03k8Lx1amb+1I73vssyUOGe9D3AgBLhKC2FZ9oMlBX
+ aEGNUopqHABz12o6bI8jGd1bCBl1bulYF2P7aetiKRwKten9aQKO4b7ImAiOhQUiBa
+ xp8+BFvmx93f6lzNj2ovWEZ6MB+ttxeGBSvntZtolfEXKZ/04rf70YoSgGOMq/qR2k
+ UYGJGmxeDWRS7bdlXWm85nSJgZm7HOv4Y/KGoh6EBw1eOAgF2FrcCkxJsaxt20c7c1
+ 4bEN1vk2M7MZsHDx0LTiLiPu4E4mzXNVg9czHv5v1yQgKmRe777Jpyn4J4V6s9zhCe
+ 11Gn2vhvaM7UQ==
+From: Kalle Valo <kvalo@kernel.org>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+Subject: Re: [PATCH v10 0/1] wfx: get out from the staging area
+References: <20220226092142.10164-1-Jerome.Pouiller@silabs.com>
+Date: Sat, 26 Feb 2022 12:41:41 +0200
+In-Reply-To: <20220226092142.10164-1-Jerome.Pouiller@silabs.com> (Jerome
+ Pouiller's message of "Sat, 26 Feb 2022 10:21:41 +0100")
+Message-ID: <871qzpucyi.fsf@kernel.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
 MIME-Version: 1.0
-Received: by 2002:a0c:ee42:0:0:0:0:0 with HTTP; Sat, 26 Feb 2022 02:12:35
- -0800 (PST)
-From: Ministere Desfinances <ministeredesfinances405@gmail.com>
-Date: Sat, 26 Feb 2022 02:12:35 -0800
-X-Google-Sender-Auth: OS4S1T_4DcMKtLOBKHriyp0ujs4
-Message-ID: <CAGoqFBQxp=J7AAOyiTARvMUr8r0M7w2ng8+rqpPAM2-qHzGcug@mail.gmail.com>
-Subject: 
-To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,47 +73,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jakub Kicinski <kuba@kernel.org>, "David S . Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-QXR0ZW50aW9uIERlYXIgQmVuZWZpY2lhbGx5CgoKTmF0aW9ucyAoVU4pLCBFdXJvcGVhbiBVbmlv
-biAoRVUpIGFuZCBGQkkuV2UgaGF2ZSBiZWVuIGFibGUgdG8gdHJhY2sKZG93bi4gSW5mb3JtYXRp
-b24gZnJvbSBOYXRpb25zIChVTiksIEV1cm9wZWFuIFVuaW9uIChFVSkgYW5kIEZCSS5XZQpoYXZl
-IGJlZW4gYWJsZSB0byB0cmFjayBkb3duIHNvbWUgc2NhbSBhcnRpc3QgaW4gdmFyaW91cyBwYXJ0
-cyBvZgpBZnJpY2FuIGNvdW50cmllcyB3aGljaCBpbmNsdWRlcyAoTmlnZXJpYSwgR2hhbmEgYW5k
-IFNlbmVnYWwsIGNvdGUKZCdpdm9pcmUgQ290b25vdS1CdXJraW5hIEZhc28sIFNvdXRoIEtvcmVh
-IGFuZCBDaGluYSAtIEJ1cmtpbmEgRmFzbykKCgoKVGhleSBhcmUgYWxsIGluIEdvdmVybm1lbnQg
-Y3VzdG9keSBub3csIHRoZXkgd2lsbCBhcHBlYXIgYXQgdGhlCkludGVybmF0aW9uYWwgQ3JpbWlu
-YWwgQ291cnQgKElDQykgc29vbiBmb3IgSnVzdGljZS4gRHVyaW5nIHRoZSBjb3Vyc2UKb2YgaW52
-ZXN0aWdhdGlvbiwgdGhleSB3ZXJlIGFibGUgdG8gcmVjb3ZlciBzb21lIGZ1bmRzIGZyb20gdGhl
-c2Ugc2NhbQphcnRpc3RzIGFuZCB0aGUgSU1GIG9yZ2FuaXphdGlvbiBoYXMgb3JkZXJlZCB0aGUg
-ZnVuZHMgcmVjb3ZlcmVkIHRvIGJlCnNoYXJlZCBhbW9uZyB0aGUgMTAwIEx1Y2t5IHBlb3BsZSBs
-aXN0ZWQgYXJvdW5kIHRoZSBXb3JsZCBhcyBhCmNvbXBlbnNhdGlvbi4KCgoKVGhpcyBub3RpY2Ug
-aGFzIGJlZW4gZGlyZWN0ZWQgdG8geW91IGJlY2F1c2UgeW91ciBlbWFpbCBhZGRyZXNzIHdhcwpm
-b3VuZCBpbiBvbmUgb2YgdGhlIHNjYW0gQXJ0aXN0cyBmaWxlIGFuZCBjb21wdXRlciBoYXJkLWRp
-c2sgZHVyaW5nCnRoZSBpbnZlc3RpZ2F0aW9uLCBtYXliZSB5b3UgaGF2ZSBiZWVuIHNjYW1tZWQu
-CgoKCllvdSBhcmUgdGhlcmVmb3JlIGJlaW5nIGNvbXBlbnNhdGVkIHdpdGggYSBzdW0gb2YgJCAy
-LjIgTWlsbGlvbiBVUwpEb2xsYXJzIHZhbGlkIGludG8gYW4gKEFUTSBWaXNhIENhcmQpLiBFdmVu
-IGlmIHlvdSBhcmUgbm93IGRlYWxpbmcKd2l0aCB0aGVzZSBub25vZmZpY2lhbCBkaXJlY3RvcnMg
-b2YgdGhlIGJhbmsgb3IgYW55IGRlcGFydG1lbnQgYWx3YXlzCnJlcXVlc3RpbmcgbW9uZXkgZnJv
-bSB5b3UsIHlvdSBzaG91bGQgU1RPUCB5b3VyIGNvbW11bmljYXRpb24gd2l0aAp0aGVtIGFuZCBm
-b3J3YXJkIHRoZSBkZXRhaWxzIHRvIG91ciBvZmZpY2Ugc28gdGhhdCB3ZSB3aWxsIGhlbHAgYW5k
-CnJlY292ZXIgeW91ciBmdW5kcyBwZWFjZWZ1bGx5IGFuZCBpbGxlZ2FsbHkuCgoKClNpbmNlIHlv
-dXIgZW1haWwgYWRkcmVzcyBpcyBhbW9uZyB0aGUgbHVja3kgYmVuZWZpY2lhcmllcyB3aG8gd2ls
-bApyZWNlaXZlIGEgY29tcGVuc2F0aW9uIGZ1bmRzLCB3ZSBoYXZlIGFycmFuZ2VkIHlvdXIgcGF5
-bWVudCB0byBiZSBwYWlkCnRvIHlvdSB0aHJvdWdoIEFUTSBWSVNBIENBUkQgYW5kIGRlbGl2ZXIg
-dG8geW91ciBwb3N0YWwgYWRkcmVzcywgYXMgdG8KZW5hYmxlIHlvdSB3aXRoZHJhd2FsIG1heGlt
-dW0gb2YgJDQsMDAwIG9uIGVhY2ggd2l0aGRyYXdhbCBmcm9tIGFueQpCYW5rIEFUTSBNYWNoaW5l
-IG9mIHlvdXIgY2hvaWNlLCB1bnRpbCBhbGwgdGhlIGZ1bmRzIGFyZSBleGhhdXN0ZWQuCgoKClRo
-ZSBwYWNrYWdlIGlzIGNvbWluZyBmcm9tIE91YWdhZG91Z291LCBCdXJraW5hIEZhc28uIERvbuKA
-mXQgZm9yZ2V0IHRvCnJlY29uZmlybSB5b3VyIGZvbGxvd2luZyBpbmZvcm1hdGlvbi4KCgoKMS4g
-WW91ciBGdWxsIE5hbWU6CgoyLiBBZGRyZXNzIFdoZXJlIFlvdSB3YW50IHVzIHRvIFNlbmQgWW91
-ciBBVE0gQ2FyZAoKMy4gQ2VsbC9Nb2JpbGUgTnVtYmVyCgo0LiBDb3B5IG9mIHlvdXIgcGFzc3Bv
-cnQKCgoKCgpZb3VycyBpbiBTZXJ2aWNlcwoKTXIuIEplYW4gTGF1cmVudCBCb25uYWZlCgpNSU5J
-U1RFUkUgREVTIEZJTkFOQ0VTCgpFVCBERSBM4oCZRUNPTk9NSUUgKE0uRi5FKQoKQlVSS0lOQSBG
-QVNPCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVs
-IG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJk
-ZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZl
-bAo=
++ jakub
+
+Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
+
+> The firmware and the PDS files (= antenna configurations) are now a part of
+> the linux-firmware repository.
+>
+> All the issues have been fixed in staging tree. I think we are ready to get
+> out from the staging tree for the kernel 5.18.
+
+[...]
+
+>  rename Documentation/devicetree/bindings/{staging => }/net/wireless/silabs,wfx.yaml (98%)
+
+I lost track, is this file acked by the DT maintainers now?
+
+What I suggest is that we queue this for v5.19. After v5.18-rc1 is
+released I could create an immutable branch containing this one commit.
+Then I would merge the branch to wireless-next and Greg could merge it
+to the staging tree, that way we would minimise the chance of conflicts
+between trees.
+
+Greg, what do you think? Would this work for you? IIRC we did the same
+with wilc1000 back in 2020 and I recall it went without hiccups.
+
+-- 
+https://patchwork.kernel.org/project/linux-wireless/list/
+
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
