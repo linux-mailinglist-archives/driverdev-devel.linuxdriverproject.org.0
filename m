@@ -1,68 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA6224C5328
-	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Feb 2022 02:56:44 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F10C84C5327
+	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Feb 2022 02:56:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 490E884C10;
-	Sat, 26 Feb 2022 01:56:43 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1xGhZuSK71IQ; Sat, 26 Feb 2022 01:56:42 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D3CDB83F1B;
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0F14E60B98;
 	Sat, 26 Feb 2022 01:56:41 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1dtgZz4UJLDb; Sat, 26 Feb 2022 01:56:40 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9C7B960B65;
+	Sat, 26 Feb 2022 01:56:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CA75A1C11A9
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C85E1BF589
  for <devel@linuxdriverproject.org>; Sat, 26 Feb 2022 01:56:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B5656401F2
+ by smtp1.osuosl.org (Postfix) with ESMTP id 98C1383FEC
  for <devel@linuxdriverproject.org>; Sat, 26 Feb 2022 01:56:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CgJKOCVcTC5x for <devel@linuxdriverproject.org>;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ooEGNmvcZx_A for <devel@linuxdriverproject.org>;
  Sat, 26 Feb 2022 01:56:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7D6AF4013D
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A0F2583F1B
  for <devel@driverdev.osuosl.org>; Sat, 26 Feb 2022 01:56:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1645840594; x=1677376594;
  h=date:from:to:cc:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=lus3qRF8dWQCo/O8iP/p37n77pa5jMByu9WQwowmm1s=;
- b=UOQ4sxQstJhC/FpwWOWLTr83bFcOpKj2A7taYAi9MWl47/2sduRVysFM
- /vI3oi10165Tr76nolquLZ/A1uZhGvinaA/KI1Wszq+tD2Q+LXG5enPhs
- aN5/qTQPlOc+cslFA07k9edePTGLrFhwFuOfKZTXLGNaN4Z1PUKn+xgJC
- FKpCvVVlz3rv2TguKan1iP4pnshOHwT/r9fLMJpKa8g45FVRJ3T6Mu65l
- cckmdfbTWPVuqqSfSiJgITIDVZVJK6thaboMmj43CXjhN8Wf0LlXztr9S
- 2XtESl2O3J0sEU4lAj2sjsK03fMty1ByflJ+PTXuQplacNri4nbGLMABy g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10269"; a="313337782"
-X-IronPort-AV: E=Sophos;i="5.90,138,1643702400"; d="scan'208";a="313337782"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ bh=kVpseM/EOOrdLd6p0rWRBggEoUpwvFIqzlAVuWlDkPU=;
+ b=TMCPx+b85K/ZCimNchoM9ZRWvArgfI5wyvzGmM1d2rkMgknkRpVnzHiL
+ 6yjUFYAqV24vnr6x5y1QkFU0ouj/AThU9L2F2pmGyrJja8x7Z7R/9p8qb
+ 3XkO3ZBUjAWun3/T4stgM5FhC4+Lh5KnImjn2+/fCtfD4YYAvgszFvOFM
+ hRtj4SBkJ0HT2IYbQt4cj+SRyyVND7aTDV34BXj09pYZhCK6MtovDmLIO
+ YuPgBbpWgKjvw2gouZ2POXYSuSGIfASo7f/8CGXa8iAt3xwvyUJ4BBDfb
+ 4HpkAQLv/hTuwB6iqDslJky5i0Gjx0a4Z8Fz7JVjJxcCrtL7jHNpGidSd w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10269"; a="277258371"
+X-IronPort-AV: E=Sophos;i="5.90,138,1643702400"; d="scan'208";a="277258371"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  25 Feb 2022 17:56:33 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,138,1643702400"; d="scan'208";a="794212382"
+X-IronPort-AV: E=Sophos;i="5.90,138,1643702400"; d="scan'208";a="492156901"
 Received: from lkp-server01.sh.intel.com (HELO 788b1cd46f0d) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 25 Feb 2022 17:56:32 -0800
+ by orsmga003.jf.intel.com with ESMTP; 25 Feb 2022 17:56:32 -0800
 Received: from kbuild by 788b1cd46f0d with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1nNmJz-0004vh-Nn; Sat, 26 Feb 2022 01:56:31 +0000
-Date: Sat, 26 Feb 2022 09:55:29 +0800
+ id 1nNmJz-0004vZ-Md; Sat, 26 Feb 2022 01:56:31 +0000
+Date: Sat, 26 Feb 2022 09:55:51 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- ae016b9da7bcb3b4ddd95afc406ddf5b27a859d5
-Message-ID: <62198891.ajI+IE0auRtPrwSr%lkp@intel.com>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 83ba9a33b56673263981d5633fd6a96d83dabc21
+Message-ID: <621988a7.VfJ6JPM0+rK7D9vn%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -83,12 +83,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
-branch HEAD: ae016b9da7bcb3b4ddd95afc406ddf5b27a859d5  ALSA: hda/realtek: Make use of the helper component_compare_dev_name
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 83ba9a33b56673263981d5633fd6a96d83dabc21  staging: r8188eu: remove ETH_ALEN from ieee80211.h
 
 elapsed time: 722m
 
-configs tested: 148
+configs tested: 146
 configs skipped: 3
 
 The following configs have been built successfully.
@@ -131,9 +131,6 @@ csky                                defconfig
 powerpc                        warp_defconfig
 m68k                        mvme147_defconfig
 microblaze                      mmu_defconfig
-nios2                         10m50_defconfig
-h8300                               defconfig
-powerpc                 mpc837x_rdb_defconfig
 m68k                       m5208evb_defconfig
 mips                     decstation_defconfig
 powerpc                     stx_gp3_defconfig
@@ -164,6 +161,7 @@ arm                            zeus_defconfig
 arc                            hsdk_defconfig
 arm                        keystone_defconfig
 powerpc                     tqm8555_defconfig
+h8300                               defconfig
 arc                          axs103_defconfig
 um                               alldefconfig
 arm                      integrator_defconfig
