@@ -1,66 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 143EA4C5532
-	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Feb 2022 11:41:59 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 18F424C55FA
+	for <lists+driverdev-devel@lfdr.de>; Sat, 26 Feb 2022 13:56:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6F54560C20;
-	Sat, 26 Feb 2022 10:41:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 507B0415CF;
+	Sat, 26 Feb 2022 12:56:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id itN5qD7VzN8x; Sat, 26 Feb 2022 10:41:56 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id i3BVnpWUT-26; Sat, 26 Feb 2022 12:56:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 28B8260B04;
-	Sat, 26 Feb 2022 10:41:56 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 025E4415CE;
+	Sat, 26 Feb 2022 12:56:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DCDC51BF484
- for <devel@linuxdriverproject.org>; Sat, 26 Feb 2022 10:41:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2662E1BF42C
+ for <devel@linuxdriverproject.org>; Sat, 26 Feb 2022 12:56:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CAF95416AF
- for <devel@linuxdriverproject.org>; Sat, 26 Feb 2022 10:41:52 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 21814415CF
+ for <devel@linuxdriverproject.org>; Sat, 26 Feb 2022 12:56:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 54plZA9hjh7J for <devel@linuxdriverproject.org>;
- Sat, 26 Feb 2022 10:41:52 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+ with ESMTP id jMU7NFEhfHVy for <devel@linuxdriverproject.org>;
+ Sat, 26 Feb 2022 12:56:51 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from ams.source.kernel.org (ams.source.kernel.org
  [IPv6:2604:1380:4601:e00::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E29E6403CC
- for <devel@driverdev.osuosl.org>; Sat, 26 Feb 2022 10:41:51 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 62801415CE
+ for <devel@driverdev.osuosl.org>; Sat, 26 Feb 2022 12:56:51 +0000 (UTC)
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id D8816B819F7;
- Sat, 26 Feb 2022 10:41:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BAC31C340E8;
- Sat, 26 Feb 2022 10:41:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1645872107;
- bh=RFf42czOySTnAdGGfHvyOuXGvWEvEYYr8UHE78R9vog=;
- h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
- b=P0W4jnf8r/RLrt1ldnx1/CA03k8Lx1amb+1I73vssyUOGe9D3AgBLhKC2FZ9oMlBX
- aEGNUopqHABz12o6bI8jGd1bCBl1bulYF2P7aetiKRwKten9aQKO4b7ImAiOhQUiBa
- xp8+BFvmx93f6lzNj2ovWEZ6MB+ttxeGBSvntZtolfEXKZ/04rf70YoSgGOMq/qR2k
- UYGJGmxeDWRS7bdlXWm85nSJgZm7HOv4Y/KGoh6EBw1eOAgF2FrcCkxJsaxt20c7c1
- 4bEN1vk2M7MZsHDx0LTiLiPu4E4mzXNVg9czHv5v1yQgKmRe777Jpyn4J4V6s9zhCe
- 11Gn2vhvaM7UQ==
-From: Kalle Valo <kvalo@kernel.org>
-To: Jerome Pouiller <Jerome.Pouiller@silabs.com>
+ by ams.source.kernel.org (Postfix) with ESMTPS id 67A43B80757;
+ Sat, 26 Feb 2022 12:56:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91C2FC340E8;
+ Sat, 26 Feb 2022 12:56:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1645880207;
+ bh=ErmV24WkvOMnp37HiuWsv2j69OgPJxdDVLKwg5mrsoM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=1uocR33JVqwcXl9YbOUGIC7f3c2haGv8tdCN6Yhmjza30QGo7BuduXRvmVDVYmpFr
+ IT6KDvp7EgwCM0sBjNjl4rpEe2ZDlGPqYmUAmjvXq19n3p25ks8MbvalhgRWYkxDN5
+ XO5gi4kFAmFjJcgGDpey3yAIxeBlrDf/G7mTWFt8=
+Date: Sat, 26 Feb 2022 13:56:44 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Kalle Valo <kvalo@kernel.org>
 Subject: Re: [PATCH v10 0/1] wfx: get out from the staging area
+Message-ID: <YhojjHGp4EfsTpnG@kroah.com>
 References: <20220226092142.10164-1-Jerome.Pouiller@silabs.com>
-Date: Sat, 26 Feb 2022 12:41:41 +0200
-In-Reply-To: <20220226092142.10164-1-Jerome.Pouiller@silabs.com> (Jerome
- Pouiller's message of "Sat, 26 Feb 2022 10:21:41 +0100")
-Message-ID: <871qzpucyi.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+ <871qzpucyi.fsf@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <871qzpucyi.fsf@kernel.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,42 +70,44 @@ List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driver
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Jakub Kicinski <kuba@kernel.org>, "David S . Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-+ jakub
+On Sat, Feb 26, 2022 at 12:41:41PM +0200, Kalle Valo wrote:
+> + jakub
+> 
+> Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
+> 
+> > The firmware and the PDS files (= antenna configurations) are now a part of
+> > the linux-firmware repository.
+> >
+> > All the issues have been fixed in staging tree. I think we are ready to get
+> > out from the staging tree for the kernel 5.18.
+> 
+> [...]
+> 
+> >  rename Documentation/devicetree/bindings/{staging => }/net/wireless/silabs,wfx.yaml (98%)
+> 
+> I lost track, is this file acked by the DT maintainers now?
+> 
+> What I suggest is that we queue this for v5.19. After v5.18-rc1 is
+> released I could create an immutable branch containing this one commit.
+> Then I would merge the branch to wireless-next and Greg could merge it
+> to the staging tree, that way we would minimise the chance of conflicts
+> between trees.
+> 
+> Greg, what do you think? Would this work for you? IIRC we did the same
+> with wilc1000 back in 2020 and I recall it went without hiccups.
 
-Jerome Pouiller <Jerome.Pouiller@silabs.com> writes:
+That sounds great to me, let's plan on that happening after 5.18-rc1 is
+out.
 
-> The firmware and the PDS files (= antenna configurations) are now a part of
-> the linux-firmware repository.
->
-> All the issues have been fixed in staging tree. I think we are ready to get
-> out from the staging tree for the kernel 5.18.
+thanks,
 
-[...]
-
->  rename Documentation/devicetree/bindings/{staging => }/net/wireless/silabs,wfx.yaml (98%)
-
-I lost track, is this file acked by the DT maintainers now?
-
-What I suggest is that we queue this for v5.19. After v5.18-rc1 is
-released I could create an immutable branch containing this one commit.
-Then I would merge the branch to wireless-next and Greg could merge it
-to the staging tree, that way we would minimise the chance of conflicts
-between trees.
-
-Greg, what do you think? Would this work for you? IIRC we did the same
-with wilc1000 back in 2020 and I recall it went without hiccups.
-
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+greg k-h
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
