@@ -1,50 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D8124C7F03
-	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Mar 2022 01:09:03 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A5014C7F7B
+	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Mar 2022 01:44:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D75AD60E6E;
-	Tue,  1 Mar 2022 00:09:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7324B4022E;
+	Tue,  1 Mar 2022 00:44:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tzAZDLAdrlEQ; Tue,  1 Mar 2022 00:09:01 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id n1j__8I3wFAR; Tue,  1 Mar 2022 00:44:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7341460E3A;
-	Tue,  1 Mar 2022 00:09:00 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id A19EC405FE;
+	Tue,  1 Mar 2022 00:44:06 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 18A761BF2EB
- for <devel@linuxdriverproject.org>; Tue,  1 Mar 2022 00:08:55 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id ECC4E1BF9AC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  1 Mar 2022 00:44:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 041A840901
- for <devel@linuxdriverproject.org>; Tue,  1 Mar 2022 00:08:55 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E93CA81442
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  1 Mar 2022 00:44:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dUJh-ZMSxDW5 for <devel@linuxdriverproject.org>;
- Tue,  1 Mar 2022 00:08:54 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id s5puSbcGLNqG
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  1 Mar 2022 00:44:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
- by smtp4.osuosl.org (Postfix) with ESMTP id 30F21408FA
- for <devel@linuxdriverproject.org>; Tue,  1 Mar 2022 00:08:54 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C1E7981437
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  1 Mar 2022 00:44:01 +0000 (UTC)
 Received: from User (unknown [197.184.170.114])
- by mail.service-fujitsu.com (Postfix) with ESMTPA id EE9BC2A0F3F;
- Tue,  1 Mar 2022 07:59:45 +0800 (CST)
+ by mail.service-fujitsu.com (Postfix) with ESMTPA id D3E3D2A0E33;
+ Tue,  1 Mar 2022 08:36:23 +0800 (CST)
 From: "Nigerian National Petroleum Corporation
  (NNPC)"<dremmanuelibekachikwun20221@gmail.com>
 Subject: Re: PROJECT: From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
  Abuja
-Date: Tue, 1 Mar 2022 02:00:06 +0200
+Date: Tue, 1 Mar 2022 02:36:44 +0200
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220301000855.041A840901@smtp4.osuosl.org>
+Message-Id: <20220301004403.E93CA81442@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
