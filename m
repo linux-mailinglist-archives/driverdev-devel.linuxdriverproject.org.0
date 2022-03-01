@@ -1,49 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F322F4C846C
-	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Mar 2022 07:58:01 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CBB914C84AE
+	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Mar 2022 08:10:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 44C8A607B5;
-	Tue,  1 Mar 2022 06:58:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1C31D4136C;
+	Tue,  1 Mar 2022 07:10:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yphyjolX2bOI; Tue,  1 Mar 2022 06:57:59 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LQXUE3w9P4ov; Tue,  1 Mar 2022 07:10:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0A5F2600CC;
-	Tue,  1 Mar 2022 06:57:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DF78E4136B;
+	Tue,  1 Mar 2022 07:10:38 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 775F01BF294
- for <devel@linuxdriverproject.org>; Tue,  1 Mar 2022 06:57:55 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 122DF1BF27E
+ for <devel@linuxdriverproject.org>; Tue,  1 Mar 2022 07:10:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 64A21607B5
- for <devel@linuxdriverproject.org>; Tue,  1 Mar 2022 06:57:55 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id F3BA74136C
+ for <devel@linuxdriverproject.org>; Tue,  1 Mar 2022 07:10:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x9jPRiFctRzY for <devel@linuxdriverproject.org>;
- Tue,  1 Mar 2022 06:57:54 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id sNCJOcCIC9z2 for <devel@linuxdriverproject.org>;
+ Tue,  1 Mar 2022 07:10:34 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from server1.cjjmrnr.top (unknown [120.48.22.238])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8A51B600CC
- for <devel@linuxdriverproject.org>; Tue,  1 Mar 2022 06:57:54 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C94A34136B
+ for <devel@linuxdriverproject.org>; Tue,  1 Mar 2022 07:10:33 +0000 (UTC)
 Received: from PC-20211129KZLK (223.73.16.171) by server1.cjjmrnr.top id
- h3n1v40e97cj for <devel@linuxdriverproject.org>;
- Tue, 1 Mar 2022 14:57:44 +0800 (envelope-from <info7@cjjmrnr.top>)
+ h3n3ei0e97cm for <devel@linuxdriverproject.org>;
+ Tue, 1 Mar 2022 15:10:16 +0800 (envelope-from <info7@cjjmrnr.top>)
 From: "amywang8899@163.com" <amywang8899@163.com>
-Subject: Storage box
+Subject: Plastic household products
 To: devel@linuxdriverproject.org
 MIME-Version: 1.0
-Date: Tue, 1 Mar 2022 14:57:52 +0800
+Date: Tue, 1 Mar 2022 15:10:24 +0800
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.3790.4913
 Content-Disposition: inline
-Message-Id: <20220301065755.64A21607B5@smtp3.osuosl.org>
+Message-Id: <20220301071034.F3BA74136C@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
