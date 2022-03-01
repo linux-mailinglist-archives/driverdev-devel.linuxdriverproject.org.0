@@ -1,54 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A5014C7F7B
-	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Mar 2022 01:44:10 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7324B4022E;
-	Tue,  1 Mar 2022 00:44:08 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n1j__8I3wFAR; Tue,  1 Mar 2022 00:44:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A19EC405FE;
-	Tue,  1 Mar 2022 00:44:06 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id ECC4E1BF9AC
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  1 Mar 2022 00:44:03 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3DEF54C802C
+	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Mar 2022 02:12:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E93CA81442
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  1 Mar 2022 00:44:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E777882553;
+	Tue,  1 Mar 2022 01:12:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s5puSbcGLNqG
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  1 Mar 2022 00:44:02 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
- by smtp1.osuosl.org (Postfix) with ESMTP id C1E7981437
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  1 Mar 2022 00:44:01 +0000 (UTC)
-Received: from User (unknown [197.184.170.114])
- by mail.service-fujitsu.com (Postfix) with ESMTPA id D3E3D2A0E33;
- Tue,  1 Mar 2022 08:36:23 +0800 (CST)
-From: "Nigerian National Petroleum Corporation
- (NNPC)"<dremmanuelibekachikwun20221@gmail.com>
-Subject: Re: PROJECT: From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
- Abuja
-Date: Tue, 1 Mar 2022 02:36:44 +0200
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id U30yV6kzbX_j; Tue,  1 Mar 2022 01:12:42 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9FB5F8254D;
+	Tue,  1 Mar 2022 01:12:41 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9EF031BF2E5
+ for <devel@linuxdriverproject.org>; Tue,  1 Mar 2022 01:12:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8C969410CF
+ for <devel@linuxdriverproject.org>; Tue,  1 Mar 2022 01:12:38 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6w8Oz5xs2FV0 for <devel@linuxdriverproject.org>;
+ Tue,  1 Mar 2022 01:12:37 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from relay4.hostedemail.com (relay4.hostedemail.com [64.99.140.36])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B5949410CB
+ for <devel@driverdev.osuosl.org>; Tue,  1 Mar 2022 01:12:37 +0000 (UTC)
+Received: from omf06.hostedemail.com (a10.router.float.18 [10.200.18.1])
+ by unirelay10.hostedemail.com (Postfix) with ESMTP id EB8C16D7;
+ Tue,  1 Mar 2022 01:12:35 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by
+ omf06.hostedemail.com (Postfix) with ESMTPA id 77B9F20015; 
+ Tue,  1 Mar 2022 01:12:29 +0000 (UTC)
+Message-ID: <fe3c21a9c0178a2f0fcea698b8e6405a99747dea.camel@perches.com>
+Subject: Re: [PATCH 03/10] staging: wfx: format comments on 100 columns
+From: Joe Perches <joe@perches.com>
+To: Jerome Pouiller <Jerome.Pouiller@silabs.com>, 
+ linux-wireless@vger.kernel.org, Kalle Valo <kvalo@kernel.org>
+Date: Mon, 28 Feb 2022 17:12:28 -0800
+In-Reply-To: <20220225112405.355599-4-Jerome.Pouiller@silabs.com>
+References: <20220225112405.355599-1-Jerome.Pouiller@silabs.com>
+ <20220225112405.355599-4-Jerome.Pouiller@silabs.com>
+User-Agent: Evolution 3.40.4-1ubuntu2 
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220301004403.E93CA81442@smtp1.osuosl.org>
+X-Stat-Signature: 77muhtja19n3dsratymaanib3ctsb9fr
+X-Rspamd-Server: rspamout07
+X-Rspamd-Queue-Id: 77B9F20015
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Session-ID: U2FsdGVkX18rc9SVD0a5kXusMoMzjYsxOtCG3ORwyWA=
+X-HE-Tag: 1646097149-871435
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,73 +66,87 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: dremmanuelibekachikwun2022@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Tm5wYyBUb3dlcnMsIENlbnRyYWwgQnVzaW5lc3MgRGlzdHJpY3QsIEhlcmJlcnQgTWFjYXVsYXkg
-d2F5LCBQLm0uYi4gMTkwLCBHYXJraSwgQWJ1amEuCiAKRnJvbTogRHIuIEVtbWFudWVsIEliZSBL
-YWNoaWt3dSAoR01EKQpDb250cmFjdCBSZWYgTm86IE5OUEMvUEVELzE0NjIvS0FEUkVGLzkyKSAg
-ICAgIAogICAgICAgICAgICAgICAgICAgICAgICAKQXR0bjogQ2VvLAogCkkga25vdyB0aGF0IHRo
-aXMgcHJvcG9zYWwgbWF5IGNvbWUgdG8geW91IGFzIGEgc3VycHJpc2UgZXNwZWNpYWxseSBoYXZp
-bmcgdG8gY29tZSBmcm9tIHNvbWVvbmUgeW91IGhhdmUgbm90IG1ldCBiZWZvcmUuIEkgZ290IHlv
-dXIgaW5mb3JtYXRpb24gZnJvbSB5b3VyIGNvdW50cnkncyBjaGFtYmVyIG9mIGNvbW1lcmNlIGhl
-cmUgaW4gTmlnZXJpYS4KIApNeSBuYW1lIGlzIERyLiBFbW1hbnVlbCBJYmUgS2FjaGlrd3UsIFRo
-ZSBNaW5pc3RlciBvZiBTdGF0ZSBmb3IgUGV0cm9sZXVtIFJlc291cmNlcywgTmF0aW9uYWwgUGV0
-cm9sZXVtIENvcnBvcmF0aW9uIChOTlBDKS4gQmUgaW5mb3JtZWQgdGhhdCBteSBwYXJ0bmVyIERy
-LiBNYWlrYW50aSBCYXJ1IGFuZCBJIGF3YXJkZWQgYSBjb250cmFjdCB0byBhIGZvcmVpZ24gZmly
-bSAoU2hlbmcgWWFuZyBDb250cmFjdGlvbiBDb21wYW55KSB3aXRoIGNvbnRyYWN0IFJlZiBObzog
-Tk5QQy9QRUQvMTQ2Mi9LQURSRUYvOTIpIGZvciB0aGUgbWFpbnRlbmFuY2Ugb2YgdGhlIE5pZ2Vy
-aWEgcGV0cm9sZXVtLWNoZW1pY2FsIGNvbXBsZXggbG9jYXRlZCBhdCBLYWR1bmEsIE5pZ2VyaWEu
-CiAKSSBrbm93IHRoYXQgdGhpcyBwcm9wb3NhbCBtYXkgY29tZSB0byB5b3UgYXMgYSBzdXJwcmlz
-ZSBlc3BlY2lhbGx5IGhhdmluZyB0byBjb21lIGZyb20gc29tZW9uZSB5b3UgaGF2ZSBub3QgbWV0
-IGJlZm9yZSwgYnV0IEkgd291bGQgbGlrZSB5b3UgdG8gY28tb3BlcmF0ZSB3aXRoIG1lIHNvIHRo
-YXQgdGhpcyBVJEQ5OCwgMDAwLDAwMC4wMCB3aWxsIGJlIHJlbGVhc2VkIGFuZCB0cmFuc2ZlcnJl
-ZCBpbnRvIHlvdXIgYWNjb3VudCwgaXQgaXMgbWluZSBwcm9mb3VuZCBpbnRlbnRpb24gdG8gY29u
-dGFjdCB5b3UgZm9yIHRoaXMgdmVyeSBpbXBvcnRhbnQgYW5kIGhpZ2hseSBjb25maWRlbnRpYWwg
-dHJhbnNhY3Rpb24gZm9yIHRoZSB0cmFuc2ZlciBvZiAoVSREOTgsIDAwMCwwMDAuMDAgTmluZXR5
-LUVpZ2h0IE1pbGxpb24gVW5pdGVkIFN0YXRlcyBEb2xsYXJzIE9ubHkgaW50byB5b3VyIGJhbmsg
-YWNjb3VudC4KIApUaGUgY29udHJhY3QgaGFzIGJlZW4gc3VjY2Vzc2Z1bGx5IGV4ZWN1dGVkIGJ5
-IHRoZSBjb250cmFjdG9ycyBhbmQgdGhlaXIgY29udHJhY3Qgc3VtIGhhcyBiZWVuIHBhaWQgdG8g
-dGhlbSwgbGVhdmluZyB1cyBhbiBvdmVyZXN0aW1hdGVkIGJhbGFuY2Ugb2YgKFUkRDk4LCAwMDAs
-MDAwLjAwIE5pbmV0eS1FaWdodCBNaWxsaW9uIFVuaXRlZCBTdGF0ZXMgRG9sbGFycyBPbmx5KSBz
-dGlsbCBwZW5kaW5nIGF0IHRoZSBiYW5rLiBSaWdodCBub3csIHdlIGFyZSBsZWZ0IHdpdGggdGhp
-cyBvdmVyZXN0aW1hdGVkIGJhbGFuY2Ugb2YgKFUkRDk4LCAwMDAsMDAwLjAwKSB3aGljaCBpcyBz
-dGlsbCBmbG9hdGluZyBhdCB0aGUgZXNjcm93IGFjY291bnQgaW4gdGhlIENlbnRyYWwgQmFuayBv
-ZiBOaWdlcmlhIChDQk4pIHdhaXRpbmcgZm9yIGZpbmFsIHBheW1lbnQgdG8gYW55IHJlbGlhYmxl
-IGZvcmVpZ24gYmFuayBhY2NvdW50LCB5b3UgbWF5IHByb3ZpZGUuCiAKV2UsIGFzIGdvdmVybm1l
-bnQgb2ZmaWNpYWxzLCBhcmUgbm90IHBlcm1pdHRlZCB0byBvd24gb3Igb3BlcmF0ZSBmb3JlaWdu
-IGJhbmsgYWNjb3VudHMuIHRoZXJlZm9yZSwgd2UgbmVlZCByZWxpYWJsZSBwZXJzb24gd2hvIHdp
-bGwgcHJvdmlkZSB1cyB3aXRoIGEgZm9yZWlnbiBhY2NvdW50IHdoZXJlIHRvIHRyYW5zZmVyIGFu
-ZCBkZXBvc2l0IHRoaXMgVVMkOTgsMDAwLDAwMC4wMCwgdGhhdCBpcyB0aGUgcmVhc29uIHdlIGFy
-ZSBzb2xpY2l0aW5nIGZvciB5b3VyIHNpbmNlcmUgYXNzaXN0YW5jZSB0byBwcm92aWRlIHVzIHdp
-dGggYW4gYWNjb3VudCB3aGVyZSB0byB0cmFuc2ZlciB0aGlzIG1vbmV5IC5hbGwgbW9kYWxpdGll
-cyBmb3IgdGhlIGVhc3kgdHJhbnNmZXIgb2YgdGhpcyBtb25leSBpcyBub3cgaW4gcGxhY2UsIHRo
-ZSBwZXJpb2Qgb2YgdGhpcyB0cmFuc2FjdGlvbiBpcyBvbmx5IHR3byB3ZWVrcyBmcm9tIHRoZSBk
-YXkgd2UgcmVjZWl2ZSB5b3VyIGJhbmsgYWNjb3VudCBkZXRhaWxzLgogCk5vdGUgdGhhdCA1MCUg
-b2Ygb3VyIHNoYXJlIHdpbGwgYmUgaW52ZXN0ZWQgaW4geW91ciBjb3VudHJ5LCBhcyB3ZSBwcm9w
-b3NlIHRvIGdpdmUgeW91IDMwJSBvZiB0aGUgVSREOTgsIDAwMCwwMDAuMDAsIG15IHBhcnRuZXJz
-IGFuZCBJIHdpbGwgZ2V0IDYwJSBvZiB0aGUgbW9uZXkuCiAKVGhlIGJhbGFuY2Ugb2YgMTAlIHdp
-bGwgYmUgYWxsb2NhdGVkIHRvIGNvdmVyIGFsbCBleHBlbnNlcyBpbmN1cnJlZCBieSBib3RoIHBh
-cnRuZXJzLCBiZSBpbmZvcm1lZCB0aGF0IHRoaXMgcHJvcG9zYWwgaXMgdXJnZW50IGFuZCBjb25m
-aWRlbnRpYWwsIHBsZWFzZSBzZW5kIHRvIG1lIHlvdXIgYmFuayBhY2NvdW50IGRldGFpbHMgYW5k
-IGZ1bGwgYWRkcmVzcyBvZiBjb21wYW55IG5hbWUgYW5kIGFkZHJlc3MsIHlvdXIgcHJpdmF0ZSBw
-aG9uZSBhbmQgZmF4IG51bWJlciBmb3IgZWFzeSBjb21tdW5pY2F0aW9uIHdoaWNoIHdpbGwgYmUg
-dXNlZCBpbiBzZWN1cmluZyBhbGwgdGhlIG5lY2Vzc2FyeSBkb2N1bWVudHMgZm9yIGVhc3kgdHJh
-bnNmZXIgb2YgdGhlIGZ1bmQuCiAKIApBd2FpdGluZyB5b3VyIHVyZ2VudCByZXNwb25zZS4KIApC
-ZXN0IHJlZ2FyZHMuCgpEci4gRW1tYW51ZWwgSWJlIEthY2hpa3d1LgpUaGUgTWluaXN0ZXIgb2Yg
-U3RhdGUgZm9yIFBldHJvbGV1bSBSZXNvdXJjZXMsIE5pZ2VyaWFuIE5hdGlvbmFsIFBldHJvbGV1
-bSBDb3Jwb3JhdGlvbiAoTk5QQykKIApUaGlzIGVtYWlsIGFuZCBhbnkgYXR0YWNobWVudHMgdG8g
-aXQgbWF5IGJlIGNvbmZpZGVudGlhbCBhbmQgYXJlIGludGVuZGVkIHNvbGVseSBmb3IgdGhlIHVz
-ZSBvZiB0aGUgaW5kaXZpZHVhbCB0byB3aG9tIGl0IGlzIGFkZHJlc3NlZC4gQW55IHZpZXdzIG9y
-IG9waW5pb25zIGV4cHJlc3NlZCBhcmUgc29sZWx5IHRob3NlIG9mIHRoZSBhdXRob3IgYW5kIGRv
-IG5vdCBuZWNlc3NhcmlseSByZXByZXNlbnQgdGhvc2Ugb2YgTWFzdGVycGFnZa4uIElmIHlvdSBh
-cmUgbm90IHRoZSBpbnRlbmRlZCByZWNpcGllbnQgb2YgdGhpcyBlbWFpbCwgeW91IG11c3QgbmVp
-dGhlciB0YWtlIGFueSBhY3Rpb24gYmFzZWQgdXBvbiBpdHMgY29udGVudHMsIG5vciBjb3B5IG9y
-IHNob3cgaXQgdG8gYW55b25lLiBQbGVhc2UgY29udGFjdCB0aGUgc2VuZGVyIGlmIHlvdSBiZWxp
-ZXZlIHlvdSBoYXZlIHJlY2VpdmVkIHRoaXMgZW1haWwgaW4gZXJyb3IuCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2
-ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJv
-amVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+On Fri, 2022-02-25 at 12:23 +0100, Jerome Pouiller wrote:
+> From: J=E9r=F4me Pouiller <jerome.pouiller@silabs.com>
+> =
+
+> A few comments were not yet formatted on 100 columns.
+
+IMO, none of these changes are necessary or good changes.
+
+80 columns is preferred.
+
+Really comments should most always use 80 columns, and
+only occasionally should code be more than 80 columns
+and almost never should code be more than 100 columns.
+
+> diff --git a/drivers/staging/wfx/data_tx.c b/drivers/staging/wfx/data_tx.c
+[]
+> @@ -117,9 +117,7 @@ static int wfx_tx_policy_get(struct wfx_vif *wvif, st=
+ruct ieee80211_tx_rate *rat
+>  	if (idx >=3D 0) {
+>  		*renew =3D false;
+>  	} else {
+> -		/* If policy is not found create a new one using the oldest
+> -		 * entry in "free" list
+> -		 */
+> +		/* If policy is not found create a new one using the oldest entry in "=
+free" list */
+>  		*renew =3D true;
+>  		entry =3D list_entry(cache->free.prev, struct wfx_tx_policy, link);
+>  		memcpy(entry->rates, wanted.rates, sizeof(entry->rates));
+> @@ -494,9 +492,7 @@ void wfx_tx_confirm_cb(struct wfx_dev *wdev, const st=
+ruct wfx_hif_cnf_tx *arg)
+>  	wfx_tx_fill_rates(wdev, tx_info, arg);
+>  	skb_trim(skb, skb->len - tx_priv->icv_size);
+>  =
+
+> -	/* From now, you can touch to tx_info->status, but do not touch to
+> -	 * tx_priv anymore
+> -	 */
+> +	/* From now, you can touch to tx_info->status, but do not touch to tx_p=
+riv anymore */
+>  	/* FIXME: use ieee80211_tx_info_clear_status() */
+>  	memset(tx_info->rate_driver_data, 0, sizeof(tx_info->rate_driver_data));
+>  	memset(tx_info->pad, 0, sizeof(tx_info->pad));
+> diff --git a/drivers/staging/wfx/queue.c b/drivers/staging/wfx/queue.c
+[]
+> @@ -210,8 +210,8 @@ bool wfx_tx_queues_has_cab(struct wfx_vif *wvif)
+>  	if (wvif->vif->type !=3D NL80211_IFTYPE_AP)
+>  		return false;
+>  	for (i =3D 0; i < IEEE80211_NUM_ACS; ++i)
+> -		/* Note: since only AP can have mcast frames in queue and only
+> -		 * one vif can be AP, all queued frames has same interface id
+> +		/* Note: since only AP can have mcast frames in queue and only one vif=
+ can be AP,
+> +		 * all queued frames has same interface id
+>  		 */
+>  		if (!skb_queue_empty_lockless(&wvif->tx_queue[i].cab))
+>  			return true;
+> @@ -253,9 +253,8 @@ static struct sk_buff *wfx_tx_queues_get_skb(struct w=
+fx_dev *wdev)
+>  			skb =3D skb_dequeue(&queues[i]->cab);
+>  			if (!skb)
+>  				continue;
+> -			/* Note: since only AP can have mcast frames in queue
+> -			 * and only one vif can be AP, all queued frames has
+> -			 * same interface id
+> +			/* Note: since only AP can have mcast frames in queue and only one vi=
+f can
+> +			 * be AP, all queued frames has same interface id
+>  			 */
+>  			hif =3D (struct wfx_hif_msg *)skb->data;
+>  			WARN_ON(hif->interface !=3D wvif->id);
+
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
