@@ -1,56 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 474894C9F0B
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Mar 2022 09:20:02 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 43C234CA41D
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Mar 2022 12:48:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8ABB340897;
-	Wed,  2 Mar 2022 08:20:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AFD0E812B9;
+	Wed,  2 Mar 2022 11:48:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5_pRbykP0I9j; Wed,  2 Mar 2022 08:19:59 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id W2DEyNUutJLo; Wed,  2 Mar 2022 11:48:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 43A16408B0;
-	Wed,  2 Mar 2022 08:19:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7312E812C9;
+	Wed,  2 Mar 2022 11:48:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9673F1BF4D7
- for <devel@linuxdriverproject.org>; Wed,  2 Mar 2022 08:19:55 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B596F1BF846
+ for <devel@linuxdriverproject.org>; Wed,  2 Mar 2022 11:48:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 84A7E40897
- for <devel@linuxdriverproject.org>; Wed,  2 Mar 2022 08:19:55 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A4083812C9
+ for <devel@linuxdriverproject.org>; Wed,  2 Mar 2022 11:48:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ciZjaVUV0iMs for <devel@linuxdriverproject.org>;
- Wed,  2 Mar 2022 08:19:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.foescoformacion.com (mail.foescoformacion.com
- [195.114.217.143])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E473C4088B
- for <devel@driverdev.osuosl.org>; Wed,  2 Mar 2022 08:19:54 +0000 (UTC)
-Received: from 246.91-116-3.dynamic.clientes.euskaltel.es (unknown
- [91.116.3.246])
- by mail.foescoformacion.com (Postfix) with ESMTPSA id 7F34988B27
- for <devel@driverdev.osuosl.org>; Wed,  2 Mar 2022 09:19:52 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foescoformacion.com;
- s=default; t=1646209192;
- bh=3gAX7S5Cma0YgOaFw0zknU6YDDVFSswAelnLOMSlSBs=; h=From:To:Subject;
- b=FVRQw+AIS2+bj0Ju4kDj4c24JoVj8QkZWP3vckxUh8Lx7p+wbKIp96ilZaJa8gIIK
- yUeQQvUVcpFZutyv6/TWT6/LqHz/5m4yLExEhmfrzsck4Tf0qrp6sB4F7QvAF/u2q5
- aNcf4pj7GAXkGxa1MnHVGnf9lZk4mkXZv/rOLuNo=
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id y4SxlTRade_C for <devel@linuxdriverproject.org>;
+ Wed,  2 Mar 2022 11:48:43 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-yb1-xb29.google.com (mail-yb1-xb29.google.com
+ [IPv6:2607:f8b0:4864:20::b29])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1E00F812B9
+ for <devel@driverdev.osuosl.org>; Wed,  2 Mar 2022 11:48:43 +0000 (UTC)
+Received: by mail-yb1-xb29.google.com with SMTP id x200so2775430ybe.6
+ for <devel@driverdev.osuosl.org>; Wed, 02 Mar 2022 03:48:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=1h98u/bN5joq7hLImj9Jy+kYtlUyjs0ZgzpFswkgYBo=;
+ b=nYfJVEJEqcMyMncVpbtTdTrkg0DBCiQ0h0SxYIIC6eRwLUH4HZuCPkyP1vfU8dtNGt
+ dK660hgc0CJG6jzY1ep/+Hf0AdPVq4WTjU2IOTwDl387ITtCn8A3ZKxgtdeTnOaY+dzj
+ G9GdE8uufGG/+kwfbRPNzstYS9AXK9dZKk9sSTRl99Um579jfZVNApT7CxcT/3opkmYZ
+ uwgN5m8UrdWLqk+pRNTEtUGTB3pi0W4AmYDoc0joCx9/cDAeB+XcSS9gtkXhJUPlzNhc
+ cuwbaj2h4vG2/R/lP3nBnxt5Q+TrO+DQ0jueMz0ftn+LqVoMIyAWl+YA9MFoSG7g+sju
+ eVqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=1h98u/bN5joq7hLImj9Jy+kYtlUyjs0ZgzpFswkgYBo=;
+ b=Yh5Xl8l0Jxy2fyTE4XmAi0TVY6hZh/pKCWopayVh907kbzsuk4AiQ6Yzea3rAYAfiz
+ BC/seQrs5od8CK3bLzxVu+1GKILAuPc4a82JfWN4PMLPNz6rkt9MyboS3ue6i48P1t1X
+ M6tNE3AL9Ch1uq+aJiYxJXWvU6bDy8To5p4et9oN+WU38dU1O9PAG7uD28B68ZVAqNes
+ 7ig/fSzCcSn2DYFWSx+0DJ5NTFoq8T+SNntQSOlCvwi2D1o7LNLm6CBxBD63oK7lW84F
+ W8eRcCDToRYxozgx3FCn7jo6Uv9YwIVdyUEUuIg/zOhHRh+VKt7HAMk0uRSL/bVEmeru
+ 4kIA==
+X-Gm-Message-State: AOAM533R3c5xZB2kODjw8wGx47O3y7rhexlPicPG1vuoqtWJUX8PG+CK
+ B8DALD9B+eh9gKaAqncWZn9I3WIIUden1eEaoas=
+X-Google-Smtp-Source: ABdhPJzbE1CDEmThBwu1LfoMSB8hk3Z0rzwmKHzsGsF2H3TBV5LJc30vsVx55llMVHF5zuMB6pZ4P9/j5Y5snfeUQd0=
+X-Received: by 2002:a25:7b04:0:b0:625:f00:5484 with SMTP id
+ w4-20020a257b04000000b006250f005484mr28322285ybc.422.1646221722136; Wed, 02
+ Mar 2022 03:48:42 -0800 (PST)
 MIME-Version: 1.0
-From: consultas@foescoformacion.com
-To: devel@driverdev.osuosl.org
-Subject: Respuesta Foesco
-X-Mailer: Smart_Send_4_3_3
-Date: Wed, 2 Mar 2022 09:20:01 +0100
-Message-ID: <8732492100408211922518@DESKTOP-QVG193P>
-X-Priority: 1
-X-MSMail-Priority: High
+Received: by 2002:a05:7010:61cc:b0:211:4990:c32 with HTTP; Wed, 2 Mar 2022
+ 03:48:41 -0800 (PST)
+From: "Howard F. Newell" <wilabour13@gmail.com>
+Date: Wed, 2 Mar 2022 12:48:41 +0100
+Message-ID: <CAAPXPqb5hBqdRWtMyq-mBd_PRf0Gs8RXj8qAMAyWa_tkrX6qsA@mail.gmail.com>
+Subject: RE
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,98 +80,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: consultas@foescoformacion.com
-Content-Type: multipart/mixed; boundary="===============5077745005542767716=="
+Reply-To: howardnewell406@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---===============5077745005542767716==
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
-
-Buenos d=EDas
-
-
-
-Adjuntamos en PDF el listado de Cursos Bonificables E-learning disponibles =
-para la presente convocatoria.
-
-Pod=E9is confirmarnos que lo hab=E9is recibido correctamente=3F
-
-
-Recordamos que todos los cursos impartidos son 100% Bonificables con cargo =
-al Cr=E9dito de Formaci=F3n 2022 y van dirigidos a empleados, no aut=F3nomo=
-s.
-
-
-INSTRUCCIONES DE SOLICITUD:
-
-Se han de cumplimentar =FAnicamente los siguientes datos de la FICHA DE INS=
-CRIPCI=D3N adjunta (1 impreso por curso) y se ha de mandar escaneado o en f=
-otograf=EDa a esta misma direcci=F3n de correo electr=F3nico.
-
--  Curso a realizar
--  Nombre completo y DNI del alumno
--  N=FAmero de afiliaci=F3n a la Seguridad Social del alumno (Dato indicado=
- en las n=F3minas)
--  Tel=E9fono y e-mail del alumno
--  Nombre y CIF de la empresa
--  Direcci=F3n de la empresa
--  Tel=E9fono y e-mail de la empresa
--  Tel=E9fono y e-mail del gestor de la empresa
--  Cta. Cotizaci=F3n a la seguridad social de la empresa (Dato indicado en =
-las n=F3minas)
--  A=F1o de creaci=F3n de la empresa
--  Nombre completo y DNI de un representante legal de la empresa
--  Firma del representante legal de la empresa.
--  Sello de la empresa.
--  Firma del alumno.
-
-
-Quedamos a la espera de vuestra respuesta.
-
-
-Un cordial saludo.
-
-
-Departamento de Formaci=F3n Bonificable
-FOESCO Formaci=F3n Estatal Continua.
-Empresa inscrita en el Registro de empresas de Formaci=F3n.
-
-Tel:          910 323 794
-(Horario de 9h a 15h y de 17h a 20h de Lunes a Viernes)
-
-FOESCO ofrece formaci=F3n a empresas y trabajadores en activo a trav=E9s de=
- cursos bonificados por la Fundaci=F3n Estatal para la Formaci=F3n en el Em=
-pleo (antiguo FORCEM) que gestiona las acciones formativas de FORMACI=D3N C=
-ONTINUA para trabajadores y se rige por la ley 30/2015 de 9 de Septiembre.
-
-Antes de imprimir este e-mail piense bien si es necesario hacerlo. FOESCO T=
-fno: 910 382 880. La informaci=F3n transmitida en este mensaje est=E1 dirig=
-ida solamente a las personas o entidades que figuran en el encabezamiento y=
- contiene informaci=F3n confidencial, por lo que, si usted lo recibiera por=
- error, por favor destr=FAyalo sin copiarlo, usarlo ni distribuirlo, comuni=
-c=E1ndolo inmediatamente al emisor del mensaje. De conformidad con lo dispu=
-esto en el Reglamento Europeo del 2016/679, del 27 de Abril de 2016, FOESCO=
- le informa que los datos por usted suministrados ser=E1n tratados con las =
-medidas de seguridad conformes a la normativa vigente que se requiere. Dich=
-os datos ser=E1n empleados con fines de gesti=F3n. Para el ejercicio de sus=
- derechos de transparencia, informaci=F3n, acceso, rectificaci=F3n, supresi=
-=F3n o derecho al olvido, limitaci=F3n del tratamiento , portabilidad de da=
-tos y oposici=F3n de sus datos de car=E1cter personal deber=E1 dirigirse a =
-la direcci=F3n del Responsable del tratamiento a C/ LAGUNA DEL MARQUESADO N=
-=BA10, 28021, MADRID, "PULSANDO AQUI" <mailto:bajas@foesco.com=3FSubject=3D=
-BAJA%20CORREOS> y "ENVIAR".
-
---===============5077745005542767716==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Hello,
+I want to know if you received my previous mail of 28th/01/2022
+concerning your compensation valued 681,200 dollars by the United
+Nations Compensation Program (UNCC). Please confirm as soon as
+possible.
+Warm regards!
+Howard Newell
+London WC2N 4JS, UK
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============5077745005542767716==--
