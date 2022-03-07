@@ -1,52 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9411E4D085D
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Mar 2022 21:32:53 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D7B644D085E
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Mar 2022 21:33:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1CCD441728;
-	Mon,  7 Mar 2022 20:32:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8491460EDD;
+	Mon,  7 Mar 2022 20:33:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lh3xE3Y8QRY1; Mon,  7 Mar 2022 20:32:51 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id H8jQAPbNEiqa; Mon,  7 Mar 2022 20:33:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BDD6041725;
-	Mon,  7 Mar 2022 20:32:50 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2386E60EDA;
+	Mon,  7 Mar 2022 20:33:02 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CFB291BF3A0
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  7 Mar 2022 20:32:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 159C71BF3A0
+ for <devel@linuxdriverproject.org>; Mon,  7 Mar 2022 20:32:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B713E404B4
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  7 Mar 2022 20:32:47 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 04FA460EDD
+ for <devel@linuxdriverproject.org>; Mon,  7 Mar 2022 20:32:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IF-V03MtxGzd
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  7 Mar 2022 20:32:47 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ac7Vi1x_fubO for <devel@linuxdriverproject.org>;
+ Mon,  7 Mar 2022 20:32:58 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from wb03.cims.jp (wb03.cims.jp [27.110.40.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6B3184016A
- for <driverdev-devel@linuxdriverproject.org>;
- Mon,  7 Mar 2022 20:32:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E9CCE60EDA
+ for <devel@linuxdriverproject.org>; Mon,  7 Mar 2022 20:32:57 +0000 (UTC)
 Received: from unknown (HELO pop.moon.cims.jp) (27.110.40.52)
- by 27.110.40.43 with ESMTP; 8 Mar 2022 05:26:03 +0900
+ by 27.110.40.43 with ESMTP; 8 Mar 2022 05:26:14 +0900
 Received: from [185.222.58.72] (CF027110040057.cims.jp [27.110.40.57])
- by pop.moon.cims.jp (Postfix) with ESMTP id C95537A124;
- Tue,  8 Mar 2022 05:25:58 +0900 (JST)
+ by pop.moon.cims.jp (Postfix) with ESMTP id 58EAD7A12A;
+ Tue,  8 Mar 2022 05:26:10 +0900 (JST)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Re:DEAR FRIEND RESPOND NOW!!! 
 To: Recipients <makoto@moon.cims.jp>
 From: "US House Finance Services" <makoto@moon.cims.jp>
-Date: Mon, 07 Mar 2022 21:25:53 +0100
-Message-Id: <20220307202558.C95537A124@pop.moon.cims.jp>
+Date: Mon, 07 Mar 2022 21:26:04 +0100
+Message-Id: <20220307202610.58EAD7A12A@pop.moon.cims.jp>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
