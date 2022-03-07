@@ -1,47 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E66A4CF718
-	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Mar 2022 10:44:01 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D8414CF796
+	for <lists+driverdev-devel@lfdr.de>; Mon,  7 Mar 2022 10:46:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B6FFC403B8;
-	Mon,  7 Mar 2022 09:43:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C423360B17;
+	Mon,  7 Mar 2022 09:46:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Zd2SgyVu2p8J; Mon,  7 Mar 2022 09:43:53 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2ysiG7Mie93k; Mon,  7 Mar 2022 09:46:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 918FE40396;
-	Mon,  7 Mar 2022 09:43:52 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id B162D60BB2;
+	Mon,  7 Mar 2022 09:45:59 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 603811BF3D6
- for <devel@linuxdriverproject.org>; Mon,  7 Mar 2022 09:43:49 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F3EF1BF3D8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  7 Mar 2022 09:45:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4D542403B8
- for <devel@linuxdriverproject.org>; Mon,  7 Mar 2022 09:43:49 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 29E9F60B17
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  7 Mar 2022 09:45:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id j89Ljfk-Ajza for <devel@linuxdriverproject.org>;
- Mon,  7 Mar 2022 09:43:43 +0000 (UTC)
-X-Greylist: delayed 00:10:27 by SQLgrey-1.8.0
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AgzwxpvS2UmK
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  7 Mar 2022 09:45:51 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.lcent.com (mail.lcent.com [96.72.253.209])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6274B40136
- for <devel@driverdev.osuosl.org>; Mon,  7 Mar 2022 09:43:43 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C165A60AC0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  7 Mar 2022 09:45:51 +0000 (UTC)
 Received: from hosted-by.rootlayer.net (unknown [192.168.70.216])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange ECDHE (P-256) server-signature ECDSA (P-256) server-digest
  SHA256) (No client certificate requested)
- by mail.lcent.com (Postcow) with ESMTPS id 98B53C74E7A
- for <devel@driverdev.osuosl.org>; Mon,  7 Mar 2022 04:33:03 -0500 (EST)
+ by mail.lcent.com (Postcow) with ESMTPS id 36254C74FAD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  7 Mar 2022 04:33:55 -0500 (EST)
 From: US House Finance Services<tlegrand@inct.net>
-To: devel@driverdev.osuosl.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Re: DEAR FRIEND RESPOND NOW!!!
-Date: 7 Mar 2022 10:33:01 +0100
-Message-ID: <20220307103301.95764C742B6CA01D@inct.net>
+Date: 7 Mar 2022 10:33:52 +0100
+Message-ID: <20220307103352.B44A8475903430A8@inct.net>
 MIME-Version: 1.0
 X-Last-TLS-Session-Version: TLSv1.3
 Authentication-Results: mail.lcent.com;
@@ -56,7 +61,7 @@ X-Spamd-Result: default: False [3.95 / 15.00]; ARC_NA(0.00)[];
  RCVD_COUNT_ZERO(0.00)[0]; FROM_EQ_ENVFROM(0.00)[];
  MIME_TRACE(0.00)[0:+]; R_NO_SPACE_IN_FROM(1.00)[];
  MID_RHS_MATCH_FROM(0.00)[]
-X-Rspamd-Queue-Id: 98B53C74E7A
+X-Rspamd-Queue-Id: 36254C74FAD
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
