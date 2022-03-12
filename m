@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1E234D5B32
-	for <lists+driverdev-devel@lfdr.de>; Fri, 11 Mar 2022 07:04:54 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A96B54D6BA1
+	for <lists+driverdev-devel@lfdr.de>; Sat, 12 Mar 2022 02:11:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2246A41938;
-	Fri, 11 Mar 2022 06:04:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D026D84930;
+	Sat, 12 Mar 2022 01:11:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xjnqlmgQzpY9; Fri, 11 Mar 2022 06:04:52 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Tf4HGb5n2xKB; Sat, 12 Mar 2022 01:11:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C4A0A41922;
-	Fri, 11 Mar 2022 06:04:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A31E38492F;
+	Sat, 12 Mar 2022 01:11:35 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6D1FF1BF3ED
- for <devel@linuxdriverproject.org>; Fri, 11 Mar 2022 06:04:48 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id CE5A11BF39F
+ for <devel@linuxdriverproject.org>; Sat, 12 Mar 2022 01:11:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5BDCF8478A
- for <devel@linuxdriverproject.org>; Fri, 11 Mar 2022 06:04:48 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id BC82E41B3A
+ for <devel@linuxdriverproject.org>; Sat, 12 Mar 2022 01:11:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 32JPKvKsxoDy for <devel@linuxdriverproject.org>;
- Fri, 11 Mar 2022 06:04:47 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 02BzeymxnIRz for <devel@linuxdriverproject.org>;
+ Sat, 12 Mar 2022 01:11:32 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-oo1-xc2d.google.com (mail-oo1-xc2d.google.com
- [IPv6:2607:f8b0:4864:20::c2d])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8E5BA84786
- for <devel@driverdev.osuosl.org>; Fri, 11 Mar 2022 06:04:47 +0000 (UTC)
-Received: by mail-oo1-xc2d.google.com with SMTP id
- r41-20020a4a966c000000b0031bf85a4124so9582412ooi.0
- for <devel@driverdev.osuosl.org>; Thu, 10 Mar 2022 22:04:47 -0800 (PST)
+Received: from mail-io1-xd29.google.com (mail-io1-xd29.google.com
+ [IPv6:2607:f8b0:4864:20::d29])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 37E3F41B39
+ for <devel@driverdev.osuosl.org>; Sat, 12 Mar 2022 01:11:32 +0000 (UTC)
+Received: by mail-io1-xd29.google.com with SMTP id r11so12046907ioh.10
+ for <devel@driverdev.osuosl.org>; Fri, 11 Mar 2022 17:11:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=eLAZs2Xo8+qjKCfzftt2SAVaGqYsHNR7EXcY/vYO3bM=;
- b=YR7JWq6W9aLdZihhjqVTb2Tcxf25ysU4KKv7r/DgLPBHSLHG+KfTMeBzfOBJdCfU9i
- Baux+qjxSsNGzukHhFDfdqZDQIsVXiaqUHafn04+cQXlAwZsK1my7C6EW+ckB2NCs/tK
- XL2tB3b2xKne/rsVsZN4ctlNuIM3u3xAaFO8i9WoMLwf8ej04deuP8rNZZnoOYy1toDW
- biFyp8LHjwDbqL5Nq5R6+FREC91JmRlGbaR4Mdkxu+EQfHSlt0C12Gh7ompB1oP37Pad
- WjhZa2MtvFia7brgsEHNmsvTmrv6ElHjehRDLa1UhNT9oSEa3I/EZ7hlbfZg6OUjOz7D
- AXqw==
+ bh=jWNWvl0mfyOxiUSF/gn8gdoVUeb2vevyzIyCf7IEyvA=;
+ b=S1Q9V/qfBxOqCk6vcg3X6jduRLs/JA/gFe+dYjCK4D8XRRlweK5EDtB7WqaiXG3bSG
+ RbWqsgVPiTfyLuL4hCrnqanlBEZ9+FvXu3GnJJY91cs+yp3cTs2WHjqlb0p0Kyhkz/Kn
+ 4F6tdLomVH9dXWlJ5RpNLNhAgRsOAjxciFDZvKpPAViEfIddlydZJfUSEWiSmvRA7CSj
+ F0yxTEbYTbZgMPaitvN6wawxkwuVqF3ZXmITtXcJdErQqkPdSsqAcz5zghwr2fUkXwy8
+ C+Atd9yBuULv78JwLV0G3xROKbCqQWrkL+x3djKi9A3uhP5C00ytfCSaK4iWJKn32Fh6
+ iQIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
  :subject:to;
- bh=eLAZs2Xo8+qjKCfzftt2SAVaGqYsHNR7EXcY/vYO3bM=;
- b=zpypKynvDrE64A38R53bP1w6XvDVfmneiocn36aXMbtorFblr8k2aUkqbNfQVUUChc
- 4Ss/vecOBPhCNgN9VPyDPg8lITCLk5up3OHPZbMfVCSjI8jOgK8nHoedeVi23i3F7qvn
- zEn++QOLENAt8Opl9cLco78/7uJB182HHJEb4oY3Qknc9lNhx5vvoCG63EhoPQY6lqff
- XpGXIjLv/W8j1lpDkYpp8L8Gx7dtcaVgKLFMg34OkTpC8Kr1BlotVVKotNTGQWrckqxb
- dTexc/yKEQvE/sTniZ11vSIPsSmxYVHCgf5wFdt3INfdXkWjCHXjrkxRItCzisdfR3YU
- 710A==
-X-Gm-Message-State: AOAM533VIlRFsEWdRvXNUxlsK04mUkV89MqkaoPMRqr9ilPEqIY8ph8i
- r8LMODu7G9s2lsXI/NLYovgIMDBaIerD7MsOibI=
-X-Google-Smtp-Source: ABdhPJywEV8s3I3u4cDiyACkt3CF5Wr/RV6Y4PAVUbAMnFICIEAp//KyZFv1z5UY8sEZ/QTzrT1UqIcO7MOf2svSX2Y=
-X-Received: by 2002:a05:6870:ec90:b0:d9:a809:ee51 with SMTP id
- eo16-20020a056870ec9000b000d9a809ee51mr10550400oab.139.1646978686557; Thu, 10
- Mar 2022 22:04:46 -0800 (PST)
+ bh=jWNWvl0mfyOxiUSF/gn8gdoVUeb2vevyzIyCf7IEyvA=;
+ b=K/C4oDG6O9S9oFwA4EvwozESZBBg+oqivcRzMYtLQdTY4KfFXHogyrLuAeTpXBfd0e
+ KiBkvK70d7Qf3+a2j1mIcQ7YZnGDksHvXxy2jaxZ59mz4zjiSxzZTfTEFoJhW0jpPq6g
+ R/QLI61neVdGe27pG2s/y8c+BMMl9YBbuqjTjZVVbkzSPRMdxlHp20F2o6CsUsg36dx5
+ D03KHiYTvQk5+ravtc2uSO77JG6h23+88Lm+OXB8Jn0V9dqYo0z0+GBhDvZTW8dSwqsU
+ QFaa87CgxCQRBnYEDodMecC4s5gZGKWWEStrk7yH2lFA3L9mlf/r8V5ANRNU75Zd/Blt
+ OSQg==
+X-Gm-Message-State: AOAM530BkPynEQAQWEHY8cxNYgr3qEV9Y8DMuY2KvOxkhh2MDS4rMAcY
+ czjXQxigsYuiIy6mNETEvB84IuBJgqwVbIYERdw=
+X-Google-Smtp-Source: ABdhPJyRxU2+JwXoOES7GTkQQkG1LmHAxFIAhlZEwKzoKNA32HAbQtIHvGfrz2EI2DQ6iiP2QJdwcyBP2TNhwEtHu9Q=
+X-Received: by 2002:a05:6638:1a13:b0:317:cc8c:3fe2 with SMTP id
+ cd19-20020a0566381a1300b00317cc8c3fe2mr10400930jab.62.1647047489854; Fri, 11
+ Mar 2022 17:11:29 -0800 (PST)
 MIME-Version: 1.0
-Received: by 2002:a9d:76cc:0:0:0:0:0 with HTTP; Thu, 10 Mar 2022 22:04:46
+Received: by 2002:a05:6602:2c52:0:0:0:0 with HTTP; Fri, 11 Mar 2022 17:11:29
  -0800 (PST)
-From: Ambrose Cooker <mrs.chichimohamed01@gmail.com>
-Date: Thu, 10 Mar 2022 22:04:46 -0800
-Message-ID: <CAKWaEgJB4DwK8kUpEd8_OsgWMuu95ky1MqRPowFQhfPRENe9Cg@mail.gmail.com>
-Subject: Greetings to you my Dear!
+From: "I'M MRS.JILL BIDEN THE FIRST LADY UNITED STATES AMERICA."
+ <flrsth0rlz0nbank0@gmail.com>
+Date: Fri, 11 Mar 2022 17:11:29 -0800
+Message-ID: <CAAvWqfsrspQAYz9NfJhsbL9oWyM+genO7XFFSHZyF5C0nf-OGA@mail.gmail.com>
+Subject: I'M MRS.JILL BIDEN THE FIRST LADY UNITED STATES AMERICA.
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -83,64 +83,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ambrosecooker389@gmail.com
+Reply-To: mrsjillbidenfirstlady@usa.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greetings My Dear Friend,
+-- 
+The White House
+1600 Pennsylvania Avenue NW
+Washington, D.C. 20500
+U.S.....
 
-On behalf of friendship and love i need your urgent assistance in
-transferring the sum of $10.5million immediately to your private
-account. The money has been here in our Bank lying dormant for years
-now without anybody coming for the claim of it.
+I'M MRS.JILL BIDEN THE FIRST LADY OF THE UNITED STATES AND THE
+CONTENT OF THE BELOW MESSAGE IS SIGNED AND APPROVED BY BANK OF AMERICA.
 
-I also need you to corporate with me for the release of this money
-into your private bank account as the relative to our deceased
-customer (the account owner) who died on 2016 terrorist attack at
-Splendid Hotel Ouagadougou Burkina Faso,with her Wife.and i really
-need you to stand as the NEXT OF KIN to this family.that is why i
-contacted you and as soon as this money is been channel to your
-account i will come over to meet you in  your country for the share of
-the money and remember The money will be shared 60% for me and 40% for
-you.
+moreover, in respect of fact the sum of $20 million united states
+dollars was instructed to transfer on your favor through ATM Card,
+And i wish to let you know that every necessary things has been
+accessed by IMF on the economic recovery program done by united state
+Government for victim who lost funds during former president Barack
+Obama and president Donald J Trump regime and con African artists and
+you have nothing to be worried about.
 
-Check out the web; (https://www.bbc.com/news/world-africa-35332792)
-for more understanding, I shall send you more information and the bank
-details when I receive your positive response from you to follow
-up,therefore contact me with my private email.
+Below is the required information i need from you so that the delivery
+of your ATM Card will proceed immediately to your home Address.
+Your Name.........................
+Home address:...................................
+Your profession/occupation.................................
+Cell phone number:..........................
+valid ID CARD/passport.........................
 
-ambrosecooker389@gmail.com
+We advice you to prohibit any other transaction you are having with an
+unknown source to avoid regret there after. And we urge you to comply
+fast with the managerial demands so that you can have your legit ATM
+card with immediate effect as instructed from White house
+(Washington DC)
+send the above mentioned details direct to my private email
+:(mrsjillbidenfirstlady@usa.com)
 
-I will be monitoring the whole situation here in this bank until you
-confirm the money in your bank account and ask me to come down to your
-country. Please keep this proposal as a top secret as I am still in
-service in the bank and intend to retire immediately the fund is
-transferred into your bank account. By indicating your interest, get
-back to me with the below information.
-
-Full name:
-country:
-Address:
-Occupation:
-age:
-Mobile phone number:
-
-Upon receipt of the above mentioned information, I will send to you a
-letter of application which you will fill and send to the Head
-Administrative Department of our Bank, for easy execution of the
-transaction
-
-I stand to assure you that there is no problem in this transaction for
-it is 100% legal and risk free
-
-
-Thanks with my best regards.
-Mr. Ambrose Cooker
-Telex Manager
-African Development Bank (ADB)
-Burkina Faso
+I'M MRS.JILL BIDEN THE FIRST LADY UNITED STATES AMERICA.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
