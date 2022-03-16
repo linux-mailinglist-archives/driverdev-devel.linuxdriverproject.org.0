@@ -2,67 +2,67 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD6834DA94B
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Mar 2022 05:33:06 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5946C4DA94D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Mar 2022 05:33:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0917A8428F;
-	Wed, 16 Mar 2022 04:33:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B07EE84251;
+	Wed, 16 Mar 2022 04:33:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d2KL5z-D5oVU; Wed, 16 Mar 2022 04:33:04 +0000 (UTC)
+	with ESMTP id ZXviWBprAiUM; Wed, 16 Mar 2022 04:33:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8EEF28424D;
-	Wed, 16 Mar 2022 04:33:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 34B4F84282;
+	Wed, 16 Mar 2022 04:33:06 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5781F1BF40B
- for <devel@linuxdriverproject.org>; Wed, 16 Mar 2022 04:33:00 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A0BA41BF40B
+ for <devel@linuxdriverproject.org>; Wed, 16 Mar 2022 04:33:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4B21440133
- for <devel@linuxdriverproject.org>; Wed, 16 Mar 2022 04:33:00 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 90C6A401B8
+ for <devel@linuxdriverproject.org>; Wed, 16 Mar 2022 04:33:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hbEcnlBM4qIN for <devel@linuxdriverproject.org>;
- Wed, 16 Mar 2022 04:32:59 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QEHr-hMQlY_2 for <devel@linuxdriverproject.org>;
+ Wed, 16 Mar 2022 04:32:58 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0CD14400E4
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7D7B34173A
  for <devel@driverdev.osuosl.org>; Wed, 16 Mar 2022 04:32:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1647405179; x=1678941179;
+ t=1647405178; x=1678941178;
  h=date:from:to:cc:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=9ICeuYqxygVCKyq5EzbOomaIPvlrK/glgvIaIc9DYjY=;
- b=VI/aOzq29N1r4JEmf7k0LoQgb3hNmYnxvVnukRxIqrK6zLhzcDRwN/A+
- /EsNkyQCh6iJ+Tk+AvuNoL/mC6lm69f49P0G9/u1PAjA3s7oVK4iAPsbo
- qh7w7KFXEabh1W6nAeW12nvHfkVit7hmZVwaC8NjCAKK3VX8HBUMUiKYl
- 9kMuCExMnVehPAIvPG35H+UmiGA0Duly4JFWkkvAviXl9re+on6QoXUtZ
- V1DJEocJ9B44fTjdWn4OO4SsipDKag+K+hU2XO3vnH2jIs5q//eY4VKK8
- 9x7mL6+CEKeMohuHHiHP5bBV6t4a9WPuwNIsOBTg0gykCDVrpE4TAT1CH A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10286"; a="255320796"
-X-IronPort-AV: E=Sophos;i="5.90,185,1643702400"; d="scan'208";a="255320796"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Mar 2022 21:32:58 -0700
+ bh=QXYTjF4asDJFyYFNqwCFPfYSnHD2MLT7YTrlkE0kW4k=;
+ b=TifZPHzHvKG+ytqN3jG+/Y08nDGCWznKbi5MvO4+OL4/a+9/77sd/ZWN
+ jiH/u858bjfqdQ3cKhzjdzJ1CbhTHtc9U58pMY/tXGFjRYpra6dC7PMqw
+ 4HqmHKUOMp3ZM1JtYIwL5NKcGt8BUudKYd2wfzfvXGgxuXalLAU1jS8oO
+ rJNDM6eAH0Xx10mMl6ND2JFME7NExrLrWkaZmb0X6mO2CFUDW9g7/WEVO
+ lTIWLkiR3s5nqz0R+S7DTL3HJgII5I/c4faE+31Fhcem9pvBli7GP1Olb
+ d/y+kfyIW+5Y5hr2wuWKkVSh/0XzpPVji1pOCwPngfvqpNQzTC2oj/Cwc g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10286"; a="256680625"
+X-IronPort-AV: E=Sophos;i="5.90,185,1643702400"; d="scan'208";a="256680625"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Mar 2022 21:32:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,185,1643702400"; d="scan'208";a="634843118"
+X-IronPort-AV: E=Sophos;i="5.90,185,1643702400"; d="scan'208";a="498295874"
 Received: from lkp-server02.sh.intel.com (HELO 89b41b6ae01c) ([10.239.97.151])
- by FMSMGA003.fm.intel.com with ESMTP; 15 Mar 2022 21:32:56 -0700
+ by orsmga003.jf.intel.com with ESMTP; 15 Mar 2022 21:32:55 -0700
 Received: from kbuild by 89b41b6ae01c with local (Exim 4.92)
  (envelope-from <lkp@intel.com>)
- id 1nULLD-000BwN-CX; Wed, 16 Mar 2022 04:32:55 +0000
-Date: Wed, 16 Mar 2022 12:32:44 +0800
+ id 1nULLD-000BwE-5R; Wed, 16 Mar 2022 04:32:55 +0000
+Date: Wed, 16 Mar 2022 12:32:51 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS
- 721412ed3d819e767cac2b06646bf03aa158aaec
-Message-ID: <6231686c.S5A1Evf4SnrObllW%lkp@intel.com>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 1868755c9078cda1a3a4abd866edd42f9a46b1ed
+Message-ID: <62316873.hI5VOxBMqlXtkLiu%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -83,8 +83,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
-branch HEAD: 721412ed3d819e767cac2b06646bf03aa158aaec  staging: remove ashmem
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 1868755c9078cda1a3a4abd866edd42f9a46b1ed  staging: r8188eu: proper error handling in rtw_init_drv_sw
 
 elapsed time: 724m
 
@@ -174,12 +174,12 @@ x86_64               randconfig-a003-20220314
 x86_64               randconfig-a002-20220314
 x86_64               randconfig-a006-20220314
 x86_64               randconfig-a001-20220314
-i386                 randconfig-a003-20220314
-i386                 randconfig-a004-20220314
 i386                 randconfig-a001-20220314
-i386                 randconfig-a006-20220314
 i386                 randconfig-a002-20220314
+i386                 randconfig-a004-20220314
+i386                 randconfig-a003-20220314
 i386                 randconfig-a005-20220314
+i386                 randconfig-a006-20220314
 arc                  randconfig-r043-20220313
 arc                  randconfig-r043-20220314
 riscv                randconfig-r042-20220313
