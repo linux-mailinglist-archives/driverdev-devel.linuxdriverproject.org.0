@@ -1,74 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB7F04DE84A
-	for <lists+driverdev-devel@lfdr.de>; Sat, 19 Mar 2022 15:24:52 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D81C4E1F4A
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Mar 2022 04:19:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C54744011A;
-	Sat, 19 Mar 2022 14:24:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7B014813CA;
+	Mon, 21 Mar 2022 03:19:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uLyNtF4dDeqs; Sat, 19 Mar 2022 14:24:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kaSQFZC_-cxV; Mon, 21 Mar 2022 03:19:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3D3AB400F2;
-	Sat, 19 Mar 2022 14:24:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 42680814B3;
+	Mon, 21 Mar 2022 03:19:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A67F51BF3A4
- for <devel@linuxdriverproject.org>; Sat, 19 Mar 2022 14:24:45 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9A6401BF84C
+ for <devel@linuxdriverproject.org>; Mon, 21 Mar 2022 03:19:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9026D404A3
- for <devel@linuxdriverproject.org>; Sat, 19 Mar 2022 14:24:45 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 82DDD60B96
+ for <devel@linuxdriverproject.org>; Mon, 21 Mar 2022 03:19:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oVLW4XUX-bh3 for <devel@linuxdriverproject.org>;
- Sat, 19 Mar 2022 14:24:45 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-qt1-x836.google.com (mail-qt1-x836.google.com
- [IPv6:2607:f8b0:4864:20::836])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E7033400E0
- for <devel@driverdev.osuosl.org>; Sat, 19 Mar 2022 14:24:44 +0000 (UTC)
-Received: by mail-qt1-x836.google.com with SMTP id t7so8897271qta.10
- for <devel@driverdev.osuosl.org>; Sat, 19 Mar 2022 07:24:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:sender:from:date:message-id:subject:to;
- bh=wNrJMzmUs8L1uyhCpCulO8HdWj50qKBCSBf44V+e8WA=;
- b=FZ5GT77VA/MkITWPGe5tzgSPjBiBL53bzI3beMYottKeNiprm+SJR93yDYao3+mAta
- I+iXUD9hgGHfqGP1GCOVeqSL+NvCrqScevzOL3ce8pGEpU0XDkv6YQiBHUbXe0iX2o/F
- RBktk3sqAWR8C0EWuB5Dl2EcithiKi/QZaMOm0y+w1l2Tz3FYhImwbhV6UJ6xKFnuTj1
- FssN2Vk7tvamNc5zehDpHvdQ4g2vP/Zr/a36Uuykz82j6kVRjNgEjsVrrIcP4/VV2xEJ
- YyoDjbUICXM+/3TTp/enKsxuCQuW5uQzM8UWmU54CVSU8+7wfB0EE1g1UnGZa+cTVRCo
- ItRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
- :to; bh=wNrJMzmUs8L1uyhCpCulO8HdWj50qKBCSBf44V+e8WA=;
- b=4okBnzzA9a5qHf77vTzSP+elPCK2mubTzhAHUEhTpER6bRtYqTzRmOTNdx0pnQ6Rak
- Fi87Dr3L5m7FNtPRpFIM1P2oeSDC+0Jrje8hHhUam67xeHg901+6uJPZBsjz94SzOfm5
- kbOQW5U0MLdGKnh+yqyzfkn2+XUw2GzzplLIeYtb7amvx43+jfiwdfcxtc7qfboJosDs
- Pvv3UYVXUqaOSqfKW6GCmNZh62lO/oz8n8dWvwm3EThyLNX+YOR6vDJ+q5GgjkabHiHC
- VdPUZOaC12Xt3EKA4tTT8T31GbwNc6HrKmImHaha4FsAE57XMGF3JLS6Y6bpK9yNyaq5
- UEKQ==
-X-Gm-Message-State: AOAM531lQRwYUSE3m7gBEEpjbuVBi+2VmnmDszgqAt50CbLuQxk2sbea
- F3Vop8S4fDi1vxD5L2UHZE0ccswkZU2PHXcVBJ4=
-X-Google-Smtp-Source: ABdhPJwVKYptt/MzvwPg4fU/WKXYGxiM87WYOwKseM9nMfG71ogxY63MQcaq8F/MvXP59+f6KKJ2IT5PrKttu8Ot51c=
-X-Received: by 2002:a05:622a:1aa4:b0:2e1:a97b:e80a with SMTP id
- s36-20020a05622a1aa400b002e1a97be80amr10994304qtc.642.1647699883159; Sat, 19
- Mar 2022 07:24:43 -0700 (PDT)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GMCimdjJYxhZ for <devel@linuxdriverproject.org>;
+ Mon, 21 Mar 2022 03:19:03 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from freebsd100_70.komilan (242-26.ptr.kartelkomi.ru [62.182.26.242])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 956096063B
+ for <devel@driverdev.osuosl.org>; Mon, 21 Mar 2022 03:19:02 +0000 (UTC)
+Received: from User (localhost [127.0.0.1])
+ by freebsd100_70.komilan (8.16.1/8.16.1) with SMTP id 22IDcRFa090564;
+ Fri, 18 Mar 2022 16:38:28 +0300 (MSK)
+ (envelope-from alisonrose47@outlook.com)
+Message-Id: <202203181338.22IDcRFa090564@freebsd100_70.komilan>
+From: "Alison Rose	"<alisonrose47@outlook.com>
+Subject: HOW ARE YOU DOING?
+Date: Fri, 18 Mar 2022 14:39:51 +0100
 MIME-Version: 1.0
-Received: by 2002:ad4:576a:0:0:0:0:0 with HTTP; Sat, 19 Mar 2022 07:24:42
- -0700 (PDT)
-From: AZIZAT ABIATU KASIMU <kazizatabiatu@gmail.com>
-Date: Sat, 19 Mar 2022 07:24:42 -0700
-X-Google-Sender-Auth: GVD-vxiWR_Mv9S4-oo79vxqv6Mg
-Message-ID: <CAGoqFBTGFCx6w1BxhPy70=O6vWZ-qawgZqm_wQ-WLc2nue1KMA@mail.gmail.com>
-Subject: compensation
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -82,20 +57,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: alisonrose47@outlook.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-hello....
-this is to inform you that you have be   compensated with the sum of
-1.2 million dollars in your pass effort,and  the payment will be issue
-into ATM visa  card and send to you from the UBA BANK we need your
-address and your Whats App number
+Good day,
 
-Thanks
+ I am SolicitingOn-Behalf of my private client who is interested in
+Having a seriousBusiness investment in your country. If you have a
+Valid business,Investment or project he can invest get back to me 
+For more details on my private alisonrose47@outlook.com
 
-Mrs AZIZAT ABIATU KASIMU
++44 753 717 2311
+
+Sincerely,
+Alison Rose	
+Non-Executive Director
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
