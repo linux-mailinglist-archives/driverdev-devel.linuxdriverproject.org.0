@@ -1,76 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F4714EACA0
-	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Mar 2022 13:47:08 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C3B174EB176
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Mar 2022 18:09:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3C75F4183D;
-	Tue, 29 Mar 2022 11:47:06 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3A672401A0;
+	Tue, 29 Mar 2022 16:09:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DutcYi0z7Lwt; Tue, 29 Mar 2022 11:47:05 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Fem1HAB7yE1B; Tue, 29 Mar 2022 16:09:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7112741834;
-	Tue, 29 Mar 2022 11:47:03 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id DE13B400D6;
+	Tue, 29 Mar 2022 16:09:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A2FCD1BF33A
- for <devel@linuxdriverproject.org>; Tue, 29 Mar 2022 11:47:00 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F2BC01BF30E
+ for <devel@linuxdriverproject.org>; Tue, 29 Mar 2022 16:09:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 903C9610DC
- for <devel@linuxdriverproject.org>; Tue, 29 Mar 2022 11:47:00 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D6C16401A0
+ for <devel@linuxdriverproject.org>; Tue, 29 Mar 2022 16:09:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id C5vSuo_BD3eE for <devel@linuxdriverproject.org>;
- Tue, 29 Mar 2022 11:46:59 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zK_jU6QIWp4D for <devel@linuxdriverproject.org>;
+ Tue, 29 Mar 2022 16:09:21 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x629.google.com (mail-ej1-x629.google.com
- [IPv6:2a00:1450:4864:20::629])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 374EC60634
- for <devel@driverdev.osuosl.org>; Tue, 29 Mar 2022 11:46:59 +0000 (UTC)
-Received: by mail-ej1-x629.google.com with SMTP id r13so34557675ejd.5
- for <devel@driverdev.osuosl.org>; Tue, 29 Mar 2022 04:46:59 -0700 (PDT)
+Received: from mail-lf1-x130.google.com (mail-lf1-x130.google.com
+ [IPv6:2a00:1450:4864:20::130])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A89E3400D6
+ for <devel@driverdev.osuosl.org>; Tue, 29 Mar 2022 16:09:21 +0000 (UTC)
+Received: by mail-lf1-x130.google.com with SMTP id p15so31128935lfk.8
+ for <devel@driverdev.osuosl.org>; Tue, 29 Mar 2022 09:09:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=JRngf1q0EFM6rom/iKOZPRpCu2Uxx4RUodzTRd2XqH0=;
- b=WgNXgj6IODvZ0ruJkrZOu+JdIy1hw9TvcQv7A0RD8viHok4sFD+oGv6YD2cLd9wTmv
- Slicxb43u88ALlG9StdQ+0TV3HaowS/WOqSeYhPIYZsmuOOcdwm8R8c2M7oFoZXYuOMm
- ETrWnKFxzhvIliJhki7fOxBBrbZrt4fh8P9wh4ac1vkuAq3UiwQD2fCBoukFKuwZx0i9
- ulv88Y82xNQt6QL0kcUFvHqblGmPm7yW8xUqYrPY8Z9Xx/HzbcfQPdp6gzUbvj7fMkdP
- WKS6rIXGFoI48A2iZGPcekAByOTVykYDiOz5z/rFPqzcTj9Akd3v5S+FZbv3u5W97pS+
- rCKA==
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=vWFRMZx2bKko6nyzoyYYdg3emVxYBex/CuA4fC0mKxM=;
+ b=XNY5nIfl1JDnH0IpwLTT6OvIwOAO+wTco6yK/eKiPQIb7q7hmO5NfN7M4P6x5Wl8UA
+ nCX8nPw2pG6UwqXf6tr5UYWOIBxeDCeebBo4s4cVZSULcqO29yylaUpeTKrOaK2YCaIH
+ mFf5/+TeFryXsdVJCMWVwyvFDKkyuGU7fzdbrYq1eV6PJBTVwRu1bz9hm+9ScCX/p7o4
+ 91/5X59wM3qAu6piDey4d0uvz3jTIHnL9fn2LwAR1C7i4oCmjYgcmV9IjK1kC1SR/A8M
+ s1LQKaf27J4he2SDmFpRU/aNQ8Qb7qIH5Z6T/mE/1KNB48spu3Xk9ML7G5sTXQwUwNRf
+ 9J+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=JRngf1q0EFM6rom/iKOZPRpCu2Uxx4RUodzTRd2XqH0=;
- b=aqwOawafoORYWUoDPtAKpBha0jnlNMfuWuQaRMctBqrrlAqRfDQ9ZUtICVMr7Prn6m
- KdAkJRbcQof2KGZ3EJm3zWv3Ay+zeKi+jnI0VhGp52ykUq2rwuDYUpgBrEPKlpDtmSFZ
- 40YjVvTJjZCF9Zbru0d14ULnTeSMY+jFgSjl1D/Llla+SGNUibHYreUaD0mk2bqhzQW8
- m5FBsKT0kU8R3mpFt3YlV4l0hOhTA80tAj+bq2Ktgtq5CV1HvYvvIAEjJa7WoC263IWU
- OXk3l3ftZoumRlqe/JL464KctPThnx6yHstNFvkOBegoRZeG8eAAXk0h8xRGNW80JjDa
- a6RA==
-X-Gm-Message-State: AOAM532IaVKcKxtcU+9BLIrapkiT7Tg9mCidSJECLQN3q1OvMHglmmPW
- m9StuJaCdkGt3MO/T1ViPW2VD9NO7uTPHbmGuQ8=
-X-Google-Smtp-Source: ABdhPJx/6reFSq090fKogP1Ks4j6J7VZmEyzGgY7WdOuKDaet1Sb3sUw3Z0pqfqiUFERLgss+aj1ra+CFGiWqYNdTtA=
-X-Received: by 2002:a17:907:628e:b0:6d9:c6fa:6168 with SMTP id
- nd14-20020a170907628e00b006d9c6fa6168mr33912764ejc.132.1648554417310; Tue, 29
- Mar 2022 04:46:57 -0700 (PDT)
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=vWFRMZx2bKko6nyzoyYYdg3emVxYBex/CuA4fC0mKxM=;
+ b=l0HD7kasschO+QQ5YAcaDOf56gx823K2YhTmTwLWoAgzvOFBRqO53LQ9bQmHSo5CJD
+ flrR5MkL950u8daNenIEaB9w/N3DHYJi3clEZ+uStYvEqNVXVev5WneywnoEznGK/08q
+ HdTdEL4cWnToOaWILQERoxaowcpzFdpSNr2jrv50SHLUbwSvoTIAwdZtCrGU5BebiszT
+ mxUxdkBIJIaYt01hAowq0Ae93Mts9/PR4PHGVsZRjbpgvqLL3KQHH7h1plPGW4BcFWNA
+ 6C2NJClzXiGGomoLyEYCIfJOA9TKfzyA8D3rvg6rpv+EI9X04BdJgDJWlCe2vS3DOJ3J
+ AJcQ==
+X-Gm-Message-State: AOAM532YIF8DDDdNyVBpSMQG6c93Mxyh6zhV8EI0PKDHHd118Y5wq6W4
+ g/2e5gvHj1HZFVf7nSKSVEonWGVhtSBJdTJ9fKI=
+X-Google-Smtp-Source: ABdhPJwvaZVrMhGLkMbcDCEb4200CGbdm41ZE991Yg+i+Iq5AbMgYXahumeprJP+CRDJTE90YIQ/SLxR0nD4e7TfjX4=
+X-Received: by 2002:ac2:5219:0:b0:44a:a4b5:dabe with SMTP id
+ a25-20020ac25219000000b0044aa4b5dabemr3371790lfl.530.1648570159148; Tue, 29
+ Mar 2022 09:09:19 -0700 (PDT)
 MIME-Version: 1.0
-References: <1648540212-9790-1-git-send-email-unSimple1993@163.com>
-In-Reply-To: <1648540212-9790-1-git-send-email-unSimple1993@163.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Tue, 29 Mar 2022 14:45:50 +0300
-Message-ID: <CAHp75VdwLPkzE9AHkXg=+vsagh4SGam40vz8uRdSRUpr6Cyv7A@mail.gmail.com>
-Subject: Re: [PATCH v1] pinctrl: ralink: rt2880: Check for return value of
- devm_kcalloc()
-To: QintaoShen <unSimple1993@163.com>
+Received: by 2002:aa6:da07:0:b0:1a6:97eb:db9c with HTTP; Tue, 29 Mar 2022
+ 09:09:18 -0700 (PDT)
+From: For Business expansion <advisery1000@gmail.com>
+Date: Tue, 29 Mar 2022 17:09:18 +0100
+Message-ID: <CADNnp3FdB3=uZ2VpnoMLn-E6f1xfyr0aV6ACsKEY_3Eok58H5Q@mail.gmail.com>
+Subject: For Business Plans
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,51 +80,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- devicetree <devicetree@vger.kernel.org>, Jason Yan <yanaijie@huawei.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>
+Reply-To: marywilliams2021@aol.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Tue, Mar 29, 2022 at 11:36 AM QintaoShen <unSimple1993@163.com> wrote:
->
-> The memory allocation function devm_kcalloc() may return NULL pointer,
+Hello
 
-may --> might
+I work as an investment consultant. We are registered in United
+Kingdom and regulated by the Monetary Authority of United Kingdom. If
+you think your firm will do better with some extra funding and
+business expansion in a partnership or an investment loan then please
+get back to me for further details.
 
-> so it is better to add a check for 'p->func[i]->pins' to avoid possible
-> NULL pointer dereference.
+Karl,
+Thanks
 
-...
 
-> @@ -266,6 +266,10 @@ static int rt2880_pinmux_pins(struct rt2880_priv *p)
->                                                 p->func[i]->pin_count,
->                                                 sizeof(int),
->                                                 GFP_KERNEL);
-
-> +
-
-Stray change. Also it seems it has trailing space character(s).
-
-> +        if (!p->func[i]->pins)
-
-> +            continue;
-
-Why is 'continue' the proper choice here? No clarification is given in
-the commit message.
-
->                 for (j = 0; j < p->func[i]->pin_count; j++)
->                         p->func[i]->pins[j] = p->func[i]->pin_first + j;
-
--- 
-With Best Regards,
-Andy Shevchenko
+STUDY WELL BEFORE GETTING BACK TO US.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
