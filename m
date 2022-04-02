@@ -1,76 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5BDB4F622D
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Apr 2022 16:51:09 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 654FE4F6A55
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Apr 2022 21:48:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 22531403B7;
-	Wed,  6 Apr 2022 14:51:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 49B0740875;
+	Wed,  6 Apr 2022 19:48:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vnqs4JFVrEBw; Wed,  6 Apr 2022 14:51:07 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id prkuEIoW1vMN; Wed,  6 Apr 2022 19:48:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B9EE14046D;
-	Wed,  6 Apr 2022 14:51:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 91D374086D;
+	Wed,  6 Apr 2022 19:48:16 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A9D4E1BF300
- for <devel@linuxdriverproject.org>; Wed,  6 Apr 2022 14:51:03 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2E5A51BF5A1
+ for <devel@linuxdriverproject.org>; Wed,  6 Apr 2022 19:48:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 98A1A41766
- for <devel@linuxdriverproject.org>; Wed,  6 Apr 2022 14:51:03 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1A2814018D
+ for <devel@linuxdriverproject.org>; Wed,  6 Apr 2022 19:48:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SllT0uyAShFD for <devel@linuxdriverproject.org>;
- Wed,  6 Apr 2022 14:51:03 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-pj1-x102d.google.com (mail-pj1-x102d.google.com
- [IPv6:2607:f8b0:4864:20::102d])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 102BF41600
- for <devel@driverdev.osuosl.org>; Wed,  6 Apr 2022 14:51:02 +0000 (UTC)
-Received: by mail-pj1-x102d.google.com with SMTP id
- h23-20020a17090a051700b001c9c1dd3acbso2923936pjh.3
- for <devel@driverdev.osuosl.org>; Wed, 06 Apr 2022 07:51:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=xVJHepNq93ePmAbCv1LHbdOWJcqWYQh8v11fr0KUdVw=;
- b=gQ0uu5Qrn7buamcaFCqMFFulV1yEtUL0Cm1v9r0J/8cW85cuXkgkpqizHGomRKwPSM
- OUHldpWweT3PqoM/14B9U5KArDXnCy28EsP/mBvdtAwmiAOWIj2eUrSDIeLm5KhU7ws6
- rduLn20lVMJrOotmA3UeiqXOffJRxJJDZbtpwoAMiapByBGBDrxINiQbRIQDXa+jENK5
- Ix9/Q/0YZ1ESp8ahMOdskQW7MsAILoA1vm93yBa0jnfYsRjHB2B1/qi9o0qK6xqnpy3L
- 58aHGQe8Dac0xiM8Ugk3m3rahbo2CRmlpl8Dv3SJaD8aI6z0IdXPZkNcuraGGF7RB1d5
- y7ZA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=xVJHepNq93ePmAbCv1LHbdOWJcqWYQh8v11fr0KUdVw=;
- b=YlahXxc9YO2NSnF5JDAzLQJIL5DDz1NAhX9bJCzuzuRnghcJUfHZwN4ez1EhPqngF2
- PDrlxT5ONhMMMVT2rtcWGR6+iZcHT/vCvL14khzxNDN+Jnz83lVu8nFZHW9XGldSgI1h
- G/6IXrO18L5JzfYngSBRpVKDieeGIhOO9/1eBFSAA1jnJvmJ1mEtgPo08u81JTcSgMdw
- QxoDWn0G3A/RmTl3IvwPirEY7tiVSQsMq6kgmXsdTMx3jva+czvyYMjzDvVq5eaz5QpI
- MR2XNoacg9SZR41bJ25hAB7vy662z4I489b++OoiFe1EpI1ZLS63HLvneLx38V+BiThs
- hbbg==
-X-Gm-Message-State: AOAM531MHzZ1WLMlUFEVDK3POo14ZrgzXMscefBw9XSndEYpRaD/37ap
- qpITcU+UXcbQ+xOIHQms62yFE7nAFx4xqjAGl+Y=
-X-Google-Smtp-Source: ABdhPJwILuZHv2NfRRD7jrUD5+rV3+Vd8iLiSsN9JoKceC2sqZdRXs25idNd0JkRgI/JPjXC6hVrk0/oUYgtNQgGne8=
-X-Received: by 2002:a17:902:a40f:b0:14b:61:b19e with SMTP id
- p15-20020a170902a40f00b0014b0061b19emr9098228plq.20.1649256662199; Wed, 06
- Apr 2022 07:51:02 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a17:90a:740e:0:0:0:0 with HTTP; Wed, 6 Apr 2022 07:51:01
- -0700 (PDT)
-From: Lily William <mralbert139@gmail.com>
-Date: Wed, 6 Apr 2022 06:51:01 -0800
-Message-ID: <CAN2p9o7H4_L5n2aV+n+Aj+2_Oytm+AQgbEv=r-vXp-Jt8R+trA@mail.gmail.com>
-Subject: Hi Dear,
-To: undisclosed-recipients:;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id czvKs14qPHVy for <devel@linuxdriverproject.org>;
+ Wed,  6 Apr 2022 19:48:12 +0000 (UTC)
+X-Greylist: delayed 02:42:20 by SQLgrey-1.8.0
+Received: from mail.sapa-trade.com (sapa-trade.com [82.221.100.99])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9875940116
+ for <devel@driverdev.osuosl.org>; Wed,  6 Apr 2022 19:48:12 +0000 (UTC)
+Received: from SRV-SZD-01.kamara.local (unknown [172.16.57.1])
+ by mail.sapa-trade.com (Postfix) with ESMTP id B6CBD5111C;
+ Sun,  3 Apr 2022 02:26:55 +0300 (MSK)
+Content-Description: Mail message body
+Subject: Executive Board. International Monetary Fund (IMF)
+To: Recipients <imf@info.org>
+From: "Mrs. Kristalina Georgieva" <imf@info.org>
+Date: Sun, 03 Apr 2022 01:26:45 +0200
+Message-Id: <20220406194814.1A2814018D@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,21 +52,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: lilywilliam989@gmail.com
+Reply-To: www.imf_kristalinaeorgieva603@aliyun.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-Hi Dear,
+I am Ms. Kristalina Georgieva, Executive Director of the International Monetary Fund (IMF), a senior official of the International Monetary Fund (IMF). You might be interested to know that through so much correspondence, reports have reached our office of the uncomfortable way in which people like you are being treated by various banks and courier companies / diplomats across Europe to Africa and Asia / London UK. We decided to put an end to this, and that's why I was hired to handle your transaction here in the United States. All state and non-state prostate, NGOs, financial companies, banks, security companies, and courier companies that have been in contact with you recently have been instructed to withdraw from your transaction and you have been advised NOT to respond to them since the International The Monetary Fund (IMF) is now directly responsible for your payment.
 
-My name is Lily William, I am from the United States of America. It's my
-pleasure to contact you for a new and special friendship. I will be glad to
-see your reply so we can get to know each other better.
 
-Yours
-Lily
+
+Your name is on our payment schedule list of beneficiaries who will receive their funds in this first quarterly payment of the year, as we only transfer money twice a year, as per our banking regulations. We apologize for the delay in your payment and please stop communicating with an office now and pay attention to our office payment accordingly. Now your new payment, United Nations Authorization Number; UN5685P, White House Approved No .: WH44CV, Reference No. -35460021, Assignment No .: 674632, Password No .: 339331, PIN Code No .: 55674 and Your Certificate of Performance Payment No .: 103, Approved Code No .: 0763; Immediate (IMF) Telex Acknowledgment Number: -1114433; Secret code number: XXTN013.
+
+
+
+Confirm the information below again
+
+
+
+1. Full name:
+2nd address:
+3. Nationality:
+4. Age: Date of birth:
+5. Profession:
+6. Telephone: Mobile / Mobile: .................. Fax: ..
+7. Country of origin:
+8. Copy of your identity card:
+
+
+
+Your installment inheritance fund is $ 10 million united state dollars. After receiving these important payment numbers, you are now entitled to receive and confirm your payment with the International Monetary Fund (IMF) United States Region immediately within the next 168 hours. We assure you that your payment will reach you as long as you follow my instructions and directions. We have decided to give you a CODE, THE CODE IS: 603. Every time you receive an email with the name of Ms. Kristalina Georgieva, please check that the CODE (603) is there. If the code is not written, please delete the message from your box!
+
+
+
+It is hereby recommended that you DO NOT send any further payments to institutions in relation to your transaction as your funds will be sent to you directly from our source. I hope that's clear. Any action contrary to this instruction is at your own risk. Please reply to this email immediately (www.imf_kristalinaeorgieva603@aliyun.com) and we will provide you with further details on the release of your fund.
+
+
+
+Congratulations !!!
+
+
+
+
+Ms. Kristalina Georgieva,
+Executive Board. International Monetary Fund (IMF)
+IMF Headquarters Washington, D.C. 20431, USA
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
