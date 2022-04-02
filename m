@@ -1,73 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71CDA4F011B
-	for <lists+driverdev-devel@lfdr.de>; Sat,  2 Apr 2022 13:34:47 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2098D4F02CB
+	for <lists+driverdev-devel@lfdr.de>; Sat,  2 Apr 2022 15:44:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B42C14049B;
-	Sat,  2 Apr 2022 11:34:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5FE294154D;
+	Sat,  2 Apr 2022 13:43:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ImQK8plnHw04; Sat,  2 Apr 2022 11:34:45 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id O5dlPM7wCqQ6; Sat,  2 Apr 2022 13:43:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8C6E140488;
-	Sat,  2 Apr 2022 11:34:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D90DF41511;
+	Sat,  2 Apr 2022 13:43:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DCEA91BF873
- for <devel@linuxdriverproject.org>; Sat,  2 Apr 2022 11:34:40 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4B1CE1BF409
+ for <devel@linuxdriverproject.org>; Sat,  2 Apr 2022 13:43:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D3EF5402A8
- for <devel@linuxdriverproject.org>; Sat,  2 Apr 2022 11:34:40 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 43E286060A
+ for <devel@linuxdriverproject.org>; Sat,  2 Apr 2022 13:43:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T6tL2KIcc_Dw for <devel@linuxdriverproject.org>;
- Sat,  2 Apr 2022 11:34:40 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lf1-x136.google.com (mail-lf1-x136.google.com
- [IPv6:2a00:1450:4864:20::136])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3306D40465
- for <devel@driverdev.osuosl.org>; Sat,  2 Apr 2022 11:34:40 +0000 (UTC)
-Received: by mail-lf1-x136.google.com with SMTP id t25so9180632lfg.7
- for <devel@driverdev.osuosl.org>; Sat, 02 Apr 2022 04:34:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=+7BYJIsO7dcyDnN6FGAY2/5XLkAKuFDpXyCKoh1Lti4=;
- b=GvVSq7rt9TgiQeIfITHQn1f5+Xrbbbbej1wExkdI0Ln7y1kMj+V9/ALcNIs1S9JMFJ
- xjQfeSNnhg0updUAtSlfJcTnOfv3/lmCWansfwAd5guT5iN7yLrilnOhxvQcTwEOPQAC
- Lsy7n5+UWGI+bzDh6/ZijQt+McjK2R3PMxUaHen2QQQpJTpbtCsUgy0NCgRsmeW31c0k
- E5Z3HSBUELBr5x0VtJJCGhMImhdkA/91btNF13HHv2W9phMbItlnGQYHstSBwoXb5TDc
- YSq7peZ1DsLdGeOCkjgnrmgcsJFdHDgfq7iK6vRXC3tPm9JyS9d1J6hxoDdj+AeIDBS5
- pMag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=+7BYJIsO7dcyDnN6FGAY2/5XLkAKuFDpXyCKoh1Lti4=;
- b=Mn6j0Q7UatGr0MWA52QDQxKCsgQN94eaWTtYahPXYAjQBo4DxNisC4bSVvfM6Vmb3o
- bwnl+QpBUcLERdPic+lCFvs9hgVWRXXtaT6F0ctUlyXRNmeyiGEPs7E7WKKRji480HPy
- aBUoRmzoQoc5cJWGt8/FmgWwBqLYHvZDF1EQIgufphqo5Ww0NL6QvB2ugm7Ht09b3A9U
- YdDTKxZgqA/eePP0mgRsJjABLCgxkz8JLmOtl/Fi4X9cgZ0WGYCoVcfwmTR6plCu4MRM
- Ig9MrSvk3YPkAxXzobNvZw/e6Gm9rCKbPsFZQCvbb5ucKxIk6EXg/nPB3HLybb00IfZ/
- Usnw==
-X-Gm-Message-State: AOAM532UF3Gm2UfUBjo2at3Z4jVY5Cgt5dHpQYdmsqUg7fyxw1g1TMIR
- De6lYl1ccCGD+wuBUe9kGb64/HQYtvl+WqtoxT8=
-X-Google-Smtp-Source: ABdhPJxm0HXKTTOP62bvhgSIE9cgMvRJohmte7mMbqtj7CNTEdpNBxNy2h1ejlyfJRqX7BiVgqBiRGXwLcVp0OO8U5I=
-X-Received: by 2002:a05:6512:3b0a:b0:44a:2e21:ef25 with SMTP id
- f10-20020a0565123b0a00b0044a2e21ef25mr16481813lfv.333.1648899277876; Sat, 02
- Apr 2022 04:34:37 -0700 (PDT)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2MshbdKfzGIy for <devel@linuxdriverproject.org>;
+ Sat,  2 Apr 2022 13:43:54 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from esa-virtual.bank.forshtadt.ru (unknown [194.99.116.244])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1AA49605E0
+ for <devel@driverdev.osuosl.org>; Sat,  2 Apr 2022 13:43:53 +0000 (UTC)
+Authentication-Results: mail-esa-2.bank.forshtadt.ru;
+ dkim=none (message not signed) header.i=none;
+ spf=None smtp.pra=auditor@forshtadt.ru;
+ spf=None smtp.mailfrom=auditor@forshtadt.ru;
+ spf=None smtp.helo=postmaster@User
+Received-SPF: None (mail-esa-2.bank.forshtadt.ru: no sender
+ authenticity information available from domain of
+ auditor@forshtadt.ru) identity=pra; client-ip=102.182.232.26;
+ receiver=mail-esa-2.bank.forshtadt.ru;
+ envelope-from="auditor@forshtadt.ru";
+ x-sender="auditor@forshtadt.ru"; x-conformance=sidf_compatible
+Received-SPF: None (mail-esa-2.bank.forshtadt.ru: no sender
+ authenticity information available from domain of
+ auditor@forshtadt.ru) identity=mailfrom;
+ client-ip=102.182.232.26; receiver=mail-esa-2.bank.forshtadt.ru;
+ envelope-from="auditor@forshtadt.ru";
+ x-sender="auditor@forshtadt.ru"; x-conformance=sidf_compatible
+Received-SPF: None (mail-esa-2.bank.forshtadt.ru: no sender
+ authenticity information available from domain of
+ postmaster@User) identity=helo; client-ip=102.182.232.26;
+ receiver=mail-esa-2.bank.forshtadt.ru;
+ envelope-from="auditor@forshtadt.ru";
+ x-sender="postmaster@User"; x-conformance=sidf_compatible
+Message-Id: <4ee218$dc97@mail-esa-2.bank.forshtadt.ru>
+X-Ironport-Dmarc-Check-Result: validskip
+IronPort-SDR: rB6N/CX1LmPT1zStLPGBu2Xrl1mUzQ4tXtE0yFiLNUmPTvJWKXM7QWEmt6wAoX1hQczjm9qbt8
+ gkXFMtbbiAqg==
+Received: from 102-182-232-26.ip.afrihost.joburg (HELO User) ([102.182.232.26])
+ by mail-esa-2.bank.forshtadt.ru with ESMTP; 02 Apr 2022 18:43:38 +0500
+From: "Barrister Andrew"<auditor@forshtadt.ru>
+Subject: Good Day,
+Date: Sat, 2 Apr 2022 06:43:50 -0700
 MIME-Version: 1.0
-Received: by 2002:a05:6504:511:0:0:0:0 with HTTP; Sat, 2 Apr 2022 04:34:37
- -0700 (PDT)
-From: GOLD BAR AND GOLD DUST <mr.alhajiekabah@gmail.com>
-Date: Sat, 2 Apr 2022 11:34:37 +0000
-Message-ID: <CALxTt=CisKF2yKsPDypvPaXkgz1MKkgBzqCPyJup+kfd=TWL2Q@mail.gmail.com>
-Subject: Good morning
-To: undisclosed-recipients:;
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,26 +80,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: infor.gold.diamond@zohomail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: jc495240@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-Dear frisend
-How are you?
-I have gold bar and gold dust i need buyers
-Specifications and details.
-COMMODITY............... .................(AU)
-Form.......................... ......Gold Dust/nugget Powder.
-Quality/Purity................ . 22+ carats plus.
-Finesse...................... . ... 96.5% plus.
-contact me if you are interested
-Mr Kabah Ahmed
-Mobile+228 70823806
-Email;infor.gold.diamond@zohomail.com
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R29vZCBEYXksCgoKCkkgYW0gQmFycmlzdGVyIFJvYmVydCBieSBuYW1lLiBJIHdvdWxkIGxpa2Ug
+dG8gaW5mb3JtIHlvdSBvZiBhIGJ1c2luZXNzL2RlYWwgd29ydGggPzE1MCwwMDAsMDAwLjAwKE9u
+ZSBIdW5kcmVkIGFuZCBGaWZ0eSBNaWxsaW9uIFBvdW5kcyBTdGVybGluZykgLCB3aGljaCBpcyBl
+cXVpdmFsZW50cyB0byBhYm91dCAkMjAyLDAwMCwwMDAgKFR3byBodW5kcmVkIGFuZCB0d28gbWls
+bGlvbiB1bml0ZWQgc3RhdGVzIGRvbGxhcnMpIHdoaWNoIHdhcyBsZWZ0IGluIGFuIGFjY291bnQg
+YnkgbXkgbGF0ZSBjbGllbnQuIEkgd291bGQgd2FudCB5b3UgdG8gYmUgdGhlIGJlbmVmaWNpYXJ5
+IG9mIHRoZSBmdW5kcyBzbyB0aGF0IHdlIGNhbiBib3RoIHNoYXJlIHRoZSBmdW5kcyBFcXVhbGx5
+LCBpdJJzIHVuZm9ydHVuYXRlIHRoYXQgSSBjYW5ub3QgY2xhaW0gdGhlc2UgZnVuZHMgbXlzZWxm
+IHdpdGhvdXQgYSBuZXV0cmFsIHBlcnNvbiwgYmVjYXVzZSBpdCB3aWxsIGxvb2sgc3VzcGljaW91
+cyBmb3IgbWUgdG8gY2xhaW0gdGhlIGZ1bmRzIGFzIHRoZSBsYXd5ZXIgb2YgdGhlIGRlY2Vhc2Vk
+LCBzbyBmb3IgdGhpcyByZWFzb24gSSBuZWVkIGEgc2luY2VyZSBwZXJzb24gdGhhdCBJIGNhbiBw
+cmVzZW50IHRvIHRoZSBiYW5rIGFzIHRoZSBiZW5lZmljaWFyeSBvZiB0aGUgZnVuZHMsIGJlY2F1
+c2Ugd2hhdGV2ZXIgSSB0ZWxsIHRoZSBiYW5rIGlzIHdoYXQgdGhleSB3aWxsIGJlbGlldmUuIFRy
+dXN0IG1lLCBhcyBJIHdpbGwgbWFrZSB0aGlzIGxlZ2FsLCBzbyB5b3UgZG8gbm90IG5lZWQgdG8g
+ZW50ZXJ0YWluIGFueSBmZWFyIG9yIHBhbmljIGZvciBhbnkgcmVhc29uLgoKCgoKClRoaXMgaXMg
+YW4gb3Bwb3J0dW5pdHkgZm9yIHVzIHRvIGJlY29tZSByaWNoOyBJIGhhdmUgYWxsIHByb29mIHRv
+IHNob3cgeW91IGV2ZXJ5dGhpbmcgYmVmb3JlIHdlIHByb2NlZWQgYWZ0ZXIgeW91IGNvbmZpcm0g
+eW91ciByZWFkaW5lc3MuCgoKCgoKSSB3aWxsIHRlbGwgeW91IG1vcmUgb25jZSB5b3UgZ2V0IGJh
+Y2sgdG8gbWUgYnkgY29uZmlybWluZyB5b3VyIHJlYWRpbmVzcyB0byBwcm9jZWVkIHdpdGggbWUg
+b24gdGhpcyBkZWFsIGJ1dCBJIHdpbGwgcHJvdGVjdCBteSBwZXJzb25hbGl0eSBmb3Igbm93LgoK
+LgoKCgpSb2JlcnQuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
+Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
+cmRldi1kZXZlbAo=
