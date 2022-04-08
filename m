@@ -1,68 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD45E4F9097
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Apr 2022 10:18:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 82ADC4F90DA
+	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Apr 2022 10:32:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 509C741634;
-	Fri,  8 Apr 2022 08:18:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id ABB8B41DC6;
+	Fri,  8 Apr 2022 08:32:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KmZ62wm4ZKYx; Fri,  8 Apr 2022 08:18:17 +0000 (UTC)
+	with ESMTP id Lfgz-ZzEupVN; Fri,  8 Apr 2022 08:32:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9358F415AC;
-	Fri,  8 Apr 2022 08:18:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B760F41D37;
+	Fri,  8 Apr 2022 08:32:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 9D4D81BF32B
- for <devel@linuxdriverproject.org>; Fri,  8 Apr 2022 08:18:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D37D31BF32B
+ for <devel@linuxdriverproject.org>; Fri,  8 Apr 2022 08:32:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8B42340292
- for <devel@linuxdriverproject.org>; Fri,  8 Apr 2022 08:18:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C11FF40207
+ for <devel@linuxdriverproject.org>; Fri,  8 Apr 2022 08:32:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1V_CDn5F1Co5 for <devel@linuxdriverproject.org>;
- Fri,  8 Apr 2022 08:18:10 +0000 (UTC)
+ with ESMTP id n0YQtcIbQQNI for <devel@linuxdriverproject.org>;
+ Fri,  8 Apr 2022 08:32:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8D7F740181
- for <devel@driverdev.osuosl.org>; Fri,  8 Apr 2022 08:18:10 +0000 (UTC)
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DCF3040181
+ for <devel@driverdev.osuosl.org>; Fri,  8 Apr 2022 08:32:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1649405890; x=1680941890;
+ t=1649406747; x=1680942747;
  h=date:from:to:cc:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=Bellm8CUdsrS0EUQlxC0g61UwDDu5IlcxIAygrMEk0I=;
- b=M3ovB1byijV9n3/G6jkJCa3aHHXsLDngxFs+Zq4ZdKFCL63Z4ii0SIfg
- FCVz/fMm5UnEtsMSOjGWCJWV7NKRLoFkHcK70kVP2XlCc6eDMM5qmLhbC
- FKFOmEFBWlRM5zX9pkTEGIttwkNtyDmhkC5wImb5Rzppe6pEWex1tmmYE
- aPNdRRVtAp15KPinTlnHKWhgYh326Rjm3PNtosQwFMdR+Cv6cTa+B5xsM
- T3aEvBG6cetJHTIcYm4WprHaNTWld3hYHb1WgaPpV73YKtijT1dvekMre
- MlCAAKFh7MG/aYYk2CSR0yvkf3tJadFUUyfLtxTVwJe3m78/M9B/EVudS A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10310"; a="243675176"
-X-IronPort-AV: E=Sophos;i="5.90,244,1643702400"; d="scan'208";a="243675176"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2022 01:18:09 -0700
+ bh=RWQsWnn4EIt/huc+0iBLSRCg68VYo92wJ50GPuYvlFI=;
+ b=JfnKhri3hSuBaZ7Q+9UN+lZZ8iBhlAox1b7v3x/AqUceiWa5xTzG7Gwh
+ LmTrsdjzFpYIkDwMRskxoaUr9Xupje71YBtLp/vagqKTeDIa1LBA5GMAV
+ /xoWcPAyPP6bERBuMghEbSyRUdsnuUhSdyDMZLErho9x3yNyKh9Akj/0P
+ /+7Z8Tcsu08LyMw3KW3kzEOVLO5k+hioxu639+hVFSaS0Rb4L0Azm2UEi
+ Fpnyn9R0NGG/+dJSP1QdwxnMiW3CQle6QeklfCYYY5Nt9dq9Q9dnCXcTC
+ hJLud3b5C3aWBx4i81M6NnfscYup75qNYoCbPq/t+riG3LSCsIMWpN/tB A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10310"; a="259143265"
+X-IronPort-AV: E=Sophos;i="5.90,244,1643702400"; d="scan'208";a="259143265"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2022 01:32:11 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,244,1643702400"; d="scan'208";a="524700952"
+X-IronPort-AV: E=Sophos;i="5.90,244,1643702400"; d="scan'208";a="659408839"
 Received: from lkp-server02.sh.intel.com (HELO 7e80bc2a00a0) ([10.239.97.151])
- by orsmga002.jf.intel.com with ESMTP; 08 Apr 2022 01:18:08 -0700
+ by orsmga004.jf.intel.com with ESMTP; 08 Apr 2022 01:32:09 -0700
 Received: from kbuild by 7e80bc2a00a0 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1ncjom-000033-2h;
- Fri, 08 Apr 2022 08:18:08 +0000
-Date: Fri, 08 Apr 2022 16:17:38 +0800
+ (envelope-from <lkp@intel.com>) id 1nck2K-000045-St;
+ Fri, 08 Apr 2022 08:32:08 +0000
+Date: Fri, 08 Apr 2022 16:32:04 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS
- f8525b9763c61f54d1abdcce2821468dc416cda1
-Message-ID: <624fefa2.00jQ2TtFAvRAHeAc%lkp@intel.com>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ bc4f661a45205ccd60bae2641b1be2333621c90c
+Message-ID: <624ff304.1jf1wc8Km3RNlYcm%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
@@ -83,12 +83,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
-branch HEAD: f8525b9763c61f54d1abdcce2821468dc416cda1  Merge branch 'wfx-move-out-of-staging' of git://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next into staging-next
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: bc4f661a45205ccd60bae2641b1be2333621c90c  staging: rtl8712: fix camel case in function r8712_generate_ie
 
-elapsed time: 720m
+elapsed time: 734m
 
-configs tested: 139
+configs tested: 134
 configs skipped: 4
 
 The following configs have been built successfully.
@@ -104,28 +104,23 @@ i386                          randconfig-c001
 arm                      integrator_defconfig
 powerpc                     taishan_defconfig
 sh                          polaris_defconfig
-powerpc                      bamboo_defconfig
-sh                           se7722_defconfig
-arm                          iop32x_defconfig
-arc                            hsdk_defconfig
 powerpc                      ep88xc_defconfig
 powerpc                      ppc6xx_defconfig
 sh                           se7780_defconfig
+sh                           se7722_defconfig
 sparc64                          alldefconfig
 mips                     decstation_defconfig
-arm                            hisi_defconfig
-arm                           h5000_defconfig
-arm                         lubbock_defconfig
-sh                              ul2_defconfig
-arm                        cerfcube_defconfig
-ia64                      gensparse_defconfig
-powerpc                      mgcoge_defconfig
-powerpc                      tqm8xx_defconfig
-powerpc                  iss476-smp_defconfig
+arm                          pxa910_defconfig
+arm                     eseries_pxa_defconfig
+powerpc                         ps3_defconfig
 powerpc                    sam440ep_defconfig
+powerpc                  iss476-smp_defconfig
 powerpc                 mpc8540_ads_defconfig
 mips                            ar7_defconfig
 arm                         nhk8815_defconfig
+arc                    vdk_hs38_smp_defconfig
+arm                          lpd270_defconfig
+s390                             allyesconfig
 sh                   secureedge5410_defconfig
 sh                   rts7751r2dplus_defconfig
 arm                             pxa_defconfig
@@ -140,11 +135,10 @@ arm                       imx_v6_v7_defconfig
 powerpc                       eiger_defconfig
 arm                         assabet_defconfig
 mips                        vocore2_defconfig
-i386                             alldefconfig
 x86_64                        randconfig-c001
+arm                  randconfig-c002-20220408
 arm                  randconfig-c002-20220406
 arm                  randconfig-c002-20220407
-arm                  randconfig-c002-20220408
 ia64                             allmodconfig
 ia64                             allyesconfig
 ia64                                defconfig
@@ -166,12 +160,11 @@ s390                             allmodconfig
 parisc                              defconfig
 parisc64                            defconfig
 parisc                           allyesconfig
-s390                             allyesconfig
 i386                             allyesconfig
-sparc                            allyesconfig
 i386                                defconfig
 i386                   debian-10.3-kselftests
 i386                              debian-10.3
+sparc                            allyesconfig
 mips                             allyesconfig
 mips                             allmodconfig
 powerpc                          allyesconfig
@@ -225,20 +218,22 @@ arm                        magician_defconfig
 powerpc                       ebony_defconfig
 powerpc                   microwatt_defconfig
 powerpc                    socrates_defconfig
+powerpc                     akebono_defconfig
 arm                          pcm027_defconfig
 riscv                             allnoconfig
 arm                          collie_defconfig
-arm                       mainstone_defconfig
-riscv                            alldefconfig
+x86_64                        randconfig-a005
+x86_64                        randconfig-a001
+x86_64                        randconfig-a003
 i386                          randconfig-a002
 i386                          randconfig-a006
 i386                          randconfig-a004
 x86_64                        randconfig-a012
 x86_64                        randconfig-a014
 x86_64                        randconfig-a016
-x86_64                        randconfig-a005
-x86_64                        randconfig-a003
-x86_64                        randconfig-a001
+i386                          randconfig-a013
+i386                          randconfig-a011
+i386                          randconfig-a015
 
 -- 
 0-DAY CI Kernel Test Service
