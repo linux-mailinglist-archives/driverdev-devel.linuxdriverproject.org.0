@@ -2,52 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 663084FB559
-	for <lists+driverdev-devel@lfdr.de>; Mon, 11 Apr 2022 09:50:42 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 211BB4FB881
+	for <lists+driverdev-devel@lfdr.de>; Mon, 11 Apr 2022 11:52:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E486960E5B;
-	Mon, 11 Apr 2022 07:50:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A61A260C2D;
+	Mon, 11 Apr 2022 09:52:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mRITEBHLwNEt; Mon, 11 Apr 2022 07:50:40 +0000 (UTC)
+	with ESMTP id ex53Yt06wBif; Mon, 11 Apr 2022 09:52:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 96CEA60AA3;
-	Mon, 11 Apr 2022 07:50:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4AF87607B5;
+	Mon, 11 Apr 2022 09:52:41 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 115741BF951
- for <devel@linuxdriverproject.org>; Mon, 11 Apr 2022 07:50:36 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0AD2D1BF44A
+ for <devel@linuxdriverproject.org>; Mon, 11 Apr 2022 09:52:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0E4D060C2D
- for <devel@linuxdriverproject.org>; Mon, 11 Apr 2022 07:50:36 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id EC3B04025F
+ for <devel@linuxdriverproject.org>; Mon, 11 Apr 2022 09:52:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GWW7DPXT7YPs for <devel@linuxdriverproject.org>;
- Mon, 11 Apr 2022 07:50:35 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.nalinoco.com (unknown [91.98.30.213])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D640760AA3
- for <devel@driverdev.osuosl.org>; Mon, 11 Apr 2022 07:50:34 +0000 (UTC)
-DKIM-Signature: v=1; c=relaxed/relaxed;
- h=reply-to:from:subject:date:mime-version:content-type:content-transfer-encoding:message-id;
- d=nalinoco.com; s=mailenable; a=rsa-sha256;
- bh=CmLTBOtJW8tGBH/3gHF8CAN+LRxuqAzs0pYX6gQnzm4=;
- b=dLx/Ygewt2YsPtt/cY3lWu4GEAJhUvBTbHWvOsfrsIE1GkqCJyMadHsfmEy22+xp/
- My9wLFnTMdGEJJMwXye3w==;
-Received: from User ([102.39.167.6]) by nalinoco.com with
- MailEnable ESMTPA; Mon, 11 Apr 2022 12:10:30 +0430
-From: "ANDY&ASSOCIATES"<digi@nalinoco.com>
-Subject: Good Day
-Date: Mon, 11 Apr 2022 00:40:30 -0700
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id POrsNtruUEQJ for <devel@linuxdriverproject.org>;
+ Mon, 11 Apr 2022 09:52:35 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-yb1-xb42.google.com (mail-yb1-xb42.google.com
+ [IPv6:2607:f8b0:4864:20::b42])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2830B4019F
+ for <devel@driverdev.osuosl.org>; Mon, 11 Apr 2022 09:52:35 +0000 (UTC)
+Received: by mail-yb1-xb42.google.com with SMTP id j2so26548801ybu.0
+ for <devel@driverdev.osuosl.org>; Mon, 11 Apr 2022 02:52:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=TC9duoRJD6vnrBRMT8QLTFgrOm1tKmnZ9BKvDqV54bQ=;
+ b=aoVf2KWY3M3FsUyOBc+tW8Jl5gmxA2VJs5FpBd/25nksaV9/1eb9elsGClY9cmcX06
+ 4r+/y2GXexH9BjAL4giObzj/J1G1oodgOj1n8TWWymzjgnwbQwuyVAzIBGNmGf7GAoTM
+ 4z6iI4o9HbO4Ir/aLuCXzj6b9Sym5oE1xkgwjnsE6aRA2JaCIs6RgXEvirSBpCZSDRsb
+ x87J91+7bHpnWI48jT24lAJLpsVnDu/RpcEhtVSDK8hEx8yq2rGe0U/7FJz0Ed08Lqnp
+ mN41IwPYmkVT+vh/6+bf4sQMPiZM+IGVvuXh6vxsI3roWr0B58R9KTMPkasjF/aSOQOd
+ mqKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=TC9duoRJD6vnrBRMT8QLTFgrOm1tKmnZ9BKvDqV54bQ=;
+ b=NBJZD/l2f3SlFWhS9a4Q98UatOKcFZ9kkNN9m7BRc+uiD4VTNaROMtRdOXze4tTa5R
+ Intsqc5UBNegO0tnOxUx8Ag1kIfTGZ44XXPbJgxAzW9nnwQb6xaElA4JuNgLsSN4qOAP
+ sqN5m63Dk7KZmJyyhpSCLfcJwb5c1DXkQSuHV2a0gPWVCpwli/shGuXn1p2UjTBxhlhL
+ +K7w0flrA5gP8H8TBLPV0iKxYhPbx137mnZ1Sv8C/uHsj8xFQmoTM8dp6BCV1UfybxWX
+ xAMlajeLvx3sC72kB+O3RCTQ8xWg6IQRtEA+8MyW9ElkVL+31rZSXHg8Xynj9nGtapjE
+ hFpQ==
+X-Gm-Message-State: AOAM531wocWVMac2BdcJGA2vb/XV4su+5M7LcR8sqiqiQCLD72NuOgYI
+ rqdN3x6VQtl0fJ8eNPKnemXoB4ZboDlHp1Nkr5A=
+X-Google-Smtp-Source: ABdhPJzFkoAXL5PLp4jmNQouxFacT1uCz7z1q6UGmyF7kEmHmjhvLrM7fS/6UUzaHSmGcIRwWjLFNDbSS7bY/Q1RJd0=
+X-Received: by 2002:a25:7256:0:b0:641:5deb:b1a5 with SMTP id
+ n83-20020a257256000000b006415debb1a5mr2633735ybc.246.1649670754034; Mon, 11
+ Apr 2022 02:52:34 -0700 (PDT)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <5CCAB857F767491FBA6C4D4A2884F5FB.MAI@nalinoco.com>
+Received: by 2002:a05:7010:2386:b0:238:a83c:d622 with HTTP; Mon, 11 Apr 2022
+ 02:52:33 -0700 (PDT)
+From: info firm <infofirm22557firm@gmail.com>
+Date: Mon, 11 Apr 2022 11:52:33 +0200
+Message-ID: <CAAAUdCuxCoTdtPcEnrXKHPvFdVqYLv6SYVkUNkk++hicd5+CtA@mail.gmail.com>
+Subject: Attn: reply me back
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,33 +82,18 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: artune4@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Reply-To: michellederoma422@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-R29vZCBEYXksCgoKCkkgYW0gQmFycmlzdGVyIFJvYmVydCBieSBuYW1lLiBJIHdvdWxkIGxpa2Ug
-dG8gaW5mb3JtIHlvdSBvZiBhIGJ1c2luZXNzL2RlYWwgd29ydGggozE1MCwwMDAsMDAwLjAwKE9u
-ZSBIdW5kcmVkIGFuZCBGaWZ0eSBNaWxsaW9uIFBvdW5kcyBTdGVybGluZykgLCB3aGljaCBpcyBl
-cXVpdmFsZW50cyB0byBhYm91dCAkMjAyLDAwMCwwMDAgKFR3byBodW5kcmVkIGFuZCB0d28gbWls
-bGlvbiB1bml0ZWQgc3RhdGVzIGRvbGxhcnMpIHdoaWNoIHdhcyBsZWZ0IGluIGFuIGFjY291bnQg
-YnkgbXkgbGF0ZSBjbGllbnQuIEkgd291bGQgd2FudCB5b3UgdG8gYmUgdGhlIGJlbmVmaWNpYXJ5
-IG9mIHRoZSBmdW5kcyBzbyB0aGF0IHdlIGNhbiBib3RoIHNoYXJlIHRoZSBmdW5kcyBFcXVhbGx5
-LCBpdJJzIHVuZm9ydHVuYXRlIHRoYXQgSSBjYW5ub3QgY2xhaW0gdGhlc2UgZnVuZHMgbXlzZWxm
-IHdpdGhvdXQgYSBuZXV0cmFsIHBlcnNvbiwgYmVjYXVzZSBpdCB3aWxsIGxvb2sgc3VzcGljaW91
-cyBmb3IgbWUgdG8gY2xhaW0gdGhlIGZ1bmRzIGFzIHRoZSBsYXd5ZXIgb2YgdGhlIGRlY2Vhc2Vk
-LCBzbyBmb3IgdGhpcyByZWFzb24gSSBuZWVkIGEgc2luY2VyZSBwZXJzb24gdGhhdCBJIGNhbiBw
-cmVzZW50IHRvIHRoZSBiYW5rIGFzIHRoZSBiZW5lZmljaWFyeSBvZiB0aGUgZnVuZHMsIGJlY2F1
-c2Ugd2hhdGV2ZXIgSSB0ZWxsIHRoZSBiYW5rIGlzIHdoYXQgdGhleSB3aWxsIGJlbGlldmUuIFRy
-dXN0IG1lLCBhcyBJIHdpbGwgbWFrZSB0aGlzIGxlZ2FsLCBzbyB5b3UgZG8gbm90IG5lZWQgdG8g
-ZW50ZXJ0YWluIGFueSBmZWFyIG9yIHBhbmljIGZvciBhbnkgcmVhc29uLgoKCgoKClRoaXMgaXMg
-YW4gb3Bwb3J0dW5pdHkgZm9yIHVzIHRvIGJlY29tZSByaWNoOyBJIGhhdmUgYWxsIHByb29mIHRv
-IHNob3cgeW91IGV2ZXJ5dGhpbmcgYmVmb3JlIHdlIHByb2NlZWQgYWZ0ZXIgeW91IGNvbmZpcm0g
-eW91ciByZWFkaW5lc3MuCgoKCgoKSSB3aWxsIHRlbGwgeW91IG1vcmUgb25jZSB5b3UgZ2V0IGJh
-Y2sgdG8gbWUgYnkgY29uZmlybWluZyB5b3VyIHJlYWRpbmVzcyB0byBwcm9jZWVkIHdpdGggbWUg
-b24gdGhpcyBkZWFsIGJ1dCBJIHdpbGwgcHJvdGVjdCBteSBwZXJzb25hbGl0eSBmb3Igbm93LgoK
-LgoKCgpSb2JlcnQuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
-Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
-cmRldi1kZXZlbAo=
+Greetings, How are you doing. I have emailed you earlier on without
+any response from you. I want you to make use of this $640,000
+donation o restore hope to families and individuals that the pandemic
+wrecked in your area. offer from me to you. Kindly get back to me to
+my official email. for more details: michellederoma422@gmail.com
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
