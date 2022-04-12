@@ -1,70 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2910D4FE407
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Apr 2022 16:42:46 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 935E44FE7C5
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Apr 2022 20:19:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5BB5D83E3B;
-	Tue, 12 Apr 2022 14:42:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 174DC82AF5;
+	Tue, 12 Apr 2022 18:19:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fXAYyC6bbbdz; Tue, 12 Apr 2022 14:42:43 +0000 (UTC)
+	with ESMTP id xfeHEYKVxxwV; Tue, 12 Apr 2022 18:19:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0AEC58328E;
-	Tue, 12 Apr 2022 14:42:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9CA0D82A53;
+	Tue, 12 Apr 2022 18:19:22 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 65AFE1BF30B
- for <devel@linuxdriverproject.org>; Tue, 12 Apr 2022 14:42:40 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CC03E1BF82D
+ for <devel@linuxdriverproject.org>; Tue, 12 Apr 2022 18:19:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5225A410B8
- for <devel@linuxdriverproject.org>; Tue, 12 Apr 2022 14:42:40 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BA3B5610B6
+ for <devel@linuxdriverproject.org>; Tue, 12 Apr 2022 18:19:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=kernel.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NkCL_Hha87mE for <devel@linuxdriverproject.org>;
- Tue, 12 Apr 2022 14:42:39 +0000 (UTC)
+Authentication-Results: smtp3.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=intel.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id J8YnCcPGorFd for <devel@linuxdriverproject.org>;
+ Tue, 12 Apr 2022 18:19:18 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp4.osuosl.org (Postfix) with ESMTPS id F1CD7409F5
- for <devel@driverdev.osuosl.org>; Tue, 12 Apr 2022 14:42:38 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id EF537B81B79;
- Tue, 12 Apr 2022 14:42:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E88B6C385A5;
- Tue, 12 Apr 2022 14:42:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1649774554;
- bh=Q52tCbAaRn1P664NKV7dZwxginIy/el2s/AYgozHef4=;
- h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
- b=ssTA9KpdYm40RCouhGZ+/ajNjpVuu6ytq5iM8LRk9C4kgaH5PH/dWbFO3lMVafwqx
- 5703RBhnTYQ3dzI+nekBH0j7TpqscM58jiZM8BL1ViMM0+JDRA2ybnwzEH7D1Tmv+A
- 8TDTgUm1HC9zD6rWsQeNm9rRtO2gUc+xOl1p+5xQ2VRP2ve+tncf+gMpjkePbwBZgT
- DQOzXwGc6vSNXAC52cmh/zRpo3iMO+zKqtMJvRZnESqdO23it5Mt98PWirJAGIlrrl
- HlhzgzM+bIbdtEjVV0YMFzi/6ZqhcXq68pdid5FaePk8yhwxvIUBzWNxWRg9m96avr
- 0D5sWbWx1z16w==
-From: Kalle Valo <kvalo@kernel.org>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v10 0/1] wfx: get out from the staging area
-References: <20220226092142.10164-1-Jerome.Pouiller@silabs.com>
- <YhojjHGp4EfsTpnG@kroah.com> <87wnhhsr9m.fsf@kernel.org>
- <5830958.DvuYhMxLoT@pc-42> <878rslt975.fsf@tynnyri.adurom.net>
- <20220404232247.01cc6567@kernel.org>
- <20220404232930.05dd49cf@kernel.org> <878rskrod1.fsf@kernel.org>
- <20220405092046.465ff7e5@kernel.org> <875ynmr8qu.fsf@kernel.org>
- <Yk8iiZKFpYNgCbCz@kroah.com>
-Date: Tue, 12 Apr 2022 17:42:29 +0300
-In-Reply-To: <Yk8iiZKFpYNgCbCz@kroah.com> (Greg Kroah-Hartman's message of
- "Thu, 7 Apr 2022 19:42:33 +0200")
-Message-ID: <871qy2nz1m.fsf@kernel.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9569260FAA
+ for <devel@driverdev.osuosl.org>; Tue, 12 Apr 2022 18:19:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1649787558; x=1681323558;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=vySl7Ym5o/xrxY+kAHynXzbHVuWl1KK6ryWr6NNNZUo=;
+ b=RzZIZWJFZS+49Fu4410eEXprD2CPbXpxrfaZfAbwtun4X41/6JzYcttT
+ enkttqAFRWRm3TIgB3HYHs3hX4ahCeqkS8NO7z6FqVe+a7bNTzStIIdq8
+ mSJzB0UVn9T89qlgDObPa+UyPzpL4gm/nkxCx9FUfEd/VW+7eYwGMS3ej
+ HngPREQTcCYyP7onWYsDpwAgTR3LjsTbDk28ZzGXVSjc6yI/WIRlHX3wu
+ xhij7dpKtGnG7WkGyBXi8rNkYfEI9aVtLVGYE+rcuIAyvWF1s/zTiyqok
+ RvyTbN/Mu5FtpUgrsU+3XlPe2Z9aypcLVggoMOYuJIy9b7GqPgARHAACI Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10315"; a="348906862"
+X-IronPort-AV: E=Sophos;i="5.90,254,1643702400"; d="scan'208";a="348906862"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Apr 2022 11:19:17 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,254,1643702400"; d="scan'208";a="590445264"
+Received: from lkp-server02.sh.intel.com (HELO d3fc50ef50de) ([10.239.97.151])
+ by orsmga001.jf.intel.com with ESMTP; 12 Apr 2022 11:19:16 -0700
+Received: from kbuild by d3fc50ef50de with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1neL6h-00033G-QI;
+ Tue, 12 Apr 2022 18:19:15 +0000
+Date: Wed, 13 Apr 2022 02:18:34 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-next] BUILD SUCCESS
+ 908662dc823e5b19eb1efd8c3f2059499e8c8403
+Message-ID: <6255c27a.NPI4eKp93y7PJgLU%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -78,71 +77,196 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Stephen Rothwell <sfr@canb.auug.org.au>,
- netdev@vger.kernel.org, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- "David S . Miller" <davem@davemloft.net>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-+ stephen
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
+branch HEAD: 908662dc823e5b19eb1efd8c3f2059499e8c8403  Merge 5.18-rc2 into staging-next
 
-Greg Kroah-Hartman <gregkh@linuxfoundation.org> writes:
+elapsed time: 2053m
 
-> On Wed, Apr 06, 2022 at 10:06:33AM +0300, Kalle Valo wrote:
->> Jakub Kicinski <kuba@kernel.org> writes:
->> 
->> > On Tue, 05 Apr 2022 10:16:58 +0300 Kalle Valo wrote:
->> >> Sure, that would technically work. But I just think it's cleaner to use
->> >> -rc1 (or later) as the baseline for an immutable branch. If the baseline
->> >> is an arbitrary commit somewhere within merge windows commits, it's more
->> >> work for everyone to verify the branch is suitable.
->> >> 
->> >> Also in general I would also prefer to base -next trees to -rc1 or newer
->> >> to make the bisect cleaner. The less we need to test kernels from the
->> >> merge window (ie. commits after the final release and before -rc1) the
->> >> better.
->> >> 
->> >> But this is just a small wish from me, I fully understand that it might
->> >> be too much changes to your process. Wanted to point out this anyway.
->> >
->> > Forwarded!
->> 
->> Awesome, thank you Jakub!
->> 
->> Greg, I now created an immutable branch for moving wfx from
->> drivers/staging to drivers/net/wireless/silabs:
->> 
->> git://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git
->> wfx-move-out-of-staging
->> 
->> The baseline for this branch is v5.18-rc1. If you think the branch is
->> ok, please pull it to staging-next and let me know. I can then pull the
->> branch to wireless-next and the transition should be complete. And do
->> let me know if there are any problems.
->
-> Looks great to me!  I've pulled it into staging-next now.  And will not
-> take any more patches to the driver (some happened before the merge but
-> git handled the move just fine.)
+configs tested: 163
+configs skipped: 4
 
-Great, thanks Greg! I now merged the immutable branch also to
-wireless-next:
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-79649041edc8 Merge branch 'wfx-move-out-of-staging'
-4a5fb1bbcdf1 wfx: get out from the staging area
+gcc tested configs:
+arm64                               defconfig
+arm64                            allyesconfig
+arm                              allmodconfig
+arm                                 defconfig
+arm                              allyesconfig
+i386                 randconfig-c001-20220411
+powerpc                     ep8248e_defconfig
+microblaze                          defconfig
+arm                            lart_defconfig
+arc                           tb10x_defconfig
+arm                          gemini_defconfig
+sh                               alldefconfig
+arm                       omap2plus_defconfig
+arc                          axs101_defconfig
+arm                      footbridge_defconfig
+powerpc                     tqm8548_defconfig
+sh                          rsk7269_defconfig
+mips                        vocore2_defconfig
+arm                     eseries_pxa_defconfig
+powerpc                      mgcoge_defconfig
+mips                  decstation_64_defconfig
+mips                  maltasmvp_eva_defconfig
+powerpc                      ppc40x_defconfig
+arm                       imx_v6_v7_defconfig
+arm                          pxa3xx_defconfig
+m68k                       m5475evb_defconfig
+sh                 kfr2r09-romimage_defconfig
+xtensa                          iss_defconfig
+arm                         s3c6400_defconfig
+m68k                       bvme6000_defconfig
+sh                          r7780mp_defconfig
+arm                        realview_defconfig
+sh                          sdk7780_defconfig
+parisc64                         alldefconfig
+arm                      jornada720_defconfig
+arc                          axs103_defconfig
+powerpc                     stx_gp3_defconfig
+powerpc                      makalu_defconfig
+i386                                defconfig
+powerpc                 mpc834x_itx_defconfig
+powerpc                      bamboo_defconfig
+powerpc                     mpc83xx_defconfig
+m68k                         apollo_defconfig
+m68k                          sun3x_defconfig
+powerpc                   currituck_defconfig
+sparc                       sparc64_defconfig
+nios2                         3c120_defconfig
+arm                           viper_defconfig
+xtensa                  cadence_csp_defconfig
+sh                          rsk7203_defconfig
+mips                         cobalt_defconfig
+nios2                            alldefconfig
+m68k                            mac_defconfig
+m68k                        mvme16x_defconfig
+sh                          landisk_defconfig
+h8300                               defconfig
+mips                    maltaup_xpa_defconfig
+sh                               j2_defconfig
+m68k                       m5249evb_defconfig
+arm                           u8500_defconfig
+mips                         rt305x_defconfig
+sh                         apsh4a3a_defconfig
+openrisc                         alldefconfig
+arm                  randconfig-c002-20220411
+x86_64               randconfig-c001-20220411
+arm                  randconfig-c002-20220410
+ia64                             allmodconfig
+ia64                             allyesconfig
+ia64                                defconfig
+m68k                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+alpha                               defconfig
+csky                                defconfig
+alpha                            allyesconfig
+nios2                            allyesconfig
+h8300                            allyesconfig
+xtensa                           allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+parisc64                            defconfig
+s390                             allmodconfig
+s390                                defconfig
+parisc                              defconfig
+parisc                           allyesconfig
+s390                             allyesconfig
+i386                              debian-10.3
+i386                             allyesconfig
+i386                   debian-10.3-kselftests
+sparc                               defconfig
+sparc                            allyesconfig
+nios2                               defconfig
+arc                              allyesconfig
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                           allnoconfig
+powerpc                          allmodconfig
+x86_64               randconfig-a016-20220411
+x86_64               randconfig-a012-20220411
+x86_64               randconfig-a013-20220411
+x86_64               randconfig-a014-20220411
+x86_64               randconfig-a015-20220411
+x86_64               randconfig-a011-20220411
+i386                 randconfig-a011-20220411
+i386                 randconfig-a014-20220411
+i386                 randconfig-a012-20220411
+i386                 randconfig-a013-20220411
+i386                 randconfig-a015-20220411
+i386                 randconfig-a016-20220411
+arc                  randconfig-r043-20220411
+riscv                randconfig-r042-20220411
+s390                 randconfig-r044-20220411
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+riscv                    nommu_k210_defconfig
+riscv                             allnoconfig
+riscv                            allmodconfig
+riscv                            allyesconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+x86_64                              defconfig
+x86_64                           allyesconfig
+x86_64                         rhel-8.3-kunit
+x86_64                               rhel-8.3
 
-So from now on wfx patches should be submitted for wireless-next via the
-linux-wireless mailing list, instructions in the wiki link below.
-
-Stephen, I want to warn you in advance about this driver move but
-hopefully everything goes smoothly.
+clang tested configs:
+powerpc              randconfig-c003-20220411
+arm                  randconfig-c002-20220411
+riscv                randconfig-c006-20220411
+x86_64               randconfig-c007-20220411
+mips                 randconfig-c004-20220411
+i386                 randconfig-c001-20220411
+powerpc                       ebony_defconfig
+powerpc                      pmac32_defconfig
+mips                malta_qemu_32r6_defconfig
+powerpc                 mpc8272_ads_defconfig
+powerpc                     akebono_defconfig
+hexagon                             defconfig
+powerpc                     ppa8548_defconfig
+x86_64                           allyesconfig
+arm                       netwinder_defconfig
+powerpc                     powernv_defconfig
+powerpc                 mpc837x_rdb_defconfig
+mips                        workpad_defconfig
+powerpc                   lite5200b_defconfig
+arm                         s3c2410_defconfig
+arm                          collie_defconfig
+arm                           sama7_defconfig
+arm                          pxa168_defconfig
+i386                 randconfig-a004-20220411
+i386                 randconfig-a001-20220411
+i386                 randconfig-a003-20220411
+i386                 randconfig-a005-20220411
+i386                 randconfig-a006-20220411
+i386                 randconfig-a002-20220411
+x86_64               randconfig-a003-20220411
+x86_64               randconfig-a004-20220411
+x86_64               randconfig-a006-20220411
+x86_64               randconfig-a001-20220411
+x86_64               randconfig-a002-20220411
+x86_64               randconfig-a005-20220411
+hexagon              randconfig-r041-20220411
+hexagon              randconfig-r045-20220411
 
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
