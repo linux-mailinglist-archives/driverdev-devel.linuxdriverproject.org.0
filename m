@@ -1,75 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C0E034FF251
-	for <lists+driverdev-devel@lfdr.de>; Wed, 13 Apr 2022 10:42:00 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EC054500620
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Apr 2022 08:31:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 595574013A;
-	Wed, 13 Apr 2022 08:41:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 64D1040C41;
+	Thu, 14 Apr 2022 06:31:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 78x2QpR7KNCO; Wed, 13 Apr 2022 08:41:58 +0000 (UTC)
+	with ESMTP id QXAquXrMN3G7; Thu, 14 Apr 2022 06:31:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EB5C7400BB;
-	Wed, 13 Apr 2022 08:41:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CD6C840155;
+	Thu, 14 Apr 2022 06:31:42 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 58B6A1BF403
- for <devel@linuxdriverproject.org>; Wed, 13 Apr 2022 08:41:55 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A63B1BF310
+ for <devel@linuxdriverproject.org>; Thu, 14 Apr 2022 06:31:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 54E3B60B53
- for <devel@linuxdriverproject.org>; Wed, 13 Apr 2022 08:41:55 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 43FAE4187D
+ for <devel@linuxdriverproject.org>; Thu, 14 Apr 2022 06:31:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ygEKX-qmfAlH for <devel@linuxdriverproject.org>;
- Wed, 13 Apr 2022 08:41:54 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id T_J8DeYK3sru for <devel@linuxdriverproject.org>;
+ Thu, 14 Apr 2022 06:31:38 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lj1-x242.google.com (mail-lj1-x242.google.com
- [IPv6:2a00:1450:4864:20::242])
- by smtp3.osuosl.org (Postfix) with ESMTPS id AA6BB60B47
- for <devel@driverdev.osuosl.org>; Wed, 13 Apr 2022 08:41:54 +0000 (UTC)
-Received: by mail-lj1-x242.google.com with SMTP id m8so1302769ljc.7
- for <devel@driverdev.osuosl.org>; Wed, 13 Apr 2022 01:41:54 -0700 (PDT)
+Received: from mail-il1-x131.google.com (mail-il1-x131.google.com
+ [IPv6:2607:f8b0:4864:20::131])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 12E4B4187C
+ for <devel@driverdev.osuosl.org>; Thu, 14 Apr 2022 06:31:37 +0000 (UTC)
+Received: by mail-il1-x131.google.com with SMTP id t4so2513195ilo.12
+ for <devel@driverdev.osuosl.org>; Wed, 13 Apr 2022 23:31:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:sender:from:date:message-id:subject:to;
- bh=tG5afwSZ4IQ/HV6x5iMGsXBBWSv4p+OkEw+eIV1bnQk=;
- b=UoAslw3StzFYHOhlI9BgNKlunKqD5D5AHxNuQ/XezKJ0KOq69odaSK9/Dm1qyDv4V3
- UKSfB79JgKvfGZG2LnXBhm5pXWrQXRZligIY40s9VZAlxNYIURSFAs6ZD7jGCYqE05hA
- v5GE0EGW63j0mTnNA78ZnMqChSNMN6HhMTDn7KtwA3dziX2K2fwKt5I7Ab/qx30t7Xpj
- 7/rSEAaPQx9OvrMMyJqCWNOG2ibgPhRgI5ajDssq/mdU65WuTMdhO4ou2IOuCp8e5Gnf
- mBumjoJRmjB0vV/pv//P0lKbCfNyZFgQFXk3qTlb/Minywe5Vzhzk9yxyBiwJpZr2rMn
- YJrg==
+ h=mime-version:reply-to:from:date:message-id:subject:to
+ :content-transfer-encoding;
+ bh=GUqymcLPySZNSlU6/ZFefo6svG2KBab4iGBbVgJZobQ=;
+ b=JB00tnLGNs8euDjq4mVYf+b61ZhPFqb2TDHRuZfgQcVkCTAjXD7DwF8psuPB3YTmgZ
+ 5uP3Y/h1llT8aoYebRrFjbSKKXj6rklSNrMuLCWIKE7TlQkaIoYzekEWQpoiJX/yg/hs
+ yabUTs1reg/Ew+Ri4NxFjYDEW/OaIcQyfctLVEBm/K3rFmySS4Qe9jXXekevuFtmue2c
+ rmHpAjHY/7GUXpcWkv0Gn34pFJEEqrXFgfSzJh4Ahu7B96Y/1mvhDh+0WLClsE5IABq/
+ dejLD0grbeY0n7cXRbqPxzc+1+vSE/ZdJJF95DXMR9wxQswgztBXmZMZRET1yr9MKw40
+ SzFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:sender:from:date
- :message-id:subject:to;
- bh=tG5afwSZ4IQ/HV6x5iMGsXBBWSv4p+OkEw+eIV1bnQk=;
- b=owKP00sxCsEHkrbRZIOJj3sSS31WSHlbrOfeHPzaftmgp+M3y4zgpLsiAFestpZY7q
- UOzeDxPNgdgNbp++JNjVkkj1UVg2v9bGkwaQJjOw3grmupsmUrl5k4BS9/qHdz+UbDsw
- +K7Tgo2+Z6p5qMyn7oN16GUgZs4ElvV1QNDxkO/6dYANH3zDhh1HLZkOsY1afEnu+S8g
- xC8hzwGtRqzeW/ChAMhR4S1D5kx6fPlseNM2VthDrg09ws77/jf/DzPn6FbI6NVNbsen
- iSKDWsxMPA/O11YA4w4KLeiJNzOrs4ZYIXMSlTxKy1uEAo0kgqpXEV8stlA3C3YRZMey
- 1gVA==
-X-Gm-Message-State: AOAM533tFH6AMsgWvCYgHPClQlmQaBmUMcUa5YRdNlNFdb13Ks2+/3Qg
- 5wTsT2I/SxBUApVb8Fyt2fbyp8/kVj/XXU+AmME=
-X-Google-Smtp-Source: ABdhPJwb3gqg9DDvyNADa4UfkkJRImAv2KkhC8PAIIV3wURgLYqwlDEik8v/og7T0PLevU33opXw8WgYh9Z1rPwPuks=
-X-Received: by 2002:a2e:8182:0:b0:24b:69e5:8dc9 with SMTP id
- e2-20020a2e8182000000b0024b69e58dc9mr6038323ljg.27.1649839312565; Wed, 13 Apr
- 2022 01:41:52 -0700 (PDT)
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to:content-transfer-encoding;
+ bh=GUqymcLPySZNSlU6/ZFefo6svG2KBab4iGBbVgJZobQ=;
+ b=kD4/fxzVMMEpPFghuc0kFNRfUtTWevBC634RDm2GY4jBJTvyBfd7GZwhqdhTh2CEAY
+ hmEUiiA99eli6r8rrQz0CvsW+jcN2q9vGmMFnk1djk6gmAF3pwBXRpZxhr3Z3PYnHLp0
+ 44frS4TL4OwUnh/JH/llGN3rau539u1qWvb8e/3VYoLVdmTiTTb/eKAFwYK6PJwmFPRm
+ tK/UdgXZZbfZnklXvHV6TAmVio/IfnOjWsxEVPonJ+GQvFidppu+B6N7DIuFSI0nehY7
+ 5S7PNW1UZs3okwbagPib6ZSHZF2K9o4Tgx7ixzeMTn4l85xjaibokz5ejOPKRulWLx+h
+ motA==
+X-Gm-Message-State: AOAM533DPc/V3VKNbbOHHOfvbrOQbC6r1aluRAv5iS7zuRwzp/JTCew/
+ fhuCN4MJUTMkCOhsvRV/2d3X5o+XlHLoMFg2Dpo=
+X-Google-Smtp-Source: ABdhPJwZbd/64xEqRamTHaNiPR0GH3iOecsq6SmIvvT5Kj6u9/lakBkcnhDb8UrkDPtdEzebUtPqg4SR20NYClOMWBM=
+X-Received: by 2002:a05:6e02:1486:b0:2cb:cdff:4c12 with SMTP id
+ n6-20020a056e02148600b002cbcdff4c12mr474580ilk.319.1649917897041; Wed, 13 Apr
+ 2022 23:31:37 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:aa6:c264:0:b0:19a:d3c3:58b9 with HTTP; Wed, 13 Apr 2022
- 01:41:52 -0700 (PDT)
-From: "Mrs.Alice Karim" <mrsalicekarim022@gmail.com>
-Date: Wed, 13 Apr 2022 01:41:52 -0700
-X-Google-Sender-Auth: C_fZQJRfoN1jzYNltxcYt8XVVH8
-Message-ID: <CAK16M2RmVikQJqefvRcmoNAnuWPR1n8iss6S4giS8_h3SdC13A@mail.gmail.com>
-Subject: Hello Dear
+Received: by 2002:a05:6602:807:0:0:0:0 with HTTP; Wed, 13 Apr 2022 23:31:36
+ -0700 (PDT)
+From: post office <poffice455@gmail.com>
+Date: Thu, 14 Apr 2022 06:31:36 +0000
+Message-ID: <CAC0X_-UpyqH5onOeLTKXcFQg_aYbkxHMnOGiuouxDKpKGEVdpQ@mail.gmail.com>
+Subject: =?UTF-8?B?16rXqdeV157XqiDXlNec15E=?=
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -83,29 +83,107 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mrsalicekarim22@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: www.europeaninvestmentbankuk@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Compliment Of The Season.
-
-I am Mrs.Alice Karim. A banker by professional, if you were marked
-safe from the covid-19
-epidemic, my prayers with you. i wish to offer you a business deal
-worth $15.5 million  dollars, if you are interested  and willing then contact me
-privately  through my Email:(mrsalicekarim22@gmail.com)
-
-Why I choose you in this humanitarian work is a divine direction.
-
-Upon receipt of your reply; I will give you full details
-on how the business  will be executed.
-
-I am waiting for your reply.
-Best regards,
-Mrs.Alice Karim.
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+15TXp9eo158g15TXnteV16DXmdeY15DXqNeZ16og15TXkdeZ16DXnNeQ15XXnteZ16ogKEhRMSkN
+CjcwMCAxOXRoIFN0cmVldCwgTi5XLixXYXNoaW5ndG9uLCBELkMuIDIwNDMxLg0K16fXqNefINee
+15XXkteo15zXqiDXnNeQINeg16rXkdeiDQpSRUY6LVhWR05OODIwMjINCg0K16fXmdep15XXqCDX
+lNeU15LXqNec15Qg16nXnNeZOyBodHRwczogLy8gd3d3LiBsb3R0ZXJ5Y29ybmVyLmNvbS9tby9z
+aG93LW1lLSDCoGNhc2gvMjAyMA0K157Xodek16gg157XoNem15c7IDUtNi0xNC0yOS0zNQ0KDQoN
+CteR16LXnCDXk9eV15Ai15wg15nXp9eoINep15wg15TXp9eo158sDQoNCg0K15bXkNeqINei15wg
+157XoNeqINec15nXmdeT16Ig15DXldeq15og16LXnCDXnteZ15PXoiDXl9ep15XXkSDXnteQ15XX
+kyDXkNep16gg15nXoteW15XXqCDXnteQ15XXkyDXnNek15PXldeqINeQ15XXqteaINee15vXnA0K
+15TXp9ep15nXmdedINep15fXldeV15nXqiDXkden15HXnNeqINeU16rXqdec15XXnSDXqdeQ15fX
+qNeZINeW15Qg157Xm9eR16gsINei16fXkSDXk9eo15nXqdeUINee15XXkteW157XqiDXnNeb16HX
+oyDXntee15og15TXnw0K16LXnCDXmdeT15kg16TXp9eZ15PXmSDXlNeR16DXpyDXlNee15XXqdeX
+16rXmdedINeV15TXnyDXnteX15HXqNeV16og15TXqdec15nXl9eV15nXldeqINec15DXl9eoINep
+15TXp9eo158g16nXnNeaINeg15XXqteo15QNCtec15zXkCDXqtep15zXldedLg0KDQrXkNeg15kg
+15LXkdeo16og16fXqNeZ16HXmNec15nXoNeUINeSJ9eV16jXkifXmdeR15QsINek16fXmdeT15Qg
+15HXotec16og157Xotee15Mg15LXkdeV15Qg16nXnCDXp9eo158g15TXnteY15HXog0K15TXkdeZ
+16DXnNeQ15XXnteZ16ogKElNRikuINeQ15XXnNeZINeZ16LXoNeZ15nXnyDXkNeV16rXmiDXnNeT
+16LXqiDXqdeU15LXmdei15Ug15zXntep16jXk9eg15Ug15PXmdeV15XXl9eZ150g15HXm9ecINeb
+15oNCteU16jXkdeUINeU16rXm9eq15HXldeZ15XXqiDXotecINeU15DXldek158g15TXnNeQINek
+16nXldeYINep15HXlSDXkNeg16nXmdedINeb157XldeaINee15jXldek15zXmdedINeR15HXoNen
+15nXnSDXqdeV16DXmdedLg0K15zXkNeX16gg15TXl9en15nXqNeUINep15zXoNeVLCDXkteZ15zX
+mdeg15Ug16nXm9eq15XXkdeqINeU15PXldeQ16gg15TXkNec16fXmNeo15XXoNeZINep15zXmiDX
+lNeZ15nXqteUINeQ15fXkyDXlNeW15XXm9eZ150NCteU157XkNeV16nXqNeZ150g15HXnteR15fX
+qCDXlNec15XXmNeVINep15wg157XlSDXkdep16DXqiAyMDIwLCDXkNeR15wg15HXktec15wg15vX
+nteUINeR16DXp9eQ15nXnSDXnteV16nXl9eq15nXnSDXlNedDQrXnteg16HXmdedINec15TXpNeg
+15XXqiDXkNeqINeU15vXodek15nXnSDXqdec15og15zXl9ep15HXldefINeU16TXqNeY15kg16nX
+nNeU150uDQoNCg0K15vXnCDXlNei16jXnteV16DXmdeqINeU157Xntep15zXqteZ16og15XXlNec
+15Ag157Xntep15zXqteZ16osINeQ16jXkteV16DXmdedINec15Ag157Xntep15zXqteZ15nXnSwg
+15fXkdeo15XXqiDXpNeZ16DXoNeh15nXnSwNCteR16DXp9eZ150sINeX15HXqNeV16og15DXkdeY
+15fXlCDXldeX15HXqNeV16og16nXnNeZ15fXldeZ15XXqiDXqdeU15nXlSDXotee15og15HXp9ep
+16gg15zXkNeX16jXldeg15Qg16fXmdeR15zXlSDXlNeV16jXkNeUDQrXnNeh15LXqiDXnteU16LX
+oden15Qg16nXnNeaINeV15TXldee15zXpSDXnNeaINec15Ag15zXlNeS15nXkSDXkNec15nXlNed
+INeZ15XXqteoINee15DXli4g16fXqNefINeU157XmNeR16INCteU15HXmdeg15zXkNeV157Xmdeq
+IChJTUYpINeU15nXkCDXm9ei16og15DXl9eo15DXmdeqINeZ16nXmdeo15XXqiDXotecINeU16rX
+qdec15XXnSDXqdec15osINep16rXldeb15wg15zXp9eR15wg15DXqg0K15TXp9eo158g16nXnNea
+INeR15fXqdeR15XXnyDXlNeR16DXpyDXqdec15og15HXkNee16bXoteV16og15HXoNenINeU15TX
+qden16LXldeqINeU15DXmdeo15XXpNeZLg0KDQoNCtep157XmiDXlNeV16TXmdeiINeR16jXqdeZ
+157XqiDXnteV16LXk9eZINeU16rXqdec15XXnteZ150g16nXnNeg15Ug16nXnCDXnteV15jXkdeZ
+150g16nXmden15HXnNeVINeQ16og15vXodek15kg15TXlNeS16jXnNeUDQrXqdec15TXnSDXkdeq
+16nXnNeV150g15HXqNeR16LXldefINeU16jXkNep15XXnyDXqdecINep16DXqiAyMDIyINee15vX
+mdeV15XXnyDXqdeQ16DXlSDXntei15HXmdeo15nXnSDXm9eh16TXmdedINeo16cNCtek16LXnteZ
+15nXnSDXkdep16DXlCDXkdeU16rXkNedINec16rXp9eg15XXqiDXlNeR16DXp9eQ15XXqiDXqdec
+16DXlS4g15DXoNeVINee16rXoNem15zXmdedINei15wg15TXoteZ15vXldeRINeR16rXqdec15XX
+nQ0K16nXnNeaINeV15HXkden16nXlCDXlNek16HXpyDXnNeq16fXqdeoINei150g15vXnCDXntep
+16jXkyDXm9ei16og15XXqdeZ157XlSDXnNeRINec16rXqdec15XXnSDXlNee16nXqNeTINep15zX
+oNeVINeR15TXqteQ150uDQoNCtei15vXqdeZ15Ug15TXqtep15zXldedINeU15fXk9epINep15zX
+miwg157XoScg15DXmdep15XXqCDXlNeQ15XXnteUINeU157XkNeV15fXk9eqOyBVTjU2ODVQLCDX
+ntehJyDXnteQ15XXqdeoDQrXkdeR15nXqiDXlNec15HXnzogV0g0NENWLCDXntehJyDXkNeh157X
+m9eq15AtMzU0NjAwMjEsINee16EnINeU16fXpteQ15Q6IDY3NDYzMiDXntehJyDXodeZ16HXnteU
+Og0KMzM5MzMxLCDXnteh16TXqCDXp9eV15MgUElOOiA1NTY3NCDXldeq16LXldeT16og15TXlNem
+15jXmdeZ16DXldeqINep15zXmiDXntehJyDXqtep15zXldedOiAxMDMsINen15XXkw0K16TXldeo
+16HXnTogMDc2Mzsg157XoScg15DXmdep15XXqCDXmNec16fXoSDXnteZ15nXk9eZIChJTUYpOiAt
+MTExNDQzMzsg157Xodek16gg16fXldeTINeh15XXk9eZOg0KWFhUTjAxMy4g16fXqNefINeU15nX
+qNeV16nXlCDXqdec15og15HXqtep15zXldedINeX15zXpyDXlNeZ15AgNzUwLDAwMC4wMCDXk9eV
+15zXqCDXkNeo15Qi15EsINec15DXl9eoDQrXqden15nXkdec16og15DXqiDXlNeq16nXnNeV157X
+mdedINeU15fXmdeV16DXmdeZ150g15TXnNec15UuINee16HXpNeo15nXnSDXnteg16bXl9eZ1507
+IDUtNi0xNC0yOS0zNSwg16rXkNeo15nXmg0K15bXm9eZ15nXlDsgNSDXkdeQ15XXp9eY15XXkdeo
+IDIwMjAsINeQ16rXlCDXmdeb15XXnCDXktedINec15DXqdeoINeQ16og16fXqNefINeU15bXm9eZ
+15nXlCDXqdec15og15PXqNeaINeU16fXmdep15XXqA0K15TXlteUINec15TXkteo15zXqiDXnteV
+OyBodHRwczovL3d3dy5sb3R0ZXJ5Y29ybmVyLmNvbS9tby9zaG93LW1lLWNhc2gvMjAyMCDCoNec
+15vXnw0K15DXqteUINee15XXodee15og15vXoteqINec16fXkdecINeV15zXkNep16gg15DXqiDX
+lNeq16nXnNeV150g16nXnNeaINei150g15DXlteV16gg15DXpNeo15nXp9eUINep15wg16fXqNef
+INeU157XmNeR16INCteU15HXmdeg15zXkNeV157XmdeqIChJTUYpINeR15DXldek158g157XmdeZ
+15PXmSDXqteV15ogMTY4INeU16nXoteV16og15TXp9eo15XXkdeV16ouINeQ16DXlSDXnteR15jX
+mdeX15nXnSDXnNeaDQrXqdeU16rXqdec15XXnSDXqdec15og15nXkteZ16Ig15DXnNeZ15og15vX
+nCDXoteV15Mg16rXntec15Ag15DXl9eoINeU15TXoNeX15nXldeqINeV15TXlNeg15fXmdeV16og
+16nXnNeZLiDXlNeX15zXmNeg15Ug15zXqteqDQrXnNeaINen15XXkywg15TXp9eV15Mg15TXldeQ
+OiA2MDEuINeR15HXp9ep15QsINeR15vXnCDXpNei150g16nXqten15HXnCDXnteZ15nXnCDXoted
+INeU16nXnSDXkteR16jXqiDXp9eo15nXodeY15zXmdeg15QNCteSJ9eV16jXkifXmdeR15QsINeR
+15PXldenINeQ150g15nXqSDXp9eV15MgKDYwMSkg15DXnSDXlNen15XXkyDXnNeQINeb16rXldeR
+LCDXoNeQINec157Xl9eV16cg15DXqiDXlNeU15XXk9ei15QNCtee15TXp9eV16TXodeUINep15zX
+miENCg0K157Xldee15zXpSDXnNeaINeR15bXkNeqINec15Ag15zXlNei15HXmdeoINeq16nXnNeV
+150g16DXldeh16Mg15zXnteV16HXk9eV16og15vXnNep15TXnSDXkdeZ15fXoSDXnNei16HXp9eU
+INep15zXmiwNCtee15vXmdeV15XXnyDXqdeU15vXodejINep15zXmiDXmdeV16LXkdeoINeQ15zX
+mdeaINeZ16nXmdeo15XXqiDXnteU157Xp9eV16gg16nXnNeg15UuINeU16rXqdec15XXnSDXlNeZ
+15fXmdeTINeU15PXqNeV16kNCteR15HXoNenINeU15XXkCDXqNenINei157XnNeqINeq16LXldeT
+16og15DXmdep15XXqCDXp9eo158g15TXnteY15HXoiDXlNeR15nXoNec15DXldee15nXqiwg15vX
+miDXqdeU15HXoNenINeZ15XXm9ecINec16nXl9eo16gNCteQ16og16HXmiDXlNeb16HXoyDXqdec
+15og15HXl9ep15HXldefINeU15HXoNenINep15zXmi4NCg0KDQrXkNeg15kg157Xp9eV15XXlCDX
+qdeW15Qg15HXqNeV16guINeb15wg16TXoteV15zXlCDXkdeg15nXkteV15Mg15zXlNeV16jXkNeU
+INeW15Ug15TXmdeQINei15wg15DXl9eo15nXldeq15og15HXnNeR15MuDQrXlteb15XXqCDXm9eZ
+INeQ16rXlCDXqNenINem16jXmdeaINec16nXnNedINeQ16og16LXntec16og15DXmdep15XXqCDX
+p9eo158g15TXnteY15HXoiDXkdeR16DXpyDXldec15zXkCDXotee15zXlCDXoNeV16HXpNeqLg0K
+DQoNCteb15HXqCDXlNek16fXk9eg15Ug15DXqiDXodeaINeU15vXodek15nXnSDXqdec15og15HX
+kdeg16cg15TXkNeZ16jXldek15kg15TXntep15zXnSDXlNeg15vXldefLCDXkNeg15kg16jXldem
+15Qg16nXqteZ16bXldeoDQrXp9ep16gg16LXnSDXlNeQ15nXqdeV16gg15vXk9eZINec16fXkdec
+INeQ16og16HXmiDXlNen16jXnyDXqdec15og15HXntem15Eg16rXp9eZ158g15zXnNeQINei15nX
+m9eV15HXmdedINeg15XXodek15nXnSDXkNeVDQrXl9eZ15XXkdeZ150g16DXldeh16TXmdedLg0K
+DQrXlNep15Eg15zXk9eV15Ai15wg15bXlCDXqdecINeU15HXoNenINeR15vXqteV15HXqiAod3d3
+LmV1cm9wZWFuaW52ZXN0bWVudGJhbmt1a0BnbWFpbC5jb20pDQrXlNen16jXnyDXqdec15og16rX
+qdeV15fXqNeoINec15fXqdeR15XXnyDXlNeR16DXpyDXqdec15og15HXqNeS16Ig16nXqteZ16bX
+ldeoINen16nXqCDXotedINeU15HXoNenLg0KDQrXqdedINee16DXlNecINeU15HXoNenINec15nX
+pteZ16jXqiDXp9ep16g7INeTIteoINeQ15PXnteV16DXkyDXkteo15LXldeo15kNCg0K15PXldeQ
+ItecINeR16DXpzrCoHd3dy5ldXJvcGVhbmludmVzdG1lbnRiYW5rdWtAZ21haWwuY29tDQoNCteR
+15vXkdeV15Mg16jXkSwg15LXkdeo16ouINen16jXmdeh15jXnNeZ16DXlCDXkifXldeo15In15nX
+kdeULCAoSS5NLkYpKDYwMSkg16TXp9eZ15PXlA0KX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVy
+cHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxt
+YW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
