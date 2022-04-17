@@ -1,63 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D3BA504712
-	for <lists+driverdev-devel@lfdr.de>; Sun, 17 Apr 2022 10:24:17 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C4DB5047B7
+	for <lists+driverdev-devel@lfdr.de>; Sun, 17 Apr 2022 14:22:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5ED8483E73;
-	Sun, 17 Apr 2022 08:24:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A2A3E8426C;
+	Sun, 17 Apr 2022 12:22:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bcFfcCm5r00G; Sun, 17 Apr 2022 08:24:14 +0000 (UTC)
+	with ESMTP id nv3WyrvzukOS; Sun, 17 Apr 2022 12:22:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F2A4683E42;
-	Sun, 17 Apr 2022 08:24:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1E9378425F;
+	Sun, 17 Apr 2022 12:22:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 992DB1BF286
- for <devel@linuxdriverproject.org>; Sun, 17 Apr 2022 08:24:10 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C96301BF3C2
+ for <devel@linuxdriverproject.org>; Sun, 17 Apr 2022 12:22:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 838AB61075
- for <devel@linuxdriverproject.org>; Sun, 17 Apr 2022 08:24:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B0D698426C
+ for <devel@linuxdriverproject.org>; Sun, 17 Apr 2022 12:22:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=panentour.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Juda9NeDHtD7 for <devel@linuxdriverproject.org>;
- Sun, 17 Apr 2022 08:24:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4yjyDL0SpDaM for <devel@linuxdriverproject.org>;
+ Sun, 17 Apr 2022 12:22:15 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.panentour.com (mail.panentour.com [202.129.224.121])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E5C5A61004
- for <devel@driverdev.osuosl.org>; Sun, 17 Apr 2022 08:24:09 +0000 (UTC)
-Received: from mail.panentour.com (localhost [127.0.0.1])
- by mail.panentour.com (Postfix) with ESMTPS id 41FB0D347D2;
- Sun, 17 Apr 2022 11:46:28 +0700 (WIB)
-Received: from mail.panentour.com (localhost [127.0.0.1])
- by mail.panentour.com (Postfix) with ESMTPS id 6B535D39BD6;
- Sun, 17 Apr 2022 09:55:09 +0700 (WIB)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mail.panentour.com 6B535D39BD6
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=panentour.com;
- s=panentour; t=1650164109;
- bh=cMvQV0xBnJQDAdvEsohZJpJ0CzK7aUaaWSMtF0Pvx84=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=b5/fEUA7+MaUmLVIASASHVvLHwuE1pQC6nwkJpBjNPpBDlRqoy7gjdLJwNrXr0CTp
- eB+JPNV3mroq5nYS/E3DEsIyb6G208f1Yk5kCNtpg5rtwLwDlXsYpiu7lDnIlViE01
- bDQZy/QRniddByF22CPJAVh2kXVHxuG9B1dZk/Io=
-Received: from infog.dvo50tsn0xrupjea1rdh5trxpa.lx.internal.cloudapp.net
- (unknown [40.115.201.133])
- by mail.panentour.com (Postfix) with ESMTPSA id 25382D39BCA;
- Sun, 17 Apr 2022 09:55:04 +0700 (WIB)
+Received: from zimbra.iwp.com.pl (mailgate.iwp.com.pl [77.252.126.210])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 038068425F
+ for <devel@driverdev.osuosl.org>; Sun, 17 Apr 2022 12:22:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra.iwp.com.pl (Postfix) with ESMTP id 52B6B257B56A;
+ Sun, 17 Apr 2022 09:37:04 +0200 (CEST)
+Received: from zimbra.iwp.com.pl ([127.0.0.1])
+ by localhost (zimbra.iwp.com.pl [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id J1Yhpnf5kLjZ; Sun, 17 Apr 2022 09:37:03 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra.iwp.com.pl (Postfix) with ESMTP id 20FA4241565E;
+ Sun, 17 Apr 2022 06:59:30 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at iwp.com.pl
+Received: from zimbra.iwp.com.pl ([127.0.0.1])
+ by localhost (zimbra.iwp.com.pl [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id ciGeag__lQqh; Sun, 17 Apr 2022 06:59:29 +0200 (CEST)
+Received: from SRV-SZD-01.kamara.local (gateway [192.168.1.1])
+ by zimbra.iwp.com.pl (Postfix) with ESMTP id 1F052244DA7E;
+ Sun, 17 Apr 2022 05:16:32 +0200 (CEST)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Funds
-To: Recipients <neni@panentour.com>
-From: neni@panentour.com
-Date: Sun, 17 Apr 2022 03:18:18 +0000
-Message-Id: <20220417025504.25382D39BCA@mail.panentour.com>
+Subject: Executive Board. International Monetary Fund (IMF)
+To: Recipients <imf@info.org>
+From: "Mrs. Kristalina Georgieva" <imf@info.org>
+Date: Sun, 17 Apr 2022 05:21:54 +0200
+Message-Id: <20220417031632.1F052244DA7E@zimbra.iwp.com.pl>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,22 +66,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reem2018@daum.net
+Reply-To: www.imf_kristalinaeorgieva603@aliyun.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Reem Hashimy, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020 Committee which was postponed from 2020 to October 2021 to March 2022 because of the Covid-19 pandemic.
+I am Ms. Kristalina Georgieva, Executive Director of the International Monetary Fund (IMF), a senior official of the International Monetary Fund (IMF). You might be interested to know that through so much correspondence, reports have reached our office of the uncomfortable way in which people like you are being treated by various banks and courier companies / diplomats across Europe to Africa and Asia / London UK. We decided to put an end to this, and that's why I was hired to handle your transaction here in the United States. All state and non-state prostate, NGOs, financial companies, banks, security companies, and courier companies that have been in contact with you recently have been instructed to withdraw from your transaction and you have been advised NOT to respond to them since the International The Monetary Fund (IMF) is now directly responsible for your payment.
 
-I am writing to you to manage the funds I received as financial gratification from various foreign companies I assisted to participate in the event that is taking place as we speak. The amount is $44,762,906.00 United States dollars. But I can not personally manage the fund in my country because of the sensitive nature of my office and the certain restriction on married Muslim women.
 
-For this reason, an agreement was reached with the various firms to direct the financial gifts to an account with a financial institution where it will be possible for me to instruct the transfer of the fund to a third party for investment purpose; which is the reason I am contacting you to receive the fund and manage it as my investment partner. Note that the fund is NOT connected to any criminal or terrorist activity.
 
-On your indication of interest with your information; I will instruct the financial institution to process the fund to your country for investment purposes.
+Your name is on our payment schedule list of beneficiaries who will receive their funds in this first quarterly payment of the year, as we only transfer money twice a year, as per our banking regulations. We apologize for the delay in your payment and please stop communicating with an office now and pay attention to our office payment accordingly. Now your new payment, United Nations Authorization Number; UN5685P, White House Approved No .: WH44CV, Reference No. -35460021, Assignment No .: 674632, Password No .: 339331, PIN Code No .: 55674 and Your Certificate of Performance Payment No .: 103, Approved Code No .: 0763; Immediate (IMF) Telex Acknowledgment Number: -1114433; Secret code number: XXTN013.
 
-Regards.
-Reem Hashimy.
+
+
+Confirm the information below again
+
+
+
+1. Full name:
+2nd address:
+3. Nationality:
+4. Age: Date of birth:
+5. Profession:
+6. Telephone: Mobile / Mobile: .................. Fax: ..
+7. Country of origin:
+8. Copy of your identity card:
+
+
+
+Your installment inheritance fund is $ 10 million united state dollars. After receiving these important payment numbers, you are now entitled to receive and confirm your payment with the International Monetary Fund (IMF) United States Region immediately within the next 168 hours. We assure you that your payment will reach you as long as you follow my instructions and directions. We have decided to give you a CODE, THE CODE IS: 603. Every time you receive an email with the name of Ms. Kristalina Georgieva, please check that the CODE (603) is there. If the code is not written, please delete the message from your box!
+
+
+
+It is hereby recommended that you DO NOT send any further payments to institutions in relation to your transaction as your funds will be sent to you directly from our source. I hope that's clear. Any action contrary to this instruction is at your own risk. Please reply to this email immediately (www.imf_kristalinaeorgieva603@aliyun.com) and we will provide you with further details on the release of your fund.
+
+
+
+Congratulations !!!
+
+
+
+
+Ms. Kristalina Georgieva,
+Executive Board. International Monetary Fund (IMF)
+IMF Headquarters Washington, D.C. 20431, USA
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
