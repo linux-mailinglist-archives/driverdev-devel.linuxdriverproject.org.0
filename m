@@ -1,51 +1,42 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E7EC50805D
-	for <lists+driverdev-devel@lfdr.de>; Wed, 20 Apr 2022 07:02:20 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 486075084ED
+	for <lists+driverdev-devel@lfdr.de>; Wed, 20 Apr 2022 11:25:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5733383EB8;
-	Wed, 20 Apr 2022 05:02:18 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B6D9F410E3;
+	Wed, 20 Apr 2022 09:25:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9LJDeVA-QibG; Wed, 20 Apr 2022 05:02:17 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id HgobD1v4gkhS; Wed, 20 Apr 2022 09:25:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1ADF483E8C;
-	Wed, 20 Apr 2022 05:02:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6CCCA40B85;
+	Wed, 20 Apr 2022 09:25:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B43071BF5B5
- for <devel@linuxdriverproject.org>; Wed, 20 Apr 2022 05:02:14 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6CCE11BF29D
+ for <devel@linuxdriverproject.org>; Wed, 20 Apr 2022 09:25:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9EF3941942
- for <devel@linuxdriverproject.org>; Wed, 20 Apr 2022 05:02:14 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5A81B8378C
+ for <devel@linuxdriverproject.org>; Wed, 20 Apr 2022 09:25:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 080QOLF7jP3m for <devel@linuxdriverproject.org>;
- Wed, 20 Apr 2022 05:02:12 +0000 (UTC)
-X-Greylist: delayed 02:03:32 by SQLgrey-1.8.0
-Received: from mail.acoustics.asn.au (unknown
- [IPv6:2404:9400:2:0:216:3eff:fee0:5c2a])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E95874193F
- for <devel@driverdev.osuosl.org>; Wed, 20 Apr 2022 05:02:11 +0000 (UTC)
-Received: by mail.acoustics.asn.au (Postfix, from userid 1002)
- id A577A2A81D8; Wed, 20 Apr 2022 12:13:35 +1000 (AEST)
-Received: from User (58-233-24-185.static.servebyte.com [185.24.233.58])
- by mail.acoustics.asn.au (Postfix) with ESMTPA id 444CB2C08C5;
- Wed, 20 Apr 2022 11:30:46 +1000 (AEST)
-From: "Mazin Hussein"<info@emiliaceramica.com>
-Subject: Can you supply your Products   
-Date: Wed, 20 Apr 2022 02:31:00 -0700
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id h838gCqPsFKf for <devel@linuxdriverproject.org>;
+ Wed, 20 Apr 2022 09:25:30 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.com (200-98-203-162.clouduol.com.br [200.98.203.162])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3407883365
+ for <devel@driverdev.osuosl.org>; Wed, 20 Apr 2022 09:25:29 +0000 (UTC)
+From: payments@mail.com
+To: devel@driverdev.osuosl.org
+Subject: Re: $$$10.5M USD OF YOUR FUNDS NOW FINALLY READY.
+Date: 20 Apr 2022 05:25:28 -0400
+Message-ID: <20220420052528.25AFEB0C7C348C7F@mail.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220420021819.A577A2A81D8@mail.acoustics.asn.au>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,26 +49,54 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mazinhussein747@gmail.com
+Reply-To: worldsettlementcenter@outlook.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Supplier,
+Reply To..Mr. Gabby Lee
+Email: worldsettlementcenter@outlook.com
 
-I am contacting you to take part in the ongoing rebuilding of our great
-country Iraq, after many years of conflicts by supplying your products
-here in Iraq.
+WORLD BANK COMPENSATION UNIT
+OUR REF: WB/STF01861/HQ
+RELEASE CODE NO. 074888
+AMOUNT: $10.5m USD
 
-We are determined to purchase your products in large quantities. A
-consideration also is that your quotation must be CIF Port of Umm Qasr.
+Attention: Sir/Ma,
 
-Get back to me with your products name and prices.
+Please be informed that your long awaited compensation funds 
+payment regarding LOTTERY WINNING, COVID-19 RELIEF FUNDS AND 
+UNPAID CONTRACTORS that have not been paid for many years into 
+decades have now been approved through our compensation program. 
+The compensation amount is 10.5m USD (Ten Million,Five Hundred 
+Thousand US D0llars only). But today a middle-aged lady by the 
+name Judy Alexander forwarded her banking information claiming to 
+represent you that you are now late/dead. This is to confirm from 
+your email reply if you are truly dead or alive?? And kindly 
+reconfirm your information once again for further procedure.
 
-Regards,
 
-Mazin Hussein
+1. Name..................................
+2. Age.....................................
+3. Country...............................
+4. Mobile Number........................
+5. Alternative/Other Email.......................
+
+
+Please take note that you must pay $250 for official for proper 
+clearance and documentation before we can proceed. If you choose 
+otherwise not to pay do not reply to this email notification. We 
+await your urgent response within the next 24 hours in order to 
+proceed.
+
+Yours faithfully,
+
+Gabby Lee
+The International Payment
+and Settlement Center.
+The World Bank Office H-Unit
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
