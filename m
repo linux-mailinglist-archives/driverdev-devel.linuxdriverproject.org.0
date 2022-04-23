@@ -1,77 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 926E850BDA8
-	for <lists+driverdev-devel@lfdr.de>; Fri, 22 Apr 2022 18:55:02 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 61CC150C87A
+	for <lists+driverdev-devel@lfdr.de>; Sat, 23 Apr 2022 11:04:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E73FA826A8;
-	Fri, 22 Apr 2022 16:55:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C78FD81456;
+	Sat, 23 Apr 2022 09:04:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C1vyHPxVwpIx; Fri, 22 Apr 2022 16:55:00 +0000 (UTC)
+	with ESMTP id XS7Z3HWTkoEd; Sat, 23 Apr 2022 09:04:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 76700826D5;
-	Fri, 22 Apr 2022 16:54:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 855C48144C;
+	Sat, 23 Apr 2022 09:04:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4F9E91BF842
- for <devel@linuxdriverproject.org>; Fri, 22 Apr 2022 16:54:56 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 747F91BF956
+ for <devel@linuxdriverproject.org>; Sat, 23 Apr 2022 09:04:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3D277606E7
- for <devel@linuxdriverproject.org>; Fri, 22 Apr 2022 16:54:56 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5BD8040520
+ for <devel@linuxdriverproject.org>; Sat, 23 Apr 2022 09:04:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp3.osuosl.org (amavisd-new);
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=intel.com
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rvTzp5MJDe6C for <devel@linuxdriverproject.org>;
- Fri, 22 Apr 2022 16:54:55 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xXBo2i4MQ-VH for <devel@linuxdriverproject.org>;
+ Sat, 23 Apr 2022 09:04:15 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2626460674
- for <devel@linuxdriverproject.org>; Fri, 22 Apr 2022 16:54:55 +0000 (UTC)
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6BAF240469
+ for <devel@driverdev.osuosl.org>; Sat, 23 Apr 2022 09:04:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1650646495; x=1682182495;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=yZNBnSuynarGRjzVvsGb3f57oeFuePokaCkVYDt1K1s=;
- b=MnHVpwJ5GvgUqs6pp+hibIPc2bu0zUem/PAK7i448yVeAO5GTpRV3pzt
- fvYIMR/o0lM+UC8Q+jGZioddlGtyTusSWun9VCBYJ9gZT8Ai1Kv5YsMBV
- l75aqsi54X62kykaSoo3Ee+ydwabKd01G2vLwwkXENax3niCgEISPKdc6
- QegkRJgoF5ulDM27rbwnNzDsTabddEcf4KSSezaE02k0e2w3Ng7m++puh
- QDENBQGnWPwuF1ZDPK1hJdkpX1TkPkaCZsM1QO0UYrBGHEZh6LKicnSRj
- SX4ZiNvvdSSs9BPLOjxfi5/BKhWCL7Bku1oSQ5auAT9/hMDc8rna1xob2 Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10324"; a="263574897"
-X-IronPort-AV: E=Sophos;i="5.90,282,1643702400"; d="scan'208";a="263574897"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Apr 2022 09:54:54 -0700
+ t=1650704655; x=1682240655;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Zf7jQeJ914xPlMPooQWjZN7iFE0z4J47S7oirz8Sz2I=;
+ b=Skjh8nz+jp9Wdf7hDILiFaGKxsPtroat5I0um3dFmQqfGPEeOgAEQUvw
+ 61RXY1mzN6/xVVccNHBVK9pxrTo8Sa6FLANGF+msNLJmqXQms0jQdn3ko
+ GKjBS2PSh3+FZed2XOEyjAHYfXedyEx7VcnQcWiJ7D8ziiYcvdFefqGnF
+ KRezK0D7DVuMQu3CCmdgVyjUyAUbBZ6J8O+UohAaahc1ZmE17PmVMCnct
+ ELPJQrPQQQw56+pOba3eZVoIUnViNX6yhk8bCkWtHMQrZKsOoeizXDO9k
+ eD1l+yx/AkuYiV8YltqbDKwsF5Cc5udiPfqkmviOZQgBC8nzgNGukqaAF w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10324"; a="245442692"
+X-IronPort-AV: E=Sophos;i="5.90,284,1643702400"; d="scan'208";a="245442692"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Apr 2022 02:04:14 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,282,1643702400"; d="scan'208";a="534471896"
-Received: from lkp-server01.sh.intel.com (HELO 3abc53900bec) ([10.239.97.150])
- by orsmga002.jf.intel.com with ESMTP; 22 Apr 2022 09:54:50 -0700
-Received: from kbuild by 3abc53900bec with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nhwYU-000AMY-1w;
- Fri, 22 Apr 2022 16:54:50 +0000
-Date: Sat, 23 Apr 2022 00:54:07 +0800
+X-IronPort-AV: E=Sophos;i="5.90,284,1643702400"; d="scan'208";a="531234716"
+Received: from lkp-server01.sh.intel.com (HELO dd58949a6e39) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 23 Apr 2022 02:04:13 -0700
+Received: from kbuild by dd58949a6e39 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1niBga-00005v-Kx;
+ Sat, 23 Apr 2022 09:04:12 +0000
+Date: Sat, 23 Apr 2022 17:03:53 +0800
 From: kernel test robot <lkp@intel.com>
-To: Chenyang Li <lichenyang@loongson.cn>, Maxime Ripard <mripard@kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Dan Carpenter <error27@gmail.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
- devel@linuxdriverproject.org
-Subject: Re: [PATCH v7 1/4] drm/loongson: Add DRM Driver for Loongson 7A1000
- bridge chip
-Message-ID: <202204230030.kZgmTGOQ-lkp@intel.com>
-References: <20220422081416.682625-1-lichenyang@loongson.cn>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:driver-core-testing] BUILD SUCCESS
+ 4e224719f5d9b92abf1e0edfb2a83053208f3026
+Message-ID: <6263c0f9.bL6SbwfuLrcjy/Ip%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220422081416.682625-1-lichenyang@loongson.cn>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,114 +77,163 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: Yi Li <liyi@loongson.cn>, Huacai Chen <chenhuacai@kernel.org>,
- kbuild-all@lists.01.org, linux-kernel@vger.kernel.org,
- Sam Ravnborg <sam@ravnborg.org>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Chenyang,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
+branch HEAD: 4e224719f5d9b92abf1e0edfb2a83053208f3026  drivers/base/memory: Fix an unlikely reference counting issue in __add_memory_block()
 
-Thank you for the patch! Perhaps something to improve:
+elapsed time: 1039m
 
-[auto build test WARNING on drm/drm-next]
-[also build test WARNING on v5.18-rc3 next-20220422]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+configs tested: 135
+configs skipped: 5
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Chenyang-Li/drm-loongson-Add-DRM-Driver-for-Loongson-7A1000-bridge-chip/20220422-161914
-base:   git://anongit.freedesktop.org/drm/drm drm-next
-config: arm-randconfig-s031-20220422 (https://download.01.org/0day-ci/archive/20220423/202204230030.kZgmTGOQ-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 11.2.0
-reproduce:
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # apt-get install sparse
-        # sparse version: v0.6.4-dirty
-        # https://github.com/intel-lab-lkp/linux/commit/e9a9964d58e6cc797a113fa47f54583c10908d63
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Chenyang-Li/drm-loongson-Add-DRM-Driver-for-Loongson-7A1000-bridge-chip/20220422-161914
-        git checkout e9a9964d58e6cc797a113fa47f54583c10908d63
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross C=1 CF='-fdiagnostic-prefix -D__CHECK_ENDIAN__' O=build_dir ARCH=arm SHELL=/bin/bash drivers/gpu/drm/loongson/
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
+gcc tested configs:
+arm64                               defconfig
+arm64                            allyesconfig
+arm                              allmodconfig
+arm                                 defconfig
+arm                              allyesconfig
+i386                          randconfig-c001
+arm                       aspeed_g5_defconfig
+sh                          rsk7201_defconfig
+sparc                               defconfig
+m68k                        m5407c3_defconfig
+um                                  defconfig
+arm                          simpad_defconfig
+powerpc                      pcm030_defconfig
+powerpc                   currituck_defconfig
+powerpc                       ppc64_defconfig
+powerpc                        cell_defconfig
+powerpc                    sam440ep_defconfig
+openrisc                 simple_smp_defconfig
+sh                               alldefconfig
+arm                        shmobile_defconfig
+powerpc                       holly_defconfig
+powerpc                      ppc40x_defconfig
+sh                        edosk7760_defconfig
+arc                          axs103_defconfig
+mips                     decstation_defconfig
+ia64                         bigsur_defconfig
+powerpc                      pasemi_defconfig
+sh                              ul2_defconfig
+ia64                             allyesconfig
+mips                     loongson1b_defconfig
+arc                         haps_hs_defconfig
+m68k                         apollo_defconfig
+arm                           sunxi_defconfig
+arm                           h3600_defconfig
+sh                        apsh4ad0a_defconfig
+sh                           se7705_defconfig
+sh                           se7722_defconfig
+arm                            xcep_defconfig
+sh                           se7619_defconfig
+m68k                       m5475evb_defconfig
+powerpc                 canyonlands_defconfig
+arm                        trizeps4_defconfig
+sh                           se7751_defconfig
+x86_64                        randconfig-c001
+arm                  randconfig-c002-20220422
+ia64                             allmodconfig
+ia64                                defconfig
+m68k                             allyesconfig
+m68k                             allmodconfig
+m68k                                defconfig
+nios2                               defconfig
+arc                              allyesconfig
+csky                                defconfig
+nios2                            allyesconfig
+alpha                               defconfig
+alpha                            allyesconfig
+h8300                            allyesconfig
+xtensa                           allyesconfig
+arc                                 defconfig
+sh                               allmodconfig
+s390                                defconfig
+s390                             allmodconfig
+parisc                              defconfig
+parisc64                            defconfig
+parisc                           allyesconfig
+s390                             allyesconfig
+i386                             allyesconfig
+sparc                            allyesconfig
+i386                                defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+mips                             allyesconfig
+mips                             allmodconfig
+powerpc                          allyesconfig
+powerpc                           allnoconfig
+powerpc                          allmodconfig
+x86_64                        randconfig-a006
+x86_64                        randconfig-a004
+x86_64                        randconfig-a002
+i386                          randconfig-a001
+i386                          randconfig-a003
+i386                          randconfig-a005
+x86_64                        randconfig-a015
+x86_64                        randconfig-a013
+x86_64                        randconfig-a011
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+arc                  randconfig-r043-20220422
+riscv                               defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+riscv                    nommu_k210_defconfig
+riscv                             allnoconfig
+riscv                            allmodconfig
+riscv                            allyesconfig
+x86_64                    rhel-8.3-kselftests
+um                           x86_64_defconfig
+um                             i386_defconfig
+x86_64                          rhel-8.3-func
+x86_64                                  kexec
+x86_64                              defconfig
+x86_64                           allyesconfig
+x86_64                         rhel-8.3-kunit
+x86_64                               rhel-8.3
 
-
-sparse warnings: (new ones prefixed by >>)
->> drivers/gpu/drm/loongson/loongson_drv.c:91:9: sparse: sparse: cast removes address space '__iomem' of expression
-   drivers/gpu/drm/loongson/loongson_drv.c:99:5: sparse: sparse: symbol 'loongson_modeset_init' was not declared. Should it be static?
-
-vim +/__iomem +91 drivers/gpu/drm/loongson/loongson_drv.c
-
-    36	
-    37	static int loongson_device_init(struct drm_device *dev)
-    38	{
-    39		struct loongson_device *ldev = to_loongson_device(dev);
-    40		struct pci_dev *pdev = to_pci_dev(dev->dev);
-    41		struct pci_dev *gpu_pdev;
-    42		resource_size_t aper_base;
-    43		resource_size_t aper_size;
-    44		resource_size_t mmio_base;
-    45		resource_size_t mmio_size;
-    46		int ret;
-    47	
-    48		/* GPU MEM */
-    49		/* We need get 7A-gpu pci device information for ldev->gpu_pdev */
-    50		/* dev->pdev save 7A-dc pci device information */
-    51		gpu_pdev = pci_get_device(PCI_VENDOR_ID_LOONGSON,
-    52					  PCI_DEVICE_ID_LOONGSON_GPU, NULL);
-    53		ret = pci_enable_device(gpu_pdev);
-    54		if (ret)
-    55			return ret;
-    56		pci_set_drvdata(gpu_pdev, dev);
-    57	
-    58		aper_base = pci_resource_start(gpu_pdev, 2);
-    59		aper_size = pci_resource_len(gpu_pdev, 2);
-    60		ldev->vram_start = aper_base;
-    61		ldev->vram_size = aper_size;
-    62	
-    63		if (!devm_request_mem_region(dev->dev, ldev->vram_start,
-    64					     ldev->vram_size, "loongson_vram")) {
-    65			drm_err(dev, "Can't reserve VRAM\n");
-    66			return -ENXIO;
-    67		}
-    68	
-    69		/* DC MEM */
-    70		mmio_base = pci_resource_start(pdev, 0);
-    71		mmio_size = pci_resource_len(pdev, 0);
-    72		ldev->mmio = devm_ioremap(dev->dev, mmio_base, mmio_size);
-    73		if (!ldev->mmio) {
-    74			drm_err(dev, "Cannot map mmio region\n");
-    75			return -ENOMEM;
-    76		}
-    77	
-    78		if (!devm_request_mem_region(dev->dev, mmio_base,
-    79					     mmio_size, "loongson_mmio")) {
-    80			drm_err(dev, "Can't reserve mmio registers\n");
-    81			return -ENOMEM;
-    82		}
-    83	
-    84		/* DC IO */
-    85		ldev->io = devm_ioremap(dev->dev, LS7A_CHIPCFG_REG_BASE, 0xf);
-    86		if (!ldev->io)
-    87			return -ENOMEM;
-    88	
-    89		ldev->num_crtc = 2;
-    90	
-  > 91		drm_info(dev, "DC mmio base 0x%llx size 0x%llx io 0x%llx\n",
-    92			 mmio_base, mmio_size, *(u64 *)ldev->io);
-    93		drm_info(dev, "GPU vram start = 0x%x size = 0x%x\n",
-    94			 ldev->vram_start, ldev->vram_size);
-    95	
-    96		return 0;
-    97	}
-    98	
+clang tested configs:
+riscv                randconfig-c006-20220422
+mips                 randconfig-c004-20220422
+x86_64                        randconfig-c007
+i386                          randconfig-c001
+arm                  randconfig-c002-20220422
+powerpc              randconfig-c003-20220422
+arm                        magician_defconfig
+riscv                            alldefconfig
+arm                    vt8500_v6_v7_defconfig
+powerpc                     ksi8560_defconfig
+mips                malta_qemu_32r6_defconfig
+powerpc                 mpc836x_mds_defconfig
+mips                          ath25_defconfig
+powerpc                     tqm8540_defconfig
+arm                         orion5x_defconfig
+mips                     cu1830-neo_defconfig
+x86_64                        randconfig-a005
+x86_64                        randconfig-a003
+x86_64                        randconfig-a001
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+x86_64                        randconfig-a014
+x86_64                        randconfig-a012
+x86_64                        randconfig-a016
+i386                          randconfig-a013
+i386                          randconfig-a011
+i386                          randconfig-a015
+hexagon              randconfig-r041-20220422
+s390                 randconfig-r044-20220422
+riscv                randconfig-r042-20220422
+hexagon              randconfig-r045-20220422
 
 -- 
 0-DAY CI Kernel Test Service
