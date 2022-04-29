@@ -1,65 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E918B513164
-	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Apr 2022 12:38:45 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F75E514099
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Apr 2022 04:40:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 18CA941741;
-	Thu, 28 Apr 2022 10:38:44 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CEE3B400C6;
+	Fri, 29 Apr 2022 02:40:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6tZ58h5m6A11; Thu, 28 Apr 2022 10:38:43 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AVmbm9jsVS0i; Fri, 29 Apr 2022 02:40:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9DB1341721;
-	Thu, 28 Apr 2022 10:38:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 74B01400A6;
+	Fri, 29 Apr 2022 02:40:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7E57D1BF2B1
- for <devel@linuxdriverproject.org>; Thu, 28 Apr 2022 10:38:40 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 85AC31BF863
+ for <devel@linuxdriverproject.org>; Fri, 29 Apr 2022 02:40:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6C1BB41741
- for <devel@linuxdriverproject.org>; Thu, 28 Apr 2022 10:38:40 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7909C400C6
+ for <devel@linuxdriverproject.org>; Fri, 29 Apr 2022 02:40:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KiZopqdh0eQn for <devel@linuxdriverproject.org>;
- Thu, 28 Apr 2022 10:38:39 +0000 (UTC)
-X-Greylist: delayed 01:44:32 by SQLgrey-1.8.0
-Received: from mx2.fab.mil.br (mx2.fab.mil.br [177.152.121.22])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0A5FC41721
- for <devel@driverdev.osuosl.org>; Thu, 28 Apr 2022 10:38:38 +0000 (UTC)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mx2.fab.mil.br (Postfix) with ESMTP id 4KppCB1JMYzZgHl;
- Thu, 28 Apr 2022 05:08:06 -0300 (-03)
-X-Virus-Scanned: Scrollout F1 at fab.mil.br
-Received: from mx2.fab.mil.br ([127.0.0.1])
- by localhost (mx2.fab.mil.br [127.0.0.1]) (amavisd-new, port 10024)
- with LMTP id gtE8I_dCANej; Thu, 28 Apr 2022 05:08:05 -0300 (-03)
-Received: from mta1.inner.intraer (unknown [10.52.202.211])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id C9OVa7YIvqRw for <devel@linuxdriverproject.org>;
+ Fri, 29 Apr 2022 02:40:41 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.flyaudiodg.com (unknown [61.145.203.249])
+ by smtp2.osuosl.org (Postfix) with ESMTP id DC6E6400A6
+ for <devel@driverdev.osuosl.org>; Fri, 29 Apr 2022 02:40:40 +0000 (UTC)
+Received: from [192.168.0.100] (unknown [105.112.154.87])
+ (using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx2.fab.mil.br (Postfix) with ESMTPS id 4KppBK48N9zZmw5;
- Thu, 28 Apr 2022 05:07:18 -0300 (-03)
-Received: from localhost (localhost [127.0.0.1])
- by mta1.inner.intraer (Postfix) with ESMTP id EEFD8400CC66;
- Thu, 28 Apr 2022 05:07:16 -0300 (-03)
-Received: from mta1.inner.intraer ([127.0.0.1])
- by localhost (mta1.inner.intraer [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id HBOmBVyNiI0o; Thu, 28 Apr 2022 05:07:16 -0300 (-03)
-Received: from [192.168.8.101] (unknown [41.48.134.53])
- (Authenticated sender: barbosafasb)
- by mta1.inner.intraer (Postfix) with ESMTPSA id B367D4031468;
- Thu, 28 Apr 2022 05:06:27 -0300 (-03)
+ by mail.flyaudiodg.com (Flyaudio) with ESMTPSA id 5089C5508A57;
+ Fri, 29 Apr 2022 10:22:38 +0800 (CST)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Re:    
-To: Recipients <>
-From: "manuel franco" <>
-Date: Thu, 28 Apr 2022 10:05:56 +0200
-Message-Id: <20220428080627.B367D4031468@mta1.inner.intraer>
+Subject: Donate Now To Save Lives.
+To: Support Ukraine Community <help-save-ukrainians@seanet.ro>
+From: "Support Ukraine Community" <panjin@flyaudiodg.com>
+Date: Fri, 29 Apr 2022 03:39:50 +0100
+Message-Id: <20220429024041.7909C400C6@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,21 +55,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: manuelfrancospende003@gmail.com
+Reply-To: help-save-ukrainians@proton.me
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Dear Supporter,
+
+People in Ukraine are in grave danger of physical harm. Over Five Million h=
+ave fled their homes seeking refuge in neighbouring countries and others ar=
+e stuck in Ukraine, sheltering from Heavy Shelling and bombardments in majo=
+r cities. =
 
 
-Sie wurden f=FCr eine Spende in H=F6he von 2.000.000,00 Euro ausgew=E4hlt
+Normal working life has been forced to stop. Ukrainian member organisations=
+ like ours, are providing support to families who desperately need assistan=
+ce. We have few people who are putting themselves at high risk of distribut=
+ing domestic items to people hiding in bunkers. Trade unions in neighbourin=
+g countries including Poland, Slovakia, Hungary, Romania and Moldova are su=
+pporting the increasing number of refugees. =
 
-Mein Name ist Manuel Franco aus den Vereinigten Staaten.
-Ich habe die Amerika-Lotterie im Wert von 768 Millionen Dollar gewonnen und=
- spende einen Teil davon an nur 5 gl=FCckliche Menschen und ein paar Waisen=
-h=E4user als Wohlwollen f=FCr die Menschheit. Melden Sie sich bei mir, um I=
-hre Spende zu erhalten.
+
+Every morning, we get an extremely long list of peoples' needs from differe=
+nt quarters. We have to assemble the items and provide them to our people t=
+hrough highly secure but risky means.
+
+People need:
+
+** Bunker illuminators
+** Food and water provisions
+** Groceries
+** Medical supplies
+** Hygiene items
+
+The situation of our women and children in several accommodating countries =
+is not easy. Worst still, our front line soldiers need your help, not just =
+by monitoring war situation but to be concerned and more financially involv=
+ed.
+
+You can help Ukraine workers and their families by donating to this emergen=
+cy fundraising appeal. Also, support the brave soldiers on the frontline.
+
+We can receive your donations in the ways mentioned below:
+
+Receiving donations through Bitcoin  has made great impact so far. =
+
+
+Donations from =A320 to =A3500 are received through Bitcoin wallet:
+
+BTC - bc1qq852vf4l8vy6j90zauva5hg0crnww6vgpgwtcm
+
+Donations above =A3500 are sent via Western Union, MoneyGram or RIA to the =
+information below and transaction slip sent to us by email.
+
+Receiver's name: Jonathan Stevens
+Receiver's Address: 377 The Crescent
+London - E43 9XL - United Kingdom
+
+Donations above =A31,000 are by wire transfer. We provide bank coordinates =
+for such donations.
+
+All funds donated are shared to Two Organisations. One in Ukraine that supp=
+orts the humanitarian work for stranded people and organisations in neighbo=
+uring countries supporting refugees.
+
+The people of Ukraine are grateful for support and donations from you and o=
+ther supporters as we protect our freedom.
+
+Your donation will certainly contribute to Ukrainian victory as well as sup=
+port civil people. We will win as the best people are with us.
+
+Thank you.
+
+Mikhail Fedorov
+Support Ukraine Community
+Petitions ITUC-CSI-UA
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
