@@ -1,52 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA2D651409B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Apr 2022 04:41:37 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C51545140B5
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Apr 2022 04:48:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 30F0B60B0E;
-	Fri, 29 Apr 2022 02:41:36 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 19ECB60B42;
+	Fri, 29 Apr 2022 02:48:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nCy3yaSZihPY; Fri, 29 Apr 2022 02:41:35 +0000 (UTC)
+	with ESMTP id hqbJVctS6HzF; Fri, 29 Apr 2022 02:48:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C971560ACE;
-	Fri, 29 Apr 2022 02:41:34 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id C258360AF6;
+	Fri, 29 Apr 2022 02:48:46 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 25BE01BF863
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 29 Apr 2022 02:41:32 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 30DF21BF863
+ for <devel@linuxdriverproject.org>; Fri, 29 Apr 2022 02:48:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 13637400C6
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 29 Apr 2022 02:41:32 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1FB8E83F6F
+ for <devel@linuxdriverproject.org>; Fri, 29 Apr 2022 02:48:44 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w2xovmJYgKXV
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 29 Apr 2022 02:41:31 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.flyaudiodg.com (unknown [61.145.203.249])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6B9FD400A6
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 29 Apr 2022 02:41:31 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9-LBBWRoEeww for <devel@linuxdriverproject.org>;
+ Fri, 29 Apr 2022 02:48:43 +0000 (UTC)
+X-Greylist: delayed 00:06:50 by SQLgrey-1.8.0
+Received: from mail.flyaudiodg.com (unknown [61.145.203.234])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4DD5383F6C
+ for <devel@linuxdriverproject.org>; Fri, 29 Apr 2022 02:48:43 +0000 (UTC)
 Received: from [192.168.0.100] (unknown [105.112.154.87])
  (using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mail.flyaudiodg.com (Flyaudio) with ESMTPSA id 0B64B5508A51;
- Fri, 29 Apr 2022 10:23:24 +0800 (CST)
+ by mail.flyaudiodg.com (Flyaudio) with ESMTPSA id 7F4DF5508A66;
+ Fri, 29 Apr 2022 10:23:52 +0800 (CST)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Donate Now To Save Lives.
 To: Support Ukraine Community <help-save-ukrainians@seanet.ro>
 From: "Support Ukraine Community" <panjin@flyaudiodg.com>
-Date: Fri, 29 Apr 2022 03:40:34 +0100
-Message-Id: <20220429024132.13637400C6@smtp2.osuosl.org>
+Date: Fri, 29 Apr 2022 03:40:58 +0100
+Message-Id: <20220429024844.1FB8E83F6F@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
