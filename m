@@ -1,73 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77EA1514D91
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Apr 2022 16:40:27 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8A70C515A10
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Apr 2022 05:16:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0350F4040D;
-	Fri, 29 Apr 2022 14:40:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 558AE41DEE;
+	Sat, 30 Apr 2022 03:16:33 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QU28Z9mWJFhJ; Fri, 29 Apr 2022 14:40:25 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Dwqg-dwXv-pN; Sat, 30 Apr 2022 03:16:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B846E4000B;
-	Fri, 29 Apr 2022 14:40:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B3C6241DE0;
+	Sat, 30 Apr 2022 03:16:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EB0C91BF2CF
- for <devel@linuxdriverproject.org>; Fri, 29 Apr 2022 14:40:20 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0CD971BF5D7
+ for <devel@linuxdriverproject.org>; Sat, 30 Apr 2022 03:16:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E6D1E4040D
- for <devel@linuxdriverproject.org>; Fri, 29 Apr 2022 14:40:20 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id CAAD360593
+ for <devel@linuxdriverproject.org>; Sat, 30 Apr 2022 03:16:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qbRkyNecuNNp for <devel@linuxdriverproject.org>;
- Fri, 29 Apr 2022 14:40:20 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-lj1-x241.google.com (mail-lj1-x241.google.com
- [IPv6:2a00:1450:4864:20::241])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 59E4E4000B
- for <devel@driverdev.osuosl.org>; Fri, 29 Apr 2022 14:40:20 +0000 (UTC)
-Received: by mail-lj1-x241.google.com with SMTP id c15so10773549ljr.9
- for <devel@driverdev.osuosl.org>; Fri, 29 Apr 2022 07:40:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=R7QpCi0uubcHNtRLuTk0itjUJtFCL+Tl/Uus7kTjtaw=;
- b=pAbET4vb6CiuOONpHDI9RT115D9X12crKsxvLvp7OtKV1Jo9KGZFjoNooHwn1AGTdF
- U7HuDAlhIor1ygYYvNiTh54b/I3PRPSJXJ+DZiUOB9OOLyKGO1SuU6HcyKS3c1AWk1dT
- GmJmzAlHXbdjgGWMfKDiyp9g62/RmSu0Xsn9delFHfHRgyM/aAWgNBSigeIl5Fn9hfz8
- cGLL6I5dpKGWXAb52Wyxj+KsnzaylhVoLWeb9eUKJuQLGMVFioLfw7LXgHtRP+QGp6X+
- s3hFHNw3uChzjmi3qq88oZNY1zGb7eI667uaLdKFjoXs/ftqyXANQrocnnCxqT59q/xV
- oFmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=R7QpCi0uubcHNtRLuTk0itjUJtFCL+Tl/Uus7kTjtaw=;
- b=uCoKQIrHe4xXhhA1+Md8H+4IubAfVH7D6JZ45CTjbTti3kKL3ySnBiNrJgP9y6fXUd
- KZRAzWUbtWVAnXrwThHK3KS8dMd3QNLZYHTG8MYP57HnnnImvPK7oZ4g+uc+P/GnejmB
- I49hVey1IDPI5e05Ee4BX5pPOiHf/jKnGTtgHfeP/PB0hjTHBohadDxUru5DbD8iJm+G
- IoFlneC0/mImVx3yCTPoKkW7TMESA+Sxz80bRwodlpCnnseOSDSSnBRFNaZk9NbcSPXl
- NHm9Ve1dKhgF0KMYGPK5dqrUcCLV+uajUIe2X1MraviKKOawrp0NpZbsHj/L7jJR3htX
- j1Ew==
-X-Gm-Message-State: AOAM532jA6KZ34Vj+tx6TOgM5oJhIAu6kzN5QymxSrel7MpA31e5CLWp
- iYNWNVgaepBWPbZviG0GLOdnlwXkOgXFh1iRbmE=
-X-Google-Smtp-Source: ABdhPJxAnoEfalRIK1ImG7b0+PxC5GO9PU5lAyUmVK7tq2ceu33R3YpGNzd+L6cAsVg49Is7lmMamrCKokAs1cgEBzY=
-X-Received: by 2002:a2e:b5d1:0:b0:24f:331d:f9b6 with SMTP id
- g17-20020a2eb5d1000000b0024f331df9b6mr4946721ljn.302.1651243218227; Fri, 29
- Apr 2022 07:40:18 -0700 (PDT)
+Authentication-Results: smtp3.osuosl.org (amavisd-new); dkim=neutral
+ reason="invalid (public key: not available)"
+ header.d=uscapitalbank.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id G5IX5U339d6M for <devel@linuxdriverproject.org>;
+ Sat, 30 Apr 2022 03:16:26 +0000 (UTC)
+X-Greylist: delayed 00:08:21 by SQLgrey-1.8.0
+Received: from mx.scs-net.org (unknown [213.178.226.243])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C3EB860B14
+ for <devel@driverdev.osuosl.org>; Sat, 30 Apr 2022 03:16:25 +0000 (UTC)
+Received: from mx.scs-net.org (localhost.localdomain [127.0.0.1])
+ by mx.scs-net.org (Proxmox) with ESMTP id B09B736D5F9;
+ Sat, 30 Apr 2022 06:05:36 +0300 (EEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ uscapitalbank.com; h=cc:content-transfer-encoding:content-type
+ :content-type:date:from:from:mime-version:reply-to:reply-to
+ :subject:subject:to; s=default; bh=crjxUkE6/gojJoE2I9RLBtBVqzzAB
+ 6zwco7vqBWVIjg=; b=l6l8czFVdF2hPcrlS5Mrc4IafMmO1xMoW5uDDD9sRYawn
+ 7/IQtrQjmwnBu1UfFE7yb2DJLdjXBXomRouu/3soxO3ZXnBhPvAcmpDS79k53Iug
+ 7YzvqUWvpvzaUSmmUK3jUg0OxSPAaMlS6a51AJkriIubsEJpQc8HEipPla+/04=
+Received: from mail.scs-net.org (outmail246.scs-net.org [213.178.226.246])
+ by mx.scs-net.org (Proxmox) with ESMTP id A299636D5CF;
+ Sat, 30 Apr 2022 06:05:36 +0300 (EEST)
+Received: from User (unknown [103.153.79.225])
+ by mail.scs-net.org (Postfix) with ESMTPA id 80D9F1A0787;
+ Sat, 30 Apr 2022 06:03:59 +0300 (EEST)
+From: "CHARLES GOODMAN"<info7@uscapitalbank.com>
+Subject: CONGRATULATIONS FINALLY YOUR FUND HAS BEEN RELEASED.
+Date: Fri, 29 Apr 2022 20:05:33 -0700
 MIME-Version: 1.0
-Received: by 2002:a05:6520:4290:b0:1bb:b736:ad43 with HTTP; Fri, 29 Apr 2022
- 07:40:17 -0700 (PDT)
-From: Kristian Daniels <kokousamira@gmail.com>
-Date: Fri, 29 Apr 2022 07:40:17 -0700
-Message-ID: <CA++5zG1OrUFBeTYSW8J-o_3Ebw=sFrH8OLjdgXd64a7NF9RVXA@mail.gmail.com>
-Subject: Hello
-To: undisclosed-recipients:;
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20220430030536.B09B736D5F9@mx.scs-net.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,23 +71,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: kd2020tg@gmail.com
+Reply-To: kirbftu@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello
+Attn: Beneficiary:
 
-I am Kristian Daniels from Wales, I work here in Lome, with the ORA
-BANK TOGO. We have a deceased Late customer who happens to share the
-same last name with you and all his paper documents as relative, He
-left an opening huge sum valued Two Million Nine Hundred Thousand
-Dollars with the bank, Which remain unclaimed.
+Congratulations!! Finally Your payment has been approved and endorsed, with the instruction and approvals are given from the Authorities Due to the
+incessant scam activities going around the globe, the Authorities has instructed our Financial Institution to use high Performance in
+Banking System to set up a Personal Online Banking Account.
 
-Reply back for proceedings
+This is to bring to your notice that your Compensation/Contract/Inheritance fund worth US$15,500,000.00 was deposited in our bank, The Management
+has resolved to open Personal On-line Banking Account for you with our bank and then give you online access which will enable you to
+check and make electronics wire transfer out to any part of the world of your choice.
 
-Kristian Daniels
+Kindly send the below information to enable us to set the account open for you.
+
+Full Name:..................
+Full Address:.........................
+Direct Cellphone Number:..........
+PASSPORT AND ID CARDS:.................
+YOUR OCCUPATION.........
+POSITION.........
+DATE OF BIRTH..............   
+
+Looking forward to your next letter
+
+Regards
+
+Thanks for banking with us,
+
+Mr.Charles Goodman.
+A/C Online Payment Officer,
+US Capital Bank Branch North Carolina,
+United States of America
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
