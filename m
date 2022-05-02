@@ -1,19 +1,19 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11FAD518120
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 May 2022 11:37:35 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A81AE51811F
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 May 2022 11:37:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9149340227;
-	Tue,  3 May 2022 09:37:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 33D7160C05;
+	Tue,  3 May 2022 09:37:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8UMxrIOfRA9C; Tue,  3 May 2022 09:37:32 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zNc3ZA5MdrD2; Tue,  3 May 2022 09:37:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 24980400FB;
-	Tue,  3 May 2022 09:37:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E5FF560B9C;
+	Tue,  3 May 2022 09:37:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
@@ -23,6 +23,8 @@ Received: from localhost (localhost [127.0.0.1])
  by smtp2.osuosl.org (Postfix) with ESMTP id 7BC8940227;
  Tue,  3 May 2022 09:37:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
+Authentication-Results: smtp2.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=jacefay.ml
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
  with ESMTP id fbUelV-uWatS; Tue,  3 May 2022 09:37:26 +0000 (UTC)
