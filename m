@@ -1,47 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 79DCB51838E
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 May 2022 13:54:04 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 70A6C82A8F;
-	Tue,  3 May 2022 11:54:02 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tC-eY1y9JcLO; Tue,  3 May 2022 11:54:01 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2911382A2E;
-	Tue,  3 May 2022 11:54:01 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BD3851BF5AA
- for <devel@linuxdriverproject.org>; Tue,  3 May 2022 11:53:57 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A8D65183E9
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 May 2022 14:04:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A9EC5404EE
- for <devel@linuxdriverproject.org>; Tue,  3 May 2022 11:53:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 160064051D;
+	Tue,  3 May 2022 12:04:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0k_yPjZ4UCiK for <devel@linuxdriverproject.org>;
- Tue,  3 May 2022 11:53:57 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id P7Q4n_BM_5Rc; Tue,  3 May 2022 12:04:51 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5CE9F40169;
+	Tue,  3 May 2022 12:04:51 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 788511BF5A5
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  3 May 2022 12:04:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 65B3782768
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  3 May 2022 12:04:48 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id yN2wti8DeKTT
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  3 May 2022 12:04:45 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.77msk.ru (mail.77msk.ru [84.204.203.133])
- by smtp2.osuosl.org (Postfix) with ESMTP id D43C1404EB
- for <devel@driverdev.osuosl.org>; Tue,  3 May 2022 11:53:56 +0000 (UTC)
-Received: from mail.77msk.ru (gatekeeper.domain007.com [192.168.2.20])
- by hermes.domain007.com (Postfix) with ESMTP id 330C9D4AEF8
- for <devel@driverdev.osuosl.org>; Tue,  3 May 2022 14:27:36 +0300 (MSK)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9BFDE82730
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  3 May 2022 12:04:45 +0000 (UTC)
+Received: from mail.77msk.ru (proxysrv.domain007.com [192.168.2.20])
+ by hermes.domain007.com (Postfix) with ESMTP id C074ED52FC0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  3 May 2022 14:37:15 +0300 (MSK)
 Received: from asda.co.uk (unknown [20.97.211.134])
- by gatekeeper.domain007.com (Postfix) with ESMTPSA id C41893200A7
- for <devel@driverdev.osuosl.org>; Tue,  3 May 2022 14:27:35 +0300 (MSK)
+ by gatekeeper.domain007.com (Postfix) with ESMTPSA id 5E5723200A2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  3 May 2022 14:37:15 +0300 (MSK)
 From: ASDA Stores Limited <Hanes.Thomas2365@asda.co.uk>
-To: devel@driverdev.osuosl.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Procurement order from ASDA
-Date: 03 May 2022 11:27:35 +0000
-Message-ID: <20220503091904.488A94ECD66722DF@asda.co.uk>
+Date: 03 May 2022 11:37:15 +0000
+Message-ID: <20220503091905.D4F897E10232224E@asda.co.uk>
 MIME-Version: 1.0
 X-Virus-Scanned: clamav-milter 0.102.4 at hermes
 X-Virus-Status: Clean
@@ -63,21 +69,21 @@ Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGVhciBkZXZlbAoKV2UgYXJlIGludGVyZXN0ZWQgaW4gaGF2aW5nIHNvbWUgb2YgeW91ciBob3Qg
-c2VsbGluZyBwcm9kdWN0IGluIApvdXIgc3RvcmVzIGFuZCBvdXRsZXRzIHNwcmVhZCBhbGwgb3Zl
-ciBVbml0ZWQgS2luZ2RvbSwgTm9ydGhlcm4gCklzbGFuZCBhbmQgQWZyaWNhLiBBU0RBIFN0b3Jl
-cyBMaW1pdGVkIGlzIG9uZSBvZiB0aGUgaGlnaGVzdC0KcmFua2luZyBXaG9sZXNhbGUgJiBSZXRh
-aWwgb3V0bGV0cyBpbiB0aGUgVW5pdGVkIEtpbmdkb20uIAogIApXZSBzaGFsbCBmdXJuaXNoIG91
-ciBkZXRhaWxlZCBjb21wYW55IHByb2ZpbGUgaW4gb3VyIG5leHQgCmNvcnJlc3BvbmRlbnQuIEhv
-d2V2ZXIsIGl0IHdvdWxkIGJlIGFwcHJlY2lhdGVkIGlmIHlvdSBjYW4gc2VuZCAKdXMgeW91ciBj
-YXRhbG9nIHRocm91Z2ggZW1haWwgdG8gbGVhcm4gbW9yZSBhYm91dCB5b3VyIGNvbXBhbnkncyAK
-cHJvZHVjdHMgYW5kIHdob2xlc2FsZSBxdW90ZS4gSXQgaXMgaG9wZWZ1bCB0aGF0IHdlIGNhbiBz
-dGFydCBhIAp2aWFibGUgbG9uZy1sYXN0aW5nIGJ1c2luZXNzIHJlbGF0aW9uc2hpcCAocGFydG5l
-cnNoaXApIHdpdGggeW91LiAgCiAgCiAgCllvdXIgcHJvbXB0IHJlc3BvbnNlIHdvdWxkIGJlIGRl
-bGlnaHRmdWxseSBhcHByZWNpYXRlZC4gCiAgCkJlc3QgV2lzaGVzIAogIAogIApIYW5lcyBTLiBU
-aG9tYXMgClByb2N1cmVtZW50IE9mZmljZS4gCkFTREEgU3RvcmVzIExpbWl0ZWQgClRlbDogICsg
-NDQgLSA3NDUxMjcxNjUwIApXaGF0c0FwcDogKyA0NCDigJMgNzQ0MTQ0MDM2MCAKV2Vic2l0ZTog
-d3d3LmFzZGEuY28udWsKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0
-cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-dmVyZGV2LWRldmVsCg==
+RGVhciBkcml2ZXJkZXYtZGV2ZWwKCldlIGFyZSBpbnRlcmVzdGVkIGluIGhhdmluZyBzb21lIG9m
+IHlvdXIgaG90IHNlbGxpbmcgcHJvZHVjdCBpbiAKb3VyIHN0b3JlcyBhbmQgb3V0bGV0cyBzcHJl
+YWQgYWxsIG92ZXIgVW5pdGVkIEtpbmdkb20sIE5vcnRoZXJuIApJc2xhbmQgYW5kIEFmcmljYS4g
+QVNEQSBTdG9yZXMgTGltaXRlZCBpcyBvbmUgb2YgdGhlIGhpZ2hlc3QtCnJhbmtpbmcgV2hvbGVz
+YWxlICYgUmV0YWlsIG91dGxldHMgaW4gdGhlIFVuaXRlZCBLaW5nZG9tLiAKICAKV2Ugc2hhbGwg
+ZnVybmlzaCBvdXIgZGV0YWlsZWQgY29tcGFueSBwcm9maWxlIGluIG91ciBuZXh0IApjb3JyZXNw
+b25kZW50LiBIb3dldmVyLCBpdCB3b3VsZCBiZSBhcHByZWNpYXRlZCBpZiB5b3UgY2FuIHNlbmQg
+CnVzIHlvdXIgY2F0YWxvZyB0aHJvdWdoIGVtYWlsIHRvIGxlYXJuIG1vcmUgYWJvdXQgeW91ciBj
+b21wYW55J3MgCnByb2R1Y3RzIGFuZCB3aG9sZXNhbGUgcXVvdGUuIEl0IGlzIGhvcGVmdWwgdGhh
+dCB3ZSBjYW4gc3RhcnQgYSAKdmlhYmxlIGxvbmctbGFzdGluZyBidXNpbmVzcyByZWxhdGlvbnNo
+aXAgKHBhcnRuZXJzaGlwKSB3aXRoIHlvdS4gIAogIAogIApZb3VyIHByb21wdCByZXNwb25zZSB3
+b3VsZCBiZSBkZWxpZ2h0ZnVsbHkgYXBwcmVjaWF0ZWQuIAogIApCZXN0IFdpc2hlcyAKICAKICAK
+SGFuZXMgUy4gVGhvbWFzIApQcm9jdXJlbWVudCBPZmZpY2UuIApBU0RBIFN0b3JlcyBMaW1pdGVk
+IApUZWw6ICArIDQ0IC0gNzQ1MTI3MTY1MCAKV2hhdHNBcHA6ICsgNDQg4oCTIDc0NDE0NDAzNjAg
+CldlYnNpdGU6IHd3dy5hc2RhLmNvLnVrCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2pl
+Y3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
