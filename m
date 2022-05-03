@@ -1,38 +1,40 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 502B45186F3
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 May 2022 16:40:22 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42498518789
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 May 2022 16:58:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9B7CE81871;
-	Tue,  3 May 2022 14:40:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id ADB0560F2F;
+	Tue,  3 May 2022 14:58:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oXg_7tSarrXb; Tue,  3 May 2022 14:40:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ko6ZAEJhvdU3; Tue,  3 May 2022 14:58:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 56A2F817A8;
-	Tue,  3 May 2022 14:40:19 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 607B760B78;
+	Tue,  3 May 2022 14:58:25 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 408EA1BF41A;
- Tue,  3 May 2022 14:40:16 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 65B731BF41A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  3 May 2022 14:58:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 298634174F;
- Tue,  3 May 2022 14:40:16 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 53E4E60F2F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  3 May 2022 14:58:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=jacefay.ml
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X-Lmy_XHNu4D; Tue,  3 May 2022 14:40:14 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id tJ7E-KHDMSBt
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  3 May 2022 14:58:21 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from jacefay.ml (unknown [159.223.118.92])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B6CBB4174E;
- Tue,  3 May 2022 14:40:13 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8897160B78
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  3 May 2022 14:58:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=jacefay.ml; 
  s=mail;
  h=Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
@@ -40,22 +42,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=jacefay.ml;
  Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
  In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
  List-Post:List-Owner:List-Archive;
- bh=Tvsl+TbOYa7ACWE+22eRRlI2AKBt8GkeLFomBTk6aaw=; b=uAbdL2ypE0vGHpdMJIqWJ/KJat
- WJg7IDIDfJLAiVE//FZOOhrnVJ3XPJf1v2oomNoOq8z0aehvJOcyHHsOeTHd3fhs5A23xe+WsQ/FL
- PffX+twHk3ABeoaxroLx6DxwnI/AzOSNOQeC9iwegJAuPw6Sx+J3ByuscLhD/2UxlhgE=;
+ bh=Tvsl+TbOYa7ACWE+22eRRlI2AKBt8GkeLFomBTk6aaw=; b=cHGP7U4dn6zxnvPYxhHW0SN5FO
+ zJ/P0c3EPn/1UzNaXkW+u86rpD/26qm6EU1HcHyQLutZ59nMkrs0YUf89Fg9ouQIkNwBfRnY8QFFw
+ vTibXnH/1GY9LqAeMx0IhzIpcFfPuudrgI8xMmkzrFrlTjxfMZJzOr2RN5VktF0+HnzU=;
 Received: from [103.151.124.136] (helo=User)
  by jacefay.ml with esmtpa (Exim 4.90_1)
  (envelope-from <brain@jacefay.ml>)
- id 1nlth2-00028p-7t; Tue, 03 May 2022 14:40:00 +0000
+ id 1nltyc-0004n2-1V; Tue, 03 May 2022 14:58:10 +0000
 From: "Aleksandr Kovalenko"<brain@jacefay.ml>
 Subject: Please be safe, Your urgent reply needed
-Date: Tue, 3 May 2022 07:40:01 -0700
+Date: Tue, 3 May 2022 07:58:10 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <E1nlth2-00028p-7t@jacefay.ml>
+Message-Id: <E1nltyc-0004n2-1V@jacefay.ml>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
