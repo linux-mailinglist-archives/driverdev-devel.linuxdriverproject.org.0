@@ -1,47 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3648D51838F
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 May 2022 13:54:06 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 79DCB51838E
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 May 2022 13:54:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A3435404EE;
-	Tue,  3 May 2022 11:54:04 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id h-ktVa7XB-_o; Tue,  3 May 2022 11:54:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5A6864051D;
-	Tue,  3 May 2022 11:54:03 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5037A1BF5AA
- for <devel@linuxdriverproject.org>; Tue,  3 May 2022 11:53:58 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3FBB6825FE
- for <devel@linuxdriverproject.org>; Tue,  3 May 2022 11:53:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 70A6C82A8F;
+	Tue,  3 May 2022 11:54:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UMPw91_s-7Xg for <devel@linuxdriverproject.org>;
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tC-eY1y9JcLO; Tue,  3 May 2022 11:54:01 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2911382A2E;
+	Tue,  3 May 2022 11:54:01 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BD3851BF5AA
+ for <devel@linuxdriverproject.org>; Tue,  3 May 2022 11:53:57 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id A9EC5404EE
+ for <devel@linuxdriverproject.org>; Tue,  3 May 2022 11:53:57 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0k_yPjZ4UCiK for <devel@linuxdriverproject.org>;
  Tue,  3 May 2022 11:53:57 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.77msk.ru (mail.77msk.ru [84.204.203.133])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9C92181D35
- for <devel@linuxdriverproject.org>; Tue,  3 May 2022 11:53:57 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D43C1404EB
+ for <devel@driverdev.osuosl.org>; Tue,  3 May 2022 11:53:56 +0000 (UTC)
 Received: from mail.77msk.ru (gatekeeper.domain007.com [192.168.2.20])
- by hermes.domain007.com (Postfix) with ESMTP id 33173D4AEFE
- for <devel@linuxdriverproject.org>; Tue,  3 May 2022 14:27:36 +0300 (MSK)
+ by hermes.domain007.com (Postfix) with ESMTP id 330C9D4AEF8
+ for <devel@driverdev.osuosl.org>; Tue,  3 May 2022 14:27:36 +0300 (MSK)
 Received: from asda.co.uk (unknown [20.97.211.134])
- by gatekeeper.domain007.com (Postfix) with ESMTPSA id C36BE32009F
- for <devel@linuxdriverproject.org>; Tue,  3 May 2022 14:27:35 +0300 (MSK)
+ by gatekeeper.domain007.com (Postfix) with ESMTPSA id C41893200A7
+ for <devel@driverdev.osuosl.org>; Tue,  3 May 2022 14:27:35 +0300 (MSK)
 From: ASDA Stores Limited <Hanes.Thomas2365@asda.co.uk>
-To: devel@linuxdriverproject.org
+To: devel@driverdev.osuosl.org
 Subject: Procurement order from ASDA
 Date: 03 May 2022 11:27:35 +0000
-Message-ID: <20220503091904.A13B0AA55E355A3B@asda.co.uk>
+Message-ID: <20220503091904.488A94ECD66722DF@asda.co.uk>
 MIME-Version: 1.0
 X-Virus-Scanned: clamav-milter 0.102.4 at hermes
 X-Virus-Status: Clean
