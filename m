@@ -1,63 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42498518789
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 May 2022 16:58:28 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D7965519116
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 May 2022 00:15:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ADB0560F2F;
-	Tue,  3 May 2022 14:58:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4AD1C4183C;
+	Tue,  3 May 2022 22:15:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ko6ZAEJhvdU3; Tue,  3 May 2022 14:58:26 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0A5QzdcWBCea; Tue,  3 May 2022 22:15:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 607B760B78;
-	Tue,  3 May 2022 14:58:25 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8647C41514;
+	Tue,  3 May 2022 22:15:39 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 65B731BF41A
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  3 May 2022 14:58:22 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BBA111BF83B
+ for <devel@linuxdriverproject.org>; Tue,  3 May 2022 22:15:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 53E4E60F2F
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  3 May 2022 14:58:22 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B7D1241831
+ for <devel@linuxdriverproject.org>; Tue,  3 May 2022 22:15:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tJ7E-KHDMSBt
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  3 May 2022 14:58:21 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from jacefay.ml (unknown [159.223.118.92])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8897160B78
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  3 May 2022 14:58:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=jacefay.ml; 
- s=mail;
- h=Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
- Date:Subject:From:Reply-To:Sender:To:Cc:Content-ID:Content-Description:
- Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
- In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=Tvsl+TbOYa7ACWE+22eRRlI2AKBt8GkeLFomBTk6aaw=; b=cHGP7U4dn6zxnvPYxhHW0SN5FO
- zJ/P0c3EPn/1UzNaXkW+u86rpD/26qm6EU1HcHyQLutZ59nMkrs0YUf89Fg9ouQIkNwBfRnY8QFFw
- vTibXnH/1GY9LqAeMx0IhzIpcFfPuudrgI8xMmkzrFrlTjxfMZJzOr2RN5VktF0+HnzU=;
-Received: from [103.151.124.136] (helo=User)
- by jacefay.ml with esmtpa (Exim 4.90_1)
- (envelope-from <brain@jacefay.ml>)
- id 1nltyc-0004n2-1V; Tue, 03 May 2022 14:58:10 +0000
-From: "Aleksandr Kovalenko"<brain@jacefay.ml>
-Subject: Please be safe, Your urgent reply needed
-Date: Tue, 3 May 2022 07:58:10 -0700
-MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <E1nltyc-0004n2-1V@jacefay.ml>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zMOqgSYIqACj for <devel@linuxdriverproject.org>;
+ Tue,  3 May 2022 22:15:34 +0000 (UTC)
+X-Greylist: delayed 01:45:35 by SQLgrey-1.8.0
+Received: from host.neuprime.com (unknown [94.249.167.85])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6F56341514
+ for <devel@driverdev.osuosl.org>; Tue,  3 May 2022 22:15:34 +0000 (UTC)
+Received: from neuprime.com (unknown [194.146.25.215])
+ by host.neuprime.com (Postfix) with ESMTPA id 94A392999029
+ for <devel@driverdev.osuosl.org>; Tue,  3 May 2022 23:14:37 +0300 (MSK)
+DKIM-Filter: OpenDKIM Filter v2.11.0 host.neuprime.com 94A392999029
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=neuprime.com;
+ s=default; t=1651608878;
+ bh=hADrVttlQhf4GA/gq43oxMhnUHXVuklAieMy4z6XVjM=;
+ h=Reply-To:From:To:Subject:Date:From;
+ b=QehU0QH/03yJJTkDG4PiCVvzmBbu1/XGgEjKWFgtbox+cmBgPNDN5ePjyAYtpsWdl
+ QFo4sShXroasxjriaOpP/Y1nAYaPoRLJWnTfCB1AjsRhZzq6YSQ5QDuCYa4gjh49MT
+ cxE02fBTktuao5y4L7+wFnN9Kk/Qi0WC6VOLFhFU=
+DKIM-Filter: OpenDKIM Filter v2.11.0 host.neuprime.com 94A392999029
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=neuprime.com;
+ s=default; t=1651608877;
+ bh=hADrVttlQhf4GA/gq43oxMhnUHXVuklAieMy4z6XVjM=;
+ h=Reply-To:From:To:Subject:Date:From;
+ b=pouXLbSywq+9137cA/3iJPeAGT+8YBC3Rg4KLoTW7m3bqWGQKYncKhtO0rTqLq2AF
+ uPpnACoZ423sem/6cKo03Wn7KV5UG1nrhBo0Gw074hBJw6NojqaHNUvvaE8qFyMHAl
+ niiEMmOOkpuIf7nm/SgFBir8qzXaViNNx7+L10E8=
+From: Adem Karadag <ademkar8911@neuprime.com>
+To: devel@driverdev.osuosl.org
+Subject: Get Back To Me
+Date: 03 May 2022 23:14:37 +0300
+Message-ID: <20220503231437.0539D82F1DC22C20@neuprime.com>
+Mime-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,26 +68,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: abbudanlibyaamidet@gmail.com
+Reply-To: ademkar8911@esmailsecured.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-How are you today? I Hope you are staying safe,
- 
-I am  Mr Aleksandr Kovalenko from Ukraine, and I am an investor and real estate developer. I am looking for a possible tie-up with a business or individual in your country so that I can do some investments there as my country's economy has been ravaged by the Russian invasion which no one knows when it will come to an end.
- 
-I have Ten Million five Hundred Thousand Dollars.($10,500,000.00) to invest in any good business in your country.
- 
-My family Wife and Daughter have crossed to Poland for refugee, I am still in my country Ukraine as they do not allow men to cross the border, we were asked to stay back and defend my country,
- 
-I have move the funds to Poland through a help of a Security Company from Ukraine, please I will like you to receive this Fund and invest it in a good business and thereafter you take my Wife and Daughter out from Poland to your country and take good care of them as am in a war zone which I don't know when this war will end, most importantly I want you to take good care of my family.
- 
-There are no economic activities going on again in Ukraine since the Russian invasion started. Looking forward to your sincere reply.
- 
-Best Regard,
-Mr Aleksandr Kovalenko
+Good day. I got your contact from an online European business 
+directory as a reputable industrialist with high integrity. I 
+have a proposition that I think will be of 
+great interest to you. I am the personal assistant to the son in-
+law of a Russian businessman. My boss and his father in-law and 
+part of the few top official in the inncer circle of the current 
+cabinet that strongly opposes the war in Ukraine. They have been 
+frustrated by the sanctions and poverty level that the country 
+has fallen into ever since the war began. The only problem is 
+that it is impossible to oppose the President publicly because 
+those that have attempted to do that in the past were killed. 
+That is why these small group of oppoistion are trying to secure 
+their assets both home and abroad to avoid it being seized.
+
+The main reason why I am contacting you today is to propose a 
+business cooperation that will be of mutual benefit to both of us 
+and requiring absolute trust and total confidentiality. To get 
+down to brass tacks, we need you to accommodate a large volume of 
+assets for safekeeping. Bear in mind that these asset is aready 
+safely out of the Russian country and was secured by a proxy so 
+you are not at any risk of jeopardizing your safety at all.
+
+We need an established businessman or owner of a big company or 
+industry for this task, and you will be handsomely rewarded for 
+your efforts as well. If you are 
+interested in this proposition, kindly respond back to me so I 
+can give you further details and what is required for our trust. 
+We will also negotiate an appropriate 
+compensation for your efforts.
+
+Yours faithfully
+
+Adem Karadag.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
