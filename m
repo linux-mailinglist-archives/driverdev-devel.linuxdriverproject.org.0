@@ -1,48 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13C87519717
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 May 2022 07:58:32 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BDE5519B84
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 May 2022 11:23:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4B61D60E32;
-	Wed,  4 May 2022 05:58:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5B83760B65;
+	Wed,  4 May 2022 09:22:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uWw-dRy4L2T9; Wed,  4 May 2022 05:58:29 +0000 (UTC)
+	with ESMTP id G1-wjv5QXc5F; Wed,  4 May 2022 09:22:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0941960B96;
-	Wed,  4 May 2022 05:58:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0D64860B0B;
+	Wed,  4 May 2022 09:22:57 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A87B81BF9C6
- for <devel@linuxdriverproject.org>; Wed,  4 May 2022 05:58:23 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BC8781BF239
+ for <devel@linuxdriverproject.org>; Wed,  4 May 2022 09:22:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 96FB44086F
- for <devel@linuxdriverproject.org>; Wed,  4 May 2022 05:58:23 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B8D7760B65
+ for <devel@linuxdriverproject.org>; Wed,  4 May 2022 09:22:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qluRo6uZ6byB for <devel@linuxdriverproject.org>;
- Wed,  4 May 2022 05:58:21 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ty6jPI_BSSQa for <devel@linuxdriverproject.org>;
+ Wed,  4 May 2022 09:22:54 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from bigmainstreet.co.uk (unknown [178.62.54.204])
- by smtp4.osuosl.org (Postfix) with ESMTP id 68345404CC
- for <devel@linuxdriverproject.org>; Wed,  4 May 2022 05:58:21 +0000 (UTC)
-Received: from User (unknown [178.62.40.158])
- by bigmainstreet.co.uk (Postfix) with SMTP id 56B4545F8C;
- Wed,  4 May 2022 04:10:22 +0100 (BST)
-From: "Agents"<consumer.care@ca.nestle.com>
-Subject: Can You Supply the products
-Date: Wed, 4 May 2022 03:10:18 -0000
+Received: from h-sps.top (h-sps.top [89.34.27.107])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 088FE60B0B
+ for <devel@driverdev.osuosl.org>; Wed,  4 May 2022 09:22:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=default; d=h-sps.top;
+ h=Content-Type:MIME-Version:Content-Transfer-Encoding:Content-Description:Subject:To:From:Date:Reply-To;
+ i=sales@h-sps.top; bh=J//zNvJiGWtvss3N/s1yV+utFuE=;
+ b=VH5Y6AyrpdBYoyWyMp/9rKQ5grUvQGOH5p0cTVwrX3UM+8lt6y6Dl1sYc4lxdwaE6V0qSas3nvXU
+ zCC5mnndTIlwGKwiANHxb4MhFTpr6mVQPrw8Ag8qlHSQ5ZdzXC9c9fvI1+LgF17vB7MuT1zLk0ju
+ PeMw77EPsrf0qrpEBk0=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=default; d=h-sps.top;
+ b=hmeTYrTn2cyNadiz/h8WOvbDIFkzvNHj5pCNMbnt/dd0krhq1Uk1y96Xzc+2UUj04J0LTzync6Tn
+ Wwg6C7hEdFLEKtPVVKC+w/XdVyiMaMSxRjCedUyRJQBge5wzFjE3Vt9UI1dpGDaMXk65Ih66Jbhb
+ 1ucLwSWrFC8uTUK/7Sc=;
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2800.1081
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
-Message-Id: <20220504055823.96FB44086F@smtp4.osuosl.org>
+Content-Description: Mail message body
+Subject: Name ist William
+To: devel@driverdev.osuosl.org
+From: sales@h-sps.top
+Date: Wed, 04 May 2022 02:22:51 -0700
+Message-Id: <20220504092254.B8D7760B65@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,48 +60,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: bnzz1@outlook.com
-Content-Type: text/plain; charset="cp1250"
-Content-Transfer-Encoding: base64
+Reply-To: wc1141348@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGksCgpNeSBuYW1lIGlzIFBhdWwgVGVraWEsIEkgd29yayBpbiB0aGUgYWNjb3VudGluZyBhbmQg
-cHVyY2hhc2UgZGVwYXJ0bWVudCBvZiB0aGUgTmlnZXJpYW4gTmF0aW9uYWwgUGV0cm9sZXVtIENv
-b3BlcmF0aW9uIChOTlBDKSBvdXIgZGl2aXNpb24gaXMgbWFpbmx5IGludG8gcmVzZWFyY2gsIHB1
-cmNoYXNlIGFuZCBwcm9kdWN0aW9uLgoKSSBhbSBwZXJzb25hbGx5IGNvbnRhY3RpbmcgeW91IGJh
-c2Ugb24gYSBidXNpbmVzcyB0aGF0IEkgZmVlbCB3aWxsIGJlIGJlbmVmaWNpYWwgdG8gYm90aCBv
-ZiB1cy4gTWFqb3JpdHkgb2YgdGhlIGluZ3JlZGllbnRzIHVzZWQgaW4gcHJvZHVjdGlvbiBieSB0
-aGUgYWdlbmN5IGFyZSBwcm9jdXJlZCBmcm9tIEF1c3RyYWxpYSwgQXNpYSwgQW1lcmljYSBhbmQg
-TWlkZGxlIEVhc3QsIHdoaWNoIGlzIHRoZSByZWFzb24gd2h5IEkgYW0gY29udGFjdGluZyB5b3Uu
-CgpTYW50YWx1bSBTcGljYXR1bSBOb3BpZCBPaWwsICBpcyBvbmUgb2YgdGhlIG1vc3QgZXhwZW5z
-aXZlIHJhdyBtYXRlcmlhbHMgaW4gb3VyIEludGVncmF0aXZlICBwcm9kdWN0aW9uIGFuZCBpcyBu
-b3Qgcmlza3kgb3IgaWxsZWdhbCBwcm9kdWN0IGJ5IGFueSBjb3VudHJ5IGxhdyBhcyBpdJJzIHVz
-ZWQgaW4gdGhlIGZvcm1hdGlvbiB2YXJpb3VzIGNoZW1pY2FsIGZvciBpbmR1c3RyaWFsIGFuZCBm
-YXJtZXJzIHVzZS4KCkZvcm1lcmx5LCBvdXIgY29tcGFueSBwdXJjaGFzZWQgaXQgZnJvbSBhIFVr
-cmFpbmUgIGJhc2VkIHN1cHBsaWVyIHVudGlsIHdlIGxvc3QgaGltIHRvIGRlYXRoIHRoaXMgTWFy
-Y2gsIGJ1dCB0aGUgcHJvZHVjdCBhcmUgZm91bmQgaW4geW91ciBjb3VudHJ5IHdoaWNoIGlzIHRo
-ZSBzYW1lIHBsYWNlIHdoZXJlIHRoZSBVa3JhaW5pYW4gc3VwcGxpZXIgc291cmNlZCBmcm9tLCBJ
-IGNvbmZpZGVudGlhbGx5IGdvdCB0aGUgY29udGFjdCBvZiB0aGUgbG9jYWwgZGVhbGVyIGluIHlv
-dXIgY291bnRyeSBhbmQgSSBjYW1lIHRvIGtub3cgdGhhdCB0aGlzIHByb2R1Y3QgaXMgc29sZCBh
-dCBhIGNoZWFwZXIgcmF0ZSAkMTIsMzAwIGZyb20geW91ciBjb3VudHJ5IGJ1dCBpdCBpcyBzdXBw
-bGllZCB0byBvdXIgY29tcGFueSBhdCB0aGUgcmF0ZSBvZiQyMywzMDAgcGVyIGdhbGxvbi4gSSBo
-YXZlIHRoZSBjb250YWN0IG9mIHRoZSBsb2NhbCBkZWFsZXIgb2Ygd2hpY2ggSSBkb24ndCB3YW50
-IHRvIHJlbGVhc2UgdG8gbXkgZGlyZWN0b3Igc2luY2UgSSBoYXZlIHBlcnNvbmFsIGludGVyZXN0
-IGluIHRoZSBidXNpbmVzcy4KClNpciwgSSBhbSBsb29raW5nIG91dCBmb3IgYSByZWxpYWJsZSBh
-bmQgY29tcGV0ZW50IGJ1c2luZXNzIHBlcnNvbiB0aGF0IEkgY2FuIHRydXN0LCB3aG8gd2lsbCBi
-ZSBhYmxlIHRvIGJyaWRnZSB0aGUgZ2FwIGJldHdlZW4gdGhlIGxvY2FsIHZlbmRvciBhbmQgb3Vy
-IGNvbXBhbnkgYW5kIGhhdmUgdGhlIHByb2R1Y3Qgc3VwcGx5IGRpcmVjdGx5IGFmdGVyIHJlY2Vp
-dmluZyBhZHZhbmNlIHBheW1lbnQsIHdpdGhvdXQgbGV0dGluZyBhbnlvbmUgaW4gb3VyIG1pbmlz
-dHJ5IGtub3cgdGhlIHNvdXJjZSBhbmQgdGhlIHZhbHVlIHByaWNlIG9mIHRoZSBwcm9kdWN0LCBh
-ZnRlciB0aGUgc3VwcGx5LCAgdGhlIHByb2ZpdCAgd2lsbCBiZSBzaGFyZWQgIGJldHdlZW4gdXMg
-IDYwJSB0byB5b3UgNDAlIGZvciBtZSwgdGhhdCBpcyBteSBpbnRlcmVzdCBpbiB0aGUgYnVzaW5l
-c3MKCklmIHlvdSBhcmUgaW50ZXJlc3RlZCwgY291bGQgeW91IGtpbmRseSBsZWF2ZSB5b3VyIHBo
-b25lL3doYXRzIGFwcCBudW1iZXIgZm9yIGVmZmVjdGl2ZSBhbmQgZW5oYW5jZSBjb21tdW5pY2F0
-aW9uIHRoYXQgd2lsbCBsZWFkIHRvIGEgYmV0dGVyIHVuZGVyc3RhbmRpbmcgb2YgdGhlIGJ1c2lu
-ZXNzLiBQbGVhc2UgY29uc2lkZXIgaXQgdXJnZW50IGFzIHlvdXIgZGVsYXkgbWF5IHByb21wdCBt
-ZSB0byAgIHNlYXJjaCBlbHNld2hlcmUuCgoKVGhhbmtzLgoKCllvdXJzIHNpbmNlcmVseSwKCgoK
-UGF1bCBUZWtpYS4KIApZVklQUE1HTUtLRVRXVUdOVFBJV1pJRllKR1ZHTElDWEVESENaSApfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5n
-IGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4
-ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Mein Name ist William Chang und ich arbeite im Private Wealth Management de=
+r China Merchants Bank. Ich habe einen sehr wichtigen Gesch=E4ftsvorschlag =
+mit Ihnen zu besprechen.
+
+
+
+Ich erwarte Ihre positive Antwort.
+
+
+William Chang.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
