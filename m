@@ -1,46 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF7E551A143
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 May 2022 15:47:14 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D425551B614
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 May 2022 04:46:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 77A7D40939;
-	Wed,  4 May 2022 13:47:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 584EE403AC;
+	Thu,  5 May 2022 02:46:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z6kiTcYefVGV; Wed,  4 May 2022 13:47:11 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0goTusQRDwrx; Thu,  5 May 2022 02:46:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EBDFC40942;
-	Wed,  4 May 2022 13:47:10 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id D77AC40182;
+	Thu,  5 May 2022 02:46:15 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 65C221BF36F
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  4 May 2022 13:47:07 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1C83D1BF3AE
+ for <devel@linuxdriverproject.org>; Thu,  5 May 2022 02:46:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 549F8832E7
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  4 May 2022 13:47:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0A0B1403AC
+ for <devel@linuxdriverproject.org>; Thu,  5 May 2022 02:46:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DOITvitHG_z0
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  4 May 2022 13:47:06 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from margueriteabbott.ga (unknown [103.151.124.136])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2A49D8248F
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  4 May 2022 13:47:05 +0000 (UTC)
-From: roma@margueriteabbott.ga
-To: driverdev-devel@linuxdriverproject.org
-Subject: Please be safe, Your urgent reply is needed
-Date: 4 May 2022 06:47:06 -0700
-Message-ID: <20220504064706.46C9E25F44F60817@margueriteabbott.ga>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id SFfv1Nnnfjz6 for <devel@linuxdriverproject.org>;
+ Thu,  5 May 2022 02:46:12 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 352E840182
+ for <devel@driverdev.osuosl.org>; Thu,  5 May 2022 02:46:12 +0000 (UTC)
+Received: from User (unknown [197.184.164.2])
+ by mail.service-fujitsu.com (Postfix) with ESMTPA id 2CA622A121F;
+ Thu,  5 May 2022 09:22:43 +0800 (CST)
+From: "Nigerian National Petroleum Corporation
+ (NNPC)"<dremmanuelibekachikwun20221@gmail.com>
+Subject: Re: PROJECT: From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
+ Abuja
+Date: Thu, 5 May 2022 03:23:04 +0200
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20220505024613.0A0B1403AC@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,42 +57,73 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: abbudanlibyaamidet@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: dremmanuelibekachikwun2022@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-How are you today? I Hope you are staying safe,
- 
-I am  Mr Aleksandr Kovalenko from Ukraine, and I am an investor 
-and real estate developer. I am looking for a possible tie-up 
-with a business or individual in your country so that I can do 
-some investments there as my country's economy has been ravaged 
-by the Russian invasion which no one knows when it will come to 
-an end.
- 
-I have Ten Million five Hundred Thousand Dollars.($10,500,000.00) 
-to invest in any good business in your country.
- 
-My family Wife and Daughter have crossed to Poland for refugee, I 
-am still in my country Ukraine as they do not allow men to cross 
-the border, we were asked to stay back and defend my country,
- 
-I have move the funds to Poland through a help of a Security 
-Company from Ukraine, please I will like you to receive this Fund 
-and invest it in a good business and thereafter you take my Wife 
-and Daughter out from Poland to your country and take good care 
-of them as am in a war zone which I don't know when this war will 
-end, most importantly I want you to take good care of my family.
- 
-There are no economic activities going on again in Ukraine since 
-the Russian invasion started. Looking forward to your sincere 
-reply.
- 
-Best Regard,
-Mr Aleksandr Kovalenko
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+Tm5wYyBUb3dlcnMsIENlbnRyYWwgQnVzaW5lc3MgRGlzdHJpY3QsIEhlcmJlcnQgTWFjYXVsYXkg
+d2F5LCBQLm0uYi4gMTkwLCBHYXJraSwgQWJ1amEuCiAKRnJvbTogRHIuIEVtbWFudWVsIEliZSBL
+YWNoaWt3dSAoR01EKQpDb250cmFjdCBSZWYgTm86IE5OUEMvUEVELzE0NjIvS0FEUkVGLzkyKSAg
+ICAgIAogICAgICAgICAgICAgICAgICAgICAgICAKQXR0bjogQ2VvLAogCkkga25vdyB0aGF0IHRo
+aXMgcHJvcG9zYWwgbWF5IGNvbWUgdG8geW91IGFzIGEgc3VycHJpc2UgZXNwZWNpYWxseSBoYXZp
+bmcgdG8gY29tZSBmcm9tIHNvbWVvbmUgeW91IGhhdmUgbm90IG1ldCBiZWZvcmUuIEkgZ290IHlv
+dXIgaW5mb3JtYXRpb24gZnJvbSB5b3VyIGNvdW50cnkncyBjaGFtYmVyIG9mIGNvbW1lcmNlIGhl
+cmUgaW4gTmlnZXJpYS4KIApNeSBuYW1lIGlzIERyLiBFbW1hbnVlbCBJYmUgS2FjaGlrd3UsIFRo
+ZSBNaW5pc3RlciBvZiBTdGF0ZSBmb3IgUGV0cm9sZXVtIFJlc291cmNlcywgTmF0aW9uYWwgUGV0
+cm9sZXVtIENvcnBvcmF0aW9uIChOTlBDKS4gQmUgaW5mb3JtZWQgdGhhdCBteSBwYXJ0bmVyIERy
+LiBNYWlrYW50aSBCYXJ1IGFuZCBJIGF3YXJkZWQgYSBjb250cmFjdCB0byBhIGZvcmVpZ24gZmly
+bSAoU2hlbmcgWWFuZyBDb250cmFjdGlvbiBDb21wYW55KSB3aXRoIGNvbnRyYWN0IFJlZiBObzog
+Tk5QQy9QRUQvMTQ2Mi9LQURSRUYvOTIpIGZvciB0aGUgbWFpbnRlbmFuY2Ugb2YgdGhlIE5pZ2Vy
+aWEgcGV0cm9sZXVtLWNoZW1pY2FsIGNvbXBsZXggbG9jYXRlZCBhdCBLYWR1bmEsIE5pZ2VyaWEu
+CiAKSSBrbm93IHRoYXQgdGhpcyBwcm9wb3NhbCBtYXkgY29tZSB0byB5b3UgYXMgYSBzdXJwcmlz
+ZSBlc3BlY2lhbGx5IGhhdmluZyB0byBjb21lIGZyb20gc29tZW9uZSB5b3UgaGF2ZSBub3QgbWV0
+IGJlZm9yZSwgYnV0IEkgd291bGQgbGlrZSB5b3UgdG8gY28tb3BlcmF0ZSB3aXRoIG1lIHNvIHRo
+YXQgdGhpcyBVJEQ5OCwgMDAwLDAwMC4wMCB3aWxsIGJlIHJlbGVhc2VkIGFuZCB0cmFuc2ZlcnJl
+ZCBpbnRvIHlvdXIgYWNjb3VudCwgaXQgaXMgbWluZSBwcm9mb3VuZCBpbnRlbnRpb24gdG8gY29u
+dGFjdCB5b3UgZm9yIHRoaXMgdmVyeSBpbXBvcnRhbnQgYW5kIGhpZ2hseSBjb25maWRlbnRpYWwg
+dHJhbnNhY3Rpb24gZm9yIHRoZSB0cmFuc2ZlciBvZiAoVSREOTgsIDAwMCwwMDAuMDAgTmluZXR5
+LUVpZ2h0IE1pbGxpb24gVW5pdGVkIFN0YXRlcyBEb2xsYXJzIE9ubHkgaW50byB5b3VyIGJhbmsg
+YWNjb3VudC4KIApUaGUgY29udHJhY3QgaGFzIGJlZW4gc3VjY2Vzc2Z1bGx5IGV4ZWN1dGVkIGJ5
+IHRoZSBjb250cmFjdG9ycyBhbmQgdGhlaXIgY29udHJhY3Qgc3VtIGhhcyBiZWVuIHBhaWQgdG8g
+dGhlbSwgbGVhdmluZyB1cyBhbiBvdmVyZXN0aW1hdGVkIGJhbGFuY2Ugb2YgKFUkRDk4LCAwMDAs
+MDAwLjAwIE5pbmV0eS1FaWdodCBNaWxsaW9uIFVuaXRlZCBTdGF0ZXMgRG9sbGFycyBPbmx5KSBz
+dGlsbCBwZW5kaW5nIGF0IHRoZSBiYW5rLiBSaWdodCBub3csIHdlIGFyZSBsZWZ0IHdpdGggdGhp
+cyBvdmVyZXN0aW1hdGVkIGJhbGFuY2Ugb2YgKFUkRDk4LCAwMDAsMDAwLjAwKSB3aGljaCBpcyBz
+dGlsbCBmbG9hdGluZyBhdCB0aGUgZXNjcm93IGFjY291bnQgaW4gdGhlIENlbnRyYWwgQmFuayBv
+ZiBOaWdlcmlhIChDQk4pIHdhaXRpbmcgZm9yIGZpbmFsIHBheW1lbnQgdG8gYW55IHJlbGlhYmxl
+IGZvcmVpZ24gYmFuayBhY2NvdW50LCB5b3UgbWF5IHByb3ZpZGUuCiAKV2UsIGFzIGdvdmVybm1l
+bnQgb2ZmaWNpYWxzLCBhcmUgbm90IHBlcm1pdHRlZCB0byBvd24gb3Igb3BlcmF0ZSBmb3JlaWdu
+IGJhbmsgYWNjb3VudHMuIHRoZXJlZm9yZSwgd2UgbmVlZCByZWxpYWJsZSBwZXJzb24gd2hvIHdp
+bGwgcHJvdmlkZSB1cyB3aXRoIGEgZm9yZWlnbiBhY2NvdW50IHdoZXJlIHRvIHRyYW5zZmVyIGFu
+ZCBkZXBvc2l0IHRoaXMgVVMkOTgsMDAwLDAwMC4wMCwgdGhhdCBpcyB0aGUgcmVhc29uIHdlIGFy
+ZSBzb2xpY2l0aW5nIGZvciB5b3VyIHNpbmNlcmUgYXNzaXN0YW5jZSB0byBwcm92aWRlIHVzIHdp
+dGggYW4gYWNjb3VudCB3aGVyZSB0byB0cmFuc2ZlciB0aGlzIG1vbmV5IC5hbGwgbW9kYWxpdGll
+cyBmb3IgdGhlIGVhc3kgdHJhbnNmZXIgb2YgdGhpcyBtb25leSBpcyBub3cgaW4gcGxhY2UsIHRo
+ZSBwZXJpb2Qgb2YgdGhpcyB0cmFuc2FjdGlvbiBpcyBvbmx5IHR3byB3ZWVrcyBmcm9tIHRoZSBk
+YXkgd2UgcmVjZWl2ZSB5b3VyIGJhbmsgYWNjb3VudCBkZXRhaWxzLgogCk5vdGUgdGhhdCA1MCUg
+b2Ygb3VyIHNoYXJlIHdpbGwgYmUgaW52ZXN0ZWQgaW4geW91ciBjb3VudHJ5LCBhcyB3ZSBwcm9w
+b3NlIHRvIGdpdmUgeW91IDMwJSBvZiB0aGUgVSREOTgsIDAwMCwwMDAuMDAsIG15IHBhcnRuZXJz
+IGFuZCBJIHdpbGwgZ2V0IDYwJSBvZiB0aGUgbW9uZXkuCiAKVGhlIGJhbGFuY2Ugb2YgMTAlIHdp
+bGwgYmUgYWxsb2NhdGVkIHRvIGNvdmVyIGFsbCBleHBlbnNlcyBpbmN1cnJlZCBieSBib3RoIHBh
+cnRuZXJzLCBiZSBpbmZvcm1lZCB0aGF0IHRoaXMgcHJvcG9zYWwgaXMgdXJnZW50IGFuZCBjb25m
+aWRlbnRpYWwsIHBsZWFzZSBzZW5kIHRvIG1lIHlvdXIgYmFuayBhY2NvdW50IGRldGFpbHMgYW5k
+IGZ1bGwgYWRkcmVzcyBvZiBjb21wYW55IG5hbWUgYW5kIGFkZHJlc3MsIHlvdXIgcHJpdmF0ZSBw
+aG9uZSBhbmQgZmF4IG51bWJlciBmb3IgZWFzeSBjb21tdW5pY2F0aW9uIHdoaWNoIHdpbGwgYmUg
+dXNlZCBpbiBzZWN1cmluZyBhbGwgdGhlIG5lY2Vzc2FyeSBkb2N1bWVudHMgZm9yIGVhc3kgdHJh
+bnNmZXIgb2YgdGhlIGZ1bmQuCiAKIApBd2FpdGluZyB5b3VyIHVyZ2VudCByZXNwb25zZS4KIApC
+ZXN0IHJlZ2FyZHMuCgpEci4gRW1tYW51ZWwgSWJlIEthY2hpa3d1LgpUaGUgTWluaXN0ZXIgb2Yg
+U3RhdGUgZm9yIFBldHJvbGV1bSBSZXNvdXJjZXMsIE5pZ2VyaWFuIE5hdGlvbmFsIFBldHJvbGV1
+bSBDb3Jwb3JhdGlvbiAoTk5QQykKIApUaGlzIGVtYWlsIGFuZCBhbnkgYXR0YWNobWVudHMgdG8g
+aXQgbWF5IGJlIGNvbmZpZGVudGlhbCBhbmQgYXJlIGludGVuZGVkIHNvbGVseSBmb3IgdGhlIHVz
+ZSBvZiB0aGUgaW5kaXZpZHVhbCB0byB3aG9tIGl0IGlzIGFkZHJlc3NlZC4gQW55IHZpZXdzIG9y
+IG9waW5pb25zIGV4cHJlc3NlZCBhcmUgc29sZWx5IHRob3NlIG9mIHRoZSBhdXRob3IgYW5kIGRv
+IG5vdCBuZWNlc3NhcmlseSByZXByZXNlbnQgdGhvc2Ugb2YgTWFzdGVycGFnZa4uIElmIHlvdSBh
+cmUgbm90IHRoZSBpbnRlbmRlZCByZWNpcGllbnQgb2YgdGhpcyBlbWFpbCwgeW91IG11c3QgbmVp
+dGhlciB0YWtlIGFueSBhY3Rpb24gYmFzZWQgdXBvbiBpdHMgY29udGVudHMsIG5vciBjb3B5IG9y
+IHNob3cgaXQgdG8gYW55b25lLiBQbGVhc2UgY29udGFjdCB0aGUgc2VuZGVyIGlmIHlvdSBiZWxp
+ZXZlIHlvdSBoYXZlIHJlY2VpdmVkIHRoaXMgZW1haWwgaW4gZXJyb3IuCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2
+ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJv
+amVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
