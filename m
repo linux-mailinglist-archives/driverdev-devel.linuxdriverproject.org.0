@@ -1,50 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DEAD451B615
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 May 2022 04:46:21 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D287851E292
+	for <lists+driverdev-devel@lfdr.de>; Sat,  7 May 2022 01:43:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5FE8183F78;
-	Thu,  5 May 2022 02:46:20 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4139D404FD;
+	Fri,  6 May 2022 23:43:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y5Rlsk9sm7y8; Thu,  5 May 2022 02:46:19 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lNDad56dI980; Fri,  6 May 2022 23:43:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1640783F76;
-	Thu,  5 May 2022 02:46:19 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id DF93240275;
+	Fri,  6 May 2022 23:43:05 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 33A641BF3AE
- for <devel@linuxdriverproject.org>; Thu,  5 May 2022 02:46:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 577381BF293
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  6 May 2022 23:43:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2F4A9404AF
- for <devel@linuxdriverproject.org>; Thu,  5 May 2022 02:46:16 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4614E404FD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  6 May 2022 23:43:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P6wr1KnWrD8f for <devel@linuxdriverproject.org>;
- Thu,  5 May 2022 02:46:15 +0000 (UTC)
+ with ESMTP id w8yCRf-oygVg
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  6 May 2022 23:43:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.service-fujitsu.com (unknown [122.144.141.65])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3F27640424
- for <devel@linuxdriverproject.org>; Thu,  5 May 2022 02:46:15 +0000 (UTC)
-Received: from User (unknown [197.184.164.2])
- by mail.service-fujitsu.com (Postfix) with ESMTPA id 2CA622A121F;
- Thu,  5 May 2022 09:22:43 +0800 (CST)
+ by smtp2.osuosl.org (Postfix) with ESMTP id ED07E40275
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  6 May 2022 23:43:01 +0000 (UTC)
+Received: from User (8ta-229-151-227.telkomadsl.co.za [197.229.151.227])
+ by mail.service-fujitsu.com (Postfix) with ESMTPA id 54FD92A0CBF;
+ Sat,  7 May 2022 07:33:15 +0800 (CST)
 From: "Nigerian National Petroleum Corporation
  (NNPC)"<dremmanuelibekachikwun20221@gmail.com>
 Subject: Re: PROJECT: From: Dr. Emmanuel Ibe Kachikwu (GMD) Nnpc Towers Garki,
  Abuja
-Date: Thu, 5 May 2022 03:23:04 +0200
+Date: Sat, 7 May 2022 01:33:32 +0200
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220505024616.2F4A9404AF@smtp2.osuosl.org>
+Message-Id: <20220506234303.4614E404FD@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
