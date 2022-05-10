@@ -1,52 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD734524922
-	for <lists+driverdev-devel@lfdr.de>; Thu, 12 May 2022 11:36:30 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6304A524D83
+	for <lists+driverdev-devel@lfdr.de>; Thu, 12 May 2022 14:51:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4EF5160E61;
-	Thu, 12 May 2022 09:36:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D871E80C5E;
+	Thu, 12 May 2022 12:51:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qROuxOv6VXB3; Thu, 12 May 2022 09:36:28 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OiFOH1c1YnOu; Thu, 12 May 2022 12:51:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 07AF760D4E;
-	Thu, 12 May 2022 09:36:28 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9988780B40;
+	Thu, 12 May 2022 12:51:29 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4D89C1BF29A
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 12 May 2022 09:36:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8F6421C115D
+ for <devel@linuxdriverproject.org>; Thu, 12 May 2022 12:51:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 424AD419C2
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 12 May 2022 09:36:24 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7D40B419C3
+ for <devel@linuxdriverproject.org>; Thu, 12 May 2022 12:51:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id a7kyUx5irJoV
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 12 May 2022 09:36:23 +0000 (UTC)
+ with ESMTP id OE1QM1I0rjs6 for <devel@linuxdriverproject.org>;
+ Thu, 12 May 2022 12:51:25 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from dcslab (arirang.snu.kr [147.46.240.156])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8342541880
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 12 May 2022 09:36:22 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CE3F1419A4
+ for <devel@driverdev.osuosl.org>; Thu, 12 May 2022 12:51:24 +0000 (UTC)
 Received: from [10.28.18.10] (unknown [191.101.31.37])
  (using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
  (No client certificate requested) (Authenticated sender: root)
- by dcslab (Postfix) with ESMTPSA id 25B81A4A44A;
- Wed, 11 May 2022 07:55:10 +0900 (KST)
+ by dcslab (Postfix) with ESMTPSA id 7C6B9A4A580;
+ Wed, 11 May 2022 07:55:41 +0900 (KST)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: TANK LEASE!!!
 To: Recipients <root@osuosl.org>
 From: Susanne Klatten <root@osuosl.org>
-Date: Wed, 11 May 2022 06:51:47 +0800
-Message-Id: <20220512093624.424AD419C2@smtp4.osuosl.org>
+Date: Wed, 11 May 2022 06:52:16 +0800
+Message-Id: <20220512125126.7D40B419C3@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
