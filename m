@@ -1,77 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D3C0527547
-	for <lists+driverdev-devel@lfdr.de>; Sun, 15 May 2022 06:07:10 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 851E352764E
+	for <lists+driverdev-devel@lfdr.de>; Sun, 15 May 2022 09:45:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 10ECA81A30;
-	Sun, 15 May 2022 04:07:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 06A3D60E92;
+	Sun, 15 May 2022 07:45:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n4_jQcioGITf; Sun, 15 May 2022 04:07:08 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YjkcCLpBV8eb; Sun, 15 May 2022 07:45:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CA32781919;
-	Sun, 15 May 2022 04:07:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BB9C660ABB;
+	Sun, 15 May 2022 07:45:07 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id ADBE21BF5D7
- for <devel@linuxdriverproject.org>; Sun, 15 May 2022 04:07:04 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E2C4A1BF3E1
+ for <devel@linuxdriverproject.org>; Sun, 15 May 2022 07:45:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9B96640182
- for <devel@linuxdriverproject.org>; Sun, 15 May 2022 04:07:04 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E04E0825E6
+ for <devel@linuxdriverproject.org>; Sun, 15 May 2022 07:45:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp2.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xy7qypmppyM9 for <devel@linuxdriverproject.org>;
- Sun, 15 May 2022 04:07:04 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-vs1-xe44.google.com (mail-vs1-xe44.google.com
- [IPv6:2607:f8b0:4864:20::e44])
- by smtp2.osuosl.org (Postfix) with ESMTPS id ED01D400D2
- for <devel@driverdev.osuosl.org>; Sun, 15 May 2022 04:07:03 +0000 (UTC)
-Received: by mail-vs1-xe44.google.com with SMTP id e19so12284644vsu.12
- for <devel@driverdev.osuosl.org>; Sat, 14 May 2022 21:07:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:sender:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=yy784MKRy8irqMbGMSPnH31MndL/meMTA9+5FT5z1a8=;
- b=dUauy/XVuaGjXXc1lb4jVWYMkga4XmHOaZYfiJBFOX4NBDmjz4KTHmxseGqLLBGwpd
- Nuj0vYyuz90s0FBOXUlzSNOk3GzieNopZNT3leJkP7cDweaWDE0hIoAo5WnNNAvsiYnR
- tT2wjKw+c5seJMK/z65zwVxpFhtIq1ONxGFOC9JaY0/s+OYpi8uvhDRhpIok+jXtNsNP
- HtPhBdyw+RqL+SYYOGrlaMt21zYuL6rbrvgWyF2p6IY3u4gQ+Izzc3Kd73/LLa+8dAiz
- F6KQKnJXgSBZPi05XfqxVFklSyT5cIEYjgKlVdpty/7ztBZPHiiiHaxnyPW7m/ZZfz4z
- lfdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:sender:from:date:message-id:subject
- :to:content-transfer-encoding;
- bh=yy784MKRy8irqMbGMSPnH31MndL/meMTA9+5FT5z1a8=;
- b=cLXrMiEYcG3PHABL119gUau6+qIPdZe/gZADnXPwKglVc05NZpWRXEuanVKoVaCUYJ
- YgnF3Q2oZdUzM0+37vmjrTo6N89d85Ws6vDTzlnG12i1uWE3COq2/5ijqHDOrnKGPURl
- dK9dW+40FHhYVdod/CCOkKxMlcpFc23mtpxFBcja0IepEae6eK9l70RcDjiHdFPO8cbU
- PrnBusn1bDu/4CvyroSPRhEkVtFMqyKdsl6N8oQnH8RjMGFOd0TVZ87nU/rONLh+E8qY
- FKuReR3WITbj7RrRqeTILfcVaZnoqP0mQDZLl544EuQezikgLyP3RHp6wXEPohaHEvW5
- pYnw==
-X-Gm-Message-State: AOAM533mXysscnHBWZhejisx867woxHccUMFQ36xO6nexqJM6flO7eBC
- +mp+gcyngoscz2ryBXVw6esBGp8aO3yFb/Ik3cs=
-X-Google-Smtp-Source: ABdhPJz4HGls9b93pzCgOo2Rky+6m85SUqFRqxBrkV7jKYCMrYCDOvPZPmsJDPUqHs2RwOH/66d82CNUGZF5GdvFTq8=
-X-Received: by 2002:a67:ce8f:0:b0:32d:15e:b749 with SMTP id
- c15-20020a67ce8f000000b0032d015eb749mr4703644vse.49.1652587622822; Sat, 14
- May 2022 21:07:02 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0WIEf0OgU67c for <devel@linuxdriverproject.org>;
+ Sun, 15 May 2022 07:45:04 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from server.alohin.com.br (server.alohin.com.br [198.74.60.173])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6F9398274E
+ for <devel@driverdev.osuosl.org>; Sun, 15 May 2022 07:45:04 +0000 (UTC)
+Received: from ek.fuzqeaotftfu3ntik2kfakqnle.zx.internal.cloudapp.net (unknown
+ [20.108.65.60])
+ by server.alohin.com.br (Postfix) with ESMTPSA id 778232297C7;
+ Sun, 15 May 2022 03:23:22 -0300 (-03)
 MIME-Version: 1.0
-Received: by 2002:a67:e156:0:0:0:0:0 with HTTP; Sat, 14 May 2022 21:07:02
- -0700 (PDT)
-From: Kayla Manthey <sgtkayla2001@gmail.com>
-Date: Sun, 15 May 2022 04:07:02 +0000
-X-Google-Sender-Auth: 495OgzXOKyvnGFht-eG_5mmhuYw
-Message-ID: <CAPhVR5WLgf6Zt0qQ8L1spAHDdaDtUU4w4m=_q2AbVfW+T+rENQ@mail.gmail.com>
-Subject: 
-To: undisclosed-recipients:;
+Content-Description: Mail message body
+Subject: Hello
+To: Recipients <contato@ericfujii.com.br>
+From: contato@ericfujii.com.br
+Date: Sun, 15 May 2022 06:23:20 +0000
+Message-Id: <20220515074504.E04E0825E6@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,13 +54,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: rayify185@gmail.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-LS0gCk1vbGltIHZhcywgxb5lbGltIHpuYXRpIGplc3RlIGxpIGRvYmlsaSBtb2plIHByZXRob2Ru
-ZSBwb3J1a2UuIEh2YWxhCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
-dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
-aXZlcmRldi1kZXZlbAo=
+SSBhcG9sb2dpemUgZm9yIGNvbnRhY3RpbmcgeW91IGluIHRoaXMgbWFubmVyIGJ1dCB0aGUgc2l0
+dWF0aW9uIGF0IGhhbmQgZGVtYW5kcyB1cmdlbnQgYXR0ZW50aW9uLgpNeSBuYW1lIGlzIER1ZGlu
+IFZsYWRpbWlyIFZhc2lseWV2aWNoLCBvbmUgb2YgSXZhbiBQYXZsb3bigJlzIGNvbGxlYWd1ZXMo
+SXZhbiBQYXZsb3YgaXMgdGhlIGxhd3llciBoYW5kbGluZyBBbGVrc2VpIE5hdmFsbnkgY2FzZSkg
+WW91IGNhbiBnb29nbGUgaXQgLgpJIGhhdmUgYW4gaW1wb3J0YW50IHN1YmplY3QgdG8gc2hhcmUg
+d2l0aCB5b3UgY29uY2VybmluZyBqYWlsZWQgS3JlbWxpbiBjcml0aWMtIE1yLiBBbGVrc2VpIE5h
+dmFsbnkgd2hvc2UgamFpbCB0ZXJtICBoYXMgYmVlbiBpbmNyZWFzZWQgdG8gMTV5ZWFycywgbGVh
+dmluZyBodWdlIGZ1bmRzIHRyYXBwZWQgaW4gIG9uZSBvZiB0aGUgYWNjb3VudHMgZm9yIE5HT3Mg
+d2hpY2ggd2UgY291bGQgam9pbnRseSBpbnZlc3QgYW5kIHVzZSB0aGUgcHJvY2VlZHMgdG8gYXNz
+aXN0IHRoZSBkaXNwbGFjZWQgcGVyc29ucyBmcm9tIHRoZSBSdXNzaWFuLVVrcmFpbmUgaW52YXNp
+b24uIApXcml0ZSBiYWNrIHRvIG1lIGZvciBtb3JlIGRldGFpbCBvbiBob3cgSSB3aWxsIHByZXNl
+bnQgeW91IHRvIHRoZSBiYW5rIGFzIG9uZSBvZiB0aGUgTkdPcyBiZW5lZmljaWFyaWVzIHRvIHB1
+bGwgc29tZSBvZiB0aGUgZnVuZHMgYW5kIHN0b3AgUHV0aW4gYW5kIGhpcyBnb3Zlcm5tZW50IGZy
+b20gZ2V0dGluZyBtb3JlIGZ1bmRzIHRvIGZpbmFuY2UgaGlzIGludmFzaW9uIG9mIFVrcmFpbmUu
+CgpHcmVldGluZ3MuCkR1ZGluIFZsYWRpbWlyIFZhc2lseWV2aWNoCl9fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBs
+aW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
