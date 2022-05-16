@@ -1,48 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8D2852948B
-	for <lists+driverdev-devel@lfdr.de>; Tue, 17 May 2022 01:00:31 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D84D529847
+	for <lists+driverdev-devel@lfdr.de>; Tue, 17 May 2022 05:35:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 24285830E6;
-	Mon, 16 May 2022 23:00:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BD88860F99;
+	Tue, 17 May 2022 03:35:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oGN9SsHeaWqU; Mon, 16 May 2022 23:00:29 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lefKET5vMH1P; Tue, 17 May 2022 03:35:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CD8048149B;
-	Mon, 16 May 2022 23:00:28 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 809B460C0F;
+	Tue, 17 May 2022 03:35:44 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E73091BF2CF
- for <devel@linuxdriverproject.org>; Mon, 16 May 2022 23:00:25 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 67E111BF322
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 17 May 2022 03:35:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E320C4052E
- for <devel@linuxdriverproject.org>; Mon, 16 May 2022 23:00:25 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6419660F99
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 17 May 2022 03:35:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DaX47inykH3h for <devel@linuxdriverproject.org>;
- Mon, 16 May 2022 23:00:25 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id uJpmW2Wx-fll
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 17 May 2022 03:35:40 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from web01.localdomain (unknown [117.131.215.118])
- by smtp2.osuosl.org (Postfix) with ESMTP id 61D214010C
- for <devel@driverdev.osuosl.org>; Mon, 16 May 2022 23:00:24 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id AE21660C0F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 17 May 2022 03:35:40 +0000 (UTC)
 Received: from User (localhost [127.0.0.1])
- by web01.localdomain (Postfix) with SMTP id 393A72E517E;
- Mon, 16 May 2022 20:59:08 +0800 (CST)
+ by web01.localdomain (Postfix) with SMTP id 3D76C2E48D1;
+ Mon, 16 May 2022 21:22:33 +0800 (CST)
 From: "Pradok Investments"<gpaul_pradok@consultant.com>
 Subject: Re: CRYPTOCURRENCY INVESTMENT PROPOSAL
-Date: Mon, 16 May 2022 08:37:13 -0600
+Date: Mon, 16 May 2022 09:00:44 -0600
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220516125910.393A72E517E@web01.localdomain>
+Message-Id: <20220516132234.3D76C2E48D1@web01.localdomain>
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
