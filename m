@@ -1,61 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F12F552AA77
-	for <lists+driverdev-devel@lfdr.de>; Tue, 17 May 2022 20:20:52 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DB8E052AA76
+	for <lists+driverdev-devel@lfdr.de>; Tue, 17 May 2022 20:20:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 33D1141A0C;
-	Tue, 17 May 2022 18:20:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A90C160B6A;
+	Tue, 17 May 2022 18:20:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id COs6CQqsR5WP; Tue, 17 May 2022 18:20:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6I1aIrJlF5hB; Tue, 17 May 2022 18:20:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A5366419F3;
-	Tue, 17 May 2022 18:20:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 65C1D60A9C;
+	Tue, 17 May 2022 18:20:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id ED1C81BF855
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2662C1BF855
  for <devel@linuxdriverproject.org>; Tue, 17 May 2022 18:20:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DC58F83E4D
+ by smtp3.osuosl.org (Postfix) with ESMTP id 156F460D51
  for <devel@linuxdriverproject.org>; Tue, 17 May 2022 18:20:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=gratismspoints.com;
- domainkeys=pass (2048-bit key) header.from=sam.eas@gratismspoints.com
- header.d=gratismspoints.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ffh1oJa3UWrC for <devel@linuxdriverproject.org>;
- Tue, 17 May 2022 18:20:36 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id HlbUFdHwXivX for <devel@linuxdriverproject.org>;
+ Tue, 17 May 2022 18:20:35 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from eddatermay.gratismspoints.com (eddatermay.gratismspoints.com
  [193.233.182.249])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1DE2783E52
- for <devel@driverdev.osuosl.org>; Tue, 17 May 2022 18:20:35 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2F55860A9C
+ for <devel@linuxdriverproject.org>; Tue, 17 May 2022 18:20:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
  d=gratismspoints.com; 
  h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
  i=sam.eas@gratismspoints.com; bh=sZDG7ri0Mv9bGcSob4G9u4juwlg=;
- b=FQbGt/T24k5QZ0DKZ3gqu7q8Xt7q3IeoKXhevasGkCxY+XaPkFQjpzPrtgtmOLP0qwhh+RCLPpoJ
- 1rEJN1rYN8A91oXx1Lr6OasmVI28O6+uMcph03zXxd1YSh+8loi1n/AG207Yyldi/EpRX6n34VsW
- yn34D+oBY+K6+wtJjd/qRdNk5UfynAQcXO7HFR9eZUhonPDiXxomlleXMjPkQnZVhmaAV8mE3jWl
- 8n5TUEfnCrgQddR+G1uot4tsuJYjhZlFdMw7+UWTekl9kSbsdgxuUeyxBSy9quHVG+4SDR3Dsm90
- lDp+/JPqHXC4oTOtU20Xc1nAxXwsQlXBLyoVeA==
+ b=bS4iQIIm/mmvd6i3nKkaSUhxkgCn8FJ+mKHQjJguLcCnyQZcYhhHlv8Rep+f8LS/0TXvAtXWKabC
+ oIabi2bTxGvaKS+tW3jSneN/85J9aS/pwWDP/OdrrVvvS53g0tiJ7MsCABN3wBDPxZ+Pvc4BXbqM
+ 3Yh5WBbJtOeCKLbtH4Pe6cBy0PpcOrYoxzBomh2xMTEk5jtUDXRoNeIcwx09+zGwRXit2SVOuu9J
+ uLHA6I8/8alAD3N+52K+1WpHTH7Ho3RMTnaSqusftbw8m20T4o6db/4N9JbvbFpn190ODnDUF011
+ 9iDET9pa83bAMhHrl/EGf8LDs5+/iI+fhFmOcA==
 DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim; d=gratismspoints.com; 
- b=fwfkLPFhJKtJnjbCbDeRQng94FilUJsDn+fJm5d0KMzb7N2WNpZQM1Smumlc+I+ofedNVAMI18ew
- F2SzK49CT5z9B91bj8x15UAUGIVNvcEvD10lMSf+rVzjWiXw8/HGAL9qzU3scQmNkdq+Viy9J5G0
- EcQXzrbmJHXaHSfdYGXeWiVTweMG4PGf6KtZSLrqB0mcimtWYiwwqeee0NUn3X8DJx2Ic8Vbhv3A
- j41yIvnm6inyY+NPWZ0XZCPNJsHSb5v0UwHJZUGfvZPz0+XafkAJVx+8XUzcE6BYASYbQFZRR29C
- K2N6d1HBuuNTh8Z2TRO1mj6sFzmdDbpuuxpI2A==;
+ b=vmFXEN9QXJf2r27aqpvyDdZgMgYKCqH9vrErXp8H+GiqDGkVyInE7i6X2+eAyRJ0eE5WBXWlrGDh
+ ybMsFcX+VI44WSGHnSy2Pp2nTNe4b8eW6yL1Gcc2ILWXbxBHxCydpvEv64ZYydGlswym/iOq+yG6
+ HPrmmAyoZDdyNA0KOHSXWjUpKCif41Q/qoy6SmItFdTE4Obpbaa0+wtWpvWPx55bIBaO/QuMaBwf
+ N/kPobWI0Seva8rcH49+BOBS+HjrB8Hm5Uo7VUhUaob2fx5S34rU5BxerwKwgW/hhPnxKgqUW2V7
+ cDvlVKx9NWxMMwUAOo9sJJ/9fCeaEtkBNF5gLQ==;
 From: Mustafa Ayvaz <sam.eas@gratismspoints.com>
-To: devel@driverdev.osuosl.org
+To: devel@linuxdriverproject.org
 Subject: MUT. PARTNER
 Date: 17 May 2022 20:20:33 +0200
-Message-ID: <20220517202033.3111A8DF22C0B4C0@gratismspoints.com>
+Message-ID: <20220517202033.259B91E5F06C2CE2@gratismspoints.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
