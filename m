@@ -1,52 +1,48 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74A7552FAC8
-	for <lists+driverdev-devel@lfdr.de>; Sat, 21 May 2022 13:02:12 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 415DA52FAC7
+	for <lists+driverdev-devel@lfdr.de>; Sat, 21 May 2022 13:02:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B7D6761001;
-	Sat, 21 May 2022 11:02:10 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a3F3cLO_p-yB; Sat, 21 May 2022 11:02:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7A12360640;
-	Sat, 21 May 2022 11:02:09 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E10AE1BF39F
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 May 2022 11:02:06 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CD89E40AF7
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 May 2022 11:02:06 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7CD5640AF1;
+	Sat, 21 May 2022 11:02:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 14p0apFqUV-T
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 May 2022 11:02:06 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yulqhvsrUWpz; Sat, 21 May 2022 11:02:04 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 39A1340181;
+	Sat, 21 May 2022 11:02:04 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 045DA1BF39F
+ for <devel@linuxdriverproject.org>; Sat, 21 May 2022 11:02:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id E6E0660FEF
+ for <devel@linuxdriverproject.org>; Sat, 21 May 2022 11:02:01 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Vc9aRaqK3X2P for <devel@linuxdriverproject.org>;
+ Sat, 21 May 2022 11:02:01 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail.streetsoncloud.com (unknown [68.71.35.244])
- by smtp2.osuosl.org (Postfix) with ESMTP id 223D440181
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 21 May 2022 11:02:06 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 422AA60640
+ for <devel@linuxdriverproject.org>; Sat, 21 May 2022 11:02:01 +0000 (UTC)
 Received: from DESKTOP-ENLMF94.Home (unknown [102.32.103.54])
- by mail.streetsoncloud.com (Postfix) with ESMTPA id 971A0BA8A86;
- Sat, 21 May 2022 04:32:04 -0400 (EDT)
+ by mail.streetsoncloud.com (Postfix) with ESMTPA id 0006ABA8A20;
+ Sat, 21 May 2022 04:32:07 -0400 (EDT)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: CLAIM YOUR 500,000 EUR C O V I D - 1 9  BENEFIT FUNDS
 To: Recipients <UNFUNDING@osuosl.org>
 From: <UNFUNDING@osuosl.org>
-Date: Sat, 21 May 2022 10:31:58 +0200
+Date: Sat, 21 May 2022 10:32:01 +0200
 X-Antivirus: Avast (VPS 220520-4, 5/20/2022), Outbound message
 X-Antivirus-Status: Clean
-Message-Id: <20220521110206.CD89E40AF7@smtp2.osuosl.org>
+Message-Id: <20220521110201.E6E0660FEF@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
