@@ -2,73 +2,73 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D357A530C74
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 May 2022 11:57:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2450F531184
+	for <lists+driverdev-devel@lfdr.de>; Mon, 23 May 2022 17:14:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1C98D610CD;
-	Mon, 23 May 2022 09:57:05 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 25B15610EA;
+	Mon, 23 May 2022 15:14:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id c9RAyHJtoTzn; Mon, 23 May 2022 09:57:04 +0000 (UTC)
+	with ESMTP id Z6sPzb3bkh2g; Mon, 23 May 2022 15:14:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A856360692;
-	Mon, 23 May 2022 09:57:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A3C2B610DB;
+	Mon, 23 May 2022 15:14:11 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A8BBD1BF977
- for <devel@linuxdriverproject.org>; Mon, 23 May 2022 09:56:58 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0B45D1BF390
+ for <devel@linuxdriverproject.org>; Mon, 23 May 2022 15:14:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 97B5641954
- for <devel@linuxdriverproject.org>; Mon, 23 May 2022 09:56:58 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 08A9C83478
+ for <devel@linuxdriverproject.org>; Mon, 23 May 2022 15:14:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+Authentication-Results: smtp1.osuosl.org (amavisd-new);
  dkim=pass (2048-bit key) header.d=gmail.com
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xw_t8Qt6bl5A for <devel@linuxdriverproject.org>;
- Mon, 23 May 2022 09:56:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id idwVSPAi1d_D for <devel@linuxdriverproject.org>;
+ Mon, 23 May 2022 15:14:06 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-ej1-x643.google.com (mail-ej1-x643.google.com
- [IPv6:2a00:1450:4864:20::643])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C148F4194E
- for <devel@linuxdriverproject.org>; Mon, 23 May 2022 09:56:57 +0000 (UTC)
-Received: by mail-ej1-x643.google.com with SMTP id y13so26882399eje.2
- for <devel@linuxdriverproject.org>; Mon, 23 May 2022 02:56:57 -0700 (PDT)
+Received: from mail-qk1-x742.google.com (mail-qk1-x742.google.com
+ [IPv6:2607:f8b0:4864:20::742])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2FA4F8317B
+ for <devel@driverdev.osuosl.org>; Mon, 23 May 2022 15:14:06 +0000 (UTC)
+Received: by mail-qk1-x742.google.com with SMTP id l82so8292643qke.3
+ for <devel@driverdev.osuosl.org>; Mon, 23 May 2022 08:14:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=WTJUfxKwBKekSBSUnia4+MJkP6oFkyw0FVWZM+5Ui/A=;
- b=OvCLHpd5mLrFvqiiOWTT+Peno2QeFsDFZfyCYTcJcfkizHv37bOoWuBkt4pSqNQgj5
- m16VL5J3hXA+u4Cz/1h7NLPFSBWDS7ZUuFGro8fS+UYuIw7QpiVt215e3TuBW8mGh+SP
- fbe2CXuhLQMyf11Pm2yu8ivqOyl4uI1mio/RCYNRhSJxF/9tLh8MuXPQLVCsZZSaPiUn
- 4JcN4QtdOkCZ86hRJicVo7T8vp1ztM/aemlLpq2NGkusA4JLgTzyce0EWkHYPpShvZ1h
- Fq4IRDqQsXtKDCw/AEB5bsrfX5V+eMiR7blX9Ll4lFBZt/8vsD1i/40QmuhuGlxc88cz
- av7Q==
+ bh=TEYP9RM7WcpTRoivdpMreD0rxNuJWtaJhJGPMNu5T8U=;
+ b=mvnO9+VSQ3bow1G7A1MbIVHQQlRfwhd2CWvwpzYP9FCjFEJIBBcT21Rqcl2REANlje
+ /ZkgwvPXcYRAeUZLcW3jFvvCVRhz46kabEHRQrhJFiqAoo4Ao0bdRSb3C5alhshkPfuN
+ xuywz3inRgtkOopKf7RUG9+zw10D21g/m1we/8RsU1eL5q2jtKO6zdlqskeIZDjU2hjA
+ O1/MJOFX98Yf8fiMvzcEEpMJoB5U6U597MopYrN8qsDeXOkwW6Tma92SFYV9/JDAbWTf
+ w3Dp7hAnCFViiv8IHmmQ3mCqmO1Y3SwBX76N6Ai3gf9Zslk914vygxWjWmV+TeZh7Rl8
+ L6IQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
  :subject:to;
- bh=WTJUfxKwBKekSBSUnia4+MJkP6oFkyw0FVWZM+5Ui/A=;
- b=ojZRzVpKeJ5Fec1BHlT8StVvE5bzuYsWK98vqJQ3J3wGY7Fpm/I1UHXk7bOWOuRtQK
- byXUly8bwrh0ZJ7cnbZbpFmclS2DRDPi6qmKn5JF+5ZrMjXoetsnq7alqpqh63Xfl0QV
- y3EP4M6BItlFmAdlwpp2OIB42hEnM2hltU8AiDe4VQ+13gQogvBOLEixXUb806q8V45O
- DXC0ymU21f7p72sPfaBDTPBJ6/RI1Us/N6hDqgRHP2wTuzi7pdVQlYdaOzcToXxa0Ggk
- Xvyd7rGlt1nhWQtRapkbCAsWjBSd9LqEEgqNFi8NKUgf6YxFQhzFV6VDtfnwpzZZuLyO
- VgYg==
-X-Gm-Message-State: AOAM533QOXo2hMu7tuhZsOWATjbe6Pj6iY9UA23lSncOyN+EHJNY/OcR
- v9N737SG6jno5UsLp0YWXiWwhmjpPykZZNKX6i0=
-X-Google-Smtp-Source: ABdhPJxjRdvM5YTFv1undaIlfK5pxftyytztWzSuSEZQZ0IXb08qVvKEhKBfQ/PqaIawvIEwSxb4OhJqLY7G7blEeHo=
-X-Received: by 2002:a17:907:6e1a:b0:6fe:f357:3837 with SMTP id
- sd26-20020a1709076e1a00b006fef3573837mr1760448ejc.44.1653299815796; Mon, 23
- May 2022 02:56:55 -0700 (PDT)
+ bh=TEYP9RM7WcpTRoivdpMreD0rxNuJWtaJhJGPMNu5T8U=;
+ b=XyNN866qsEZD3UC8/JCVIXaE39G+oHHytehWO+0RJcVL7LlbARAFi/U3WZsBiuRNY9
+ sHu83HaX5GIJP1SxM5O1eIGQD8jGuMg9q6YBL0YMEAVRCX2UweEtGct/3dEBwdHtuaGZ
+ AvOYLrfCU3aEQMSPInxjhiqvSCltwepWa89dDceOpIaGQYYjTF/oDqyP43c7tVR2gx/0
+ d/Jysk7BpTT642ISO04sgoCzrf2Ykl3Q3GfwX5YpTapAESu2n3NzxqtlfO84SE9O4Y/Y
+ jB6/SK1dtQLQHnBx9ivoVWFP8Smtr+e+/iINqlWQ2xQosDn02KgRULYIX7vvp0ggI7xB
+ wNzg==
+X-Gm-Message-State: AOAM531fC6F5RQNlCEOPqC+IEjROQPsmQRGEEt/I0nnh/GW64gpOFaPe
+ WAHdl4b0AdO4VtznM+GfVHwqNj6jVntLIDKtmEM=
+X-Google-Smtp-Source: ABdhPJyYnipxQGX+a7og7gHiJYgL6As6aPPWzZ9qFJBA8jZSasd0dKUl6J3lIlPZ1cP5OIOha09l13AIf1gh8fMc/aU=
+X-Received: by 2002:a05:620a:244c:b0:6a0:4d3d:9fa8 with SMTP id
+ h12-20020a05620a244c00b006a04d3d9fa8mr14106428qkn.591.1653318843777; Mon, 23
+ May 2022 08:14:03 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a17:907:7ea8:b0:6fe:73ca:cfd8 with HTTP; Mon, 23 May 2022
- 02:56:55 -0700 (PDT)
-From: David Ramchara <mrbthlnrd@gmail.com>
-Date: Mon, 23 May 2022 10:56:55 +0100
-Message-ID: <CAJp7S+qsNdz05KyKGzQ2fawdvQP-6GztgYmrMt4ZTK3ZL3Kcjw@mail.gmail.com>
-Subject: Hello
+Received: by 2002:ac8:5cd3:0:0:0:0:0 with HTTP; Mon, 23 May 2022 08:14:03
+ -0700 (PDT)
+From: Abla Ibrahim <drhahakim01@gmail.com>
+Date: Mon, 23 May 2022 16:14:03 +0100
+Message-ID: <CAAbWuPBdmMK6414EoV9keYgu5L8nhNFcaFCWj1UhegFsEytiyg@mail.gmail.com>
+Subject: PLEASE SAVE MY LIFE
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -82,17 +82,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ramcharan9910@outlook.com
+Reply-To: ablaibrahim001@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Did you receive my previous email regarding your family inheritance?
-Reply strictly through: ramcharancrdavid@gmail.com
+Hello
 
-Best Regards,
-David Ramchara
+My Name is Miss Abla Ibrahim  from Mali, I am 22 years old, I am in
+St. Christopher's Parish for refugee in Burkina Faso under United
+Nations High commission for Refugee ,I lost my parents in the recent
+war in Mali, right now am in Burkina Faso, please save my life I am in
+danger I need your help in transferring my inheritance my father left
+behind for me in a Bank in London , All I need is a foreigner who will
+stand as the foreign partner to my father and beneficiary of the fund.
+The money deposited in the Bank is US$10.500.000, (TEN MILLION FIVE
+HUNDRED THOUSAND UNITED STATES DOLLAR)
+
+ I just need this fund to be transfer to your account so that i will
+come over to your country and complete my education as you know that
+my country have been in deep crisis due to the bad leadership and I
+cannot go back there again because I have nobody again all of my
+family were killed in the war.
+
+ If you are interested to save me and help me receive my inheritance
+fund Please get back to me for more details about me and the
+inheritance funds.
+
+Miss Abla Ibrahim
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
