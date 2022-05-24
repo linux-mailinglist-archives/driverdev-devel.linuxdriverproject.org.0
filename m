@@ -1,59 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE33953269D
-	for <lists+driverdev-devel@lfdr.de>; Tue, 24 May 2022 11:39:18 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 34025532699
+	for <lists+driverdev-devel@lfdr.de>; Tue, 24 May 2022 11:38:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D97BA419F1;
-	Tue, 24 May 2022 09:39:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CD637610BF;
+	Tue, 24 May 2022 09:38:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Se-2hCAP7wM3; Tue, 24 May 2022 09:39:15 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id q1v7SCcpIGrU; Tue, 24 May 2022 09:38:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5ACF6419EF;
-	Tue, 24 May 2022 09:39:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 26F1560EC9;
+	Tue, 24 May 2022 09:38:40 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2467F1BF28B
- for <devel@linuxdriverproject.org>; Tue, 24 May 2022 09:39:12 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1FC1D1BF28B
+ for <devel@linuxdriverproject.org>; Tue, 24 May 2022 09:38:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1360882ADD
- for <devel@linuxdriverproject.org>; Tue, 24 May 2022 09:39:12 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0DBED60E5C
+ for <devel@linuxdriverproject.org>; Tue, 24 May 2022 09:38:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Authentication-Results: smtp1.osuosl.org (amavisd-new);
- dkim=pass (2048-bit key) header.d=box.indicandustries.com
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NhvJ38URrSH5 for <devel@linuxdriverproject.org>;
- Tue, 24 May 2022 09:39:11 +0000 (UTC)
-X-Greylist: delayed 00:14:13 by SQLgrey-1.8.0
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id m8Q_H6frz-rT for <devel@linuxdriverproject.org>;
+ Tue, 24 May 2022 09:38:36 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from box.indicandustries.com (hwsrv-970840.hostwindsdns.com
- [IPv6:2607:5501:3000:21a5::2])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9BDCA825CA
- for <devel@linuxdriverproject.org>; Tue, 24 May 2022 09:39:11 +0000 (UTC)
+ [104.168.149.109])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 915FF60E2B
+ for <devel@driverdev.osuosl.org>; Tue, 24 May 2022 09:38:36 +0000 (UTC)
 Received: from authenticated-user (box.indicandustries.com [104.168.149.109])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
  bits)) (No client certificate requested)
- by box.indicandustries.com (Postfix) with ESMTPSA id 255C8107FD9
- for <devel@linuxdriverproject.org>; Tue, 24 May 2022 03:24:18 -0600 (MDT)
+ by box.indicandustries.com (Postfix) with ESMTPSA id 5EC8510780C
+ for <devel@driverdev.osuosl.org>; Tue, 24 May 2022 03:24:58 -0600 (MDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=box.indicandustries.com; s=mail; t=1653384259;
+ d=box.indicandustries.com; s=mail; t=1653384298;
  bh=V6VCn7WEbqHjVVQ20/+SYu6rwS1WmTHcxX88g+j430s=;
  h=Reply-To:From:To:Subject:Date:From;
- b=EjFfk+UgG5vlipH6+HYyKB38h3JbvuoMlRVddagOTQJXK97fQ1IXHOJjdE9j48XPe
- X+NtbWW6GSkNqf8ROq7yiNm+a884N8UIbMvkFuklZIGHMVMCCyKhuVV+Eo4BsJ5gcL
- O12luHcPyUdFROiBCU0DsDV0zEBBQoyh8zwkzxNpmPYkX7VSbMuJW3gz1XVDYsZP4F
- usVoDu12tFTGH31Ho0b3GrC6Ej6TP9MT4VhuiYo1/eufBT4YvVK8RHcGxDTKUVKOmb
- KDhTcYRLNXGB5VcF1YTgQP9Uf2hK0IwAvHgXr3doUSG8lRGE87U4RlJ0Ie/8A73lYL
- UtDfGHFXWy+cA==
+ b=wn/bISPROI1M6sS4wvKk3Pa3C6f3IbtHErlxd03weGzsnORmEG/awvjFlgAg6hwLp
+ wNG3JrsK70aQfMENJKgMU0GrKF3xjuC1wO4QxGWWVP+Qgko8deNTSSzNbKlqUdD4QK
+ gfmu9t2r6K2CRhdIl5MK6gPzlmWxhHEgfHMirvGvjMqXp9+Z331RP1Kxk9gTTdpyCa
+ VA0D445sASPCFQ6lnVFmqRAWPSEyO6r5XIzDngJZw8mbV08Bv5rGrCQAyr4aJd3TdJ
+ iQiZ736GsIIGSwIW4YcZYohlBwcCAEtdZodOevuEp1ElOgKti0dD1i26pfmj/hGARR
+ Vm55IqgXXw3Zw==
 From: amjad.ali@box.indicandustries.com
-To: devel@linuxdriverproject.org
+To: devel@driverdev.osuosl.org
 Subject: Hello Sir, I seek your urgent consideration.
-Date: 24 May 2022 11:24:18 +0200
-Message-ID: <20220524112418.6704386E359CC330@box.indicandustries.com>
+Date: 24 May 2022 11:24:58 +0200
+Message-ID: <20220524112457.AF802EA6E04CD30D@box.indicandustries.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
