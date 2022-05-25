@@ -1,41 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (unknown [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EEA7A533D10
-	for <lists+driverdev-devel@lfdr.de>; Wed, 25 May 2022 14:58:21 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 53AC9533FF3
+	for <lists+driverdev-devel@lfdr.de>; Wed, 25 May 2022 17:11:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7081F612DB;
-	Wed, 25 May 2022 12:58:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 55BA56134F;
+	Wed, 25 May 2022 15:11:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bxN8XbEswA6z; Wed, 25 May 2022 12:57:59 +0000 (UTC)
+	with ESMTP id lo-n0_-UtEUk; Wed, 25 May 2022 15:11:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 35D93605B1;
-	Wed, 25 May 2022 12:57:59 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 26EC56134B;
+	Wed, 25 May 2022 15:11:29 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B721C1BF82C
- for <devel@linuxdriverproject.org>; Wed, 25 May 2022 12:57:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9B9D31BF86C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 25 May 2022 15:11:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A583183F2C
- for <devel@linuxdriverproject.org>; Wed, 25 May 2022 12:57:50 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8AD27842E7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 25 May 2022 15:11:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OynnKfWnhZ-U for <devel@linuxdriverproject.org>;
- Wed, 25 May 2022 12:57:50 +0000 (UTC)
+ with ESMTP id ipHkuCT8Y2bK
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 25 May 2022 15:11:26 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
 Received: from gmail.com (unknown [45.133.1.102])
- by smtp1.osuosl.org (Postfix) with ESMTP id B4D8783E95
- for <devel@driverdev.osuosl.org>; Wed, 25 May 2022 12:57:49 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id AFB80842CB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 25 May 2022 15:11:25 +0000 (UTC)
 From: Anice Amrani <frontera@fronteracapltalgroup.com>
-To: devel@driverdev.osuosl.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Consulting and project financing.
-Date: 25 May 2022 14:57:48 +0200
-Message-ID: <20220525145748.3565B2320E61C7D0@fronteracapltalgroup.com.>
+Date: 25 May 2022 17:11:24 +0200
+Message-ID: <20220525171124.B1EBE158505E8DCC@fronteracapltalgroup.com.>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
