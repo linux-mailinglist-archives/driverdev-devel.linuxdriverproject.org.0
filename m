@@ -2,51 +2,55 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9B7F539AE3
-	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Jun 2022 03:45:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A3D0539B1C
+	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Jun 2022 04:09:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BB5CB8330B;
-	Wed,  1 Jun 2022 01:45:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8FB0D818EC;
+	Wed,  1 Jun 2022 02:09:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1VuqlbWSOuYQ; Wed,  1 Jun 2022 01:45:31 +0000 (UTC)
+	with ESMTP id nfigCIVgSyFd; Wed,  1 Jun 2022 02:09:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 728AB83300;
-	Wed,  1 Jun 2022 01:45:30 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 35E0081842;
+	Wed,  1 Jun 2022 02:09:06 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 958F21BF20F
- for <devel@linuxdriverproject.org>; Wed,  1 Jun 2022 01:45:27 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 76A971BF681
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  1 Jun 2022 02:09:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 846F58330B
- for <devel@linuxdriverproject.org>; Wed,  1 Jun 2022 01:45:27 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 653B540510
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  1 Jun 2022 02:09:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vdBLNo2IWjgW for <devel@linuxdriverproject.org>;
- Wed,  1 Jun 2022 01:45:27 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lP-lLA-vYabb
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  1 Jun 2022 02:09:02 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from mail2.smastv.pt (mail2.smastv.pt [62.28.63.77])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BA82883300
- for <devel@linuxdriverproject.org>; Wed,  1 Jun 2022 01:45:26 +0000 (UTC)
-Received: from EXCHDAG2.TVSMAS.local (172.17.2.44) by EXCHDAG1.TVSMAS.local
- (172.17.2.43) with Microsoft SMTP Server (version=TLS1_2,
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 85AE1404A5
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  1 Jun 2022 02:09:02 +0000 (UTC)
+Received: from EXCHDAG2.TVSMAS.local (172.17.2.44) by EXCHDAG2.TVSMAS.local
+ (172.17.2.44) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Wed, 1 Jun 2022
- 02:45:22 +0100
+ 03:08:59 +0100
 Received: from User (37.19.205.163) by EXCHDAG2.TVSMAS.local (172.17.2.42)
  with Microsoft SMTP Server id 15.2.986.22 via Frontend Transport; Wed, 1 Jun
- 2022 02:44:53 +0100
+ 2022 03:08:29 +0100
 From: "Reem E. Al-Hashimi" <geral@smastv.pt>
 Subject: FutureTransaction...
-Date: Tue, 31 May 2022 18:45:07 -0700
+Date: Tue, 31 May 2022 19:08:44 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <1e94a4f5-ad9b-4a06-8fd8-98e20f5f2af1@EXCHDAG2.TVSMAS.local>
+Message-ID: <cc47ea25-7013-41e8-8519-c775f518421d@EXCHDAG2.TVSMAS.local>
 To: Undisclosed recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
