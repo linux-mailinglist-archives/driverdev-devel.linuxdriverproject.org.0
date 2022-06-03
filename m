@@ -1,44 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 83BC753BBF4
-	for <lists+driverdev-devel@lfdr.de>; Thu,  2 Jun 2022 17:56:41 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C4E0753C820
+	for <lists+driverdev-devel@lfdr.de>; Fri,  3 Jun 2022 12:10:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1EC3741966;
-	Thu,  2 Jun 2022 15:56:40 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 95A7783EFC;
+	Fri,  3 Jun 2022 10:10:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sPT18ZWtCXlw; Thu,  2 Jun 2022 15:56:39 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vGsRL9I3iDFp; Fri,  3 Jun 2022 10:10:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8D6A8418A4;
-	Thu,  2 Jun 2022 15:56:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 56EF583EEF;
+	Fri,  3 Jun 2022 10:10:09 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0E4DE1BF401
- for <devel@linuxdriverproject.org>; Thu,  2 Jun 2022 15:56:35 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 71E101BF2A3
+ for <devel@linuxdriverproject.org>; Fri,  3 Jun 2022 10:10:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F1B0B60F8D
- for <devel@linuxdriverproject.org>; Thu,  2 Jun 2022 15:56:34 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5B373826FF
+ for <devel@linuxdriverproject.org>; Fri,  3 Jun 2022 10:10:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kn_-XG-X-64k for <devel@linuxdriverproject.org>;
- Thu,  2 Jun 2022 15:56:34 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nU_-BxXY8L4o for <devel@linuxdriverproject.org>;
+ Fri,  3 Jun 2022 10:10:06 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from unicodetestserver2021.in (unknown [143.110.184.46])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2F36B605EA
- for <devel@linuxdriverproject.org>; Thu,  2 Jun 2022 15:56:34 +0000 (UTC)
-Received: by unicodetestserver2021.in (Postfix, from userid 33)
- id C20143D1D2C; Thu,  2 Jun 2022 21:06:53 +0530 (IST)
-To: devel@linuxdriverproject.org
-Subject: Gas producer and supplier of gas related equipment
-Date: Thu, 2 Jun 2022 21:06:52 +0530
-From: SOC SALES & MARKETING <soc.salesmktgs@sharjahoxygen.com>
-Message-ID: <3a34496a32802844912007b4348004e1@dentaltogether.com>
+Received: from mail2.smastv.pt (mail2.smastv.pt [62.28.63.77])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AC3678269C
+ for <devel@linuxdriverproject.org>; Fri,  3 Jun 2022 10:10:05 +0000 (UTC)
+Received: from EXCHDAG2.TVSMAS.local (172.17.2.44) by EXCHDAG2.TVSMAS.local
+ (172.17.2.44) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Fri, 3 Jun 2022
+ 11:10:03 +0100
+Received: from User (45.130.137.37) by EXCHDAG2.TVSMAS.local (172.17.2.42)
+ with Microsoft SMTP Server id 15.2.986.22 via Frontend Transport; Fri, 3 Jun
+ 2022 11:09:23 +0100
+From: "Reem E. Al-Hashimi" <geral@smastv.pt>
+Subject: FutureTransaction...
+Date: Fri, 3 Jun 2022 03:09:47 -0700
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <5eed9f61-4820-47d4-904c-ad68717bf00a@EXCHDAG2.TVSMAS.local>
+To: Undisclosed recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,43 +60,17 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: soc.salesmktg@hotmail.com
+Reply-To: hashimirrr22@kakao.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good day,  Sir
-With our experience in the Gas Industry, we provide high quality and approved international standards to large and small companies in the various types of industries
+My name is Mrs. Reem E. Al-Hashimi, the Emirates Minister of State and Managing Director of the United Arab Emirates (Dubai) World Expo 2020/2021 Committee. I have a great business proposal to discuss with you, if you are interested in foriegn investment/partnership please reply with your line of interest.
 
-Our Primary activities are:
--Lease and Sales - Cylinders, Vaporizer, ISO and Storage Tanks
--Fabrication and Supply - Cylinder Quads / Racks / Carry Racks / Regulating Manifolds
--Supply of Gases - Industrial, Medical, Specialty Gases and Gas Mixtures
--Liquid Bulk Supply - Ammonia, Propane, LPG, Carbon Dioxide, Argon, Nitrous Oxide, Oxygen and Nitrogen
--Installation and Commissioning - Liquid and Gas Plants, Gas Filling Stations with Storage Tanks Facilities
--Trading - All Types of Gas accessories and Gas related Equipments
-
-We carry out Hydrotesting of cylinders, racks and tube trailers along with the complete refurbishment of skids including repair of frames and manifolds, blasting, painting and other services as per customer requirement.
-
-If you need our service, pls inform me
-
- 
- 
- 
+PLEASE REPLY ME ON THIS EMAIL: reemhimi78@kakao.com
 Regards,
-RAHUL NARAIN
-General Manager - Projects, Exports & Bulk Sales
- 
-SHARJAH OXYGEN COMPANY (SOC)
-P.O. Box 800, Sharjah, UAE
-Tel:  971-6-529 1199 Ext 23 / Fax:  971-6-529 1099
-
-Skype email: soc.salesmktg@hotmail.com
- 
-SOC Website: http://www.sharjahoxygen.com
-Working Hours: 8:00AM to 6:00PM (Sunday to Thursday)
-
+*Mrs. Reem*
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
