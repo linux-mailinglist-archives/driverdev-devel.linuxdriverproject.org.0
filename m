@@ -1,74 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8699253EDA9
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Jun 2022 20:12:38 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 397CB53F226
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Jun 2022 00:30:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BC94A84064;
-	Mon,  6 Jun 2022 18:12:36 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B821C4108A;
+	Mon,  6 Jun 2022 22:30:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VGHEj0dzENdY; Mon,  6 Jun 2022 18:12:36 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7Yxe1rHcxiCV; Mon,  6 Jun 2022 22:30:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8153D84051;
-	Mon,  6 Jun 2022 18:12:35 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7630B409A6;
+	Mon,  6 Jun 2022 22:30:27 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7326A1BF2E3
- for <devel@linuxdriverproject.org>; Mon,  6 Jun 2022 18:12:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2246E1BF37F;
+ Mon,  6 Jun 2022 22:30:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7058C84057
- for <devel@linuxdriverproject.org>; Mon,  6 Jun 2022 18:12:32 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 111FC84087;
+ Mon,  6 Jun 2022 22:30:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YKLpUq7fEv_G for <devel@linuxdriverproject.org>;
- Mon,  6 Jun 2022 18:12:31 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-Received: from mail-oi1-x243.google.com (mail-oi1-x243.google.com
- [IPv6:2607:f8b0:4864:20::243])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CF2A984051
- for <devel@driverdev.osuosl.org>; Mon,  6 Jun 2022 18:12:31 +0000 (UTC)
-Received: by mail-oi1-x243.google.com with SMTP id h188so20762984oia.2
- for <devel@driverdev.osuosl.org>; Mon, 06 Jun 2022 11:12:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:reply-to:sender:from:date:message-id:subject:to;
- bh=5Lg/ld1rBwocXfsWBw2MKzHARXD54TqguaWUMMQTsKY=;
- b=R6oV5yHsvT4KffPTiikXa9gq37prZOFhgKzSzvcgf5mBo+u/IQu+5/hKQEkvTwBIrK
- NVinN8FJHziGzLKGHXsy2pNwstSvBE+cUHwR3WGMuPVOP4CIDC2UpDAKSwCo5Dk1P0Dl
- 3ECSsFSUEf7mmKzfTjsbruMD6sH235V0iadbLy7xRH6Gx8x/1ktwHE1PE4f4F29ib4+i
- 9phAWl0t50yrSzaYmS2eSDuzOZlQa57OxAMEz22MkOLjcgfWlsDtOpbfKnNrKZRQJHD4
- +fm4bHcrjj1X2b934YY5j60ct0kMwe4f5yYieIVls/A1oUPPZnlvvdJfEc6XCCyqqrtU
- b/Fw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:sender:from:date
- :message-id:subject:to;
- bh=5Lg/ld1rBwocXfsWBw2MKzHARXD54TqguaWUMMQTsKY=;
- b=HWmsyLyyTaG6h/1LVYpagdCjGBrFSYzUVSlOftrewWg3nUZLSxqqclgbpx2cTEObBX
- yAIvfFP1cOrgBTGekftQdJ2ab837v4/sbIw5lXFBS3NExj4phhkkEmtkgKfGOlx4bpBM
- rju2AXKtQdqiNBNqNEMOPlu+kbikza/mGhj/9m1I2gTkDH2HnYfBkNjFpdS7NRZuM225
- 8hFuHhAp4LAWQY4aUcwg1z+dmAXD121TtQIMEiWW3LEiXlZ7Qt27NAlNboC/Z7W7CMl0
- E9TmfE0HAjpMnump4mMTbaMAj2ngvb1y1JZ6RSapDX3ATzHqj6H38w6mLr5Bxc99jg8K
- uzRg==
-X-Gm-Message-State: AOAM530KuEk9t5UzveKdzVO7edXR2hd0KalFVn+M3x/DoIXa45RcC0DX
- qGE2F5AR/Bnai6REACGbnScq0k7L473vNunf6kQ=
-X-Google-Smtp-Source: ABdhPJxSV9/q7JPHJHKNR68diunNbnbWuu0nzBjKbKyqHZsQiZXb02rzJB5yVecscAq92S6jNQb2gqtzc0iJQNct1pg=
-X-Received: by 2002:aca:be05:0:b0:32e:1ce9:755f with SMTP id
- o5-20020acabe05000000b0032e1ce9755fmr17488686oif.154.1654539150635; Mon, 06
- Jun 2022 11:12:30 -0700 (PDT)
+ with ESMTP id R8g0IuiUspuz; Mon,  6 Jun 2022 22:30:22 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from smtp.creo.hu (mail2.creo.hu [94.199.178.191])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D216184084;
+ Mon,  6 Jun 2022 22:30:21 +0000 (UTC)
+Received: from 35559.hostserv.eu ([185.229.90.51])
+ by smtp.creo.hu with esmtpsa  (TLS1.0) tls TLS_RSA_WITH_AES_256_CBC_SHA
+ (Exim 4.93) (envelope-from <keker@creo.hu>)
+ id 1nyLEk-000tH0-TD; Tue, 07 Jun 2022 00:30:16 +0200
 MIME-Version: 1.0
-Received: by 2002:a05:6358:9b52:b0:a5:478a:2248 with HTTP; Mon, 6 Jun 2022
- 11:12:30 -0700 (PDT)
-From: "Hon. Barrister Matthias" <honbarristermatthias@gmail.com>
-Date: Mon, 6 Jun 2022 11:12:30 -0700
-X-Google-Sender-Auth: 2TwDtLRPML_9ZyrfYREzS0Xnp5M
-Message-ID: <CAHkN6SO0TT=+LLNK1wj10sE35CPMHwWOVebaKhQEfRVWGpOQ5A@mail.gmail.com>
-Subject: My Greetings
-To: undisclosed-recipients:;
+Content-Description: Mail message body
+To: Recipients <keker@creo.hu>
+From: "Mrs Julia Iris" <keker@creo.hu>
+Date: Tue, 07 Jun 2022 00:30:12 +0200
+X-SA-Exim-Connect-IP: 185.229.90.51
+X-SA-Exim-Mail-From: keker@creo.hu
+Subject: Re: My greetings
+X-SA-Exim-Version: 4.2.1 (built Sat, 08 Feb 2020 21:53:50 +0000)
+X-SA-Exim-Scanned: No (on smtp.creo.hu); Unknown failure
+Message-Id: <20220606223024.111FC84087@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,36 +58,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: honbarristermatthias@gmail.com
+Reply-To: juliairis@gmx.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Friend,
+Re: My greetings
 
-My name's Hon. Barrister Matthias, I'm sending this brief letter to
-solicit your support. I had a client who is an Indian and his name is
-Mr. Gurbhagat Singh Bhatti , he was a dealer in magnesite minerals
-here in Austria and also a Gas dealer in Russia.  He died six years
-ago in Russia after a Gas explosion in one of his dealing offices
-which led to the death of both him and his wife.
+I am Mrs Julia Iris a retired Economic Operator hospitalized for health reasons. I suffer from heart disease and the results of some of my medical tests showed that my days on earth are numbered, while I have in my Bank a sum of money of Three million four hundred and twenty-five thousand. Euros.
 
-He deposited the sum of 4.5 million euro in one of the legendary banks
-here in Austria. I have tried all I could to get in touch with any of
-his friends or family members but no way because he had no child. And
-the recent death of Covid 19 killed his only brothers in India last
-year.
+Unfortunately, I have no family or children who will be able to benefit from this money. I was advised by the Catholic bishop and my spiritual guide to inherit it from a person whom I must choose at random, who can put these funds to good use. Reason why I am contacting you today by email given that I am under hospitalization in order to live the rest of my life. You are therefore the beneficiary of 3,425,000 EURO. I offer it to you from the bottom of my heart, I just ask for prayers in return so that my soul may rest in peace on the last day.
 
-So I want you to apply to the bank as his Business partner so that the
-bank can release Mr. Gurbhagat Singh Bhatti funds into your bank
-account. I will provide you the guidelines on how to contact the bank
-and we have to do this with trust, because I don't want the bank to
-transfer the fund into Government treasury account as an unclaimed
-fund, so i need your response
-
-Warm Regards,
-Hon. Barrister Matthias
+Please write to me by Email: juliairi@gmx.net
+May the Lord God creator of heaven and earth hear your prayers,
+Amen !!!
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
