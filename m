@@ -1,62 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8B4F3547D8A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Jun 2022 03:58:34 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 11D2154A8C0
+	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Jun 2022 07:28:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 91AB8401C9;
-	Mon, 13 Jun 2022 01:58:32 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E963340475;
+	Tue, 14 Jun 2022 05:28:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iQ-jf44sDcEv; Mon, 13 Jun 2022 01:58:31 +0000 (UTC)
+	with ESMTP id vhJDn9Lchy9f; Tue, 14 Jun 2022 05:28:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 484C24010D;
-	Mon, 13 Jun 2022 01:58:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B19FE40126;
+	Tue, 14 Jun 2022 05:28:20 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 277B51BF369
- for <devel@linuxdriverproject.org>; Mon, 13 Jun 2022 01:58:28 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5A73C1BF317
+ for <devel@linuxdriverproject.org>; Tue, 14 Jun 2022 05:28:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1623D60EE0
- for <devel@linuxdriverproject.org>; Mon, 13 Jun 2022 01:58:28 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 03DEF401FE
+ for <devel@linuxdriverproject.org>; Tue, 14 Jun 2022 05:28:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hheFCv8Uboaq for <devel@linuxdriverproject.org>;
- Mon, 13 Jun 2022 01:58:27 +0000 (UTC)
-X-Greylist: delayed 03:16:56 by SQLgrey-1.8.0
-Received: from mail.distrito09d19.saludzona5.gob.ec
- (mail.distrito09d19.saludzona5.gob.ec [181.211.191.171])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E37356060A
- for <devel@driverdev.osuosl.org>; Mon, 13 Jun 2022 01:58:26 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.distrito09d19.saludzona5.gob.ec (Postfix) with ESMTP id 4F82C8832A4B7; 
- Sun, 12 Jun 2022 16:35:18 -0500 (-05)
-Received: from mail.distrito09d19.saludzona5.gob.ec ([127.0.0.1])
- by localhost (mail.distrito09d19.saludzona5.gob.ec [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id rPxlwXwsECaa; Sun, 12 Jun 2022 16:35:17 -0500 (-05)
-Received: from localhost (localhost [127.0.0.1])
- by mail.distrito09d19.saludzona5.gob.ec (Postfix) with ESMTP id 7D6EF8832A4B8; 
- Sun, 12 Jun 2022 16:35:13 -0500 (-05)
-X-Virus-Scanned: amavisd-new at distrito09d19.saludzona5.gob.ec
-Received: from mail.distrito09d19.saludzona5.gob.ec ([127.0.0.1])
- by localhost (mail.distrito09d19.saludzona5.gob.ec [127.0.0.1]) (amavisd-new,
- port 10026)
- with ESMTP id redDXhMmvcMO; Sun, 12 Jun 2022 16:35:12 -0500 (-05)
-Received: from [192.168.8.101] (unknown [41.147.1.95])
- by mail.distrito09d19.saludzona5.gob.ec (Postfix) with ESMTPSA id
- 75218883173F9; Sun, 12 Jun 2022 16:34:23 -0500 (-05)
+Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (2048-bit key) header.d=gmail.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hixq4rBxOAuY for <devel@linuxdriverproject.org>;
+ Tue, 14 Jun 2022 05:28:17 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+Received: from mail-lf1-x133.google.com (mail-lf1-x133.google.com
+ [IPv6:2a00:1450:4864:20::133])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 09D714002E
+ for <devel@driverdev.osuosl.org>; Tue, 14 Jun 2022 05:28:16 +0000 (UTC)
+Received: by mail-lf1-x133.google.com with SMTP id c4so12120883lfj.12
+ for <devel@driverdev.osuosl.org>; Mon, 13 Jun 2022 22:28:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=5MG5eQp3QW+fTefG7UlY3sQzsiLMr100TCuCUnXvHOU=;
+ b=Cf1QZs/kgWUGSd2BDKJb8/+R3kyF9vx4HYpSOPcZMsAXXJStHbS0AmT4nZy0Y5o9aJ
+ obpU/hfBvnT9/nqc2Uyc6k29UidP8DLCfHhBFufcSiyREwYXXRyDXF3HHikqBatalBr5
+ q9QIY96XF2yILcfVAZXhTmYPyND6UETuDOveIJpWJk+L899uJWsLA/ULAEzYKkpkFoLs
+ CVjZr4JKLB2j7SHr84pfHVHiTpN1OW6zbCj641aB5HENKJyH1kBpL0gN3S7w7cOYSbff
+ 2GUF0KwDbHFNrMcDE+BehIVO8S2+cliDjV8jjCFwTtOaEwiqWhj1Ea08y8VQUPWu7ERr
+ Dg6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=5MG5eQp3QW+fTefG7UlY3sQzsiLMr100TCuCUnXvHOU=;
+ b=recRFJmgaoQov3sQac10JM0I/R96bUkSIaN9EcU8lHJn676Dz/nU6fP0sNtnpXiVvx
+ NfrVOwAXjBqPyaaCiHY3mUIjxO55hlkOKC8U7uZgaNxxk47ZpSytE5fYjdqeAFsB8hI4
+ ZQWK694qcoJnXjuGCbbU231f4sfBXJmbKt7sVbmBslP21cL7LuoLnE8BblQPgc8MfvjL
+ XJTuWI6638oGt9NUMMYxzaRqWdjjNyamZQXK6hNeueIvlVYe0116J9fgvp5LG+uJeuAr
+ LyxRXkWvq+7ieV8MR+d0SAaYOiLluddahah2sb58zUmIUshgUplrRiDY0NQpvCsNQpdf
+ OIeQ==
+X-Gm-Message-State: AJIora/9/U8k45fVochLUc6zo3DWpE/wcolyziaRLu016fR9YBey2xJ5
+ C7UZdt+k2KTI6kY02YhxUNCot4TKVpbSUDpU/iz1xyYeCgTzl/V4
+X-Google-Smtp-Source: AGRyM1scOXXXMNbiZz2VkXrB0Pvb6o8hHD9F8NLKkMQI3rFnvSXKSEAQglacFxMPRQXWZI+cHMbG6xYnBSyOcfFq16o=
+X-Received: by 2002:a05:6512:3094:b0:479:47ae:a7c4 with SMTP id
+ z20-20020a056512309400b0047947aea7c4mr2022636lfd.518.1655184494524; Mon, 13
+ Jun 2022 22:28:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: =?utf-8?q?Spende_von_2=2E000=2E000=2C00_Euro_f=C3=BCr_Sie?=
-To: Recipients <carolina.arteaga@distrito09d19.saludzona5.gob.ec>
-From: "Manuel Franco" <carolina.arteaga@distrito09d19.saludzona5.gob.ec>
-Date: Sun, 12 Jun 2022 23:33:30 +0200
-Message-Id: <20220612213423.75218883173F9@mail.distrito09d19.saludzona5.gob.ec>
+Received: by 2002:a19:e046:0:0:0:0:0 with HTTP; Mon, 13 Jun 2022 22:28:13
+ -0700 (PDT)
+From: "Mrs. Serayah Maaly Bob" <serayahmaalybob@gmail.com>
+Date: Tue, 14 Jun 2022 06:28:13 +0100
+Message-ID: <CALFpWpo6wiPNhWMemb-M1kpT0BmL5KnPqSohCAkzRuzZLEyKFA@mail.gmail.com>
+Subject: Dear Friend,
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,19 +82,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: manuelfrancospende@gmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: serayahmaalybob@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Sie wurden f=FCr eine Spende in H=F6he von 2.000.000,00 Euro ausgew=E4hlt
+Dear Friend,
 
-Mein Name ist Manuel Franco aus den Vereinigten Staaten.
-Ich habe die Amerika-Lotterie im Wert von 768 Millionen Dollar gewonnen und=
- spende einen Teil davon an nur 5 gl=FCckliche Menschen und ein paar Waisen=
-h=E4user als Wohlwollen f=FCr die Menschheit. Melden Sie sich bei mir, um I=
-hre Spende zu erhalten.
+I am Mrs. Serayah Maaly Bob. From Australia. It is understandable that
+you may be a bit apprehensive because you do not know me; I found your
+email address from a Human resources data base and decided to contact
+I would love to employ you into my charity work; I am ready to donate
+some money to you to carry on the Charity work in your country. I am
+eagerly waiting for your response so that i can give you further details.
+
+Thanks and God bless you,
+With Regards
+Mrs. Serayah Maaly Bob,
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
