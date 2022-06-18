@@ -1,77 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DB7D5507A0
-	for <lists+driverdev-devel@lfdr.de>; Sun, 19 Jun 2022 02:11:23 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EDDC9550834
+	for <lists+driverdev-devel@lfdr.de>; Sun, 19 Jun 2022 06:03:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 18CA34019F;
-	Sun, 19 Jun 2022 00:11:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 18CA34019F
+	by smtp2.osuosl.org (Postfix) with ESMTP id B25D04042B;
+	Sun, 19 Jun 2022 04:03:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B25D04042B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NK8gJzk2TKQN; Sun, 19 Jun 2022 00:11:19 +0000 (UTC)
+	with ESMTP id dNiK0weJhwA8; Sun, 19 Jun 2022 04:03:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CCFB2400FF;
-	Sun, 19 Jun 2022 00:11:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CCFB2400FF
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4C95040112;
+	Sun, 19 Jun 2022 04:03:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4C95040112
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2DAF91BF990
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 19 Jun 2022 00:11:15 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EB59B1BF31A
+ for <devel@linuxdriverproject.org>; Sun, 19 Jun 2022 04:03:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 07959606CB
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 19 Jun 2022 00:11:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 07959606CB
+ by smtp2.osuosl.org (Postfix) with ESMTP id C513A401C2
+ for <devel@linuxdriverproject.org>; Sun, 19 Jun 2022 04:03:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C513A401C2
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kHA5frXHoJai
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 19 Jun 2022 00:11:12 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zAnyJczWGulC for <devel@linuxdriverproject.org>;
+ Sun, 19 Jun 2022 04:03:02 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BE366605B7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C57E640112
 Received: from mail.gifukenshi.or.jp (mx.gifukenshi.or.jp [202.69.113.91])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BE366605B7
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 19 Jun 2022 00:11:11 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C57E640112
+ for <devel@linuxdriverproject.org>; Sun, 19 Jun 2022 04:03:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.gifukenshi.or.jp (Postfix) with ESMTP id E27202923A0;
- Sun, 19 Jun 2022 08:40:04 +0900 (JST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.gifukenshi.or.jp E27202923A0
+ by mail.gifukenshi.or.jp (Postfix) with ESMTP id BA4C0284D8F;
+ Sun, 19 Jun 2022 08:19:43 +0900 (JST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.gifukenshi.or.jp BA4C0284D8F
 X-Virus-Scanned: amavisd-new at mail.gifukenshi.or.jp
 Received: from mail.gifukenshi.or.jp ([127.0.0.1])
  by localhost (mail.gifukenshi.or.jp [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L-FNf4GQPHe3; Sun, 19 Jun 2022 08:40:03 +0900 (JST)
+ with ESMTP id HIcF-8R8rthL; Sun, 19 Jun 2022 08:19:42 +0900 (JST)
 Received: from User (unknown [172.25.0.254])
- by mail.gifukenshi.or.jp (Postfix) with SMTP id DF4AB285340;
- Sun, 19 Jun 2022 04:45:31 +0900 (JST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.gifukenshi.or.jp DF4AB285340
+ by mail.gifukenshi.or.jp (Postfix) with SMTP id 02377284D90;
+ Sun, 19 Jun 2022 04:40:24 +0900 (JST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.gifukenshi.or.jp 02377284D90
 From: "Reem"<sikacenter@gifukenshi.or.jp>
 Subject: Money transfer
-Date: Sat, 18 Jun 2022 19:45:34 -0000
+Date: Sat, 18 Jun 2022 19:40:29 -0000
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220618194531.DF4AB285340@mail.gifukenshi.or.jp>
+Message-Id: <20220618194025.02377284D90@mail.gifukenshi.or.jp>
 To: undisclosed-recipients:;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=gifukenshi.or.jp; 
- s=20220603; t=1655595605;
+ s=20220603; t=1655594383;
  bh=xdWSIjalhaqXlTNs2nsxl8h19Us5O+JjDnZIOmK9Isw=;
  h=Reply-To:From:Subject:Date:To:From;
- b=KbIM80rkzALNlmLpt8wPdS9ciGijpc/sjL3OceE4+g1PGGQTSdjJUOGJ6C8rtqV4G
- ryFUiN9gwbkP5jJ7JeJT0W3TGU6yPJM3HrKGDqO9TMYkJfuSTOXIlSSJZJ2bibASMF
- 5JgqxOLz5YjnMRtSUb7yTE0tefvICIFXK1m0yErU=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=EdSA66cXKgWD3uwlLRrjEaNQ+cF3F+yKU9wVPX5A/RLLtJ+Nim0UpePb7heCKMyfE
+ 2GY6R+WFuQseqi9VO3SSMbCCcyaRO/L1N1Aee2WjVUnl/trumEoh9kGXj9rzkKvNzL
+ l4W2jD/+IhLiGHslvXD+leljeMTdHPGC0LkyhSsA=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (1024-bit key) header.d=gifukenshi.or.jp header.i=@gifukenshi.or.jp
- header.a=rsa-sha256 header.s=20220603 header.b=KbIM80rk
+ header.a=rsa-sha256 header.s=20220603 header.b=EdSA66cX
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
