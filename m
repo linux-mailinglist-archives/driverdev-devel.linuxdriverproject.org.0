@@ -1,59 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 798CE550E65
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Jun 2022 03:30:15 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C790440A5C;
-	Mon, 20 Jun 2022 01:30:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C790440A5C
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lE5cBGjmY-wo; Mon, 20 Jun 2022 01:30:13 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 71F1F400CE;
-	Mon, 20 Jun 2022 01:30:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 71F1F400CE
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 850821BF488
- for <devel@linuxdriverproject.org>; Mon, 20 Jun 2022 01:30:09 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C4B28550E6B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Jun 2022 03:40:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 69AAA60EC8
- for <devel@linuxdriverproject.org>; Mon, 20 Jun 2022 01:30:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 69AAA60EC8
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1544760ED3;
+	Mon, 20 Jun 2022 01:40:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1544760ED3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y-OWbUEs2aas for <devel@linuxdriverproject.org>;
- Mon, 20 Jun 2022 01:30:09 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id B6p9wlBY6AIB; Mon, 20 Jun 2022 01:40:38 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id AED5B60ECB;
+	Mon, 20 Jun 2022 01:40:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AED5B60ECB
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6811E1BF488
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Jun 2022 01:40:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4F7A8401F1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Jun 2022 01:40:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4F7A8401F1
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id g4A2s9bciJnF
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Jun 2022 01:40:33 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C153A60EC9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DB277400CE
 Received: from mail.goomall.com.cn (unknown [60.30.26.204])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C153A60EC9
- for <devel@linuxdriverproject.org>; Mon, 20 Jun 2022 01:30:08 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DB277400CE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Jun 2022 01:40:32 +0000 (UTC)
 Received: from localhost (unknown [127.0.0.1])
- by mail.goomall.com.cn (Postfix) with ESMTP id 66C913429768;
- Mon, 20 Jun 2022 01:29:29 +0000 (UTC)
+ by mail.goomall.com.cn (Postfix) with ESMTP id A0A77342DB40;
+ Mon, 20 Jun 2022 01:40:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at goomall.com.cn
 Received: from mail.goomall.com.cn ([127.0.0.1])
  by localhost (mail.goomall.com.cn [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BccmvsVKi4_7; Sun, 19 Jun 2022 21:29:28 -0400 (EDT)
+ with ESMTP id fxQnu5gkrxLt; Sun, 19 Jun 2022 21:40:29 -0400 (EDT)
 Received: from User (unknown [194.31.98.209])
- by mail.goomall.com.cn (Postfix) with ESMTPA id 825BF342BC43;
- Sun, 19 Jun 2022 21:29:13 -0400 (EDT)
+ by mail.goomall.com.cn (Postfix) with ESMTPA id AF65B3430803;
+ Sun, 19 Jun 2022 21:40:16 -0400 (EDT)
 From: "Stephen Wong"<test@goomall.com.cn>
 Subject: e-mail from CIMB !
-Date: Sun, 19 Jun 2022 18:29:27 -0700
+Date: Sun, 19 Jun 2022 18:40:29 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220620012929.66C913429768@mail.goomall.com.cn>
+Message-Id: <20220620014030.A0A77342DB40@mail.goomall.com.cn>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
