@@ -1,32 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E317156532A
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Jul 2022 13:21:08 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 79629565731
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Jul 2022 15:31:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 20C6460E0F;
-	Mon,  4 Jul 2022 11:21:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 20C6460E0F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 87AE240600;
+	Mon,  4 Jul 2022 13:31:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 87AE240600
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nTrPxIR-ggr4; Mon,  4 Jul 2022 11:21:06 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id llw6w1zChqy1; Mon,  4 Jul 2022 13:31:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ABD4360737;
-	Mon,  4 Jul 2022 11:21:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ABD4360737
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1536D405EC;
+	Mon,  4 Jul 2022 13:31:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1536D405EC
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: by ash.osuosl.org (Postfix)
- id A62C41BF9A4; Mon,  4 Jul 2022 11:21:02 +0000 (UTC)
-Date: Mon,  4 Jul 2022 11:21:02 +0000 (UTC)
-From: MAILER-DAEMON@osuosl.org (Mail Delivery System)
-Subject: Successful Mail Delivery Report
-To: devel@linuxdriverproject.org
-Auto-Submitted: auto-replied
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9EADD1BF35F
+ for <devel@linuxdriverproject.org>; Mon,  4 Jul 2022 13:31:16 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 79E71827C5
+ for <devel@linuxdriverproject.org>; Mon,  4 Jul 2022 13:31:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 79E71827C5
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ejFLi0jstLK2 for <devel@linuxdriverproject.org>;
+ Mon,  4 Jul 2022 13:31:15 +0000 (UTC)
+X-Greylist: delayed 00:17:23 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DE0D0827E0
+Received: from WIN-AQ9496E73VV (unknown [185.105.185.235])
+ by smtp1.osuosl.org (Postfix) with ESMTP id DE0D0827E0
+ for <devel@driverdev.osuosl.org>; Mon,  4 Jul 2022 13:31:14 +0000 (UTC)
+Received: from dsl-189-229-223-22-dyn.prod-infinitum.com.mx ([189.229.223.22])
+ by WIN-AQ9496E73VV with Microsoft SMTPSVC(10.0.17763.1); 
+ Mon, 4 Jul 2022 17:43:47 +0430
+From: BSM<devel@driverdev.osuosl.org>
+To: devel@driverdev.osuosl.org
+Subject: Directorio Empresarial Junio 2022.
+Date: 4 Jul 2022 08:13:47 -0500
+Message-ID: <20220704081347.9A566545A55D3D47@driverdev.osuosl.org>
 MIME-Version: 1.0
-Message-Id: <20220704112102.A62C41BF9A4@ash.osuosl.org>
+X-OriginalArrivalTime: 04 Jul 2022 13:13:48.0067 (UTC)
+ FILETIME=[E5888730:01D88FA7]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -39,104 +58,84 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2212578507168309679=="
+Reply-To: bases.segmentadas.mexico@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This is a MIME-encapsulated message.
-
---===============2212578507168309679==
-Content-Type: multipart/report; report-type=delivery-status;
-	boundary="689D01BF375.1656933662/ash.osuosl.org"
-Content-Transfer-Encoding: 7bit
-
-This is a MIME-encapsulated message.
-
---689D01BF375.1656933662/ash.osuosl.org
-Content-Description: Notification
-Content-Type: text/plain; charset=us-ascii
-
-This is the mail system at host ash.osuosl.org.
-
-Your message was successfully delivered to the destination(s)
-listed below. If the message was delivered to mailbox you will
-receive no further notifications. Otherwise you may still receive
-notifications of mail delivery errors from other systems.
-
-                   The mail system
-
-<devel@linuxdriverproject.org>: alias expanded
-
---689D01BF375.1656933662/ash.osuosl.org
-Content-Description: Delivery report
-Content-Type: message/delivery-status
-
-Reporting-MTA: dns; ash.osuosl.org
-X-Postfix-Queue-ID: 689D01BF375
-X-Postfix-Sender: rfc822; devel@linuxdriverproject.org
-Arrival-Date: Mon,  4 Jul 2022 11:21:02 +0000 (UTC)
-
-Final-Recipient: rfc822; devel@linuxdriverproject.org
-Original-Recipient: rfc822;devel@linuxdriverproject.org
-Action: expanded
-Status: 2.0.0
-Diagnostic-Code: X-Postfix; alias expanded
-
---689D01BF375.1656933662/ash.osuosl.org
-Content-Description: Message Headers
-Content-Type: text/rfc822-headers
-
-Return-Path: <devel@linuxdriverproject.org>
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by ash.osuosl.org (Postfix) with ESMTP id 689D01BF375
-	for <devel@linuxdriverproject.org>; Mon,  4 Jul 2022 11:21:02 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 43ABE8195C
-	for <devel@linuxdriverproject.org>; Mon,  4 Jul 2022 11:21:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 43ABE8195C
-X-Virus-Scanned: amavisd-new at osuosl.org
-X-Spam-Flag: YES
-X-Spam-Score: 18.898
-X-Spam-Level: ******************
-X-Spam-Status: Yes, score=18.898 tagged_above=-999 required=5
-	tests=[BAYES_50=0.8, FSL_BULK_SIG=0.001, HTML_MESSAGE=0.001,
-	MIME_HTML_MOSTLY=0.1, MPART_ALT_DIFF=0.79,
-	RAZOR2_CF_RANGE_51_100=1.886, RAZOR2_CHECK=0.922,
-	RCVD_IN_BL_SPAMCOP_NET=1.347, RCVD_IN_MSPIKE_H2=-0.001,
-	RCVD_IN_PSBL=2.7, RCVD_IN_RP_RNBL=0.001, RCVD_IN_SBL=0.141,
-	RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_RPBL=1.31, RCVD_IN_XBL=0.375,
-	RDNS_NONE=0.793, SPF_HELO_SOFTFAIL=0.732, SPF_SOFTFAIL=0.665,
-	SUBJ_ALL_CAPS=0.5, TO_EQ_FM_DIRECT_MX=2.5]
-	autolearn=no autolearn_force=no
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 05ow5poamjoC for <devel@linuxdriverproject.org>;
-	Mon,  4 Jul 2022 11:21:01 +0000 (UTC)
-X-Greylist: delayed 14:10:17 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 002718184F
-Received: from linuxdriverproject.org (unknown [45.137.22.91])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 002718184F
-	for <devel@linuxdriverproject.org>; Mon,  4 Jul 2022 11:21:00 +0000 (UTC)
-From: Server Administrator<devel@linuxdriverproject.org>
-To: devel@linuxdriverproject.org
-Subject: EMAIL ACCOUNT CONFIRMATION AND UPGRADE.
-Date: 4 Jul 2022 13:20:58 +0200
-Message-ID: <20220704132058.D158F77E169AFDC0@linuxdriverproject.org>
-MIME-Version: 1.0
-Content-Type: multipart/alternative;
-	boundary="----=_NextPart_000_0012_F10A3A7E.AC479CB5"
-
---689D01BF375.1656933662/ash.osuosl.org--
-
---===============2212578507168309679==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============2212578507168309679==--
+CkRJUkVDVE9SSU8gRU1QUkVTQVJJQUwgTUVYSUNPIEpVTElPIDIwMjIKTlVFVkEgRURJQ0lPTiBB
+TVBMSUFEQSBZIFJFTk9WQURBCgpTRSBJTkNMVVlFTiBJTkNMVVlFIDIgRElSRUNUT1JJT1MgQ09N
+UExFVE9TOgoKQSkgRGlyZWN0b3JpbyBFbXByZXNhcmlhbCBkZSBtYXMgZGUgMiBtaWxsb25lcyBk
+ZSBlbXByZXNhcyBhIApuaXZlbCBuYWNpb25hbCBlbiBmb3JtYXRvIEV4Y2VsIGNvbiBEQVRPUyBD
+T01QTEVUT1MuIAooTm9tYnJlIEVtcHJlc2EsIENvbnRhY3RvLCBFLW1haWwsIFRlbGVmb25vLCBE
+aXJlY2Npb24sIFB1ZXN0bywgCkdpcm8sIFBhZ2luYSBXZWIsIFRhbWHDsW8gZGUgRW1wcmVzYSwg
+RVRDLikgCgpCKSAgRGlyZWN0b3JpbyBFbXByZXNhcmlhbCBkZSAxOCBtaWxsb25lcyBkZSBtYWls
+cyBlbXByZXNhcmlhbGVzIApkaXZpZGlkb3MgcG9yIEVTVEFETzoKOTAwLDAwMCBlbXByZXNhcyBk
+ZWwgRC5GLiB5IEVkby4gZGUgTWV4aWNvIAo2LDAwMCBUZXF1aWxlcmFzIGEgTml2ZWwgbmFjaW9u
+YWwKMzAwLDAwMCBlbXByZXNhcyBlbiBHdWFkYWxhamFyYQo1MDAsMDAwIGVtcHJlc2FzIGEgbml2
+ZWwgbmFjaW9uYWwgKGdyYW5kZSwgbWVkaWFuYSB5IHBlcXVlw7FhKSAKMTQwLDAwMCBlbXByZXNh
+cyBlbiBNb250ZXJyZXkKMTMwLDAwMCBQeW1lcyBhIG5pdmVsIG5hY2lvbmFsCjQwLDAwMCBlbXBy
+ZXNhcyBkZSBsYSBpbmR1c3RyaWEgdHVyaXN0aWNhIGEgbml2ZWwgbmFjaW9uYWwgCjU3LDAwMCBl
+bXByZXNhcyBkZSBsYSBpbmR1c3RyaWEgbWFudWZhY3R1cmVyYSBhIG5pdmVsIG5hY2lvbmFsCjM2
+LDAwMCBlbXByZXNhcyBjb24gb3JnYW5pZ3JhbWEgYSBuaXZlbCBuYWNpb25hbAo2MCwwMDAgZW1w
+cmVzYXMgZGVsIHNlY3RvciBkZSBsYSBjb25zdHJ1Y2Npb24gYSBuaXZlbCBuYWNpb25hbCAKMyww
+MDAgZW1wcmVzYXMgZW4gc2lzdGVtYXMKMiwwMDAgRGF0b3MgZGUgdW5pdmVyc2lkYWRlcyBhIG5p
+dmVsIG5hY2lvbmFsCjE1LDAwMCBlbXByZXNhcyBtZWRpYW5hcyBjb24gbnVtZXJvIGRlIGVtcGxl
+YWRvcyAKMTEsMDAwIGVtcHJlc2FzIGltcG9ydGFudGVzIGVuIE1leGljbyAoZ29iaWVybm8sIGlu
+c3RpdHVjaW9uZXMgCmJhbmNhcmlhcywgZXRjLikKMjAsMDAwIGFyZWFzIHNhbHVkIGEgbml2ZWwg
+bmFjaW9uYWwgCjEwLDAwMCBlbXByZXNhcyBkZWwgc2VjdG9yIGRlIGFncmljdWx0dXJhIGVuIE1l
+eGljbwo0NSwwMDAgZW1wcmVzYXMgbWVkaWFuYXMgZW4gZWwgRWRvLiBEZSBNZXhpY28KOCwwMDAg
+ZnJhbnF1aWNpYXMgZW4gTWV4aWNvCjEuNSBNaWxsb25lcyBkZSBlamVjdXRpdm9zIGRpdmlkaWRv
+cyBlbiAzIHNlY3RvcmVzIGVtcHJlc2FyaWFsZXMgCihVTklDQU1FTlRFIENPUlJFT1MpCjIgbWls
+bG9uZXMgZGUgbWFpbHMgZGUgZGlmZXJlbnRlcyBleHBvcyBlbiBNZXhpY28gKFVOSUNBTUVOVEUg
+CkNPUlJFT1MpIAozLjUgbWlsbG9uZXMgZGUgbWFpbHMgdmFyaWFzIGluZHVzdHJpYXMgZW4gdG9k
+byBNZXhpY28gCihVTklDQU1FTlRFIENPUlJFT1MpCjUwLDAwMCBJbmR1c3RyaWEgRmFybWFjZXV0
+aWNhIChVTklDQU1FTlRFIENPUlJFT1MpIAoxNzUsMDAwIE1vbnRlcnJleSAoVU5JQ0FNRU5URSBD
+T1JSRU9TKQozNSwwMDAgUXVlcmV0YXJvIChVTklDQU1FTlRFIENPUlJFT1MpIAo1NSwwMDAgR3Vh
+ZGFsYWphcmEgIChVTklDQU1FTlRFIENPUlJFT1MpCjE1LDAwMCBBcmVhIEJhbmNhcmlhIChVTklD
+QU1FTlRFIENPUlJFT1MpIAoxMzAsMDAwIG1haWxzIGVtcHJlc2FyaWFsZXMgZGl2aWRpZG9zIHBv
+ciBlc3RhZG8gKFVOSUNBTUVOVEUgCkNPUlJFT1MpCjEyLDAwMCBtYWlscyBDYW1hcmFzIGRlIENv
+bWVyY2lvIChVTklDQU1FTlRFIENPUlJFT1MpIAozMCwwMDAgbWFpbHMgZGl2aWRpZG9zIHBvciBy
+dWJyb3MgKFVOSUNBTUVOVEUgQ09SUkVPUykKNDUsMDAwIG1haWxzIEluZHVzdHJpYSBDb25zdHJ1
+Y3RvcmEgKFVOSUNBTUVOVEUgQ09SUkVPUykKMjMsMDAwIG1haWxzIEluZHVzdHJpYSBUZWNub2xv
+Z2ljYSAoVU5JQ0FNRU5URSBDT1JSRU9TKSAKOTAsMDAwIHB5bWVzIEQuRi4geSBFZG8uIE1leGlj
+byAoVU5JQ0FNRU5URSBDT1JSRU9TKSAKMjUsMDAwIFZpc2l0YW50ZXMgYSBFeHBvcyBlbiBGcmFu
+cXVpY2lhcyAoVU5JQ0FNRU5URSBDT1JSRU9TKQo2NTAsMDAwIFRhcmpldGEgSGFiaWVudGVzIEFN
+RVggeSBkaXN0aW50b3MgYmFuY29zIChDT04gREFUT1MgCkFESUNJT05BTEVTKQoKWSBNVUNIQVMg
+QkFTRVMgTUFTCgpTb2xvIFZhbGlkbyBIQVNUQSBlbCBWaWVybmVzIDggZGUgSnVsaW8gMjAyMi4K
+ClByZWNpbyBwb3IgcHJvbW9jaW9uOiA4LDkwMC4wMCArIElWQSAKUHJlY2lvIG5vcm1hbDogMjEs
+NTAwLjAwICsgSVZBCgoxMDAlIERpcmVjdG9yaW9zIEVtcHJlc2FyaWFsZXMuIENvbnRhbW9zIGNv
+biByZWZlcmVuY2lhcyAKY29tZXJjaWFsZXMuICAgCk5vIGxvIHBpZW5zZSBtYXMsIHNvbG8gcG9y
+IHVub3MgZGlhcyBtYXMgcG9kcmEgYWRxdWlyaXIgbGEgYmFzZSAKbWFzIGNvbXBsZXRhIGVuIE1l
+eGljbyBhIHVuIHByZWNpbyBiYXN0YW50ZSBiYWpvIHF1ZSBubyBzZSAKdm9sdmVyYSBhIHJlcGV0
+aXIuICAKCgoKUGFyYSBhZHF1aXJpcmxhOgoKLS0tIEZhdm9yIGRlIHJlc3BvbmRlciBhOiBiYXNl
+cy5zZWdtZW50YWRhcy5tZXhpY29AZ21haWwuY29tIC0tLQotLS0gTyBwaWRhbm9zIGluZm9ybWVz
+IGFsIFdoYXRzIEFwcCAoNTYpIDIzNzEgMzQxMiAtLS0KCk5PVEEgSU1QT1JUQU5URTogU29sbyBz
+ZSByZXNwZXRhcmEgZWwgcHJlY2lvIGEgbGFzIHBlcnNvbmFzIHF1ZSAKZW52aWVuIHN1cyBkYXRv
+cyB5IHJlYWxpY2VuIGVsIGRlcG9zaXRvIG1heGltbyBlbCBWaWVybmVzIDggZGUgCkp1bGlvIDIw
+MjIuICAKCgoKUFJFR1VOVEFTIEZSRUNVRU5URVM6CgpFbiBxdWUgZm9ybWF0byB2aWVuZSBsYSBi
+YXNlPyAKUj0gRXhjZWwgeSBUeHQKCkhhc3RhIHF1ZSBmZWNoYSBlc3RhbiBhY3R1YWxpemFkYXMg
+bGFzIGJhc2VzPyAKUj0gQSBKdW5pbyAyMDIyCgpFbnZpYW4gYmFzZXMgbXVlc3RyYSBwYXJhIHN1
+IGV2YWx1YWNpb24/IApSPSBTaSwgc29sbyBlcyBuZWNlc2FyaW8gbm9zIGluZGlxdWUgYSBxdWUg
+Y3VlbnRhIGRlIGNvcnJlbyBzZSBsbyAKaGFjZW1vcyBsbGVnYXIuIAoKQ3VlbnRhbiBjb24gcmVm
+ZXJlbmNpYXMgY29tZXJjaWFsZXM/IApSPSBTaSwgZW50cmUgbnVlc3Ryb3MgY2xpZW50ZXMgc2Ug
+ZW5jdWVudHJhbiBsYXMgRU1QUkVTQVMgTUFTIApJTVBPUlRBTlRFUyBlbiBNZXhpY28uIAoKQ3Vl
+bnRhbiBjb24gYWxndW5hIGdhcmFudGlhPyAKUj0gU2ksIGVudmlhbW9zIEdBUkFOVElBIERFIEVO
+VklPIFkgRUZFQ1RJVklEQUQgREVMIERJUkVDVE9SSU8uIAoKRG9uZGUgb2J0dXZpZXJvbiBsb3Mg
+ZGF0b3M/IApSPSBTb21vcyB1bmEgZW1wcmVzYSBxdWUgdGFtYmllbiBpbXBhcnRlIGN1cnNvcyB5
+IHNlbWluYXJpb3MgZGUgCmNpZXJyZSBkZSB2ZW50YXMgeSBzZXJ2aWNpbyBhbCBjbGllbnRlLCBj
+b250aW51YW1lbnRlIGVzdGFtb3MgCnByZXNlbnRlcyBlbiBldmVudG9zIGVtcHJlc2FyaWFsZXMg
+ZW4gZG9uZGUgQURRVUlSSU1PUyBOVUVWQVMgCkJBU0VTLCBhc2kgY29tbyB0YW1iaWVuIGludGVy
+Y2FtYmlhbW9zIGJhc2VzIGNvbiBvdHJhcyBlbXByZXNhcy4gCgpFbiBxdWUgdGllbXBvIG1lIGxs
+ZWdhIGVsIERpcmVjdG9yaW8gdW5hIHZleiBwYWdhZG8/IApSPSBJbm1lZGlhdGFtZW50ZSBtZWRp
+YW50ZSB1biBsaW5rIGRlIGRlc2NhcmdhIHBhcmEgc3UgUEMuCgpUYW1iaWVuIHJlYWxpemFuIGVu
+dmlvcyBkZSBjb3Jlb3MgbWFzaXZvcz8KUj0gTnVlc3RybyBwcm9kdWN0byBtYXMgY29tcGxldG8g
+bGUgcGVybWl0ZSBlbnZpYXIgaGFzdGEgMyAKbWlsbG9uZXMgZGUgY29ycmVvcyBEaWFyaW9zIGRl
+c2RlIHN1IGVxdWlwbyBkZSBvZmljaW5hIHBhcmEgCnByb21vY2lvbmFyIGEgc3UgZW1wcmVzYSwg
+cHJvZHVjdG8gbyBuZWdvY2lvLgogCgpGQVZPUiBERSBJTkRJQ0FSIEVOIEVMIEFTVU5UTyBTSSBE
+RVNFQSBTRVIgUkVNT1ZJRE8uCk9mZXJ0YSB2YWxpZGEgcGFyYSBkZXZlbEBkcml2ZXJkZXYub3N1
+b3NsLm9yZyBwb3IgdGllbXBvIApsaW1pdGFkby4KCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2
+ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
