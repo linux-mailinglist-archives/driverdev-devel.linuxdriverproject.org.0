@@ -1,82 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19D44568F28
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Jul 2022 18:29:29 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4ACA6569465
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Jul 2022 23:31:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7EA9560BFC;
-	Wed,  6 Jul 2022 16:29:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7EA9560BFC
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z9pn7bj-ogC6; Wed,  6 Jul 2022 16:29:26 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 434C1600CA;
-	Wed,  6 Jul 2022 16:29:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 434C1600CA
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 078A51BF2E4
- for <devel@linuxdriverproject.org>; Wed,  6 Jul 2022 16:29:23 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CECD8833CD
- for <devel@linuxdriverproject.org>; Wed,  6 Jul 2022 16:29:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CECD8833CD
+	by smtp1.osuosl.org (Postfix) with ESMTP id E1615831BD;
+	Wed,  6 Jul 2022 21:31:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E1615831BD
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0UKTXgPzIZ0A for <devel@linuxdriverproject.org>;
- Wed,  6 Jul 2022 16:29:18 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 624FA833CA
-Received: from mail-oi1-x231.google.com (mail-oi1-x231.google.com
- [IPv6:2607:f8b0:4864:20::231])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 624FA833CA
- for <devel@driverdev.osuosl.org>; Wed,  6 Jul 2022 16:29:18 +0000 (UTC)
-Received: by mail-oi1-x231.google.com with SMTP id s188so20267044oib.6
- for <devel@driverdev.osuosl.org>; Wed, 06 Jul 2022 09:29:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=Uk0kx353H+gGEfDDNFmV1k9XciWZTV5g6S3ovbgNaYc=;
- b=sYBWKCDGVay4ExSPxSSEUqq8tzVEA44L6+ufMSTlPdm3kLT3VHP+AqjnFXwehgzd8X
- N1flUWb3qcff3pgCmao7NDint/Fx0y7YUTPmyOVkA99DYm2mU8F2KFCwQHgrJ6NARN/+
- /qTNzU0KNdAPAb5bwhyhbyy6W3xSHecMaytLpkm2/DCAeh4CYo7HmmGv5w8DfafThDHH
- 12F9LXG09v+N+i4TytXK5H5eaUErJrJBd26xwGL+T+xntrGOj43qk9prhWo/T0v5zlJI
- 7lcu7wLlKANT1HqY6SECZO4OPNtAKU3uncGipcgOalzXVs2wvhfwqveBLz8TMuIo2y7v
- 9Oow==
-X-Gm-Message-State: AJIora81lg5dtKrOMXiVD6rqBxb9AjuHrT7JchRSiQ26cr9reehUKcta
- 7r0Uh7va6VApgWZO2O89mETsB14gdm/pJ3CvTyo=
-X-Google-Smtp-Source: AGRyM1snGvGIlIST09vmCTZs7edOWS2Yh4wQfFdx9h4AV1wVLC16KW3jLcRMC+5wNKv9KKxAsx9F0eMUhGwhqD0KVu4=
-X-Received: by 2002:aca:1c10:0:b0:337:adbb:5d00 with SMTP id
- c16-20020aca1c10000000b00337adbb5d00mr12003977oic.232.1657124957435; Wed, 06
- Jul 2022 09:29:17 -0700 (PDT)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ndiDiInJ-kd1; Wed,  6 Jul 2022 21:31:37 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9086681A9C;
+	Wed,  6 Jul 2022 21:31:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9086681A9C
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 043D41BF401
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Jul 2022 21:31:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id D20F14049A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Jul 2022 21:31:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D20F14049A
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EhDrcYSaa0Lk
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Jul 2022 21:31:33 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DC36140134
+Received: from srv01.turbolinenet.com.br (unknown [45.173.252.243])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DC36140134
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Jul 2022 21:31:32 +0000 (UTC)
+Received: from [46.183.222.115] (helo=User)
+ by srv01.turbolinenet.com.br with esmtpa (Exim 4.92.2)
+ (envelope-from <unofficeng8@gmail.com>)
+ id 1o9Cc5-0003YG-PC; Wed, 06 Jul 2022 18:31:14 -0300
+From: "James Potter"<unofficeng8@gmail.com>
+Subject: Attention: Beneficiary,
+Date: Thu, 7 Jul 2022 00:31:20 +0300
 MIME-Version: 1.0
-Received: by 2002:a4a:4545:0:0:0:0:0 with HTTP;
- Wed, 6 Jul 2022 09:29:16 -0700 (PDT)
-From: Kayla Manthey <avrielharry73@gmail.com>
-Date: Wed, 6 Jul 2022 16:29:16 +0000
-Message-ID: <CAFSKFDZw23aNOi-cH8PFvYJd_r+Wxw2SMcEo5mjLc1auuPKc_g@mail.gmail.com>
-Subject: 
-To: undisclosed-recipients:;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=Uk0kx353H+gGEfDDNFmV1k9XciWZTV5g6S3ovbgNaYc=;
- b=oC0nJto95Dho0TxqhO4+W3M/rxaAXhxQyIvMJm6GftECIiYMLnFg7bqSSePV8lkw5E
- 7juP+oS8l0+MfpFqOAunVBm4e59OEQsaSd1B4UT+sVk5t2Nhz141yTWVE+Ure3UIsOfX
- TOb6yUcOO0rnk2w1FgwfaoPs0rOM33a8hYicOGntVb/SSmaC2V9z9bZFkFs99vGCQQ8B
- VDtWvYcfXNW1VeTXRkGNMRRLBMeD5Rm5gyiE708cmMSvVUuFT1oY+6n5adetWyHmhDhb
- M0iYZjdaKHEYeQ1SKXrccPvwUjW+fIFwQxoelH/ZwuDbTSGvaqlqtdZaD+8M4a+rqK2T
- 48pw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=oC0nJto9
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <E1o9Cc5-0003YG-PC@srv01.turbolinenet.com.br>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,15 +64,40 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: sgtkaylla202@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: 234unitednation.nig@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-LS0gDQrQl9C00YDQsNCy0L4g0LTRgNCw0LPQsA0K0JLQtSDQvNC+0LvQsNC8LCDQtNCw0LvQuCDR
-mNCwINC00L7QsdC40LLRgtC1INC80L7RmNCw0YLQsCDQv9GA0LXRgtGF0L7QtNC90LAg0L/QvtGA
-0LDQutCwLCDQstC4INCx0LvQsNCz0L7QtNCw0YDQsNC8Lg0KX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4
-ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3Jn
-L21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Attention: Beneficiary,
+
+                 COMPENSATION PAYMENT OF $1.500.000.00 ONE MILLION FIVE HUNDRED THOUSAND DOLLARS
+
+This is to inform you that we have now been ordered by Mr. Antonio Guterres of United Nation, IMF with World bank to contact you regards to your unpaid delayed funds During the course of our investigation, we discovered with dismay that your payment has been unnecessarily delayed by corrupt officials of the Bank in attempt to swindle your fund which has led to so many losses from your end and unnecessary delay in the receipt of your payment.
+
+The United Nations and the International Monetary Fund (IMF) has chosen to pay out all the compensation funds to LUCKY 100 Beneficiaries from U.S.A, Europe, Canada, United Arab Emirates, Bahrain, Qatar, Saudi Arabia, South America, Australia and Asia and Africa Continent, as this is a global payments technology that enables consumers, businesses, financial institutions and governments to use digital currency.
+
+We have arranged your payment to be paid on your name Upon your contact with us, the sum of $1.500.000.00 will be PAID to you as one of the COVID-19 VICTIMS FAMILIES MEMEBERS or SCAM VICTIMS, please be inform that if you are not among the TWO MENTIONED CATEGORIES you are not eligible for this payment and ignore this message.
+
+In this regard, you are to contact and furnish the requested information with the category you fall into to the Directorate of International Payment and Transfer with the followings for immediate procedure of the payment.
+
+1. Your Full Name
+2. Your Postal or Residential Address
+3. Mobile Number  
+4. Country
+5. Your Valid ID
+
+We required your urgent response to this email as directed to avoid further delay.
+
+I wait for your urgent response.
+
+Yours faithfully,
+
+Mr. James Potter
+UNITED NATIONS
+Public Information Officer 
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
