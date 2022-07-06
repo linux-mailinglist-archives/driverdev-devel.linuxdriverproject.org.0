@@ -1,55 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 62922567705
-	for <lists+driverdev-devel@lfdr.de>; Tue,  5 Jul 2022 20:59:24 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 060C9568DF3
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Jul 2022 17:50:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0B88E415B2;
-	Tue,  5 Jul 2022 18:59:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0B88E415B2
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5576A605E8;
+	Wed,  6 Jul 2022 15:50:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5576A605E8
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2sfxiTAIuiBF; Wed,  6 Jul 2022 15:50:02 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 00CD1605A9;
+	Wed,  6 Jul 2022 15:50:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 00CD1605A9
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1E8E71BF5DE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Jul 2022 15:49:59 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 051F440359
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Jul 2022 15:49:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 051F440359
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AOObjYEN1oVk; Tue,  5 Jul 2022 18:59:19 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3EA3640908;
-	Tue,  5 Jul 2022 18:59:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3EA3640908
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C81EE1BF20B
- for <devel@linuxdriverproject.org>; Tue,  5 Jul 2022 18:59:14 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A25AB40338
- for <devel@linuxdriverproject.org>; Tue,  5 Jul 2022 18:59:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A25AB40338
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GopS4vi3Fpd5 for <devel@linuxdriverproject.org>;
- Tue,  5 Jul 2022 18:59:14 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C7E92400A8
-Received: from kprui.net (unknown [61.132.95.214])
- by smtp2.osuosl.org (Postfix) with SMTP id C7E92400A8
- for <devel@driverdev.osuosl.org>; Tue,  5 Jul 2022 18:59:12 +0000 (UTC)
-Received: from User ([66.55.80.150]) (envelope-sender <wx@kprui.net>)
- by 192.168.1.18 with ESMTP
- for <devbat@rcn.com>; Wed, 06 Jul 2022 02:55:44 +0800
-X-WM-Sender: wx@kprui.net
-X-WM-AuthFlag: YES
-X-WM-AuthUser: wx@kprui.net
-From: "MRS. CHIOMA GRACE ALLEN"<wx@kprui.net>
-Subject: CANCER WOMAN NEED YOUR HELP
-Date: Tue, 5 Jul 2022 18:58:08 -0000
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8FdI8ETDCvI8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Jul 2022 15:49:58 +0000 (UTC)
+X-Greylist: delayed 05:10:45 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D8E5B40861
+Received: from srv01.turbolinenet.com.br (unknown [45.173.252.243])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D8E5B40861
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Jul 2022 15:49:57 +0000 (UTC)
+Received: from [46.183.222.115] (helo=User)
+ by srv01.turbolinenet.com.br with esmtpa (Exim 4.92.2)
+ (envelope-from <unofficeng8@gmail.com>)
+ id 1o92Qo-0007xe-LC; Wed, 06 Jul 2022 07:38:55 -0300
+From: "James Potter"<unofficeng8@gmail.com>
+Subject: Attention: Beneficiary,
+Date: Wed, 6 Jul 2022 13:39:03 +0300
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220705185914.A25AB40338@smtp2.osuosl.org>
+Message-Id: <E1o92Qo-0007xe-LC@srv01.turbolinenet.com.br>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,39 +64,41 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mrsgraceallen2015@gmail.com
+Reply-To: 234unitednation.nig@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My Beloved Good day,
+Attention: Beneficiary,
 
-May the peace of our Lord Jesus Christ be unto you. I am Mrs. Chioma Grace Allen from Nigeria but lives in London. a widow to late Dr. A. Allen. I am 58 years old and a converted born again Christian, suffering from long term cancer of the breast, from all indication my condition is really deteriorating and it is quite obvious that I might not live more than two (2)months, according to my personal doctor because the cancer has gotten
-to a dangerous stage.
+                 COMPENSATION PAYMENT OF $1.500.000.00 ONE MILLION FIVE HUNDRED THOUSAND DOLLARS
 
-My late husband and my only child died last five years ago, his death was politically motivated. My late husband was a very rich and wealthy business man who was running his Gold/Diamond Business in Ghana. After his death, I inherited all his business and wealth, so I now decided to divide the part of this wealth, to contribute to the development of the charitable organization in Africa, America, Asia, and Europe. I collected your email address during my desperate search on the internet and I prayed over it and the spirit of our Lord Jesus directed me to you as an honest person who can assist me to fulfill my wish here on earth.
+This is to inform you that we have now been ordered by Mr. Antonio Guterres of United Nation, IMF with World bank to contact you regards to your unpaid delayed funds During the course of our investigation, we discovered with dismay that your payment has been unnecessarily delayed by corrupt officials of the Bank in attempt to swindle your fund which has led to so many losses from your end and unnecessary delay in the receipt of your payment.
 
-I decided to donate the sum of US$30 million (Thirty Million United States Dollars) to the poor, less privilege, orphanage home and motherless because I cannot take this money to the grave. Please I want you to note that this fund is safe & secured in a bank. Note that after the successful completion of this transaction,you and the Orphanage Homes will have a fair share of the fund in the ratio of 50:50.If you AGREE with my conditions, l advise you on what to do immediately and the transfer will commence without delay as I will proceed to fix your name on the Payment schedule instantly.
+The United Nations and the International Monetary Fund (IMF) has chosen to pay out all the compensation funds to LUCKY 100 Beneficiaries from U.S.A, Europe, Canada, United Arab Emirates, Bahrain, Qatar, Saudi Arabia, South America, Australia and Asia and Africa Continent, as this is a global payments technology that enables consumers, businesses, financial institutions and governments to use digital currency.
 
-I want you to fill and forward the below to me. Meanwhile you can contact my Lawyer Barr. Bello Ahmed Ali on his cell phone +2348143096683.
+We have arranged your payment to be paid on your name Upon your contact with us, the sum of $1.500.000.00 will be PAID to you as one of the COVID-19 VICTIMS FAMILIES MEMEBERS or SCAM VICTIMS, please be inform that if you are not among the TWO MENTIONED CATEGORIES you are not eligible for this payment and ignore this message.
 
-1. Your Full Name:..
-2. Current Address:.
-3. Direct Phone:....
-Cell Number:........
-4 Occupations:.....
-5. Age:..........
-6. Company:.......
-7.Email ID.........
+In this regard, you are to contact and furnish the requested information with the category you fall into to the Directorate of International Payment and Transfer with the followings for immediate procedure of the payment.
 
-I hope you don't reject this offer and have this funds transferred. May the grace of our Lord Jesus Christ, the love of God and the fellowship of the holy spirit be with you and your family.
+1. Your Full Name
+2. Your Postal or Residential Address
+3. Mobile Number  
+4. Country
+5. Your Valid ID
+ 
+Hoping to receive your response as soon as possible to this my private email address: un.inforcenter2927@mypanel.biz
 
-Waiting for your reply.
+We required your urgent response to this email as directed to avoid further delay.
+
+I wait for your urgent response.
 
 Yours faithfully,
-MRS. CHIOMA GRACE ALLEN.
 
+Mr. James Potter
+UNITED NATIONS
+Public Information Officer
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
