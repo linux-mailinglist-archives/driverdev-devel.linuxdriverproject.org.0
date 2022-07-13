@@ -1,86 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8CCB573E42
-	for <lists+driverdev-devel@lfdr.de>; Wed, 13 Jul 2022 22:53:57 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1152B573FAE
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Jul 2022 00:38:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4512E4035D;
-	Wed, 13 Jul 2022 20:53:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4512E4035D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0D9BD61418;
+	Wed, 13 Jul 2022 22:38:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0D9BD61418
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y10OTKlh_P5x; Wed, 13 Jul 2022 20:53:55 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lpo00H-2iuRQ; Wed, 13 Jul 2022 22:38:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id ED4D24160E;
-	Wed, 13 Jul 2022 20:53:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ED4D24160E
+	by smtp3.osuosl.org (Postfix) with ESMTP id BC5436144C;
+	Wed, 13 Jul 2022 22:38:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BC5436144C
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4284A1BF2FD
+ by ash.osuosl.org (Postfix) with ESMTP id 760E21BF3AE
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 13 Jul 2022 20:53:51 +0000 (UTC)
+ Wed, 13 Jul 2022 22:38:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 17BAB424B8
+ by smtp4.osuosl.org (Postfix) with ESMTP id 51BC6414D1
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 13 Jul 2022 20:53:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 17BAB424B8
+ Wed, 13 Jul 2022 22:38:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 51BC6414D1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Smq7KgM-B0rX
+ with ESMTP id ZfwZrNc8h12x
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 13 Jul 2022 20:53:50 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6B31A424B1
-Received: from mail-pf1-x442.google.com (mail-pf1-x442.google.com
- [IPv6:2607:f8b0:4864:20::442])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6B31A424B1
+ Wed, 13 Jul 2022 22:38:50 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9B06541477
+Received: from 204139.dnsflare.com (204139.dnsflare.com [185.85.204.139])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9B06541477
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 13 Jul 2022 20:53:50 +0000 (UTC)
-Received: by mail-pf1-x442.google.com with SMTP id 70so55283pfx.1
+ Wed, 13 Jul 2022 22:38:50 +0000 (UTC)
+Received: from 204139.dnsflare.com (localhost [127.0.0.1])
+ by 204139.dnsflare.com (Postfix) with ESMTP id F3FA920F463B
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 13 Jul 2022 13:53:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to;
- bh=h0ZslgqQ94UM3iGDYCZGEx8ZwvbYHY5ZrQARiO/Kpbc=;
- b=MIHRFoRikMUalyOzOOLTCBy9vgQYQ855n0JQFWMcDj6R2YUCmk+OeaBidxujRfEJ15
- 4BfTCnaUsdtyTMZ5rQ18Cn8a+xLFrd5rop7B74vlMO1qHhXJsG7x/Hs4P/QwfrGIBnOH
- w77mYxhw5JSlWi5iY+gdE/4i7XY6c0mtqmkc8UTnV6H0ra1znGxKC4fcEKy58NO2oFZx
- eUPULKXxtrptNewMPqvG1zU2MWLkrPeJIE+yKqv2IAxwQCeq5nj+PzOxzaiZR5gv2WId
- JaY41b5FXZhcaZ6u2L0+mwuuuuFHqO63IWFWZXKv9l0PyWUCCj2qwvBrsGUaQpTlOohe
- CPGw==
-X-Gm-Message-State: AJIora8fz72/oAVk3YbYTB1VTt4uGBDELh2i9XSZfOxxfU1/FXSk4Bhm
- eajW8FQyVY9gs5A8OugRtDqEdg230LFOm44mfYY=
-X-Google-Smtp-Source: AGRyM1u1t+yJZPXlR0vLFCwvBuAEzfin9jYDm9joUWoCvKb3WzF0LVju3nRFdRDsJoaJqQTtLkO54rjGsjuHi7mknRg=
-X-Received: by 2002:a05:6a00:16c3:b0:528:1ed:22ef with SMTP id
- l3-20020a056a0016c300b0052801ed22efmr5026798pfc.0.1657745629650; Wed, 13 Jul
- 2022 13:53:49 -0700 (PDT)
+ Thu, 14 Jul 2022 01:38:47 +0300 (+03)
+X-Virus-Scanned: Debian amavisd-new at dione.dnsflare.com
+Received: from 204139.dnsflare.com ([127.0.0.1])
+ by 204139.dnsflare.com (204139.dnsflare.com [127.0.0.1]) (amavisd-new,
+ port 10026) with ESMTP id UJRbhgqQl5hT
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 14 Jul 2022 01:38:47 +0300 (+03)
+Received: from _ (localhost [127.0.0.1])
+ by 204139.dnsflare.com (Postfix) with ESMTPSA id 9F1D120F07E7;
+ Thu, 14 Jul 2022 01:28:09 +0300 (+03)
 MIME-Version: 1.0
-Received: by 2002:a05:7022:626:b0:42:c3cf:981a with HTTP; Wed, 13 Jul 2022
- 13:53:47 -0700 (PDT)
-From: Lily William <savadogoidrissaboursouma@gmail.com>
-Date: Wed, 13 Jul 2022 12:53:47 -0800
-Message-ID: <CAA6zzokbJaXJRRH5yGRj5A4JhU2DDZmg=ARFyr5ZvcL6hCYDYw@mail.gmail.com>
-Subject: Hi Dear,
+Date: Wed, 13 Jul 2022 23:28:09 +0100
+From: "Chevron HR, Employment" <lauren.xw2@gmail.com>
 To: undisclosed-recipients:;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to;
- bh=h0ZslgqQ94UM3iGDYCZGEx8ZwvbYHY5ZrQARiO/Kpbc=;
- b=GSycO9ajjEFpI4ZKO9XQLfFe/4Y7qsIlI0/++t9GYZc2bxcktgwjZJK2laIbmWlT4g
- Tv5fjZphpVR2pjroqCls1vV/d7zs8eCBvp2P2TdDG3w8ZC5v1gkWFSNDmSOtkfFBi6Ie
- r6RPxMgoRPHXS31adriLJPenubk4BUYJHGbK/huJ0CqX7I9/Nqrq9IqJmGA7U7FKscbG
- ZRMIOTeEza0yEXziI2E6br1ZJJeIUdQVCcRWzZRafReOiNulSIqdY3pMi0FVy2NT6NEa
- QLLuEN5uxMtX8Rq9Hd9juYqpfms2yrFzetmu/WbakHapzTbx8A9DVeDeOktSrKNinG2w
- HnvA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=GSycO9aj
+Subject: ***Spam*** Re: Urgent Position!
+Mail-Reply-To: chevron.uk@europe.com
+In-Reply-To: <6c2c5def4c9d3a907b584267708dde2f@gmail.com>
+References: <6c2c5def4c9d3a907b584267708dde2f@gmail.com>
+Message-ID: <ec4162fa3065c08ae27c26586ffbe689@gmail.com>
+X-Sender: lauren.xw2@gmail.com
+User-Agent: Roundcube Webmail
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,26 +75,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: lilywilliam989@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: chevron.uk@europe.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Dear,
-
-My name is Dr Lily William from the United States.I am a French and
-American nationality (dual) living in the U.S and sometimes in France
-for Work Purpose.
-
-I hope you consider my friend request. I will share some of my pics
-and more details about myself when I get your response.
-
-Thanks
-
-With love
-Lily
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+Q2hldnJvbiBDb3Jwb3JhdGlvbiBpcyBjdXJyZW50bHkgcmVjcnVpdGluZyBmb3JlaWduIGFwcGxp
+Y2FudHMgb24gCnZhcmlvdXMgam9iIHBvc2l0aW9ucyBhdmFpbGFibGUga2luZGx5IGFwcGx5IGJ5
+IHNlbmRpbmcgeW91ciBDVi9yw6lzdW3DqSAKdG8gY2hldnJvbi51a0BldXJvcGUuY29tIGZvciBt
+b3JlIGRldGFpbHMuCgpIUiBNYW5hZ2VtZW50Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnBy
+b2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
