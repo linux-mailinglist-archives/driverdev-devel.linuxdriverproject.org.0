@@ -1,40 +1,40 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CAA3457A764
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 298E057A763
 	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Jul 2022 21:47:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CF73E60DFC;
-	Tue, 19 Jul 2022 19:47:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CF73E60DFC
+	by smtp2.osuosl.org (Postfix) with ESMTP id 73C5B4038B;
+	Tue, 19 Jul 2022 19:47:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 73C5B4038B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cMGXlTnLi7IC; Tue, 19 Jul 2022 19:47:40 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Loz7URL7bR-R; Tue, 19 Jul 2022 19:47:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 72FFD60BD5;
-	Tue, 19 Jul 2022 19:47:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 72FFD60BD5
+	by smtp2.osuosl.org (Postfix) with ESMTP id 12F4E400FF;
+	Tue, 19 Jul 2022 19:47:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 12F4E400FF
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 727C51BF5A1
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 058151BF5A1
  for <devel@linuxdriverproject.org>; Tue, 19 Jul 2022 19:47:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 59425415B8
- for <devel@linuxdriverproject.org>; Tue, 19 Jul 2022 19:47:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 59425415B8
+ by smtp3.osuosl.org (Postfix) with ESMTP id D17B160DFC
+ for <devel@linuxdriverproject.org>; Tue, 19 Jul 2022 19:47:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D17B160DFC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3FLpXv9aJ8Hl for <devel@linuxdriverproject.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zX3RmmUNDuG0 for <devel@linuxdriverproject.org>;
  Tue, 19 Jul 2022 19:47:33 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+X-Greylist: delayed 06:35:35 by SQLgrey-1.8.0
 Received: from mv-tokai.co.jp (v118-27-18-72.sw0l.static.cnode.io
  [118.27.18.72])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9D359409A4
- for <devel@linuxdriverproject.org>; Tue, 19 Jul 2022 19:47:33 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 306B160BD5
+ for <devel@driverdev.osuosl.org>; Tue, 19 Jul 2022 19:47:32 +0000 (UTC)
 Received: from 127.0.0.1 (v118-27-19-70.cxxt.static.cnode.io [118.27.19.70])
  by mv-tokai.co.jp (Postfix) with SMTP id D1D2E1367AC;
  Tue, 19 Jul 2022 10:20:31 +0900 (JST)
@@ -44,15 +44,15 @@ Subject: REMINDER: US$6,850,000.00 compensation to you, Ref: UNFC/28P/L12.
 Date: Tue, 19 Jul 2022 03:20:26 +0200
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=osuosl.org; s=default; t=1658260054;
+ d=osuosl.org; s=default; t=1658260053;
  bh=6jTWhRdKSszHpHwU23yuHR4YkXyALNHPQc1L/7nX4AI=;
  h=Reply-To:From:Subject:Date:From;
- b=Ze6H8k9qOTxCbu92K41R5Wkvo/Zl2+PVNzogOKDZMwfEJLNyZJH2hdRxtHuHycpoW
- 8G1/EozjTbryRjWquHXZyPzvHhObPHHPyq/OZ3+s32U6uXUafdsy+ZA6oiL+daTe+/
- iEl3M98tcrc1+6jyA37B6gDqeXjWX4cDyVri1PMIpd6svm/sD9eTkoJ+TDiOHce0JL
- 7tLsKkC2yPXf/ICUR13a5wCWdYtkGjDVpZuvpfM0thsJ2cdTQizqQ9Bmvz1DCVR+yC
- BL02ZYkZ3e1NVjZGu9CTtXAE2YnY4PiiFQy9KInNaQlI+umA4QsC7bBIqpoR6FDWT4
- tkIksE99r7NVA==
+ b=lUnW2gUkEX6ce4KJHxHbb5ziLRYhW0dh6Fmh+ll6clPB2hMPFxEQkKfH5MSGlvkL2
+ NsVfQpOyV13t9ubqTfB1pj9wxjdMH+kJgSUxDAgAqcN2VtgeyJGIvp6f51ugtvZ2Uc
+ 1/hfOWg4tUDbqBEdati50gR4xKUweVHYDgGQBiYJY4u0S4rUGAFMh/iF5R6ThGbp/5
+ 7WaY/4C7iUFuXL6IIXb0lk8Ib9BOMtEsru8BX3cL765jv28hz6QB2zjk+6pmZ2EkHc
+ wEn18pdXvGfoUJ8xsxmdbwjlILl2/Zgg2gPqcHU5h14hlIhjizi7XaPGwtozPDzFAh
+ 8euIDUNVUqlUw==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
