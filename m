@@ -1,71 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD66D57C3D5
-	for <lists+driverdev-devel@lfdr.de>; Thu, 21 Jul 2022 07:48:28 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52C0157D26A
+	for <lists+driverdev-devel@lfdr.de>; Thu, 21 Jul 2022 19:25:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9804241B58;
-	Thu, 21 Jul 2022 05:48:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9804241B58
+	by smtp2.osuosl.org (Postfix) with ESMTP id 070E4405C5;
+	Thu, 21 Jul 2022 17:25:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 070E4405C5
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Y000dCVqMA1m; Thu, 21 Jul 2022 17:25:14 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id B6CBF400FB;
+	Thu, 21 Jul 2022 17:25:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B6CBF400FB
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 34F6A1BF36B;
+ Thu, 21 Jul 2022 17:25:08 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0C69842311;
+ Thu, 21 Jul 2022 17:25:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0C69842311
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NKVJOkZEPWRU; Thu, 21 Jul 2022 05:48:24 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EAFDB418BC;
-	Thu, 21 Jul 2022 05:48:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EAFDB418BC
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 661561BF86C
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 21 Jul 2022 05:48:20 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 402CD8406A
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 21 Jul 2022 05:48:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 402CD8406A
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xAtenn8kNiSE
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 21 Jul 2022 05:48:19 +0000 (UTC)
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4iXWi1zky-2s; Thu, 21 Jul 2022 17:25:07 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 30B2884069
-Received: from nicklausbeahan.cf (unknown [45.141.128.74])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 30B2884069
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 21 Jul 2022 05:48:18 +0000 (UTC)
-Received: from [103.99.1.70] (helo=User)
- by nicklausbeahan.cf with esmtpa (Exim 4.90_1)
- (envelope-from <braun@nicklausbeahan.cf>)
- id 1oEP2D-000DXH-03; Thu, 21 Jul 2022 05:47:41 +0000
-From: "partnership investment"<braun@nicklausbeahan.cf>
-Subject: Hello Friend, Can I Invest in Your Country?
-Date: Wed, 20 Jul 2022 22:47:41 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F059342310
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from klimfor.ru (klimfor.ru [82.146.34.233])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F059342310;
+ Thu, 21 Jul 2022 17:25:06 +0000 (UTC)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <E1oEP2D-000DXH-03@nicklausbeahan.cf>
+Content-Description: Mail message body
+Subject: Loan Offer
+To: Recipients <info@klimfor.ru>
+From: "Suroto Finance" <info@klimfor.ru>
+Date: Thu, 21 Jul 2022 12:20:15 +0200
+Message-Id: <20220721172508.0C69842311@smtp4.osuosl.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=nicklausbeahan.cf; s=mail; h=Message-Id:Content-Transfer-Encoding:
- Content-Type:MIME-Version:Date:Subject:From:Reply-To:Sender:To:Cc:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ c=relaxed/relaxed; d=klimfor.ru; 
+ s=default; h=Reply-To:Date:From:To:Subject:Content-Description:
+ Content-Transfer-Encoding:MIME-Version:Content-Type:Sender:Message-ID:Cc:
+ Content-ID:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:
+ Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=lJLc0rHkq78C8NdDiuBrR4i1qLwsSQ/fSdG7TC0VTOs=; b=k8qYTlDJobe0/HIfKr16zjkl4z
- jzzroCbuYJS/q7wTyokFIoQn5RePlUjG/Ov8ZUnP53FfIgJlVPZl2U7MwAClA2WM5RWPzsO1aBb1I
- CpuZ4H0aHeVq/AEWck6+OLk3mAtbXVSmfakGLQid2MnaX2PyGp9/wp+dc0QIRM2SYeTo=;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=nicklausbeahan.cf
- header.i=@nicklausbeahan.cf header.a=rsa-sha256 header.s=mail
- header.b=k8qYTlDJ
+ bh=WrxqYaZziO1qer2Lh0qgZZqrLKYR9ut9r70csABK2tY=; b=TN8CXtJPd1Zb8occtGTpt+wSvb
+ cpzFPutA+HbcxnrGP2ssspdlycjoWrULEytJwzYcwn7XkdBs/UOLl0pjz5A64bkayzci8sxTlIds8
+ vM3YKqMpA2JWJhs6odD9F0M+j/80/M1hXaUoMLNtrJPy5ACcrYQawJO/9U8RQMu73xhE=;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,27 +66,13 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: alekskovnko@gmail.com
+Reply-To: info.surotofinance@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-How are you today? I Hope you are staying safe,
-
-I am  Mr Aleksandr Kovalenko from Ukraine, and I am an investor and real estate developer. I am looking for a possible tie-up with a business partnership or individual in your country. I want to invest my money there as my country's economy has been ravaged by the Russian invasion which no one knows when the war will end.
-
-I have Ten Million five Hundred Thousand Dollars.($10,500,000.00) to invest in any good business in your country.
-
-My Wife and Daughter have crossed to Poland for refugee, I am still in my country Ukraine as our President do not allow men to cross the border, we were asked to stay back and defend our country,
-
-I have move the funds to Poland through a help of a Security Company firm from Ukraine, please I will need your help to receive the money and invest it in a good business and thereafter you take my Wife and Daughter out from Poland to your country and take good care of them as I'm presently in a war zone which I don't know when I will be free, most importantly I want you to take good care of my family.
-
-There are no economic activities going on again in Ukraine since the Russian invasion started. Looking forward to your sincere reply, and I will send more information on what to do next.
-
-Please I need your urgent reply to this email above.
-Best Regard,
-Mr Aleksandr Kovalenko
+Suroto Finance give out loan to serious minded people that are interested of getting a loan.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
