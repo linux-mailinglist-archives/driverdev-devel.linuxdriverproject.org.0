@@ -1,78 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 170D057EFD6
-	for <lists+driverdev-devel@lfdr.de>; Sat, 23 Jul 2022 16:53:46 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F72F57F440
+	for <lists+driverdev-devel@lfdr.de>; Sun, 24 Jul 2022 11:05:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9094341685;
-	Sat, 23 Jul 2022 14:53:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9094341685
+	by smtp1.osuosl.org (Postfix) with ESMTP id 74B4383F08;
+	Sun, 24 Jul 2022 09:05:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 74B4383F08
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6CYPSBH77zoQ; Sat, 23 Jul 2022 14:53:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 8eDGuBShUfRU; Sun, 24 Jul 2022 09:05:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DEBE641679;
-	Sat, 23 Jul 2022 14:53:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DEBE641679
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1FD6283F04;
+	Sun, 24 Jul 2022 09:05:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1FD6283F04
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id ECDD81BF314
- for <devel@linuxdriverproject.org>; Sat, 23 Jul 2022 14:53:38 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 052EE1BF2B9
+ for <devel@linuxdriverproject.org>; Sun, 24 Jul 2022 09:05:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C6CA14051E
- for <devel@linuxdriverproject.org>; Sat, 23 Jul 2022 14:53:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C6CA14051E
+ by smtp1.osuosl.org (Postfix) with ESMTP id D3D4C83F08
+ for <devel@linuxdriverproject.org>; Sun, 24 Jul 2022 09:05:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D3D4C83F08
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NsqwvDJ0jUMa for <devel@linuxdriverproject.org>;
- Sat, 23 Jul 2022 14:53:38 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2E15040496
-Received: from mail-ed1-x544.google.com (mail-ed1-x544.google.com
- [IPv6:2a00:1450:4864:20::544])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2E15040496
- for <devel@driverdev.osuosl.org>; Sat, 23 Jul 2022 14:53:38 +0000 (UTC)
-Received: by mail-ed1-x544.google.com with SMTP id r6so8866748edd.7
- for <devel@driverdev.osuosl.org>; Sat, 23 Jul 2022 07:53:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
- bh=2Qzou4MI11qEpil0rtoJPrQ+ObM6L7PzLnWdgV0qmDs=;
- b=wpisGnx9SQs2Nydn6d3/NbJXQsJ8w7c9J89KMKHPrvSibp/IpThoaadD25n3vcX0DG
- VdSzbBzLrvV/BrxCMuZBhqZaLv+FVE/cHLrZcjT8AUMct69HiHB/WgqmOwdRe+dTGp0w
- cKrWTEl1y6+L7NnV6ngYtaVJoDWurMhLf2P0ai+w9UcjVBXQnMk9+zulW9saKGqBTjzt
- D41278Oq/1Lf9jvoL6x0ErdTIRMv7K5ycIcLDv24JBueMo5lJHjoitrVzROlDUwXZWvH
- jeZhvLZywNEToZrB5hxLTc5gRJT5/XO3Fcj84aT8Ko8vlc0qYldqY8AWL33mt//sEtK4
- ZSSA==
-X-Gm-Message-State: AJIora9u8Qso+Uu3AldRcsknmtspg3nZUjsL/H1chB3UZoObQKsFyGrU
- jB61v7b5AS9+H9ZkWfHygxj/6vC6LSDmUXtiADg=
-X-Google-Smtp-Source: AGRyM1tBknA7G9xtbNi3x6V7iOesRdQHgAoe1AsxxBl7T6ZyJ3kDy9lMbrfgjXuqZqZSpKqWQi3CtabspsvfyEUd1Bw=
-X-Received: by 2002:a05:6402:430f:b0:43a:d521:bda with SMTP id
- m15-20020a056402430f00b0043ad5210bdamr4859734edc.69.1658588016043; Sat, 23
- Jul 2022 07:53:36 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VtUBgE1INyTz for <devel@linuxdriverproject.org>;
+ Sun, 24 Jul 2022 09:05:20 +0000 (UTC)
+X-Greylist: delayed 10:39:53 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6522583F04
+Received: from 10_0_24_7 (unknown [82.157.47.131])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6522583F04
+ for <devel@linuxdriverproject.org>; Sun, 24 Jul 2022 09:05:18 +0000 (UTC)
+Received: from [192.168.8.106] (Unknown [154.120.92.27])
+ by 10_0_24_7 with ESMTP ; Sat, 23 Jul 2022 23:46:38 +0800
+Message-ID: <0882F397-1DB7-4CED-8025-9A4B8AE16320@10_0_24_7>
 MIME-Version: 1.0
-From: Lara Paul <expodatalist1@gmail.com>
-Date: Sat, 23 Jul 2022 20:23:25 +0530
-Message-ID: <CAOXSathnwdsyrzqONePhgrk-aFs+HgfyauEUpJDCOMywx+_4TA@mail.gmail.com>
-Subject: RE: IMTS Attendees List Report- 2022
-To: Lara Paul <expodatalist1@gmail.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=mime-version:from:date:message-id:subject:to;
- bh=2Qzou4MI11qEpil0rtoJPrQ+ObM6L7PzLnWdgV0qmDs=;
- b=NjGX3tAwKe00c6dK29rFSYwP6q3uqPe3/YkMEsZKlsAiAaLB4rrTq0QfEVBCkGxQM2
- wrFKDBMOfbAHYi/UGo7CnlmxYn59txTkn21Q+RM0ghya1P0gaULTcfTPmlpnsgmD+N1R
- Aqoec1b9Zcp31tGWU8MEezmIryUJVbpTlc6RnamOi+X9lY1g4P2GTzKkcHI10p6gt9Pq
- 165+RMjCXTodh3PxzR72erMWIHKCZNLeJFGvTVhspQXWhdpTFfeDzckYwU2IiINIv2s+
- fEg6pu+Ep1JqCjygCiJg7ElqY49c3/plR0ZoeOePisWVnWM/YqS1ZRwYIdVSGxaouLo4
- +fvw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=NjGX3tAw
+Content-Description: Mail message body
+Subject: FUND RELEASE NOTIFICATION
+To: Recipients <info@icpc.org>
+From: " Professor Bolaji Olufunmileyi Owasanoye" <info@icpc.org>
+Date: Sat, 23 Jul 2022 16:46:26 +0100
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,31 +56,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: icpcoffice95@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi,
-
-I hope this email finds you well.
-
-Would you be interested in acquiring International Manufacturing
-Technology Show Attendees Data List 2022?
-
-List contains: Company Name, Contact Name, First Name, Middle Name,
-Last Name, Title, Address, Street, City, Zip code, State, Country,
-Telephone, Email address and more
-
-No of Contacts: - 48,239
-Cost: $1,876
-
-Looking forward for your response,
-
-Best Regards
-Lara Paul
-Marketing Coordinator
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SUNQQyBOSUdFUklBCkluZGVwZW5kZW50IENvcnJ1cHQgUHJhY3RpY2VzIGFuZCBPdGhlciBSZWxh
+dGVkIE9mZmVuY2VzIENvbW1pc3Npb24KVW5pdGVkIE5hdGlvbnMgQXBwcm92ZWQgQW50aS1mcmF1
+ZCBVbml0CkNvZGUgb2YgQ29uZHVjdCBCdXJlYXUgYWdhaW5zdCBmcmF1ZCwgZnVuZHMgZGVsYXkg
+YW5kIGltcGVyc29uYXRpb24KSGVhZCBPZmZpY2U6IFBsb3QgODAyLENvbnN0aXR1dGlvbiBBdmVu
+dWUKWm9uZSBBOSBDZW50cmFsIEFyZWEgUC4gTS5CIDUzNSwgR2Fya2kgQWJ1amEKRW1haWwgOiBp
+Y3Bjb2ZmaWNlOTVAZ21haWwuY29tCgogT3VyUmVmOklDUEMvRkdOL0ZNRi8wMjEKCiBEYXRlOiAy
+My8wNy8yMDIyCgogQVBQUk9WRUQgU0VUVExFTUVOVCBOT1RJQ0UuCgogQXR0ZW50aW9uOkJlbmVm
+aWNpYXJ5ICwKClRoaXMgbGV0dGVyIHdpbGwgZGVmaW5pdGVseSBiZSBhbWF6aW5nIHRvIHlvdSBi
+ZWNhdXNlIG9mIGl0cyByZWFsaXN0aWMgdmFsdWUuClNvcnJ5IGZvciB0aGUgaW5jb252ZW5pZW5j
+ZXMgdGhhdCB3YXMgcmVuZGVyZWQgdG8geW91IGluIGxpbmUgd2l0aAp0aGUgcmVsZWFzZSBvZiB5
+b3VyIGR1ZSBQYXltZW50IHdoaWNoIHdhcyBkZWxheWVkIGJlY2F1c2UgeW91IHdlcmUgaW4KY29u
+dGFjdCB3aXRoIHRoZSB3cm9uZyBvZmZpY2lhbHMuCgogQXMgdGhlIG5ldyBDaGFpcm1hbiBvZiB0
+aGlzIEFudGktZnJhdWQgVW5pdCwgSSB3aWxsIGxpa2UgdG8gaW50cm9kdWNlCm15c2VsZjsgSSBh
+bSAoTXIuIEJvbGFqaSBPd2FzYW5veWUpIGEgTmlnZXJpYW4gYm9ybiBCcml0aXNoIGNpdGl6ZW4K
+YXBwb2ludGVkIGJ5IFRoZSBGZWRlcmFsIEdvdmVybm1lbnQgb2YgTmlnZXJpYSBhbmQgVGhlIFVu
+aXRlZCBOYXRpb25zCk9yZ2FuaXphdGlvbiAoVS5OLk8pIGluIG90aGVyIHRvIGF2ZXJ0IGNvcnJ1
+cHRpb24sIGZyYXVkLCBmdW5kcyBkZWxheQphbmQgaW1wZXJzb25hdGlvbi4gVG8gdGhpcyBiZXN0
+b3dlZCBBdXRob3JpdHkgSSB0b29rIGFuIG9hdGggb2YKYWxsZWdpYW5jZSB0byBzZXR0bGUgYWxs
+IGZyYXVkIHZpY3RpbXMgcGVhY2VmdWxseS4KCiBUaGlzIHBhcnRpY3VsYXIgQ29tbWlzc2lvbiB3
+YXMgaW5pdGlhdGVkIHRvIGRldGVjdApjb3JydXB0aW9uL2ZyYXVkL2Z1bmRzIGRlbGF5L2ltcGVy
+c29uYXRpb24gb2YgR292ZXJubWVudCBPZmZpY2lhbHMuClNlY29uZGx5LCB3ZSBhcmUgc3Vib3Jk
+aW5hdGUgbWFuZGF0ZWQgYnkgVGhlIFVuaXRlZCBOYXRpb25zCk9yZ2FuaXphdGlvbiAoVS5OLk8p
+IGFuZCB0aGUgVVMgR292ZXJubWVudCB0byBTZXR0bGUgZm9yZWlnbgpkZWJ0cy9mcmF1ZCB2aWN0
+aW1zL1VOLXBhaWQgYmVuZWZpY2lhcmllcyBhbmQgY29udHJhY3RvcnMgdG8Kc2F0aXNmYWN0b3J5
+IGluIG90aGVyIHRvIG1haW50YWluIHBlYWNlIGluIHRoZSB3b3JsZCBhdCBsYXJnZSBhbmQgYWxz
+bwp0byByZWtpbmRsZSBvdXIgY291bnRyeSdzIHJlcHV0YXRpb24gYXMgdGhlIGdpYW50IG9mIEFm
+cmljYS4KClByZXNlbnRseSwgd2UgYXJlIGJlaW5nIHBhaWQgYnkgdGhlIEFtZXJpY2FuIGdvdmVy
+bm1lbnQgaW4gb3RoZXIgdG8KYXZlcnQgaW50ZXJuZXQgZnJhdWQsIGNvcnJ1cHRpb24sIGZ1bmRz
+IGRlbGF5cyBhbmQgaW1wZXJzb25hdGlvbiBoZXJlCmluIE5pZ2VyaWFuLgoKIFlvdSBhcmUgYmVp
+bmcgY29udGFjdGVkIGJ5IHRoaXMgb2ZmaWNlIHRvZGF5LCBiZWNhdXNlIHlvdXIgQ2FzZSBGaWxl
+CihBKSBpcyB0aGUgdmVyeSBmaXJzdCBGaWxlIG9uIG91ciBTZXR0bGVtZW50IEZpbGVzIENhYmlu
+ZXQgYW5kIHdlIGFyZQpyZWFkeSB0byBQYXkgeW91IGF0IHRoaXMgbW9tZW50LiBGcm9tIG91ciBp
+bnRlbGxpZ2VudCBpbnZlc3RpZ2F0aW9ucwptYWRlIHNlY3JldGx5LCB3ZSBkaXNjb3ZlcmVkIHRo
+YXQgeW91IGFyZSBhIHZpY3RpbSBvZiBmcmF1ZC9mdW5kcwpkZWxheS4KClRoaXMgTWVtb3JhbmR1
+bSBpcyB0byBub3RpZnkgeW91IHRoYXQgeW91IHdpbGwgYmUgc2V0dGxlZCBieSB0aGUKTmlnZXJp
+YW4gR292ZXJubWVudC9JQ1BDLU5pZ2VyaWEgZnJvbSB0aGUgU292ZXJlaWduIFdlYWx0aCBGdW5k
+cy4gWW91CndpbGwgYmUgc2V0dGxlZCB3aXRoIHRoZSBhY3R1YWwgYW1vdW50IHdoaWNoIHlvdSBs
+b3N0IGluIHlvdXIgcHJldmlvdXMKdHJhbnNhY3Rpb24sIGluY2x1ZGluZyB0aGUgYWN0dWFsIEZ1
+bmRzIHdoaWNoIHlvdSBhcmUgc3VwcG9zZWQgdG8KcmVjZWl2ZSBhcyBhIGJlbmVmaWNpYXJ5LgoK
+IFlvdXIgc2V0dGxlbWVudCB3aWxsIGJlIGFjdHVhbGl6ZWQgd2l0aGluIDMgd29ya2luZyBkYXlz
+IGFmdGVyIHlvdXIKcmVzcG9uc2UgdG8gdGhpcyBPZmZpY2lhbCBMZXR0ZXIuCgpGb3IgZnVydGhl
+ciBjbGFyaWZpY2F0aW9uL2ludmVzdGlnYXRpb24ga2luZGx5IHNlbmQgdGhlIGJlbG93CmluZm9y
+bWF0aW9u4oCZcyB0byB1cwppbW1lZGlhdGVseToKCiAxLiBZb3VyIEZ1bGwgTmFtZXMuLi4uLgog
+Mi4gWW91ciByZXNpZGVudGlhbCBhZGRyZXNzLgogMy4gTW9iaWxlIGFuZCBmYXggbnVtYmVyIChm
+b3IgcmVndWxhciAgb2ZmaWNpYWwgY29udGFjdCkuLi4uLgogNC4gWW91ciBpbmhlcml0YW5jZSBm
+dW5kcyB2YWx1ZS4uLi4uCiA1LiBBbW91bnQsIHdoaWNoIHlvdSBoYXZlIGxvc3QgIHByZXZpb3Vz
+bHkuLi4uCiA2LiBTY2FuIGNvcHkgb2YgeW91ciBJbnRlcm5hdGlvbmFsICBQYXNzcG9ydC9Ecml2
+ZXJzIExpY2Vuc2UuLi4KCiBUaGlzIGFib3ZlLW1lbnRpb25lZCBpbmZvcm1hdGlvbiB3aWxsIG9m
+ZmljaWFsbHkgZW5hYmxlIHVzIHRvIGNhcnJ5Cm91dCBvdXIgdmVyaWZpY2F0aW9uIHByb2Nlc3Nl
+cyBhbmQgYWZ0ZXIgdGhhdCB5b3VyIHNldHRsZW1lbnQgRnVuZHMKVVMkMTAuNU1pbGxpb24gd2ls
+bCBiZSBwYWlkIHRvIHlvdSBhY2NvcmRpbmdseS4KCiBCZXN0IHJlZ2FyZHMuCgogUHJvZmVzc29y
+IEJvbGFqaSBPbHVmdW5taWxleWkgT3dhc2Fub3llCgooSW5kZXBlbmRlbnQgQ29ycnVwdCBQcmFj
+dGljZXMgQ29tbWlzc2lvbikKCkNoYWlybWFuIElDUEMgTmlnZXJpYS4KCkNjOkVtYWlsIDogaWNw
+Y29mZmljZTk1QGdtYWlsLmNvbQoKRmVkZXJhbCBCdXJlYXUgb2YgSW52ZXN0aWdhdGlvbiBMYXcg
+ZW5mb3JjZW1lbnQgYWdlbmN5CgpJbnRlcm5hdGlvbmFsIE1vbmV0YXJ5IEZ1bmQKCkFjY291bnRh
+bnQgR2VuZXJhbCBvZiB0aGUgRmVkZXJhdGlvbi4KCkZlZGVyYWwgTWluaXN0cnkgb2YgRmluYW5j
+ZSAoRi5NLkYpLgoKVGhlIFByZXNpZGVuY3kuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJw
+cm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
