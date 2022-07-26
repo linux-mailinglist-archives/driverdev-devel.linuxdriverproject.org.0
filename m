@@ -1,82 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43D6E5817C7
-	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Jul 2022 18:46:04 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D7A5581A0C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Jul 2022 20:59:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A944A40612;
-	Tue, 26 Jul 2022 16:46:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A944A40612
+	by smtp3.osuosl.org (Postfix) with ESMTP id C32D660591;
+	Tue, 26 Jul 2022 18:59:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C32D660591
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MvblRT7aOXUd; Tue, 26 Jul 2022 16:46:02 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BwZ6d5udp3hl; Tue, 26 Jul 2022 18:59:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 519E24014B;
-	Tue, 26 Jul 2022 16:46:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 519E24014B
+	by smtp3.osuosl.org (Postfix) with ESMTP id 861DE6006A;
+	Tue, 26 Jul 2022 18:59:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 861DE6006A
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 06A6E1BF3D9
- for <devel@linuxdriverproject.org>; Tue, 26 Jul 2022 16:45:58 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E42C1BF239
+ for <devel@linuxdriverproject.org>; Tue, 26 Jul 2022 18:59:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D09E5422C0
- for <devel@linuxdriverproject.org>; Tue, 26 Jul 2022 16:45:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D09E5422C0
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4694980B20
+ for <devel@linuxdriverproject.org>; Tue, 26 Jul 2022 18:59:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4694980B20
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zYx4WDtt6cUg for <devel@linuxdriverproject.org>;
- Tue, 26 Jul 2022 16:45:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IrnPlte57YWE for <devel@linuxdriverproject.org>;
+ Tue, 26 Jul 2022 18:59:30 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A9F41422BC
-Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
- [IPv6:2a00:1450:4864:20::632])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A9F41422BC
- for <devel@linuxdriverproject.org>; Tue, 26 Jul 2022 16:45:56 +0000 (UTC)
-Received: by mail-ej1-x632.google.com with SMTP id sz17so27239357ejc.9
- for <devel@linuxdriverproject.org>; Tue, 26 Jul 2022 09:45:56 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9540280A6E
+Received: from mail-ej1-x62c.google.com (mail-ej1-x62c.google.com
+ [IPv6:2a00:1450:4864:20::62c])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9540280A6E
+ for <devel@driverdev.osuosl.org>; Tue, 26 Jul 2022 18:59:30 +0000 (UTC)
+Received: by mail-ej1-x62c.google.com with SMTP id j22so27829676ejs.2
+ for <devel@driverdev.osuosl.org>; Tue, 26 Jul 2022 11:59:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
- :subject:to:content-transfer-encoding;
- bh=9xhRZcPap3oFXBPkrX25Y6GEPrtISQ8gKvxRuObGRsM=;
- b=OwpnjVG3gZMeY0yH3g2kJ3QVK4m5JwIu//jT167Ae2gAfkI7/gbwOrfD736zWYvEhn
- 5+/FrNEteIEkuDqI463uiy3YGLGujoGfdOXoEYysdaLDpv0WGiwsnHLHETD9XpdnzRCN
- SDQgMTC4UddemX/3tnbEnNoBHQQLB2DRF9HYIjRFouvZbclsJP4sO3Wc4xBfbu+Jmo4i
- LGXQFr39a6joYrUDPEivcQGxv3dUvyaEy//CRHJaAT2ndUueSwngyBTNDhUNaepunE7e
- iinNYguAriOG5TbRG8Lh3urtkpismSn4toqdNOTzsUAGWFiU2YjR+JqgJsM+Wm0y0i7o
- W29w==
-X-Gm-Message-State: AJIora8JscYTjpMZw/XMhW5o+IzbqVAeunYBet8LCWH/wgOwIa4mw7r4
- 7oqBPUSeoreI3vR0EEmek47DhjnbRso67Jql7D8=
-X-Google-Smtp-Source: AGRyM1uA02i7f4hOrLkrFqMa8ZYl5Vi9EbYNTXSr1X+c51zFJK4ge1C46b3ks3/VwhLrHzqMkoQLX0wqIeTFJOZsowY=
-X-Received: by 2002:a17:906:8a4d:b0:72b:6b8d:3779 with SMTP id
- gx13-20020a1709068a4d00b0072b6b8d3779mr15114833ejc.759.1658853954811; Tue, 26
- Jul 2022 09:45:54 -0700 (PDT)
+ :subject:to;
+ bh=hqIltUZHsgP7B5i3qdGzlLGPF5v4s3lTQa98SLK1K8U=;
+ b=qYHIWJdFbxsxU5dZNw5yv4s2+A/JNz6qN+MU9/8es8q28C0+gU1OmLLj9YuFZlz54e
+ Upol72JuBLsCZjlWc7FwaMvifAhSSDeEsCnFpVEBCVtanEhtqyBR0/yYzZYCs1e5V2Vz
+ Cj11homuvay7MxRiGqGBZ78bmJy61xhZ0MdpHGuc3tC+rD6n3EOskbn5etGg0gl1vYTE
+ uKKUH3DuGo9HTkbAEzTnPtMIlfMMME8+nUz/ULMfMksWp/7xENUAr2t1KZB8seUwSMMz
+ sNJiMOn70f1aneTrUM4SvS8WU76Ji6DfMUp5CkY3RnEtayrWBB/UzKhKfcbV4B0DmoYn
+ nqhQ==
+X-Gm-Message-State: AJIora8mdR6dmsmVebBR02qBnau2haDnnD4MgC61GAicHyO8RbO6CMSq
+ UFtVF89zM9bWAebYV9uryG3GTlWglXoMZm6qyV4=
+X-Google-Smtp-Source: AGRyM1svKOnWBGhHt8l93kMRdfA99UN6Fl4eiaitl+J+x1mVr8dOMKo6bGgJP77KUydgn1G29fwuy51m8XFDqVd4bQM=
+X-Received: by 2002:a17:907:2855:b0:72b:700e:21eb with SMTP id
+ el21-20020a170907285500b0072b700e21ebmr15288210ejc.270.1658861968595; Tue, 26
+ Jul 2022 11:59:28 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a05:6f02:6163:b0:20:844c:bdcd with HTTP; Tue, 26 Jul 2022
- 09:45:54 -0700 (PDT)
-From: Mimi Esther <chiweozo1@gmail.com>
-Date: Tue, 26 Jul 2022 16:45:54 +0000
-Message-ID: <CANyiuRbOVAnvftfEM3KVxBmD2CLm-EWtSTwGFt-tYzd7UTXTOw@mail.gmail.com>
-Subject: Dear Winner
+Received: by 2002:a98:9a4c:0:b0:178:c8e8:c9df with HTTP; Tue, 26 Jul 2022
+ 11:59:28 -0700 (PDT)
+From: CAPT JOHN LANNI <cafebk2121@gmail.com>
+Date: Tue, 26 Jul 2022 11:59:28 -0700
+Message-ID: <CAFX-3311GEc=yWDpYYJHBHSaYQcJOUtC0c3X2H9+AzOYSQ+j-Q@mail.gmail.com>
+Subject: REPLY FOR DETAILS ALL THE BEST.
 To: undisclosed-recipients:;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=gmail.com; s=20210112;
- h=mime-version:reply-to:from:date:message-id:subject:to
- :content-transfer-encoding;
- bh=9xhRZcPap3oFXBPkrX25Y6GEPrtISQ8gKvxRuObGRsM=;
- b=nSkFvcsY6173gJsfpcJE9oPU4kFTqo8DMZXVWVCIU6cV99Jc0DUY7B6svbZH9ls50s
- IIriL5MaSPITbc4AHh4NU/YJ181669NJ1MjSC74AjzeQrjNXqdrL/5KDoRW75wTvB+Kr
- 7RquBDrdTOlEOS3CX4oBv7rR2PCJz/GxRvwKduZePn93DdmRtunGoU8BNWV6S/aJBNVY
- ebhB/a6isihql/8lDj/q7MO7Yyy105eGWIBtX11dIstQhJwk+1dyebVt0f80cNzQDfyC
- F39ctRRH3a0CFWTVAumvZdKnPxFD0iQ77JHzC7tuywP9O8u/xbFRDBvmKCdhj6Rz1xQG
- Ao7Q==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=hqIltUZHsgP7B5i3qdGzlLGPF5v4s3lTQa98SLK1K8U=;
+ b=koc0ug3agwXRnctenKyEkuJMfa+f/9cK54xWbfXNKBpgXY8zobZUXxJF++jL+CxPSB
+ 1VH2jjC0B4P0l8j0eu1AS5AicmjFpqErTMQca3yadOa9HeSha2tfjOhjy9PPef2W54oA
+ m7hz6qzgfpyigH1RVoFm2nqZKCHcQ+UBHHheuM4GrSa9zgbOe34DjYv636nftHuB8xR6
+ cyL95INzXGuJq3SBMpc3/z8IpLL6y5D2Ljq+QyfU1I2F4vgUCH97FOsULC9k3Zivs+FJ
+ Vv4DP/CJCRxgLXF8LoG8HsgHk7g5T013ua/0URWSKQfl/cAHXBiS3pcXQhLQVOkwc72m
+ CTog==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=nSkFvcsY
+ header.a=rsa-sha256 header.s=20210112 header.b=koc0ug3a
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,26 +88,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: DHL-deliverycompany@europe.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: lannij47@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGVhciB3aW5uZXIsIHlvdXIgZW1haWwgaGFzIGJlZW4gc2VsZWN0ZWQgYXMKd2lubmVyIG9mIHRo
-ZSByZWNlbnQgTWVnYSBNaWxsaW9ucyBkcmF3OyB5b3VyIGVtYWlsIGFkZHJlc3Mgd2FzCnF1YWxp
-ZmllZCBmb3IgYSByYWZmbGUgZHJhdyBhcyBhIHJlc3VsdCBvZiB5b3VyIHJlZ3VsYXIgdmlzaXRz
-IHRvCnZhcmlvdXMgd2Vic2l0ZXMgb24gdGhlIEludGVybmV0LCB0aGUgY29tcGFueSBhZGRyZXNz
-IGF0dGFjaGVkIHRvIHRoZQpudW1iZXIuClNlZSB0aGUgUmVzdWx0cyBhbmQgeW91ciB3aW5uaW5n
-IG51bWJlcnMgd2l0aCBzZXJpYWwgbnVtYmVyIGFuZCBUaWVyOgoyLCBNYXRjaDogNSBOdW1iZXJz
-LCBXaW5uZXJzOiAweCwgeW91ciB3aW5uaW5nIEFtb3VudCBpczoKKMKjODIxLDA3Ny43NykgdGhp
-cyBpcyB0aGUgc2l0ZSB0aGF0IHlvdSBjYW4gY2hlY2sgaXQgZm9yIHlvdXJzZWxmIHRoYXQKeW91
-IGhhdmUgd29uIGluIHRoZSBzZWNvbmQgY2F0ZWdvcnkgT05MSU5FIEZPUiBNZWdhIE1pbGxpb25z
-IExPVFRPCkRSQVcsIChodHRwczovL3d3dy5sb3R0b2xhbmQuY28udWsvbWVnYW1pbGxpb25zL3Jl
-c3VsdHMtd2lubmluZy1udW1iZXJzKS4KQ29udGFjdCBESEwgRGVsaXZlcnkgQ29tcGFueSB0byBk
-ZWxpdmVyIHlvdXIgd2lubmluZyBmdW5kIHRvIHlvdXIKbm9taW5hdGVkIGhvbWUgYWRkcmVzcywg
-cmVtZW1iZXIgdG8gc3VibWl0IHlvdXIgaW5mb3JtYXRpb24gdG8gREhMCkNvbXBhbnkgdmlhCgoo
-REhMLWRlbGl2ZXJ5Y29tcGFueUBldXJvcGUuY29tICkKClNpZ24KCk1pbWkgRXN0aGVyLgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5n
-IGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4
-ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Dear Friend,
+
+I am Capt John Lanni From Poland a military man, I would like to
+establish with you in any profitable business there in your country
+with my saved money here in the military mission.
+
+I will introduce myself better and send you my photo and more Details
+as soon as I receive your reply.
+
+Capt John Lanni
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
