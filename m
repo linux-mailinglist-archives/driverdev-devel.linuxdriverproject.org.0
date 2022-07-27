@@ -2,65 +2,66 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31A635827AC
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jul 2022 15:27:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 75A545827BA
+	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Jul 2022 15:32:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id ADC6740550;
-	Wed, 27 Jul 2022 13:27:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ADC6740550
+	by smtp2.osuosl.org (Postfix) with ESMTP id B0C894055E;
+	Wed, 27 Jul 2022 13:32:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B0C894055E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3MImOtIcY6Hg; Wed, 27 Jul 2022 13:27:53 +0000 (UTC)
+	with ESMTP id BNCMGIJ57zQT; Wed, 27 Jul 2022 13:32:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 62B5D4052F;
-	Wed, 27 Jul 2022 13:27:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 62B5D4052F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 54F564056A;
+	Wed, 27 Jul 2022 13:32:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 54F564056A
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 77D4D1BF2BA
- for <devel@linuxdriverproject.org>; Wed, 27 Jul 2022 13:27:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 794841BF2BA
+ for <devel@linuxdriverproject.org>; Wed, 27 Jul 2022 13:32:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6087840550
- for <devel@linuxdriverproject.org>; Wed, 27 Jul 2022 13:27:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6087840550
+ by smtp2.osuosl.org (Postfix) with ESMTP id 537194054B
+ for <devel@linuxdriverproject.org>; Wed, 27 Jul 2022 13:32:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 537194054B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dXcGL3EfPHRn for <devel@linuxdriverproject.org>;
- Wed, 27 Jul 2022 13:27:48 +0000 (UTC)
+ with ESMTP id nKPMYFmCbaNh for <devel@linuxdriverproject.org>;
+ Wed, 27 Jul 2022 13:31:58 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 25FE94052F
-Received: from mail-oi1-x22f.google.com (mail-oi1-x22f.google.com
- [IPv6:2607:f8b0:4864:20::22f])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 25FE94052F
- for <devel@linuxdriverproject.org>; Wed, 27 Jul 2022 13:27:48 +0000 (UTC)
-Received: by mail-oi1-x22f.google.com with SMTP id n206so20771027oia.6
- for <devel@linuxdriverproject.org>; Wed, 27 Jul 2022 06:27:48 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4607E40518
+Received: from mail-oa1-x33.google.com (mail-oa1-x33.google.com
+ [IPv6:2001:4860:4864:20::33])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4607E40518
+ for <devel@driverdev.osuosl.org>; Wed, 27 Jul 2022 13:31:58 +0000 (UTC)
+Received: by mail-oa1-x33.google.com with SMTP id
+ 586e51a60fabf-10e3852b463so5922533fac.3
+ for <devel@driverdev.osuosl.org>; Wed, 27 Jul 2022 06:31:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:reply-to:from:date:message-id
  :subject:to:content-transfer-encoding;
  bh=ObIdrx/2+rwrr3Spu0DNQxwWs/W3U8LHCozkhGpRsnM=;
- b=zMDEhIF87qQOKmXJuQP2o05+jTN2QY9IAvk3HRDXRzQWHpX0n1yK+J4JI9HwNw+Svj
- Tw6KYmnG50cscqoP0eTJTa0yNtwlMEzUxO7xvRw21fxmw5H/8TQ4v/UNxrBlrVPfLfMS
- As8/AuaoTwibX4Rd/LC8KQQf4Nbz1Wpxkr6abQLe3y3B9GtznIM3QANmU6WYfed0XFLk
- YpItsZ89MSpYlDEbsrlX3y+xGFGHWjtynIJCVMYNbj/VxNmzMnB5aI5FWlqM4vkf/yqy
- 5W5KP9L2OYnDhYAhsObE5s0hj/a4wjE1HO1kY/QhYbyqKjiBIuNgL68GHgrP+XC9UwdQ
- 3utw==
-X-Gm-Message-State: AJIora8arzP4Nlp+ekomykJ2bO0eZgiaDMd9WMb126+7+Op7tRsa/u1O
- p/eKvkIGjf9eVn8wTTGmDYh4UJX73I78RyvqKRc=
-X-Google-Smtp-Source: AGRyM1t4ZrNTlVZuFXJGRf8V7JLLU1Ln8PRE4MImX+rrFMJNsiAh33qiMPXAzLIo5EQAS7MDb8lGDVbou4BNz+/B4W8=
-X-Received: by 2002:a05:6808:16ab:b0:331:464c:61b4 with SMTP id
- bb43-20020a05680816ab00b00331464c61b4mr1871590oib.187.1658928467051; Wed, 27
- Jul 2022 06:27:47 -0700 (PDT)
+ b=q1+ViegATAp+jmuPMy4kZLw3aQlph90gu4A1VXHh3NfUnqV+sYeO+Ap9uJh+ZC+BDh
+ u7ZvridZEW5lu8n2GQ0aiKQA/hvjrr5e1IVSaRECoCVRb3CaALUahTNELMZR4UHDWZu7
+ An3kXC79iLYtyTH+sNtPOZsAusF55C+P8A8h06Gb6TnzUUgYwxXW1Gr292c2PsCIKHJL
+ TPconlzI98SKHJ/MASQDgu6mxKowp9GpUiQGG9doj7MnRCTN3Ch4gIXZNUcjmKl6Z6Nt
+ B7anyKoy4I4OopAuScSTlLHgkua04DqKl4YdVPpQUr3Uep9qpasbviyRvE/YTbYe/wpe
+ 7MLw==
+X-Gm-Message-State: AJIora8xsB8jjEXF/4FxqCXNybpo8z1qhIoYdj5Rh/y2GOjb9iLyOtxy
+ OHDIx3DeVJE6PpehamC+16g/LAfbQFioVWng5tw=
+X-Google-Smtp-Source: AGRyM1vuoCYsTiZfpIOHRvGxLc3ejNF3/LyLLe/aoqRdjjnm8yzJiMNkNZjXj3kfln8rv3fqHDYy4pUx8PPalWaNc0o=
+X-Received: by 2002:a05:6870:89a9:b0:101:d81d:e970 with SMTP id
+ f41-20020a05687089a900b00101d81de970mr2034827oaq.43.1658928717163; Wed, 27
+ Jul 2022 06:31:57 -0700 (PDT)
 MIME-Version: 1.0
 Received: by 2002:a8a:d94:0:0:0:0:0 with HTTP;
- Wed, 27 Jul 2022 06:27:46 -0700 (PDT)
+ Wed, 27 Jul 2022 06:31:56 -0700 (PDT)
 From: Attorney Amadou <kodzoagbolan12@gmail.com>
-Date: Wed, 27 Jul 2022 06:27:46 -0700
-Message-ID: <CAHtEYbnoN2v3APYi7MmE4v=uaL78gTwvkpjg1A9Suo_Fs_7Bbw@mail.gmail.com>
+Date: Wed, 27 Jul 2022 06:31:56 -0700
+Message-ID: <CAHtEYbkgXn33GUzsMjcHqiEoxeV6kkBT7+k3zGrEfFSKTT6Cjg@mail.gmail.com>
 Subject: 
 To: undisclosed-recipients:;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -68,15 +69,15 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  h=mime-version:reply-to:from:date:message-id:subject:to
  :content-transfer-encoding;
  bh=ObIdrx/2+rwrr3Spu0DNQxwWs/W3U8LHCozkhGpRsnM=;
- b=gaWqg6RXUEpZDOf6BZbnjQ8li08zsmCWIWBHtL5FM9iI4WQRYmUBQu5YxDIakNYKKL
- lDH7VtHMB0EjYFNJnLOpEYAxeZL3xE8ro1wK2xdEhM7ZYLRw0eJbkFn482Pk7ZA0pMYM
- RWyNYksqyJ9TSuhv1LncDhDOaqf9crib8/9ledpIpsjNn/7JotNt/QKEaXh3+dXGRNFY
- q1mHGhRBFez1IyU1TIz2a2o7+aMGDNpeFx5JCUa0/3FpxN3KQAOqeb5je94Za/X/8kf1
- K5/Di/dVFApWkiQaT883Q71W0WgDs4/78Xg1YHdGxy/YhGgWeVZ61gigiXnsPZ5YldPL
- tbJA==
+ b=HEFE83oX6MIoDr8+E/XQs57RqTXk104bR7nyv6cNnIgKoy1T2foaJxQSthfseXFwe4
+ H9YEhyI/W1z7jJftlEiNu/DHOLMoJLrNjLSb0oy0WOvWQxQSi4thSw1ePINsYgAZA3op
+ 1nCeR61b3vQ0diSIYMaM09LO1rPyb8Go5VNB6LgD8WHb+GbL0FwLKG3Elqdjp740UE4m
+ f0n5vZtu8PAiwvmDXXkX+FKRqnxlATu9ygaPeqSS+AZUTTctl9fWI9KYFgftbpqexzb6
+ dDiKiujTx52tTrtX1fGHz/JdfypZ5kWoiIVcm4abCt5Q14vY92i7NzlPT46fztI7CHjC
+ VZ/w==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=gaWqg6RX
+ header.a=rsa-sha256 header.s=20210112 header.b=HEFE83oX
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
