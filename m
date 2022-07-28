@@ -1,76 +1,134 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4862E58494B
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jul 2022 03:14:13 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 739615851E1
+	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Jul 2022 16:57:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 148F64014A;
-	Fri, 29 Jul 2022 01:14:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 148F64014A
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2950840300;
+	Fri, 29 Jul 2022 14:57:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2950840300
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rC2uOlgpPxKa; Fri, 29 Jul 2022 01:14:10 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vpdIx0xDZGne; Fri, 29 Jul 2022 14:57:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A3747400FD;
-	Fri, 29 Jul 2022 01:14:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A3747400FD
+	by smtp4.osuosl.org (Postfix) with ESMTP id 979FA402F9;
+	Fri, 29 Jul 2022 14:57:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 979FA402F9
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1EE4F1BF3B5
- for <devel@linuxdriverproject.org>; Fri, 29 Jul 2022 01:14:07 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9335D1BF30B
+ for <devel@linuxdriverproject.org>; Fri, 29 Jul 2022 14:57:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0654482416
- for <devel@linuxdriverproject.org>; Fri, 29 Jul 2022 01:14:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0654482416
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6936C400C2
+ for <devel@linuxdriverproject.org>; Fri, 29 Jul 2022 14:57:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6936C400C2
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1AHrG-0IMYTZ for <devel@linuxdriverproject.org>;
- Fri, 29 Jul 2022 01:14:06 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D83C5823EB
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D83C5823EB
- for <devel@driverdev.osuosl.org>; Fri, 29 Jul 2022 01:14:05 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10422"; a="289432628"
-X-IronPort-AV: E=Sophos;i="5.93,199,1654585200"; d="scan'208";a="289432628"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Jul 2022 18:14:04 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,199,1654585200"; d="scan'208";a="660022468"
-Received: from lkp-server01.sh.intel.com (HELO e0eace57cfef) ([10.239.97.150])
- by fmsmga008.fm.intel.com with ESMTP; 28 Jul 2022 18:14:02 -0700
-Received: from kbuild by e0eace57cfef with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1oHEZm-000Apa-0l;
- Fri, 29 Jul 2022 01:14:02 +0000
-Date: Fri, 29 Jul 2022 09:13:37 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-next] BUILD SUCCESS
- 2b5002e2cc1483b6333d31e21902b78a1997909e
-Message-ID: <62e33441.tRnGhY+wp3L7koat%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id milZ_8_9rDgj for <devel@linuxdriverproject.org>;
+ Fri, 29 Jul 2022 14:57:26 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0C77540301
+Received: from APC01-PSA-obe.outbound.protection.outlook.com
+ (mail-psaapc01rlhn2177.outbound.protection.outlook.com [40.95.53.177])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0C77540301
+ for <devel@driverdev.osuosl.org>; Fri, 29 Jul 2022 14:57:25 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=B9jwxBkyn18g2pTktf5bKRBWvgbUcPB9X9KFsxEGeELpn4V4DqzVba/ASWcsj7cqnTk91OAhDG/dNZ0PPqJ1VqrFy18ND/Ao+KE3JdCCiRCYKytWKoN4D8mguFsEWo7ZwM9zI4DxQ616dW52AAhZM60KXhypjLAP8zv3D9/+9r6AyNEo3MYkuNGiNs+NQnfSWumhkEoiQTl8mrBYWwj65r+OFD9eu+uVR3b2jPL4/8NVbnNFgy5pGbVN4aD3zi8YVyVnGlXHVIgFlvWG2jb6E0Rpywe1mdZDD1uE+oz1DKD1BTqwbz607k5F+rEx88maZjH7agjYu5Deizr+y0qpxw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=an7HwnOTBUt9OI7O4r4LMloEYcSbH+I7Wf0ScaCI12k=;
+ b=Def9BbUX0YuC5YTqUFSdo+sokEFAoCVPYMdJ0oMtnDuL5BbWqf+6o8ImTQUpwkGQdeVA/21NnDYhP3w5PnZ5KI/zHgqlWhRIOoW7HGw9uaxd8DVeWa+fftU4VQh447iyPkJ3lwPqwvEQQ8V7PfmVQMIQXQbIbCTWOg+tdv74ewo7DAJBDFnQ7B/khkxpWC6TlFt53iovpyB4yRQhQzRqmLqT33Bu5SItM2/M5tTVmGT1m3Is5m3E570eZSw5IFIZLv8mJuUnqos2e+sZpMDelizIK4jT6njR+qxsfh8Fb7kN5ytER9KTtdCXkzL79uSK0BxW0OZtTyqoH3M5a///1w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
+ is 91.206.168.51) smtp.rcpttodomain=udl.cat smtp.mailfrom=shilp.co.in;
+ dmarc=none action=none header.from=shilp.co.in; dkim=none (message not
+ signed); arc=none (0)
+Received: from SL2P216CA0097.KORP216.PROD.OUTLOOK.COM (2603:1096:101:3::12) by
+ SG2PR04MB2491.apcprd04.prod.outlook.com (2603:1096:4:8::22) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5458.21; Fri, 29 Jul 2022 14:57:21 +0000
+Received: from PSAAPC01FT061.eop-APC01.prod.protection.outlook.com
+ (2603:1096:101:3:cafe::c0) by SL2P216CA0097.outlook.office365.com
+ (2603:1096:101:3::12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5482.10 via Frontend
+ Transport; Fri, 29 Jul 2022 14:57:21 +0000
+X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is
+ 91.206.168.51) smtp.mailfrom=shilp.co.in; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=shilp.co.in;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ shilp.co.in discourages use of 91.206.168.51 as permitted sender)
+Received: from mail.prasarana.com.my (58.26.8.159) by
+ PSAAPC01FT061.mail.protection.outlook.com (10.13.38.140) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.5482.10 via Frontend Transport; Fri, 29 Jul 2022 14:57:20 +0000
+Received: from MRL-EXH-02.prasarana.com.my (10.128.66.101) by
+ MRL-EXH-02.prasarana.com.my (10.128.66.101) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2176.14; Fri, 29 Jul 2022 22:56:52 +0800
+Received: from User (91.206.168.51) by MRL-EXH-02.prasarana.com.my
+ (10.128.66.101) with Microsoft SMTP Server id 15.1.2176.14 via Frontend
+ Transport; Fri, 29 Jul 2022 22:56:21 +0800
+From: "Ms. Reem E. Al-Hashimi" <account@shilp.co.in>
+Subject: Re: Did you received my last email?
+Date: Thu, 28 Jul 2022 22:53:52 +0800
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1659057245; x=1690593245;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=lkab47KkJTNTkxmJ6WVSg4lzgysahvXCDPcIISrV7u8=;
- b=H1sw0Gv4Gj0D35eGtOiwwE5SqzIJGqv0/ZIS9zk+6mrgEZlOICvvVGtw
- oOzx9ilFccJpbrgUEMIraS5gW3TSEMRxcvdY1p4uD9rDmD+Hk3ZxlGWMY
- a1nfHMyOpnlcG1JDSytvp2JnGJ4RfauC01HYVV75VElW/4y/Uo62YptyT
- KFKodJq7KJimeXnwZH233Y6667bSV57NNu5+8d4FcBLcfhCW8Ria7iK3V
- Isrvka8Mw4JaqIufGz3TAKC1QEvFpo31Kj1Dvb7yBeRi4fg138Vs8JdDZ
- 11+6qa51vBELDcMDl7HdZQ37Edx+/gZyf3H3jkHUUPJi07sG+AvIE2/bY
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=H1sw0Gv4
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <59f7fc3e-fd85-4c59-a2f1-5a4d25db6483@MRL-EXH-02.prasarana.com.my>
+To: Undisclosed recipients:;
+X-EOPAttributedMessage: 0
+X-MS-Exchange-SkipListedInternetSender: ip=[91.206.168.51];domain=User
+X-MS-Exchange-ExternalOriginalInternetSender: ip=[91.206.168.51];domain=User
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 2353cf90-ce3c-46d3-2105-08da7172a330
+X-MS-TrafficTypeDiagnostic: SG2PR04MB2491:EE_
+X-MS-Exchange-SenderADCheck: 2
+X-MS-Exchange-AntiSpam-Relay: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: =?windows-1251?Q?vgNZnkb+Y1UoCn9A9QSFhjD0vm04Au/aahXRwk9cNQOw7iVYWn7Tyszd?=
+ =?windows-1251?Q?AXXKEkUU6TSqmM2QJS/zT3ghayaQ5jh7m+0CiAjmx7XH+0uIaWmIWIvv?=
+ =?windows-1251?Q?Brz9qNuhOb2aOvKJVzgbWQvuoLkN0TI+CudWNEvdd/KLAiWqKRsEXUwT?=
+ =?windows-1251?Q?FPyUDbkFMm6evLHTOGF5x7+KkRxkVN2elYJKfTHKoF3jSMFHo0JJz2Wc?=
+ =?windows-1251?Q?qwguv/JIxhvPYfrN1UgCkF8Uff0e02kkJSbxCuaQThfWfyDbzCCKwm7N?=
+ =?windows-1251?Q?LC4GIJDqxyI41o30ftA2eJb3B0NbTxoBEihoiiCiFDXN3tMK3lV6Df0i?=
+ =?windows-1251?Q?/08dXieEWilJkVuhA8nFf+aSX9fk3i0JvpeI0bzC2qb48Xa4Gf++YnSm?=
+ =?windows-1251?Q?sZo0Ty06eeHgGlzmdy7yiRbs2gpmBBuWeQvzNO/HNAWrsYiClza4kVxC?=
+ =?windows-1251?Q?7Rght/FusLEIEruvuryD0aud0DM7di3CbQKz4rTxMI229H8R5i4gHILc?=
+ =?windows-1251?Q?2a132hgka9jMZsw0TacLTIc3Qx+R0/rlBIRIM4V1fGxUQppFAJ5Bqg3e?=
+ =?windows-1251?Q?Qc8SO8ghdLKNrGamybBaqZpt8fP5JD5hCDtK2rAYK7jtLVEFH5IMxc0h?=
+ =?windows-1251?Q?EpbXp7ke1OFDsL3ZoB6IlEJ6IITgDhkbz81Ppw3X1qofGqIGaIPz79sG?=
+ =?windows-1251?Q?RIZ1UqgAtIw7CMcS9z2WFH6Y4SSGnberQ85CgEOiRpR2Rl3JU61UuP7Z?=
+ =?windows-1251?Q?Ow1ISrpiDvIWPAjYGmsrrpYMfDb6HSImllWiR3HAz0Frl6cLrUAkrOH7?=
+ =?windows-1251?Q?zKlAtNJw82vQfuH3cOgRyAsW0c0PdQ+Px5QVHg+FzR73FVC8yHa2W6JS?=
+ =?windows-1251?Q?BBDkmHxf8CcDOx1odDR0xFdJc477chCqgZ4EFX1DNeM6c3w0QCH5NL/X?=
+ =?windows-1251?Q?fobm+vnwaHzhj1s1BlN4XTYIJ8s6cxgP1/j0YKGb+uFZWkOfCeYZREp7?=
+ =?windows-1251?Q?0alqNY//ubdvLg12s3JgZ+8Uzp/8LxxssAy8JckGM787Rwg6K+X0pFmR?=
+ =?windows-1251?Q?IWRBsbRroPQYq5lBy2DnvLizDEMSXYQ0uwyLD2rUGH5UbmcQsyiGyR0o?=
+ =?windows-1251?Q?MMjKxX/FHu8TgDrLEADeGIpSLwsdqebsww0ufXWjCPpp4hOQ1+Kk0hnf?=
+ =?windows-1251?Q?QfzSv+9Ve1ca4iuFt5pxzzUz5wmme1W9w528bZLnBHuofwCrPJ99VXk7?=
+ =?windows-1251?Q?Qyq0dil2cjP0E3n3GWtFSlXHDEhGE821KUTTiRNaRadtQf3eX+sRFEHk?=
+ =?windows-1251?Q?5KS1nw=3D=3D?=
+X-Forefront-Antispam-Report: CIP:58.26.8.159; CTRY:AR; LANG:en; SCL:5; SRV:;
+ IPV:NLI; SFV:SPM; H:User; PTR:InfoDomainNonexistent; CAT:OSPM;
+ SFS:(13230016)(136003)(396003)(346002)(376002)(39860400002)(40470700004)(46966006)(70586007)(31686004)(35950700001)(156005)(316002)(41300700001)(32850700003)(4270600006)(82310400005)(81166007)(82740400003)(70206006)(8676002)(86362001)(9686003)(7416002)(40480700001)(7366002)(2906002)(40460700003)(558084003)(8936002)(498600001)(31696002)(7406005)(26005)(47076005)(5660300002)(6666004)(956004)(336012)(109986005)(2700400008);
+ DIR:OUT; SFP:1023; 
+X-OriginatorOrg: myprasarana.onmicrosoft.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Jul 2022 14:57:20.1741 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2353cf90-ce3c-46d3-2105-08da7172a330
+X-MS-Exchange-CrossTenant-Id: 3cbb2ff2-27fb-4993-aecf-bf16995e64c0
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3cbb2ff2-27fb-4993-aecf-bf16995e64c0; Ip=[58.26.8.159];
+ Helo=[mail.prasarana.com.my]
+X-MS-Exchange-CrossTenant-AuthSource: PSAAPC01FT061.eop-APC01.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR04MB2491
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,75 +141,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: hashimirrr22@kakao.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-next
-branch HEAD: 2b5002e2cc1483b6333d31e21902b78a1997909e  staging: r8188eu: convert rtw_pwr_wakeup to correct error code semantics
+If you can handle the funds in a good investment ?
 
-elapsed time: 2359m
-
-configs tested: 45
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-i386                          randconfig-a001
-i386                          randconfig-a003
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-i386                          randconfig-a005
-x86_64                        randconfig-a015
-x86_64                           rhel-8.3-kvm
-x86_64                          rhel-8.3-func
-x86_64                         rhel-8.3-kunit
-x86_64                    rhel-8.3-kselftests
-x86_64                           rhel-8.3-syz
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-a016
-arm                                 defconfig
-arm                              allyesconfig
-arm64                            allyesconfig
-ia64                             allmodconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-powerpc                          allmodconfig
-sh                               allmodconfig
-mips                             allyesconfig
-powerpc                           allnoconfig
-arc                  randconfig-r043-20220728
-riscv                randconfig-r042-20220728
-s390                 randconfig-r044-20220728
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                           allyesconfig
-arc                              allyesconfig
-alpha                            allyesconfig
-m68k                             allmodconfig
-m68k                             allyesconfig
-
-clang tested configs:
-i386                          randconfig-a002
-i386                          randconfig-a004
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a006
-i386                          randconfig-a013
-i386                          randconfig-a011
-i386                          randconfig-a015
-hexagon              randconfig-r045-20220728
-hexagon              randconfig-r041-20220728
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Regards,
+Ms. Reem  Al-hashimi
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
