@@ -1,92 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CB47B585BA3
-	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Jul 2022 20:42:31 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B96E3586146
+	for <lists+driverdev-devel@lfdr.de>; Sun, 31 Jul 2022 22:20:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1773A417BF;
-	Sat, 30 Jul 2022 18:42:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1773A417BF
+	by smtp2.osuosl.org (Postfix) with ESMTP id 93FE340FEB;
+	Sun, 31 Jul 2022 20:20:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 93FE340FEB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AzQ21bOOI8rr; Sat, 30 Jul 2022 18:42:27 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id nPfee08GMXPe; Sun, 31 Jul 2022 20:20:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 506E6417B9;
-	Sat, 30 Jul 2022 18:42:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 506E6417B9
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4443840133;
+	Sun, 31 Jul 2022 20:20:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4443840133
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2B2181BF389
- for <devel@linuxdriverproject.org>; Sat, 30 Jul 2022 18:42:24 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9695B1BF2CC
+ for <devel@linuxdriverproject.org>; Sun, 31 Jul 2022 20:20:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 03DCD417BF
- for <devel@linuxdriverproject.org>; Sat, 30 Jul 2022 18:42:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 03DCD417BF
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7072582F20
+ for <devel@linuxdriverproject.org>; Sun, 31 Jul 2022 20:20:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7072582F20
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4I8XkS-A1b1W for <devel@linuxdriverproject.org>;
- Sat, 30 Jul 2022 18:42:22 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 373C7417B9
-Received: from mail-wm1-x333.google.com (mail-wm1-x333.google.com
- [IPv6:2a00:1450:4864:20::333])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 373C7417B9
- for <devel@driverdev.osuosl.org>; Sat, 30 Jul 2022 18:42:22 +0000 (UTC)
-Received: by mail-wm1-x333.google.com with SMTP id
- h205-20020a1c21d6000000b003a34ac64bdfso2455645wmh.1
- for <devel@driverdev.osuosl.org>; Sat, 30 Jul 2022 11:42:22 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=H6EoWK2Xkx5f0BaLXMIdK1U61HtbiW4S6pMAj0sBMEU=;
- b=1qrMAfAYRWC15vn1ANlcWAPQqUj/JTkkZ7xRR7cPNhBsGIHy1HcGlao1iU5P7pzaqG
- DeTnHZk5mrpZOFIjeF5ri8/BYnHOgFSRHM+dQJNnquTRwDQg5nEWPqgHuCJ/o/ML/UZD
- sussSo3/Z7HlYr6t7ygkSKpYlkUeG/7N2K5vwK1FUhDxk6NjEjjfzmouU/qrrqK9es10
- DKKxAgLP7PwCnTxVHJwyZZFp8gMWfpBTsGLbv3+82Dko70wrkXx6NZfaUKlw0tymr8mK
- CyZUQib5wqutYJ6FvHUrf7Ek3OCX/FnuQpHJyEFSFXeOvxlZWoR8cJJUGDEIXKs04+ku
- CFww==
-X-Gm-Message-State: AJIora9wCaWSIunvytNYVzki+w0ln3XR7xdG1XmaQflBoh0XyuklyGuw
- Eobi4S5Djc46URTow5geSUJMow==
-X-Google-Smtp-Source: AGRyM1ugN3c3dGq+f9D6o1FI6UQAIcaystpn1k69gEtqNAdg4fpJvs76Rd6x4TjvfLnPIy0K7hj2Jw==
-X-Received: by 2002:a05:600c:3551:b0:3a3:1d4f:69ed with SMTP id
- i17-20020a05600c355100b003a31d4f69edmr6204521wmq.188.1659206540118; 
- Sat, 30 Jul 2022 11:42:20 -0700 (PDT)
-Received: from OEMBP14.local (82-132-226-84.dab.02.net. [82.132.226.84])
- by smtp.gmail.com with ESMTPSA id
- p15-20020adfce0f000000b0021ee28ff76esm7147601wrn.38.2022.07.30.11.42.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 30 Jul 2022 11:42:19 -0700 (PDT)
-Date: Sat, 30 Jul 2022 19:42:17 +0100
-From: Phillip Potter <phil@philpotter.co.uk>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [staging:staging-testing 54/54]
- drivers/staging/r8188eu/core/rtw_pwrctrl.c:400:6: warning: variable 'ret' is
- used uninitialized whenever 'if' condition is false
-Message-ID: <YuV7iR53bBecQKMd@OEMBP14.local>
-References: <202207301623.BfMKLfhv-lkp@intel.com> <YuURJ8ecN1cN56v/@kroah.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LPUfVqUAp6Vq for <devel@linuxdriverproject.org>;
+ Sun, 31 Jul 2022 20:20:07 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 45E6382F14
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 45E6382F14
+ for <devel@driverdev.osuosl.org>; Sun, 31 Jul 2022 20:20:06 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6400,9594,10425"; a="272066203"
+X-IronPort-AV: E=Sophos;i="5.93,206,1654585200"; d="scan'208";a="272066203"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Jul 2022 13:20:06 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,206,1654585200"; d="scan'208";a="577553933"
+Received: from lkp-server01.sh.intel.com (HELO e0eace57cfef) ([10.239.97.150])
+ by orsmga006.jf.intel.com with ESMTP; 31 Jul 2022 13:20:05 -0700
+Received: from kbuild by e0eace57cfef with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1oIFPw-000EYD-1r;
+ Sun, 31 Jul 2022 20:20:04 +0000
+Date: Mon, 01 Aug 2022 04:19:19 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 87f600af59e8cf6abb04bac15328bcb517e26485
+Message-ID: <62e6e3c7.UjM2sd9YMo62VIco%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YuURJ8ecN1cN56v/@kroah.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philpotter-co-uk.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=H6EoWK2Xkx5f0BaLXMIdK1U61HtbiW4S6pMAj0sBMEU=;
- b=Cw4Ajigu6wNyUc+igA/HWRNZT0U5EohtvaBtioSfOpz8foDZCRa7z+X0sN4iKX5Bg5
- GxmKNlC2r3PYQRcd7yOKZWZ5cj5NIA+W5aT5Oz9hBo1FICAYThyQNSoQXvHVnbe9gfA9
- Z6CiKWGCVvm2VsTGZP3J6X7m96sustGROUfJW04mXqAOYkMNWAFZ8wc+LsSM6TYazgck
- LAUAquyixb9rnIyVMWaSNemwdSMv2T8kkf8pdIzRX7mHwZ7wK10UdCXXe7sOxEQ+IagD
- KJKDAeOo/OMTw313Mlm7ToIS2g41+szHlHrjcrQ9FDVu5TKdF7QpL9/kb1Hlh/dehltg
- CGmQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=philpotter-co-uk.20210112.gappssmtp.com
- header.i=@philpotter-co-uk.20210112.gappssmtp.com header.a=rsa-sha256
- header.s=20210112 header.b=Cw4Ajigu
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1659298807; x=1690834807;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=+xu7iBNyVvi172iMFcUgpozCe1sHHu4oC+utIN6Dgko=;
+ b=ZgQYw+JTByK+AnFOtV8eXoFq+nFWq4Fc/YaLjEqgOcidzYTn9ogp2zTr
+ vEFV3AQ4DVwoW9MBJxC39/g/NsBpFQ/Ade5NRQ8dtXi1ZOlwpayrkMrlz
+ yIIyllRgqcTMQtTKODRy05791CI8gGmLJH1pV1/GMlLMVzhdNjUdlD7S8
+ i9kfgtg4v3Lt/i9mvI5JDIgeEIW5T0HqWUjtl4KBfSTDQmvdBKjiOggBn
+ XZwHLcSegf0Q+rpXjTfG7ae1U41Z52SO46IoA1gXg/tO2QpCtS8gB9U80
+ /SslFDPGrnbelNJOQixcaYmmQqcFPDSGm65gN1e+0RQyM+PmumKH7KoVb
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=ZgQYw+JT
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,63 +83,119 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, kbuild-all@lists.01.org, llvm@lists.linux.dev,
- linux-kernel@vger.kernel.org, Phillip Potter <phil@philpotter.co.uk>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Sat, Jul 30, 2022 at 01:08:23PM +0200, Greg Kroah-Hartman wrote:
-> On Sat, Jul 30, 2022 at 04:14:57PM +0800, kernel test robot wrote:
-> > tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-> > head:   f3a76018dd55d8ddcd28cb47049f46ae5c0ce557
-> > commit: f3a76018dd55d8ddcd28cb47049f46ae5c0ce557 [54/54] staging: r8188eu: remove initializer from ret in rtw_pwr_wakeup
-> > config: hexagon-randconfig-r015-20220729 (https://download.01.org/0day-ci/archive/20220730/202207301623.BfMKLfhv-lkp@intel.com/config)
-> > compiler: clang version 16.0.0 (https://github.com/llvm/llvm-project 52cd00cabf479aa7eb6dbb063b7ba41ea57bce9e)
-> > reproduce (this is a W=1 build):
-> >         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-> >         chmod +x ~/bin/make.cross
-> >         # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/commit/?id=f3a76018dd55d8ddcd28cb47049f46ae5c0ce557
-> >         git remote add staging https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
-> >         git fetch --no-tags staging staging-testing
-> >         git checkout f3a76018dd55d8ddcd28cb47049f46ae5c0ce557
-> >         # save the config file
-> >         mkdir build_dir && cp config build_dir/.config
-> >         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=hexagon SHELL=/bin/bash drivers/staging/r8188eu/
-> > 
-> > If you fix the issue, kindly add following tag where applicable
-> > Reported-by: kernel test robot <lkp@intel.com>
-> > 
-> > All warnings (new ones prefixed by >>):
-> > 
-> > >> drivers/staging/r8188eu/core/rtw_pwrctrl.c:400:6: warning: variable 'ret' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
-> >            if (padapter->bDriverStopped || !padapter->bup || !padapter->hw_init_completed) {
-> >                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> >    drivers/staging/r8188eu/core/rtw_pwrctrl.c:409:9: note: uninitialized use occurs here
-> >            return ret;
-> >                   ^~~
-> >    drivers/staging/r8188eu/core/rtw_pwrctrl.c:400:2: note: remove the 'if' if its condition is always true
-> >            if (padapter->bDriverStopped || !padapter->bup || !padapter->hw_init_completed) {
-> >            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> >    drivers/staging/r8188eu/core/rtw_pwrctrl.c:384:9: note: initialize the variable 'ret' to silence this warning
-> >            int ret;
-> >                   ^
-> >                    = 0
-> >    1 warning generated.
-> 
-> Phillip, can you send a follow-up patch for this issue?
-> 
-> thanks,
-> 
-> greg k-h
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 87f600af59e8cf6abb04bac15328bcb517e26485  staging: r8188eu: fix potential uninitialised variable use in rtw_pwrctrl.c
 
-Yes, of course. It will be a few hours though if that's ok - I've had
-to pop out to send this as someone decided to steal some telecoms cabling,
-thus knocking out DSL for us and three neighbouring towns :-)
+elapsed time: 716m
 
-Regards,
-Phil
+configs tested: 89
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                              defconfig
+i386                                defconfig
+s390                 randconfig-r044-20220731
+x86_64                               rhel-8.3
+x86_64                        randconfig-a015
+arc                  randconfig-r043-20220731
+i386                          randconfig-a016
+x86_64                        randconfig-a002
+arc                               allnoconfig
+ia64                             allmodconfig
+alpha                             allnoconfig
+riscv                             allnoconfig
+csky                              allnoconfig
+x86_64                        randconfig-a006
+x86_64                           rhel-8.3-syz
+riscv                randconfig-r042-20220731
+m68k                             allmodconfig
+arc                              allyesconfig
+x86_64                          rhel-8.3-func
+x86_64                        randconfig-a013
+x86_64                           allyesconfig
+alpha                            allyesconfig
+arm                                 defconfig
+i386                          randconfig-a001
+i386                          randconfig-a005
+x86_64                         rhel-8.3-kunit
+i386                          randconfig-a003
+i386                             allyesconfig
+x86_64                        randconfig-a011
+arm                              allyesconfig
+m68k                             allyesconfig
+x86_64                    rhel-8.3-kselftests
+arm                        realview_defconfig
+arc                         haps_hs_defconfig
+powerpc                      ep88xc_defconfig
+powerpc                      pcm030_defconfig
+microblaze                      mmu_defconfig
+arm                        spear6xx_defconfig
+powerpc                           allnoconfig
+powerpc                          allmodconfig
+arm64                            allyesconfig
+arm                        clps711x_defconfig
+x86_64                        randconfig-a004
+riscv             nommu_k210_sdcard_defconfig
+powerpc                  iss476-smp_defconfig
+arm                       aspeed_g5_defconfig
+mips                             allyesconfig
+ia64                             alldefconfig
+x86_64                           rhel-8.3-kvm
+sh                          kfr2r09_defconfig
+i386                          randconfig-a012
+parisc                generic-64bit_defconfig
+sh                          rsk7203_defconfig
+ia64                        generic_defconfig
+sh                               allmodconfig
+parisc                              defconfig
+i386                          randconfig-a014
+m68k                       m5249evb_defconfig
+powerpc                       eiger_defconfig
+arm                        trizeps4_defconfig
+sh                        sh7763rdp_defconfig
+powerpc                      makalu_defconfig
+arc                        nsimosci_defconfig
+arm                          pxa910_defconfig
+
+clang tested configs:
+hexagon              randconfig-r041-20220731
+x86_64                        randconfig-a016
+hexagon              randconfig-r045-20220731
+i386                          randconfig-a015
+powerpc                      obs600_defconfig
+x86_64                        randconfig-a001
+x86_64                        randconfig-a003
+x86_64                        randconfig-a005
+i386                          randconfig-a002
+arm                          ep93xx_defconfig
+i386                          randconfig-a004
+i386                          randconfig-a006
+powerpc                     ppa8548_defconfig
+arm                        mvebu_v5_defconfig
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+mips                           ip22_defconfig
+powerpc                      katmai_defconfig
+powerpc                     kmeter1_defconfig
+powerpc                     powernv_defconfig
+powerpc                   microwatt_defconfig
+i386                          randconfig-a013
+i386                          randconfig-a011
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
