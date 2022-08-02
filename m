@@ -1,51 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02DB258752F
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Aug 2022 03:51:53 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C06C5875A4
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 Aug 2022 04:52:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 62B1D4086E;
-	Tue,  2 Aug 2022 01:51:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 62B1D4086E
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3B97D4087F;
+	Tue,  2 Aug 2022 02:52:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3B97D4087F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7xPd4AUnrSiu; Tue,  2 Aug 2022 01:51:48 +0000 (UTC)
+	with ESMTP id RSzWWO5UvhMC; Tue,  2 Aug 2022 02:52:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DB9F54086D;
-	Tue,  2 Aug 2022 01:51:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DB9F54086D
+	by smtp4.osuosl.org (Postfix) with ESMTP id A5E2A4087D;
+	Tue,  2 Aug 2022 02:52:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A5E2A4087D
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 92E401BF28B
- for <devel@linuxdriverproject.org>; Tue,  2 Aug 2022 01:51:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B3D251BF319
+ for <devel@linuxdriverproject.org>; Tue,  2 Aug 2022 02:52:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 675636079E
- for <devel@linuxdriverproject.org>; Tue,  2 Aug 2022 01:51:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 675636079E
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8A18960888
+ for <devel@linuxdriverproject.org>; Tue,  2 Aug 2022 02:52:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8A18960888
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BiKfx2ITbE8B for <devel@linuxdriverproject.org>;
- Tue,  2 Aug 2022 01:51:41 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CDE6760701
-Received: from smtp3.lannet.net (smtp3.lannet.net [148.245.131.87])
- by smtp3.osuosl.org (Postfix) with ESMTP id CDE6760701
- for <devel@linuxdriverproject.org>; Tue,  2 Aug 2022 01:51:40 +0000 (UTC)
-Received: from unknown (HELO User) ([23.175.48.196])
- by smtp3.lannet.net with SMTP; 01 Aug 2022 22:31:41 -0500
-From: "Sheema Khaja Waheed Uddin Subhani"<info@lannet.net>
-Subject: Your Inheritance Fund !!
-Date: Mon, 1 Aug 2022 18:51:31 -0700
+ with ESMTP id xTofAh-aXNMB for <devel@linuxdriverproject.org>;
+ Tue,  2 Aug 2022 02:52:44 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3B8A560812
+Received: from mail-yw1-x112a.google.com (mail-yw1-x112a.google.com
+ [IPv6:2607:f8b0:4864:20::112a])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3B8A560812
+ for <devel@driverdev.osuosl.org>; Tue,  2 Aug 2022 02:52:44 +0000 (UTC)
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-2ef5380669cso127504257b3.9
+ for <devel@driverdev.osuosl.org>; Mon, 01 Aug 2022 19:52:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:reply-to:from:date:message-id
+ :subject:to;
+ bh=IniFjyVHQ6lWflzIsICmJ5JUtVB9MkE1WWkHF07cmBg=;
+ b=FbnZKYJYusjVQf4FjtqVPiAkILEeLUSk713/7bXbzK2eceYpyjlZRAeZphKCuwldXr
+ zUlE4YuOXZx3FGpuyOhJBC7iU1f3ck4pJSd2czkANAHmnx8BMeXEI+QlHnEkuHYTyEeh
+ 4g3k7d4so/4cKp27TujOMdiDbrAvNS4r+fHDKuxK+tKHBgyVbp7HjrknKrMdOVJkeYLe
+ tQ2nMDRs+wyyaXYd6/6T/lALIuvpPZ4yFRs7OdECiAGIe9R81g9PZ3r5EoPl6Af7mtaf
+ yn2U6au1kaOcguon+pP62grqaHO91KGuZ/J0cGm9+t/qDyNcT2pLdVoAvmVuPkSShTQ4
+ xrHw==
+X-Gm-Message-State: ACgBeo1OvI1yMB2xolvY+aIeoY4YjI96ZmUa+8ea1HPaM1SmRBuR0Hh3
+ KC3WW9vgLtU8bDaDjONw/vfmvK/Q9qsQFGxkfmg=
+X-Google-Smtp-Source: AA6agR4JuEtJibcUvXSJlfjSwU19fFC7DmMHyMwYrR+koSslTgOYXUU5Kmb0OpPvB75veke5TSZ3nnUQe36kmSzHINA=
+X-Received: by 2002:a0d:d883:0:b0:324:e4fe:9cd3 with SMTP id
+ a125-20020a0dd883000000b00324e4fe9cd3mr7542870ywe.495.1659408763208; Mon, 01
+ Aug 2022 19:52:43 -0700 (PDT)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220802015144.675636079E@smtp3.osuosl.org>
+Received: by 2002:a05:6900:ac9:0:0:0:0 with HTTP; Mon, 1 Aug 2022 19:52:42
+ -0700 (PDT)
+From: "U.S DEPARTMENT TREASURY" <boiatoaka@gmail.com>
+Date: Tue, 2 Aug 2022 02:52:42 +0000
+Message-ID: <CADjH9KiGNM_Vn-aS2ttF-=6aXp1d2UF8dS8Q2GcRd-SWGDD5_w@mail.gmail.com>
+Subject: 
+To: undisclosed-recipients:;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=mime-version:reply-to:from:date:message-id:subject:to;
+ bh=IniFjyVHQ6lWflzIsICmJ5JUtVB9MkE1WWkHF07cmBg=;
+ b=oH0zUePYxm7m8jQ3K4+e5hW9lAmY/tclT8FbGFSoSR0N2XDzMjT5GJ7Pg7L8si8WDO
+ /KppQYunkSwI0doz0Zv+2DEQtZAfwIgFRH5MHHfVWLE1n/eDXyxPHyzknjQsZJrnOkCU
+ koiZ+QsrZK9k04sMkBCqYEti+0reoYYHVLmPvc84QkhlFsrq1nFDMANp09xfCespnBjH
+ DdrbQTlVi5JXVEVwwTl7WJcE/g3chBNW8KlEeSrKE/IwjA4Kq8DTopBNqDdpg05waFrO
+ GrnfrhqLHzBm1O4N7r3Hrao6aLRcRk/ql4ktDZ+Y8UnKmICFXAWrAJyPmipvizFk255/
+ Pa7A==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=oH0zUePY
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,19 +89,19 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: swaheedu1954@gmail.com
+Reply-To: usdepartmenttreasury63@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello
+-- 
+Hello,
 
-You are the next of kin to our late Singapore Gold Merchant worth 30 Million Dollars.
+You have an important message get back to me for more information.
 
-Reply for more information.
-
-Mr.Sheema Khaja Waheed Uddin
+Mr. Marcus Hamlin
+Deputy U.S. Department of the Treasury
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
