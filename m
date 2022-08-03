@@ -1,52 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DF72588ACC
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Aug 2022 12:53:46 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D06D3588C3B
+	for <lists+driverdev-devel@lfdr.de>; Wed,  3 Aug 2022 14:35:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6425E81B14;
-	Wed,  3 Aug 2022 10:53:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6425E81B14
+	by smtp1.osuosl.org (Postfix) with ESMTP id 60E088129A;
+	Wed,  3 Aug 2022 12:35:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 60E088129A
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mg94_JwgOdXI; Wed,  3 Aug 2022 10:53:43 +0000 (UTC)
+	with ESMTP id 4M0BuI_BN1_N; Wed,  3 Aug 2022 12:35:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 21B7C81B25;
-	Wed,  3 Aug 2022 10:53:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 21B7C81B25
+	by smtp1.osuosl.org (Postfix) with ESMTP id 153C3813A4;
+	Wed,  3 Aug 2022 12:35:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 153C3813A4
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8CC7C1BF2CA
- for <devel@linuxdriverproject.org>; Wed,  3 Aug 2022 10:53:39 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D27951BF2B7;
+ Wed,  3 Aug 2022 12:35:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 742F681B10
- for <devel@linuxdriverproject.org>; Wed,  3 Aug 2022 10:53:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 742F681B10
+ by smtp4.osuosl.org (Postfix) with ESMTP id AAE4741295;
+ Wed,  3 Aug 2022 12:35:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AAE4741295
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Vjg4l5LhqqG0 for <devel@linuxdriverproject.org>;
- Wed,  3 Aug 2022 10:53:36 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id SQR7s8Lxnv_e; Wed,  3 Aug 2022 12:35:36 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8ACD781B04
-Received: from panel.adisoe.com (adisoe.com [139.59.247.238])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8ACD781B04
- for <devel@linuxdriverproject.org>; Wed,  3 Aug 2022 10:53:36 +0000 (UTC)
-Received: from User (unknown [23.175.48.196])
- by panel.adisoe.com (Postfix) with ESMTPA id 88C6F47F673F;
- Tue,  2 Aug 2022 01:06:58 +0700 (WIB)
-From: "Sheema Khaja Waheed Uddin Subhani"<noreply@glowdamai.com>
-Subject: Your Inheritance Fund !!
-Date: Mon, 1 Aug 2022 11:07:12 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D66C040923
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from queengrady.ml (unknown [143.198.180.219])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D66C040923;
+ Wed,  3 Aug 2022 12:35:35 +0000 (UTC)
+Received: from [103.99.1.70] (helo=User)
+ by queengrady.ml with esmtpa (Exim 4.90_1)
+ (envelope-from <wava@queengrady.ml>)
+ id 1oJDap-0001wY-OL; Wed, 03 Aug 2022 12:35:20 +0000
+From: "partnership investment"<wava@queengrady.ml>
+Subject: Hello friend, please reply back urgent..
+Date: Wed, 3 Aug 2022 05:35:21 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220803105339.742F681B10@smtp1.osuosl.org>
+Message-Id: <E1oJDap-0001wY-OL@queengrady.ml>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=queengrady.ml; s=mail; h=Message-Id:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Date:Subject:From:Reply-To:Sender:To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=At+xolHRQ5SF9l2pwatDJXCgHIe/dENfSyqC5QOsAdo=; b=DFR5sssHX/wNwZfFsmOBKsNyBD
+ muIPtvkn+bJ9yuJIxOMubVLwgy6LZmHz1M+Yc9GchrurRsxrm7ZNukXJiCaGHegMqynqM6RfnjdtZ
+ 8UF6LwO0Yufl+2goWqN90i3JNCfdQxwubaEZtLrmH3g3mVKScUzABOEqZKCDW1ptpneQ=;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=queengrady.ml header.i=@queengrady.ml
+ header.a=rsa-sha256 header.s=mail header.b=DFR5sssH
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,19 +73,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: swaheedu1954@gmail.com
+Reply-To: alekskovnko@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello
+How are you today? I Hope you are staying safe,
 
-You are the next of kin to our late Singapore Gold Merchant worth 30 Million Dollars.
+I am  Mr Aleksandr Kovalenko from Ukraine, Army General in the battle war commanding, I have something very important business to share with you which will benefit both of us soon.
 
-Reply for more information.
+I will give you full details when I receive your interested email.
 
-Mr.Sheema Khaja Waheed Uddin
+Best Regard,
+Mr Aleksandr Kovalenko
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
