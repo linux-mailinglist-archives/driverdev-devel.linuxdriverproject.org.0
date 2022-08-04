@@ -1,41 +1,41 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3690589BC2
-	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Aug 2022 14:39:35 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F4E5589BC3
+	for <lists+driverdev-devel@lfdr.de>; Thu,  4 Aug 2022 14:39:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 98E5D4159F;
-	Thu,  4 Aug 2022 12:39:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98E5D4159F
+	by smtp2.osuosl.org (Postfix) with ESMTP id AB81B40B71;
+	Thu,  4 Aug 2022 12:39:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AB81B40B71
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IydS0ezT8ozh; Thu,  4 Aug 2022 12:39:32 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zkc1tCgUPIjp; Thu,  4 Aug 2022 12:39:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 169E9410A1;
-	Thu,  4 Aug 2022 12:39:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 169E9410A1
+	by smtp2.osuosl.org (Postfix) with ESMTP id 620F640407;
+	Thu,  4 Aug 2022 12:39:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 620F640407
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7478F1BF9CB
- for <devel@linuxdriverproject.org>; Thu,  4 Aug 2022 12:39:17 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4DEC31BF9CB
+ for <devel@linuxdriverproject.org>; Thu,  4 Aug 2022 12:39:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4F49560E37
- for <devel@linuxdriverproject.org>; Thu,  4 Aug 2022 12:39:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4F49560E37
+ by smtp4.osuosl.org (Postfix) with ESMTP id 27335408E5
+ for <devel@linuxdriverproject.org>; Thu,  4 Aug 2022 12:39:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 27335408E5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tVPpmfkBNt7h for <devel@linuxdriverproject.org>;
- Thu,  4 Aug 2022 12:39:16 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PX8KHP_F8Gtw for <devel@linuxdriverproject.org>;
+ Thu,  4 Aug 2022 12:39:18 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B571460ACD
-Received: from APC01-PSA-obe.outbound.protection.outlook.com
- (mail-psaapc01rlhn2166.outbound.protection.outlook.com [40.95.53.166])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B571460ACD
- for <devel@driverdev.osuosl.org>; Thu,  4 Aug 2022 12:39:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 518BE4087D
+Received: from APC01-SG2-obe.outbound.protection.outlook.com
+ (mail-sgaapc01rlhn2156.outbound.protection.outlook.com [40.95.54.156])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 518BE4087D
+ for <devel@linuxdriverproject.org>; Thu,  4 Aug 2022 12:39:18 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
  b=L9SGYorOCJ5YWU4YGGErIrInnc3M5PTAxXC2TysEb2yLrM84B0oa/1w/kjdat1M0n+iaxOht5slBcq0oYQAwtwehb6quASjxi5iq2BT+w98CbMhyG2M4pahQp8W1oIkmSuscvgR837ku4ZZIy6a6tPAYOKHsvomb20urDQT9S/DNJxPW8m5du3unoQErZahgWlcsO1FkZHqRYVCqYwXtM4JU9j2e6DvnrX+VMPk8snoe9ust8AnOkw0ng2iV0ZSO/kRLXQiHZVI4XIPvNu5hZaog7rUg4Ejrf+Xe4XHZjbl+Ay723PGoHFjRn6YYMqn7LGSgvUT6UGLFEniEnru1kg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
