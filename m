@@ -2,75 +2,57 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BFA158A3FE
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Aug 2022 01:46:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9EB7858A513
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 Aug 2022 05:39:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 756E740545;
-	Thu,  4 Aug 2022 23:46:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 756E740545
+	by smtp2.osuosl.org (Postfix) with ESMTP id 95467408BA;
+	Fri,  5 Aug 2022 03:39:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 95467408BA
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Zw20dq3fwLb4; Thu,  4 Aug 2022 23:46:02 +0000 (UTC)
+	with ESMTP id GXYUQV2n-wTM; Fri,  5 Aug 2022 03:39:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1BC5B40104;
-	Thu,  4 Aug 2022 23:46:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1BC5B40104
+	by smtp2.osuosl.org (Postfix) with ESMTP id 365AD408A8;
+	Fri,  5 Aug 2022 03:39:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 365AD408A8
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7A5761BF3D4
- for <devel@linuxdriverproject.org>; Thu,  4 Aug 2022 23:45:59 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D18791BF321
+ for <devel@linuxdriverproject.org>; Fri,  5 Aug 2022 03:39:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6165C40545
- for <devel@linuxdriverproject.org>; Thu,  4 Aug 2022 23:45:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6165C40545
+ by smtp1.osuosl.org (Postfix) with ESMTP id AC93F82CA3
+ for <devel@linuxdriverproject.org>; Fri,  5 Aug 2022 03:39:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AC93F82CA3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aQ-qE0wwgDlY for <devel@linuxdriverproject.org>;
- Thu,  4 Aug 2022 23:45:58 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 80CDC40104
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 80CDC40104
- for <devel@driverdev.osuosl.org>; Thu,  4 Aug 2022 23:45:58 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10429"; a="269853138"
-X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; d="scan'208";a="269853138"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Aug 2022 16:45:54 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,216,1654585200"; d="scan'208";a="579285185"
-Received: from lkp-server01.sh.intel.com (HELO e0eace57cfef) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 04 Aug 2022 16:45:50 -0700
-Received: from kbuild by e0eace57cfef with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1oJkXF-000IxC-2O;
- Thu, 04 Aug 2022 23:45:49 +0000
-Date: Fri, 05 Aug 2022 07:45:46 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- 4b0e7e55cc1e6f1b0bfd8eaaa853b879b80172cf
-Message-ID: <62ec5a2a.03L1/uCys8YNOUqd%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 70uska83WLDd for <devel@linuxdriverproject.org>;
+ Fri,  5 Aug 2022 03:39:00 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B3B2F82C91
+Received: from mosaico.plesk.trevenque.es (plesk217.red166.trevenque.es
+ [217.18.166.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B3B2F82C91
+ for <devel@driverdev.osuosl.org>; Fri,  5 Aug 2022 03:39:00 +0000 (UTC)
+Received: from webmail.commalaga.com (localhost [127.0.0.1])
+ by mosaico.plesk.trevenque.es (Postfix) with ESMTPSA id 7E113620B3;
+ Fri,  5 Aug 2022 03:45:13 +0200 (CEST)
+Received-SPF: pass (mosaico.plesk.trevenque.es: connection is authenticated)
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1659656758; x=1691192758;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=zxj02AheXteYkhV0Stk2cYlM7P26KQZY2fIifZh1u5Q=;
- b=YQE5SGJ+uRW+6DcXIuwsE5+iOXPR6Ic12f32/kr1J80nzDHJnA2fhow1
- KbtvyrKwgqYx306PwmD6UgPVeytexJadjSfIStcDzARvvFs+OmLmaAB0K
- AHL2GGiWsMSXJH74EViKobsqvsEsec/RYy4JUWlbo2M6L4CqWCbLLWPi7
- UvrhUswGgWpFGh3WMsVXmHYS0tByZILL0r4hMyrQJDECSrnXPEPXrOIkg
- qvxm7wD5/ygtMWvltCsvHtvrup405nDhvD2l2UT5cKLjPm6QpYvIstOz1
- EHwPnggdrKQWTayDeMBxvji2NwlFH4cu7wVGjZ3Ld3V9iQr0ZBTbddDQc
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YQE5SGJ+
+Date: Fri, 05 Aug 2022 03:45:13 +0200
+From: Lewis Anderson <info@lewisanderson.com>
+To: info@lewisanderson.com
+Subject: =?UTF-8?Q?Gesch=C3=A4ftserwartungen!?=
+User-Agent: Roundcube Webmail/1.4.13
+Message-ID: <1c8cdb325c010ca05661d28eb30aba68@lewisanderson.com>
+X-Sender: info@lewisanderson.com
+X-PPP-Message-ID: <20220805014520.45202.80960@plesk217.red166.trevenque.es>
+X-PPP-Vhost: commalaga.com
+X-Mailman-Original-Authentication-Results: mosaico.plesk.trevenque.es;
+ spf=pass (sender IP is 127.0.0.1) smtp.mailfrom=info@lewisanderson.com
+ smtp.helo=webmail.commalaga.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,91 +65,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: lewis_anderson80@mail.ru
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
-branch HEAD: 4b0e7e55cc1e6f1b0bfd8eaaa853b879b80172cf  HID: vivaldi: convert to use dev_groups
-
-elapsed time: 720m
-
-configs tested: 60
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-i386                                defconfig
-arc                              allyesconfig
-alpha                            allyesconfig
-m68k                             allmodconfig
-x86_64                        randconfig-a015
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-m68k                             allyesconfig
-i386                             allyesconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                              defconfig
-arc                  randconfig-r043-20220804
-x86_64                               rhel-8.3
-x86_64                           allyesconfig
-x86_64                          rhel-8.3-func
-x86_64                         rhel-8.3-kunit
-powerpc                          allmodconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                           rhel-8.3-kvm
-i386                          randconfig-a001
-mips                             allyesconfig
-i386                          randconfig-a003
-x86_64                           rhel-8.3-syz
-x86_64                        randconfig-a004
-i386                          randconfig-a005
-x86_64                        randconfig-a002
-i386                          randconfig-a014
-arm                                 defconfig
-powerpc                           allnoconfig
-i386                          randconfig-a012
-sh                               allmodconfig
-x86_64                        randconfig-a006
-i386                          randconfig-a016
-arm                              allyesconfig
-arm64                            allyesconfig
-ia64                             allmodconfig
-loongarch                           defconfig
-loongarch                         allnoconfig
-arm                             pxa_defconfig
-sparc                       sparc32_defconfig
-arc                               allnoconfig
-m68k                        m5307c3_defconfig
-mips                      fuloong2e_defconfig
-
-clang tested configs:
-x86_64                        randconfig-a014
-x86_64                        randconfig-a012
-x86_64                        randconfig-a016
-hexagon              randconfig-r041-20220804
-hexagon              randconfig-r045-20220804
-riscv                randconfig-r042-20220804
-s390                 randconfig-r044-20220804
-i386                          randconfig-a002
-i386                          randconfig-a013
-i386                          randconfig-a015
-i386                          randconfig-a006
-i386                          randconfig-a004
-x86_64                        randconfig-a005
-i386                          randconfig-a011
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+V2lyIHNpbmQgZWluZSBJbnZlc3RtZW50Z3J1cHBlLCBkaWUgZGllIEF1c3dpcmt1bmdlbiB1bmQg
+CkhlcmF1c2ZvcmRlcnVuZ2VuIGRlciBDb3ZpZC0xOS1QYW5kZW1pZSBzb3dvaGwgZsO8ciBVbnRl
+cm5laG1lbiBhbHMgYXVjaCAKZsO8ciBLTVUgZXJrZW5udCB1bmQgZGFoZXIgUHJvZ3JhbW1lIHVu
+ZCBJbnZlc3RvcmVuZW5nYWdlbWVudHMgZW50d2lja2VsdCAKaGF0LCBkaWUgbmljaHQgbnVyIGhl
+bGZlbiB3w7xyZGVuLCBkaWVzZSBMw7xja2VuIHp1IGlkZW50aWZpemllcmVuLCAKc29uZGVybiBh
+dWNoIGJlc3NlcmUgR2VzY2jDpGZ0c2Vyd2FydHVuZ2VuIHp1IHZlcndhbHRlbiB1bmQgenUgc2No
+YWZmZW4uCgpXaXIgaGFiZW4gZGllIE3DtmdsaWNoa2VpdCwgZHVyY2ggdW5zZXJlbiBQb29sIHZv
+biBGaW5hbnppbnZlc3RvcmVuIAp0cmFnZsOkaGlnZSBJbnZlc3RpdGlvbmVuIGbDvHIgSWhyIFVu
+dGVybmVobWVuIGFuenV6aWVoZW4sIHVuZCB1bSBlaW5lIApDaGFuY2UgYXVmIGVpbmUgRmluYW56
+aWVydW5nIHp1IGVyaGFsdGVuLCBzZW5kZW4gU2llIHVucyBiaXR0ZSBJaHJlIApQcm9qZWt0YmVz
+Y2hyZWlidW5nIG9kZXIgZWluZSBadXNhbW1lbmZhc3N1bmcgenVyIMOcYmVycHLDvGZ1bmcgYW4g
+bWVpbmUgCnVudGVuIHN0ZWhlbmRlIEUtTWFpbC1BZHJlc3NlLgoKV2lyIGZyZXVlbiB1bnMgZGFy
+YXVmLCBiYWxkIHZvbiBJaG5lbiB6dSBow7ZyZW4uCgpEZWluLAoKTGV3aXMgQW5kZXJzb24KS3Vu
+ZGVucHJvamVrdG1hbmFnZXIgfCBUS1AKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVj
+dC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpdmVyZGV2LWRldmVsCg==
