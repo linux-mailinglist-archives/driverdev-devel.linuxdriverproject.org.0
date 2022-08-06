@@ -1,82 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCD2458B3A0
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Aug 2022 05:54:36 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 757E958B5A9
+	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Aug 2022 14:59:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B63076100E;
-	Sat,  6 Aug 2022 03:54:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B63076100E
+	by smtp4.osuosl.org (Postfix) with ESMTP id 467FE417B1;
+	Sat,  6 Aug 2022 12:59:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 467FE417B1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qu4DKe0OkMBE; Sat,  6 Aug 2022 03:54:34 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1lo3boj6Oshk; Sat,  6 Aug 2022 12:59:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5FF9F61007;
-	Sat,  6 Aug 2022 03:54:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5FF9F61007
+	by smtp4.osuosl.org (Postfix) with ESMTP id B8229417B0;
+	Sat,  6 Aug 2022 12:59:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B8229417B0
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D2D6A1BF9B9
- for <devel@linuxdriverproject.org>; Sat,  6 Aug 2022 03:54:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ACD581BF267
+ for <devel@linuxdriverproject.org>; Sat,  6 Aug 2022 12:59:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BB1116100E
- for <devel@linuxdriverproject.org>; Sat,  6 Aug 2022 03:54:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BB1116100E
+ by smtp3.osuosl.org (Postfix) with ESMTP id 87BD960AD6
+ for <devel@linuxdriverproject.org>; Sat,  6 Aug 2022 12:59:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 87BD960AD6
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bVR2JCUTERFO for <devel@linuxdriverproject.org>;
- Sat,  6 Aug 2022 03:54:30 +0000 (UTC)
+ with ESMTP id kkQx0VmY8mqi for <devel@linuxdriverproject.org>;
+ Sat,  6 Aug 2022 12:59:18 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E430061007
-Received: from mail-vs1-xe33.google.com (mail-vs1-xe33.google.com
- [IPv6:2607:f8b0:4864:20::e33])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E430061007
- for <devel@driverdev.osuosl.org>; Sat,  6 Aug 2022 03:54:29 +0000 (UTC)
-Received: by mail-vs1-xe33.google.com with SMTP id m67so4177570vsc.12
- for <devel@driverdev.osuosl.org>; Fri, 05 Aug 2022 20:54:29 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D1E2960ABB
+Received: from mail-ej1-x62a.google.com (mail-ej1-x62a.google.com
+ [IPv6:2a00:1450:4864:20::62a])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D1E2960ABB
+ for <devel@driverdev.osuosl.org>; Sat,  6 Aug 2022 12:59:17 +0000 (UTC)
+Received: by mail-ej1-x62a.google.com with SMTP id gk3so9225817ejb.8
+ for <devel@driverdev.osuosl.org>; Sat, 06 Aug 2022 05:59:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
- :mime-version:x-gm-message-state:from:to:cc;
- bh=BnDyzyd9yPs5HfSgbO1PUPJdCDbPk0pkDLgrPcIgTNw=;
- b=rmZ+UsCYp0CFIZiaUo00DDYziqZS+Zv81F+jEgfF7hyUMgaRluLQh/g8pqH0xBJJPy
- gaj3cAGrMkj1DD+ATD0OZ/z6+cTXLGigykuyxovf3FZ97kRiraOMwM9uwkeNNkp4mrj9
- GBYwO85OY4rykwQIWe22QLWda3jjJfxwzVbtfr6cdwSQTm0SqgAbOCOUkHsrdvf8G3Vs
- iSwPY03wSBhok6H6Z4FfSWpNuY+TiCMtC5fyuUs9NQNlvlAGhcRLelUqPkzTVfXCcUrX
- sNeN3RUnVNhpQtEIbFyrzNAAueALM/o5oHF5UtkCOnBNtI90lKpL74fvgwBJO/ZmuUgq
- 9wqA==
-X-Gm-Message-State: ACgBeo2voGzUi6L7VJnZ2NvxxVKGDEO/a/42QWsAfDlX+ds3RM6/iW8a
- JqGqyK+d0I3pdUCiClwCdPwLTeYMJT1YVUjAjLE=
-X-Google-Smtp-Source: AA6agR77XaznaRfS510N9DP8cAwCf54JdwGeBiMPVLgBwrpjriOAtajxzAMHy6xD9O3t6/4jJK6dncrDloQksi/Yp8I=
-X-Received: by 2002:a05:6102:5047:b0:34b:d9ef:bd26 with SMTP id
- by7-20020a056102504700b0034bd9efbd26mr4481280vsb.14.1659758068214; Fri, 05
- Aug 2022 20:54:28 -0700 (PDT)
+ h=to:subject:message-id:date:from:sender:reply-to:mime-version
+ :x-gm-message-state:from:to:cc;
+ bh=qrdW9tau7JUgdKhwKD6yIGBj+3NdC6ZfOLa5OTMDvYA=;
+ b=iIE71JqwCvG4+rmngGGjoVKi+h1PUUK1GW7lPgyLyeYQrDHrA9goe4B6b68sEgWFoY
+ Df56mO3jkIJYYViaBHZnuWYOL8y8Jvu8JXWoeyuiolelOZ/oo9hGLiOkXTiEYzAkJyZo
+ cK2FuS6xP87li4giB2AGchExicjupOFJcfVArVLXSMmzilgszIJxrZJaIo0KZBjMHzO8
+ 1J/TOe68oPI4u+3ZCnJ0uSGvxF17P0LbvyDM1cIF1pcRLVPdZEhJby+CbC8DubzfFUbn
+ YmCiW+A7JKMs2rR7OTP5ewJsyS5g50IpO6n2WPsyT0r9v62qUmD/pcv0lGsrLbZ3n0Vc
+ V1/g==
+X-Gm-Message-State: ACgBeo2RWYBXfPsPviN0cTS8wilb2NU1tBoz7hyiIUMtnLmcQImr2TMg
+ 1BB8n/795TE1Vy+QfrjznsHztDF+JyMoNvppHEw=
+X-Google-Smtp-Source: AA6agR65OtWzBBGUZnRvtBCOayvoWMTrs6ffzedLplVF2Gko+C6w/B7rzDo55zN2lFgXdmVPTKfqLUjG4l1VEK3G+i4=
+X-Received: by 2002:a17:907:6930:b0:730:f00f:7ad2 with SMTP id
+ rb48-20020a170907693000b00730f00f7ad2mr5347697ejc.389.1659790755625; Sat, 06
+ Aug 2022 05:59:15 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a05:612c:1184:b0:2d3:7f73:8f9c with HTTP; Fri, 5 Aug 2022
- 20:54:27 -0700 (PDT)
-From: Mr yousef zongo <jubrilubaro484@gmail.com>
-Date: Fri, 5 Aug 2022 20:54:27 -0700
-Message-ID: <CANY2d-ZNB+3iezm-mi6C0+D6u-FxamPQoyDHAnY-sHwpuyNxBQ@mail.gmail.com>
-Subject: URGENTBUSINESSPROPOSAL
+Received: by 2002:a54:3dca:0:0:0:0:0 with HTTP;
+ Sat, 6 Aug 2022 05:59:14 -0700 (PDT)
+From: "Mrs Lisa Edward." <hippolytepilabre@gmail.com>
+Date: Sat, 6 Aug 2022 00:59:14 -1200
+X-Google-Sender-Auth: 73X_B2LzVKyvTVvdANryJQpkltY
+Message-ID: <CABQWLrrW6nS63zopz9zBAfW6nwd9kp1_X2c8Fubde_s51ET+yw@mail.gmail.com>
+Subject: WITH DUE RESPECT.
 To: undisclosed-recipients:;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=gmail.com; s=20210112;
- h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
- :mime-version:from:to:cc;
- bh=BnDyzyd9yPs5HfSgbO1PUPJdCDbPk0pkDLgrPcIgTNw=;
- b=R0I5XV4gKtrqltdftr8/BH6zCc+FD1iNZQuaeWLFYR9ubs/XE7B5BGiFVUwrYpc8BS
- 0dwnakoCZnevVQmjkFHOhIssEFdJnCR+IevQUHO4X7G4OXHDBlHjWSyi1L3cvH6McP9M
- pKX/yTVP7IE/ms46izPCWnlGMZJP57xbaX6uAtIAL/V3ZAYmB5DyYkmv8qmqShbbET1g
- FLEI/4US5sQFk4x2n5J5ezUenqxlal2TqAYmWuavEkG98HA82XX8Co6W1g00xPZ6POex
- brWE7tioe+jxTMSWS2KADLQbJpdPms3ztG8k2Sd6WU5uVFnONfRA/9x52yh9q0tcJ39T
- 26jQ==
+ h=to:subject:message-id:date:from:sender:reply-to:mime-version:from
+ :to:cc;
+ bh=qrdW9tau7JUgdKhwKD6yIGBj+3NdC6ZfOLa5OTMDvYA=;
+ b=MvsJSSJDz9H9uD2npAUNhuK4Gml/7SShDgODNKAqwnm9r3E+WnM1R+QvxpN2tdzwKN
+ CTP8wzM7FwFM5Bx5k0wSTuz9GgT+dCU0srRo1jW4np5byi2zf4b3h3LYHRmg1uNe2iqE
+ skofqAodBoM6TW+vbvz+ycCJHRa6iD4Mcv2EcIp7lPHZQU68oqlpFvEnSGR9Q5DKrj/h
+ LIgHk0B53fC+8aKjpqNJspUnPNg+WnkqB41IHc2Bze8fxDeERkDqNq30gM7StIWsFW60
+ r3rul8PDAVSbcTeDAEvE44eU/CWkGKAlfRMbFPLD2ZTtuBJx6ierlixHM6h/qGoqqk/D
+ dfEg==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=R0I5XV4g
+ header.a=rsa-sha256 header.s=20210112 header.b=MvsJSSJD
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,44 +90,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: yousefzongo5722@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: mrslisaedward4@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-LS0gCkRlYXIgZnJpZW5kLCAuCgpHcmVldGluZ3MuCgpIb3cgYXJlIHlvdSBkb2luZyB0b2RheSBp
-IGhvcGUgZmluZT8KCkkgY2FtZSBhY3Jvc3MgeW91ciBlbWFpbCBsaW5rIHByaW9yIHRvIHRoZSBy
-ZXNlYXJjaApwcml2YXRlIHdoZW4gSSBuZWVkZWQgeW91ciBoZWxwLiBNeSBuYW1lIGlzIG1yIHlv
-dXNlZgp6b25nbyAnIEkgd29yayB3aXRoIHRoZSBBdWRpdCBkZXBhcnRtZW50IGFuZCB0aGUgYWNj
-b3VudGluZyBtYW5hZ2VyIGhlcmUKVUJBIEJhbmsgb2YgQWZyaWNhLCBUaGVyZSBpcyB0aGlzIGZ1
-bmQgdGhhdCB3YXMga2VwdCBpbgpteSBob3VzZXMgeWVhcnMgYWdvIGFuZCBpIG5lZWQgeW91ciBo
-ZWxwIGZvcgp0byB0cmFuc2ZlciB0aGlzIGZ1bmQgdG8geW91ciBiYW5rIGFjY291bnQgZm9yIGJv
-dGgKb3VyIHdlIGJlbmVmaXQgZm9yIGxpZmUgdGltZSBpbnZlc3RtZW50IGFuZCBtb25leSBpcyAo
-VVMKJDI3LDUwMC4gTWlsbGlvbiBEb2xsYXJzKS4KCkkgaGF2ZSBhbGwgdGhlIGRldGFpbHMgb2Yg
-dGhlIHF1ZXN0aW9uIHRvIGdldCB0aGUgYmFuayB0byBiZWxpZXZlIHlvdSBhbmQKcmVsZWFzaW5n
-IHRoZSBmdW5kIHRvIHlvdXIgYmFuayBhY2NvdW50IHdpdGhpbiA3IGRheXMKYSBqb2IgYSBiYW5r
-IHdpdGggeW91ciBmdWxsIGNvb3BlcmF0aW9uIHdpdGggbWUgYWZ0ZXIKc3VjY2VzcyBDb25zaWRl
-ciA1MCUgdG8geW91IHdoaWxlIDUwJSB0byBtZSBhZnRlciB0aGUgc3VjY2VzcyBvZgp0aGUgdHJh
-bnNmZXIgb2YgZnVuZHMgdG8geW91ciBiYW5rIGFjY291bnQgaXMgZmluZS4KCldFIEFSRSBXQUlU
-SU5HIEZST00gWU9VLgpUSEFOSyBZT1UuCgptciAgeW91c2VmICB6b25nbwoKCgpFc3RpbWFkbyBh
-bWlnbywgLgoKU2FsdWRvcy4KCsK/Q8OzbW8gZXN0w6FzIGhveSwgZXNwZXJvIHF1ZSBiaWVuPwoK
-RW5jb250csOpIHN1IGVubGFjZSBkZSBjb3JyZW8gZWxlY3Ryw7NuaWNvIGFudGVzIGRlIGxhIGlu
-dmVzdGlnYWNpw7NuLgpwcml2YWRvIGN1YW5kbyBuZWNlc2l0YWJhIHR1IGF5dWRhLiBtaSBub21i
-cmUgZXMgc3IgeW91c2VmCnpvbmdvICcgdHJhYmFqbyBjb24gZWwgZGVwYXJ0YW1lbnRvIGRlIGF1
-ZGl0b3LDrWEgeSBlbCBnZXJlbnRlIGRlCmNvbnRhYmlsaWRhZCBhcXXDrQpVQkEgQmFuayBvZiBB
-ZnJpY2EsIGV4aXN0ZSBlc3RlIGZvbmRvIHF1ZSBzZSBtYW50dXZvIGVuCm1pcyBjYXNhcyBoYWNl
-IGHDsW9zIHkgbmVjZXNpdG8gc3UgYXl1ZGEgcGFyYQpwYXJhIHRyYW5zZmVyaXIgZXN0ZSBmb25k
-byBhIHN1IGN1ZW50YSBiYW5jYXJpYSBwYXJhIGFtYm9zCm51ZXN0cm8gYmVuZWZpY2lvIHBhcmEg
-bGEgaW52ZXJzacOzbiBkZSBwb3IgdmlkYSB5IGVsIGRpbmVybyBlcyAoRUUuIFVVLgokMjcsNTAw
-LiBNaWxsw7NuIGRlIGTDs2xhcmVzKS4KClRlbmdvIHRvZG9zIGxvcyBkZXRhbGxlcyBkZSBsYSBw
-cmVndW50YSBwYXJhIHF1ZSBlbCBiYW5jbyB0ZSBjcmVhIHkKbGliZXJhbmRvIGVsIGZvbmRvIGEg
-c3UgY3VlbnRhIGJhbmNhcmlhIGRlbnRybyBkZSBsb3MgNyBkw61hcwp1biB0cmFiYWpvIHVuIGJh
-bmNvIGNvbiBzdSB0b3RhbCBjb29wZXJhY2nDs24gY29ubWlnbyBkZXNwdcOpcwrDqXhpdG8gQ29u
-c2lkZXJlIGVsIDUwJSBwYXJhIHVzdGVkIG1pZW50cmFzIHF1ZSBlbCA1MCUgcGFyYSBtw60gZGVz
-cHXDqXMKZGVsIMOpeGl0byBkZQpsYSB0cmFuc2ZlcmVuY2lhIGRlIGZvbmRvcyBhIHN1IGN1ZW50
-YSBiYW5jYXJpYSBlc3TDoSBiaWVuLgoKVEUgRVNQRVJBTU9TLgpHUkFDSUFTLgoKc2XDsW9yIHlv
-dXNlZiB6b25nbwpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8v
-ZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJk
-ZXYtZGV2ZWwK
+-- 
+Greetings to you,
+
+ Please forgive me for stressing you with my predicaments and am sorry
+for  approaching you through this media.
+
+I really like to have a good relationship with you, and I have a
+special  reason why I decided to contact you because of the urgency of
+my situation  here.I came across your e-mail contact prior to a
+private search while in  need of your assistance.I decided to contact
+you believing you will be  honest to fulfill my final wish before I
+die.
+
+I am Mrs Lisa Edward, 63 years, from USA, I am childless and am
+suffering  from a pro-long critical cancer, my doctors confirmed I may
+not live beyond  two months from now as my ill health has defiled all
+forms of medical  treatment.
+
+Since my days are numbered, I have decided willingly to fulfill my
+long-time promise to donate you the sum ($5.000.000.00) million
+dollars I  inherited from my late husband Mr. Edward Herbart, foreign
+bank account  over years. I need a very honest person who can assist
+in transfer of this money to his or her account and use the funds for
+charity work of God while you use 50% for yourself. I want you to know
+there is no risk involved; it
+is 100% hitch free & safe.
+
+If you are interested in assisting in getting this fund into your
+accountfor a charity project to fulfill my promise before I die please
+let me know immediately.
+
+I will appreciate your utmost confidentiality as I wait for your reply.
+
+Best Regards,
+Mrs Lisa Edward.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
