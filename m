@@ -1,68 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF95458C7F4
-	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Aug 2022 13:55:37 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AC39E58CFD7
+	for <lists+driverdev-devel@lfdr.de>; Mon,  8 Aug 2022 23:42:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7FC0260E2E;
-	Mon,  8 Aug 2022 11:55:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7FC0260E2E
+	by smtp3.osuosl.org (Postfix) with ESMTP id BE04B60BD8;
+	Mon,  8 Aug 2022 21:42:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BE04B60BD8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eGPMz-mbvVmR; Mon,  8 Aug 2022 11:55:34 +0000 (UTC)
+	with ESMTP id yvBRpdW9SC3P; Mon,  8 Aug 2022 21:42:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 20CC060C1F;
-	Mon,  8 Aug 2022 11:55:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 20CC060C1F
+	by smtp3.osuosl.org (Postfix) with ESMTP id 58D8B60B53;
+	Mon,  8 Aug 2022 21:42:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 58D8B60B53
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EECC61BF34F
- for <devel@linuxdriverproject.org>; Mon,  8 Aug 2022 11:55:30 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5D0371BF3BF
+ for <devel@linuxdriverproject.org>; Mon,  8 Aug 2022 21:42:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D6BFE401A0
- for <devel@linuxdriverproject.org>; Mon,  8 Aug 2022 11:55:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D6BFE401A0
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3826D606EB
+ for <devel@linuxdriverproject.org>; Mon,  8 Aug 2022 21:42:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3826D606EB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id c9S-XSx870tu for <devel@linuxdriverproject.org>;
- Mon,  8 Aug 2022 11:55:29 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D12F240121
-Received: from mta-out-06.alice.it (mta-out-06.alice.it [217.169.118.12])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D12F240121
- for <devel@driverdev.osuosl.org>; Mon,  8 Aug 2022 11:55:28 +0000 (UTC)
-X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgedvfedrvdefkedggeejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuvffgnffgvefqoffkvfetnffktedpqfgfvfenuceurghilhhouhhtmecufedtudenucgopfhokfffucdluddtmdenucfjughrpehrhffvufffgggtgffrigfoqfesthejtddtuddtieenucfhrhhomhepfdghrghlthgvrhculfhohhhnshhonhdfoeguohguohgpughonhhisegrlhhitggvrdhitheqnecuggftrfgrthhtvghrnhepiedvvdfgudeggfehgeeuudekvedvfeffleejkeelfeevhfevieejjefhudegudehnecukfhppeefjedrudehledrudekvddrudegjeenucevlhhushhtvghrufhiiigvpedutdenucfrrghrrghmpehhvghlohepthhinhdrihhtpdhinhgvthepfeejrdduheelrddukedvrddugeejpdhmrghilhhfrhhomhepughoughopgguohhnihesrghlihgtvgdrihhtpdhnsggprhgtphhtthhopeefledprhgtphhtthhopeguvghvuggrthhtrghsuhhpnhgvkhgrrhdrughssehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhgurghtthhprghtvghlledtsehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhgurghtthhshhgrrhhmrgdvgeesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvuggtsehrvgguihhffhhmrghilhdrtghomhdprhgtphhtthhopeguvghvuggvvghppggumhesrhgvughifhhfmhgrihhlrdgtohhmpdhrtghpthhtohepuggv
- vhguvghvjeehsehrvgguihhffhhmrghilhdrtghomhdprhgtphhtthhopeguvghvughinhgvshhhrdguihhnvghshhesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvughuthduleehjeesghhmrghirdgtohhmpdhrtghpthhtohepuggvvhguuhhtthdrsghrrghhmhgshhgrthhtsehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhguuhhtthdrkhhhrghnnhgrsehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhguuhhtthdrphgrthhtrghnrghikhesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvughuthhtrdhuphgrshgrnhhisehfvghrghhushhsohhnrdgvughupdhrtghpthhtohepuggvvhguuhhtthgpvhihrghssehouhhtlhhoohhkrdgtohhmpdhrtghpthhtohepuggvvhguuhhtthgrshesrhgvughifhhfmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhguuhhtthgthhgrthhurhhvvgguihesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvughuthhtghhohigrlhesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvughuthhtihhmphgvgiesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvughuthhtmhhishhtrhihsehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhguuhhtthhsrghnthhhohhshhdtfeesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvughuthhtshhhrghrmhgriedtieesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvughuthhtvhhii
- iesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvvgesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvvgguvghvrgdtjeesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvvghhvghrsggvshesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvvghlsegurhhivhgvrhguvghvrdhoshhuohhslhdrohhrghdprhgtphhtthhopeguvghvvghlohhpvghrfeejkeeisehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhgvlhhophgvrhelihhtsehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhgvlhhophgvrhhhrghrshhhihhtvdehsehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhgvlhhophgvrhhjhigruggvvhhiudegsehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhgvlhhophgvrhhphhhilhhosehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhgvlhhophgvrhhsuggvvhgrghihrgesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvvghlohhpvghrshhirhgrvhgrthesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvvghlohhpmhgvnhhtrdgtrhgvrghtihigihgrsehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhgvnhdrkedusehgohhvrdhinhdprhgtphhtthhopeguvghvvghnrdgsmhegtddtjeeshigrhhhoohdrtghordhinhdprhgtphhtthhopeguvghvvghnrdguihhkshhhihhtsegvuggvlhgtrghprdgtohhmpdhrtghpthhtohepuggvvhgvnhdrnh
- hithesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvvghnuddrsggrghgrrhesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvvghnpggrpggurghvvgeshigrhhhoohdrtghordhinhdprhgvvhfkrfepnhgvthdqfeejqdduheelqddukedvqddugeejrdgtuhhsthdrvhhouggrfhhonhgvughslhdrihhtpdgruhhthhgpuhhsvghrpeguohguohgpughonhhisegrlhhitggvrdhithdpghgvohhiphepkffvpdhmthgrhhhoshhtpehrrgiiohhrqdhouhhtqdgrlhhitggvqddtie
-X-RazorGate-Vade-Verdict: clean 10
-X-RazorGate-Vade-Classification: clean
-Received: from tin.it (37.159.182.147) by mta-out-06.alice.it (5.8.810)
- (authenticated as dodo_doni@alice.it)
- id 62EB892200A6B7D2; Mon, 8 Aug 2022 13:55:06 +0200
-Message-ID: <62EB892200A6B7D2@mta-out-06.alice.it> (added by
- postmaster@alice.it)
-From: "Walter Johnson"<dodo_doni@alice.it>
-To: aliceadl1@alice.it
-Subject: S u p p l y
-Date: Mon, 8 Aug 2022 20:55:02 +0900
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YQRrfhTVWVqg for <devel@linuxdriverproject.org>;
+ Mon,  8 Aug 2022 21:42:03 +0000 (UTC)
+X-Greylist: delayed 00:10:05 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 33BD160692
+Received: from spam.kabul.co.kr (spam.kabul.co.kr [52.141.18.117])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 33BD160692
+ for <devel@driverdev.osuosl.org>; Mon,  8 Aug 2022 21:42:02 +0000 (UTC)
+Received: from [10.0.1.5] ([10.0.1.5]) by spam.kabul.co.kr ([10.0.1.6]) 
+ with ESMTP id 1659992524.975527.139863634384640.spam
+ for <devel@driverdev.osuosl.org>; 
+ Tue, 09 Aug 2022 06:02:04 +0900 (KST) 
+Received: from [172.93.187.145] ([172.93.187.145]) 
+ by gw.kabul.co.kr ([10.0.1.5]) 
+ with ESMTP id 1659994225.891680.139761433003776.gw
+ for <devel@driverdev.osuosl.org>; 
+ Tue, 09 Aug 2022 06:30:10 +0900 (KST) 
+From: cohen@forward.com
+To: devel@driverdev.osuosl.org
+Subject: Partnership
+X-TERRACE-DUMMYSUBJECT: Terrace Spam system *
+X-TERRACE-DUMMYSUBJECT: Terrace Spam system *
+Date: 08 Aug 2022 23:30:25 +0200
+Message-ID: <20220808233025.EA5D977706F98F3B@forward.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2800.1081
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2800.1081
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=alice.it; s=20211207; t=1659959729; 
- bh=2W1k95HbOyX7LmNcuYZzWdzNDMfyjzOAoGeQd5UXshc=;
- h=Message-ID:Reply-To:From:To:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
- b=eQTpzin1fyxYgcI5f+112LBnHizb2l3RfBGMXQSsY7azhHBO41qMFTSCC9u5oh/L4dUjZjr1/4eguxwemCFJeBKn9YISXMIYrnYGYz3tN8XtT4J0GpDDe/5tj6OdpjWyeFLCWTCB/+bWkF8Fb6h/FMeW5d41yuq1sw2PfS4mqs/Ryux/n81DYd6N74jn1ZGqK1K4JAMNlhPNGUqciRaqAA5nu19DiH2E3F++zg5DX2SZvuqAE/yecoEr1eRlctnXYTTucQ55AEUiijeiamQwmjrBCgk/B1Hhm71P3loPzTsaVe5CYpSIG1vErukdccBjXknlUM/i0T5WMy3Mq+AlNw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=alice.it header.i=@alice.it
- header.a=rsa-sha256 header.s=20211207 header.b=eQTpzin1
+X-TERRACE-SPAMMARK: NO       (SR:3.00)                     
+ (by Terrace)                                                   
+X-TERRACE-SID: 1659994225.891680.139761433003776.gw
+X-TERRACE-SPAMMARK: NO       (SR:4.65)                     
+ (by Terrace)                                                   
+X-TERRACE-SID: 1659992524.975527.139863634384640.spam
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,60 +70,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: w.johnson@cheapnet.it
-Content-Type: text/plain; charset="koi8-r"
-Content-Transfer-Encoding: base64
+Reply-To: leechonge311@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RyByIGUgZSB0IGkgbiBnIHMKCk15IG5hbWUgaXMgTWFqLiBXYWx0ZXIgSm9obnNvbiwgYW4gQW1l
-cmljYW4gQXJteSwgY3VycmVudGx5IGluIFN5cmlhIGZvciBwZWFjZWtlZXBpbmcgZHV0eS4gSSB3
-aXNoIHRvIGxldCB5b3Uga25vdyBhYm91dCBhIGJ1c2luZXNzIG9mIHN1cHBseWluZyBQaGFybWFj
-ZXV0aWNhbCBhY3RpdmUgaW5ncmVkaWVudHMgZnJvbSBJbmRpYSB0byBhbiBBbWVyaWNhbiBjb21w
-YW55LCBJIGhhdmUgZG9uZSB0aGlzIGJ1c2luZXNzIHdpdGggYW4gSW5kaWFuIHBhcnRuZXIgdW50
-aWwgbGFzdCB3aGVuIEkgbG9zdCBoaW0uCgpUaGVyZSBpcyBhbiBhY3RpdmUgcmF3IGluZ3JlZGll
-bnRzIG9pbCwgd2hpY2ggSSBzdXBwbGllZCB0byB0aGUgQW1lcmljYW4gY29tcGFueSBmcm9tIElu
-ZGlhIHRocm91Z2ggYW4gSW5kaWFuIHBhcnRuZXIuIFJpZ2h0IG5vdyBJIGFtIGluIFN5cmlhIGZv
-ciBhIHBlYWNla2VlcGluZyBtaXNzaW9uLCBzZWNvbmRseSB0aGUgQ29yb25hdmlydXMgcHJvYmxl
-bSwgc28gSSBjYW5ub3QgZXhlY3V0ZSB0aGUgYnVzaW5lc3MgYnkgbXlzZWxmIGhlbmNlIEknbSBz
-ZWVraW5nIHlvdXIgcGFydG5lcnNoaXAsIHRoZSBEaXJlY3RvciBvZiB0aGUgQW1lcmljYW4gY29t
-cGFueSBoYXMgYXNrZWQgbWUgZm9yIHRoZSBjb250YWN0IG9mIHRoZSBJbmRpYSBkZWFsZXIgdG8g
-ZW5hYmxlIHRoZW0gdG8gY29udGFjdCB0aGVtIGZvciB0aGUgc3VwcGx5LiBCZWNhdXNlIG9mIHRo
-ZSBDb3JvbmEtVmlydXMgcGFuZGVtaWMsIHRoZXkgdG9sZCBtZSB0aGF0IHRoZXkgY2Fubm90IHNl
-bmQgdGhlaXIgTWFuYWdlciB0byBJbmRpYSwgYnV0IHRoZXkgd2lsbCBzZW5kIG1vbmV5IHRvIHRo
-ZWlyIGFnZW50IGluIHRoZSBBbWVyaWNhbiBFbWJhc3N5IGluIEluZGlhIHNvIHRoYXQgaGUgY2Fu
-IGdldCB0aGUgcHJvZHVjdCBmcm9tIHRoZSBzZWxsZXIgYW5kIG1ha2UgcGF5bWVudC4gQWZ0ZXJ3
-YXJkcywgdGhlIGFnZW50IHdpbGwgY291cmllciB0aGUgcHJvZHVjdCB0byBBbWVyaWNhIHRocm91
-Z2ggdGhlaXIgZnJlaWdodCBhZ2VudC4gTGFzdCB5ZWFyIHRoZSBBbWVyaWNhbiBDb21wYW55IHNl
-bnQgdGhlaXIgcHVyY2hhc2UgbWFuYWdlciB0byBJbmRpYSwgYnV0IGR1ZSB0byB0aGUgcmVjZW50
-IGdsb2JhbCBwYW5kZW1pYyBDb3JvbmEgVmlydXMgVGhyZWF0LCB0aGUgQW1lcmljYW4gQ29tcGFu
-eSBvcHRlZCB0byBzZW5kIG1vbmV5IHRvIHRoZSBhZ2VudCB0byBnZXQgdGhlIHByb2R1Y3QgYW5k
-IGNhcmdvIHRvIHRoZW0gdG8gQW1lcmljYW4uCgpJIGRvIG5vdCB3aXNoIHRvIGdpdmUgdGhlIEFt
-ZXJpY2FuIGNvbXBhbnkncyBNYW5hZ2luZyBEaXJlY3RvciBvciBDaGllZiBQdXJjaGFzZSBPZmZp
-Y2VyLCB0aGUgY29udGFjdCBvZiB0aGUgSW5kaWFuIFNlbGxlciwgYmVjYXVzZSBvZiBteSBwcm9m
-aXQgaW4gdGhlIGJ1c2luZXNzLCBJIG5vcm1hbGx5IG1hZGUgZ29vZCBwcm9maXRzIGFuZCBpdCB3
-YXMgdG9vIGVuY291cmFnaW5nIHRvIGdpdmUgYXdheSwgSSBpbnRlbmRlZCB0byBwcmVzZW50IHlv
-dSBhcyB0aGUgSW5kaWFuIHZlbmRvciB0byB0aGUgQW1lcmljYW4gY29tcGFueSAoVGhhdCBtZWFu
-cyB0aGF0IHlvdSB3aWxsIHN0YW5kIGFzIGEgbWlkZGxlIHBlcnNvbiBiZXR3ZWVuIHRoZSBBbWVy
-aWNhbiBjb21wYW55IGFuZCBvcmlnaW5hbCBJbmRpYW4gdmVuZG9yKSBzbyB0aGF0IHRoZSBBbWVy
-aWNhbiBjb21wYW55IHdpbGwgbm90IGtub3cgdGhlIHNvdXJjZSBhbmQgcmVhbCBjb3N0IG9mIHRo
-ZSBzdHVmZi4KClRoZSBPcmlnaW5hbCBJbmRpYW4gdmVuZG9yIGlzIHNlbGxpbmcgdGhlIG1hdGVy
-aWFsIGF0IHRoZSBjb3N0IG9mIDQsMzcwVVNEIFBlciBMaXRyZSwgd2hpbGUgdGhlIEFtZXJpY2Fu
-IGNvbXBhbnkgYnV5cyBhdCB0aGUgY29zdCBvZiAxMyw4OTBVU0QgUGVyIExpdHJlLiBUaGUgQ29t
-cGFueSBub3JtYWxseSBkZW1hbmRzIGJldHdlZW4gMTAwMC0gMTUwMCBMaXRyZXMgZXZlcnkgdGhy
-ZWUgbW9udGhzLiBJIHdpbGwgY29udmluY2UgdGhlIEFtZXJpY2FuIGNvbXBhbnkgdG8gYnV5IHRo
-ZSBtYXRlcmlhbCBmcm9tIHlvdS4gV2Ugd2lsbCBnZXQgdGhlIG1hdGVyaWFsIGZyb20gdGhlIElu
-ZGlhbiB2ZW5kb3IgYW5kIHN1cHBseSBpdCB0byB0aGUgQW1lcmljYW4gY29tcGFueSB0aHJvdWdo
-IHRoZWlyIGFnZW50IG92ZXIgdGhlcmUgaW4gSW5kaWEuCgpZb3VyIGR1dHkgd2lsbCBiZSB0byBn
-ZXQgdGhlIG1hdGVyaWFsIGZyb20gdGhlIGxvY2FsIGRlYWxlciBhbmQgc3VwcGx5IHRvIHRoZSBB
-bWVyaWNhbiBDb21wYW55IHRoZW4gd2UgKHlvdSBhbmQgSSApIHdpbGwgc2hhcmUgdGhlIHByb2Zp
-dCBtYWRlIG9uIHRoZSBiYXNpcyBvZiA3MCUgZm9yIHlvdSBhbmQgMzAlIGZvciBtZS4KCllvdXIg
-cm9sZSBtdXN0IGJlIHBsYXllZCBwZXJmZWN0bHkgYW5kIHRoZSBsZWFzdCBJIHdpbGwgZXhwZWN0
-IGZyb20geW91IGlzIGJldHJheWFsLiBBZ2FpbiwgSSBkb26hr3Qgd2FudCB0aGUgQW1lcmljYW4g
-Y29tcGFueSB0byBrbm93IHRoZSByZWFsIGNvc3Qgb3Igc291cmNlIG9mIHRoZSBwcm9kdWN0LCBs
-aWtld2lzZSBJIGRvbid0IHdhbnQgdGhlIEluZGlhbiB2ZW5kb3IgdG8ga25vdyBhYm91dCB0aGUg
-QW1lcmljYW4gY29tcGFueS4KCgpBIHcgYSBpIHQgaSBuIGcgeW91ciByZXNwb25zZQoKTWFqLiBX
-YWx0ZXIgSm9obnNvbgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0
-cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJp
-dmVyZGV2LWRldmVsCg==
+Dear Sir/Madam
+
+I am Mr. Lee Chong, Business Relationship Manager at Nanyang
+Commercial Bank in Hong Kong, China. I have decided to contact
+you regarding the state of the client who managed an investment
+under our bank many years ago. If you are interested in
+partnership kndly reply to my emails for more information
+
+Respectfully,
+Lee Chong
+
+
+
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
