@@ -1,59 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DCC258E1DE
-	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Aug 2022 23:39:20 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C54D58E674
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Aug 2022 06:43:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 24ED34013B;
-	Tue,  9 Aug 2022 21:39:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 24ED34013B
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5153860FFC;
+	Wed, 10 Aug 2022 04:43:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5153860FFC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a5iAuBeoW3Gl; Tue,  9 Aug 2022 21:39:17 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id In4QOAj50uTb; Wed, 10 Aug 2022 04:43:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BB92A40169;
-	Tue,  9 Aug 2022 21:39:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BB92A40169
+	by smtp3.osuosl.org (Postfix) with ESMTP id 149C960FF1;
+	Wed, 10 Aug 2022 04:43:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 149C960FF1
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EE5D31BF5E0
- for <devel@linuxdriverproject.org>; Tue,  9 Aug 2022 21:39:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E5FE41BF32D
+ for <devel@linuxdriverproject.org>; Wed, 10 Aug 2022 04:43:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C6DE160A47
- for <devel@linuxdriverproject.org>; Tue,  9 Aug 2022 21:39:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C6DE160A47
+ by smtp3.osuosl.org (Postfix) with ESMTP id C0EB060F9F
+ for <devel@linuxdriverproject.org>; Wed, 10 Aug 2022 04:43:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C0EB060F9F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HMt6AZClJ6C2 for <devel@linuxdriverproject.org>;
- Tue,  9 Aug 2022 21:39:11 +0000 (UTC)
-X-Greylist: delayed 00:07:26 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4F6556009C
-Received: from sh11309.ispgateway.de (sh11309.ispgateway.de
- [IPv6:2001:1520:a:5e::])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4F6556009C
- for <devel@driverdev.osuosl.org>; Tue,  9 Aug 2022 21:39:11 +0000 (UTC)
-Received: from sh11309.ispgateway.de (php73.df_default
- [IPv6:fd00:dead:beef::e])
- by sh11309.ispgateway.de (Postfix) with ESMTPS id BE4101A9FE1
- for <devel@driverdev.osuosl.org>; Tue,  9 Aug 2022 23:31:41 +0200 (CEST)
-Received: (from re832140@localhost)
- by sh11309.ispgateway.de (8.15.2/8.15.2/Submit) id 279LVfRW021399;
- Tue, 9 Aug 2022 23:31:41 +0200
-X-Authentication-Warning: sh11309.ispgateway.de: re832140 set sender to
- ricardo@xn--jugend-bnde-0hb.de using -f
-To: devel@driverdev.osuosl.org
-Subject: =?UTF-8?Q?Anfrage_an_Jugend-B=C3=BCnde:_"EINE_FINANZKRISE_KA?=
- =?UTF-8?Q?NN_SIE_ZUM_MILLIONAR_MACHEN!"?=
-X-PHP-Originating-Script: 832140:PHPMailer.php
-Date: Tue, 9 Aug 2022 21:31:41 +0000
-From: =?UTF-8?Q?Jugend_B=C3=BCnde?= <wordpress@xn--jugend-bnde-0hb.de>
-Message-ID: <lr3APqR5WVqeLK8OQPKqGIccOaJ2iTZhtsJYaCbsyM@www.xn--jugend-bnde-0hb.de>
-X-Mailer: PHPMailer 6.5.0 (https://github.com/PHPMailer/PHPMailer)
+ with ESMTP id 1QwBOIq5i5WT for <devel@linuxdriverproject.org>;
+ Wed, 10 Aug 2022 04:43:05 +0000 (UTC)
+X-Greylist: delayed 18:47:46 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D9D8860FF1
+Received: from mail.immigration.gov.vn (mail.immigration.gov.vn
+ [103.156.10.10])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D9D8860FF1
+ for <devel@driverdev.osuosl.org>; Wed, 10 Aug 2022 04:43:02 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.immigration.gov.vn (Postfix) with ESMTP id 769D09652F1;
+ Tue,  9 Aug 2022 02:40:43 +0000 (UTC)
+Received: from mail.immigration.gov.vn ([127.0.0.1])
+ by localhost (mail.immigration.gov.vn [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id v9L6t-mIVWPC; Tue,  9 Aug 2022 02:40:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.immigration.gov.vn (Postfix) with ESMTP id 5CD95965952;
+ Tue,  9 Aug 2022 00:44:17 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at immigration.gov.vn
+Received: from mail.immigration.gov.vn ([127.0.0.1])
+ by localhost (mail.immigration.gov.vn [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id q28uhi8HCJNt; Tue,  9 Aug 2022 00:44:17 +0000 (UTC)
+Received: from ip-172-18-0-1.eu-central-1.compute.internal
+ (ec2-3-120-16-29.eu-central-1.compute.amazonaws.com [3.120.16.29])
+ by mail.immigration.gov.vn (Postfix) with ESMTPSA id 2E10F960C87;
+ Mon,  8 Aug 2022 22:45:06 +0000 (UTC)
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: =?utf-8?q?HUMANIT=C3=84RES_GESCHENK?=
+To: Recipients <xulyvipham_xnc@mail.immigration.gov.vn>
+From: "Scott Godfrey" <xulyvipham_xnc@mail.immigration.gov.vn>
+Date: Mon, 08 Aug 2022 22:45:01 +0000
+Message-Id: <20220808224507.2E10F960C87@mail.immigration.gov.vn>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,19 +72,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: buendywood@googlemail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: scottgodfrey7788@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-VmllbGVuIERhbmsgZsO8ciBkZWluZSBOYWNocmljaHQsIHdpciB3ZXJkZW4gdW5zIGluIEvDvHJ6
-ZSBtaXQgRGlyIGluIFZlcmJpbmR1bmcgc2V0emVuLgoKRGVpbmUgZ2VzZW5kZXRlIE5hY2hyaWNo
-dDoKRElFIFdFTFRGSU5BTlpLUklTRSBLQU5OIFNJRSBaVU0gTUlMTElPTkFSIE1BQ0hFTiEgaHR0
-cHM6Ly90ZWxlZ3JhLnBoL1Bhc3NpdmVzLUVpbmtvbW1lbi11bmQtNzUwMDAwMC1FdXJvLWF1Zi1L
-cnlwdG930JPCpGhydW5nLTQyMTM4MC0wOC0wOQoKLS0KRGllc2UgRS1NYWlsIHd1cmRlIHZvbiBl
-aW5lbSBLb250YWt0Zm9ybXVsYXIgdm9uIEp1Z2VuZCBCw7xuZGUgKGh0dHA6Ly93d3cuanVnZW5k
-LWLDvG5kZS5kZSkgZ2VzZW5kZXQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qu
-b3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaXZlcmRldi1kZXZlbAo=
+IHR E-MAIL-KONTO HAT EINE SPENDE VON $3.500.000,00 GEWONNEN. KONTAKTIEREN S=
+IE F=DCR WEITERE INFORMATIONEN WIE SIE IHRE SPENDE ERHALTEN K=D6NNEN, HERZL=
+ICHEN GL=DCCKWUNSCH AN SIE.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
