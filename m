@@ -1,51 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 203D758E97F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Aug 2022 11:23:14 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E4C358EAE7
+	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Aug 2022 13:07:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AC8A140148;
-	Wed, 10 Aug 2022 09:23:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AC8A140148
+	by smtp1.osuosl.org (Postfix) with ESMTP id AE12881BFA;
+	Wed, 10 Aug 2022 11:07:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AE12881BFA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SEdNGR3DT14t; Wed, 10 Aug 2022 09:23:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4lrcbrBNzvyA; Wed, 10 Aug 2022 11:07:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5A894400C8;
-	Wed, 10 Aug 2022 09:23:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5A894400C8
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6A22981BCB;
+	Wed, 10 Aug 2022 11:07:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6A22981BCB
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 513CD1BF578
- for <devel@linuxdriverproject.org>; Wed, 10 Aug 2022 09:23:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8B8251BF314;
+ Wed, 10 Aug 2022 11:07:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 336BE40148
- for <devel@linuxdriverproject.org>; Wed, 10 Aug 2022 09:23:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 336BE40148
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5CE8B40BC7;
+ Wed, 10 Aug 2022 11:07:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5CE8B40BC7
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gejcptnrXdcq for <devel@linuxdriverproject.org>;
- Wed, 10 Aug 2022 09:23:04 +0000 (UTC)
-X-Greylist: delayed 00:07:18 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9A7FA400C8
-Received: from b5network.net (unknown [27.112.106.26])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9A7FA400C8
- for <devel@linuxdriverproject.org>; Wed, 10 Aug 2022 09:23:04 +0000 (UTC)
-Received: (qmail 25626 invoked by uid 48); 10 Aug 2022 18:15:41 +0900
-To: devel@linuxdriverproject.org
-Subject: In der Stadt Potsdam wurden mehr als 659 Menschen Millionare
-X-PHP-Originating-Script: 10042:class-phpmailer.php
-Date: Wed, 10 Aug 2022 09:15:41 +0000
-From: GradyEnhaw <devel@linuxdriverproject.org>
-Message-ID: <d06bc362a006d49299624b09d0ffa7b2@www.chups.co.jp>
-X-Priority: 3
-X-Mailer: PHPMailer 5.2.1
- (http://code.google.com/a/apache-extras.org/p/phpmailer/)
+ with ESMTP id 3O4PKSc7Yxt5; Wed, 10 Aug 2022 11:07:05 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D203A40BB2
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from kayleetromp.ml (unknown [143.198.67.36])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D203A40BB2;
+ Wed, 10 Aug 2022 11:07:05 +0000 (UTC)
+Received: from [103.99.1.70] (helo=User)
+ by kayleetromp.ml with esmtpa (Exim 4.90_1)
+ (envelope-from <lambert@kayleetromp.ml>)
+ id 1oLjY5-0006mU-BM; Wed, 10 Aug 2022 11:06:53 +0000
+From: "Aleksandr Kovalenko"<lambert@kayleetromp.ml>
+Subject: Hello friend, please reply back urgent
+Date: Wed, 10 Aug 2022 04:06:54 -0700
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <E1oLjY5-0006mU-BM@kayleetromp.ml>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=kayleetromp.ml; s=mail; h=Message-Id:Content-Transfer-Encoding:Content-Type
+ :MIME-Version:Date:Subject:From:Reply-To:Sender:To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=dIx6Yx4LXX/qJzjFAER/70GMYpEQyump40U7Ra3zxP4=; b=BZu7J7Kbi5uczRBmTnKutY5S2x
+ 7zEwEdG0O2uNLf2ClAIgCoYFLOgTvZb5192Mwn7JIQ+K8/A9Mqazo3txM4vjcPh8RDbfVB2nPenyr
+ N+unhOh1dSy2IEi75+HdqG7FUbGsI1M/8FQS+RGBreQyeA5CaV1eWSfYJi7m8qPHcB5s=;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=kayleetromp.ml header.i=@kayleetromp.ml
+ header.a=rsa-sha256 header.s=mail header.b=BZu7J7Kb
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,22 +73,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-2022-jp"
+Reply-To: alekskovnko@gmail.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-お問い合わせありがとうございます。
+How are you today? I Hope you are staying safe,
 
-東大阪バレーボールクラブ・ロッキーです。
+I am Mr Aleksandr Kovalenko from Ukraine, Army General in the battle war commanding, I have very important business to share with you which will benefit both of us soonest
 
-内容を確認次第お返事いたしますので今しばらくお待ちくださいませ。
+I will give you full details when I receive your interested reply
 
-メッセージ本文:
-EIN SCHNELLER UND EFFEKTIVER WEG, UM REICH ZU WERDEN https://telegra.ph/Passives-Einkommen-und-7500000-Euro-auf-KryptowГ?hrung-743843-08-09
-
---
-
+Best Regard,
+Mr Aleksandr Kovalenko
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
