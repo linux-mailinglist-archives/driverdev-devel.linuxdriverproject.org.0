@@ -1,76 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B49E858F554
-	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Aug 2022 02:47:44 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EDDB758F562
+	for <lists+driverdev-devel@lfdr.de>; Thu, 11 Aug 2022 02:50:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 89F1260FD8;
-	Thu, 11 Aug 2022 00:47:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 89F1260FD8
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7263D40B67;
+	Thu, 11 Aug 2022 00:50:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7263D40B67
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jrWk74IFpR5O; Thu, 11 Aug 2022 00:47:23 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 96_1B02O7Fs4; Thu, 11 Aug 2022 00:50:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 365A560F41;
-	Thu, 11 Aug 2022 00:47:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 365A560F41
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2F9394011F;
+	Thu, 11 Aug 2022 00:50:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2F9394011F
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6E5131C116E
- for <devel@linuxdriverproject.org>; Thu, 11 Aug 2022 00:47:17 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C9DE11C1148
+ for <devel@linuxdriverproject.org>; Thu, 11 Aug 2022 00:50:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4970182B34
- for <devel@linuxdriverproject.org>; Thu, 11 Aug 2022 00:47:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4970182B34
+ by smtp2.osuosl.org (Postfix) with ESMTP id A24E440C37
+ for <devel@linuxdriverproject.org>; Thu, 11 Aug 2022 00:50:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A24E440C37
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eH_jviDVUP7l for <devel@linuxdriverproject.org>;
- Thu, 11 Aug 2022 00:47:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6262382B21
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6262382B21
- for <devel@driverdev.osuosl.org>; Thu, 11 Aug 2022 00:47:15 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6400,9594,10435"; a="377518601"
-X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="377518601"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Aug 2022 17:47:14 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,228,1654585200"; d="scan'208";a="933110260"
-Received: from lkp-server02.sh.intel.com (HELO 5d6b42aa80b8) ([10.239.97.151])
- by fmsmga005.fm.intel.com with ESMTP; 10 Aug 2022 17:47:13 -0700
-Received: from kbuild by 5d6b42aa80b8 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1oLwLw-0000uy-2d;
- Thu, 11 Aug 2022 00:47:12 +0000
-Date: Thu, 11 Aug 2022 08:47:01 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- b52232935fc6f81ff676bed9797422296b5e41c7
-Message-ID: <62f45185.LaoxfFjlh+qn0NmI%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XRIa5zYiiTkO for <devel@linuxdriverproject.org>;
+ Thu, 11 Aug 2022 00:50:10 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 934364011F
+Received: from hosted-4-client-dedicated-live-server4.emailverify77.com
+ (hosted-4-client-dedicated-live-server4.emailverify77.com [103.129.47.114])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 934364011F
+ for <devel@driverdev.osuosl.org>; Thu, 11 Aug 2022 00:50:10 +0000 (UTC)
+From: "FABRICE"<projectfunding044@gmail.com>
+Subject: We Fund Your Project
+Date: Wed, 10 Aug 2022 17:50:04 -0700
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1660178835; x=1691714835;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=nDmnBonFYSfSJhi6RT/WolBZNDvy82J7DIRhCVh/wP8=;
- b=L+1jrwcP0cmINCP/+5oJ/qCTJG0MlHdVHhnEqsUtOGn4YdU3d4TqBcT2
- Ym/l/IoaOFQ5BABBXv6wHtFbJq/zdF8pULbYDapsnsY9Y7DWirI66wKY2
- HDNJsX6zTlV03bpI6wPbgo5HzbgioIKgxtxkwODUrk2qu5yHWN69+YbjM
- 26lTDkxlOSoGUJT7odVPCKyEelmQoW9Ldha7+6oYEtii5FiQ8GzGzews2
- 2SD73fAvWj0yNa6E+m+uPY/KHi6qDHegwHEaVnMbCauYByE8/XK7juY8p
- AT/xHKt8e/9+DwIJEfcWnwuKTlDMCYTsKxMr4W1j0Y+bVROkJ1qrkEH2/
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=L+1jrwcP
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20220811005011.A24E440C37@smtp2.osuosl.org>
+X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns;
+ s=1659505744.emailverify77; d=gmail.com; 
+ b=H2EYnVsDrfCNVoCN90vP0NEHmY6kH/7i3PZL6e4nKbLlosDSrd1YTmknYGMR8fdYrdAXt25i18K5
+ aFvGPlz5+D1Q2s7Lw5/WbMW7CSiDmWvUZA1qdkg/K4hx51lGFqGSyQGDrarbmPOCKtGPsuvsjYbu
+ +/1C8z0sAdbtQl4sZv8=;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed;
+ s=1659505744.emailverify77; d=gmail.com; 
+ h=Reply-To:From:Subject:Date:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=projectfunding044@gmail.com; 
+ bh=QYAaKGUc9Cc7lgyR1ay76z1GKd4=;
+ b=pINuFbf3vQxybXUK6A47JXKQbXvEiQUtGrmJLSzpnuxl1UyW2DvarJJaHUT71vW5R7xtf/S8dbon
+ jXXzrtNZJcPvy1srtZaUj60jWdSTTHgoUqmEhrBl87QaadSeHTmtmQY5JammIO4nol9z1Cc2AOAD
+ EWq0EfdF83WDblaH/1w=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,83 +70,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: projectfunding044@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
-branch HEAD: b52232935fc6f81ff676bed9797422296b5e41c7  USB: gadget: f_mass_storage: get rid of DEVICE_ATTR() usage
+Greetings,
+    We are offering Loan/Investment funds to Companies and Individuals with profitable projects in any area of specialization at 2% per annual for a duration of 2 to 20 years with a year interest grace period.
+    Also, we pay 1% commission to Intermediaries/Consultants/Brokers who introduce project owners for finance or other opportunities. We Loan offers between USD1M to USD10B loan for business owners. Our lenders or investors are well vetted according to European Union financial institutions. Let us know if you are interested otherwise feel free to decline.
+    Kindly get back to me.
+    Regards,
+    FOURNET
+    TEL: +33 780937115
+    E-Mail: projectfunding044@gmail.com
 
-elapsed time: 722m
 
-configs tested: 53
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-gcc tested configs:
-i386                                defconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                        randconfig-a013
-i386                             allyesconfig
-x86_64                              defconfig
-m68k                             allmodconfig
-arm                                 defconfig
-x86_64                        randconfig-a011
-x86_64                               rhel-8.3
-arc                              allyesconfig
-powerpc                           allnoconfig
-x86_64                        randconfig-a015
-i386                          randconfig-a014
-powerpc                          allmodconfig
-i386                          randconfig-a012
-x86_64                        randconfig-a004
-mips                             allyesconfig
-i386                          randconfig-a016
-x86_64                        randconfig-a002
-alpha                            allyesconfig
-sh                               allmodconfig
-m68k                             allyesconfig
-x86_64                        randconfig-a006
-arm64                            allyesconfig
-arm                              allyesconfig
-x86_64                           allyesconfig
-arc                  randconfig-r043-20220810
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-riscv                randconfig-r042-20220810
-s390                 randconfig-r044-20220810
-x86_64                          rhel-8.3-func
-x86_64                         rhel-8.3-kunit
-x86_64                    rhel-8.3-kselftests
-x86_64                           rhel-8.3-syz
-x86_64                           rhel-8.3-kvm
-ia64                             allmodconfig
-
-clang tested configs:
-i386                          randconfig-a013
-x86_64                        randconfig-a016
-i386                          randconfig-a015
-x86_64                        randconfig-a012
-i386                          randconfig-a011
-x86_64                        randconfig-a014
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-x86_64                        randconfig-a005
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a006
-hexagon              randconfig-r041-20220810
-hexagon              randconfig-r045-20220810
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
