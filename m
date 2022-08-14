@@ -1,135 +1,139 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30C0F5925A1
-	for <lists+driverdev-devel@lfdr.de>; Sun, 14 Aug 2022 18:55:27 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6B1959260D
+	for <lists+driverdev-devel@lfdr.de>; Sun, 14 Aug 2022 20:55:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 863CA60D50;
-	Sun, 14 Aug 2022 16:55:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 863CA60D50
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9A69C830C0;
+	Sun, 14 Aug 2022 18:55:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9A69C830C0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DsVeyqpCBHP3; Sun, 14 Aug 2022 16:55:24 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id aFVj-jRS_uZa; Sun, 14 Aug 2022 18:55:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3F70C60AE2;
-	Sun, 14 Aug 2022 16:55:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3F70C60AE2
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4C02E82BF4;
+	Sun, 14 Aug 2022 18:55:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C02E82BF4
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 29B231BF410
- for <devel@linuxdriverproject.org>; Sun, 14 Aug 2022 16:55:19 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CEB281BF3F2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 Aug 2022 18:55:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0436360D50
- for <devel@linuxdriverproject.org>; Sun, 14 Aug 2022 16:55:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0436360D50
+ by smtp1.osuosl.org (Postfix) with ESMTP id A368C830C0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 Aug 2022 18:55:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A368C830C0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id M3onr-4SU_yO for <devel@linuxdriverproject.org>;
- Sun, 14 Aug 2022 16:55:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wGFMY8Yicmtq
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 Aug 2022 18:55:07 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 59A4E60AE2
-Received: from APC01-TYZ-obe.outbound.protection.outlook.com
- (mail-tyzapc01rlhn2145.outbound.protection.outlook.com [40.95.110.145])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 59A4E60AE2
- for <devel@linuxdriverproject.org>; Sun, 14 Aug 2022 16:55:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BC22D82BF4
+Received: from APC01-PSA-obe.outbound.protection.outlook.com
+ (mail-psaapc01rlhn2152.outbound.protection.outlook.com [40.95.53.152])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BC22D82BF4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 Aug 2022 18:55:07 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XsuxgjJDZ/6ObdmG8hYNOp56PilGlMk+tOMkWO8oELTvdnppzPfqYQuRvZ0ehkRaT6/79iXEqnXiZcNSuxkw37FXarn9MFOZBKaFMgCdCdTkKROllP8HkiMRdlVe8NGEQ1x4nx23KOsro3YsJvjHlUppwr8ESMxmoLxynuLyvaaGvd/zeYQJb204O94ondNpiBYirMJVthcuQnqhdQUn66lUm+XkLOuEMVS7U1GEunWe05HNHRbwtqChP953mjNXVbVPsT+SZ9UB2tz9QMuEiaNgVv5Hn3HRW/owgSXolzGv3OiIRUhypxd35sfKVxXp6gT3Cd92I7jYjHi1D4D3jg==
+ b=cQRMSvBTDxctFdam4K4xOYF0W8Xynoh1zgO5bGNtRYw+ffgy9Vzxc8PW28f46xtr9QhRgQLzsldKO+yomAegsSDMRV2R95Otbl46u6lX/KwTDnQ3UPPzHwJ1+8ULvjvyhmJn1tekAu1/rzDl0/bTMgSDJihB6NWi6AxXArH3AzyTmmImga+9PC9OVG8mTuZHFUoUXekzf9cc5+bwDSkrVtgGImVDWAl/Cse8u09a21YbBrANj8FBgISaUzvqO+PXy9trHmOFkcdhNU13MDzbsePqrKksRM8HJwwpG4ALJpZ5DGoPxxxPZqBYtxxS3sqzxvg0Ij44zxMGlh4py+f3ZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
  bh=StuRR4ZGpKgQlqA4GtsTDE1z7cvXg5k2b1QmQ5v5s+s=;
- b=gtLNUX1USaqHg2P41CG6hxnIOZ+oVSVzjj67ZxlrSXTbf+rL/Oa+AbSgLypYkwqWy+zaLxEBapQc2T/M+XPH8x3mdG5NNmU87v0ichq72bDXIj3z2v0KxTAx8UPwmtCCXPhtCE6fZURPfXXydse6t8MJ+voyIBuq8XRocEm6Q7cBvcqOo3rEx2ORto2arqyKbkkXylItvcVYXzwduXgCaNldrRXOv38bIP/hsbeQQLOJX4az2GGizmRGf3etGEX5fCU+6F0inu3L7gN+rIuVtiTafh8rOCRhzoy/qPrVQNpXyqzmI2KCemcLM+Fogw19JrZHSOR8X74EvpSy0zG94g==
+ b=KRgtRiFJO8uKMZUI8sZ1AYg9NO2vsZClmIPbLibs20rHcTmOtrBJyDOFFhwPkPZaw+2HQ2a+Ilks/7ctOZo6/cbyvOuha9r+NAjcOsXDc4Ct193pOVto8EEuH0nS64IyL1hKnv9G/GIN8WGEHIq9mDkagk5fMDJa4V0ygIQZB6M1MK2JcmbSWnlDDa+CSvlMsgVOCWUnC02c69PMlJ3lWiRan7YvpztGoPlTi7+7c24Y5ZjYClVJiRbXnI0/3bskVA37Qwquxn9CJTgt6lXb9Iajp03McSo2GX5J0xzGkIuuj6xJ+9qHEuFFNoB4cFnaQ6VXZXlO3/KhOXIHbqLuPw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
- is 34.130.58.223) smtp.rcpttodomain=gmail.com smtp.mailfrom=mofaic.gov.ae;
+ is 34.130.58.223) smtp.rcpttodomain=wal-mart.com smtp.mailfrom=mofaic.gov.ae; 
  dmarc=none action=none header.from=mofaic.gov.ae; dkim=none (message not
  signed); arc=none (0)
-Received: from PS1PR01CA0024.apcprd01.prod.exchangelabs.com
- (2603:1096:300:75::36) by SEZPR04MB6575.apcprd04.prod.outlook.com
- (2603:1096:101:ab::10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5525.11; Sun, 14 Aug
- 2022 16:55:14 +0000
-Received: from PSAAPC01FT045.eop-APC01.prod.protection.outlook.com
- (2603:1096:300:75:cafe::13) by PS1PR01CA0024.outlook.office365.com
- (2603:1096:300:75::36) with Microsoft SMTP Server (version=TLS1_2,
+Received: from SG2PR02CA0076.apcprd02.prod.outlook.com (2603:1096:4:90::16) by
+ SEYPR04MB5953.apcprd04.prod.outlook.com (2603:1096:101:68::13) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5525.11; Sun, 14 Aug 2022 18:55:03 +0000
+Received: from SG2APC01FT0026.eop-APC01.prod.protection.outlook.com
+ (2603:1096:4:90:cafe::f4) by SG2PR02CA0076.outlook.office365.com
+ (2603:1096:4:90::16) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5525.18 via Frontend
- Transport; Sun, 14 Aug 2022 16:55:14 +0000
+ Transport; Sun, 14 Aug 2022 18:55:02 +0000
 X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is
  34.130.58.223) smtp.mailfrom=mofaic.gov.ae; dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=mofaic.gov.ae;
 Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
  mofaic.gov.ae discourages use of 34.130.58.223 as permitted sender)
-Received: from mail.prasarana.com.my (58.26.8.158) by
- PSAAPC01FT045.mail.protection.outlook.com (10.13.38.132) with Microsoft SMTP
+Received: from mail.prasarana.com.my (58.26.8.159) by
+ SG2APC01FT0026.mail.protection.outlook.com (10.13.37.85) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.5525.11 via Frontend Transport; Sun, 14 Aug 2022 16:55:13 +0000
+ 15.20.5525.11 via Frontend Transport; Sun, 14 Aug 2022 18:55:02 +0000
 Received: from MRL-EXH-02.prasarana.com.my (10.128.66.101) by
- MRL-EXH-01.prasarana.com.my (10.128.66.100) with Microsoft SMTP Server
+ MRL-EXH-02.prasarana.com.my (10.128.66.101) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2176.14; Mon, 15 Aug 2022 00:55:02 +0800
+ 15.1.2176.14; Mon, 15 Aug 2022 02:54:38 +0800
 Received: from User (34.130.58.223) by MRL-EXH-02.prasarana.com.my
  (10.128.66.101) with Microsoft SMTP Server id 15.1.2176.14 via Frontend
- Transport; Mon, 15 Aug 2022 00:54:49 +0800
+ Transport; Mon, 15 Aug 2022 02:54:25 +0800
 From: "Ms.  Al-Hashimi" <info@mofaic.gov.ae>
 Subject: Re: Did You Receive My Last Email
-Date: Sun, 14 Aug 2022 16:55:01 +0000
+Date: Sun, 14 Aug 2022 18:54:37 +0000
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <2e3f4eca-749a-4532-9471-29cee5b8efe6@MRL-EXH-02.prasarana.com.my>
+Message-ID: <91084ef5-167a-4ec3-a3f5-dc66a7354555@MRL-EXH-02.prasarana.com.my>
 To: Undisclosed recipients:;
 X-EOPAttributedMessage: 0
 X-MS-Exchange-SkipListedInternetSender: ip=[34.130.58.223];domain=User
 X-MS-Exchange-ExternalOriginalInternetSender: ip=[34.130.58.223];domain=User
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 340cf2e7-80f1-46c3-284c-08da7e15c1ff
-X-MS-TrafficTypeDiagnostic: SEZPR04MB6575:EE_
+X-MS-Office365-Filtering-Correlation-Id: d6eab693-7b90-4fed-86b2-08da7e267e66
+X-MS-TrafficTypeDiagnostic: SEYPR04MB5953:EE_
 X-MS-Exchange-SenderADCheck: 2
 X-MS-Exchange-AntiSpam-Relay: 1
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: =?windows-1251?Q?FLTpveKS3hd4MvPIhVmCzOV3A9r0h5IeId2L1XpjSiAZJYJj+kjXtBZC?=
- =?windows-1251?Q?IP1Gv9bVY7F16/8wdxnPP+MPWKscSqQKCk0j2yTfbLkP2UJL2Ikb20rw?=
- =?windows-1251?Q?/jaSyk1IUW9OGzCj86bpJt6uM5MfpqWd16+1P4TFhL4VsmWBVLJSpZOq?=
- =?windows-1251?Q?BYCKbyn4rZDl6B2gsUr8mZzyoqXk7SqECYSCeXK7Ibf8Wbx+txP4wwj9?=
- =?windows-1251?Q?aq3zfge2Wg+F5raQJxMTEkE59w/LqWGkgEPt5M+LIusR8ddzaRXc4It3?=
- =?windows-1251?Q?M6ZQWg+L80gmKZbNhhicplvjx0bFEQ39t0GkRMaH9T1LCd2Belwno8K1?=
- =?windows-1251?Q?kkC8cjtAhkuIrlutOgJyoKspmKmOgXjc8HjC8yL+lBC+r1eZSWBL09+V?=
- =?windows-1251?Q?i3wITI5Nc4yi3ryGSAgqFRoJ2833pT2XfPVr/4EgYbR3E4frpZfDm09C?=
- =?windows-1251?Q?0ue6n8qHDg58P+WPC/iFxAgfDXEWKTZExVP/ztxS4SHr4a02fwGoT5gm?=
- =?windows-1251?Q?aQ2iFdPzBLzrXjCQO2PXENQu/z6sh+1Fept9gBWZEcHBGm6+SYVtut3t?=
- =?windows-1251?Q?I/RdI5HzVwNzS3OTudq/aNqFPGw8vZqauRTucUzHuxsn49vOq3uFiC4e?=
- =?windows-1251?Q?lvAPcSARvD6gpz//pY2kTp9Tg+ABfTmFQEMxsmfT5hJXIcSSRQkG/UQL?=
- =?windows-1251?Q?e3ySObmbi1w/emzi4OmWrqGr906J6GNbX8tPKt5PVoWotU+nTC39rHgx?=
- =?windows-1251?Q?czo3mRnsvytZf8ZQTF5Cq/Vv/yIx2RhYTP87oQKfudISOMT2CdLlYAXq?=
- =?windows-1251?Q?NliMlCXc6s43s4FPXux340Ys/OKQEhjE7zpvYi/x80eDdjpy6FoFjLqZ?=
- =?windows-1251?Q?TOfiKBm3GgBEaIxE2qdANdQP3FYUf8UA9BDk5aEqJ4nBK9Fslq/FsQ3N?=
- =?windows-1251?Q?nr9mI/3QzZvABNgtOIu529BtusAWiGV9Zve3hcp51/emNzGxVh21lugS?=
- =?windows-1251?Q?V8GDZACWyAy4LeeFZZ5CKTZSwjVaOBkeby/xqvxmsbfUcaAIACJSHvUW?=
- =?windows-1251?Q?XivlvP793b+RMgDtaT/JTLKgIcZH7JuaMcwA2HeFgRfQ/1ccsjVZXukb?=
- =?windows-1251?Q?GlpwYTf8jX5LalJFehptF6iTjLW7akn0PKT2AjYvwBmoSp8r4fU4aJ8t?=
- =?windows-1251?Q?gyFQ/YyMIxhcd1vtrI8+71cN75IdcgjbfdrbFDX8CIYMBLnHVerxHMfY?=
- =?windows-1251?Q?BEV0fnPsPZ3VdkfjyZ7mpLcb2QSfM+ZxNROgzeLZ5+BmjAPxs8Qq1zto?=
- =?windows-1251?Q?rFyq4pP+5H+DVAPwd1TjffDVuD6fEEKbiCgEv+siusVkXmS8Szy45LFH?=
- =?windows-1251?Q?WU3fxNA2XSLPRaboV5/AwxeeMOAm7UQ1OPA=3D?=
-X-Forefront-Antispam-Report: CIP:58.26.8.158; CTRY:CA; LANG:en; SCL:5; SRV:;
+X-Microsoft-Antispam-Message-Info: =?windows-1251?Q?t/d8iSX3dtY93SkzblYJ9ZmDe5ulnv6G74Wlq3IQ0kiKXrXVcRr4CN6F?=
+ =?windows-1251?Q?FBHD8Hqpl41vI1TQreXuCMgDaQT2ddxvw56vKAIvALfPhT7yB3TQhXYf?=
+ =?windows-1251?Q?mzZ9za/jlasQSFndT87jjdm4sYUNyrIVxyyeoe7hErSEd+pbq4uZDriV?=
+ =?windows-1251?Q?5/hT1q3r6H1u/YoLuN826CV2XLZeJEHQzdgAzsje4plApa0ezhRVDyvb?=
+ =?windows-1251?Q?+k5mH8QEa6BwJ1iFv1k07jjyB/Mcwpa/4hf3elrrd7vTkt3RH5VB5KYf?=
+ =?windows-1251?Q?UWSxCFlt1/S6p/dm+IKv6PmkO47EaFKEB8MdeuaKDOSIcadbKgnA0pkb?=
+ =?windows-1251?Q?6112kBgM6tMswUwcttXJGkd3B9Z3vwZHCVSku+/lzhpdJZd6nuzL8lh6?=
+ =?windows-1251?Q?AIRRqOtCbnetQPLqImw3YAR52KAQwXDCQzPDXgYRo6x7e5Q/oQ8LO7lr?=
+ =?windows-1251?Q?l+GwjBkRbPu1pm9Vg6JO4yOYlcsA01se5DulkLFOKaqrTNpxthL+ehTC?=
+ =?windows-1251?Q?BAy272QpPlEEj8E/A+hY/uoGlP7hO6Lb58MZJ2FO6CeY0pEhwPvTRnbF?=
+ =?windows-1251?Q?ATIabT8ga5KbAFMiSrXZqy+pgeCtPwDml63npMy4GOf/ETPkBUEmq/AB?=
+ =?windows-1251?Q?QiNbtaEerVjkWrQQBraFWeG26brtxsybbjGFxQRL23yqHZOxumxkldpN?=
+ =?windows-1251?Q?Gi2DfGvIdoTWWMUTwpUNIUzCCGEOSeVqXm9xVfwkDRK4oVNJtaK2UsWC?=
+ =?windows-1251?Q?8ntenWlg6jwuWNnTYDnRNK5J0RniwpWalkSXCTjWUduLP8t52EwvYfSn?=
+ =?windows-1251?Q?czcttZxF9lD/GFUpvpC0prjRPfeyivKSwCruQLvj8HW6IsQIZP2gCojZ?=
+ =?windows-1251?Q?lLzmsfkY1eooGGCr1DrHCig8LHhxj8h1mrktFK8/1yLjju322sED+qSK?=
+ =?windows-1251?Q?RUMBZPnjrg66xJIohKpiyqv4j/ucVjkImSHHbuwAqtKy5jQ903zYXLO3?=
+ =?windows-1251?Q?uxHtVyXtghw/EN1lKrdDW+nrzhEYAiEeaut202GYoB4Mnew25q2rTA8e?=
+ =?windows-1251?Q?0JXozQ4mT2hJFSvhW9TFhq8+L0hPySbZKyuFqZLfcn6KQeqYWRMtEkFQ?=
+ =?windows-1251?Q?nz1aI+3ZgMP945K9i3yS+C3vXg08lwNL1mVh6k2Gs5Tvj6yXysihtNwN?=
+ =?windows-1251?Q?EA8/zmAGS07f9jXe90CRyjGHfc/xUnGg3Vh4+MiLbbpWxndAerWigFpi?=
+ =?windows-1251?Q?6cDdR63wD5qfcDKyrW0IUjU+q4otzE26OBanS7n1d1kqyztnTxmFbK9q?=
+ =?windows-1251?Q?n3OaiiMzgr7Doxj0ttCyrSCOMox6wYVJDaO94KJCLPcyXzoNaBxJcPKj?=
+ =?windows-1251?Q?Xz5BLKVoobOBHeknFwTtmvPKcfuW9CzZYgA=3D?=
+X-Forefront-Antispam-Report: CIP:58.26.8.159; CTRY:CA; LANG:en; SCL:5; SRV:;
  IPV:NLI; SFV:SPM; H:User; PTR:223.58.130.34.bc.googleusercontent.com; CAT:OSPM;
- SFS:(13230016)(376002)(136003)(39860400002)(396003)(346002)(40470700004)(31696002)(2906002)(86362001)(81166007)(7406005)(7366002)(8936002)(70206006)(70586007)(38500700001)(8676002)(5660300002)(32650700002)(82310400005)(316002)(156005)(40460700003)(32850700003)(82740400003)(35950700001)(498600001)(41300700001)(109986005)(6666004)(31686004)(956004)(7416002)(336012)(83380400001)(9686003)(40480700001)(26005)(2700400008);
+ SFS:(13230016)(39860400002)(136003)(396003)(376002)(346002)(40470700004)(31696002)(38500700001)(32850700003)(86362001)(156005)(316002)(8676002)(70206006)(82740400003)(81166007)(83380400001)(8936002)(35950700001)(7406005)(40480700001)(7416002)(7366002)(498600001)(5660300002)(336012)(70586007)(82310400005)(26005)(109986005)(40460700003)(36906005)(41300700001)(2906002)(32650700002)(31686004)(9686003)(956004)(6666004)(2700400008);
  DIR:OUT; SFP:1023; 
 X-OriginatorOrg: myprasarana.onmicrosoft.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Aug 2022 16:55:13.8921 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 340cf2e7-80f1-46c3-284c-08da7e15c1ff
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Aug 2022 18:55:02.0226 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d6eab693-7b90-4fed-86b2-08da7e267e66
 X-MS-Exchange-CrossTenant-Id: 3cbb2ff2-27fb-4993-aecf-bf16995e64c0
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3cbb2ff2-27fb-4993-aecf-bf16995e64c0; Ip=[58.26.8.158];
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3cbb2ff2-27fb-4993-aecf-bf16995e64c0; Ip=[58.26.8.159];
  Helo=[mail.prasarana.com.my]
-X-MS-Exchange-CrossTenant-AuthSource: PSAAPC01FT045.eop-APC01.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: SG2APC01FT0026.eop-APC01.prod.protection.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR04MB6575
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR04MB5953
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
