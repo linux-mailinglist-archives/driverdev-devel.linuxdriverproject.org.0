@@ -1,50 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86969598C6D
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Aug 2022 21:15:40 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DEEAC599591
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Aug 2022 09:08:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F1E9860B06;
-	Thu, 18 Aug 2022 19:15:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F1E9860B06
+	by smtp4.osuosl.org (Postfix) with ESMTP id C9140419B1;
+	Fri, 19 Aug 2022 07:08:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C9140419B1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NR2iycewEw-v; Thu, 18 Aug 2022 19:15:38 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id O6Fqn4OE5NRI; Fri, 19 Aug 2022 07:08:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BAD9860773;
-	Thu, 18 Aug 2022 19:15:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BAD9860773
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4C8CB41909;
+	Fri, 19 Aug 2022 07:08:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4C8CB41909
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B81E21BF2A9
- for <devel@linuxdriverproject.org>; Thu, 18 Aug 2022 19:15:34 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B09C81BF319
+ for <devel@linuxdriverproject.org>; Fri, 19 Aug 2022 07:07:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9FC5660B06
- for <devel@linuxdriverproject.org>; Thu, 18 Aug 2022 19:15:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9FC5660B06
+ by smtp2.osuosl.org (Postfix) with ESMTP id 89CD440484
+ for <devel@linuxdriverproject.org>; Fri, 19 Aug 2022 07:07:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 89CD440484
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jAyNuWEJWi_R for <devel@linuxdriverproject.org>;
- Thu, 18 Aug 2022 19:15:31 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Q_fcJ0irHBsK for <devel@linuxdriverproject.org>;
+ Fri, 19 Aug 2022 07:07:55 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D2DEE60773
-Received: from oprek.kemendesa.go.id (unknown [103.125.203.40])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D2DEE60773
- for <devel@linuxdriverproject.org>; Thu, 18 Aug 2022 19:15:30 +0000 (UTC)
-Received: from [202.55.132.2] (unknown [202.55.132.2])
- by oprek.kemendesa.go.id (Postfix) with ESMTPA id D5B7CC115D;
- Thu, 18 Aug 2022 02:44:58 +0700 (WIB)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D5C2040167
+Received: from TheraNew.missc.net (unknown [209.3.59.75])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D5C2040167
+ for <devel@driverdev.osuosl.org>; Fri, 19 Aug 2022 07:07:55 +0000 (UTC)
+Received: from [185.225.73.252] (unverified [185.225.73.252]) by
+ TheraNew.missc.net
+ (Vircom SMTPRS 6.7.12.24029/7176.7.4.) with ESMTP id
+ <B0005340778@TheraNew.missc.net> for <devel@driverdev.osuosl.org>; 
+ Fri, 19 Aug 2022 00:05:32 -0700
+X-Modus-BlackList: strong@therabreath.com=OK
+X-Modus-Spam-Version: 6.7.12.24029/7176.7.4.
+X-Modus-Audit: FALSE;0;0;0
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: 8/17/2022-  
-To: Recipients <wgordon06@gmail.com>
-From: " Wei G" <wgordon06@gmail.com>
-Date: Wed, 17 Aug 2022 12:44:54 -0700
-Message-Id: <20220818191534.9FC5660B06@smtp3.osuosl.org>
+Subject: Treat with Utmost Urgency
+To: devel@driverdev.osuosl.org
+From: "I.M.F" <strong@therabreath.com>
+Date: Fri, 19 Aug 2022 09:05:34 +0200
+Message-Id: <20220819070758.89CD440484@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,17 +62,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: wgordon064@gmail.com
+Reply-To: dmd@imfgrantint.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greetings, Please did you receive my previous message? write me back E-Mail: wgordon064@gmail.com
+INTERNATIONAL MONETARY FUND (IMF)
+700 19th Street, N.W.
+Washington, D.C. 20431,
+U.S.A
 
-Best Regards,
+2022 IMF FINANCIAL GRANT RELIEF
 
-Wei G
+This official notification is from the International Monetary Fund (IMF) 2022 Financial Grant Relief. The IMF is currently disbursing the first category of its 2022 FINANCIAL GRANT RELIEF to individuals of its serving member countries. You have been selected to receive a CAPITAL SUPPORT GRANT as one of the recipients in the first category with REFERENCE NUMBER IMF/FOR2022/2908867.
+
+FOR MORE INFORMATION: Kindly send your reference number IMF/FOR2022/2908867 by email to (dmd@imf-grantint.org) or via WHATSAPP MESSAGE IMF Public Relations Center: +1 202 738 5008 for confirmation.
+
+Congratulations once again from all of us,
+
+DEREK L. BILLS
+INVESTMENT OFFICE DIRECTOR
+INTERNATIONAL MONETARY FUND (IMF)
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
