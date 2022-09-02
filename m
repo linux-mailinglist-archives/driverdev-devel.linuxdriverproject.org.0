@@ -1,66 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EABC35A9560
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Sep 2022 13:07:12 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D917D5AAD4F
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Sep 2022 13:21:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 173684034B;
-	Thu,  1 Sep 2022 11:07:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 173684034B
+	by smtp3.osuosl.org (Postfix) with ESMTP id 34F4E60C0C;
+	Fri,  2 Sep 2022 11:21:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 34F4E60C0C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uU8ByCADmkP2; Thu,  1 Sep 2022 11:07:10 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id s-ZA0XUNfBjr; Fri,  2 Sep 2022 11:21:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D0108400DD;
-	Thu,  1 Sep 2022 11:07:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D0108400DD
+	by smtp3.osuosl.org (Postfix) with ESMTP id D815F60769;
+	Fri,  2 Sep 2022 11:21:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D815F60769
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8B8F91BF3F9
- for <devel@linuxdriverproject.org>; Thu,  1 Sep 2022 11:07:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 46E2C1BF82D
+ for <devel@linuxdriverproject.org>; Fri,  2 Sep 2022 11:21:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 71FEC832D0
- for <devel@linuxdriverproject.org>; Thu,  1 Sep 2022 11:07:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 71FEC832D0
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2280E82C21
+ for <devel@linuxdriverproject.org>; Fri,  2 Sep 2022 11:21:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2280E82C21
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id u1-GRSQ2Gmbn for <devel@linuxdriverproject.org>;
- Thu,  1 Sep 2022 11:07:05 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 012B3831BD
-Received: from mail.mincomercionacional.gob.ve
- (mail.mincomercionacional.gob.ve [190.205.119.89])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 012B3831BD
- for <devel@driverdev.osuosl.org>; Thu,  1 Sep 2022 11:07:04 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.mincomercionacional.gob.ve (Postfix) with ESMTP id E456A3E67A82;
- Thu,  1 Sep 2022 06:01:32 -0400 (-04)
-Received: from mail.mincomercionacional.gob.ve ([127.0.0.1])
- by localhost (mail.mincomercionacional.gob.ve [127.0.0.1]) (amavisd-new,
- port 10032)
- with ESMTP id rlubQvS5XUOC; Thu,  1 Sep 2022 06:01:32 -0400 (-04)
-Received: from localhost (localhost [127.0.0.1])
- by mail.mincomercionacional.gob.ve (Postfix) with ESMTP id B0FFE3E62E32;
- Thu,  1 Sep 2022 06:01:30 -0400 (-04)
-X-Virus-Scanned: amavisd-new at mincomercionacional.gob.ve
-Received: from mail.mincomercionacional.gob.ve ([127.0.0.1])
- by localhost (mail.mincomercionacional.gob.ve [127.0.0.1]) (amavisd-new,
- port 10026)
- with ESMTP id baxaDlZKKOwz; Thu,  1 Sep 2022 06:01:30 -0400 (-04)
-Received: from [192.168.0.105] (unknown [93.182.110.30])
- by mail.mincomercionacional.gob.ve (Postfix) with ESMTPSA id 249493E67A5A;
- Thu,  1 Sep 2022 06:01:23 -0400 (-04)
+ with ESMTP id ELy2nSfLvZ-S for <devel@linuxdriverproject.org>;
+ Fri,  2 Sep 2022 11:21:16 +0000 (UTC)
+X-Greylist: delayed 00:10:02 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5881582BE5
+Received: from gxaoszxo.piglight.com (gxaoszxo.piglight.com [85.217.145.3])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5881582BE5
+ for <devel@linuxdriverproject.org>; Fri,  2 Sep 2022 11:21:16 +0000 (UTC)
+From: Amjad Ali<and.sco@piglight.com>
+To: devel@linuxdriverproject.org
+Subject: IMPORTANT!! Sir, I need your urgent response.
+Date: 02 Sep 2022 04:11:12 -0700
+Message-ID: <20220902041112.ACCE2B6C00EE98CB@piglight.com>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Good news for you and your family
-To: Recipients <Getitnow@outlook.com>
-From: Getitnow@outlook.com
-Date: Thu, 01 Sep 2022 11:58:16 -0700
-Message-Id: <20220901100124.249493E67A5A@mail.mincomercionacional.gob.ve>
+X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
+ d=piglight.com; 
+ b=AcqLjeVMmYiq3m6kMyT51eFEyXt6jUpvJXvyijgsiKCDB4Y4vUpTZm2bF0CbQLOnBqTx2BQbEhUa
+ gh1bG9DCIMATwV+LuLp/v6q1BrQciEELBrlQUwuCYjqLtOuhuvKneMMUqJSVLAH3fcuNWvVwulAt
+ A9PqNYzdWwzC/zhNAs9+zDFrcOy/QmeRUQMlpe/abrPxHqcEaJPgk8V8qZcYYv7DOgM6elORItKk
+ cZgmCe/9Y7rMLOYjXdmRsRccdo3FiU8eO0fQo62BtTiPuff+VT6mqi6Iafm1shTCKfafFlcTqjqo
+ KbE/DfSkDbiB2THAz4jY7l/VZh7MZwuVN392vw==;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
+ d=piglight.com; 
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=and.sco@piglight.com; 
+ bh=2RNxICSB08QOsISrgdgjONv4BIM=;
+ b=UCll5XziF8hbQ61ihgLoK7hVdVdOVpAGca2k+Rw9eCG2O0MkcPEkYzoxpSn5PnIn467Cq+SuMaeE
+ ng6TvhSY8SA8k28T+SNOwOTIBJS1Nl1xuwhVI+WJsrMIkYeFoPZTaE3wq7PE8O1jy7z21lulgpq1
+ ecCYJjq/mcALFN0Fo0QYPIPV8AF7rwWrGuPZceN0qm3gtRxoyp728xYO6zRyJc1yskHcqAMV77yM
+ 1gvOmEBMmsLAyfgfxQHYTQk+/XSaI6s4nD9r/jHAN5I6FSblSnSAb5h6dIzJGn+olikuc8RGuVy+
+ CyDVC++wcBK/MP/JQpFe1RQaim4nwuZEYF37RA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=piglight.com header.i=and.sco@piglight.com
+ header.a=rsa-sha1 header.s=dkim header.b=UCll5Xzi
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,15 +73,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: laurafoundation123@gmail.com
+Reply-To: amjalia90@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Laura Spears, winner of the Michigan Millions lottery $3 million in January 2022. I donate $500,000.00 to you. Contact me for info / claim. 
-Continue reading:
-https://www.independent.co.uk/news/world/americas/michigan-lottery-winner-spam-email-b1999558.html
+Hello Friend,
+
+How are you doing? I have sourced for your contact online and 
+decided to contact you. My name is Amjad. I am retained with a 
+leading Bio Firm. The recent pandemic caused a lot of havoc in 
+the business and supply industry. It also opened up new 
+opportunities as well. My company has opened up a bid for 
+suppliers of some basic raw materials needed in the production of 
+life saving vaccines, drugs, etc.
+
+I urgently seek a representative to represent my interest in this 
+bid. As a staff member, it is against the policy for me to bid 
+directly for this. I assure you that the proceeds from this is 
+very good. I have already sourced a local supplier to work with 
+on this. I only need a reliable representative. I think we can 
+work together on this.
+
+Please get back to me and I can explain in further details.
+
+Regards,
+Amjad Ali
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
