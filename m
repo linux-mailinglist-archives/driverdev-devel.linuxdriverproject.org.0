@@ -1,66 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D917D5AAD4F
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Sep 2022 13:21:23 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 86A285AAD3E
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Sep 2022 13:14:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 34F4E60C0C;
-	Fri,  2 Sep 2022 11:21:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 34F4E60C0C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 450E882983;
+	Fri,  2 Sep 2022 11:14:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 450E882983
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s-ZA0XUNfBjr; Fri,  2 Sep 2022 11:21:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BPnTFt5lqui6; Fri,  2 Sep 2022 11:14:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D815F60769;
-	Fri,  2 Sep 2022 11:21:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D815F60769
+	by smtp1.osuosl.org (Postfix) with ESMTP id EBFA0824DD;
+	Fri,  2 Sep 2022 11:14:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EBFA0824DD
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 46E2C1BF82D
- for <devel@linuxdriverproject.org>; Fri,  2 Sep 2022 11:21:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5A6561BF82D
+ for <devel@linuxdriverproject.org>; Fri,  2 Sep 2022 11:14:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2280E82C21
- for <devel@linuxdriverproject.org>; Fri,  2 Sep 2022 11:21:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2280E82C21
+ by smtp1.osuosl.org (Postfix) with ESMTP id 34F2E82640
+ for <devel@linuxdriverproject.org>; Fri,  2 Sep 2022 11:14:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 34F2E82640
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ELy2nSfLvZ-S for <devel@linuxdriverproject.org>;
- Fri,  2 Sep 2022 11:21:16 +0000 (UTC)
-X-Greylist: delayed 00:10:02 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5881582BE5
-Received: from gxaoszxo.piglight.com (gxaoszxo.piglight.com [85.217.145.3])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5881582BE5
- for <devel@linuxdriverproject.org>; Fri,  2 Sep 2022 11:21:16 +0000 (UTC)
+ with ESMTP id uaFJhjmDEihl for <devel@linuxdriverproject.org>;
+ Fri,  2 Sep 2022 11:14:06 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6E1DA824DD
+Received: from gxaoszxo.piglight.com (unknown [85.217.145.3])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6E1DA824DD
+ for <devel@driverdev.osuosl.org>; Fri,  2 Sep 2022 11:14:06 +0000 (UTC)
 From: Amjad Ali<and.sco@piglight.com>
-To: devel@linuxdriverproject.org
+To: devel@driverdev.osuosl.org
 Subject: IMPORTANT!! Sir, I need your urgent response.
-Date: 02 Sep 2022 04:11:12 -0700
-Message-ID: <20220902041112.ACCE2B6C00EE98CB@piglight.com>
+Date: 02 Sep 2022 04:14:04 -0700
+Message-ID: <20220902041404.BB362AB821A55FC5@piglight.com>
 MIME-Version: 1.0
 X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
  d=piglight.com; 
- b=AcqLjeVMmYiq3m6kMyT51eFEyXt6jUpvJXvyijgsiKCDB4Y4vUpTZm2bF0CbQLOnBqTx2BQbEhUa
- gh1bG9DCIMATwV+LuLp/v6q1BrQciEELBrlQUwuCYjqLtOuhuvKneMMUqJSVLAH3fcuNWvVwulAt
- A9PqNYzdWwzC/zhNAs9+zDFrcOy/QmeRUQMlpe/abrPxHqcEaJPgk8V8qZcYYv7DOgM6elORItKk
- cZgmCe/9Y7rMLOYjXdmRsRccdo3FiU8eO0fQo62BtTiPuff+VT6mqi6Iafm1shTCKfafFlcTqjqo
- KbE/DfSkDbiB2THAz4jY7l/VZh7MZwuVN392vw==;
+ b=p4mGC3osFx6mAiKRQyuLZ3FAoB7JZ/ED6mot8d/w7oqtykfEqRQQoaHu8Zf0Jo4IIiGe4V9VpiOa
+ LnPeOHq9W4D5u8ASgrAN9xxrfd6feGzHjKT/Jsk44p8wLjBlVLMoAbMSayiHqzH3LtFG6JslRaom
+ 42vmV5jEv8ZaskUTlmqS0IKPuJrebEnn9NXcSTh28bK1j0vEQ6pu310w/j5Obfev5dlFxHMWM7V7
+ z+tEFWzLfxIf3IJ4nFOWndEIxOVlZJkdnnlyIV13BkoiCA3g3rt61ukiGwxk3S2QDIHsX2gOJRQg
+ 84T3QhVzLLRmpSLyr/BjsQzlXkNhbQjjvH3fBw==;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
  d=piglight.com; 
  h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
  i=and.sco@piglight.com; 
  bh=2RNxICSB08QOsISrgdgjONv4BIM=;
- b=UCll5XziF8hbQ61ihgLoK7hVdVdOVpAGca2k+Rw9eCG2O0MkcPEkYzoxpSn5PnIn467Cq+SuMaeE
- ng6TvhSY8SA8k28T+SNOwOTIBJS1Nl1xuwhVI+WJsrMIkYeFoPZTaE3wq7PE8O1jy7z21lulgpq1
- ecCYJjq/mcALFN0Fo0QYPIPV8AF7rwWrGuPZceN0qm3gtRxoyp728xYO6zRyJc1yskHcqAMV77yM
- 1gvOmEBMmsLAyfgfxQHYTQk+/XSaI6s4nD9r/jHAN5I6FSblSnSAb5h6dIzJGn+olikuc8RGuVy+
- CyDVC++wcBK/MP/JQpFe1RQaim4nwuZEYF37RA==
+ b=qI+XNMNpcNe6gcsVhqmD6FxhNMPriBSO3Reku3J3lK+FPGxCBScY+CTiaojT009Omas/XdpNU2Cl
+ 9gghrkpc15Qa1zVJWa+YVmNMd/v92PR5ZQXHVjLNcI65aWLl9Fhq5Po8DZwiJw93/exjL5j96Iwn
+ l1G9XhoFM9yXlMczq6BhTYeDPtgx+7hYBHsn9kod0iN0RrZEnrD4bLqekm3daNY5FhISFgttgpOl
+ j7ksEnu7PdrmWyylSnktYaUcVZoyZRra+NHgKPNX4bcdFq2ujqAAUc23zmCUihbLzckZYVdMeeml
+ Bt080yEBZ4L3hyI6DSrm8ut0YRe5nTBHzR+Nbw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=piglight.com header.i=and.sco@piglight.com
- header.a=rsa-sha1 header.s=dkim header.b=UCll5Xzi
+ header.a=rsa-sha1 header.s=dkim header.b=qI+XNMNp
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
