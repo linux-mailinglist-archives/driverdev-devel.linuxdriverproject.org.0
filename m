@@ -2,56 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41AFD5AB9A8
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Sep 2022 22:54:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 77EBC5AB9A9
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Sep 2022 22:55:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 96CC6415D6;
-	Fri,  2 Sep 2022 20:54:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 96CC6415D6
+	by smtp4.osuosl.org (Postfix) with ESMTP id EAFD2415D6;
+	Fri,  2 Sep 2022 20:55:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EAFD2415D6
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aSf9ovSj8QzV; Fri,  2 Sep 2022 20:54:49 +0000 (UTC)
+	with ESMTP id lQgHd89KocOJ; Fri,  2 Sep 2022 20:55:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 16555409D3;
-	Fri,  2 Sep 2022 20:54:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 16555409D3
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6B4F5409D3;
+	Fri,  2 Sep 2022 20:55:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6B4F5409D3
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B5AD11BF3BE
- for <devel@linuxdriverproject.org>; Fri,  2 Sep 2022 20:54:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5C8A91BF3BE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Sep 2022 20:55:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8F17B41525
- for <devel@linuxdriverproject.org>; Fri,  2 Sep 2022 20:54:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8F17B41525
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3670841525
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Sep 2022 20:55:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3670841525
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ymSRdttGyQp8 for <devel@linuxdriverproject.org>;
- Fri,  2 Sep 2022 20:54:46 +0000 (UTC)
+ with ESMTP id 4MPwXdhLRmaQ
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Sep 2022 20:55:16 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BD6D6409D3
-Received: from mail104.syd.optusnet.com.au (mail104.syd.optusnet.com.au
- [211.29.132.246])
- by smtp4.osuosl.org (Postfix) with ESMTP id BD6D6409D3
- for <devel@driverdev.osuosl.org>; Fri,  2 Sep 2022 20:54:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 35BF5409D3
+Received: from mail105.syd.optusnet.com.au (mail105.syd.optusnet.com.au
+ [211.29.132.249])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 35BF5409D3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  2 Sep 2022 20:55:16 +0000 (UTC)
 Received: from [141.95.80.68] (n175-32-146-115.meb1.vic.optusnet.com.au
  [175.32.146.115])
- by mail104.syd.optusnet.com.au (Postfix) with ESMTP id A1CAB62E1CF;
- Sat,  3 Sep 2022 06:54:31 +1000 (AEST)
+ by mail105.syd.optusnet.com.au (Postfix) with ESMTP id D798C10E95F5;
+ Sat,  3 Sep 2022 06:55:02 +1000 (AEST)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: my subject
 To: Recipients <kg984hf66575767@optus.com.au>
 From: "Mrs.Kristalina Georgieva" <kg984hf66575767@optus.com.au>
-Date: Fri, 02 Sep 2022 13:54:15 -0700
+Date: Fri, 02 Sep 2022 13:54:43 -0700
 X-Optus-CM-Score: 0
-X-Optus-CM-Analysis: v=2.4 cv=OJNEYQWB c=1 sm=1 tr=0 ts=63126d93
+X-Optus-CM-Analysis: v=2.4 cv=VuxAv86n c=1 sm=1 tr=0 ts=63126db2
  a=BMX17/AS/RRaKR/K0aLlfA==:117 a=BMX17/AS/RRaKR/K0aLlfA==:17
  a=HpEJnUlJZJkA:10 a=8nJEP1OIZ-IA:10 a=gJybXteCMXIA:10
  a=WIs_F5swev6D_-ZPtHYA:9 a=wPNLvfGTeEIA:10
-Message-Id: <20220902205446.8F17B41525@smtp4.osuosl.org>
+Message-Id: <20220902205517.3670841525@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
