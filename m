@@ -1,58 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A51A75B4A60
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Sep 2022 23:47:56 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 970DB5B48C1
+	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Sep 2022 22:23:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A3AD384077;
-	Sat, 10 Sep 2022 21:47:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A3AD384077
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4B31C84078;
+	Sat, 10 Sep 2022 20:23:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4B31C84078
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uE1RxYVrkp60; Sat, 10 Sep 2022 21:47:49 +0000 (UTC)
+	with ESMTP id IXdULgfKEdAk; Sat, 10 Sep 2022 20:23:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6A8C284059;
-	Sat, 10 Sep 2022 21:47:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6A8C284059
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1232784077;
+	Sat, 10 Sep 2022 20:23:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1232784077
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 229681BF489
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Sep 2022 21:47:45 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 17D461BF34E
+ for <devel@linuxdriverproject.org>; Sat, 10 Sep 2022 20:23:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E77BB60E52
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Sep 2022 21:47:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E77BB60E52
+ by smtp4.osuosl.org (Postfix) with ESMTP id DBD6D41BEE
+ for <devel@linuxdriverproject.org>; Sat, 10 Sep 2022 20:23:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DBD6D41BEE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3jRpGiXzkaWV
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Sep 2022 21:47:42 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6Wb2pSarz7Dr for <devel@linuxdriverproject.org>;
+ Sat, 10 Sep 2022 20:23:00 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0BFFB60C07
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 99A9D41BD6
 Received: from mail.ieulps.com (unknown [112.169.232.251])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0BFFB60C07
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Sep 2022 21:47:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 99A9D41BD6
+ for <devel@driverdev.osuosl.org>; Sat, 10 Sep 2022 20:23:00 +0000 (UTC)
 Received: from [103.167.91.37] (unknown [103.167.91.37])
  (Authenticated sender: homepage)
- by mail.ieulps.com (Postfix) with ESMTPA id A15D9164227;
- Fri,  9 Sep 2022 03:45:10 +0900 (KST)
+ by mail.ieulps.com (Postfix) with ESMTPA id 0738016A1E0;
+ Fri,  9 Sep 2022 03:45:21 +0900 (KST)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Relief PaymentFunds
 To: Recipients <info@prismstandard.org>
 From: "Qatar Foundation" <info@prismstandard.org>
-Date: Thu, 08 Sep 2022 11:45:03 -0700
-X-MailScanner-ID: A15D9164227.A6E2F
+Date: Thu, 08 Sep 2022 11:45:16 -0700
+X-MailScanner-ID: 0738016A1E0.A7684
 X-MailScanner: Found to be clean
 X-MailScanner-From: info@prismstandard.org
-Message-Id: <20220910214744.E77BB60E52@smtp3.osuosl.org>
+Message-Id: <20220910202301.DBD6D41BEE@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
