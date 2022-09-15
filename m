@@ -1,40 +1,40 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D43345B992C
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Sep 2022 12:54:23 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 94EAF5B992E
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Sep 2022 12:54:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2DA7F60FF0;
-	Thu, 15 Sep 2022 10:54:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2DA7F60FF0
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8EE2E82C33;
+	Thu, 15 Sep 2022 10:54:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8EE2E82C33
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Y8HCkHnd_8It; Thu, 15 Sep 2022 10:54:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jyzBqfjAd3l0; Thu, 15 Sep 2022 10:54:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EA85F60F7C;
-	Thu, 15 Sep 2022 10:54:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EA85F60F7C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3DE3E83422;
+	Thu, 15 Sep 2022 10:54:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3DE3E83422
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3548E1BF59D
- for <devel@linuxdriverproject.org>; Thu, 15 Sep 2022 10:54:17 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AC3641BF59D
+ for <devel@linuxdriverproject.org>; Thu, 15 Sep 2022 10:54:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0F944401A4
- for <devel@linuxdriverproject.org>; Thu, 15 Sep 2022 10:54:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0F944401A4
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9461C82C33
+ for <devel@linuxdriverproject.org>; Thu, 15 Sep 2022 10:54:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9461C82C33
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id im78Fgm-a1CR for <devel@linuxdriverproject.org>;
- Thu, 15 Sep 2022 10:54:16 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id i4MmeWIH-r0E for <devel@linuxdriverproject.org>;
+ Thu, 15 Sep 2022 10:54:24 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4AE9040133
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E2A66828D1
 Received: from mta-out-02.alice.it (mta-out-02.alice.it [217.169.118.8])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4AE9040133
- for <devel@driverdev.osuosl.org>; Thu, 15 Sep 2022 10:54:16 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E2A66828D1
+ for <devel@linuxdriverproject.org>; Thu, 15 Sep 2022 10:54:23 +0000 (UTC)
 X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgedvfedrfedukedgfeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuvffgnffgvefqoffkvfetnffktedpqfgfvfenuceurghilhhouhhtmecufedtudenucgoteeftdduqddtudculdduhedmnecujfgurheptggggffuvffhffhrsehtqhdttddttddunecuhfhrohhmpedftfhifhgrrghtucetsghouhgufdcuoehgihhovghludeisehtihhmrdhitheqnecuggftrfgrthhtvghrnhepkeeflefhkeeihefhgfdttefffeduvddujeffheffgfffkeevvdejleeuiefhhfelnecukfhppedufedtrddvhedruddtkedrvdduvdenucevlhhushhtvghrufhiiigvpeegieenucfrrghrrghmpehhvghloheplgdugedurdelkedriedrieehngdpihhnvghtpedufedtrddvhedruddtkedrvdduvddpmhgrihhlfhhrohhmpehgihhovghludeisehtihhmrdhithdpnhgspghrtghpthhtohepudekpdhrtghpthhtohepuggvvhgvrghugiesuhhrihgttghhihhordgtohhmpdhrtghpthhtohepuggvvhgvsgesshgthhgvnhgtkhdrtghordhukhdprhgtphhtthhopeguvghvvggvpggvlhgvtghtrhhitggrlhesrhgvughifhhfmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhgvvghmuhhlthhifhhoohgusehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhgvghgrlhgrfiesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvvghgrghvihguvghoseifrgii
  iihurdhnvghtpdhrtghpthhtohepuggvvhgvghhofigurghgsehgmhgrihhlrdgtohhmpdhrtghpthhtohepuggvvhgvihhnvgguseihrghhohhordgtohhmrdhtfidprhgtphhtthhopeguvghvvghlrdhmrghrihgrnhdrshgtvghrsggrkhesghhmrghilhdrtghomhdprhgtphhtthhopeguvghvvghlsegsrhhoughordguvgdprhgtphhtthhopeguvghvvghlsegtthhvrdgvshdprhgtphhtthhopeguvghvvghlsegurghvvgdrvghupdhrtghpthhtohepuggvvhgvlhesughrihhvvghruggvvhdrohhsuhhoshhlrdhorhhgpdhrtghpthhtohepuggvvhgvlhesfhhrvggvthihphgvrdhorhhgpdhrtghpthhtohepuggvvhgvlhesfhhrvghsshgvrdhorhhgpdhrtghpthhtohepuggvvhgvlhesihhonhgvshgtuhdruggvpdhrtghpthhtohepuggvvhgvlhesihhtrdhsuhdrshgvpdhrtghpthhtohepuggvvhgvlheslhhinhhugigurhhivhgvrhhprhhojhgvtghtrdhorhhgpdhrvghvkffrpehnvghtqddufedtqddvhedquddtkedqvdduvddrtghushhtrdhvohgurghfohhnvggushhlrdhithdprghuthhhpghushgvrhepghhiohgvlhduieesthhimhdrihhtpdhgvghoihhppefkvfdpmhhtrghhohhstheprhgriihorhdqohhuthdqrghlihgtvgdqtddv
 X-RazorGate-Vade-Verdict: clean 15
@@ -51,14 +51,14 @@ To: gioel16@tim.it
 From: "Rifaat Aboud" <gioel16@tim.it>
 Date: Thu, 15 Sep 2022 03:53:53 -0700
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=tim.it; s=20211207; t=1663239256; 
+ d=tim.it; s=20211207; t=1663239264; 
  bh=xY6rawfOnSMJA0kE6Yia8b+L5XTC2EPgOWgkHK1YxqI=;
  h=Message-ID:Content-Type:MIME-Version:Content-Transfer-Encoding:Content-Description:Subject:To:From:Date:Reply-To;
- b=OklRVt4LFFbwjhY6/nWUB5wvuPFwdFIqyHXClBGBdnx9F8YFutf/5ENF2CSaxNiypVQ6y/vMeMldDzj1NnuQlt36jXM4pKCd1fd5Eeyylrz+YU/gi0wepNG6Ba1GqHO813gL9wM1nA/OQaKBKsOtYsjlMaFS1Fc2c5UPeqJfJjkucidHmo3/f14O56mMiE8HC6E2BWxE402Fjl461AFElbcB5yW7Y7o/TIhaRW9nS2EjBvrWAfw1JJY2vPjhG1NfVaIVfJxERA4Vi0/SZ8FaEr2yZA/UZ3WU3x+clSdxQzhOEaHoszfiDa2AjDTVpLWkAZvINiJC8QboqY/BYaBOwA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=iVGOYkqiawssFhDWPAMq8fL/iYJDxBU90EPx+XFK82Ul0pXjdzGRYK4tM+BDDWM2HQMnvxEJ5OiX5GIpWwa2FnVh5pLbzEodJoQipYaE9QzONo61HUIMKxLR3/HJB66x6UFWfmPJ0scMu8yLHXz/FwyJBjaFTWPxJDjnWcP7IEISR/1Gk6RbmcbghNxpYLynU7PAHyZyVaEUcor2ycQiV/VcsE40k+CP4EJVdYrKIYsMy8F7fxGuGMinVd9f4jwonq3b6sHrh65le3+5PJIIhO9It7PaTerW+yhwsrz8yFVkGtBvRsdJIpLk7Hip8f8mHjkCttDbhQDbxVc5Srj9XA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=fail reason="signature verification failed" (2048-bit key)
  header.d=tim.it header.i=@tim.it header.a=rsa-sha256 header.s=20211207
- header.b=OklRVt4L
+ header.b=iVGOYkqi
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
