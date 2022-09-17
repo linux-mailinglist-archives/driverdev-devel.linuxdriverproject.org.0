@@ -2,51 +2,69 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 883D95BDFA8
-	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Sep 2022 10:17:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CE4865BE939
+	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Sep 2022 16:43:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8AE1860E03;
-	Tue, 20 Sep 2022 08:17:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8AE1860E03
+	by smtp3.osuosl.org (Postfix) with ESMTP id 55CA860F74;
+	Tue, 20 Sep 2022 14:43:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 55CA860F74
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F93GqY92Wgkn; Tue, 20 Sep 2022 08:17:28 +0000 (UTC)
+	with ESMTP id WttAbKjAc_R8; Tue, 20 Sep 2022 14:43:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 33D35600D4;
-	Tue, 20 Sep 2022 08:17:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 33D35600D4
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0285D60F68;
+	Tue, 20 Sep 2022 14:43:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0285D60F68
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DD2F61BF30C
- for <devel@linuxdriverproject.org>; Tue, 20 Sep 2022 08:17:25 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4413B1BF3A9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 20 Sep 2022 14:43:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B881160E03
- for <devel@linuxdriverproject.org>; Tue, 20 Sep 2022 08:17:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B881160E03
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1FB7B812EC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 20 Sep 2022 14:43:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1FB7B812EC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xEfz-kUyXdUz for <devel@linuxdriverproject.org>;
- Tue, 20 Sep 2022 08:17:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id afHl4xg9dSrF
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 20 Sep 2022 14:43:40 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4A7E360DFE
-Received: from localhost.localdomain (unknown [50.3.111.83])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4A7E360DFE
- for <devel@driverdev.osuosl.org>; Tue, 20 Sep 2022 08:17:25 +0000 (UTC)
-Received: from User (localhost [IPv6:::1])
- by localhost.localdomain (Postfix) with SMTP id 778284D4FA6;
- Tue, 20 Sep 2022 01:47:14 -0400 (EDT)
-From: "Eman Ismail"<ismaileman@masrafcapitals.com>
-Subject: RE: INVESTORS
-Date: Mon, 19 Sep 2022 22:47:20 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 75873812B7
+Received: from correo.tlalpan.cdmx.gob.mx (correo.tlalpan.cdmx.gob.mx
+ [189.202.180.34])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 75873812B7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 20 Sep 2022 14:43:40 +0000 (UTC)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by correo.tlalpan.cdmx.gob.mx (Postfix) with ESMTP id 75DF81A1DBAF;
+ Mon, 19 Sep 2022 00:12:59 -0500 (CDT)
+Received: from correo.tlalpan.cdmx.gob.mx ([127.0.0.1])
+ by localhost (correo.tlalpan.cdmx.gob.mx [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id a-dX1FwJhfrL; Mon, 19 Sep 2022 00:12:59 -0500 (CDT)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by correo.tlalpan.cdmx.gob.mx (Postfix) with ESMTP id 79231FB1796;
+ Sun, 18 Sep 2022 07:15:33 -0500 (CDT)
+X-Virus-Scanned: amavisd-new at tlalpan.cdmx.gob.mx
+Received: from correo.tlalpan.cdmx.gob.mx ([127.0.0.1])
+ by localhost (correo.tlalpan.cdmx.gob.mx [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id Txf490gw--7O; Sun, 18 Sep 2022 07:15:33 -0500 (CDT)
+Received: from [192.168.0.119] (unknown [93.182.106.53])
+ by correo.tlalpan.cdmx.gob.mx (Postfix) with ESMTPSA id 9AD9111FAD5D;
+ Sat, 17 Sep 2022 18:58:36 -0500 (CDT)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20220920054714.778284D4FA6@localhost.localdomain>
+Content-Description: Mail message body
+Subject: RE
+To: Recipients <drfyp@tlalpan.cdmx.gob.mx>
+From: drfyp@tlalpan.cdmx.gob.mx
+Date: Sun, 18 Sep 2022 02:58:57 +0300
+X-Antivirus: Avast (VPS 220917-8, 9/17/2022), Outbound message
+X-Antivirus-Status: Clean
+Message-Id: <20220917235836.9AD9111FAD5D@correo.tlalpan.cdmx.gob.mx>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,24 +77,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ismaileman001@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: fp462558@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Salaam,
+$3.5 Million Has Been Donated To You,By Fran=E7ois Pinault due to the covid=
+-19 pandemic this is Real Get back For More Info
 
-We have direct mandate from our investors to seek new business opportunities and projects for possible funding and capital financing. Our investors are from the gulf region and intend to invest in viable ventures or projects which you are currently executing or intend to embark upon as a means of expanding their global portfolio. We are open to further discussions on this subject through any medium you deem appropriate.
+WhatsApp: +447441443051
 
-Thanks, and Stay Safe.
+-- =
 
-
-Regards.
-
-Eman Ismail
-Head of Finance & Administration
-Masraf Capitals LLC
+This email has been checked for viruses by Avast antivirus software.
+www.avast.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
