@@ -1,63 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D95BC5BB49C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Sep 2022 01:06:55 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71DDE5BB652
+	for <lists+driverdev-devel@lfdr.de>; Sat, 17 Sep 2022 06:54:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AF2B884320;
-	Fri, 16 Sep 2022 23:06:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AF2B884320
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6701C84247;
+	Sat, 17 Sep 2022 04:54:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6701C84247
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JTcJLoRzOuwP; Fri, 16 Sep 2022 23:06:51 +0000 (UTC)
+	with ESMTP id zI8zaGHLubcp; Sat, 17 Sep 2022 04:54:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7AF2C8431E;
-	Fri, 16 Sep 2022 23:06:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7AF2C8431E
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 251E283EC2;
+	Sat, 17 Sep 2022 04:54:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 251E283EC2
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D4BD01BF3A0
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 16 Sep 2022 23:06:46 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 241EA1BF27A
+ for <devel@linuxdriverproject.org>; Sat, 17 Sep 2022 04:54:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AFF816FAEF
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 16 Sep 2022 23:06:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AFF816FAEF
+ by smtp4.osuosl.org (Postfix) with ESMTP id 05B1641C3C
+ for <devel@linuxdriverproject.org>; Sat, 17 Sep 2022 04:54:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 05B1641C3C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MlkJQAf51wmM
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 16 Sep 2022 23:06:46 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2319C610EA
-Received: from mta0.lukesengineering.com (mta0.lukesengineering.com
- [85.239.52.125])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2319C610EA
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 16 Sep 2022 23:06:46 +0000 (UTC)
-From: Northey Peter<call@lukesengineering.com>
-To: driverdev-devel@linuxdriverproject.org
-Subject: Business Proposal
-Date: 16 Sep 2022 19:06:44 -0400
-Message-ID: <20220916190644.C353B89EE0DE0C5C@lukesengineering.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1aijQewra5Er for <devel@linuxdriverproject.org>;
+ Sat, 17 Sep 2022 04:54:40 +0000 (UTC)
+X-Greylist: delayed 01:00:03 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 83A9341C36
+Received: from mail.uni-bonn.de (mail.uni-bonn.de [131.220.15.113])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 83A9341C36
+ for <devel@driverdev.osuosl.org>; Sat, 17 Sep 2022 04:54:40 +0000 (UTC)
+Received: from [41.216.203.116] (account aestrada@uni-bonn.de)
+ by uni-bonn.de (CommuniGate Pro XIMSS 6.3.13)
+ with HTTPU id 5430782; Sat, 17 Sep 2022 05:54:34 +0200
+X-Mailer: Samoware HTML5 6.3.0001
+Subject: Belangrijk bericht
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- s=default; d=lukesengineering.com; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
- Content-Transfer-Encoding; i=call@lukesengineering.com;
- bh=62iEd6g3uAsdNWFQ+6C/KLYPsXQB2Gh1jIwXfTdBSwk=;
- b=zwvTmDEJXykKxQ7aBwf1HA/+u6JmJvodcevEuK9KFJcEGDC3h+MbRmQFZtJ+gdOM/1lwfX3PrO3l
- Dx098ADZkHMIm6ASeCKkf9rWEtb8mvcQXJ5nE+KYpH377l01iWwzn4tfusJDY37fvSsbggyqpDAG
- IWM73GDnJFylAOS3dVs=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=lukesengineering.com
- header.i=call@lukesengineering.com header.a=rsa-sha256 header.s=default
- header.b=zwvTmDEJ
+From: "Meta" <aestrada@uni-bonn.de>
+Date: Sat, 17 Sep 2022 05:54:34 +0200
+Message-ID: <ximss-5430783@be1.uni-bonn.de>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,29 +56,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: northeypeter112@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear driverdev-devel@linuxdriverproject.org,
-
-I am Peter Northey, Research Assistant at one of the leading 
-UK Pharmaceutical Companies. I have a business proposal for 
-you which is worth a substantial amount and will save lives 
-too. I would be glad to receive your acknowledgement of this 
-email so I can furnish you more with details of my proposal 
-for your consideration. Please give me the opportunity to 
-explain to you in detail what the business is all about by 
-replying back to me. Note: You have the right to quit by the 
-end of my detailed explanation and you don't feel like 
-moving forward with me. But Trust me, you won't regret it.
-
-
-Best Regards,
-Mr Peter Northey
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+QmVzdGUgTUVUQS1nZWJydWlrZXI6CgpXZSB3aWxsZW4gdSBncmFhZyBsYXRlbiB3ZXRlbiBkYXQg
+dXcgZS1tYWlsYWNjb3VudCBlZW4gZ2VsZHByaWpzIHZhbiDigqwgCjEsODAyLDAwMC4wMCBoZWVm
+dCBnZXdvbm5lbiBvcCBkZSBNRVRBIChGYWNlYm9vayktYWN0aWUgdm9vciAyMDIyLgoKR2VmZWxp
+Y2l0ZWVyZCBtZXQgaGV0IGZlaXQgZGF0IGplIGVlbiB2YW4gZGUgbWVuc2VuIGJlbnQgZGllIHdl
+IGtpZXplbi4gV2UgCnJhZGVuIHUgYWFuIGRlIHZvbGdlbmRlIGluZm9ybWF0aWUgbmFhciBoZXQg
+TUVUQS1kaXJlY3RpZWthbnRvb3IgdGUgc3R1cmVuIApvbSB1dyBrbGFjaHRlbiB0ZSB2ZXJ3ZXJr
+ZW4uCgoxLiBWb2xsZWRpZ2UgbmFhbToKMi4gTGFuZDoKMy4gQ29udGFjdGFkcmVzOgo0LiBUZWxl
+Zm9vbm51bW1lcjoKNS4gQmVyb2VwOgo2LiBMZWVmdGlqZDoKCihPbSB2ZWlsaWdoZWlkc3JlZGVu
+ZW4gcmFkZW4gd2UgYWxsZSB3aW5uYWFycyBhYW4gZGV6ZSBpbmZvcm1hdGllIHZvb3IgaGV0IApw
+dWJsaWVrIHZlcnRyb3V3ZWxpamsgdGUgaG91ZGVuIHRvdGRhdCB1dyBjbGFpbSBpcyB2ZXJ3ZXJr
+dCBlbiBhYW4gdSBpcyAKdmVyc3RyZWt0LiBEaXQgbWFha3QgZGVlbCB1aXQgdmFuIG9ucyBiZXZl
+aWxpZ2luZ3Nwcm90b2NvbCBvbSBkdWJiZWxlIGNsYWltcyAKdGUgdm9vcmtvbWVuKQoKT3BtZXJr
+aW5nOiBhbGxlIGluZm9ybWF0aWUgbW9ldCB3b3JkZW4gaW5nZXN0ZWxkIG9wIG9ucyBvZmZpY2nD
+q2xlIAplLW1haWxhZHJlcy4gICAgZmJAZndpcmViLmNvbQoKS2FiaW5ldCB2YW4gZGUgcHJlc2lk
+ZW50CkNFTyB2YW4gRmFjZWJvb2sgTUVUQQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9q
+ZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
