@@ -1,68 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2A9B5E7BFD
-	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Sep 2022 15:36:12 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C75F95E7BFF
+	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Sep 2022 15:36:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 680C240C90;
-	Fri, 23 Sep 2022 13:36:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 680C240C90
+	by smtp2.osuosl.org (Postfix) with ESMTP id 53FF040B84;
+	Fri, 23 Sep 2022 13:36:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 53FF040B84
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZTdc46TGA5tr; Fri, 23 Sep 2022 13:36:09 +0000 (UTC)
+	with ESMTP id PH_Vi2Ydx8I6; Fri, 23 Sep 2022 13:36:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 66B5340B9D;
-	Fri, 23 Sep 2022 13:36:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 66B5340B9D
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0516440B7D;
+	Fri, 23 Sep 2022 13:36:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0516440B7D
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B533C1BF30F
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Sep 2022 13:36:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0331F1BF30F
+ for <devel@linuxdriverproject.org>; Fri, 23 Sep 2022 13:36:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8E3D5418FF
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Sep 2022 13:36:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8E3D5418FF
+ by smtp4.osuosl.org (Postfix) with ESMTP id D06E4418FD
+ for <devel@linuxdriverproject.org>; Fri, 23 Sep 2022 13:36:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D06E4418FD
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GBw_BX49ZUoA
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Sep 2022 13:36:03 +0000 (UTC)
+ with ESMTP id ZGUEhnHLevbU for <devel@linuxdriverproject.org>;
+ Fri, 23 Sep 2022 13:36:14 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B1ABD418BE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 07803418BE
 Received: from mail.bamfieldmsc.com (mail.bamfieldmsc.com [205.250.85.195])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B1ABD418BE
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Sep 2022 13:36:03 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 07803418BE
+ for <devel@linuxdriverproject.org>; Fri, 23 Sep 2022 13:36:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.bamfieldmsc.com (Postfix) with ESMTP id 36EFE24093E2D
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Sep 2022 06:36:03 -0700 (PDT)
+ by mail.bamfieldmsc.com (Postfix) with ESMTP id 7A86624093E28
+ for <devel@linuxdriverproject.org>; Fri, 23 Sep 2022 06:36:13 -0700 (PDT)
 X-Virus-Scanned: amavisd-new at bamfieldmsc.com
 Received: from mail.bamfieldmsc.com ([127.0.0.1])
  by localhost (mail.bamfieldmsc.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7EqJ0jx1KkG5
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Sep 2022 06:36:02 -0700 (PDT)
+ with ESMTP id LDClstA4wLgT for <devel@linuxdriverproject.org>;
+ Fri, 23 Sep 2022 06:36:12 -0700 (PDT)
 Received: from localhost (localhost [127.0.0.1])
- by mail.bamfieldmsc.com (Postfix) with ESMTP id A028424093E38
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Sep 2022 06:35:34 -0700 (PDT)
+ by mail.bamfieldmsc.com (Postfix) with ESMTP id 6AD4E24093890
+ for <devel@linuxdriverproject.org>; Fri, 23 Sep 2022 06:36:00 -0700 (PDT)
 Received: from [103.232.55.176] (unknown [103.232.55.176])
- by mail.bamfieldmsc.com (Postfix) with ESMTPSA id 8746024093E2B;
- Fri, 23 Sep 2022 06:35:30 -0700 (PDT)
+ by mail.bamfieldmsc.com (Postfix) with ESMTPSA id 6B5842409412C;
+ Fri, 23 Sep 2022 06:35:56 -0700 (PDT)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Hello Dear
 To: Recipients <info@contorli.site>
 From: "Barrister Miguel Felipe Nesto Esq"<info@contorli.site>
-Date: Fri, 23 Sep 2022 06:35:25 -0700
-Message-Id: <20220923133534.A028424093E38@mail.bamfieldmsc.com>
+Date: Fri, 23 Sep 2022 06:35:51 -0700
+Message-Id: <20220923133600.6AD4E24093890@mail.bamfieldmsc.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
