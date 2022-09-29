@@ -1,80 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E07C55EF5FB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Sep 2022 15:04:58 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B965E5EF885
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Sep 2022 17:19:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4C055419AF;
-	Thu, 29 Sep 2022 13:04:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4C055419AF
+	by smtp1.osuosl.org (Postfix) with ESMTP id DD45B83E9F;
+	Thu, 29 Sep 2022 15:19:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DD45B83E9F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ePZYmSQHTb6U; Thu, 29 Sep 2022 13:04:53 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bU_p13VBOBkq; Thu, 29 Sep 2022 15:19:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5A1DA419CC;
-	Thu, 29 Sep 2022 13:04:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5A1DA419CC
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8171C83F0D;
+	Thu, 29 Sep 2022 15:19:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8171C83F0D
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9BB0B1BF2B4
- for <devel@linuxdriverproject.org>; Thu, 29 Sep 2022 13:04:48 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DEFFB1BF476
+ for <devel@linuxdriverproject.org>; Thu, 29 Sep 2022 15:19:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 739A160B97
- for <devel@linuxdriverproject.org>; Thu, 29 Sep 2022 13:04:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 739A160B97
+ by smtp1.osuosl.org (Postfix) with ESMTP id B6C3A83E9F
+ for <devel@linuxdriverproject.org>; Thu, 29 Sep 2022 15:19:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B6C3A83E9F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 93ehmTWeDUeC for <devel@linuxdriverproject.org>;
- Thu, 29 Sep 2022 13:04:45 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id i5-5-R8JqGKP for <devel@linuxdriverproject.org>;
+ Thu, 29 Sep 2022 15:19:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3438A60B3F
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3438A60B3F
- for <devel@driverdev.osuosl.org>; Thu, 29 Sep 2022 13:04:45 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10485"; a="281599740"
-X-IronPort-AV: E=Sophos;i="5.93,355,1654585200"; d="scan'208";a="281599740"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Sep 2022 06:04:36 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 73C5183E9A
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 73C5183E9A
+ for <devel@driverdev.osuosl.org>; Thu, 29 Sep 2022 15:19:42 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10485"; a="301899466"
+X-IronPort-AV: E=Sophos;i="5.93,355,1654585200"; d="scan'208";a="301899466"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Sep 2022 08:19:40 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10485"; a="653102342"
-X-IronPort-AV: E=Sophos;i="5.93,355,1654585200"; d="scan'208";a="653102342"
+X-IronPort-AV: E=McAfee;i="6500,9779,10485"; a="622396392"
+X-IronPort-AV: E=Sophos;i="5.93,355,1654585200"; d="scan'208";a="622396392"
 Received: from lkp-server01.sh.intel.com (HELO 6126f2790925) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 29 Sep 2022 06:04:33 -0700
+ by orsmga002.jf.intel.com with ESMTP; 29 Sep 2022 08:19:38 -0700
 Received: from kbuild by 6126f2790925 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1odtDN-00019I-0D;
- Thu, 29 Sep 2022 13:04:33 +0000
-Date: Thu, 29 Sep 2022 21:04:09 +0800
+ (envelope-from <lkp@intel.com>) id 1odvK5-0001FY-1Z;
+ Thu, 29 Sep 2022 15:19:37 +0000
+Date: Thu, 29 Sep 2022 23:19:06 +0800
 From: kernel test robot <lkp@intel.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:kobject-const 11/14]
- drivers/vdpa/vdpa_user/vduse_dev.c:1792:30: error: assignment to 'char *
- (*)(const struct device *, umode_t *)' {aka 'char * (*)(const struct device
- *, short unsigned int *)'} from incompatible pointer type 'char * (*)(struct
- device *, umode_t *)' {aka 'c...
-Message-ID: <202209292145.IpKHcpr3-lkp@intel.com>
+Subject: [driver-core:kobject-const 15/18] drivers/s390/cio/css.c:1427:21:
+ error: initialization of 'int (*)(const struct device *, struct
+ kobj_uevent_env *)' from incompatible pointer type 'int (*)(struct device *,
+ struct kobj_uevent_env *)'
+Message-ID: <202209292354.1kpF6NCQ-lkp@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="skf2p+m2y4l2e2Kr"
+Content-Type: multipart/mixed; boundary="Qnf4Fpr1s8uK7N2k"
 Content-Disposition: inline
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1664456685; x=1695992685;
+ t=1664464782; x=1696000782;
  h=date:from:to:cc:subject:message-id:mime-version;
- bh=hYWqbL0uAfdLN1a6e+zYsSKPRW3k7eMk5Q1vzPwdLVQ=;
- b=UrR39RcVTreIpqcAfxR8d6C0a8RzbkS5eZMn/GB7vI/oWi0v+31waUhu
- /Jr3DzvnIWqi23xnX4PhlW5hsRc1VIvMU/9feNxFKBsssP4lAKsDtGbs1
- B9xpZzaW3ueI+Hw6p8Ay2rtqzjkzyLYtWIt0RACA4G+lvMalS+WkaljnV
- gYrInJpW/4WhZ4SmXHBl/YTGZMofw7g+VVhlVkHJWu6eL68z8gndNc0DN
- WPZx7/7IN0tVVSEnFl5CDi8eI+gGnLgs+W2T26MYAmx0bJucqHy7gvTMc
- D/upBugcSTu5LuS7LlZrxM8AbKA37jM9U9C7LgQgW//NuBhsrAivPEXEY
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=CqJutrFvrHVJEgrHtIV5I5SYOgVP8A+gATnnreT3LjI=;
+ b=gLcqI5PiTqOZdntgK4+EpXVWFve+8kbfRO8K/hqwbz4FeqZ4yR7jBb7x
+ VwaeW5FS9yntnUFF6j1s/HzpT2+yr64jK0/nfLsUF/KyeDmTPsUpnQwQr
+ QNGnZJGno94xVlXMFfn2HRWcQauP5jTgb+lH+e3fchwo/zjd0o9jzQSIC
+ gwbnEE0gBKPJbqei8aE8VWqXCtV/ctPygh/IAGhtny01OivegBZAaaGjc
+ E2cpdRabcjJGVer/yQb+jstidgLfwulLq0/Si3eXPMsekWw4jqOjvUnmp
+ y/qOuW/clCW/7lz02o3+su3+q/85IZD1omuIsVWa6dfD8j1jJ0+RTpsFa
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=UrR39RcV
+ header.a=rsa-sha256 header.s=Intel header.b=gLcqI5Pi
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,123 +92,80 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
---skf2p+m2y4l2e2Kr
+--Qnf4Fpr1s8uK7N2k
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const
 head:   4c12c0413887fb8f76e86ff52c9ef37992c93788
-commit: f5d68da0e1475938c82f4956a3e3e97e35395d84 [11/14] driver core: make struct class.devnode() take a const *
+commit: 4c12c0413887fb8f76e86ff52c9ef37992c93788 [15/18] driver core: make struct bus_type.uevent() take a const *
 config: s390-allmodconfig
 compiler: s390-linux-gcc (GCC) 12.1.0
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?id=f5d68da0e1475938c82f4956a3e3e97e35395d84
+        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?id=4c12c0413887fb8f76e86ff52c9ef37992c93788
         git remote add driver-core https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git
         git fetch --no-tags driver-core kobject-const
-        git checkout f5d68da0e1475938c82f4956a3e3e97e35395d84
+        git checkout 4c12c0413887fb8f76e86ff52c9ef37992c93788
         # save the config file
         mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=s390 SHELL=/bin/bash drivers/vdpa/vdpa_user/
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=s390 SHELL=/bin/bash drivers/s390/
 
 If you fix the issue, kindly add following tag where applicable
 | Reported-by: kernel test robot <lkp@intel.com>
 
 All errors (new ones prefixed by >>):
 
-   drivers/vdpa/vdpa_user/vduse_dev.c: In function 'vduse_init':
->> drivers/vdpa/vdpa_user/vduse_dev.c:1792:30: error: assignment to 'char * (*)(const struct device *, umode_t *)' {aka 'char * (*)(const struct device *, short unsigned int *)'} from incompatible pointer type 'char * (*)(struct device *, umode_t *)' {aka 'char * (*)(struct device *, short unsigned int *)'} [-Werror=incompatible-pointer-types]
-    1792 |         vduse_class->devnode = vduse_devnode;
-         |                              ^
+>> drivers/s390/cio/css.c:1427:21: error: initialization of 'int (*)(const struct device *, struct kobj_uevent_env *)' from incompatible pointer type 'int (*)(struct device *, struct kobj_uevent_env *)' [-Werror=incompatible-pointer-types]
+    1427 |         .uevent   = css_uevent,
+         |                     ^~~~~~~~~~
+   drivers/s390/cio/css.c:1427:21: note: (near initialization for 'css_bus_type.uevent')
+   cc1: some warnings being treated as errors
+--
+>> drivers/s390/cio/device.c:1768:19: error: initialization of 'int (*)(const struct device *, struct kobj_uevent_env *)' from incompatible pointer type 'int (*)(struct device *, struct kobj_uevent_env *)' [-Werror=incompatible-pointer-types]
+    1768 |         .uevent = ccw_uevent,
+         |                   ^~~~~~~~~~
+   drivers/s390/cio/device.c:1768:19: note: (near initialization for 'ccw_bus_type.uevent')
+   cc1: some warnings being treated as errors
+--
+>> drivers/s390/cio/scm.c:49:19: error: initialization of 'int (*)(const struct device *, struct kobj_uevent_env *)' from incompatible pointer type 'int (*)(struct device *, struct kobj_uevent_env *)' [-Werror=incompatible-pointer-types]
+      49 |         .uevent = scmdev_uevent,
+         |                   ^~~~~~~~~~~~~
+   drivers/s390/cio/scm.c:49:19: note: (near initialization for 'scm_bus_type.uevent')
+   cc1: some warnings being treated as errors
+--
+>> drivers/s390/crypto/ap_bus.c:1575:19: error: initialization of 'int (*)(const struct device *, struct kobj_uevent_env *)' from incompatible pointer type 'int (*)(struct device *, struct kobj_uevent_env *)' [-Werror=incompatible-pointer-types]
+    1575 |         .uevent = &ap_uevent,
+         |                   ^
+   drivers/s390/crypto/ap_bus.c:1575:19: note: (near initialization for 'ap_bus_type.uevent')
    cc1: some warnings being treated as errors
 
 
-vim +1792 drivers/vdpa/vdpa_user/vduse_dev.c
+vim +1427 drivers/s390/cio/css.c
 
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1782  
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1783  static int vduse_init(void)
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1784  {
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1785  	int ret;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1786  	struct device *dev;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1787  
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1788  	vduse_class = class_create(THIS_MODULE, "vduse");
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1789  	if (IS_ERR(vduse_class))
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1790  		return PTR_ERR(vduse_class);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1791  
-c8a6153b6c59d9 Xie Yongji    2021-08-31 @1792  	vduse_class->devnode = vduse_devnode;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1793  
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1794  	ret = alloc_chrdev_region(&vduse_major, 0, VDUSE_DEV_MAX, "vduse");
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1795  	if (ret)
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1796  		goto err_chardev_region;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1797  
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1798  	/* /dev/vduse/control */
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1799  	cdev_init(&vduse_ctrl_cdev, &vduse_ctrl_fops);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1800  	vduse_ctrl_cdev.owner = THIS_MODULE;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1801  	ret = cdev_add(&vduse_ctrl_cdev, vduse_major, 1);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1802  	if (ret)
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1803  		goto err_ctrl_cdev;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1804  
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1805  	dev = device_create(vduse_class, NULL, vduse_major, NULL, "control");
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1806  	if (IS_ERR(dev)) {
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1807  		ret = PTR_ERR(dev);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1808  		goto err_device;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1809  	}
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1810  
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1811  	/* /dev/vduse/$DEVICE */
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1812  	cdev_init(&vduse_cdev, &vduse_dev_fops);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1813  	vduse_cdev.owner = THIS_MODULE;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1814  	ret = cdev_add(&vduse_cdev, MKDEV(MAJOR(vduse_major), 1),
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1815  		       VDUSE_DEV_MAX - 1);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1816  	if (ret)
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1817  		goto err_cdev;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1818  
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1819  	vduse_irq_wq = alloc_workqueue("vduse-irq",
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1820  				WQ_HIGHPRI | WQ_SYSFS | WQ_UNBOUND, 0);
-6243e3c78ace66 Dan Carpenter 2021-09-07  1821  	if (!vduse_irq_wq) {
-6243e3c78ace66 Dan Carpenter 2021-09-07  1822  		ret = -ENOMEM;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1823  		goto err_wq;
-6243e3c78ace66 Dan Carpenter 2021-09-07  1824  	}
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1825  
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1826  	ret = vduse_domain_init();
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1827  	if (ret)
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1828  		goto err_domain;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1829  
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1830  	ret = vduse_mgmtdev_init();
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1831  	if (ret)
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1832  		goto err_mgmtdev;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1833  
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1834  	return 0;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1835  err_mgmtdev:
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1836  	vduse_domain_exit();
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1837  err_domain:
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1838  	destroy_workqueue(vduse_irq_wq);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1839  err_wq:
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1840  	cdev_del(&vduse_cdev);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1841  err_cdev:
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1842  	device_destroy(vduse_class, vduse_major);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1843  err_device:
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1844  	cdev_del(&vduse_ctrl_cdev);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1845  err_ctrl_cdev:
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1846  	unregister_chrdev_region(vduse_major, VDUSE_DEV_MAX);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1847  err_chardev_region:
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1848  	class_destroy(vduse_class);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1849  	return ret;
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1850  }
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1851  module_init(vduse_init);
-c8a6153b6c59d9 Xie Yongji    2021-08-31  1852  
+7e9db9eaefdb87 Cornelia Huck  2008-07-14  1420  
+3041b6ab5f36ac Sebastian Ott  2011-03-15  1421  static struct bus_type css_bus_type = {
+^1da177e4c3f41 Linus Torvalds 2005-04-16  1422  	.name     = "css",
+8bbace7e686f15 Cornelia Huck  2006-01-11  1423  	.match    = css_bus_match,
+8bbace7e686f15 Cornelia Huck  2006-01-11  1424  	.probe    = css_probe,
+8bbace7e686f15 Cornelia Huck  2006-01-11  1425  	.remove   = css_remove,
+8bbace7e686f15 Cornelia Huck  2006-01-11  1426  	.shutdown = css_shutdown,
+7e9db9eaefdb87 Cornelia Huck  2008-07-14 @1427  	.uevent   = css_uevent,
+^1da177e4c3f41 Linus Torvalds 2005-04-16  1428  };
+^1da177e4c3f41 Linus Torvalds 2005-04-16  1429  
 
-:::::: The code at line 1792 was first introduced by commit
-:::::: c8a6153b6c59d95c0e091f053f6f180952ade91e vduse: Introduce VDUSE - vDPA Device in Userspace
+:::::: The code at line 1427 was first introduced by commit
+:::::: 7e9db9eaefdb8798730790214ff1b7746006ec98 [S390] cio: Introduce modalias for css bus.
 
-:::::: TO: Xie Yongji <xieyongji@bytedance.com>
-:::::: CC: Michael S. Tsirkin <mst@redhat.com>
+:::::: TO: Cornelia Huck <cornelia.huck@de.ibm.com>
+:::::: CC: Heiko Carstens <heiko.carstens@de.ibm.com>
 
 -- 
 0-DAY CI Kernel Test Service
 https://01.org/lkp
 
---skf2p+m2y4l2e2Kr
+--Qnf4Fpr1s8uK7N2k
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: attachment; filename=config
 
@@ -5676,7 +5632,7 @@ CONFIG_TEST_FREE_PAGES=m
 # end of Kernel Testing and Coverage
 # end of Kernel hacking
 
---skf2p+m2y4l2e2Kr
+--Qnf4Fpr1s8uK7N2k
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -5687,4 +5643,4 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
---skf2p+m2y4l2e2Kr--
+--Qnf4Fpr1s8uK7N2k--
