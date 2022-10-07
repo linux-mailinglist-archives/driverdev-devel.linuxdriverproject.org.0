@@ -1,49 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D09795F7A3A
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Oct 2022 17:05:46 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 63A655F7A3C
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Oct 2022 17:06:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F2B904017A;
-	Fri,  7 Oct 2022 15:05:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F2B904017A
+	by smtp3.osuosl.org (Postfix) with ESMTP id 05F8E61184;
+	Fri,  7 Oct 2022 15:06:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 05F8E61184
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cUAjMFOkLju5; Fri,  7 Oct 2022 15:05:44 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id d_Ilm0J8PG2t; Fri,  7 Oct 2022 15:05:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A617E40002;
-	Fri,  7 Oct 2022 15:05:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A617E40002
+	by smtp3.osuosl.org (Postfix) with ESMTP id B535461179;
+	Fri,  7 Oct 2022 15:05:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B535461179
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B65FE1BF2CF
- for <devel@linuxdriverproject.org>; Fri,  7 Oct 2022 15:05:40 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 132AD1BF2CF
+ for <devel@linuxdriverproject.org>; Fri,  7 Oct 2022 15:05:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 928F640549
- for <devel@linuxdriverproject.org>; Fri,  7 Oct 2022 15:05:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 928F640549
+ by smtp1.osuosl.org (Postfix) with ESMTP id E230783EC3
+ for <devel@linuxdriverproject.org>; Fri,  7 Oct 2022 15:05:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E230783EC3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 20yAOchTWaVx for <devel@linuxdriverproject.org>;
- Fri,  7 Oct 2022 15:05:39 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id uxqcANZFd_Se for <devel@linuxdriverproject.org>;
+ Fri,  7 Oct 2022 15:05:55 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 642C440002
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EFC2A83EBF
 Received: from admin (211121168185.cidr.odn.ne.jp [211.121.168.185])
- by smtp2.osuosl.org (Postfix) with ESMTP id 642C440002
- for <devel@driverdev.osuosl.org>; Fri,  7 Oct 2022 15:05:39 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id EFC2A83EBF
+ for <devel@linuxdriverproject.org>; Fri,  7 Oct 2022 15:05:54 +0000 (UTC)
 Received: from [79.110.62.122] [79.110.62.122] by admin with ESMTP
- (SMTPD32-7.07) id A03E7BB00B0; Sat, 08 Oct 2022 00:05:34 +0900
+ (SMTPD32-7.07) id A04E7BB00B0; Sat, 08 Oct 2022 00:05:50 +0900
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Acknowledge this message
-To: devel@driverdev.osuosl.org
+To: devel@linuxdriverproject.org
 From: "Mr. Joe Patrick" <asdrose@asdrose.com>
-Date: Fri, 07 Oct 2022 17:05:35 +0200
-Message-Id: <202210080005971.SM02184@[79.110.62.122]>
+Date: Fri, 07 Oct 2022 17:05:51 +0200
+Message-Id: <20221008000502.SM02184@[79.110.62.122]>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
