@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E3995F871F
-	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Oct 2022 21:35:25 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D3905F8755
+	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Oct 2022 22:35:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 42C34404EF;
-	Sat,  8 Oct 2022 19:35:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 42C34404EF
+	by smtp4.osuosl.org (Postfix) with ESMTP id 66ACF414C3;
+	Sat,  8 Oct 2022 20:35:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 66ACF414C3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J0nhTRZ5awlX; Sat,  8 Oct 2022 19:35:22 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lnwHj4vrDXL9; Sat,  8 Oct 2022 20:35:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DEE864051D;
-	Sat,  8 Oct 2022 19:35:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DEE864051D
+	by smtp4.osuosl.org (Postfix) with ESMTP id CB78F414C9;
+	Sat,  8 Oct 2022 20:35:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CB78F414C9
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9E2181BF239
- for <devel@linuxdriverproject.org>; Sat,  8 Oct 2022 19:35:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F2CDE1BF429
+ for <devel@linuxdriverproject.org>; Sat,  8 Oct 2022 20:35:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 72F3381AA7
- for <devel@linuxdriverproject.org>; Sat,  8 Oct 2022 19:35:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 72F3381AA7
+ by smtp1.osuosl.org (Postfix) with ESMTP id C7A6E8144B
+ for <devel@linuxdriverproject.org>; Sat,  8 Oct 2022 20:35:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C7A6E8144B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FP4OQwC2h3tU for <devel@linuxdriverproject.org>;
- Sat,  8 Oct 2022 19:35:17 +0000 (UTC)
+ with ESMTP id 7LDpCvffjCul for <devel@linuxdriverproject.org>;
+ Sat,  8 Oct 2022 20:35:22 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3C76E81A9C
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3C76E81A9C
- for <devel@driverdev.osuosl.org>; Sat,  8 Oct 2022 19:35:16 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10494"; a="305566301"
-X-IronPort-AV: E=Sophos;i="5.95,170,1661842800"; d="scan'208";a="305566301"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Oct 2022 12:35:16 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BFD1481418
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BFD1481418
+ for <devel@driverdev.osuosl.org>; Sat,  8 Oct 2022 20:35:22 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10494"; a="302707136"
+X-IronPort-AV: E=Sophos;i="5.95,170,1661842800"; d="scan'208";a="302707136"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Oct 2022 13:35:21 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10494"; a="767950867"
-X-IronPort-AV: E=Sophos;i="5.95,170,1661842800"; d="scan'208";a="767950867"
+X-IronPort-AV: E=McAfee;i="6500,9779,10494"; a="603270302"
+X-IronPort-AV: E=Sophos;i="5.95,170,1661842800"; d="scan'208";a="603270302"
 Received: from lkp-server01.sh.intel.com (HELO 2af0a69ca4e0) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 08 Oct 2022 12:35:14 -0700
+ by orsmga006.jf.intel.com with ESMTP; 08 Oct 2022 13:35:20 -0700
 Received: from kbuild by 2af0a69ca4e0 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1ohFbO-0000Ma-0G;
- Sat, 08 Oct 2022 19:35:14 +0000
-Date: Sun, 09 Oct 2022 03:34:25 +0800
+ (envelope-from <lkp@intel.com>) id 1ohGXX-0000Qd-2L;
+ Sat, 08 Oct 2022 20:35:19 +0000
+Date: Sun, 09 Oct 2022 04:34:55 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:kobject-const2] BUILD SUCCESS
- 4db8532b97107b5eeed45cf8bc23d40554ea80e6
-Message-ID: <6341d0c1.srBL6D5qQxXALmFI%lkp@intel.com>
+Subject: [driver-core:readfile] BUILD SUCCESS
+ bdf9177bcfe320d10bed4f439b38a2e66f8841bd
+Message-ID: <6341deef.toJGSs8/F9G8FkKr%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1665257717; x=1696793717;
+ t=1665261322; x=1696797322;
  h=date:from:to:cc:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=RpBDTGd/PK/rcSS3fuwsrhQChUfzSjv1MQKBS/BBgcM=;
- b=RIR4AfkFhrJYLzCXNnJ2DGYP9OltZisfsUkCs2/ltGEIL3+9BmtpM8Nh
- ZtPOjl/XcLxJxdQ3yM171zMc091HYJN8pV6ep8LAJPigt1OK3K4H7Ri6c
- aj5ev1Mhau9AAlY6k8CM59KG12Z3DRGOt0lvk83/isg8TzzOxoY/rYj2b
- 2Vidll8L7m3EzbZvUKGNeQEVCrCsPYqQ2OlHQsN246mLSy0MTWn+25eaQ
- Jru5SO54l1tOlfvnLk6xu0x3UH05dOGdMSm53HUq2wYbQK64ABA1kjDB8
- uQBV+SpJIlag1Jl+NqbrznlBGGRldk/e8FxjqB+mQC559DX4cJEJZaVow
+ bh=2e5rA16CebUXTyMtZsA+AEzT4whndTh15sAqd+ajhxc=;
+ b=nMSmFbby0UdWgPf3ZsQo3Tpl4SftKZOYvR0ax7fZ/T/72GgaBrJknp3c
+ dEqIBweH1MIWP1K8JDNwVWNj1MMjTP6Lys1T6A8PaxGU9iThoMzjl62yL
+ 6F+Rz9uSB4xBFKjfQ/aCCgGJ8IeQe3Zneq3KEmPlrZkvmh2vcSx52bvtE
+ tQOF6fDM/stpjBc/Je6z2bdQ6zCVN0tZ/UT0bE4f7Gd0o3/EUCY/zHVBa
+ oZUu8FyUKQBm3dHr/ENoXjUXyXY4vb7aPzzzQFsdDhMLG3VE9ehF7zUOg
+ izlOXCVPa+f4yQ2v1vKVnMbWNxIiAbiGh/0SXUNCKUxHexr7aERMDFJkK
  Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RIR4AfkF
+ header.a=rsa-sha256 header.s=Intel header.b=nMSmFbby
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,13 +90,13 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const2
-branch HEAD: 4db8532b97107b5eeed45cf8bc23d40554ea80e6  USB: allow some usb functions to take a const pointer.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git readfile
+branch HEAD: bdf9177bcfe320d10bed4f439b38a2e66f8841bd  readfile.2: new page describing readfile(2)
 
-elapsed time: 720m
+elapsed time: 780m
 
-configs tested: 94
-configs skipped: 2
+configs tested: 124
+configs skipped: 3
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
@@ -104,88 +104,113 @@ More configs may be tested in the coming days.
 gcc tested configs:
 um                             i386_defconfig
 um                           x86_64_defconfig
-powerpc                           allnoconfig
-x86_64                              defconfig
-i386                 randconfig-a011-20221003
-i386                 randconfig-a012-20221003
-i386                 randconfig-a013-20221003
-x86_64                          rhel-8.3-func
 arc                                 defconfig
-s390                             allmodconfig
-x86_64                               rhel-8.3
-x86_64                           rhel-8.3-syz
+powerpc                           allnoconfig
 alpha                               defconfig
-x86_64                         rhel-8.3-kunit
 i386                                defconfig
-m68k                             allmodconfig
-i386                 randconfig-a014-20221003
-s390                                defconfig
-arc                              allyesconfig
+x86_64                              defconfig
+x86_64                           rhel-8.3-syz
+x86_64                               rhel-8.3
+x86_64                         rhel-8.3-kunit
 x86_64                           rhel-8.3-kvm
-i386                 randconfig-a015-20221003
-alpha                            allyesconfig
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-sh                               allmodconfig
-i386                 randconfig-a016-20221003
-powerpc                          allmodconfig
-mips                             allyesconfig
-s390                             allyesconfig
-m68k                             allyesconfig
-x86_64               randconfig-a011-20221003
-x86_64               randconfig-a015-20221003
+i386                 randconfig-a014-20221003
 arm                                 defconfig
-x86_64               randconfig-a014-20221003
+x86_64                           allyesconfig
+i386                 randconfig-a011-20221003
+x86_64               randconfig-a011-20221003
+i386                 randconfig-a012-20221003
 x86_64               randconfig-a012-20221003
 x86_64               randconfig-a013-20221003
+s390                             allmodconfig
+x86_64                          rhel-8.3-func
+s390                                defconfig
+i386                 randconfig-a013-20221003
+i386                 randconfig-a015-20221003
+i386                 randconfig-a016-20221003
+x86_64                    rhel-8.3-kselftests
+x86_64               randconfig-a015-20221003
 csky                              allnoconfig
-x86_64               randconfig-a016-20221003
-arc                               allnoconfig
-arm64                            allyesconfig
-i386                             allyesconfig
 alpha                             allnoconfig
-arm                              allyesconfig
+arc                               allnoconfig
 riscv                             allnoconfig
-arm                           viper_defconfig
-arm                           imxrt_defconfig
-arm                            zeus_defconfig
-nios2                            alldefconfig
-powerpc                     taishan_defconfig
-arm                       imx_v6_v7_defconfig
-sh                          landisk_defconfig
-powerpc                         wii_defconfig
+x86_64               randconfig-a014-20221003
+sh                               allmodconfig
+s390                             allyesconfig
+i386                             allyesconfig
+x86_64               randconfig-a016-20221003
+arm                              allyesconfig
+alpha                            allyesconfig
+arm64                            allyesconfig
 riscv                randconfig-r042-20221007
+mips                             allyesconfig
+arc                              allyesconfig
+powerpc                          allmodconfig
+m68k                             allyesconfig
 arc                  randconfig-r043-20221007
 riscv                randconfig-r042-20221003
 arc                  randconfig-r043-20221008
+ia64                             allmodconfig
 arc                  randconfig-r043-20221003
 arc                  randconfig-r043-20221002
 s390                 randconfig-r044-20221007
 s390                 randconfig-r044-20221003
-ia64                             allmodconfig
-arm                        realview_defconfig
-powerpc                       maple_defconfig
-sh                          polaris_defconfig
-sh                     magicpanelr2_defconfig
+sh                          r7780mp_defconfig
+ia64                                defconfig
+arm                          badge4_defconfig
+i386                          randconfig-c001
+mips                 randconfig-c004-20221002
+m68k                        stmark2_defconfig
+powerpc                    klondike_defconfig
+arm                        oxnas_v6_defconfig
+riscv                    nommu_virt_defconfig
+riscv                          rv32_defconfig
+riscv                    nommu_k210_defconfig
+i386                   debian-10.3-kselftests
+i386                              debian-10.3
+i386                          debian-10.3-kvm
+i386                        debian-10.3-kunit
+i386                         debian-10.3-func
+arm                  randconfig-c002-20221002
+x86_64                        randconfig-c001
+sh                        dreamcast_defconfig
+s390                          debug_defconfig
+powerpc                     asp8347_defconfig
+nios2                            alldefconfig
+nios2                            allyesconfig
+nios2                               defconfig
+parisc                              defconfig
+parisc64                            defconfig
+parisc                           allyesconfig
+loongarch                           defconfig
+loongarch                         allnoconfig
+loongarch                        allmodconfig
+m68k                       m5208evb_defconfig
+powerpc                     taishan_defconfig
+powerpc                mpc7448_hpc2_defconfig
+arc                        vdk_hs38_defconfig
+powerpc                         ps3_defconfig
+m68k                        mvme147_defconfig
+arm                        spear6xx_defconfig
+powerpc                     rainier_defconfig
+m68k                             allmodconfig
 
 clang tested configs:
+x86_64               randconfig-a003-20221003
+x86_64               randconfig-a002-20221003
+x86_64               randconfig-a001-20221003
+x86_64               randconfig-a005-20221003
+x86_64               randconfig-a004-20221003
+x86_64               randconfig-a006-20221003
 i386                 randconfig-a004-20221003
 i386                 randconfig-a003-20221003
 i386                 randconfig-a002-20221003
 i386                 randconfig-a001-20221003
-i386                 randconfig-a006-20221003
 i386                 randconfig-a005-20221003
-x86_64               randconfig-a003-20221003
-x86_64               randconfig-a002-20221003
-x86_64               randconfig-a001-20221003
-x86_64               randconfig-a004-20221003
-x86_64               randconfig-a005-20221003
-x86_64               randconfig-a006-20221003
-powerpc                 mpc8315_rdb_defconfig
-mips                       lemote2f_defconfig
-powerpc                     pseries_defconfig
+i386                 randconfig-a006-20221003
 hexagon              randconfig-r041-20221003
 riscv                randconfig-r042-20221002
+arm                        mvebu_v5_defconfig
+s390                             alldefconfig
 hexagon              randconfig-r041-20221002
 s390                 randconfig-r044-20221002
 hexagon              randconfig-r041-20221008
@@ -196,8 +221,14 @@ riscv                randconfig-r042-20221008
 hexagon              randconfig-r041-20221007
 hexagon              randconfig-r045-20221003
 s390                 randconfig-r044-20221008
-arm                         hackkit_defconfig
-powerpc                      obs600_defconfig
+x86_64                        randconfig-k001
+arm                      tct_hammer_defconfig
+mips                          rm200_defconfig
+mips                   sb1250_swarm_defconfig
+arm64                            allyesconfig
+hexagon                          alldefconfig
+arm                    vt8500_v6_v7_defconfig
+arm                         socfpga_defconfig
 
 -- 
 0-DAY CI Kernel Test Service
