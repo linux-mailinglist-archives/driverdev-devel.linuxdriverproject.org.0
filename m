@@ -1,52 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CB945F8105
-	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Oct 2022 01:08:03 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 289D75F83F9
+	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Oct 2022 09:24:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CDD6660AF2;
-	Fri,  7 Oct 2022 23:07:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CDD6660AF2
+	by smtp2.osuosl.org (Postfix) with ESMTP id B7129402DC;
+	Sat,  8 Oct 2022 07:24:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B7129402DC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id eqmdtH_GpC6P; Fri,  7 Oct 2022 23:07:59 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id EKEFjnb4C8qv; Sat,  8 Oct 2022 07:24:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8BDB460AB9;
-	Fri,  7 Oct 2022 23:07:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8BDB460AB9
+	by smtp2.osuosl.org (Postfix) with ESMTP id 61B3F400C6;
+	Sat,  8 Oct 2022 07:24:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 61B3F400C6
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D8B491BF2C6
- for <devel@linuxdriverproject.org>; Fri,  7 Oct 2022 23:07:55 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5DAD71BF5DA;
+ Sat,  8 Oct 2022 07:24:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B40F5827A8
- for <devel@linuxdriverproject.org>; Fri,  7 Oct 2022 23:07:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B40F5827A8
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3904040119;
+ Sat,  8 Oct 2022 07:24:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3904040119
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H5zXuE9oDXAD for <devel@linuxdriverproject.org>;
- Fri,  7 Oct 2022 23:07:55 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CA02E82786
-Received: from profi.clinic (profi.clinic [95.154.104.47])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CA02E82786
- for <devel@driverdev.osuosl.org>; Fri,  7 Oct 2022 23:07:54 +0000 (UTC)
-Received: from User (unknown [185.137.27.198])
- by profi.clinic (Postfix) with ESMTPA id 7649534615AD;
- Sat,  8 Oct 2022 05:21:31 +1000 (+10)
-From: "Doug Macpherson"<macphersondoug8@gmail.com>
-Subject: REPLY URGENTLY
-Date: Fri, 7 Oct 2022 19:26:19 -0700
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id gbcz2L8uEboM; Sat,  8 Oct 2022 07:24:40 +0000 (UTC)
+X-Greylist: delayed 00:59:44 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5D376400C6
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from mail.sms.maceio.al.gov.br (mail.sms.maceio.al.gov.br
+ [192.195.57.83])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5D376400C6;
+ Sat,  8 Oct 2022 07:24:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.sms.maceio.al.gov.br (Postfix) with ESMTP id 793B1D4E3D71B;
+ Sat,  8 Oct 2022 04:24:37 -0300 (-03)
+Received: from mail.sms.maceio.al.gov.br ([127.0.0.1])
+ by localhost (mail.sms.maceio.al.gov.br [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id fMhjBe3VgvqS; Sat,  8 Oct 2022 04:24:37 -0300 (-03)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.sms.maceio.al.gov.br (Postfix) with ESMTP id ED37AD30A7F77;
+ Sat,  8 Oct 2022 04:24:36 -0300 (-03)
+X-Virus-Scanned: amavisd-new at sms.maceio.al.gov.br
+Received: from mail.sms.maceio.al.gov.br ([127.0.0.1])
+ by localhost (mail.sms.maceio.al.gov.br [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id wQEDp6E6IuJd; Sat,  8 Oct 2022 04:24:36 -0300 (-03)
+Received: from [192.168.0.100] (unknown [129.205.124.226])
+ by mail.sms.maceio.al.gov.br (Postfix) with ESMTPSA id C9DE1CB85CB53;
+ Sat,  8 Oct 2022 04:24:25 -0300 (-03)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20221007230755.B40F5827A8@smtp1.osuosl.org>
+Content-Description: Mail message body
+Subject: Good Day  !!                         
+To: Recipients <u1010dusan@gmail.com>
+From: "Mr. Urosevic Dusan" <u1010dusan@gmail.com>
+Date: Sat, 08 Oct 2022 00:24:08 -0700
+Message-Id: <20221008072425.C9DE1CB85CB53@mail.sms.maceio.al.gov.br>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,48 +71,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: macphersond552@gmail.com
+Reply-To: ddusan24d@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
---
-Hello,
+Dear Sir/Madam,
 
-How are you doing?
+We have decided to donate the sum of 2M USD to you ,for charity work I am looking for a reputable and reliable person whom i can entrust to help me to establish a charity/orphanage home in your country,So if you are willing and capable to partner with me you can let me know immediately.
 
-Please do accept my sincere apologies if my mail does not meet your
-ethics, I am Doug Macpherson an external auditor of a reputable bank. In
-one of our periodic audits, I discovered a dormant account, which has
-not been operated for the past Five years. From my investigations and
-confirmations, the owner of this account is a foreigner who died long
-ago and since then nobody has done anything as regards the claiming of
-this money because he has no family members who are aware of the
-existence of neither the account nor the funds. I have secretly
-discussed this matter with a top senior official here and we have agreed
-to find a reliable foreign partner to deal with us although due to his
-position he did not want to take an active part but as soon as you
-follow my instructions everything will be successful because we
-will be working hand in hand with him. With this purpose to do business
-with you, standing in as the next of kin of these funds from the
-deceased and after due legal processes have been followed the fund will
-be released to your account without delay and we will use it for
-investment and to assist the less privileged in the societies because if
-we left the fund with the government it will be fortified for
-nothing and will be used to suppress the poor masses in the society.
+fill this information below thanks
+you need to fill all this information so my bank will contact you 
+1. NAMES IN FULL:...............
+2. ADDRESS:.................
+3. NATIONALITY:...............
+4. Your Email:................
+5.Phone Number................
 
-On receipt of your response, I will furnish you with more details as it
-relates to this mutual benefit transaction. Do contact me immediately
-whether or not you are interested in this deal. If you are not, it will
-enable me to scout for another foreign Partner to carry out this deal.
-But where you are interested, contact me URGENTLY for more details as
-time is of the essence in this business.
+for more details reply to: uu1010dusan@gmail.com
 
-
-Best Regards,
-
-Doug Macpherson
+Best regard
+Urosevic Dusan
+You are chosen
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
