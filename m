@@ -1,54 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E1495FFA3D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 15 Oct 2022 15:26:45 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E546603097
+	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Oct 2022 18:15:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E4BD8405EF;
-	Sat, 15 Oct 2022 13:26:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E4BD8405EF
+	by smtp4.osuosl.org (Postfix) with ESMTP id D162140913;
+	Tue, 18 Oct 2022 16:15:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D162140913
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qzf66AvHdpDd; Sat, 15 Oct 2022 13:26:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 96lrxIE4rfLA; Tue, 18 Oct 2022 16:15:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9FFA040182;
-	Sat, 15 Oct 2022 13:26:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9FFA040182
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4F720408CD;
+	Tue, 18 Oct 2022 16:15:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4F720408CD
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D4D181BF5F5
- for <devel@linuxdriverproject.org>; Sat, 15 Oct 2022 13:26:39 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A6E01BF5AE;
+ Tue, 18 Oct 2022 16:15:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BE34B405EF
- for <devel@linuxdriverproject.org>; Sat, 15 Oct 2022 13:26:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BE34B405EF
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5F5B8408D9;
+ Tue, 18 Oct 2022 16:15:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F5B8408D9
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id akaghiyKhKod for <devel@linuxdriverproject.org>;
- Sat, 15 Oct 2022 13:26:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AdsoDZTj2IqB; Tue, 18 Oct 2022 16:15:04 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4B0AE40182
-Received: from noether.astro.ugto.mx (noether.astro.ugto.mx [148.214.84.42])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4B0AE40182
- for <devel@linuxdriverproject.org>; Sat, 15 Oct 2022 13:26:39 +0000 (UTC)
-Received: from 148.214.84.42 (noether.astro.ugto.mx [10.15.102.21])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
- (No client certificate requested) (Authenticated sender: juan)
- by noether.astro.ugto.mx (Postfix) with ESMTPSA id 46E7AE004AF;
- Sat, 15 Oct 2022 08:29:06 -0500 (CDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A0218408CE
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from bernitaglover.ml (unknown [159.223.179.24])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A0218408CE;
+ Tue, 18 Oct 2022 16:15:04 +0000 (UTC)
+Received: from [180.214.238.8] (helo=User)
+ by bernitaglover.ml with esmtpa (Exim 4.90_1)
+ (envelope-from <maro@bernitaglover.ml>)
+ id 1okpEz-0008Jh-Ja; Tue, 18 Oct 2022 16:14:54 +0000
+From: "investment business"<maro@bernitaglover.ml>
+Subject: Hello my friend, please read and reply.
+Date: Tue, 18 Oct 2022 09:14:53 -0700
 MIME-Version: 1.0
-Date: Sat, 15 Oct 2022 14:29:05 +0100
-From: "Dr. Magaret Baran." <junnn@noether.astro.ugto.mx>
-To: undisclosed-recipients:;
-Subject: Weill Cornell Medical Associates.
-User-Agent: Roundcube Webmail/1.4.11
-Message-ID: <30871e9aeb89731db0030310c3b8e68a@noether.astro.ugto.mx>
-X-Sender: junnn@noether.astro.ugto.mx
-Organization: Weill Cornell Medical Associates.
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <E1okpEz-0008Jh-Ja@bernitaglover.ml>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=bernitaglover.ml; s=mail; h=Message-Id:Content-Transfer-Encoding:
+ Content-Type:MIME-Version:Date:Subject:From:Reply-To:Sender:To:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=ZRsGc8fSDJTXBKN4RoHGkxZUmAvw9hfiWS/pn3AzPgs=; b=bHMmUW6T4uBrgc0OkSS+P9MQsf
+ QnZsAWBmh9V+4IgaWIkHIGDnJnCjvUeiv5r+R1M4z90VAjjobZKWY+NzOQxTcjknu91wpMSCsKvEt
+ sISyx2iwNih76mWP5GNuLrGcD+RSmSY4fIOM9WJA6xjfFZ53n3gTPVxwnlWq49N6qX3A=;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=bernitaglover.ml header.i=@bernitaglover.ml
+ header.a=rsa-sha256 header.s=mail header.b=bHMmUW6T
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,26 +73,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: msmagaretbaran@outlook.com
+Reply-To: alekskovnko@gmail.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+How are you today? I Hope you are staying safe,
 
-I am Dr. Magaret Baran from the Weill Cornell Medical Associates. I am
-writing to you from my personal email requesting a favor from you on 
-behalf
-of my patient.
+I am Mr Aleksandr Kovalenko from Ukraine, because of the war here I am looking for a possible tie-up with a business partnership with you in your country. I will be glad to partner with you and invest my money $5.5million USD in your country.
 
-I know this will come as a surprise but I need your urgent attention to
-fulfill the wish of my dying patient.
+I will give you full details when I receive your interested reply today
 
-Kindly reply back to this email for further details.
-
-Yours sincerely,
-Dr. Magaret Baran.
+Best Regard,
+Mr Aleksandr Kovalenko
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
