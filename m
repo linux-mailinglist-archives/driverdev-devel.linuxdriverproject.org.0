@@ -1,84 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35684606881
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Oct 2022 20:56:26 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A65A16068F7
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Oct 2022 21:34:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 210FA41A10;
-	Thu, 20 Oct 2022 18:56:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 210FA41A10
+	by smtp2.osuosl.org (Postfix) with ESMTP id AEC334063E;
+	Thu, 20 Oct 2022 19:34:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AEC334063E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7_4gl9uMa0Ue; Thu, 20 Oct 2022 18:56:23 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ruKeFRmKpZ9Z; Thu, 20 Oct 2022 19:34:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BEFA1419C9;
-	Thu, 20 Oct 2022 18:56:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BEFA1419C9
+	by smtp2.osuosl.org (Postfix) with ESMTP id 67A0F405A1;
+	Thu, 20 Oct 2022 19:34:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 67A0F405A1
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F2E311BF2A5
- for <devel@linuxdriverproject.org>; Thu, 20 Oct 2022 18:56:19 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 410BA1BF3C2
+ for <devel@linuxdriverproject.org>; Thu, 20 Oct 2022 19:34:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D959A41A10
- for <devel@linuxdriverproject.org>; Thu, 20 Oct 2022 18:56:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D959A41A10
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1C9E98434C
+ for <devel@linuxdriverproject.org>; Thu, 20 Oct 2022 19:34:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1C9E98434C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rzu0LKmGIfv7 for <devel@linuxdriverproject.org>;
- Thu, 20 Oct 2022 18:56:19 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 132BC419C9
-Received: from mail-yw1-x112c.google.com (mail-yw1-x112c.google.com
- [IPv6:2607:f8b0:4864:20::112c])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 132BC419C9
- for <devel@linuxdriverproject.org>; Thu, 20 Oct 2022 18:56:18 +0000 (UTC)
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-3321c2a8d4cso2439997b3.5
- for <devel@linuxdriverproject.org>; Thu, 20 Oct 2022 11:56:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:sender:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=qKZQaYvyG0T9Uj1OTzAaNf0j1uBekm8T04WhuHWE0ug=;
- b=Qi3GhuCUra80uSm+4n3+yWPTVvbLhwii7z/9ZjpMGx1Mdv3EBN2ZPvckOskC5OunaC
- T8OYH+U48yzx5EREL4DKXtHht/f5RTR2zPlkLZw/MQVTcWcpSey5vNRtYLprf6jK0YdJ
- ySS8Mm/Wk7dPBy1cE3fXaEhrq63XIX+222ReFTmpkJtf80g9O5Y17EMyl7nWeLr08uvT
- 3MSu92/Ga2O5D5huKAw+anVvT1Rm/eHSzyMmY9NC54Jy7JoEV0oUvVaO6KXTqqnPSa43
- hJ7+r1wdOyBotT0xIH8vjTHaxjDCTXL1dPJdC/BRzX1yGpPdd8AKcb0DvCY5aAgy+3ko
- J/jA==
-X-Gm-Message-State: ACrzQf2k/aux7gkzMSJkbBxD+fYXnAgnYarK7ouFOs/Yuw715RX/7Y07
- k+C2OWAwlx3cHm2ibbXcS9zzJxBGmpyEgLDjjR8=
-X-Google-Smtp-Source: AMsMyM4lNRcBVD909upzEuvyEYhdtIFjZrVQpExAq24vS+9JMAT35EAOhU2EgxMVOL2538w5zq/3tEUX0TcXtK9Rucc=
-X-Received: by 2002:a0d:db8b:0:b0:367:9aca:e47f with SMTP id
- d133-20020a0ddb8b000000b003679acae47fmr7096416ywe.400.1666292177795; Thu, 20
- Oct 2022 11:56:17 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Zk9CLhHgVpuX for <devel@linuxdriverproject.org>;
+ Thu, 20 Oct 2022 19:34:13 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 531AE84002
+Received: from mx2.mcruises.ru (mx2.mcruises.ru [37.252.8.212])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 531AE84002
+ for <devel@linuxdriverproject.org>; Thu, 20 Oct 2022 19:34:13 +0000 (UTC)
+Received: from mail.mcruises.ru (mail.mcruises.ru [92.62.112.68])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mx2.mcruises.ru (Postfix) with ESMTPS id 4EDD27FDC8;
+ Thu, 20 Oct 2022 22:28:03 +0300 (MSK)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.mcruises.ru (Postfix) with ESMTP id D8ABA7A2590;
+ Thu, 20 Oct 2022 22:28:02 +0300 (MSK)
+Received: from mail.mcruises.ru ([127.0.0.1])
+ by localhost (mx1.mcruises.ru [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id A6Kn9_B7Zj8G; Thu, 20 Oct 2022 22:28:02 +0300 (MSK)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.mcruises.ru (Postfix) with ESMTP id 99DF07A2607;
+ Thu, 20 Oct 2022 22:28:02 +0300 (MSK)
+X-Virus-Scanned: amavisd-new at mx1.mcruises.ru
+Received: from mail.mcruises.ru ([127.0.0.1])
+ by localhost (mx1.mcruises.ru [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id YQ6_t-oWFW4E; Thu, 20 Oct 2022 22:28:02 +0300 (MSK)
+Received: from MACBOOKPROF612.localdomain (unknown [102.165.192.252])
+ by mail.mcruises.ru (Postfix) with ESMTPSA id 8A8747A2590;
+ Thu, 20 Oct 2022 22:27:17 +0300 (MSK)
 MIME-Version: 1.0
-Received: by 2002:a05:7010:224f:b0:30b:2c86:372f with HTTP; Thu, 20 Oct 2022
- 11:56:16 -0700 (PDT)
-From: Anabelle Marie Claude <anabellemarieclaude@gmail.com>
-Date: Thu, 20 Oct 2022 19:56:16 +0100
-X-Google-Sender-Auth: Rl1a3CgLjBqwNxUi9LuBEb8-eh0
-Message-ID: <CADEx5XggDMt4XJ+7yO4Y6EEdjAmYMyVtn7g3M=2FsiSMqwX=YA@mail.gmail.com>
-Subject: Hello
-To: undisclosed-recipients:;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=to:subject:message-id:date:from:sender:reply-to:mime-version:from
- :to:cc:subject:date:message-id:reply-to;
- bh=qKZQaYvyG0T9Uj1OTzAaNf0j1uBekm8T04WhuHWE0ug=;
- b=TWj8mFoGdDV5wLOGZBcmn18fryi6dkhScm8djDvkWFisMziwxY0FPgPxFWCxZrtdbe
- 11QuiZr0rRcUvYFQFCe8a3KjHEj1TK0uUSAV30A3/op/iLlV0aV+eaQxMPmSPgb0Gr0u
- pjFuFfFh+8LWZ13iHBVuBOrsMU+z235E0Ztmxn+0Ziz2aeMuIO8cTaDYxv/UthmLD3fW
- ymOvFqdjSjP3T57+XZcbJbv339m9bsW5Yu4uDmIQ1iFio5KgVHwK1Wtjyhm6XdGEM0yU
- 7zsKoGwYT4SzsJDGzA9nIRlmaneB0f3hUD5wIJeGBkIDPpZ1PeUQlULCtlefwvdOL9kx
- 6Jag==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=TWj8mFoG
+Content-Description: Mail message body
+Subject: Attention!!!!
+To: Recipients <webadmin@mail.pasp.ru>
+From: webadmin@mail.pasp.ru
+Date: Thu, 20 Oct 2022 21:26:18 +0200
+X-Antivirus: AVG (VPS 221020-6, 10/20/2022), Outbound message
+X-Antivirus-Status: Clean
+Message-Id: <20221020192717.8A8747A2590@mail.mcruises.ru>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,19 +77,19 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: anabellemarieclaude@gmail.com
+Reply-To: KristineWellenstein.org@aol.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good Day,
+Attention!!!! You are hereby advised to send a confirmation email to KristineWellenstein.org@aol.com For more details about your winning. Your email was randomly selected to receive a Charity Donation of $2,000,000 Million USD. From Kristine Wellenstein winner of $426 million, in the Million Dollars Power-Ball Jackpot Lottery,2022.
 
-I will like to disclose something very important to you,
-get back to me for more details, please.
 
-Regards.
-Mrs Anabelle Marie Claude.
+
+-- 
+This email has been checked for viruses by AVG antivirus software.
+www.avg.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
