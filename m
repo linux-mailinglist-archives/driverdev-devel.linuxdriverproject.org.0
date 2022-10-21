@@ -1,56 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F4CD60856D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Oct 2022 09:25:56 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 03249608F79
+	for <lists+driverdev-devel@lfdr.de>; Sat, 22 Oct 2022 21:57:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 08654416C6;
-	Sat, 22 Oct 2022 07:25:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 08654416C6
+	by smtp1.osuosl.org (Postfix) with ESMTP id 78D6F82419;
+	Sat, 22 Oct 2022 19:57:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 78D6F82419
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4w5px2VsyFsm; Sat, 22 Oct 2022 07:25:52 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id x2hvZx9g6zWk; Sat, 22 Oct 2022 19:57:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 91736416C2;
-	Sat, 22 Oct 2022 07:25:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 91736416C2
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3681E81A92;
+	Sat, 22 Oct 2022 19:57:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3681E81A92
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 024291BF86B
- for <devel@linuxdriverproject.org>; Sat, 22 Oct 2022 07:25:49 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E0DFD1BF275
+ for <devel@linuxdriverproject.org>; Sat, 22 Oct 2022 19:57:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DEC5240327
- for <devel@linuxdriverproject.org>; Sat, 22 Oct 2022 07:25:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DEC5240327
+ by smtp4.osuosl.org (Postfix) with ESMTP id BA42441508
+ for <devel@linuxdriverproject.org>; Sat, 22 Oct 2022 19:57:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BA42441508
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0truS97WkOBk for <devel@linuxdriverproject.org>;
- Sat, 22 Oct 2022 07:25:47 +0000 (UTC)
-X-Greylist: delayed 05:03:47 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9CFE6400E5
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id z5J-YuevMApx for <devel@linuxdriverproject.org>;
+ Sat, 22 Oct 2022 19:57:07 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4DB6B41507
 Received: from web.prohosting24.de (web.prohosting24.de [45.142.115.15])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9CFE6400E5
- for <devel@linuxdriverproject.org>; Sat, 22 Oct 2022 07:25:47 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4DB6B41507
+ for <devel@driverdev.osuosl.org>; Sat, 22 Oct 2022 19:57:07 +0000 (UTC)
 Received: from [192.168.1.116]
  (dynamic-046-114-193-095.46.114.pool.telefonica.de [46.114.193.95])
- by web.prohosting24.de (Postfix) with ESMTPA id D1C121CAF66;
- Fri, 21 Oct 2022 20:56:46 +0000 (UTC)
+ by web.prohosting24.de (Postfix) with ESMTPA id 55E5C200419;
+ Fri, 21 Oct 2022 22:05:35 +0000 (UTC)
 Received-SPF: pass (web.prohosting24.de: connection is authenticated)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Hello Friend !
-To: Recipients <tery-glenn09@outlook.com>
-From: "Eng. Terry Glenn" <tery-glenn09@outlook.com>
-Date: Fri, 21 Oct 2022 22:00:01 +0200
+Subject: Attention
+To: Recipients <admin@azovstal.com>
+From: "Eng. Terry Glenn" <admin@azovstal.com>
+Date: Fri, 21 Oct 2022 23:08:49 +0200
 X-Antivirus: Avast (VPS 221021-4, 10/21/2022), Outbound message
 X-Antivirus-Status: Clean
-Message-Id: <20221022072548.DEC5240327@smtp2.osuosl.org>
+Message-Id: <20221022195708.BA42441508@smtp4.osuosl.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=azovstal.com; s=default; t=1666389937;
+ bh=P0C7hTgz4QokWHQpG6YNZfiax5Q6dXRj28aobnZXPXc=; h=Subject:To:From;
+ b=O7tb7g00Zbk5wJopogf6hyTy72eGKqikwh7DTLyQyB4heDH9X0FcgDrinBr/gTNtd
+ incAXd/NCSUidMOjK1anLOF9sfeZKTswiVpykhmnu3gkaES1QouwbrRx9bOysnVuOE
+ py1fu2xf2AmedM9nXu01qFo7fbyGdf4SenN6GVmQ=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=fail reason="signature verification failed" (2048-bit key)
+ header.d=azovstal.com header.i=@azovstal.com header.a=rsa-sha256
+ header.s=default header.b=O7tb7g00
 X-Mailman-Original-Authentication-Results: web.prohosting24.de;
- spf=pass (sender IP is 46.114.193.95) smtp.mailfrom=tery-glenn09@outlook.com
+ spf=pass (sender IP is 46.114.193.95) smtp.mailfrom=admin@azovstal.com
  smtp.helo=[192.168.1.116]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
