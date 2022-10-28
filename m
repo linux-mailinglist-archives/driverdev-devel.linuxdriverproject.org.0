@@ -1,80 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F262610B42
-	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Oct 2022 09:26:40 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 898FC606F9;
-	Fri, 28 Oct 2022 07:26:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 898FC606F9
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1oa1xQeleZ3E; Fri, 28 Oct 2022 07:26:37 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4059060592;
-	Fri, 28 Oct 2022 07:26:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4059060592
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5D68E1BF38E;
- Fri, 28 Oct 2022 07:26:32 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D1016111BA
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Oct 2022 14:41:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3456240992;
- Fri, 28 Oct 2022 07:26:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3456240992
+	by smtp4.osuosl.org (Postfix) with ESMTP id B3391414CE;
+	Fri, 28 Oct 2022 12:41:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B3391414CE
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pFnEgL4IPMgB; Fri, 28 Oct 2022 07:26:31 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 395C24092E
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from 5798242.tongloong.com (unknown [162.214.67.167])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 395C24092E;
- Fri, 28 Oct 2022 07:26:31 +0000 (UTC)
-Received: from [185.199.102.226] (port=59568 helo=[10.8.2.4])
- by 5798242.tongloong.com with esmtpa (Exim 4.95)
- (envelope-from <tpd@tongloong.com>) id 1ooDYp-0004wN-SG;
- Thu, 27 Oct 2022 19:49:24 -0500
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 4bWP75cDjQFm; Fri, 28 Oct 2022 12:41:55 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 32D2E414E6;
+	Fri, 28 Oct 2022 12:41:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 32D2E414E6
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8BAC61BF32B
+ for <devel@linuxdriverproject.org>; Fri, 28 Oct 2022 12:41:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5E953817A8
+ for <devel@linuxdriverproject.org>; Fri, 28 Oct 2022 12:41:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5E953817A8
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wadiRdY8vYCD for <devel@linuxdriverproject.org>;
+ Fri, 28 Oct 2022 12:41:39 +0000 (UTC)
+X-Greylist: delayed 00:25:07 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DD594817A3
+Received: from mail.bittel.in (unknown [103.250.84.188])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DD594817A3
+ for <devel@driverdev.osuosl.org>; Fri, 28 Oct 2022 12:41:38 +0000 (UTC)
+Received: from localhost (localhost [IPv6:::1])
+ by mail.bittel.in (Postfix) with ESMTP id DD2F340D93B9A;
+ Fri, 28 Oct 2022 12:04:11 +0530 (IST)
+Received: from mail.bittel.in ([IPv6:::1])
+ by localhost (mail.bittel.in [IPv6:::1]) (amavisd-new, port 10032)
+ with ESMTP id BkZTGy46TQ4C; Fri, 28 Oct 2022 12:04:11 +0530 (IST)
+Received: from localhost (localhost [IPv6:::1])
+ by mail.bittel.in (Postfix) with ESMTP id BD7D240FCD3E4;
+ Fri, 28 Oct 2022 09:25:42 +0530 (IST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.bittel.in BD7D240FCD3E4
+X-Virus-Scanned: amavisd-new at bittel.in
+Received: from mail.bittel.in ([IPv6:::1])
+ by localhost (mail.bittel.in [IPv6:::1]) (amavisd-new, port 10026)
+ with ESMTP id jGbJvf2E7GVy; Fri, 28 Oct 2022 09:25:42 +0530 (IST)
+Received: from [192.168.100.121] (unknown [41.90.57.18])
+ by mail.bittel.in (Postfix) with ESMTPSA id D71B740FCD3EB;
+ Fri, 28 Oct 2022 07:11:38 +0530 (IST)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Loan Needed
-To: Recipients <tpd@tongloong.com>
-From: tpd@tongloong.com
-Date: Fri, 28 Oct 2022 02:48:51 +0200
+Subject: GREAT NEWS
+To: Recipients <accounts@bittel.in>
+From: Susanne <accounts@bittel.in>
+Date: Thu, 27 Oct 2022 18:41:52 -0700
 X-Antivirus: Avast (VPS 221027-4, 10/27/2022), Outbound message
 X-Antivirus-Status: Clean
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - 5798242.tongloong.com
-X-AntiAbuse: Original Domain - linuxdriverproject.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - tongloong.com
-X-Get-Message-Sender-Via: 5798242.tongloong.com: authenticated_id:
- tpd@tongloong.com
-X-Authenticated-Sender: 5798242.tongloong.com: tpd@tongloong.com
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-Message-Id: <20221028072632.3456240992@smtp4.osuosl.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=tongloong.com; s=default; h=Reply-To:Date:From:To:Subject:
- Content-Description:Content-Transfer-Encoding:MIME-Version:Content-Type:
- Sender:Message-ID:Cc:Content-ID:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=e1IEzrSmGST+ZMTBtPYaWy7fKlVTDNB1OvLBrFRRLiU=; b=FxXSazXfS9JM3N4WXiQcJXidFq
- ItkFQkyDBaNI0l8lLWvApg05V42AXqYIJFvhFdu8vduFsuSIhRs+75w/EFxasF3CKvR34df5CiaVL
- P1Bpqvj6/GhGmLEHlS3P5w7EzjXkYaNzkB1BV6PdSX1Cs0z4URY3HTlTCsrdllv3fV9E=;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=fail reason="signature verification failed" (1024-bit key)
- header.d=tongloong.com header.i=@tongloong.com header.a=rsa-sha256
- header.s=default header.b=FxXSazXf
+Message-Id: <20221028014139.D71B740FCD3EB@mail.bittel.in>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bittel.in; s=dkim; 
+ t=1666929343; bh=7TXzSBQ7dPzRauRkj+bzsSMUAUSjcLr9qckNtg38xg8=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=n0TuGNAk/fDqzm9lbdyGjvfcU7udOkfbWeqJ9J1go/XwWspvFVnJy5GotBiRHKM3N
+ OnjAOEazwur6+EnA0paKoj+Q8t0tDgJx/VmBzTRyrt8P6MuUanzftUqIUCisfJ3/xG
+ 05bBEjI8UzoYrC2k7iPqzDJSf6O7B9E9PTiYo6k91MCysezVAAq2q5YKu8b8nEUFNJ
+ yvs3X0puAWYEG7T1NxUQ8YlRe649/jKF5qVzIxoF4SCF358iPV4IoXyiiH/iPWQ/kU
+ fyb57NK01t0DOX1IxH510o55lF1RgbFi5ong0IBVGHAZr4ASbfajDxeV+BYcSJpSst
+ WIq7S164BgPPA==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,23 +83,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: marscapitalusa@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: susanklatten0411@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This is Mars Capital we offer loans to individuals and companies around the world, we are registered and licensed loan company.
-
-Do you need a loan to pay your bills? Do you need a loan to start up a business? Do you need a loan to buy an apartment? we offer all kinds of loans.
-
-if you are interested in getting a loan of any kind simply
-Email: marscapitalusa@gmail.com
-
-Website: https://marscapitalusa.weebly.com/
-
-Mars Capital.
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGFsbG8uCgpJY2ggYmluIFN1c2FubmUgS2xhdHRlbiB1bmQgaWNoIGtvbW1lIGF1cyBEZXV0c2No
+bGFuZCwgaWNoIGthbm4gZGljaCBrb250cm9sbGllcmVuCmZpbmFuemllbGxlIFByb2JsZW1lIG9o
+bmUgUsO8Y2tncmlmZiBhdWYgQmFua2VuIGltIEtyZWRpdGJlcmVpY2gKR2VsZCAuCgpXaXIgYmll
+dGVuIFByaXZhdGtyZWRpdGUgdW5kIEdlc2Now6RmdHNrcmVkaXRlIGFuLCBpY2ggYmluIGVpbiB6
+dWdlbGFzc2VuZXIgdW5kCnplcnRpZml6aWVydGVyIEtyZWRpdGdlYmVyIG1pdCBsYW5nasOkaHJp
+Z2VyIEVyZmFocnVuZyBpbiBkZXIgS3JlZGl0dmVyZ2FiZSB1bmQgd2lyIGdlYmVuCmJlc2ljaGVy
+dGUgdW5kIHVuYmVzaWNoZXJ0ZSBEYXJsZWhlbnNiZXRyw6RnZSBhYiAxMC4wMDAsMDAg4oKsIGF1
+c2dlYmVuCiggJCkgYmlzIHp1IGVpbmVtIEjDtmNoc3RiZXRyYWcgdm9uIDUwMC4wMDAuMDAwLDAw
+IOKCrCBtaXQgZWluZXIgZmVzdGVuIFZlcnppbnN1bmcgdm9uIDMgJQphdWYgSmFocmVzYmFzaXMu
+IEJyYXVjaGVuIFNpZSBlaW5lbiBLcmVkaXQ/CkUtTWFpbDogc3VzYW5rbGF0dGVuMDQxMUBnbWFp
+bC5jb20KClNpZSBrw7ZubmVuIGF1Y2ggbWVpbmVuIExpbmsgYW56ZWlnZW4gdW5kIG1laHIgw7xi
+ZXIgbWljaCBlcmZhaHJlbi4KCmh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL1N1c2FubmVf
+S2xhdHRlbgpodHRwczovL3d3dy5mb3JiZXMuY29tL3Byb2ZpbGUvc3VzYW5uZS1rbGF0dGVuClVu
+dGVyc2NocmlmdCwKVm9yc3RhbmRzdm9yc2l0emVuZGVyClN1c2FubmUgS2xhdHRlbi4KCi0tIApU
+aGlzIGVtYWlsIGhhcyBiZWVuIGNoZWNrZWQgZm9yIHZpcnVzZXMgYnkgQXZhc3QgYW50aXZpcnVz
+IHNvZnR3YXJlLgp3d3cuYXZhc3QuY29tCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2pl
+Y3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
