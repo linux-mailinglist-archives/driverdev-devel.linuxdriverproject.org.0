@@ -1,40 +1,41 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6E6D610B41
-	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Oct 2022 09:26:37 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F262610B42
+	for <lists+driverdev-devel@lfdr.de>; Fri, 28 Oct 2022 09:26:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 376DE81750;
-	Fri, 28 Oct 2022 07:26:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 376DE81750
+	by smtp3.osuosl.org (Postfix) with ESMTP id 898FC606F9;
+	Fri, 28 Oct 2022 07:26:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 898FC606F9
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dRWHBtcgHhMZ; Fri, 28 Oct 2022 07:26:35 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1oa1xQeleZ3E; Fri, 28 Oct 2022 07:26:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F09DD8151E;
-	Fri, 28 Oct 2022 07:26:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F09DD8151E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4059060592;
+	Fri, 28 Oct 2022 07:26:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4059060592
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1CEB01BF38E
- for <devel@linuxdriverproject.org>; Fri, 28 Oct 2022 07:26:32 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5D68E1BF38E;
+ Fri, 28 Oct 2022 07:26:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E9C2440186
- for <devel@linuxdriverproject.org>; Fri, 28 Oct 2022 07:26:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E9C2440186
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3456240992;
+ Fri, 28 Oct 2022 07:26:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3456240992
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 19dgjnDYkr-K for <devel@linuxdriverproject.org>;
- Fri, 28 Oct 2022 07:26:31 +0000 (UTC)
-X-Greylist: delayed 06:36:58 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 35C0D400D0
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id pFnEgL4IPMgB; Fri, 28 Oct 2022 07:26:31 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 395C24092E
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
 Received: from 5798242.tongloong.com (unknown [162.214.67.167])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 35C0D400D0
- for <devel@driverdev.osuosl.org>; Fri, 28 Oct 2022 07:26:31 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 395C24092E;
+ Fri, 28 Oct 2022 07:26:31 +0000 (UTC)
 Received: from [185.199.102.226] (port=59568 helo=[10.8.2.4])
  by 5798242.tongloong.com with esmtpa (Exim 4.95)
  (envelope-from <tpd@tongloong.com>) id 1ooDYp-0004wN-SG;
@@ -50,7 +51,7 @@ X-Antivirus-Status: Clean
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - 5798242.tongloong.com
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Original Domain - linuxdriverproject.org
 X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
 X-AntiAbuse: Sender Address Domain - tongloong.com
 X-Get-Message-Sender-Via: 5798242.tongloong.com: authenticated_id:
@@ -59,7 +60,7 @@ X-Authenticated-Sender: 5798242.tongloong.com: tpd@tongloong.com
 X-Source: 
 X-Source-Args: 
 X-Source-Dir: 
-Message-Id: <20221028072631.E9C2440186@smtp2.osuosl.org>
+Message-Id: <20221028072632.3456240992@smtp4.osuosl.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  c=relaxed/relaxed; 
  d=tongloong.com; s=default; h=Reply-To:Date:From:To:Subject:
@@ -70,7 +71,7 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  bh=e1IEzrSmGST+ZMTBtPYaWy7fKlVTDNB1OvLBrFRRLiU=; b=FxXSazXfS9JM3N4WXiQcJXidFq
  ItkFQkyDBaNI0l8lLWvApg05V42AXqYIJFvhFdu8vduFsuSIhRs+75w/EFxasF3CKvR34df5CiaVL
  P1Bpqvj6/GhGmLEHlS3P5w7EzjXkYaNzkB1BV6PdSX1Cs0z4URY3HTlTCsrdllv3fV9E=;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=fail reason="signature verification failed" (1024-bit key)
  header.d=tongloong.com header.i=@tongloong.com header.a=rsa-sha256
  header.s=default header.b=FxXSazXf
