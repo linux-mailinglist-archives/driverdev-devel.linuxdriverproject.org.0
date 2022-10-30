@@ -1,138 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 941A0612355
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Oct 2022 15:36:49 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE5DB6127F6
+	for <lists+driverdev-devel@lfdr.de>; Sun, 30 Oct 2022 07:25:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 04B45813AE;
-	Sat, 29 Oct 2022 13:36:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 04B45813AE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5B7814038C;
+	Sun, 30 Oct 2022 06:25:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5B7814038C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id czw2mB17LCo9; Sat, 29 Oct 2022 13:36:45 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pojfstpJUH1j; Sun, 30 Oct 2022 06:25:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B5E5F813AC;
-	Sat, 29 Oct 2022 13:36:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B5E5F813AC
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9A75D40361;
+	Sun, 30 Oct 2022 06:25:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A75D40361
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9B2FC1BF5DF
- for <devel@linuxdriverproject.org>; Sat, 29 Oct 2022 13:36:41 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 40F7A1BF599
+ for <devel@linuxdriverproject.org>; Sun, 30 Oct 2022 06:25:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7EEAF813AE
- for <devel@linuxdriverproject.org>; Sat, 29 Oct 2022 13:36:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7EEAF813AE
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1B2D64038C
+ for <devel@linuxdriverproject.org>; Sun, 30 Oct 2022 06:25:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1B2D64038C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id d8XNEhy4PG4f for <devel@linuxdriverproject.org>;
- Sat, 29 Oct 2022 13:36:40 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mKBH6gHPGWLs for <devel@linuxdriverproject.org>;
+ Sun, 30 Oct 2022 06:25:45 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BDFA6813AC
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam10hn2224.outbound.protection.outlook.com [52.100.156.224])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BDFA6813AC
- for <devel@driverdev.osuosl.org>; Sat, 29 Oct 2022 13:36:40 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MGl/Axhysk4NgRnv/gTj6EtuiR9pR3HYakH1UXNuORAg8xwE+77b7Zmh4pmghDaGiIs8oqmhVMB9nm36zhimibHN7PaHsVXAGtCy29aEHZZVAc+74CMEqVQ6hRvg6VH6foHLD6YbPfIS+ZDMPzxPEsYH4Ldw/ML2HiCZ4dfQ8n7aIEWbZaKQdW/IHcd6yhacXROv5e1FmrcGW2fsgQ8qac7H2urji7UYUOlO9+V5u+KadzaWNPJkyHu5K9rWvwPkvv3p8Y35HGzdnfRuExBigJUpdcJiUBftuSKPmU8sekycs1jm7A6aa7CYRyczkTBk5oHvmX2lSGwPKZGt2PnIHA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2lDsrmEtgwVjnlPTTbBNqECcMrOOYQ+i2/wa2nUWZ3U=;
- b=HzIuEYCl3nJqA4ZtX3KuM2WrhspcrvKzT4QqoTrddg4WLHbwTWr4EVy+uYvubrKy/2hqAY5Mimb+28G885t01GGdflhVdfN2qaWQaXl2nj8Sv1Ah+N7siR7l1fGVoMoVDPnYfoAhtjAb4nZ9RZaHsuUyLwbs3Rqhy/D1T3+7W3rk+AuEPrQv4+NzP5X3njT0peZkHUBwLzFgb40lzPybeggY4/NAbL1AMagjRwK4+qd6i1CsD3MomohNo7yGCk54b6aoYkbyCJ2nAxF/s0XApKO5nu6fnuLv3EOOZejLOl0jxO4UcYDWIMDseF3ISW04xBmGi41Ca59wj2Mz8wV2pw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=permerror (sender ip
- is 63.158.138.61) smtp.rcpttodomain=gauseisd.net
- smtp.mailfrom=z-mourtaga.ps; 
- dmarc=fail (p=reject sp=none pct=100) action=oreject
- header.from=z-mourtaga.ps; dkim=none (message not signed); arc=none
-Received: from DM6PR13CA0070.namprd13.prod.outlook.com (2603:10b6:5:134::47)
- by BL0PR1901MB4723.namprd19.prod.outlook.com (2603:10b6:208:1cd::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5769.15; Sat, 29 Oct
- 2022 13:36:37 +0000
-Received: from DM6NAM11FT061.eop-nam11.prod.protection.outlook.com
- (2603:10b6:5:134:cafe::e4) by DM6PR13CA0070.outlook.office365.com
- (2603:10b6:5:134::47) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5791.10 via Frontend
- Transport; Sat, 29 Oct 2022 13:36:37 +0000
-X-MS-Exchange-Authentication-Results: spf=permerror (sender IP is
- 63.158.138.61) smtp.mailfrom=z-mourtaga.ps; dkim=none (message not signed)
- header.d=none;dmarc=fail action=oreject header.from=z-mourtaga.ps;
-Received-SPF: PermError (protection.outlook.com: domain of z-mourtaga.ps used
- an invalid SPF mechanism)
-Received: from mail.holidaycompanies.com (63.158.138.61) by
- DM6NAM11FT061.mail.protection.outlook.com (10.13.173.138) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5769.14 via Frontend Transport; Sat, 29 Oct 2022 13:36:37 +0000
-Received: from HSSMTP02.holidaycompanies.com (10.0.22.48) by
- HSSMTP04.holidaycompanies.com (10.0.22.49) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2242.12; Sat, 29 Oct 2022 08:36:36 -0500
-Received: from [212.193.29.51] (10.0.22.35) by HSSMTP02.holidaycompanies.com
- (10.0.22.48) with Microsoft SMTP Server id 15.1.2242.12 via Frontend
- Transport; Sat, 29 Oct 2022 08:36:30 -0500
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 10BF340361
+Received: from mail-wm1-x341.google.com (mail-wm1-x341.google.com
+ [IPv6:2a00:1450:4864:20::341])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 10BF340361
+ for <devel@driverdev.osuosl.org>; Sun, 30 Oct 2022 06:25:44 +0000 (UTC)
+Received: by mail-wm1-x341.google.com with SMTP id
+ f16-20020a05600c491000b003cf66a2e7c0so1599070wmp.5
+ for <devel@driverdev.osuosl.org>; Sat, 29 Oct 2022 23:25:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=C0WAXL/WoyqTz2Jf0nTKwtsmkHBQXNbIJoVmQc6EvvQ=;
+ b=fzs1+6/X6DxVKb9aDRAXZZBI3gKRvnrZLwe0GxLiFoM7CbC2YxYI8JILzg5NatA1VI
+ fLjvfx/IInB0c+SMu0Gg2muZHtDy6zsUnndD/5XYd0iwqWZMxoDd+o8otTr7E1jYDB8M
+ b/boaQMmeHD8zJcffp17P8UF3XUXiFaG4BZHjhxmRbuQ+Rm9IUhzyQgcJsZa6C01AY4/
+ +/jxQ1pi/PcVrQK/zRrowWTynxHfM4nfExcwWxv9vP6a7DJl0P4IF44peZ+WTG+92OsM
+ AcV15oB2E6lYBP7XyS25mEBfVF7yFnYUoCqlH6fWAZUtDWWQQtfBCaCB612VRV0V46nU
+ ugPw==
+X-Gm-Message-State: ACrzQf2LjzosrZMXhSDt+1VVZ+QMbQpO3VXTGJ20HDoTLKlqzNlh4PUj
+ UiiwMCOyvatds64whhAYNooGl66/pDtJM+3+768=
+X-Google-Smtp-Source: AMsMyM7KIZPcnq8x4AuUhovB24v5SepCxaSutHBJqNFjU4NGJIWARMkhV1oe5HhhDVgaghKNB3G+z5xcomfGUVj3S5w=
+X-Received: by 2002:a1c:f60d:0:b0:3be:708b:c96c with SMTP id
+ w13-20020a1cf60d000000b003be708bc96cmr14494007wmc.168.1667111142754; Sat, 29
+ Oct 2022 23:25:42 -0700 (PDT)
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: I am waiting for your immediate response....Dated 29th October 2022 
-To: Recipients <info@z-mourtaga.ps>
-From: Mary Clough <info@z-mourtaga.ps>
-Date: Sat, 29 Oct 2022 06:36:26 -0700
-Message-ID: <d4237e2a-3db8-4774-b594-bf5226ba0664@HSSMTP02.holidaycompanies.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM6NAM11FT061:EE_|BL0PR1901MB4723:EE_
-X-MS-Office365-Filtering-Correlation-Id: 191621ea-4951-435c-c51a-08dab9b29a5a
-X-MS-Exchange-SenderADCheck: 2
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?vzUSQSujLC8WzkI9frPXFixXaCdij1qKXD68SLoU4XMMSga523v06f+5XD?=
- =?iso-8859-1?Q?I+25Y1HV1Zk69hueZ2958kynBdHAhicYRN9zYtuZD4m1rXot/jn6CK9set?=
- =?iso-8859-1?Q?ppj1IDPX95aNvXmwxpIC23GGe0K0jvQtmuSgfsASo0tWzQkmLxN4mekj3U?=
- =?iso-8859-1?Q?0yUUuxpc2OldKD+sBu/lZOobZQoABonsA/HnAaXbuvwbOAyUM/Kc9Ij4Ja?=
- =?iso-8859-1?Q?42omTW/J6It87oSnKOOEg/9JtJTBG6rzV+We24+ExqS/GNByHHEXSbgql/?=
- =?iso-8859-1?Q?ywTwhKvB6bQNu94bd81QbIGcTfGzX9JxXIlvUAxKL1qHuzOgtTOYJQ+vGE?=
- =?iso-8859-1?Q?4I6LjYf8ii45CHK2qsqrW20VRh7QASfow3yh/aPLX6afv2t2kac5j2N9ml?=
- =?iso-8859-1?Q?+Zo/TUgenJw9O6QV8kEsHgXyr+jahuDfnE5be5UuW2u2Xu2j/vz+ax8/FT?=
- =?iso-8859-1?Q?oaGXs23kkC/ftOyNch1rH9jg+y+ibLXPHYGRDqSiI75UP/aR4IfwlXP1zc?=
- =?iso-8859-1?Q?KlVdv2LjsfPspmA7zz+Ev1HGMK78W9PpNMw7zqwwEOlFXZ6morrXJH4nXi?=
- =?iso-8859-1?Q?gsqxL3RRfElzeb8CLKCOaMxb9j8kDh/MWGZ3bZW6YpP6P9gDK0iMdlc6x6?=
- =?iso-8859-1?Q?UNY2LGb3OKizXa0592eilDUbL/fWOlol+xjRF/nasCc3j+flqmRjKNq0mA?=
- =?iso-8859-1?Q?0K1Q3DPJktYv5hfFPlT21Sov7KNdxXJU23e10025ObA0npLjj+MhKXbA//?=
- =?iso-8859-1?Q?hhauXxqh9rBszvyYr0K3mDDlx4Vo3oP2HnAiq0jSdoN2RvL8/McrqjhsdN?=
- =?iso-8859-1?Q?emJcdmdFFnZx+UE9dcyKPXIoF6VeujVxeJ+l7r6VAjDRSjqGbrtid8vNb6?=
- =?iso-8859-1?Q?OEQUZySwx16Dgj9245iQOTo4c9BmS7oAKhO8Rhb/ehscfgYtxZPfetWTQH?=
- =?iso-8859-1?Q?ZRbYth1RuGZ6lv6NNpBN1lBB8iN0eKXQfuEb+LvtvfAsOnuQSqXuTDG8Pd?=
- =?iso-8859-1?Q?/BXVPSK7ZnOXfQRGDj9+Jra8QqX7vpcTzPX/y+mPlHrxc77Jp/MZrA4EAu?=
- =?iso-8859-1?Q?wlnspHC98XpSWPk11c/Exg2XIk7rlfO8+IR/fMAcholA+CbqgeL99Nu4IV?=
- =?iso-8859-1?Q?LTrOibYq+Efwp62rT+z64Q2Q4WnQ9vzjyBOGn1cZFdKlQ0glpnIxjK9smM?=
- =?iso-8859-1?Q?A1gDlj+xNmXeIq+7Cl4a/wQuo6YpoSkoxSdaC4XgjD/ejkS05gM8s2x0?=
-X-Forefront-Antispam-Report: CIP:63.158.138.61; CTRY:US; LANG:en; SCL:5; SRV:;
- IPV:NLI; SFV:SPM; H:mail.holidaycompanies.com; PTR:mail.holidaycompanies.com;
- CAT:OSPM;
- SFS:(13230022)(4636009)(136003)(39860400002)(346002)(376002)(396003)(84040400005)(451199015)(40470700004)(31686004)(40480700001)(83380400001)(66899015)(40460700003)(956004)(86362001)(32650700002)(31696002)(82740400003)(7416002)(5660300002)(2906002)(7596003)(35950700001)(7636003)(356005)(9686003)(26005)(336012)(6666004)(2860700004)(498600001)(16576012)(316002)(8936002)(6706004)(41300700001)(70586007)(8676002)(70206006)(6200100001)(6862004)(82310400005)(62346012);
- DIR:OUT; SFP:1501; 
-X-OriginatorOrg: MyCoucheTard.onmicrosoft.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Oct 2022 13:36:37.0678 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 191621ea-4951-435c-c51a-08dab9b29a5a
-X-MS-Exchange-CrossTenant-Id: 19da1f3c-d958-44ea-850d-195c1502525c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=19da1f3c-d958-44ea-850d-195c1502525c; Ip=[63.158.138.61];
- Helo=[mail.holidaycompanies.com]
-X-MS-Exchange-CrossTenant-AuthSource: DM6NAM11FT061.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL0PR1901MB4723
+Received: by 2002:adf:e341:0:0:0:0:0 with HTTP; Sat, 29 Oct 2022 23:25:41
+ -0700 (PDT)
+From: "Mrs. Josephine Karine Mikael" <lisaw9803@gmail.com>
+Date: Sun, 30 Oct 2022 06:25:41 +0000
+Message-ID: <CAOSUE-=gfX1KAO62Sfx88bvKxSiC-DhhDdA-o16k0h8w0D3crg@mail.gmail.com>
+Subject: FROM MRS JOSEPHINE KARINE MIKAEL
+To: undisclosed-recipients:;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=MyCoucheTard.onmicrosoft.com; s=selector1-MyCoucheTard-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2lDsrmEtgwVjnlPTTbBNqECcMrOOYQ+i2/wa2nUWZ3U=;
- b=FOtr+At0nWmI2WNHqejcu34n8MLwpTLKl9BsW9I2aWORgz45kBd2g9HbqWil+n20P3IoNpFjjLvTtjZM1OebvPo6Id0ZZDFuLVUzvCNVIfyoy+UCeYtghqPvgemlIelQ9vjb9gqIwjQ21zgy2xO2bKC1tNvS0dFJdsnFcv2P8+w=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=MyCoucheTard.onmicrosoft.com
- header.i=@MyCoucheTard.onmicrosoft.com header.a=rsa-sha256
- header.s=selector1-MyCoucheTard-onmicrosoft-com header.b=FOtr+At0
+ d=gmail.com; s=20210112;
+ h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=C0WAXL/WoyqTz2Jf0nTKwtsmkHBQXNbIJoVmQc6EvvQ=;
+ b=OQENlMbbsDPFaH8zBhpdMXYH+JLaPWHuJ3IOblq8d6DjmrBnwtoUKXAHdCThLJutO7
+ Cbuexqj8bN9rFwz4JybwdfnwnlrPZ7SnnED6FPykM80shJdyis3PPFsv2GZX+nj1BfQE
+ LC3VrPNjdzCQsU1KLlsQ/e/Ps7Vbg4Slk1dujjFArbJJz+ZGHNBgvD5i+1zeUPj+f5QL
+ c/smsTwRNNa+GZ2Y3cAwxyY2RsnG7uzoZwH3E5E91W+SYpHcGYNjWWVXu5smJnyNxO/T
+ AvcgkkRPFoJWI6SGUpqEdr8v3i9E+gbv0gF1whBWfIIxz8RB8arzf0tFeSSt1HTv3QeO
+ cxmQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=OQENlMbb
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -145,52 +91,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: marycloughprivate@gmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: mrsjosephinemikae01@myself.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Let me start by introducing myself, I am Mrs. Mary Clough. I live and work =
-in Glasgow, United Kingdom. I have years of experience in investment, priva=
-te equity and project financing.
-
-A top banker friend of mine uncovered a dormant account that has GBP =A319,=
-800,000.00 (Nineteen Million, Eight Hundred Thousand Great Britain Pounds).=
- The account had been abandoned for over ten years and could not be traced =
-to anybody.
-
-My friend had asked me to get a partner who will collaborate with us in ret=
-rieving the money hence I contacted you. I want you to assist us in repatri=
-ating the money. It is a deal between us. You will be greatly compensated. =
-Part of our share will be invested in your country. =
-
-
-You will be presented to the bank as the Next of Kin to  the original depos=
-itor of the funds. Necessary documents and information will be made availab=
-le to you at every stage.
-
-I need your understanding and collaboration to get this money out from the =
-bank otherwise the bank will confiscate it in coming weeks. =
-
-
-There is no risk involved. With my friend at the bank, everything will be l=
-egally done.
-
-To proceed, kindly provide your following details;
-
-Names:
-Address:
-Telephone number:
-Age:
-Occupation:
-
-I am waiting for your immediate reply.
-
-Warm regards
-Mrs. Mary Clough
-Glasgow, United Kingdom
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+TXkgRGVhcmVzdCBCZWxvdmVkIE9uZS4KClBsZWFzZSBwYXJkb24gbXkgbWFubmVycyBvZiBjb250
+YWN0aW5nIHlvdSB0aGlzIHdheSwgSSBhbSBNcnMuCkpvc2VwaGluZSBLYXJpbmUgTWlrYWVsLCBm
+cm9tIERlbm1hcmsgYnV0IGJhc2VkIGluIFJlcHVibGljIG9mIEJ1cmtpbmEKRmFzbyBXZXN0ZXJu
+IEFmcmljYSBmb3Igb3RoZXIgMTQgeWVhcnMgbm93LCBJIGFtIG1hcnJpZWQgdG8gRHIuIE1pa2Fl
+bArCoElicmFoaW0sIHdobyBkaWVkIG9uIEphbnVhcnkgMTZ0aMKgwqAgMjAxNS4gV2Ugd2VyZSBt
+YXJyaWVkIGZvciBlbGV2ZW4KeWVhcnMgd2l0aG91dCBhIGNoaWxkIGFuZCB3ZSB3ZXJlIGJvdGgg
+Ym9ybiBhZ2FpbiBDaHJpc3RpYW5zLCB3aGljaAptYWRlIHNpbmNlIGhpcyBkZWF0aCBJIGRlY2lk
+ZWQgbm90IHRvIHJlLW1hcnJ5IG9yIGdldCBhIENoaWxkIG91dHNpZGUKbXkgbWF0cmltb25pYWwg
+aG9tZS4KCsKgV2h5IEkgY29udGFjdGVkIHlvdSBpcyBiZWNhdXNlIEkgaGF2ZSBhIFZlcnkgaW1w
+b3J0YW50IGFuZCB1cmdlbnQKcmVxdWVzdCB0byBtYWtlOyBJIHdhcyBkaWFnbm9zZWQgd2l0aCBP
+dmFyaWFuIENhbmNlciBEaXNlYXNlLCBvZiB3aGljaApJIGFtIGluIHRoZSBIb3NwaXRhbCB3aXRo
+IHRoZSBQYWxsaWF0aXZlIENhcmUgVGVhbSBhbmQgdGhlIGRvY3RvcnMKaGF2ZSBjb25maXJtZWQg
+dG8gbWUgdGhhdCBJIGhhdmUgb25seSBmZXcgZGF5cyB0byBsZWF2ZSB0aGlzIEVhcnRoLApOb3cg
+dGhhdCBJ4oCZbSBlbmRpbmcgdGhlIHJhY2UgbGlrZSB0aGlzLCB3aXRob3V0IGFueSBmYW1pbHkg
+bWVtYmVycyBhbmQKbm8gY2hpbGQgb2YgbXkgb3duLCBCZWVuIGEgYnVzaW5lc3Mgd29tYW4gZnJv
+bSBEZW5tYXJrIGRlYWxpbmcgd2l0aApnb2xkIGV4cG9ydGF0aW9uIGhlcmUgaW4gUmVwdWJsaWMg
+b2YgQnVya2luYSBGYXNvIFdlc3Rlcm4gQWZyaWNhLiBJCmhhdmUgZGVjaWRlZCB0byBoYW5kIG92
+ZXIgdGhlIHN1bSBvZiAoJDEwLjUgTWlsbGlvbiBEb2xsYXJzKSBpbiBteQphY2NvdW50IHRvIHlv
+dSwgeWVzIGZvciB0aGUgaGVscCBvZiBPcnBoYW5hZ2UgSG9tZXMvdGhlIG5lZWR5IGFuZApoZWxw
+bGVzcyBwZW9wbGUgaW4geW91ciBsb2NhdGlvbiwgZG9pbmcgdGhhdCBpcyB0byBmdWxmaWxsIG15
+IGxhc3QKd2lzaCBvbiBFYXJ0aC4gQnV0IGJlZm9yZSBoYW5kaW5nIG92ZXIgbXkgZGF0YeKAmXMg
+dG8geW91LCBraW5kbHkgYXNzdXJlCm1lIHRoYXQgeW91IHdpbGwgdGFrZSBvbmx5IDUwJSBvZiB0
+aGUgZnVuZHMgYW5kIHNoYXJlIHRoZSByZXN0IHRvCm9ycGhhbmFnZSBob21lcy90aGUgbmVlZHkg
+YW5kIGhlbHBsZXNzIHBlb3BsZSBpbiB5b3VyIGNvdW50cnkgb3IgaWYKcG9zc2libGUgeW91IGNh
+biBidWlsZCBhbiBPcnBoYW5hZ2UgSG9tZSBpbiBteSBuYW1lLgoKUGxlYXNlIGFsd2F5cyBiZSBQ
+cmF5ZXJmdWwgYWxsIHRocm91Z2ggeW91ciBsaWZlIGFuZCByZXBseSBtZSBvbiB0aW1lLApiZWNh
+dXNlIGFueSBkZWxheSBpbiB5b3VyIHJlcGx5IHdpbGwgZ2l2ZSBtZSByb29tIGluIHNlYXJjaGlu
+ZyBmb3IKc29tZW9uZSBlbHNlLCBJIHdpbGwgbm90IHdhbnQgdGhlIHNpdHVhdGlvbiB3aGVyZWJ5
+IEkgd2lsbCBoYXZlIHdvcmRzCm9uIHRoaXMgcHJvamVjdCB3aXRoIG1vcmUgdGhhbiBvbmUgcGVy
+c29uLCBQbGVhc2UgYXNzdXJlIG1lIHRoYXQgeW91CndpbGwgYWN0IGFjY29yZGluZ2x5IGFzIEkg
+c3RhdGVkIGhlcmVpbiBhbmQgYWZ0ZXIgeW91ciByZXBseSBJIHdpbGwKc2VuZCB5b3UgbXkgcHJv
+b2Ygb2YgaW50ZXJuYXRpb25hbCBwYXNzcG9ydCwgbXkgc2ljayBwaG90b3MgYW5kIHRoZQpkb2N1
+bWVudHMgcHJvb2YgYWJvdXQgdGhlIGZ1bmRzLgoKUExFQVNFIFJFUExZIE1FIFdJVEggVEhFIEFO
+U1dFUlMgVE8gVEhPU0UgUVVFU1RJT05TIENPTkZJUk1BVElPTiBCRUxPVyAuCgoxLiBGVUxMIE5B
+TUU6CgoyLiBZT1VSIEFHRToKCjMuIFNFWDoKCjQuIE5BVElPTkFMSVRZOgoKNS4gQ09VTlRSWSBP
+RiBSRVNJREVOQ0U6Cgo2LiBURUxFUEhPTkUgTlVNQkVSOgoKNy4gWU9VUiBNQVJJVEFMIFNUQVRV
+UzoKCjguIFlPVVIgT0NDVVBBVElPTjoKCjkuIFNFTkQgVE8gTUUgWU9VUiBQSUNUVVJFOgoKCgpS
+ZXBseSBiYWNrIHRvIG1lIHVyZ2VudGx5IHRvIGVuYWJsZSBtZSBmb3J3YXJkIHRvIHlvdSB0aGUg
+QmFuayBjb250YWN0CmRldGFpbHMgYW5kIHRoZSB2aXRhbCBkb2N1bWVudHMgbmVlZGVkIHRvIHBy
+b2NlZWQgZm9yIHRoZSBjbGFpbSBvZgpmdW5kcyBmcm9tIHRoZSBCYW5rLCBSZXBseSBtZSBub3cg
+dGhhdCBJIGhhdmUgYWNjZXNzIHRvIEludGVybmV0IGluCnRoZSBob3NwaXRhbCB0byBlbmFibGUg
+eW91IGNvbnRhY3QgdGhlIGJhbmsuCgpTaW5jZXJlbHkgdGhhbmtzIGFuZCBHb2QgYmxlc3MgeW91
+LgoKTXJzLiBKb3NlcGhpbmUgS2FyaW5lIE1pa2FlbC4KX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJp
+dmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21h
+aWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
