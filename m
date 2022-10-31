@@ -1,40 +1,40 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB41361304C
-	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Oct 2022 07:31:48 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id ECB3661304B
+	for <lists+driverdev-devel@lfdr.de>; Mon, 31 Oct 2022 07:31:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4B02F40284;
-	Mon, 31 Oct 2022 06:31:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4B02F40284
+	by smtp4.osuosl.org (Postfix) with ESMTP id D09F24024B;
+	Mon, 31 Oct 2022 06:31:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D09F24024B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8kLqcQuino9J; Mon, 31 Oct 2022 06:31:43 +0000 (UTC)
+	with ESMTP id FLxMeZY2wLUW; Mon, 31 Oct 2022 06:31:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B70F740233;
-	Mon, 31 Oct 2022 06:31:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B70F740233
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3599640223;
+	Mon, 31 Oct 2022 06:31:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3599640223
+X-Original-To: driverdev-devel@osuosl.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7F2461BF95C
- for <devel@linuxdriverproject.org>; Mon, 31 Oct 2022 06:31:37 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5DB541BF3A1
+ for <driverdev-devel@osuosl.org>; Mon, 31 Oct 2022 06:31:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5B19D812D8
- for <devel@linuxdriverproject.org>; Mon, 31 Oct 2022 06:31:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B19D812D8
+ by smtp3.osuosl.org (Postfix) with ESMTP id 420D5605C9
+ for <driverdev-devel@osuosl.org>; Mon, 31 Oct 2022 06:31:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 420D5605C9
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wa-9k5ojwXZh for <devel@linuxdriverproject.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZcUf4Iw_ySBD for <driverdev-devel@osuosl.org>;
  Mon, 31 Oct 2022 06:31:36 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6C8CE81270
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1551860594
 Received: from email.pdamkotamalang.com (unknown [114.4.39.122])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6C8CE81270
- for <devel@driverdev.osuosl.org>; Mon, 31 Oct 2022 06:31:36 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1551860594
+ for <driverdev-devel@osuosl.org>; Mon, 31 Oct 2022 06:31:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
  by email.pdamkotamalang.com (Postfix) with ESMTP id E00EC654B7;
  Mon, 31 Oct 2022 13:05:53 +0700 (WIB)
@@ -70,7 +70,7 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  b=wInLPIHueji0Kjt6bCb3naSoz4A/51qbGlRF1garfzYXnGfA1e9zVcB/6dcqA/dNr
  owT3GmvmL2mukpXYZ0OqS7NYoH7HEU3yNoAj+cMu5RleQCHKk8SIo5LJ9dqD0g4LH9
  TBYXBIxjymygVrxFLs6DWGSj5Eyb6Kd+DcR+vu4g=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key) header.d=pdamkotamalang.com
  header.i=@pdamkotamalang.com header.a=rsa-sha256
  header.s=62829964-9E69-11EB-BD22-25F53CE53079 header.b=wInLPIHu
