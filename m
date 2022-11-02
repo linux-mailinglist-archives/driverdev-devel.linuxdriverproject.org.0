@@ -1,82 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A89E6151BA
-	for <lists+driverdev-devel@lfdr.de>; Tue,  1 Nov 2022 19:45:58 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 358E1615B4D
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Nov 2022 05:11:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6335581468;
-	Tue,  1 Nov 2022 18:45:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6335581468
+	by smtp2.osuosl.org (Postfix) with ESMTP id 95E2C405C1;
+	Wed,  2 Nov 2022 04:11:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 95E2C405C1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SwQIOEy6_762; Tue,  1 Nov 2022 18:45:55 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id H4XGCwjI8AUn; Wed,  2 Nov 2022 04:11:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2632581458;
-	Tue,  1 Nov 2022 18:45:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2632581458
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4DA3840643;
+	Wed,  2 Nov 2022 04:11:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4DA3840643
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E92A91BF358
- for <devel@linuxdriverproject.org>; Tue,  1 Nov 2022 18:45:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2DF441BF35C
+ for <devel@linuxdriverproject.org>; Wed,  2 Nov 2022 04:11:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CEC974095F
- for <devel@linuxdriverproject.org>; Tue,  1 Nov 2022 18:45:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CEC974095F
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0A914410B7
+ for <devel@linuxdriverproject.org>; Wed,  2 Nov 2022 04:11:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0A914410B7
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XlqPn33TK5Dc for <devel@linuxdriverproject.org>;
- Tue,  1 Nov 2022 18:45:51 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1A01640912
-Received: from mail-vk1-xa34.google.com (mail-vk1-xa34.google.com
- [IPv6:2607:f8b0:4864:20::a34])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1A01640912
- for <devel@driverdev.osuosl.org>; Tue,  1 Nov 2022 18:45:51 +0000 (UTC)
-Received: by mail-vk1-xa34.google.com with SMTP id e2so7725771vkd.13
- for <devel@driverdev.osuosl.org>; Tue, 01 Nov 2022 11:45:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=EVhOsP+6KbvTRYBlom1mWJjP2e8CWZCw8ljsmoo30js=;
- b=4vjOe5xi7rgAd54IinrzE9SqwSxZb9WW3DlSxiIgum/C9nV6vUsropEricsn85MLpH
- ehL62pxQ28YBBKeGRGnOUNLsY1kczs7/WHkK3V724VOwmKoBM8U31s1XWXZB1xo2f6He
- q2etEJEN6JIhOOQJqqzL3H2iUcESXy+iB4iGYtu/pR91MosTbJZQcPfe6MpnOUmX1ngE
- VaZs2CdPr8Ue4abx+Sg1PF1yODvFY8YBCPpBHKvmaZwCwU6fFszCHcPAlxOaBS7TeH8s
- +JDUBf3/XcBjd4p+m4xUl07JQ2PiTpyO0VgmIIbRL0z15kLbjUgn6gmofGp0+CQMYjVt
- qBOg==
-X-Gm-Message-State: ACrzQf077HqzqAVpOif5dyl1uNZ24fZCcm4yWf4cOW5DyPWJQseWQ/Ev
- OVK1OIobSuhc7n7BWh9kxbnt/cT5eUqRqB0a3kI=
-X-Google-Smtp-Source: AMsMyM6I2JE0kLKBNE7QU9JHs7zHZX8yIDGnIDtImhahmvbfaU7yrj1iL0esaScTa22VsPZC6UBIdhGVZg++us7YhBM=
-X-Received: by 2002:a05:6122:179a:b0:3b8:592d:c2a with SMTP id
- o26-20020a056122179a00b003b8592d0c2amr3340768vkf.7.1667328349830; Tue, 01 Nov
- 2022 11:45:49 -0700 (PDT)
+ with ESMTP id JhQRvKINJ5yK for <devel@linuxdriverproject.org>;
+ Wed,  2 Nov 2022 04:11:01 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9FB29410A4
+Received: from hosted-4-client-dedicated-live-server2.livegpstrack.com
+ (hosted-4-client-dedicated-live-server2.livegpstrack.com [103.102.239.60])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9FB29410A4
+ for <devel@linuxdriverproject.org>; Wed,  2 Nov 2022 04:11:00 +0000 (UTC)
+From: =?ISO-8859-1?B?UGFibG8gQ1RH?=<salesctg@cartrackgps.net>
+To: devel@linuxdriverproject.org
+Subject: =?ISO-8859-1?B?R1BTIHRyYWNraW5nIGJ1c2luZXNzIGZvciBkZXZlbA==?=
+Date: 02 Nov 2022 01:11:27 -0300
+Message-ID: <20221102011127.3AECF2564EAACBBF@cartrackgps.net>
 MIME-Version: 1.0
-Received: by 2002:a67:ce07:0:0:0:0:0 with HTTP;
- Tue, 1 Nov 2022 11:45:49 -0700 (PDT)
-From: Garry Myles <pakachijanet@gmail.com>
-Date: Tue, 1 Nov 2022 21:45:49 +0300
-Message-ID: <CABY1at=_eCS_xcaG=M1Xx9P06fP6D7Uwohv8n3Tu+YQJpf8O9A@mail.gmail.com>
-Subject: 
-To: undisclosed-recipients:;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
- :subject:date:message-id:reply-to;
- bh=EVhOsP+6KbvTRYBlom1mWJjP2e8CWZCw8ljsmoo30js=;
- b=daxxiZgEpdMSbxCRmEmtnnSJvj8Zt6kqnHxvmjiOpAfteX4bPLHqH2ZkjljCL6vj00
- OfhvNzOpYe3sK2CcoHoRDe09YRPWy64O06vNxqlNryoy0jIusnnhAKp0zqtVv7RqSBjN
- 5ypEc5t8tXx71QM6VQ8YA/sj6p7BP4L8TIfBAPLB54I6Q15wbGIDCwfRD4iv9Wu/cZvr
- zqlKa6aZxEILdqU6ZqkybT2sIVj6tbkRf2UP+/cotOKvMmubV1OTYzYH1rkJsZtwLnqx
- rYm3lBBPPAHkxTEO70lDFxDIW6HZqw47BKWZbyiJL0Pmc41F8gt3uMzQb+hm6C8I0Xet
- SSHA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=daxxiZgE
+X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns;
+ s=1665719670.livegpstrack; d=cartrackgps.net; 
+ b=S5K3Gf6LIHx/ruYCj5vXt3BmcXS8LFJc+3POw+p9KUk8cLqEyjA6YcPNhYohD6Vb/uVy7JLfaYOK
+ Xzbcmarte9WvI2C+bvykrYLHO/s5YDaBOcq/bwlz/Oaw21lUrvSamI+KRFheEAiv4TUSoSwJvbzJ
+ tWXGnoQcybmRgBwHDCs=;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed;
+ s=1665719670.livegpstrack; d=cartrackgps.net; 
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=salesctg@cartrackgps.net; 
+ bh=sN/TIi6hdKQAP4JLrG1K40C0hV8=;
+ b=anBzIs2+pvHXrgSsuTOzXUDUFTgbjkkrDR/YudHsc1AnjnQsDFiT0FOcEZBTzGRUZna0buOtJFTt
+ cpK2seV+dzS9OOHEZws1151bfDFVUX9u4XfKs4rtmDpYnwkHAXo23+W5cufH2dYJ6J8443wbb6Bw
+ Ch2kBDWf3MOzW7LDG3A=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,20 +67,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: garryfoundation2022@gmail.com
+Reply-To: =?ISO-8859-1?B?UGFibG8gQ1RH?= <salesctg@cartrackgps.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-Good day
-You have a donation of $2,000,000.00 from GARRY CHARITY FOUNDATION.
-Please contact us via: garryfoundation2022@gmail.com for more
-Information on how to claim this donation.
+Hello devel,
 
-yours Sincerely
-Garry Myles
+My name is Pablo from Car Track GPS and we're looking for distributors for our tracking products.
+We design innovative software and hardware location technologies.
+
+Our innovative web based software allows owners to track fleets in realtime by iOS or Android Apps.
+If a vehicle is stolen you can stop the engine and recover it.
+
+With our Professional Kit you can start your own tracking business or just resell the software and hardware.
+
+Our products are ideal for fleet tracking and recovery of stolen vehicles. Insurance companies, trucking companies and car dealers have been our clients for over 20 years.
+This could be a good choice If you want to start a new business or diversify your investment.
+
+The business consists in offering location services to end customers through a web site.
+This is accomplished through a Web platform that we provide as a turnkey server installed at your end.
+
+This service will allow customers to track their fleets from any web browser - even from Tablets and Smartphones - with a username and password.
+We have Professional Kits available which include full Software licenses, so once you get the KIT and start testing you will not need to invest again in the Software or have to pay any monthly fee.
+
+If you're interested I can send you the proposal for your consideration.
+
+Best regards,
+Pablo Zacheo
+CEO Car Track GPS
+Miami: +1 786 352 8766
+Car Track GPS in Google for our official .com website
+
+We have clients in over 100 countries and 20 years of experience in GPS tracking systems.
+ID: 693289
+
+If you would like to opt-out please reply to this email with the subject REMOVE.
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
