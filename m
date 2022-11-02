@@ -1,52 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1987261684D
-	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Nov 2022 17:19:36 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0153B616885
+	for <lists+driverdev-devel@lfdr.de>; Wed,  2 Nov 2022 17:22:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 41A854023E;
-	Wed,  2 Nov 2022 16:19:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 41A854023E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3F246607AA;
+	Wed,  2 Nov 2022 16:22:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3F246607AA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5nyNAxFPQxHJ; Wed,  2 Nov 2022 16:19:33 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RBdqTqUmNPV7; Wed,  2 Nov 2022 16:22:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C454340236;
-	Wed,  2 Nov 2022 16:19:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C454340236
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 17CFC60797;
+	Wed,  2 Nov 2022 16:22:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 17CFC60797
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1449F1BF591;
- Wed,  2 Nov 2022 16:19:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 753BA1BF307
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  2 Nov 2022 16:22:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DE89360797;
- Wed,  2 Nov 2022 16:19:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DE89360797
+ by smtp3.osuosl.org (Postfix) with ESMTP id 42B58607AA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  2 Nov 2022 16:22:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 42B58607AA
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VBxcyzX18MAF; Wed,  2 Nov 2022 16:19:28 +0000 (UTC)
+ with ESMTP id RcsMJG37wuiM
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  2 Nov 2022 16:22:47 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4332C607AA
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 928AE60797
 Received: from jqyctkuu.bloodypenguin.com (jqyctkuu.bloodypenguin.com
  [85.217.145.140])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4332C607AA;
- Wed,  2 Nov 2022 16:19:28 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 928AE60797
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  2 Nov 2022 16:22:47 +0000 (UTC)
 Received: from admin by jqyctkuu.bloodypenguin.com with local (Exim 4.92.3)
  (envelope-from <rhe.cra@bloodypenguin.com>)
- id 1oqFJK-000142-Eb; Wed, 02 Nov 2022 15:05:46 +0000
+ id 1oqFJW-00014t-7z; Wed, 02 Nov 2022 15:05:58 +0000
 To: undisclosed-recipients:;
 Subject: FROM IMF RECONCILIATION COMMITTEE
 X-PHP-Originating-Script: 0:rcube.php
 MIME-Version: 1.0
-Date: Wed, 02 Nov 2022 16:05:46 +0100
+Date: Wed, 02 Nov 2022 16:05:58 +0100
 From: Steve Collins <rhe.cra@bloodypenguin.com>
 Mail-Reply-To: myprivamailsj301@gmail.com
-Message-ID: <52d0da268b36136092f854b219c2b223@bloodypenguin.com>
+Message-ID: <43c98e876979dabbe42c7923e7400a73@bloodypenguin.com>
 X-Sender: rhe.cra@bloodypenguin.com
 User-Agent: Roundcube Webmail/1.0.12
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
@@ -56,9 +60,9 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
  List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=voOWTzJZLUX8IUBZjqzoBr03FsXHpfHDHnW6vlUxzzk=; b=QZh1qDB3VDMhaD1Nysz2Ew1Km
- xm4/ezdwVq17pveLyeAoFMO6CZ25pnC+umPLVKwOjO7SVc35xxS0QXx8O2hdGuf8pTNCyg70Dq7yD
- VC0tE/tB7nF4ny969i8nZ8pasU7iaF4DJ9834tQobRrNlh55Z0XHsoEJvF0CWCzxGFrCo=;
+ bh=voOWTzJZLUX8IUBZjqzoBr03FsXHpfHDHnW6vlUxzzk=; b=A1AAwCppb5NFydzmebGP4Avip
+ tAoMv/BySPeynL410t+OEDUtzacqcaZ253ffGxzuCoo8KLC/KdRlu8gmZQGZ6vduD4S+IxZZ9L4zW
+ GqY8iLjUGDaWvP+5u58uOVvgQ8mdp/W6e6+MSUOA1HakrrlRRcIgoJaABEI/Zd85eacag=;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
