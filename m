@@ -1,82 +1,89 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3987E6187A5
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Nov 2022 19:37:02 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 76F5561882A
+	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Nov 2022 20:06:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5CADA41816;
-	Thu,  3 Nov 2022 18:37:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5CADA41816
+	by smtp3.osuosl.org (Postfix) with ESMTP id C608961007;
+	Thu,  3 Nov 2022 19:06:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C608961007
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FxETh6eFb_Ov; Thu,  3 Nov 2022 18:36:59 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id e9GZWxs3e_TK; Thu,  3 Nov 2022 19:06:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 025FD417A7;
-	Thu,  3 Nov 2022 18:36:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 025FD417A7
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7CB5E60671;
+	Thu,  3 Nov 2022 19:05:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7CB5E60671
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 300D41BF3DE
- for <devel@linuxdriverproject.org>; Thu,  3 Nov 2022 18:36:56 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 26C8C1BF3C0
+ for <devel@linuxdriverproject.org>; Thu,  3 Nov 2022 19:05:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 18E3881F0E
- for <devel@linuxdriverproject.org>; Thu,  3 Nov 2022 18:36:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 18E3881F0E
+ by smtp2.osuosl.org (Postfix) with ESMTP id 025C0404C1
+ for <devel@linuxdriverproject.org>; Thu,  3 Nov 2022 19:05:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 025C0404C1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H2AJ7GmWUaw6 for <devel@linuxdriverproject.org>;
- Thu,  3 Nov 2022 18:36:55 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dZUYVBaqVdkM for <devel@linuxdriverproject.org>;
+ Thu,  3 Nov 2022 19:05:56 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A148A81F02
-Received: from mail-ej1-x643.google.com (mail-ej1-x643.google.com
- [IPv6:2a00:1450:4864:20::643])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A148A81F02
- for <devel@driverdev.osuosl.org>; Thu,  3 Nov 2022 18:36:54 +0000 (UTC)
-Received: by mail-ej1-x643.google.com with SMTP id k2so7712420ejr.2
- for <devel@driverdev.osuosl.org>; Thu, 03 Nov 2022 11:36:54 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2AF62403B7
+Received: from mail-pg1-x531.google.com (mail-pg1-x531.google.com
+ [IPv6:2607:f8b0:4864:20::531])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2AF62403B7
+ for <devel@driverdev.osuosl.org>; Thu,  3 Nov 2022 19:05:56 +0000 (UTC)
+Received: by mail-pg1-x531.google.com with SMTP id b5so2483606pgb.6
+ for <devel@driverdev.osuosl.org>; Thu, 03 Nov 2022 12:05:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=EVhOsP+6KbvTRYBlom1mWJjP2e8CWZCw8ljsmoo30js=;
- b=kHjsEPIPgpbuxEA1eYO0392G8MpBJIdt9BtIY4JKCfOYqP30yewVBB/kP5J/kWCj6g
- xgFC9ssIe4uW9VqIQj96oigKmaBZEy4y905bPWuiFSC8Z/S8u1jIe2XWcye81uO2fUCT
- GEFRNiaMRWHRucpniNrymLf7u4pi3WV9xQoYJMp+sG+38OksHwhoo8MAgb7hsG6eudwc
- REriU+kVMJKKm3yhRQSpUVGe9txevxQKk3avJHsA09IVyF7Ka5sdk2BtxgwFfJJCFGdD
- i+rHRE2dkfTGgOWa10S+74wnCGzl+KPkK3aXt8EHpn4mtFj09M9+Qn6jH4FwbUnhPrco
- aEKg==
-X-Gm-Message-State: ACrzQf2EcpplhOY9xNb1oxAH88+hV+Fb8K9lFMKXIQejOMrZBzdsA1Xi
- 7Wu+q8NDvZXMou2B0GkQSXl7GsDDleKpqGYdDG4=
-X-Google-Smtp-Source: AMsMyM6jXWG8YyW72ozYsbzmtuWV7MA++S/49umGtX7hC2qMrtMC4YDOCB986qHV/CtqVF5IpWowA3sg71Hja6v+v5M=
-X-Received: by 2002:a17:906:4717:b0:7ad:c606:349f with SMTP id
- y23-20020a170906471700b007adc606349fmr24853437ejq.214.1667500612579; Thu, 03
- Nov 2022 11:36:52 -0700 (PDT)
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=xTPyVtvwLQJHw9GIZEAspcuqMem8SnG9GJ/cx57p+QY=;
+ b=C0LbQTdG0ttPZHXuve+rXjVz/SV3ZNFeFvPrhI1FjpwZoHfA7Frz9MKkDH3E28wWU/
+ mEHMZiSgS8LJq4YIjamZNeUoB97y+CAzo5eOf+ADPJpOvMJVO9qSP/2M1brm8ikUapvI
+ TkaXNtiwwbuAwMmUqW+JedEX7GuEe5N/Jhn+137ZVXpyUsakY4yLrN6clE/mUGQFcqyB
+ VmD04gZvnrU/bcsXlji9kTPaSTORjGGmbAtCi3iASo2FuYzaDhmYfn7TuxW/SSmF4dYH
+ VVAYUBG+E1BKyyHL5K7NB0+wZEnzejHs1r2qAzKaTTDLsoPSEOdRrsc4VQB58dZz5nOL
+ I0Jw==
+X-Gm-Message-State: ACrzQf3/2QOGgjFfennmDwI0Ymvf5u/t7nA6jxujKt17eSkd1R0IOEPN
+ jCT2eibLHUS1SZ0HIkjYmHCiyQ==
+X-Google-Smtp-Source: AMsMyM7Ylop0fVj1dPQAh/0l7kc0yYBdAaiFk0ZRnROC2B2qyS8JfT69r5GIBsaZlnDFzG4SbUxRaQ==
+X-Received: by 2002:a63:1145:0:b0:46a:e00c:579c with SMTP id
+ 5-20020a631145000000b0046ae00c579cmr27519259pgr.279.1667502355638; 
+ Thu, 03 Nov 2022 12:05:55 -0700 (PDT)
+Received: from li-cloudtop.c.googlers.com.com
+ (30.161.125.34.bc.googleusercontent.com. [34.125.161.30])
+ by smtp.gmail.com with ESMTPSA id
+ q13-20020a63d60d000000b0046ae5cfc3d5sm1070973pgg.61.2022.11.03.12.05.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Nov 2022 12:05:54 -0700 (PDT)
+From: Li Li <dualli@chromium.org>
+To: dualli@google.com, gregkh@linuxfoundation.org, arve@android.com,
+ tkjos@android.com, maco@android.com, joel@joelfernandes.org,
+ brauner@kernel.org, cmllamas@google.com, surenb@google.com, arnd@arndb.de,
+ masahiroy@kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, hridya@google.com, smoreland@google.com
+Subject: [PATCH v1 0/1] binder: return pending info for frozen async txns
+Date: Thu,  3 Nov 2022 12:05:48 -0700
+Message-Id: <20221103190549.3446167-1-dualli@chromium.org>
+X-Mailer: git-send-email 2.38.1.431.g37b22c650d-goog
 MIME-Version: 1.0
-Received: by 2002:a05:6408:300b:b0:1b9:e27:8317 with HTTP; Thu, 3 Nov 2022
- 11:36:51 -0700 (PDT)
-From: Garry Myles <aremokehinde8@gmail.com>
-Date: Thu, 3 Nov 2022 21:36:51 +0300
-Message-ID: <CABX=rPbkr-TGoY8uS==cCD3K2=SyfrFaiZbX4vua_s=WdOwL4A@mail.gmail.com>
-Subject: 
-To: undisclosed-recipients:;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
- :subject:date:message-id:reply-to;
- bh=EVhOsP+6KbvTRYBlom1mWJjP2e8CWZCw8ljsmoo30js=;
- b=NjWhFrza2H9G7beMpaPJ2EB3r+dBf16OYO7vH/pOhti2HR+L2NY02khAGqF67fMKBu
- I5oMxWV3eDkDjbg8BWdf/9T9mGzIy9YtVlt02PQeV4FegnOs+59TZOanmN2ipdVAmgik
- Rhtsab8A1kNTHjh44HRK2Wu69lBQHRObAuz/bOCHTSc4B9UqYLWpS7APrDVgdpBjd31C
- +pjgM3Z0fIjMmV2EgCej7agGDGmYzGq/B59R6xN7r0EtdRlFVC8DWGOMwDMxjUy8TFWY
- S7j7oojooay2sne4X2xRupmZw1peCl9XFsQ0dLPRYXUx3W6yksOKfvVLK9ioDtastSw5
- 7xmQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=NjWhFrza
+ d=chromium.org; s=google;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=xTPyVtvwLQJHw9GIZEAspcuqMem8SnG9GJ/cx57p+QY=;
+ b=NSiUbzUjU9/BG/mNkp6zWKE1oIVW4/YEy2Mq5C77lqgnE1na+uP1bu5KbKY7zz/Dlq
+ h5FFfqVSHeay/uc3T9IG9KqLTzY4noe0Uiy53kDkglT1/H1pp0XqqXYuSUBSTDBJNFZ6
+ k3fz8aOOKEp2yyNwlE8XZJ5i4TbxL3EB99t3U=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org
+ header.a=rsa-sha256 header.s=google header.b=NSiUbzUj
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,20 +96,39 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: garryfoundation2022@gmail.com
+Cc: kernel-team@android.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-Good day
-You have a donation of $2,000,000.00 from GARRY CHARITY FOUNDATION.
-Please contact us via: garryfoundation2022@gmail.com for more
-Information on how to claim this donation.
+From: Li Li <dualli@google.com>
 
-yours Sincerely
-Garry Myles
+User applications need to know if their binder transactions reach a
+frozen process or not. For sync binder calls, Linux kernel already
+has a dedicated return value BR_FROZEN_REPLY, indicating this sync
+binder transaction will be rejected (similar to BR_DEAD_REPLY) as the
+target process is frozen. But for async binder calls, the user space
+application doesn't have a way to know if the target process is frozen.
+
+This patch add a new return value, BR_TRANSACTION_PENDING, to fix this
+issue. Similar to BR_TRANSACTION_COMPLETE, it means the async binder
+transaction has been put in the queue of the target process, but it's
+waiting for the target process to be unfrozen.
+
+v1: checkpatch.pl --strict passed
+
+Li Li (1):
+  binder: return pending info for frozen async txns
+
+ drivers/android/binder.c            | 23 ++++++++++++++++++++---
+ drivers/android/binder_internal.h   |  3 ++-
+ include/uapi/linux/android/binder.h |  7 ++++++-
+ 3 files changed, 28 insertions(+), 5 deletions(-)
+
+-- 
+2.38.1.431.g37b22c650d-goog
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
