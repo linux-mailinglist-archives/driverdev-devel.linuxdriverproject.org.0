@@ -1,50 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 922EC618AC3
-	for <lists+driverdev-devel@lfdr.de>; Thu,  3 Nov 2022 22:43:44 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3940E619AF2
+	for <lists+driverdev-devel@lfdr.de>; Fri,  4 Nov 2022 16:05:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EF34561064;
-	Thu,  3 Nov 2022 21:43:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF34561064
+	by smtp3.osuosl.org (Postfix) with ESMTP id C124A608D8;
+	Fri,  4 Nov 2022 15:05:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C124A608D8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hkoxLUYLClss; Thu,  3 Nov 2022 21:43:42 +0000 (UTC)
+	with ESMTP id xZ1a4QM4xc_O; Fri,  4 Nov 2022 15:05:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9F4606104C;
-	Thu,  3 Nov 2022 21:43:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9F4606104C
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 994E1607B0;
+	Fri,  4 Nov 2022 15:05:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 994E1607B0
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 704CD1BF2F2
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Nov 2022 21:43:38 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 470FE1BF281
+ for <devel@linuxdriverproject.org>; Fri,  4 Nov 2022 15:05:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 47BCF81E89
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Nov 2022 21:43:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 47BCF81E89
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2FD5D608D8
+ for <devel@linuxdriverproject.org>; Fri,  4 Nov 2022 15:05:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2FD5D608D8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KRKlqKNPkkF9
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Nov 2022 21:43:37 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3607281EB6
-Received: from gmail.com (unknown [103.167.91.40])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3607281EB6
- for <driverdev-devel@linuxdriverproject.org>;
- Thu,  3 Nov 2022 21:43:36 +0000 (UTC)
-From: aleks@gmail.com
-To: driverdev-devel@linuxdriverproject.org
-Subject: Hello friend, Investment Proposal
-Date: 03 Nov 2022 23:43:36 +0200
-Message-ID: <20221103234336.E15A48D095F0CE4A@gmail.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id W-55snIot-Ub for <devel@linuxdriverproject.org>;
+ Fri,  4 Nov 2022 15:05:33 +0000 (UTC)
+X-Greylist: delayed 00:31:47 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7E5C7607B0
+Received: from server.candleeg.com (server.candleeg.com [173.212.246.9])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7E5C7607B0
+ for <devel@driverdev.osuosl.org>; Fri,  4 Nov 2022 15:05:33 +0000 (UTC)
+Received: from User (unknown [88.216.99.100])
+ by server.candleeg.com (Postfix) with ESMTPA id 9C2BF199D0B;
+ Fri,  4 Nov 2022 15:20:01 +0100 (CET)
+From: "Mr.Marcelar River"<smtp@isslserv.com>
+Subject: INTERSWITCH TECHNOLOGY
+Date: Fri, 4 Nov 2022 08:20:06 -0600
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20221104150534.2FD5D608D8@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,28 +59,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: khdiyasmira14@gmail.com
+Reply-To: marcelariver65@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello to you,
+Congrats your Email has won a prize money of $600,000 Friday,November 4th In Todays jackpot,contact our release agent for Clams. 
 
-How are you doing today, I hope you are in good health, my name 
-is Mrs. Khadiya Samira Abuden, the wife of late General Abuden 
-La. from Libya, my late husband died in the war by the rebels, I 
-have an important business proposal for you, i seek your business 
-partnership to invest in your country with $6.5 million USD of my 
-heritage.
 
-I will explain in detail when I receive your interested reply 
-today, hoping to see you soon.
-
-Your urgent reply is needed now.
- 
-REGARDS
-Mrs. Khadiya Samira Abuden
+Contact :mayeau@frontiernet.net
+Contact:marcelariver65@gmail.com
+Best regards,
+Mr.Marcelar River
+Director of inter switch
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
