@@ -1,51 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0FA49641AA0
-	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Dec 2022 04:47:28 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 63BB3641E92
+	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Dec 2022 19:09:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 007D04149D;
-	Sun,  4 Dec 2022 03:47:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 007D04149D
+	by smtp4.osuosl.org (Postfix) with ESMTP id 815BF409B1;
+	Sun,  4 Dec 2022 18:09:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 815BF409B1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7Cr0JZvnKBQp; Sun,  4 Dec 2022 03:47:23 +0000 (UTC)
+	with ESMTP id q6_oeDxLc2qZ; Sun,  4 Dec 2022 18:09:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6110241497;
-	Sun,  4 Dec 2022 03:47:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6110241497
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0423240946;
+	Sun,  4 Dec 2022 18:09:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0423240946
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 103181BF37E
- for <devel@linuxdriverproject.org>; Sun,  4 Dec 2022 03:47:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 787B41BF2BF
+ for <devel@linuxdriverproject.org>; Sun,  4 Dec 2022 18:09:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id ECE594013E
- for <devel@linuxdriverproject.org>; Sun,  4 Dec 2022 03:47:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ECE594013E
+ by smtp2.osuosl.org (Postfix) with ESMTP id 607C440124
+ for <devel@linuxdriverproject.org>; Sun,  4 Dec 2022 18:09:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 607C440124
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nBLFYyq6Iwtn for <devel@linuxdriverproject.org>;
- Sun,  4 Dec 2022 03:47:18 +0000 (UTC)
-X-Greylist: delayed 01:04:34 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 346364002B
-Received: from mail.kso-net.com.cn (unknown [222.65.168.174])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 346364002B
- for <devel@linuxdriverproject.org>; Sun,  4 Dec 2022 03:47:15 +0000 (UTC)
+ with ESMTP id FgGiLEttWV5S for <devel@linuxdriverproject.org>;
+ Sun,  4 Dec 2022 18:09:38 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 97316400F6
+Received: from nulau.edu.ua (mx.nulau.edu.ua [77.244.44.1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 97316400F6
+ for <devel@linuxdriverproject.org>; Sun,  4 Dec 2022 18:09:37 +0000 (UTC)
+Received: from [197.234.142.42] (port=15100 helo=MACBOOKPROF612.localdomain)
+ by nulau.edu.ua with esmtpsa (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.84_2) (envelope-from <aglaw@nulau.edu.ua>)
+ id 1oqrMS-0005Ca-Kk; Fri, 04 Nov 2022 09:43:33 +0200
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Re: I FOUND YOUR ABANDONED CONSIGNMENT HERE IN MIAMI AIRPORT FLORIDA.
-To: Recipients <test@test.com>
-From: "DAVID MOGAN" <test@test.com>
-Date: Sat, 03 Dec 2022 18:16:58 -0800
-Received: from localhost (Unknown [127.0.0.1])
- by mail.kso-net.com.cn (Haraka/2.8.28) with ESMTP id
- 8840106D-53D9-4D52-B928-1B209C418C9B.11
- envelope-from <test@test.com>; Sun, 04 Dec 2022 02:17:15 +0000
-Message-Id: <8840106D-53D9-4D52-B928-1B209C418C9B.11@mail.kso-net.com.cn>
+To: Recipients <aglaw@nulau.edu.ua>
+From: aglaw@nulau.edu.ua
+Date: Fri, 04 Nov 2022 09:43:21 +0200
+X-Antivirus: AVG (VPS 221104-0, 11/4/2022), Outbound message
+X-Antivirus-Status: Clean
+X-SA-Exim-Connect-IP: 197.234.142.42
+X-SA-Exim-Mail-From: aglaw@nulau.edu.ua
+Subject: GOOD NEWS!!!!
+X-SA-Exim-Version: 4.2.1 (built Mon, 26 Dec 2011 16:24:06 +0000)
+X-SA-Exim-Scanned: Yes (on nulau.edu.ua)
+Message-Id: <20221204180940.607C440124@smtp2.osuosl.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=nulau.edu.ua; s=dkim; 
+ h=Subject:Reply-To:Date:From:To:Content-Description:Content-Transfer-Encoding:MIME-Version:Content-Type;
+ bh=d/ZeFGtanYGIrEH1RJufNPFXXn9v1D8ANHbSvs56WQM=; 
+ b=oFoOC57dHZxhpfZrGGfoAjEY10pvcuQIQm+v9MJXaPQUe/cx+9Ka0oNdD7Q41bSsybFK4PU3PjlJ6hxCIeva7m8dSo8RzRoWKQO7bn539HerRZR2zrk8A2cywhzuDPi4bv3BuiwLC8uooDoswRMu8kGekjxcVOI3qKCAI15rGaw=;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=nulau.edu.ua header.i=@nulau.edu.ua
+ header.a=rsa-sha256 header.s=dkim header.b=oFoOC57d
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,41 +72,19 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: moganunit@hotmail.com
+Reply-To: KristineWellenstein.org@outlook.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Operations, Maintenance and Transportation officer.
-Miami International Airport 2100 NW 42nd Ave, Miami
-FL 33126, United States.
-INSPECTION UNIT.
+Attention!!!! You are hereby advised to send a confirmation email to KristineWellenstein.org@outlook.com for more details about your winning. Your email was randomly selected to receive a Charity Donation of $2,000,000 Million USD. From Kristine Wellenstein winner of $426 million, in the Million Dollars Power-Ball Jackpot Lottery,2022.
 
-Attention Beneficiary,
-                                                               
-My name is David Mogan, I work with Miami airport storage department Miami International Airport FL here in the state as a stock keeper,I have information about your abandoned consignment in our storage unit. This is important because any mistake with regards to this information is capable of kicking me out of my job but if well managed, We will be rich forever so i need to know if I can trust you enough before we kick start.
 
-During my routing check, I discovered an undisclosed amount of funds abandoned in a metal consignment box here in a storage facility bearing your email as the original beneficiary. From my investigation, this consignment was abandoned because the delivery personnel was not able to secure the required document to proceed delivery. Also, he was not aware of the value of the box. Long story short, the diplomat agent is not aware of the contents of this box hence abandoning it here was his only choice.
 
-Now here is my personal suggestion and offer, I will apply for a loan to help pay and obtain the US I.C.D.P charges and proceed to your address for final delivery but I want 30% of the total value of the consignment while you keep 70%. Contact me on my personal email if you are still interested and ready to commence delivery.
-
-KINDLY RE-CONFIRM THE FOLLOWING INFORMATION FOR DELIVERY.
-
-(1) YOUR NAMES: _________
-(2) DELIVERY ADDRESS: ______
-(3) TELEPHONE NUMBER:______
-(4) NEAREST AIRPORT: ______
-
-Note, I will personally deliver the consignment to your location to avoid any more charges and unnecessary delay.
-
-Contact me on moganunit@hotmail.com
-
-Kindly disregard any email without your delivery reference number ( TAG RBT-45C ) Please ensure you always include this reference code in all our communication.
-
-Warmest Regards,
-Chief Inspection Officer
-David Mogan.
+-- 
+This email has been checked for viruses by AVG antivirus software.
+www.avg.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
