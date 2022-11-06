@@ -1,57 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2A9C61DFBC
-	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Nov 2022 00:47:13 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E942E61E18A
+	for <lists+driverdev-devel@lfdr.de>; Sun,  6 Nov 2022 11:18:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3CB55408BF;
-	Sat,  5 Nov 2022 23:47:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3CB55408BF
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3B4984087C;
+	Sun,  6 Nov 2022 10:18:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3B4984087C
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Non-encoded non-ASCII data (and not UTF-8)
-	(char DC hex): Subject: \x{DC}BERTRAGUNG WART[...]
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HvzoflNSIPyc; Sat,  5 Nov 2022 23:47:10 +0000 (UTC)
+	with ESMTP id eX0XgQ3ECwqa; Sun,  6 Nov 2022 10:18:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A6CFC4081F;
-	Sat,  5 Nov 2022 23:47:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A6CFC4081F
+	by smtp4.osuosl.org (Postfix) with ESMTP id AF5984042F;
+	Sun,  6 Nov 2022 10:18:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AF5984042F
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 85B881BF41F
- for <devel@linuxdriverproject.org>; Sat,  5 Nov 2022 23:47:06 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F31A31BF5AA
+ for <devel@linuxdriverproject.org>; Sun,  6 Nov 2022 10:18:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5D8D560B00
- for <devel@linuxdriverproject.org>; Sat,  5 Nov 2022 23:47:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5D8D560B00
+ by smtp1.osuosl.org (Postfix) with ESMTP id DB54481A47
+ for <devel@linuxdriverproject.org>; Sun,  6 Nov 2022 10:18:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DB54481A47
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, Non-encoded non-ASCII data (and not UTF-8)
- (char DC hex): Subject: \x{DC}BERTRAGUNG WART[...]
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rqt0_jhdmlAi for <devel@linuxdriverproject.org>;
- Sat,  5 Nov 2022 23:47:05 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B71F160AEB
-Received: from mail.skyschool.com.tw (59-125-31-24.hinet-ip.hinet.net
- [59.125.31.24])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B71F160AEB
- for <devel@driverdev.osuosl.org>; Sat,  5 Nov 2022 23:47:05 +0000 (UTC)
-Received: from User (_gateway [192.168.1.1])
- by mail.skyschool.com.tw (Postfix) with SMTP id 5156068BB51;
- Sun,  6 Nov 2022 07:46:38 +0800 (CST)
-From: "susan"<ctga141220@mail.skyschool.com.tw>
-Subject: ÜBERTRAGUNG WARTEN.//.../
-Date: Sun, 6 Nov 2022 00:46:57 -0700
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id c7qdqFKm-JPH for <devel@linuxdriverproject.org>;
+ Sun,  6 Nov 2022 10:18:31 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8197681774
+Received: from smtpout2.ac-reunion.fr (smtpout2.ac-reunion.fr [195.98.231.113])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8197681774
+ for <devel@driverdev.osuosl.org>; Sun,  6 Nov 2022 10:18:31 +0000 (UTC)
+Received: from smtps-2.ac-reunion.fr (unknown [172.24.252.10])
+ by smtpout2.ac-reunion.fr (Postfix) with ESMTP id 1D1B47741B;
+ Sun,  6 Nov 2022 14:17:33 +0400 (RET)
+Received: from DESKTOP-PFCM6A8.home (unknown [194.5.53.137])
+ by smtps-2.ac-reunion.fr (Postfix) with ESMTPA id E42F514DB49;
+ Sun,  6 Nov 2022 14:09:40 +0400 (+04)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20221105234706.5D8D560B00@smtp3.osuosl.org>
+Content-Description: Mail message body
+Subject: Projekt
+To: Recipients <assistentin@ac-reunion.fr>
+From: "David E. Ramsden" <assistentin@ac-reunion.fr>
+Date: Sun, 06 Nov 2022 10:09:32 +0000
+Message-Id: <20221106101832.DB54481A47@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,66 +60,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: budaintercom@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: dav.rs1694@aol.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
- 
-Gesch?tzte Aufmerksamkeit!
-Diese E-Mail wird Ihnen aufgrund unserer j?ngsten Aufzeichnungen
-zugesandt, aus denen hervorgeht, dass Sie Anspruch auf eine optionale
-R?ckzahlung von siebenhundertf?nfzigtausend US-Dollar haben, die in
-der unter Ihrem Namen und E-Mail-Konto registrierten Apex-Bank
-gefunden wurde nicht beanspruchtes (verlorenes Geld, das Ihnen
-geschuldet wird), das darauf wartet, ohne Anspr?che ?bertragen zu
-werden.
+Ich habe ein Projekt/Gesch=E4ft, das ich mit Ihnen besprechen m=F6chte. Wen=
+n Sie interessiert sind, antworten Sie f=FCr weitere Details, wenn m=F6glic=
+h, auf Englisch.
+    =
 
-In Anbetracht dieser Entwicklung k?nnen Sie uns Ihren Rat mitteilen
-Vollst?ndiger rechtm??iger Name ......................
-Telefon direkt ................................
-Und Postanschrift ..................................
-f?r eine m?gliche Ber?cksichtigung, damit wir die ?bertragung bearbeiten k?nnen
-sofort zu Ihrer Position
-
-Vielen Dank und in Erwartung Ihrer dringenden Antwort
-
-
-
-Herzlich,
-Herr Peter GABRIEL.
-Sektionsassistenz
-USEuro-Afro Debit Reconciliation Office
-ID 10752 Gro?britannien London.
-budaintercom@gmail.com
-
-
-Valued Attention !
-This email is being sent to you as a result of our recent record
-ndicates that you are eligible to receive an optional repayment of
-Seven Hundred and Fifty Thousand US dollars which has been found in
-the apex bank registered under your name and email account ,been your
-unclaimed (lost money owed to you) waiting to be transfer without
-claims.
-
-Considering this development, your advice to furnish us with your
-Complete legal name......................
-Direct telephone ..............................
-And Postal address .............................
-for possible consideration to enable us process the transfer
-immediately to you position
-
-Thanks and anticipating your urgent respond
-
-
-
-Cordially,
-Mr. Peter GABRIEL.
-Section assistance
-USEuro-Afro Debit Reconciliation Office
-ID 10752 UK London.
-budaintercom@gmail.com
+Mit freundlichen Gr=FC=DFen,
+David Ramsden
+_____________________________
+Assistentin: Christiane Grouzis
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
