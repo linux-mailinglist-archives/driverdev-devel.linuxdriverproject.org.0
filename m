@@ -1,41 +1,41 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A11B462AF90
-	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Nov 2022 00:39:15 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8217E62AF91
+	for <lists+driverdev-devel@lfdr.de>; Wed, 16 Nov 2022 00:39:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4AE6960EC2;
-	Tue, 15 Nov 2022 23:39:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4AE6960EC2
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id quKsUkx8YxRK; Tue, 15 Nov 2022 23:39:11 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1CD8C60ECD;
-	Tue, 15 Nov 2022 23:39:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1CD8C60ECD
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2122C1BF421
- for <devel@linuxdriverproject.org>; Tue, 15 Nov 2022 23:39:08 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F10B1812EF
- for <devel@linuxdriverproject.org>; Tue, 15 Nov 2022 23:39:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F10B1812EF
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9EE8781337;
+	Tue, 15 Nov 2022 23:39:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9EE8781337
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mFh8XiMidM5o for <devel@linuxdriverproject.org>;
- Tue, 15 Nov 2022 23:39:07 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id heITMFo1IErF; Tue, 15 Nov 2022 23:39:15 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5932681320;
+	Tue, 15 Nov 2022 23:39:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5932681320
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 866C81BF421
+ for <devel@linuxdriverproject.org>; Tue, 15 Nov 2022 23:39:08 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6253360ECD
+ for <devel@linuxdriverproject.org>; Tue, 15 Nov 2022 23:39:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6253360ECD
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1xi1Kkw6aKXt for <devel@linuxdriverproject.org>;
+ Tue, 15 Nov 2022 23:39:08 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3CF90812E5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A82DF60ECE
 Received: from wordpress02.hostingraja.org (wp7.hostingraja.info
  [103.93.16.222])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3CF90812E5
- for <devel@linuxdriverproject.org>; Tue, 15 Nov 2022 23:39:07 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A82DF60ECE
+ for <devel@driverdev.osuosl.org>; Tue, 15 Nov 2022 23:39:07 +0000 (UTC)
 Received: from [192.168.0.123] (unknown [194.5.214.188])
  by wordpress02.hostingraja.org (Postfix) with ESMTPA id 6B3601926AEF;
  Wed, 16 Nov 2022 05:07:19 +0530 (IST)
@@ -45,7 +45,7 @@ Subject: RE:@@!Ukraine
 To: Recipients <contact@initworksolutions.com>
 From: "Mr. Dyakonov" <contact@initworksolutions.com>
 Date: Wed, 16 Nov 2022 00:37:03 +0100
-Message-Id: <20221115233907.F10B1812EF@smtp1.osuosl.org>
+Message-Id: <20221115233908.6253360ECD@smtp3.osuosl.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=initworksolutions.com; s=default; t=1668555454;
  bh=RSyrH4a7SiDcaD2obb8YjoKkrsCiU/ES5Glqx69YPLk=;
