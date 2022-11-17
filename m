@@ -1,41 +1,41 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 24A9E62D7D3
-	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Nov 2022 11:17:36 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2DD4662D7D4
+	for <lists+driverdev-devel@lfdr.de>; Thu, 17 Nov 2022 11:17:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 13BD7418F9;
-	Thu, 17 Nov 2022 10:17:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 13BD7418F9
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3CA21400C4;
+	Thu, 17 Nov 2022 10:17:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3CA21400C4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9pr1KRZgCSNo; Thu, 17 Nov 2022 10:17:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VqPX6jmvhXwW; Thu, 17 Nov 2022 10:17:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8302A418EB;
-	Thu, 17 Nov 2022 10:17:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8302A418EB
+	by smtp2.osuosl.org (Postfix) with ESMTP id ECF0040494;
+	Thu, 17 Nov 2022 10:17:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ECF0040494
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 57B331BF3A1
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A19551BF3A1
  for <devel@linuxdriverproject.org>; Thu, 17 Nov 2022 10:17:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 409AC61039
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7BC7E418FA
  for <devel@linuxdriverproject.org>; Thu, 17 Nov 2022 10:17:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 409AC61039
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7BC7E418FA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id seOB-CS_dM94 for <devel@linuxdriverproject.org>;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RqHFcZz4YWey for <devel@linuxdriverproject.org>;
  Thu, 17 Nov 2022 10:17:28 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8CB4361037
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9EF28418EB
 Received: from wordpress02.hostingraja.org (wp7.hostingraja.info
  [103.93.16.222])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8CB4361037
- for <devel@linuxdriverproject.org>; Thu, 17 Nov 2022 10:17:28 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9EF28418EB
+ for <devel@driverdev.osuosl.org>; Thu, 17 Nov 2022 10:17:28 +0000 (UTC)
 Received: from [192.168.0.123] (unknown [194.5.214.188])
  by wordpress02.hostingraja.org (Postfix) with ESMTPA id A573A1A8989D;
  Thu, 17 Nov 2022 15:47:13 +0530 (IST)
@@ -45,7 +45,7 @@ Subject: ^*Donation With Love
 To: Recipients <premjiiazimm@gmail.com>
 From: "Mr. Azim Hashim" <premjiiazimm@gmail.com>
 Date: Thu, 17 Nov 2022 11:17:00 +0100
-Message-Id: <20221117101729.409AC61039@smtp3.osuosl.org>
+Message-Id: <20221117101729.7BC7E418FA@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
