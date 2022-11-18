@@ -1,52 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 484A662F536
-	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Nov 2022 13:42:23 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 455C062F36C
+	for <lists+driverdev-devel@lfdr.de>; Fri, 18 Nov 2022 12:15:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1F22A821B6;
-	Fri, 18 Nov 2022 12:42:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F22A821B6
+	by smtp3.osuosl.org (Postfix) with ESMTP id CB49A61052;
+	Fri, 18 Nov 2022 11:15:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CB49A61052
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id j3N9F6fDeg3U; Fri, 18 Nov 2022 12:42:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IGXc-wWbO4oL; Fri, 18 Nov 2022 11:15:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C2EC9821A6;
-	Fri, 18 Nov 2022 12:42:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C2EC9821A6
+	by smtp3.osuosl.org (Postfix) with ESMTP id 91A4861031;
+	Fri, 18 Nov 2022 11:15:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 91A4861031
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6DF8E1BF228
- for <devel@linuxdriverproject.org>; Fri, 18 Nov 2022 12:42:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3D48D1BF2BE
+ for <devel@linuxdriverproject.org>; Fri, 18 Nov 2022 11:15:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 56AE0821B6
- for <devel@linuxdriverproject.org>; Fri, 18 Nov 2022 12:42:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 56AE0821B6
+ by smtp1.osuosl.org (Postfix) with ESMTP id 236C282174
+ for <devel@linuxdriverproject.org>; Fri, 18 Nov 2022 11:15:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 236C282174
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gEwBnkMMGXJF for <devel@linuxdriverproject.org>;
- Fri, 18 Nov 2022 12:42:13 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 840FE821A6
-Received: from profi.clinic (profi.clinic [95.154.104.47])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 840FE821A6
- for <devel@driverdev.osuosl.org>; Fri, 18 Nov 2022 12:42:13 +0000 (UTC)
-Received: from User (unknown [5.188.82.103])
- by profi.clinic (Postfix) with ESMTPA id 3E34F3C04A12;
- Fri, 18 Nov 2022 20:17:45 +1000 (+10)
-From: "David Lopez"<lopdav555@gmail.com>
-Subject: REPLY URGENTLY
-Date: Fri, 18 Nov 2022 13:47:50 +0330
+ with ESMTP id R3t8V8DfLk1S for <devel@linuxdriverproject.org>;
+ Fri, 18 Nov 2022 11:15:29 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B338481F2B
+Received: from mx.swemel.ru (mx.swemel.ru [95.143.211.150])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B338481F2B
+ for <devel@driverdev.osuosl.org>; Fri, 18 Nov 2022 11:15:28 +0000 (UTC)
+From: Denis Arefev <arefev@swemel.ru>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [PATCH] staging: rts5208: Added value check
+Date: Fri, 18 Nov 2022 14:15:23 +0300
+Message-Id: <20221118111523.123463-1-arefev@swemel.ru>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20221118124214.56AE0821B6@smtp1.osuosl.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=swemel.ru; s=mail; t=1668770123;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=oJ+C4azwrz0T1Xq/DoyYfvD0U7Rp9/tHMKhuIZvRgnw=;
+ b=UXv93xb3Ze7gwRU/niYHPo3H8MG295UqhEN+zk73xSRUqM4ciw45FZo1nKtqpHh2Mrc7PH
+ ZdievLhBH4bgiNb6TJQfqxrW2fw//08XMDpZHa6QtTe2f36gylCDqp1OmZDUvT40AtTbI6
+ RQhB8KS7LvQMYv8ILX/jQ56hazsUb+Y=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key) header.d=swemel.ru header.i=@swemel.ru
+ header.a=rsa-sha256 header.s=mail header.b=UXv93xb3
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,53 +65,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: davidlopezcaixa555@gmail.com
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, vfh@swemel.ru, trufanov@swemel.ru,
+ linux-kernel@vger.kernel.org, lvc-project@linuxtesting.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-QXR0bjogCgpGaXJzdCBvZiBhbGwsIGxldCBtZSBpbnRyb2R1Y2UgbXlzZWxmIHRvIHlvdS4gSSBh
-bSBEYXZpZCBMb3BleiwKd29ya2luZyB3aXRoIENBSVhBIEJBTkssIGhlcmUgaW4gTWFkcmlkIJYg
-U3BhaW4uIEkgaGF2ZSBhIGNvbmZpZGVudGlhbApidXNpbmVzcyBwcm9wb3NhbCBJIHdhbnQgdG8g
-cHJlc2VudCB0byB5b3UuIEkgYW0gY29udGFjdGluZyB5b3UgaW4KcmVnYXJkcyB0byBhIGRlY2Vh
-c2VkIGNsaWVudCBvZiBvdXIgYmFuayB3aG8gaGFkIGEgZ2hhc3RseSBhY2NpZGVudCBpbgpNYWlu
-bGFuZCBDaGluYSBvbiBNYXJjaCAxMlRILCAyMDE5LiBIZSB3YXMgYW4gZXhwYXRyaWF0ZSBlbmdp
-bmVlciB3aG8Kd29ya2VkIGluIFNwYWluIGZvciBUd2VudHkgeWVhcnMuCgpCZWZvcmUgSGlzIGRl
-YXRoLCBoZSBkZXBvc2l0ZWQgdGhlIHN1bSBvZiAogDIyLDUwMCwwMDAuMDApLApUd2VudHktVHdv
-IE1pbGxpb24sIEZpdmUgSHVuZHJlZCBUaG91c2FuZCBFdXJvcyBoZXJlCmluIG91ciBiYW5rIHZh
-dWx0LiBEb2N1bWVudGF0aW9ucyBzaG93IHRoYXQgdGhlc2UgZnVuZHMgY2FuIG9ubHkgYmUKY2xh
-aW1lZCBieSBoaXMgbmV4dCBvZiBraW4vcmVsYXRpdmUuIFVuZm9ydHVuYXRlbHksIGhlIGRpZWQg
-d2l0aG91dApsZWF2aW5nIGFueSB3aWxsIG9yIG91dHN0YW5kaW5nIGluc3RydWN0aW9ucyByZWdh
-cmRpbmcgdGhpcyBkZXBvc2l0CmJlZm9yZSBoaXMgZGVhdGguCgpXZSBoYXZlIGNhcnJpZWQgb3V0
-IHNldmVyYWwgZWZmb3J0cyB0byBsb2NhdGUgYW55IGZhbWlseSBtZW1iZXIsIGJ1dAp0aGlzIGhh
-cyBiZWVuIGZ1dGlsZS4gSG93ZXZlciwgYmVjYXVzZSBvZiB0aGUgSW50ZXJuYXRpb25hbCBGaW5h
-bmNpYWwKcHJvYmxlbXMgaGVyZSBpbiBTcGFpbiwgYSBsb3Qgb2YgcmVmb3JtcyBoYXZlIGJlZW4g
-bWFkZSB3aXRoaW4gdGhlClNwYW5pc2ggRmluYW5jaWFsIHN5c3RlbS4gVGhpcyBpbmNsdWRlcyB0
-aGUgbmV3IGxhdyBvbiBzdWNjZXNzaW9uCmNsYWltcyB3aGljaCBpbmRpY2F0ZXMgYSBkdXJhdGlv
-biBpbiB3aGljaCBzdWNoIGluaGVyaXRhbmNlIGNvdWxkIGJlCnRvbGVyYXRlZC4gRm9yIHRoaXMg
-cmVhc29uLCBJIHNlYXJjaGVkIGZvciB5b3UgYW5kIGRlY2lkZWQgdG8gY29udGFjdAp5b3UgYW5k
-IHByZXNlbnQgeW91IGFzIHRoZSBuZXh0IG9mIGtpbiB0byB0aGUgZGVjZWFzZWQgY3VzdG9tZXIu
-CgpJIGhhdmUgcHV0IGluIHBsYWNlIGFsbCBuZWNlc3NhcnkgZG9jdW1lbnRhdGlvbiBjb25jZXJu
-aW5nIHRoZSByZWxlYXNlCm9mIHRoaXMgZGVwb3NpdCBhbmQgaXQgaXMgbXkgaW50ZW50aW9uIHRv
-IGludHJvZHVjZSB0aGlzIG9wcG9ydHVuaXR5CnRvIHlvdSBiYXNlZCBvbiB0aGUgZmFjdCB0aGF0
-IHlvdSBjYW4gYXNzaXN0IHdpdGggdGhlIHRyYW5zZmVyIGFuZAppbnZlc3RtZW50IHBsYW5zIG9m
-IG15IHNoYXJlIG9mIHRoZSBmdW5kcy4gU2luY2Ugbm9ib2R5IGlzIGNvbWluZyBmb3IKdGhpcyBk
-ZXBvc2l0IGFuZCBJIGFtIG9uZSBodW5kcmVkIHBlcmNlbnQgc3VyZSB0aGlzIGlzIG5vIGtub3du
-CnJlbGF0aXZlLiBJIGhhdmUgYWxsIHRoZSBwcm9wZXIgZG9jdW1lbnRhdGlvbiB0byBpbnN0aWxs
-IHlvdSBhcyB0aGUKbmV4dCBvZiBraW4uIEFsbCBJIHJlcXVpcmUgaXMgeW91ciBob25lc3QgY29v
-cGVyYXRpb24gdG8gZW5hYmxlIHVzIHRvCmFjaGlldmUgdGhpcyB0cmFuc2FjdGlvbi4KClVwb24g
-eW91ciBhY2NlcHRhbmNlIHRvIGNvb3BlcmF0ZSwgSSB3YW50IHlvdSB0byBrbm93IHRoYXQgNDAl
-IG9mIHRoaXMKZGVwb3NpdGVkIGZ1bmQgd2lsbCBiZSB5b3VycyBhcyBvdXIgZm9yZWlnbiBwYXJ0
-bmVyLCB3aGlsZSA2MCUgd2lsbCBiZQpmb3IgbWUgYW5kIG15IHBhcnRuZXIgaGVyZSBpbiB0aGUg
-b2ZmaWNlLgoKSWYgeW91IGFyZSBpbnRlcmVzdGVkLCBwbGVhc2UgY29udGFjdCBtZSB2aWEgZW1h
-aWwsCgpVcG9uIHlvdXIgcmVzcG9uc2UsIEkgc2hhbGwgdGhlbiBwcm92aWRlIHlvdSB3aXRoIG1v
-cmUgZGV0YWlscyBhbmQKcmVsZXZhbnQgZG9jdW1lbnRzIHRoYXQgd2lsbCBoZWxwIHlvdSB1bmRl
-cnN0YW5kIHRoaXMgdHJhbnNhY3Rpb24KcHJvcGVybHkuCgpIb3dldmVyLCBpZiB0aGlzIGJ1c2lu
-ZXNzIHByb3Bvc2FsIG9mZmVuZHMgeW91ciBtb3JhbCBldGhpY3MsIGRvCmFjY2VwdCBteSBzaW5j
-ZXJlIGFwb2xvZ3ksIG9yIGlmIG9uIHRoZSBjb250cmFyeSwgeW91IHdpc2ggdG8gYWNoaWV2ZQp0
-aGlzIGdvYWwgd2l0aCBtZSwga2luZGx5IGdldCBiYWNrIHRvIG1lIHdpdGggeW91ciBpbnRlcmVz
-dCBmb3IKZnVydGhlciBleHBsYW5hdGlvbnMuCgpLaW5kZXN0IFJlZ2FyZHMsCgpEYXZpZCBMb3Bl
-egpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBt
-YWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2
-LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Added value check.
+Return value of a function 'ms_set_rw_reg_addr'
+called at ms.c:1770 is not checked,
+but it is usually checked for this function
+
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
+
+Signed-off-by: Denis Arefev <arefev@swemel.ru>
+---
+ drivers/staging/rts5208/ms.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/staging/rts5208/ms.c b/drivers/staging/rts5208/ms.c
+index 9001570a8c94..e884ee5da317 100644
+--- a/drivers/staging/rts5208/ms.c
++++ b/drivers/staging/rts5208/ms.c
+@@ -1769,6 +1769,8 @@ static int ms_copy_page(struct rtsx_chip *chip, u16 old_blk, u16 new_blk,
+ 
+ 		retval = ms_set_rw_reg_addr(chip, OVERWRITE_FLAG, MS_EXTRA_SIZE,
+ 					    SYSTEM_PARAM, (6 + MS_EXTRA_SIZE));
++		if (retval != STATUS_SUCCESS)
++			return STATUS_FAIL;
+ 
+ 		ms_set_err_code(chip, MS_NO_ERROR);
+ 
+-- 
+2.25.1
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
