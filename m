@@ -1,69 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52B386380A0
-	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Nov 2022 22:27:18 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DE4DF63809A
+	for <lists+driverdev-devel@lfdr.de>; Thu, 24 Nov 2022 22:25:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 610AF60B95;
-	Thu, 24 Nov 2022 21:27:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 610AF60B95
+	by smtp1.osuosl.org (Postfix) with ESMTP id D287082235;
+	Thu, 24 Nov 2022 21:25:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D287082235
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XGIup4f5tb1a; Thu, 24 Nov 2022 21:27:15 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 3CNyMX0HTsDv; Thu, 24 Nov 2022 21:25:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 24CB360B3B;
-	Thu, 24 Nov 2022 21:27:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 24CB360B3B
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7477482233;
+	Thu, 24 Nov 2022 21:25:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7477482233
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5DDE51BF311
- for <devel@linuxdriverproject.org>; Thu, 24 Nov 2022 21:27:12 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 27D2C1BF311
+ for <devel@linuxdriverproject.org>; Thu, 24 Nov 2022 21:25:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 45E6260B95
- for <devel@linuxdriverproject.org>; Thu, 24 Nov 2022 21:27:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 45E6260B95
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0346460B95
+ for <devel@linuxdriverproject.org>; Thu, 24 Nov 2022 21:25:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0346460B95
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uIKFCN289GrL for <devel@linuxdriverproject.org>;
- Thu, 24 Nov 2022 21:27:11 +0000 (UTC)
+ with ESMTP id FyOEXieHTiP3 for <devel@linuxdriverproject.org>;
+ Thu, 24 Nov 2022 21:25:31 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6A9DD60B3B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1C22F60B3B
 Received: from prmufovs.maryiacofano.com (prmufovs.maryiacofano.com
  [88.209.254.60])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6A9DD60B3B
- for <devel@linuxdriverproject.org>; Thu, 24 Nov 2022 21:27:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1C22F60B3B
+ for <devel@driverdev.osuosl.org>; Thu, 24 Nov 2022 21:25:30 +0000 (UTC)
 From: THE SCOTT FOUNDATION (Mackenzie Scott Donation)
  <faa.coo@maryiacofano.com>
-To: devel@linuxdriverproject.org
+To: devel@driverdev.osuosl.org
 Subject: CONGRATULATION.
-Date: 24 Nov 2022 12:46:11 -0800
-Message-ID: <20221124124611.A5E3006E65429DBB@maryiacofano.com>
+Date: 24 Nov 2022 12:47:53 -0800
+Message-ID: <20221124124752.E12C4B0AF7B9950E@maryiacofano.com>
 MIME-Version: 1.0
 X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
  d=maryiacofano.com; 
- b=YgPe161vd5Lj2SYLIm89fCEHvJEo5dsLAd/70XyyBqYUVYS7XsKZ0iXAsk5NfUPNYFYDZ1Ki9iVr
- jc287UyRMqifWd1Mz4w1aA2Rxga5fOVy0x3S2KmqQMFWfyDKcHNn1rxvIoHWVitNCHKkwyg7c8Qw
- XwykYOEkfLhoNrKC+7YQPYJrjVOm73n9ajn10mG0QSCtsZPaYjRJ6HBazZ/Zce98p/wyqV8Hk39Q
- WQsoWTjipxUAs6xh3qPGi+9aTm8qoUOimbz55MIChIRqEuRJLgETwNG8YdgFfBOWq8+icMgixQmJ
- n3AYf8nkgmIVZPltjKcRmOlCET+oT3KbeWlcTw==;
+ b=e4WNlkElJ8AzcQS0ZdP9KQhT5hwCQbgnAtgpq5uKIkcM2H6qy356scDC4oFEoUKylkA4Zq6MIyjh
+ oFC8fSy81Wru886DNeY0j4Ojan1MKTi7f3xjDtNGu1drllZJgvd7ieJLazzbKb5ywBBFfQ7C3s9d
+ ykW4wqP3q1dM7VNMHgcflKTirWwcQwVCebtSmOeIxOAXzg6/LmXwjMnZoQ/jM5E2l+NCp6nHffTy
+ 4rI7xvWK+HDdYQGemOPiPGiN0j2GDVBABcyj1XUQvG2CoZjw3wLllsxm4IWBTSgzmayNs4obSDkc
+ t646J+4lPDo34thAYfnh4IbruZGclqNP1B7ANA==;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
  d=maryiacofano.com; 
  h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
  i=faa.coo@maryiacofano.com; 
  bh=0kGu+96ocW80Rtpos2ra+D9ghDs=;
- b=QuE3Az5J/bu8sWWCUWD1Xdd2UhWfqgdIcDa8Mq1rzDUYcudZPSQsazT35O7tWB/eIhCp0dC3dhOm
- 6E83XSsyz4755re7dsq4VipudtoLwQwZIcMwIaNyH7c5vHLOzk978HCeH79EdSC5Mt2NrWOiJ947
- AJTIteOX2uYfyO8dGwpWPfrrKUuF27wS7hZcZXOJmv9neTuAoO/Ogc3HXngF+24LgIsjbaLJ+Msa
- zao8QZI3ozrI3Me8usAtUL15nrcSTPzPadMUL2fMJnup19si5ClcBkLTGcOtf5Ihon3p/CTJ+gyD
- yWqUpiwdf4F4VcfoYGmW/+8h++l64j28d/rOEQ==
+ b=Vdbg5ypu1JGkJMXqvF8ruIX7wVN7bXj+lwv12B4rIKbynTL7tu3INCQlpZZeDuf1XpjxDSWDJQZn
+ kGE7HvOG8xO7nuRc935HiHYpDxF6BcWowYHs31XVc3C4CNvyu25eOJgXVq0fHscUcRfmS1V1Gz3e
+ m6VOJOPW7LDt8odmzMBn6n4LeVfzBUCH59SMXg+m0GRMK7qk/aFqj4Ye8TOOZJU5OCagxu9QW55b
+ DnKYkG2wA7C4WFwdhWStcJOhCN9Zk71EQs6TsGzgCfx/zxNN7NEYB1gm04dA49hyEJL6IYugw+FH
+ AbUWyqiB9WPlHBp3Ujfcs61gW0I6L/mJEMWddw==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=maryiacofano.com
  header.i=faa.coo@maryiacofano.com header.a=rsa-sha1 header.s=dkim
- header.b=QuE3Az5J
+ header.b=Vdbg5ypu
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
