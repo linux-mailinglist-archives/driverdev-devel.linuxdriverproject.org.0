@@ -1,65 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 083E763B8E3
-	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Nov 2022 04:45:28 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E7A0463B8E7
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Nov 2022 04:48:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 44EDC404DD;
-	Tue, 29 Nov 2022 03:45:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 44EDC404DD
+	by smtp1.osuosl.org (Postfix) with ESMTP id E592F81DF8;
+	Tue, 29 Nov 2022 03:48:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E592F81DF8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Td5RV0A0f3kI; Tue, 29 Nov 2022 03:45:25 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RbtT9JCUQepJ; Tue, 29 Nov 2022 03:48:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EA365403A7;
-	Tue, 29 Nov 2022 03:45:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EA365403A7
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9530881DF1;
+	Tue, 29 Nov 2022 03:48:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9530881DF1
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 382651BF3B5
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 29 Nov 2022 03:45:22 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E0C881BF3B5
+ for <devel@linuxdriverproject.org>; Tue, 29 Nov 2022 03:48:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0DB8060C23
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 29 Nov 2022 03:45:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0DB8060C23
+ by smtp1.osuosl.org (Postfix) with ESMTP id B694D81DF8
+ for <devel@linuxdriverproject.org>; Tue, 29 Nov 2022 03:48:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B694D81DF8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AdDbxW2aT4-B
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 29 Nov 2022 03:45:21 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eOYj0BujZg1F for <devel@linuxdriverproject.org>;
+ Tue, 29 Nov 2022 03:48:01 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6F3AD60BE5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1954081DF1
 Received: from zimbra.labh2.coppe.ufrj.br (smtp.labh2.coppe.ufrj.br
  [146.164.98.79])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6F3AD60BE5
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 29 Nov 2022 03:45:21 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1954081DF1
+ for <devel@linuxdriverproject.org>; Tue, 29 Nov 2022 03:48:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by zimbra.labh2.coppe.ufrj.br (Postfix) with ESMTP id D178E11FD1E4;
- Mon, 28 Nov 2022 08:30:03 -0200 (BRST)
+ by zimbra.labh2.coppe.ufrj.br (Postfix) with ESMTP id E8992120260F;
+ Mon, 28 Nov 2022 08:40:09 -0200 (BRST)
 Received: from zimbra.labh2.coppe.ufrj.br ([127.0.0.1])
  by localhost (zimbra.labh2.coppe.ufrj.br [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id DjYYWRcUlj7j; Mon, 28 Nov 2022 08:30:03 -0200 (BRST)
+ with ESMTP id hr04wpIrMyTw; Mon, 28 Nov 2022 08:40:09 -0200 (BRST)
 Received: from zimbra.labh2.coppe.ufrj.br (localhost [127.0.0.1])
- by zimbra.labh2.coppe.ufrj.br (Postfix) with ESMTP id D09A71202946;
- Mon, 28 Nov 2022 07:39:31 -0200 (BRST)
-Received: from [172.20.10.2] (unknown [197.210.76.135])
- by zimbra.labh2.coppe.ufrj.br (Postfix) with ESMTPSA id D15AB11F7DDC;
- Mon, 28 Nov 2022 07:15:17 -0200 (BRST)
+ by zimbra.labh2.coppe.ufrj.br (Postfix) with ESMTP id C0D1911FDBDC;
+ Mon, 28 Nov 2022 08:31:29 -0200 (BRST)
+Received: from [172.20.10.2] (unknown [197.210.53.91])
+ by zimbra.labh2.coppe.ufrj.br (Postfix) with ESMTPSA id ADDF811F7E35;
+ Mon, 28 Nov 2022 07:15:18 -0200 (BRST)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: =?utf-8?q?Spendengeschenk_f=C3=BCr_Sie_=E2=82=AC4=2E800=2E000=2C00_Euro_g?=
  =?utf-8?q?l=C3=BCcklicher_Gewinn?=
 To: Recipients <that115@outlook.com>
 From: "Rev Neil Trotter" <that115@outlook.com>
-Date: Mon, 28 Nov 2022 16:20:42 -0800
-Message-Id: <20221128091517.D15AB11F7DDC@zimbra.labh2.coppe.ufrj.br>
+Date: Mon, 28 Nov 2022 16:20:43 -0800
+Message-Id: <20221128091518.ADDF811F7E35@zimbra.labh2.coppe.ufrj.br>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
