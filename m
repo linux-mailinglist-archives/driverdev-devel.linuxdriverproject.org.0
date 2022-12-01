@@ -1,50 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C8A4F63F04C
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Dec 2022 13:17:45 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 39D3263F127
+	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Dec 2022 14:04:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D82AE60E11;
-	Thu,  1 Dec 2022 12:17:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D82AE60E11
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BwwMrXk608ff; Thu,  1 Dec 2022 12:17:43 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 963E360E18;
-	Thu,  1 Dec 2022 12:17:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 963E360E18
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6E5491BF3A3
- for <devel@linuxdriverproject.org>; Thu,  1 Dec 2022 12:17:40 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 499D2404A3
- for <devel@linuxdriverproject.org>; Thu,  1 Dec 2022 12:17:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 499D2404A3
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8905240C79;
+	Thu,  1 Dec 2022 13:04:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8905240C79
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 80CTLNIBNHF4 for <devel@linuxdriverproject.org>;
- Thu,  1 Dec 2022 12:17:39 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7FC98401B1
-Received: from mail.jyegg.com (unknown [111.26.101.135])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7FC98401B1
- for <devel@linuxdriverproject.org>; Thu,  1 Dec 2022 12:17:39 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6kq6vI_x_iQF; Thu,  1 Dec 2022 13:04:13 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 204D940C5E;
+	Thu,  1 Dec 2022 13:04:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 204D940C5E
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A3BBC1BF3A3
+ for <devel@linuxdriverproject.org>; Thu,  1 Dec 2022 13:04:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8C04E81C11
+ for <devel@linuxdriverproject.org>; Thu,  1 Dec 2022 13:04:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8C04E81C11
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id f71iJxcd1LsA for <devel@linuxdriverproject.org>;
+ Thu,  1 Dec 2022 13:04:09 +0000 (UTC)
+X-Greylist: delayed 00:43:52 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BB0BC81BCB
+Received: from mail.gw160.com (unknown [113.79.15.220])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id BB0BC81BCB
+ for <devel@linuxdriverproject.org>; Thu,  1 Dec 2022 13:04:08 +0000 (UTC)
+Received: from mail.gw160.com (localhost [127.0.0.1])
+ by mail.gw160.com (Postfix) with ESMTPS id 0367C31A348;
+ Thu,  1 Dec 2022 20:09:37 +0800 (CST)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.gw160.com (Postfix) with ESMTP id 4CAD746216F;
+ Thu,  1 Dec 2022 20:05:05 +0800 (CST)
+Received: from mail.gw160.com ([127.0.0.1])
+ by localhost (mail.gw160.com [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id HmvEB8LFMUi8; Thu,  1 Dec 2022 20:05:05 +0800 (CST)
 Received: from [2.56.58.93] (unknown [2.56.58.93])
- by mail.jyegg.com (Postfix) with ESMTP id 4NNF8H4289zcC7Xp;
- Thu,  1 Dec 2022 20:03:10 +0800 (CST)
+ by mail.gw160.com (Postfix) with ESMTP id DAEB5460A85;
+ Thu,  1 Dec 2022 20:04:56 +0800 (CST)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Re: I FOUND YOUR ABANDONED CONSIGNMENT HERE IN MIAMI AIRPORT FLORIDA.
 To: Recipients <test@test.com>
 From: "DAVID MOGAN" <test@test.com>
-Date: Thu, 01 Dec 2022 04:02:57 -0800
-Message-Id: <20221201121740.499D2404A3@smtp2.osuosl.org>
+Date: Thu, 01 Dec 2022 04:04:44 -0800
+Message-Id: <20221201120456.DAEB5460A85@mail.gw160.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
