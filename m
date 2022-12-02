@@ -1,63 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DD1863FDD6
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Dec 2022 02:54:51 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A19D640140
+	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Dec 2022 08:51:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 501DE6112F;
-	Fri,  2 Dec 2022 01:54:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 501DE6112F
+	by smtp1.osuosl.org (Postfix) with ESMTP id 71E8382130;
+	Fri,  2 Dec 2022 07:51:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 71E8382130
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id f8Zmr9zAYWfI; Fri,  2 Dec 2022 01:54:48 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0JwwPy4B7jzw; Fri,  2 Dec 2022 07:51:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D87C060B8E;
-	Fri,  2 Dec 2022 01:54:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D87C060B8E
+	by smtp1.osuosl.org (Postfix) with ESMTP id 259578210A;
+	Fri,  2 Dec 2022 07:51:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 259578210A
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id DD8F71BF2A6
- for <devel@linuxdriverproject.org>; Fri,  2 Dec 2022 01:54:44 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2845C1BF836
+ for <devel@linuxdriverproject.org>; Fri,  2 Dec 2022 07:51:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B8D2960E8A
- for <devel@linuxdriverproject.org>; Fri,  2 Dec 2022 01:54:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B8D2960E8A
+ by smtp2.osuosl.org (Postfix) with ESMTP id 111654054B
+ for <devel@linuxdriverproject.org>; Fri,  2 Dec 2022 07:51:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 111654054B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HBQcBe-TrDj6 for <devel@linuxdriverproject.org>;
- Fri,  2 Dec 2022 01:54:44 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ECC9D60B8E
-Received: from mail.biz2credit.net (unknown [182.76.8.1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id ECC9D60B8E
- for <devel@linuxdriverproject.org>; Fri,  2 Dec 2022 01:54:43 +0000 (UTC)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.biz2credit.net (Postfix) with ESMTP id D26C3483D06;
- Thu,  1 Dec 2022 17:32:04 +0530 (IST)
-Received: from mail.biz2credit.net ([127.0.0.1])
- by localhost (mail.biz2credit.net [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id gZBS0MqvZTFy; Thu,  1 Dec 2022 17:32:04 +0530 (IST)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.biz2credit.net (Postfix) with ESMTP id 277925535CF;
- Thu,  1 Dec 2022 17:32:03 +0530 (IST)
-X-Virus-Scanned: amavisd-new at biz2credit.net
-Received: from mail.biz2credit.net ([127.0.0.1])
- by localhost (mail.biz2credit.net [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 1cud5OIYMXj3; Thu,  1 Dec 2022 17:32:02 +0530 (IST)
-Received: from [2.56.58.93] (_gateway [10.200.3.1])
- by mail.biz2credit.net (Postfix) with ESMTP id 16E43552E3E;
- Thu,  1 Dec 2022 17:31:55 +0530 (IST)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0qzufyQ5Eo_z for <devel@linuxdriverproject.org>;
+ Fri,  2 Dec 2022 07:51:04 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 677054045C
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 677054045C
+ for <devel@driverdev.osuosl.org>; Fri,  2 Dec 2022 07:51:04 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10548"; a="295592609"
+X-IronPort-AV: E=Sophos;i="5.96,210,1665471600"; d="scan'208";a="295592609"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Dec 2022 23:51:03 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10548"; a="647069576"
+X-IronPort-AV: E=Sophos;i="5.96,210,1665471600"; d="scan'208";a="647069576"
+Received: from lkp-server01.sh.intel.com (HELO 64a2d449c951) ([10.239.97.150])
+ by fmsmga007.fm.intel.com with ESMTP; 01 Dec 2022 23:51:02 -0800
+Received: from kbuild by 64a2d449c951 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1p10p3-000DOu-2W;
+ Fri, 02 Dec 2022 07:51:01 +0000
+Date: Fri, 02 Dec 2022 15:50:19 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:kobject-const3] BUILD SUCCESS
+ ee2cf7cea44aff3ad2e787dd0eb6549da4ba5fd9
+Message-ID: <6389ae3b.fX6dOewbSRWBNR4w%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Re: I FOUND YOUR ABANDONED CONSIGNMENT HERE IN MIAMI AIRPORT FLORIDA.
-To: Recipients <test@test.com>
-From: "DAVID MOGAN" <test@test.com>
-Date: Thu, 01 Dec 2022 04:01:42 -0800
-Message-Id: <20221201120156.16E43552E3E@mail.biz2credit.net>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1669967464; x=1701503464;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=tzxmsmw2UX8Fea1+yHRbP5in8m6ylBzSa9y/wZndvtE=;
+ b=Rs7lwZfrdQHn87eBJ1diWUo/6SqvPni5HglwYp9iAv3/mUvvuJCuDV0R
+ ne3hApK1QtHDl2jeYFFqK8AbtZn7MNT7naKchfuvwxFAGbQXp739Bstkm
+ ZXZR2vPoNvLeDusCAZcxxIY9NSnYU6lnyDqBXEvPk2iZiKa631r+6fXsC
+ pYp8I0te7TeS/I4QPErclm9tlcoluFp6Ja4FL1IPMdjxCskkUAnmNLCcu
+ /j4fQB6h2S7YGMSzXC6JyVBkCQv95vo1nJ8jt1Czuzm44PhtTTP79pkAt
+ gyITRG5w5IHoQyDqGZm3w5OEZbkay2O58zDOioVRyPR2Cpja4niYfEZad
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Rs7lwZfr
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,41 +84,88 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: moganunit@hotmail.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Operations, Maintenance and Transportation officer.
-Miami International Airport 2100 NW 42nd Ave, Miami
-FL 33126, United States.
-INSPECTION UNIT.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const3
+branch HEAD: ee2cf7cea44aff3ad2e787dd0eb6549da4ba5fd9  firmware_loader: fix up to_fw_sysfs() to preserve const
 
-Attention Beneficiary,
-                                                               
-My name is David Mogan, I work with Miami airport storage department Miami International Airport FL here in the state as a stock keeper,I have information about your abandoned consignment in our storage unit. This is important because any mistake with regards to this information is capable of kicking me out of my job but if well managed, We will be rich forever so i need to know if I can trust you enough before we kick start.
+elapsed time: 728m
 
-During my routing check, I discovered an undisclosed amount of funds abandoned in a metal consignment box here in a storage facility bearing your email as the original beneficiary. From my investigation, this consignment was abandoned because the delivery personnel was not able to secure the required document to proceed delivery. Also, he was not aware of the value of the box. Long story short, the diplomat agent is not aware of the contents of this box hence abandoning it here was his only choice.
+configs tested: 58
+configs skipped: 2
 
-Now here is my personal suggestion and offer, I will apply for a loan to help pay and obtain the US I.C.D.P charges and proceed to your address for final delivery but I want 30% of the total value of the consignment while you keep 70%. Contact me on my personal email if you are still interested and ready to commence delivery.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-KINDLY RE-CONFIRM THE FOLLOWING INFORMATION FOR DELIVERY.
+gcc tested configs:
+x86_64                    rhel-8.3-kselftests
+um                             i386_defconfig
+x86_64                          rhel-8.3-func
+um                           x86_64_defconfig
+arc                                 defconfig
+s390                             allmodconfig
+alpha                               defconfig
+s390                                defconfig
+powerpc                           allnoconfig
+s390                             allyesconfig
+sh                               allmodconfig
+x86_64                         rhel-8.3-kunit
+ia64                             allmodconfig
+m68k                             allyesconfig
+x86_64                           rhel-8.3-kvm
+m68k                             allmodconfig
+x86_64                           rhel-8.3-syz
+arc                              allyesconfig
+mips                             allyesconfig
+alpha                            allyesconfig
+powerpc                          allmodconfig
+arc                  randconfig-r043-20221201
+s390                 randconfig-r044-20221201
+riscv                randconfig-r042-20221201
+x86_64                        randconfig-a013
+x86_64                        randconfig-a011
+x86_64                        randconfig-a015
+x86_64                              defconfig
+i386                          randconfig-a001
+i386                          randconfig-a003
+x86_64                               rhel-8.3
+i386                          randconfig-a005
+x86_64                           allyesconfig
+x86_64                            allnoconfig
+i386                             allyesconfig
+i386                                defconfig
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+arm64                            allyesconfig
+arm                                 defconfig
+arm                              allyesconfig
+xtensa                           alldefconfig
+microblaze                          defconfig
+powerpc                      arches_defconfig
+powerpc                      tqm8xx_defconfig
 
-(1) YOUR NAMES: _________
-(2) DELIVERY ADDRESS: ______
-(3) TELEPHONE NUMBER:______
-(4) NEAREST AIRPORT: ______
+clang tested configs:
+hexagon              randconfig-r045-20221201
+hexagon              randconfig-r041-20221201
+x86_64                        randconfig-a014
+x86_64                        randconfig-a012
+x86_64                        randconfig-a016
+i386                          randconfig-a002
+i386                          randconfig-a004
+i386                          randconfig-a006
+x86_64                        randconfig-a005
+x86_64                        randconfig-a003
+x86_64                        randconfig-a001
+x86_64                        randconfig-k001
 
-Note, I will personally deliver the consignment to your location to avoid any more charges and unnecessary delay.
-
-Contact me on moganunit@hotmail.com
-
-Kindly disregard any email without your delivery reference number ( TAG RBT-45C ) Please ensure you always include this reference code in all our communication.
-
-Warmest Regards,
-Chief Inspection Officer
-David Mogan.
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
