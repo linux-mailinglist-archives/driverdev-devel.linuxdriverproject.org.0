@@ -1,77 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94D39641493
-	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Dec 2022 07:47:52 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 28A226414FE
+	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Dec 2022 09:40:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5FAF141834;
-	Sat,  3 Dec 2022 06:47:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5FAF141834
+	by smtp1.osuosl.org (Postfix) with ESMTP id 58E4481EF7;
+	Sat,  3 Dec 2022 08:40:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 58E4481EF7
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x_pz5-SHOHlS; Sat,  3 Dec 2022 06:47:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RF-Af0CvG2Li; Sat,  3 Dec 2022 08:40:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C4B1C41854;
-	Sat,  3 Dec 2022 06:47:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C4B1C41854
+	by smtp1.osuosl.org (Postfix) with ESMTP id B137981EF4;
+	Sat,  3 Dec 2022 08:40:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B137981EF4
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B3C8E1BF57B
- for <devel@linuxdriverproject.org>; Sat,  3 Dec 2022 06:47:45 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 55D101BF3FC
+ for <devel@linuxdriverproject.org>; Sat,  3 Dec 2022 08:40:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8D0B041834
- for <devel@linuxdriverproject.org>; Sat,  3 Dec 2022 06:47:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8D0B041834
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1C41781EF7
+ for <devel@linuxdriverproject.org>; Sat,  3 Dec 2022 08:40:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1C41781EF7
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cqFROZ_EszGS for <devel@linuxdriverproject.org>;
- Sat,  3 Dec 2022 06:47:44 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id h5yJv83Q2-lL for <devel@linuxdriverproject.org>;
+ Sat,  3 Dec 2022 08:40:00 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 19ABE41833
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 19ABE41833
- for <devel@driverdev.osuosl.org>; Sat,  3 Dec 2022 06:47:43 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10549"; a="343078252"
-X-IronPort-AV: E=Sophos;i="5.96,214,1665471600"; d="scan'208";a="343078252"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Dec 2022 22:47:42 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10549"; a="751544844"
-X-IronPort-AV: E=Sophos;i="5.96,214,1665471600"; d="scan'208";a="751544844"
-Received: from lkp-server01.sh.intel.com (HELO 64a2d449c951) ([10.239.97.150])
- by fmsmga002.fm.intel.com with ESMTP; 02 Dec 2022 22:47:41 -0800
-Received: from kbuild by 64a2d449c951 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1p1MJJ-000ELb-0e;
- Sat, 03 Dec 2022 06:47:41 +0000
-Date: Sat, 03 Dec 2022 14:47:22 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:pktcdvd-removal] BUILD SUCCESS
- 681051691a369f91e3a295e711d32127628fa4c8
-Message-ID: <638af0fa.xSCh6ZgKYz5zSKYe%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3B3F881EF4
+Received: from hosted-4-client-dedicated-live-server3.livegpstrack.com
+ (hosted-4-client-dedicated-live-server3.livegpstrack.com [103.102.239.61])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3B3F881EF4
+ for <devel@linuxdriverproject.org>; Sat,  3 Dec 2022 08:40:00 +0000 (UTC)
+From: =?ISO-8859-1?B?UGFibG8gQ1RH?=<salesctg@cartrackgps.net>
+To: devel@linuxdriverproject.org
+Subject: =?ISO-8859-1?B?R1BTIHRyYWNraW5nIGJ1c2luZXNzIGZvciBkZXZlbA==?=
+Date: 03 Dec 2022 05:40:06 -0300
+Message-ID: <20221203054006.6ABE5A1F2D3BC156@cartrackgps.net>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1670050064; x=1701586064;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=7ZbUffCaXGoQejuWSF88yW4u8jCmpNTUoGY06ETkH2U=;
- b=RoBShOod+GsM7gPN234q5NZPmoQh2BCSAYVqGIyAuKfXUVrfd0c05l1J
- tMikpijQffx8q3eOy1gHHhT5HxMei1t/AkFE72ox78SEcltObqL6jYzRQ
- y5OuuSicEYvmInfWPLH+/mdjROajohc8Up9jUxpJ7vT/uT210xNhh6rZa
- KgmQ54ozz+Vn2KaaoNyEQ6Tsq0n3e3vhZd47VsaheHG+bXarujb0NnoLF
- tw1Jjxit8SUW80Hh4YlWOc1Ewt7eLo4KSvjFuFkBSYeLLmP3Wc847wAUn
- Tu557L1p0+6G2D+DSuYGI0qi7OUkI5V1H1Rt1pAtHbBwKq18yE23Ofr4K
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RoBShOod
+X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns;
+ s=1665719670.livegpstrack; d=cartrackgps.net; 
+ b=o2BkMnJEAoNID34DKqcYEwYZgBBytXKrO4QzgnjEEfgY1XVxUJBq+cX7pTrKz6ldY8BaboOsaS4Q
+ SptWLNDqI64wOw5vx9VgGF2ZjftwkTyRrX2jxOkwoOLFSAxFvmkFfgXAhxAjhTNrs1ti0W0XPrAL
+ QVcZp7TsJE5KDwUorNw=;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed;
+ s=1665719670.livegpstrack; d=cartrackgps.net; 
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=salesctg@cartrackgps.net; 
+ bh=S6dFhaTsznNnKN2CWcDMCws6+ic=;
+ b=ChYbj/fOG1srjfp/mgZqEopY1HniBnN4Y4fpOzyymf5exHKiFvgmCrjXRDh6Ie0r6C3nPdSFXz4X
+ TkPflZgRYiXkCHSf/lMwYyY5y64gN+Y54L3e72axWtjQZYmNgD+OuiNox+J/JMdx+PsaZbznLQFl
+ JJUVr/YXaXHppfj1Zb4=
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,88 +67,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: =?ISO-8859-1?B?UGFibG8gQ1RH?= <salesctg@cartrackgps.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git pktcdvd-removal
-branch HEAD: 681051691a369f91e3a295e711d32127628fa4c8  pktcdvd: remove driver.
+Hello devel,
 
-elapsed time: 722m
+My name is Pablo from Car Track GPS and we're looking for distributors for our tracking products.
+We design innovative software and hardware location technologies.
 
-configs tested: 58
-configs skipped: 2
+Our innovative web based software allows owners to track fleets in realtime by iOS or Android Apps.
+If a vehicle is stolen you can stop the engine and recover it.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+With our Professional Kit you can start your own tracking business or just resell the software and hardware.
 
-gcc tested configs:
-um                             i386_defconfig
-um                           x86_64_defconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                          rhel-8.3-func
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-kvm
-arc                                 defconfig
-s390                             allmodconfig
-alpha                               defconfig
-s390                                defconfig
-powerpc                           allnoconfig
-mips                             allyesconfig
-s390                             allyesconfig
-powerpc                          allmodconfig
-m68k                             allyesconfig
-sh                               allmodconfig
-m68k                             allmodconfig
-x86_64                              defconfig
-arc                              allyesconfig
-alpha                            allyesconfig
-ia64                             allmodconfig
-i386                          randconfig-a001
-i386                          randconfig-a003
-i386                          randconfig-a005
-arc                  randconfig-r043-20221201
-i386                                defconfig
-x86_64                               rhel-8.3
-riscv                randconfig-r042-20221201
-s390                 randconfig-r044-20221201
-x86_64                        randconfig-a015
-x86_64                        randconfig-a013
-x86_64                        randconfig-a011
-x86_64                           allyesconfig
-i386                             allyesconfig
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-x86_64                        randconfig-a006
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-a016
-arm                                 defconfig
-arm                              allyesconfig
-arm64                            allyesconfig
+Our products are ideal for fleet tracking and recovery of stolen vehicles. Insurance companies, trucking companies and car dealers have been our clients for over 20 years.
+This could be a good choice If you want to start a new business or diversify your investment.
 
-clang tested configs:
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a006
-hexagon              randconfig-r041-20221201
-hexagon              randconfig-r045-20221201
-x86_64                        randconfig-a014
-x86_64                        randconfig-a012
-x86_64                        randconfig-a016
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-i386                          randconfig-a013
-x86_64                        randconfig-a005
-i386                          randconfig-a011
-i386                          randconfig-a015
+The business consists in offering location services to end customers through a web site.
+This is accomplished through a Web platform that we provide as a turnkey server installed at your end.
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+This service will allow customers to track their fleets from any web browser - even from Tablets and Smartphones - with a username and password.
+We have Professional Kits available which include full Software licenses, so once you get the KIT and start testing you will not need to invest again in the Software or have to pay any monthly fee.
+
+If you're interested I can send you the proposal for your consideration.
+
+Best regards,
+Pablo Zacheo
+CEO Car Track GPS
+Miami: +1 786 352 8766
+Car Track GPS in Google for our official .com website
+
+We have clients in over 100 countries and 20 years of experience in GPS tracking systems.
+ID: 215102
+
+If you would like to opt-out please reply to this email with the subject REMOVE.
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
