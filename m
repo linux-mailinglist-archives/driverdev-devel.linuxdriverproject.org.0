@@ -1,51 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26042641A05
-	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Dec 2022 00:29:05 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 75865641A4E
+	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Dec 2022 03:01:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9E5A181772;
-	Sat,  3 Dec 2022 23:29:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9E5A181772
+	by smtp3.osuosl.org (Postfix) with ESMTP id 14B4F60AED;
+	Sun,  4 Dec 2022 02:00:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 14B4F60AED
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jouZ1pD3rbXF; Sat,  3 Dec 2022 23:29:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iDS8-N2pbfYL; Sun,  4 Dec 2022 02:00:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1B33A8137C;
-	Sat,  3 Dec 2022 23:29:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1B33A8137C
+	by smtp3.osuosl.org (Postfix) with ESMTP id AD8B160ADA;
+	Sun,  4 Dec 2022 02:00:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AD8B160ADA
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0F7D31BF489
- for <devel@linuxdriverproject.org>; Sat,  3 Dec 2022 23:28:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AB28F1BF47A
+ for <devel@linuxdriverproject.org>; Sun,  4 Dec 2022 02:00:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DF06D401E1
- for <devel@linuxdriverproject.org>; Sat,  3 Dec 2022 23:28:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DF06D401E1
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8665D401A2
+ for <devel@linuxdriverproject.org>; Sun,  4 Dec 2022 02:00:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8665D401A2
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id HxDnlMj76VSI for <devel@linuxdriverproject.org>;
- Sat,  3 Dec 2022 23:28:56 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CC0A5400C8
-Received: from sman14bdg.sch.id (unknown [203.210.84.171])
- by smtp2.osuosl.org (Postfix) with ESMTPS id CC0A5400C8
- for <devel@linuxdriverproject.org>; Sat,  3 Dec 2022 23:28:55 +0000 (UTC)
-Received: from [2.56.58.93] (_gateway [192.168.1.1])
- by sman14bdg.sch.id (Postfix) with ESMTP id C902594F486;
- Sun,  4 Dec 2022 04:47:37 +0700 (WIB)
+ with ESMTP id Rm0W50B1Yn7v for <devel@linuxdriverproject.org>;
+ Sun,  4 Dec 2022 02:00:52 +0000 (UTC)
+X-Greylist: delayed 04:09:05 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1A2744012E
+Received: from sha-mail1.vtc-sh.com.cn (unknown [116.228.80.118])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1A2744012E
+ for <devel@linuxdriverproject.org>; Sun,  4 Dec 2022 02:00:51 +0000 (UTC)
+Received: from [2.56.58.93] (2.56.58.93) by sha-mail1.vtc-sh.com.cn
+ (192.168.53.226) with Microsoft SMTP Server id 14.1.438.0; Sun, 4 Dec 2022
+ 05:51:22 +0800
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Re: I FOUND YOUR ABANDONED CONSIGNMENT HERE IN MIAMI AIRPORT
- FLORIDA... 
+Subject: Re: I FOUND YOUR ABANDONED CONSIGNMENT HERE IN MIAMI AIRPORT FLORIDA 
 To: Recipients <test@test.com>
-From: "DAVID MOGAN" <test@test.com>
-Date: Sat, 03 Dec 2022 13:47:30 -0800
-Message-Id: <20221203232857.DF06D401E1@smtp2.osuosl.org>
+From: DAVID MOGAN <test@test.com>
+Date: Sat, 3 Dec 2022 13:51:07 -0800
+Message-ID: <40425de6-2594-4394-b703-7fa613938f1e@SHA-MAIL1.vtc-sh.com.cn>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
