@@ -1,56 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 910E164D5D4
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Dec 2022 05:26:22 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E2DDE64DD31
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Dec 2022 15:58:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9EA39409AA;
-	Thu, 15 Dec 2022 04:26:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9EA39409AA
+	by smtp2.osuosl.org (Postfix) with ESMTP id B13B740C41;
+	Thu, 15 Dec 2022 14:58:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B13B740C41
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PQa7943JJo9g; Thu, 15 Dec 2022 14:58:38 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7BFE740C2A;
+	Thu, 15 Dec 2022 14:58:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7BFE740C2A
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F1D331BF3F6
+ for <devel@linuxdriverproject.org>; Thu, 15 Dec 2022 14:58:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id D820C41943
+ for <devel@linuxdriverproject.org>; Thu, 15 Dec 2022 14:58:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D820C41943
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EsrRXWFEes4f; Thu, 15 Dec 2022 04:26:19 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3278C4097A;
-	Thu, 15 Dec 2022 04:26:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3278C4097A
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B457D1BF282
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 15 Dec 2022 04:26:15 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 904C760BD7
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 15 Dec 2022 04:26:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 904C760BD7
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LeTZ24UGaLQw
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 15 Dec 2022 04:26:15 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C320F60BCE
-Received: from mail.cntrust.info (unknown [117.184.199.36])
- by smtp3.osuosl.org (Postfix) with ESMTP id C320F60BCE
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 15 Dec 2022 04:26:14 +0000 (UTC)
-Received: from User (unknown [180.250.253.30])
- by mail.cntrust.info (Postfix) with ESMTPA id D0D9F3B6489;
- Thu, 15 Dec 2022 02:03:27 +0800 (CST)
-From: "RECEIVE YOUR MONEY GRAM PAYMENT!"<Carsan0098@gmail.com>
-Subject: RECEIVE YOUR MONEY GRAM PAYMENT!
-Date: Wed, 14 Dec 2022 18:03:25 -0000
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id F90f_TqInh6O for <devel@linuxdriverproject.org>;
+ Thu, 15 Dec 2022 14:58:34 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9FC614193E
+Received: from SERVER643.home (server643.dinamichosting.com [179.27.152.232])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9FC614193E
+ for <devel@driverdev.osuosl.org>; Thu, 15 Dec 2022 14:58:33 +0000 (UTC)
+Received: from [172.20.10.5] ([197.211.58.26]) by home with
+ MailEnable ESMTPSA (version=TLS1 cipher=TLS_DHE_RSA_WITH_AES_256_CBC_SHA);
+ Tue, 6 Dec 2022 15:24:47 -0300
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20221215042615.904C760BD7@smtp3.osuosl.org>
+Content-Description: Mail message body
+Subject: From Fabio Antonio.
+To: Recipients <admin@fiexpoexhibitions.com>
+From: "Fabio Antonio" <admin@fiexpoexhibitions.com>
+Date: Tue, 06 Dec 2022 19:25:10 +0100
+Message-ID: <1294372D999E4F7DB74905E988E7E0D9.MAI@home>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,39 +57,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: fa1450640@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-You won the largest Powerball jackpot ever in Tennessee lottery history, be assured that you stand no risk as this is your money. My
-office has taking over all the money Transactions Internationally as Contract payment, Fund inheritance or Lottery Winning, ATM Debit
-cards, henceforth commercial banks, Security Companies, ATM Credit and Debit Union including any offshore payment centers are no more
-authorized to handle release of funds due to Unauthorized incapability of financial Institutions / security companies in releasing such huge sum of money due to Fraud, terrorist and money Laundry activities going on world.
+Dearest Beloved,
 
-I write to inform you that we have already sent to you $2500.00 dollars through money gram department as we have been given the mandate to transfer your payment total sum of $3.6 Million, via MONEY GRAM by this Government.
+I am Fabio Antonio, A Portuguese national, I was browsing and I saw your email, So i decided to write to you if your email is real, I have been diagnosed with esophageal cancer. It has defiled all forms of medical treatment , and right now I have only about a few months to live. I am very rich, but was never generous; I have given most of my assets to my immediate family members.
 
-All you will do is to contact money gram director Bruce Barkery, ask him to give the Text Question and Answer so that you will pick your first payment of the $2500usd, He will give you direction on how you will be receiving the funds daily.
+I have decided to give alms to charity organizations. I cannot do this myself anymore because of my health. I once asked members of my family to give some money to charity organizations, they refused and kept the money. I have a huge cash deposit of Eighteen Million dollars with a security firm in America. I will want you to help me collect this deposit and dispatch it to charity organizations. You will take out 30% of these funds for your assistance.
 
+I will like you to acknowledge the receipt of this e-mail as soon as possible and treat it with absolute confidentiality and sincerity.
 
-Your first payment of $2500 is Already sent.
-
-Reference: 69231415
-sender s Name: James Ronbinson
-Amount: US $2,500
-AMOUNT SEND: $2500 (available to pick up)
-
-
-Remember to send him your Full information to avoid wrong transfer
-
-
-such as, Full ' Name_______________
-Address: ________________
-Country: _____________
-Phone Number: _____________
-
-
-Regards.
+Fabio Antonio
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
