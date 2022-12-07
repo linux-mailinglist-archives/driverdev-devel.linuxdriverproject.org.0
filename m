@@ -1,77 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94F39645314
-	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Dec 2022 05:36:45 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C7676456FA
+	for <lists+driverdev-devel@lfdr.de>; Wed,  7 Dec 2022 10:59:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 66F1441817;
-	Wed,  7 Dec 2022 04:36:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 66F1441817
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0B38960792;
+	Wed,  7 Dec 2022 09:59:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0B38960792
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jbZ3idKD2rap; Wed,  7 Dec 2022 04:36:40 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TysNQTnwJwzQ; Wed,  7 Dec 2022 09:59:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 04B6441806;
-	Wed,  7 Dec 2022 04:36:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 04B6441806
+	by smtp3.osuosl.org (Postfix) with ESMTP id B63F86058D;
+	Wed,  7 Dec 2022 09:59:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B63F86058D
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 94CAF1BF4E7
- for <devel@linuxdriverproject.org>; Wed,  7 Dec 2022 04:36:37 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CC5701BF20B
+ for <devel@linuxdriverproject.org>; Wed,  7 Dec 2022 09:59:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6E68A40ACD
- for <devel@linuxdriverproject.org>; Wed,  7 Dec 2022 04:36:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6E68A40ACD
+ by smtp3.osuosl.org (Postfix) with ESMTP id A838160792
+ for <devel@linuxdriverproject.org>; Wed,  7 Dec 2022 09:59:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A838160792
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6VLit4iizD2l for <devel@linuxdriverproject.org>;
- Wed,  7 Dec 2022 04:36:36 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Jw469F39b28s for <devel@linuxdriverproject.org>;
+ Wed,  7 Dec 2022 09:59:25 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 656B24011C
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 656B24011C
- for <devel@driverdev.osuosl.org>; Wed,  7 Dec 2022 04:36:36 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10553"; a="315515369"
-X-IronPort-AV: E=Sophos;i="5.96,223,1665471600"; d="scan'208";a="315515369"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Dec 2022 20:36:35 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10553"; a="891647954"
-X-IronPort-AV: E=Sophos;i="5.96,223,1665471600"; d="scan'208";a="891647954"
-Received: from lkp-server01.sh.intel.com (HELO b3c45e08cbc1) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 06 Dec 2022 20:36:34 -0800
-Received: from kbuild by b3c45e08cbc1 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1p2mAb-0001Yb-1s;
- Wed, 07 Dec 2022 04:36:33 +0000
-Date: Wed, 07 Dec 2022 12:36:30 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- 47446b50ad2549af4fcc93f82a148ab107e6ef6a
-Message-ID: <6390184e.UzcX5qGGl+ssgAiu%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 11F3D6058D
+Received: from agrotechfpc.org (static.253.224.243.136.clients.your-server.de
+ [136.243.224.253])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 11F3D6058D
+ for <devel@driverdev.osuosl.org>; Wed,  7 Dec 2022 09:59:25 +0000 (UTC)
+Received: from [172.20.10.5] (unknown [197.211.58.26])
+ by agrotechfpc.org (Postfix) with ESMTPA id 5A1618E7A28;
+ Wed,  7 Dec 2022 15:12:23 +0530 (IST)
+Received-SPF: pass (agrotechfpc.org: connection is authenticated)
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1670387796; x=1701923796;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=EFYze7F5IV7+kjZLGm/W/S6J41PMsQP1i3cR24QluvA=;
- b=gzBcFogH8vER6mJFXonl+E8HEfFU5uy/bceyly+5PtzL4Ixv5CuibZ+k
- qCvQcvxMDuzmq/oquTV4T7WKX0AGQ9hUIOiupXlO/HqgYoHESAXRDmzTR
- 1Txtb0+UIDuMUytRaHroJBOqZQPQAsohJNlhNc61UkilDpwS9LspgX19s
- w9v+oxFVRuOYbV+VgP6ZMAA3uvbsIolrbpBWshX99qBNyydxrTBC2mf1Y
- XDxlwE1hb6NJ7H/3V1IxUidrCFuShhqZLAaXGKj5otyqeLQ/gktlYGxgm
- s/viV1sFq3z7J8pM7RqqdQSNygu62eKzUdXLUBebcTa6PWLU00DjTQeev
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=gzBcFogH
+Content-Description: Mail message body
+Subject: From Fabio Antonio.
+To: Recipients <admin@agrotechgreen.in>
+From: "Fabio Antonio" <admin@agrotechgreen.in>
+Date: Wed, 07 Dec 2022 10:42:19 +0100
+Message-Id: <20221207095925.A838160792@smtp3.osuosl.org>
+X-Mailman-Original-Authentication-Results: agrotechfpc.org;
+ spf=pass (sender IP is 197.211.58.26) smtp.mailfrom=admin@agrotechgreen.in
+ smtp.helo=[172.20.10.5]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,90 +62,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: fa1450640@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
-branch HEAD: 47446b50ad2549af4fcc93f82a148ab107e6ef6a  firmware_loader: fix up to_fw_sysfs() to preserve const
+Dearest Beloved,
 
-elapsed time: 720m
+I am Fabio Antonio, A Portuguese national, I was browsing and I saw your email, So i decided to write to you if your email is real, I have been diagnosed with esophageal cancer. It has defiled all forms of medical treatment , and right now I have only about a few months to live. I am very rich, but was never generous; I have given most of my assets to my immediate family members.
 
-configs tested: 60
-configs skipped: 2
+I have decided to give alms to charity organizations. I cannot do this myself anymore because of my health. I once asked members of my family to give some money to charity organizations, they refused and kept the money. I have a huge cash deposit of Eighteen Million dollars with a security firm in America. I will want you to help me collect this deposit and dispatch it to charity organizations. You will take out 30% of these funds for your assistance.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+I will like you to acknowledge the receipt of this e-mail as soon as possible and treat it with absolute confidentiality and sincerity.
 
-gcc tested configs:
-powerpc                           allnoconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-sh                               allmodconfig
-mips                             allyesconfig
-powerpc                          allmodconfig
-arc                                 defconfig
-s390                             allmodconfig
-alpha                               defconfig
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-arm                  randconfig-r046-20221206
-x86_64                           rhel-8.3-kvm
-arc                  randconfig-r043-20221206
-i386                                defconfig
-s390                                defconfig
-x86_64                          rhel-8.3-rust
-x86_64                    rhel-8.3-kselftests
-x86_64                          rhel-8.3-func
-x86_64                              defconfig
-s390                             allyesconfig
-m68k                             allyesconfig
-ia64                             allmodconfig
-m68k                             allmodconfig
-alpha                            allyesconfig
-x86_64                               rhel-8.3
-arc                              allyesconfig
-x86_64                           allyesconfig
-i386                          randconfig-a014
-i386                          randconfig-a012
-i386                          randconfig-a001
-i386                          randconfig-a016
-i386                          randconfig-a003
-i386                             allyesconfig
-i386                          randconfig-a005
-x86_64                        randconfig-a013
-arm                                 defconfig
-x86_64                        randconfig-a011
-x86_64                        randconfig-a015
-arm64                            allyesconfig
-x86_64                        randconfig-a004
-arm                              allyesconfig
-x86_64                        randconfig-a002
-x86_64                        randconfig-a006
-
-clang tested configs:
-hexagon              randconfig-r041-20221206
-hexagon              randconfig-r045-20221206
-s390                 randconfig-r044-20221206
-riscv                randconfig-r042-20221206
-i386                          randconfig-a013
-i386                          randconfig-a011
-i386                          randconfig-a015
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a006
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-x86_64                        randconfig-a005
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Fabio Antonio
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
