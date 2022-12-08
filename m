@@ -1,83 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E4E96465D7
-	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Dec 2022 01:27:26 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 925FD6466AC
+	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Dec 2022 02:52:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 99D3260B60;
-	Thu,  8 Dec 2022 00:27:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 99D3260B60
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0B28681F83;
+	Thu,  8 Dec 2022 01:52:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0B28681F83
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jZrgayj-9VeF; Thu,  8 Dec 2022 00:27:23 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CpBZ_Xm06HLi; Thu,  8 Dec 2022 01:52:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 33ACF60AA5;
-	Thu,  8 Dec 2022 00:27:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 33ACF60AA5
+	by smtp1.osuosl.org (Postfix) with ESMTP id B767481F7C;
+	Thu,  8 Dec 2022 01:52:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B767481F7C
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2AB0A1BF38A
- for <devel@linuxdriverproject.org>; Thu,  8 Dec 2022 00:27:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 701391BF95D
+ for <devel@linuxdriverproject.org>; Thu,  8 Dec 2022 01:52:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 106B341863
- for <devel@linuxdriverproject.org>; Thu,  8 Dec 2022 00:27:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 106B341863
+ by smtp4.osuosl.org (Postfix) with ESMTP id 50581408DB
+ for <devel@linuxdriverproject.org>; Thu,  8 Dec 2022 01:52:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 50581408DB
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BjkNtyri8Lw1 for <devel@linuxdriverproject.org>;
- Thu,  8 Dec 2022 00:27:19 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EFD13416CC
-Received: from mail-ot1-x342.google.com (mail-ot1-x342.google.com
- [IPv6:2607:f8b0:4864:20::342])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EFD13416CC
- for <devel@driverdev.osuosl.org>; Thu,  8 Dec 2022 00:27:18 +0000 (UTC)
-Received: by mail-ot1-x342.google.com with SMTP id
- v19-20020a9d5a13000000b0066e82a3872dso10313581oth.5
- for <devel@driverdev.osuosl.org>; Wed, 07 Dec 2022 16:27:18 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=lKrpFJ/RscOY16puD9bJw8cUQNcmdan5jZHLTcFX4gY=;
- b=g7L9X08aXXW+yk+CibesUfHu9XRYh1ZD854GXmv2adg0+rz39o2YAjFik/QJ1pHZoQ
- WohN1gN8CtXelbwmP3C3DDmRQXTz3vxzeeiuUDzbMP2PYfZSd4tKAypI8o3OZ7fHBiy3
- wOP26/VoJ07p5q+46/qCZVjCxqveFAzvgHGsRMuJU2TiNqzRuwV6ZdW2xjK/FgEZMB05
- kT7YyVc6pvnFKfrz8dJ/QG/UaeaG3u0zcUflhnntKaKl6M7WKMM17a1oe3N63EE3YJnz
- fA8OR/QtrmObfMgpqH3t5VtqWB+j4P8DekChy5DI0Pzz7XQZSQiINEY+tv51uuSeEzxW
- Xj2w==
-X-Gm-Message-State: ANoB5plm0qOcoQhpyLNRjTTIdTe699RY2G6VPxZ0oDY3lz53GMR3YMFU
- KHZIflis4KayOUFIjE5XtAF3KOzpHlkiwk49B4k=
-X-Google-Smtp-Source: AA0mqf778OrHH/8Pjt5+Bk2jkx+LeKEcRr87qZbp20gjxjhhPlrLVojH7WrzQaqX0zZgwHU7hlmfOKvCMGeulEDfn0I=
-X-Received: by 2002:a9d:6a42:0:b0:66d:a838:aa60 with SMTP id
- h2-20020a9d6a42000000b0066da838aa60mr44365993otn.104.1670459237785; Wed, 07
- Dec 2022 16:27:17 -0800 (PST)
+ with ESMTP id BxCq8w4dUHFl for <devel@linuxdriverproject.org>;
+ Thu,  8 Dec 2022 01:52:28 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3A060408D8
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3A060408D8
+ for <devel@driverdev.osuosl.org>; Thu,  8 Dec 2022 01:52:28 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10554"; a="381339712"
+X-IronPort-AV: E=Sophos;i="5.96,226,1665471600"; d="scan'208";a="381339712"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Dec 2022 17:52:27 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10554"; a="710280114"
+X-IronPort-AV: E=Sophos;i="5.96,226,1665471600"; d="scan'208";a="710280114"
+Received: from lkp-server01.sh.intel.com (HELO b5d47979f3ad) ([10.239.97.150])
+ by fmsmga008.fm.intel.com with ESMTP; 07 Dec 2022 17:52:26 -0800
+Received: from kbuild by b5d47979f3ad with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1p365J-0000jr-27;
+ Thu, 08 Dec 2022 01:52:25 +0000
+Date: Thu, 08 Dec 2022 09:51:55 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:kobject-const3] BUILD REGRESSION
+ d7b8026c4bf8e730b19ebbaa117383804bb01bdb
+Message-ID: <6391433b.w7gqv+28FJCemr7Q%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Received: by 2002:a05:6358:3801:b0:dd:706e:8c93 with HTTP; Wed, 7 Dec 2022
- 16:27:16 -0800 (PST)
-From: ryan johnson <bosranjo670@gmail.com>
-Date: Wed, 7 Dec 2022 16:27:16 -0800
-Message-ID: <CAL-LBhAA0zGG5nt=vkOYuvkz5Lq1dt9CDOWBPixcM-nTpVc4FA@mail.gmail.com>
-Subject: Good day
-To: undisclosed-recipients:;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=lKrpFJ/RscOY16puD9bJw8cUQNcmdan5jZHLTcFX4gY=;
- b=AiyHdZ/1tqvGRBe3k9j/pgzUZJNkwlcP7gfmw8oWfj/PEnx0/r3EaFSKjiFdkQObh+
- EeRSpdk1mgcuRzCdJGjWFyHcfyVMqAlRlXapqX18P6hNyNopvSOaThZ1OGbhGH+WJUis
- XoBJ8kjnPsaUixnl36P5hj5xaQj/WeZlj9EWCvxgaPWs40lU2gPjE7l1/r+CPNBqgAh5
- BOn5CVGL37cH4fuJsI2nrDS/tq2Aa/cvA2Jy7bk1NJr8FpJpGjkzQ3LiABDF36KK23EQ
- iQNML61X7voS67plSbKLWrJvS3bXnrIHPUd3WklHg5IiUtcgEpxWc/CG2EAWdX1bvzbF
- N1kw==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1670464348; x=1702000348;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=F63vODkBmbOuv2R9zz2uiQA1YZG63RA0iDM5bisQVjA=;
+ b=i1JjaeVQa2PSLLzP+Kmhgc11Y7xmuWS7i0OKrFCnruJlmOFeQGlnlfik
+ 6pta9dpqRg9BV7AqvZrDtRt5Y0Lwz+cHZGv1ddMLPi84rDhnvI+dy3H0l
+ /83FtUOlEa+bA2g/8uJJyvtL+87XjhArTp4J4mdtovU/7c93xVr0RJdsh
+ hAWEJzNjb7v5HZE9nRmtykhMoCQ1u3krnFJRBoJbwD3LXcsWZHBRr8wrJ
+ 1CenQGkRCO5xkDk5QcoVYMVs5+u2lH0Wpd6Xvx8f66m5eSJ88qV4VvHC9
+ AD/AIrJfBCvUZ/29oWLFxJTr5dOIB0XPsgQ67hWr4rwZSf5J17cR1s1at
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=AiyHdZ/1
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=i1JjaeVQ
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,151 +84,108 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
- I am Mr. Ryan I have investment project of $58.7Million Us Dollars
- which I will like you to support me so that the fund will be transfer
- into your bank account.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const3
+branch HEAD: d7b8026c4bf8e730b19ebbaa117383804bb01bdb  driver core: make struct device_type.uevent() take a const *
 
- Please if you are capable and willing , kindly reply back to me so
- that i will give more details about this project. my private e-mail at
- (mr.alfanuru01@gmail.com)
+Error/Warning reports:
 
- Sorry if you received this letter in your spam or junk Email, is due to
- recent  connection error here in the country.
+https://lore.kernel.org/oe-kbuild-all/202212072303.zoG5acy7-lkp@intel.com
 
- further details of the Project will be forwarded to you as soon as I
- receive your wiliness to join hand with me.
+Error/Warning: (recently discovered and may have been fixed)
 
- Am awaiting your urgent response with this information
+drivers/bus/sunxi-rsb.c:180:13: error: incompatible function pointer types initializing 'int (*)(struct device *, struct kobj_uevent_env *)' with an expression of type 'int (const struct device *, struct kobj_uevent_env *)' [-Wincompatible-function-pointer-types]
 
+Error/Warning ids grouped by kconfigs:
 
- Have a nice day!!
+clang_recent_errors
+`-- arm64-randconfig-r035-20221207
+    `-- drivers-bus-sunxi-rsb.c:error:incompatible-function-pointer-types-initializing-int-(-)(struct-device-struct-kobj_uevent_env-)-with-an-expression-of-type-int-(const-struct-device-struct-kobj_uevent_env
 
- Mr. Ryan
- I am Mr. Ryan I have investment project of $58.7Million Us Dollars
- which I will like you to support me so that the fund will be transfer
- into your bank account.
+elapsed time: 806m
 
- Please if you are capable and willing , kindly reply back to me so
- that i will give more details about this project. my private e-mail at
- (mr.alfanuru01@gmail.com)
+configs tested: 67
+configs skipped: 2
 
- Sorry if you received this letter in your spam or junk Email, is due to
- recent  connection error here in the country.
+gcc tested configs:
+um                             i386_defconfig
+um                           x86_64_defconfig
+i386                                defconfig
+arc                                 defconfig
+s390                             allmodconfig
+x86_64                           rhel-8.3-syz
+alpha                               defconfig
+x86_64                         rhel-8.3-kunit
+powerpc                           allnoconfig
+arc                  randconfig-r043-20221207
+x86_64                        randconfig-a004
+x86_64                           rhel-8.3-kvm
+x86_64                        randconfig-a002
+s390                                defconfig
+s390                             allyesconfig
+riscv                randconfig-r042-20221207
+ia64                             allmodconfig
+x86_64                              defconfig
+s390                 randconfig-r044-20221207
+x86_64                          rhel-8.3-rust
+x86_64                        randconfig-a006
+x86_64                    rhel-8.3-kselftests
+x86_64                          rhel-8.3-func
+i386                          randconfig-a001
+x86_64                        randconfig-a013
+m68k                             allyesconfig
+x86_64                        randconfig-a011
+arm                                 defconfig
+i386                          randconfig-a014
+x86_64                               rhel-8.3
+x86_64                        randconfig-a015
+i386                          randconfig-a003
+arc                              allyesconfig
+x86_64                           allyesconfig
+i386                          randconfig-a012
+alpha                            allyesconfig
+i386                          randconfig-a016
+arm                              allyesconfig
+i386                          randconfig-a005
+i386                             allyesconfig
+arm64                            allyesconfig
+sh                               allmodconfig
+x86_64                            allnoconfig
+powerpc                          allmodconfig
+mips                             allyesconfig
+powerpc                     redwood_defconfig
+powerpc                     asp8347_defconfig
+mips                    maltaup_xpa_defconfig
+powerpc                     sequoia_defconfig
+powerpc                        warp_defconfig
+m68k                             allmodconfig
 
- further details of the Project will be forwarded to you as soon as I
- receive your wiliness to join hand with me.
+clang tested configs:
+arm                  randconfig-r046-20221207
+hexagon              randconfig-r041-20221207
+x86_64                        randconfig-a001
+hexagon              randconfig-r045-20221207
+i386                          randconfig-a013
+i386                          randconfig-a015
+x86_64                        randconfig-a003
+x86_64                        randconfig-a005
+x86_64                        randconfig-a012
+i386                          randconfig-a011
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
+i386                          randconfig-a002
+i386                          randconfig-a006
+i386                          randconfig-a004
+arm                          pcm027_defconfig
 
- Am awaiting your urgent response with this information
-
-
- Have a nice day!!
-
- Mr. Ryan
- I am Mr. Ryan I have investment project of $58.7Million Us Dollars
- which I will like you to support me so that the fund will be transfer
- into your bank account.
-
- Please if you are capable and willing , kindly reply back to me so
- that i will give more details about this project. my private e-mail at
- (mr.alfanuru01@gmail.com)
-
- Sorry if you received this letter in your spam or junk Email, is due to
- recent  connection error here in the country.
-
- further details of the Project will be forwarded to you as soon as I
- receive your wiliness to join hand with me.
-
- Am awaiting your urgent response with this information
-
-
- Have a nice day!!
-
- Mr. Ryan
- I am Mr. Ryan I have investment project of $58.7Million Us Dollars
- which I will like you to support me so that the fund will be transfer
- into your bank account.
-
- Please if you are capable and willing , kindly reply back to me so
- that i will give more details about this project. my private e-mail at
- (mr.alfanuru01@gmail.com)
-
- Sorry if you received this letter in your spam or junk Email, is due to
- recent  connection error here in the country.
-
- further details of the Project will be forwarded to you as soon as I
- receive your wiliness to join hand with me.
-
- Am awaiting your urgent response with this information
-
-
- Have a nice day!!
-
- Mr. Ryan
- I am Mr. Ryan I have investment project of $58.7Million Us Dollars
- which I will like you to support me so that the fund will be transfer
- into your bank account.
-
- Please if you are capable and willing , kindly reply back to me so
- that i will give more details about this project. my private e-mail at
- (mr.alfanuru01@gmail.com)
-
- Sorry if you received this letter in your spam or junk Email, is due to
- recent  connection error here in the country.
-
- further details of the Project will be forwarded to you as soon as I
- receive your wiliness to join hand with me.
-
- Am awaiting your urgent response with this information
-
-
- Have a nice day!!
-
- Mr. Ryan
- I am Mr. Ryan I have investment project of $58.7Million Us Dollars
- which I will like you to support me so that the fund will be transfer
- into your bank account.
-
- Please if you are capable and willing , kindly reply back to me so
- that i will give more details about this project. my private e-mail at
- (mr.alfanuru01@gmail.com)
-
- Sorry if you received this letter in your spam or junk Email, is due to
- recent  connection error here in the country.
-
- further details of the Project will be forwarded to you as soon as I
- receive your wiliness to join hand with me.
-
- Am awaiting your urgent response with this information
-
-
- Have a nice day!!
-
- Mr. Ryan
- I am Mr. Ryan I have investment project of $58.7Million Us Dollars
- which I will like you to support me so that the fund will be transfer
- into your bank account.
-
- Please if you are capable and willing , kindly reply back to me so
- that i will give more details about this project. my private e-mail at
- (mr.alfanuru01@gmail.com)
-
- Sorry if you received this letter in your spam or junk Email, is due to
- recent  connection error here in the country.
-
- further details of the Project will be forwarded to you as soon as I
- receive your wiliness to join hand with me.
-
- Am awaiting your urgent response with this information
-
-
- Have a nice day!!
-
- Mr. Ryan
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
