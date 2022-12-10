@@ -1,77 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4EC04648D25
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Dec 2022 05:46:50 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1195649194
+	for <lists+driverdev-devel@lfdr.de>; Sun, 11 Dec 2022 01:07:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5F2EA40160;
-	Sat, 10 Dec 2022 04:46:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5F2EA40160
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7F516817FD;
+	Sun, 11 Dec 2022 00:07:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7F516817FD
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id K4fTTo9hkNE0; Sat, 10 Dec 2022 04:46:47 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ukq9xvXpfyfx; Sun, 11 Dec 2022 00:07:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1B8DA4015E;
-	Sat, 10 Dec 2022 04:46:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1B8DA4015E
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 519E3817B3;
+	Sun, 11 Dec 2022 00:07:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 519E3817B3
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EB8181BF291
- for <devel@linuxdriverproject.org>; Sat, 10 Dec 2022 04:46:43 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8E5EA1BF42D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 11 Dec 2022 00:07:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D2B5960A6F
- for <devel@linuxdriverproject.org>; Sat, 10 Dec 2022 04:46:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D2B5960A6F
+ by smtp1.osuosl.org (Postfix) with ESMTP id 69800817C3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 11 Dec 2022 00:07:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 69800817C3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id a58dAxxphvDF for <devel@linuxdriverproject.org>;
- Sat, 10 Dec 2022 04:46:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5eqwxaHNriha
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 11 Dec 2022 00:07:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A06C960687
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A06C960687
- for <devel@driverdev.osuosl.org>; Sat, 10 Dec 2022 04:46:42 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10556"; a="379806331"
-X-IronPort-AV: E=Sophos;i="5.96,232,1665471600"; d="scan'208";a="379806331"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Dec 2022 20:46:41 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10556"; a="892895806"
-X-IronPort-AV: E=Sophos;i="5.96,232,1665471600"; d="scan'208";a="892895806"
-Received: from lkp-server01.sh.intel.com (HELO b5d47979f3ad) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 09 Dec 2022 20:46:40 -0800
-Received: from kbuild by b5d47979f3ad with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1p3rl1-0002Gp-2m;
- Sat, 10 Dec 2022 04:46:39 +0000
-Date: Sat, 10 Dec 2022 12:46:03 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:kobject-const2] BUILD REGRESSION
- 71d86d6fecf6d38c7eaf557d6eecce352c550f0d
-Message-ID: <63940f0b.BDL4PzbugNIjhpWt%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 208BE817B3
+Received: from senwd.co.kr (unknown [220.95.209.146])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 208BE817B3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 11 Dec 2022 00:07:08 +0000 (UTC)
+Received: from IP-222-117.dataclub.eu (unknown [46.183.222.117])
+ (Authenticated sender: lucy@senwd.co.kr)
+ by senwd.co.kr (Postfix) with ESMTPA id 3C3C9D3000D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 11 Dec 2022 08:26:08 +0900 (KST)
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1670647602; x=1702183602;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=XGD5nHrjgK6sy4dw6qI6QC24Y/KKkCtQp7bTrVs62JA=;
- b=ELvdeakR/dhDwly/4DXtssT0vIbhtY4dNQViHLcaPQSoLagbHp8rbe7d
- XeQp6Cd7B+6mkkfW0sDBxtZtmI/r8OZ18GQeTiYwL6HBUj4gJcqoLpYRb
- cG26n/4Ilrg7T9UVoOdT/LMrNRZ/9lu4nYjNc5ztvTmYGp1tiWk8NA6MY
- Kj7Z2KSYWCmOJgFMpasp42KQqktlVASJABuvFM9EoCwVSINQPaFhUTed7
- TQbCHSHzGb1mbaMrS6A0PCeDTsBU2/w9afohnI8w8Q3ghzn459d8/GX+K
- xVpNit+a77HjnUY+Q4zqFMeypmTZfbB7WW9xXTaloWJrL3mu4Xu/4HDa1
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ELvdeakR
+Content-Description: Mail message body
+Subject: CONGRATULATION, You have won the Lottery...146
+To: driverdev-devel@linuxdriverproject.org
+From: "YOU HVAE WON" <headoficecentre02100@gmail.com>
+Date: Sun, 11 Dec 2022 01:26:02 +0200
+Message-Id: <20221211000709.69800817C3@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,102 +63,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: headoficecentre02100@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const2
-branch HEAD: 71d86d6fecf6d38c7eaf557d6eecce352c550f0d  kobject: kset_uevent_ops: make uevent() callback take a const *
+Loterias y Apuestas
+del Estado
+ 
+Calle Rios Rosas, 32,
+Madrid Espana 28004
 
-Error/Warning reports:
+FROM: THE DESK OF THE VICE PRESIDENT
+THE MEGA LOTTERY PICKER 2022 DRAW/PRIZE AWARD DEPT
+REF NUMBER: EBK/VC/5049/095
+BATCH NUMBER: ESP /2022-25W. VGZ90400
 
-https://lore.kernel.org/oe-kbuild-all/202212100322.YpsM5N4C-lkp@intel.com
+JULY/02/2022
 
-Error/Warning: (recently discovered and may have been fixed)
+FINAL AWARD NOTIFICATION
 
-drivers/bus/sunxi-rsb.c:185:13: error: incompatible function pointer types initializing 'int (*)(const struct device *, struct kobj_uevent_env *)' with an expression of type 'int (struct device *, struct kobj_uevent_env *)' [-Wincompatible-function-pointer-types]
+Lucky Winner, 13 27 38 21 36 4 45
 
-Error/Warning ids grouped by kconfigs:
+We are delighted to inform you of the MEGA LOTTERY PICKER 2022 DRAW held on JULY/02/202; Despite mix up of the names and number the results were released on APRIL/5/2022. Your name attached to ticket number: 01890419 with serial number: 9912 drew lucky number 5,24,30,31,43 with bonus ball 3 & 6 which consequently won in the 1st category, you have therefore been approved the winner for a lump sum pay out of Two Million Four Hundred Thousand USD ($2,400,000.00)
+Congratulations! Note: All participants were selected through a computer ballot system drawn from Over 40,000,000 people worldwide.
 
-clang_recent_errors
-`-- arm-randconfig-r023-20221209
-    `-- drivers-bus-sunxi-rsb.c:error:incompatible-function-pointer-types-initializing-int-(-)(const-struct-device-struct-kobj_uevent_env-)-with-an-expression-of-type-int-(struct-device-struct-kobj_uevent_env
+The program was designed and promoted by the European Union in collaboration with the Spanish Government and some other international lottery institutions that include EUROMILLONES DRAW etc.
+This has been one of the biggest ever played in the world which aimed at changing the lives of millions of people. To enable us to proceed with your claims, this information must be kept away from the public to avoid unwarranted abuse of the program or fraudulent claims by unauthorized person(s).
 
-elapsed time: 727m
+To begin your claims, contact JOSE BLANCO the Foreign Service Manager/Remittance officer of  SUNRISE EQUITY & SECURITIES S.A on +34687074521  FAX: +34911963216 Email: lottowinofficial44@citromail.hu for the processing and remittance of your Winnings. Remember to quote your reference number in all correspondence. 
+And also be informed that 10% of your winning belongs to ALLIANZ SECURITAS S.A, because they bought the lottery ticket in your name. 
 
-configs tested: 61
-configs skipped: 2
+Finally all winning must be claimed not later than SEPTEMBER/3/2022. After this date, the entire fund will be returned to the Ministry of Economy as unclaimed funds.
+Furthermore should there be any change of your personal details or address, do inform your claims agent as soon as possible.
 
-gcc tested configs:
-powerpc                           allnoconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-arc                                 defconfig
-s390                             allmodconfig
-alpha                               defconfig
-s390                                defconfig
-s390                             allyesconfig
-arc                  randconfig-r043-20221209
-sh                               allmodconfig
-s390                 randconfig-r044-20221209
-riscv                randconfig-r042-20221209
-m68k                             allyesconfig
-powerpc                          allmodconfig
-m68k                             allmodconfig
-mips                             allyesconfig
-arc                              allyesconfig
-alpha                            allyesconfig
-x86_64                        randconfig-a013
-x86_64                          rhel-8.3-rust
-x86_64                        randconfig-a011
-x86_64                          rhel-8.3-func
-x86_64                    rhel-8.3-kselftests
-x86_64                        randconfig-a015
-i386                                defconfig
-x86_64                              defconfig
-i386                             allyesconfig
-x86_64                           rhel-8.3-bpf
-arm                                 defconfig
-i386                          randconfig-a001
-x86_64                           rhel-8.3-syz
-i386                          randconfig-a003
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-kvm
-ia64                             allmodconfig
-i386                          randconfig-a014
-i386                          randconfig-a005
-i386                          randconfig-a012
-i386                          randconfig-a016
-arm                              allyesconfig
-x86_64                           allyesconfig
-x86_64                               rhel-8.3
-arm64                            allyesconfig
-x86_64                        randconfig-a004
-x86_64                        randconfig-a002
-x86_64                        randconfig-a006
+CONGRATULATIONS ONCE AGAIN.
+MILLIONS MEGA LOTTERY. 
 
-clang tested configs:
-hexagon              randconfig-r041-20221209
-arm                  randconfig-r046-20221209
-hexagon              randconfig-r045-20221209
-x86_64                        randconfig-a012
-x86_64                        randconfig-a014
-x86_64                        randconfig-a016
-i386                          randconfig-a002
-i386                          randconfig-a004
-i386                          randconfig-a013
-i386                          randconfig-a011
-i386                          randconfig-a015
-i386                          randconfig-a006
-x86_64                        randconfig-a001
-x86_64                        randconfig-a003
-x86_64                        randconfig-a005
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
