@@ -1,79 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0221649B8A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Dec 2022 10:59:48 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E44F649EFE
+	for <lists+driverdev-devel@lfdr.de>; Mon, 12 Dec 2022 13:42:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5761B4016F;
-	Mon, 12 Dec 2022 09:59:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5761B4016F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5EF82405E6;
+	Mon, 12 Dec 2022 12:42:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5EF82405E6
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yrV9y8Sl5F9e; Mon, 12 Dec 2022 09:59:45 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id brUIndDaOXfX; Mon, 12 Dec 2022 12:42:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 092EF400EF;
-	Mon, 12 Dec 2022 09:59:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 092EF400EF
+	by smtp2.osuosl.org (Postfix) with ESMTP id 451F0405EF;
+	Mon, 12 Dec 2022 12:42:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 451F0405EF
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EABBB1BF20B
- for <devel@linuxdriverproject.org>; Mon, 12 Dec 2022 09:59:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 948D61BF39A
+ for <devel@linuxdriverproject.org>; Mon, 12 Dec 2022 12:42:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D25CE4016F
- for <devel@linuxdriverproject.org>; Mon, 12 Dec 2022 09:59:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D25CE4016F
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6623D410CB
+ for <devel@linuxdriverproject.org>; Mon, 12 Dec 2022 12:42:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6623D410CB
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qvsjaWTRTkeQ for <devel@linuxdriverproject.org>;
- Mon, 12 Dec 2022 09:59:40 +0000 (UTC)
-X-Greylist: delayed 00:12:03 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 88B6B400EF
-Received: from sp14.canonet.ne.jp (sp14.canonet.ne.jp [210.134.168.91])
- by smtp4.osuosl.org (Postfix) with ESMTP id 88B6B400EF
- for <devel@driverdev.osuosl.org>; Mon, 12 Dec 2022 09:59:40 +0000 (UTC)
-Received: from csp14.canonet.ne.jp (unknown [172.21.160.134])
- by sp14.canonet.ne.jp (Postfix) with ESMTP id 3DC0E1E09A3;
- Mon, 12 Dec 2022 18:47:35 +0900 (JST)
-Received: from echeck14.canonet.ne.jp ([172.21.160.124]) by csp4 with ESMTP
- id 4fPKprLvkVjWJ4fPKpmuNz; Mon, 12 Dec 2022 18:47:35 +0900
-X-CNT-CMCheck-Reason: "undefined", "v=2.4 cv=WsmVjfTv c=1 sm=1 tr=0
- ts=6396f8b7 cx=g_jp:t_eml p=7Sxi0QMO7t8A:10 p=KEtzfpT9BBLiWZE7bbMA:9
+ with ESMTP id CC0jtNp5nO2g for <devel@linuxdriverproject.org>;
+ Mon, 12 Dec 2022 12:42:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5E8B4410D1
+Received: from sp12.canonet.ne.jp (sp12.canonet.ne.jp [210.134.168.89])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5E8B4410D1
+ for <devel@driverdev.osuosl.org>; Mon, 12 Dec 2022 12:42:24 +0000 (UTC)
+Received: from csp12.canonet.ne.jp (unknown [172.21.160.132])
+ by sp12.canonet.ne.jp (Postfix) with ESMTP id 682711E0EFA;
+ Mon, 12 Dec 2022 21:42:23 +0900 (JST)
+Received: from echeck12.canonet.ne.jp ([172.21.160.122]) by csp2 with ESMTP
+ id 4i8VpuYPLyh2r4i8VpVjYD; Mon, 12 Dec 2022 21:42:23 +0900
+X-CNT-CMCheck-Reason: "undefined", "v=2.4 cv=HvXIp2fS c=1 sm=1 tr=0
+ ts=639721af cx=g_jp:t_eml p=7Sxi0QMO7t8A:10 p=KEtzfpT9BBLiWZE7bbMA:9
  p=SOgVINUt1DMA:10 p=CuhS7ufEc6Fov-6dDykT:22 p=l6gFzSxlb5f3xrsl_-d5:22
- a=puqJfqqrwnhV2n3dwg+kWg==:117 a=EAmtCkNOZRVagD4f0U/kIQ==:17
+ a=5J8QHEf9WaWkijFsPIoXCQ==:117 a=/Fl49QCxyQ7sEYSNAJHDMg==:17
  a=PlGk70OYzacA:10 a=Dyoqhi_TatcA:10 a=Cfj4BQAnxiAA:10 a=sHyYjHe8cH0A:10
  a=x7bEGLp0ZPQA:10 a=pGLkceISAAAA:8 a=Ft8UYL4EG9YA:10 a=wgxcfbkjHcwA:10
  a=LMeYhyiRXuWaZucJAQ-w:22"
 X-CNT-CMCheck-Score: 100.00
-Received: from echeck14.canonet.ne.jp (localhost [127.0.0.1])
- by esets.canonet.ne.jp (Postfix) with ESMTP id BAAA51C023A;
- Mon, 12 Dec 2022 18:47:34 +0900 (JST)
+Received: from echeck12.canonet.ne.jp (localhost [127.0.0.1])
+ by esets.canonet.ne.jp (Postfix) with ESMTP id 2A7E01C023D;
+ Mon, 12 Dec 2022 21:42:23 +0900 (JST)
 X-Virus-Scanner: This message was checked by ESET Mail Security
  for Linux/BSD. For more information on ESET Mail Security,
  please, visit our website: http://www.eset.com/.
-Received: from smtp14.canonet.ne.jp (unknown [172.21.160.104])
- by echeck14.canonet.ne.jp (Postfix) with ESMTP id B8A0C1C021D;
- Mon, 12 Dec 2022 18:47:34 +0900 (JST)
-Received: from User (unknown [38.131.32.78])
- by smtp14.canonet.ne.jp (Postfix) with ESMTPA id 29AE215F973;
- Mon, 12 Dec 2022 18:45:57 +0900 (JST)
-From: "Emmanuel"<yakkyoku@sapporo-kohsetsu.or.jp>
+Received: from smtp12.canonet.ne.jp (unknown [172.21.160.102])
+ by echeck12.canonet.ne.jp (Postfix) with ESMTP id 27EF31C021D;
+ Mon, 12 Dec 2022 21:42:23 +0900 (JST)
+Received: from User (unknown [178.151.134.232])
+ by smtp12.canonet.ne.jp (Postfix) with ESMTPA id C499415F995;
+ Mon, 12 Dec 2022 21:40:38 +0900 (JST)
+From: "Emmanuel"<ietomi@shonan-s.co.jp>
 Subject: How Are You Today?
-Date: Mon, 12 Dec 2022 09:47:26 -0000
+Date: Mon, 12 Dec 2022 12:42:12 -0000
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
 X-EsetResult: clean, %VIRUSNAME%
-X-ESET-AS: R=SPAM; S=100; OP=CALC; TIME=1670838454; VERSION=7942; MC=2914122736;
- TRN=15; CRV=0; IPC=38.131.32.78; SP=4; SIPS=1; PI=5; F=0
+X-ESET-AS: R=SPAM; S=100; OP=CALC; TIME=1670848943; VERSION=7942; MC=666044119;
+ TRN=15; CRV=0; IPC=178.151.134.232; SP=4; SIPS=1; PI=5; F=0
 X-I-ESET-AS: RN=442,624:0;RNP=edaboyaesq02@gmail.com
 X-ESET-Antispam: SPAM
-Message-Id: <20221212094734.BAAA51C023A@echeck14.canonet.ne.jp>
+Message-Id: <20221212124223.2A7E01C023D@echeck12.canonet.ne.jp>
 To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
