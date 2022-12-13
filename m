@@ -1,52 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14B0B64CE8B
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Dec 2022 18:00:57 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BB60064D110
+	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Dec 2022 21:22:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2AC3A4033D;
-	Wed, 14 Dec 2022 17:00:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2AC3A4033D
+	by smtp1.osuosl.org (Postfix) with ESMTP id 105F981F96;
+	Wed, 14 Dec 2022 20:22:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 105F981F96
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oOadxOi2LQY9; Wed, 14 Dec 2022 17:00:54 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FWKyN-ZIFLCu; Wed, 14 Dec 2022 20:22:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C799A4033A;
-	Wed, 14 Dec 2022 17:00:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C799A4033A
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id E4B9B81F93;
+	Wed, 14 Dec 2022 20:22:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E4B9B81F93
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 6BE751BF344
- for <devel@linuxdriverproject.org>; Wed, 14 Dec 2022 17:00:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 54FE91BF3C5
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 14 Dec 2022 20:21:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4795360D5E
- for <devel@linuxdriverproject.org>; Wed, 14 Dec 2022 17:00:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4795360D5E
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2FB7D60E65
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 14 Dec 2022 20:21:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2FB7D60E65
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wXiWDKaPDhc1 for <devel@linuxdriverproject.org>;
- Wed, 14 Dec 2022 17:00:50 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DD36860BB3
-Received: from eaf989a35d74 (unknown [194.177.22.182])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DD36860BB3
- for <devel@driverdev.osuosl.org>; Wed, 14 Dec 2022 17:00:49 +0000 (UTC)
-Received: from User (unknown [46.148.40.74])
- by eaf989a35d74 (Postfix) with SMTP id A5084436F9C;
- Wed, 14 Dec 2022 10:15:29 +0000 (UTC)
-From: "INFO"<test@d-kvadrat.ru>
-Subject: INFO
-Date: Wed, 14 Dec 2022 02:15:37 -0800
+ with ESMTP id 314WH44X5lrp
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 14 Dec 2022 20:21:56 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 08AB760B5A
+Received: from cweb06.gamingcontrol.de (unknown [45.81.232.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 08AB760B5A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed, 14 Dec 2022 20:21:55 +0000 (UTC)
+Received: from [192.168.1.116]
+ (dynamic-046-114-194-206.46.114.pool.telefonica.de [46.114.194.206])
+ by cweb06.gamingcontrol.de (Postfix) with ESMTPA id D3D3110656F;
+ Tue, 13 Dec 2022 03:32:30 +0100 (CET)
+Received-SPF: pass (cweb06.gamingcontrol.de: connection is authenticated)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20221214170051.4795360D5E@smtp3.osuosl.org>
+Content-Description: Mail message body
+Subject: Hello Friend !
+To: Recipients <glenn-tery@web10809.cweb06.gamingcontrol.de>
+From: "Eng. Terry Glenn" <glenn-tery@web10809.cweb06.gamingcontrol.de>
+Date: Tue, 13 Dec 2022 03:32:29 +0100
+X-Antivirus: Avast (VPS 221212-10, 12/12/2022), Outbound message
+X-Antivirus-Status: Clean
+Message-Id: <20221214202157.2FB7D60E65@smtp3.osuosl.org>
+X-Mailman-Original-Authentication-Results: cweb06.gamingcontrol.de;
+ spf=pass (sender IP is 46.114.194.206)
+ smtp.mailfrom=glenn-tery@web10809.cweb06.gamingcontrol.de
+ smtp.helo=[192.168.1.116]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,59 +69,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: 20155765@ce.pucmm.edu.do
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Reply-To: glennterry997@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-R29vZCBkYXkuCgogCgpGaXJzdGx5LCBJIG11c3Qgc29saWNpdCB5b3VyIGNvbmZpZGVuY2UgaW4g
-dGhpcyB0cmFuc2FjdGlvbjsgdGhpcyBpcyBieSB2aXJ0dWUgb2YgaXRzIG5hdHVyZSBhcyAKCmJl
-aW5nIHV0dGVybHkgY29uZmlkZW50aWFsIGFuZCB0b3Agc2VjcmV0LiBUaG91Z2ggSSBrbm93IHRo
-YXQgYSB0cmFuc2FjdGlvbiBvZiB0aGlzIG1hZ25pdHVkZSAKCndpbGwgbWFrZSBhbnkgb25lIGFw
-cHJlaGVuc2l2ZSBhbmQgd29ycmllZCwgYnV0IEkgYW0gYXNzdXJpbmcgeW91IHRoYXQgYWxsIHdp
-bGwgYmUgd2VsbCBhdCB0aGUgCgplbmQgb2YgdGhlIGRheS4gSXQgbWF5IHN1cnByaXNlIHlvdSBy
-ZWNlaXZpbmcgdGhpcyBsZXR0ZXIgZnJvbSBtZSwgc2luY2UgdGhlcmUgd2FzIG5vIHByZXZpb3Vz
-IAoKY29ycmVzcG9uZGVuY2UgYmV0d2VlbiB1cy4gTXkgTmFtZSBpcyBSdXNzZWwsIHBlcnNvbmFs
-IEZpbmFuY2lhbCBjb25zdWx0YW50IHRvIG15IExhdGUgY2xpZW50LCAKCmFuIGV4cGF0cmlhdGUg
-ZW5naW5lZXIgYW5kIGNvbnRyYWN0b3IuCgoKTXkgcHVycG9zZSBvZiBjb250YWN0aW5nIHlvdSBp
-cyBmb3IgeW91IHRvIGhlbHAgbWUgdG8gc2VjdXJlIGhpcyBmdW5kcyBkZXBvc2l0ZWQgd2l0aCB0
-aGUgQmFuayAKCmJlZm9yZSBoZSBkaWVkLCB0byBhdm9pZCBpdCBiZWluZyBjb25maXNjYXRlZCBv
-ciBkZWNsYXJlZCBhcyB1bmNsYWltZWQgYnkgdGhlIEJhbmsuIFRoZSBmdW5kIAoKdmFsdWUgaXMg
-JDc2LDUwMCwwMDAuMDAgKHNldmVudHkgU2l4IE1pbGxpb24sIEZpdmUgSHVuZHJlZCBUaG91c2Fu
-ZCBVU0QpLCB0aGlzIG1vbmV5IHdhcyAKCmRlcG9zaXRlZCBieSBteSBsYXRlIGNsaWVudCBiZWZv
-cmUgaGUgcGFzc2VkIGF3YXksIG9uIHRoZSAxNnRoIEFwcmlsIDIwMTQsIGFuZCB1cCB0aWxsIHRv
-ZGF5IGhpcyAKCnJlbGF0aXZlcyByZW1haW5lZCB1bmtub3duLgoKSSBndWFyYW50ZWUgdGhlIHN1
-Y2Nlc3Mgb2YgdGhpcyB0cmFuc2FjdGlvbiBpbiBhbGwgbGVnYWwgZGVmaW5pdGlvbnMuIApBcyBo
-aXMgY29uc3VsdGFudC9hY2NvdW50IG1hbmFnZXIgSSBoYXZlIGNvbnRhY3RlZCB0aGUgYmFuayBm
-b3IgdGhlIGNsYWltIG9mIHRoZSBmdW5kIGFuZCB0aGUgCgpCYW5rIGhhcyBpc3N1ZWQgbWUgYSBu
-b3RpY2UgdG8gY29udGFjdCB0aGUgbmV4dCBvZiBraW4gb3IgdGhlIGFjY291bnQgd2lsbCBiZSBk
-ZWNsYXJlZCAKCnVuc2VydmljZWFibGUgYW5kIHRoZSBmdW5kIHdpbGwgYmUgcmV0aXJlZCBieSB0
-aGUgc3RhdGUuU2luY2UgdGhpcyBhY2NvdW50IGlzIHNlY3JldCBhbmQgdGhlcmUgCgppcyBubyBv
-bmUgbGVmdCB0byBjbGFpbSB0aGUgZnVuZCB0aGF0IGlzIHRoZSByZWFzb24gSSBhbSBjb250YWN0
-aW5nIHlvdS4gSSBhbSBhY3R1YWxseSBhc2tpbmcgCgpmb3IgeW91ciBjb25zZW50IHRvIHByZXNl
-bnQgeW91IHRvIHRoZSBCYW5rIGFzIHRoZSBOZXh0IG9mIEtpbi9iZW5lZmljaWFyeSBvZiBteSBs
-YXRlIGNsaWVudJJzIAoKZnVuZCwgc28gdGhhdCB0aGUgZnVuZCB3aWxsIGJlIHJlbGVhc2VkIHRv
-IHlvdSBhcyBoaXMgbmV4dCBvZiBraW4uIEFsbCB0aGUgbGVnYWwgZG9jdW1lbnRzIHRvIAoKYmFj
-ayB1cCB5b3VyIGNsYWltIGFzIG15IGNsaWVudJJzIG5leHQgb2YgS2luIHdpbGwgYmUgcHJvdmlk
-ZWQuIEFsbCBJIHJlcXVpcmUgaXMgeW91ciBob25lc3QgCgpjb29wZXJhdGlvbiBhbmQgYWJzb2x1
-dGUgY29uZmlkZW50aWFsaXR5IGluIG9yZGVyIHRvIGd1YXJhbnRlZSBzdWNjZXNzLgoKIAoKSSB3
-aXNoIHRvIHBvaW50IG91dCB0aGF0IEkgd2FudCAyMCUgb2YgdGhpcyBtb25leSB0byBiZSBmb3Ig
-ZXhwZW5jZXMgYW5kIENoYXJpdHkgT3JnYW5pemF0aW9ucywgCgp3aGlsZSB0aGUgcmVtYWluaW5n
-IGlzIHNoYXJlZCBlcXVhbGx5IGJldHdlZW4gdXMuIFRoaXMgdHJhbnNhY3Rpb24gaXMgZW50aXJl
-bHkgcmlzayBmcmVlLiBJIHdpbGwgCgp1c2UgbXkgcG9zaXRpb24gdG8gZ3VhcmFudGVlIHRoZSBz
-dWNjZXNzZnVsIGV4ZWN1dGlvbiBvZiB0aGlzIHRyYW5zYWN0aW9uLiBJZiB5b3UgYXJlIAoKaW50
-ZXJlc3RlZCwgcGxlYXNlIGNvbnRhY3QgbWUsdXBvbiB5b3VyIHJlc3BvbnNlLCBJIHNoYWxsIHRo
-ZW4gcHJvdmlkZSB5b3Ugd2l0aCBtb3JlIGRldGFpbHMgCgp0aGF0IHdpbGwgaGVscCB5b3UgdW5k
-ZXJzdGFuZCBtb3JlIG9uIHRoaXMgdHJhbnNhY3Rpb24uCgogCgpUaGUgaW50ZW5kZWQgdHJhbnNh
-Y3Rpb24gd2lsbCBiZSBwcm9jZXNzZWQgdW5kZXIgbGVnaXRpbWFjeSBieSBhIGxhd3llcix3aGlj
-aCB3aWxsIHByb3RlY3QgbWUgCgphbmQgeW91IGZyb20gYW55IHZpb2xhdGlvbiBvZiBsYXcuCgpJ
-ZiB5b3Ugd2lzaCB0byBhY2hpZXZlIHRoZSBnb2FsIHdpdGggbWUsIHBsZWFzZSBraW5kbHkgZ2V0
-IGJhY2sgdG8gbWUgd2l0aCB5b3VyIGludGVyZXN0IGZvciAKCmZ1cnRoZXIgZXhwbGFuYXRpb25z
-IGFuZCBiZXR0ZXIgdW5kZXJzdGFuZGluZy4gQWxzbyBiZSBraW5kIHRvIGxldCBtZSBrbm93IGlm
-IHlvdSBhcmUgbm90IAoKaW50ZXJlc3RlZCBzbyB0aGF0IEkgY2FuIGZ1cnRoZXIgbXkgc2VhcmNo
-IHRvIGFub3RoZXIgQ2l0aXplbiB0aGF0IGhhcyB0aGUgc2FtZSBzdXJuYW1lIHdpdGggbXkgCgps
-YXRlIGNsaWVudC4KCiAKCktpbmRlc3QgUmVnYXJkcwoKUnVzc2VsCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBs
-aW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+Hello Good Friend,
+
+I am Engineer Terry Glenn, I work by Azovstal metallurgical plant in Mariupol Ukraine, I am getting in touch with you regarding an extremely important and urgent matter. If you would oblige me the opportunity, I shall provide you with details upon your response.
+
+Please you can contact me through my personal email: terryglenn050@gmail.com
+
+Faithfully,
+Eng. Terry Glenn
+
+-- 
+This email has been checked for viruses by Avast antivirus software.
+www.avast.com
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
