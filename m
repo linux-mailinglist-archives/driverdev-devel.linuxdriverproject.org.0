@@ -1,40 +1,40 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id ADFE764CE8C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Dec 2022 18:00:58 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 14B0B64CE8B
+	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Dec 2022 18:00:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 181C981437;
-	Wed, 14 Dec 2022 17:00:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 181C981437
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RK5oEuqWnF1v; Wed, 14 Dec 2022 17:00:56 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CFE6C8135B;
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2AC3A4033D;
 	Wed, 14 Dec 2022 17:00:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CFE6C8135B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2AC3A4033D
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oOadxOi2LQY9; Wed, 14 Dec 2022 17:00:54 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id C799A4033A;
+	Wed, 14 Dec 2022 17:00:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C799A4033A
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6EFB71BF947
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6BE751BF344
  for <devel@linuxdriverproject.org>; Wed, 14 Dec 2022 17:00:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4AD4A81437
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4795360D5E
  for <devel@linuxdriverproject.org>; Wed, 14 Dec 2022 17:00:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4AD4A81437
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4795360D5E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2uoVvhoqWM7v for <devel@linuxdriverproject.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wXiWDKaPDhc1 for <devel@linuxdriverproject.org>;
  Wed, 14 Dec 2022 17:00:50 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0AF828135B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DD36860BB3
 Received: from eaf989a35d74 (unknown [194.177.22.182])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0AF828135B
- for <devel@linuxdriverproject.org>; Wed, 14 Dec 2022 17:00:49 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DD36860BB3
+ for <devel@driverdev.osuosl.org>; Wed, 14 Dec 2022 17:00:49 +0000 (UTC)
 Received: from User (unknown [46.148.40.74])
  by eaf989a35d74 (Postfix) with SMTP id A5084436F9C;
  Wed, 14 Dec 2022 10:15:29 +0000 (UTC)
@@ -46,7 +46,7 @@ X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20221214170051.4AD4A81437@smtp1.osuosl.org>
+Message-Id: <20221214170051.4795360D5E@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
