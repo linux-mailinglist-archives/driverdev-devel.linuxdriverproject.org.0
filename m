@@ -1,55 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5D2E64E250
-	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Dec 2022 21:28:39 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C620364E724
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Dec 2022 06:58:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8390841A4C;
-	Thu, 15 Dec 2022 20:28:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8390841A4C
+	by smtp2.osuosl.org (Postfix) with ESMTP id 212F640476;
+	Fri, 16 Dec 2022 05:58:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 212F640476
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id j-duAEzYhA2M; Thu, 15 Dec 2022 20:28:36 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id takgP_KNmj2T; Fri, 16 Dec 2022 05:58:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 164E941A4B;
-	Thu, 15 Dec 2022 20:28:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 164E941A4B
+	by smtp2.osuosl.org (Postfix) with ESMTP id D89E340327;
+	Fri, 16 Dec 2022 05:58:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D89E340327
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EA2B81BF329
- for <devel@linuxdriverproject.org>; Thu, 15 Dec 2022 20:28:32 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 521861BF34B
+ for <devel@linuxdriverproject.org>; Fri, 16 Dec 2022 05:58:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D2E2461058
- for <devel@linuxdriverproject.org>; Thu, 15 Dec 2022 20:28:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D2E2461058
+ by smtp2.osuosl.org (Postfix) with ESMTP id 29D1240327
+ for <devel@linuxdriverproject.org>; Fri, 16 Dec 2022 05:58:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 29D1240327
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fIC0OTm5p9Vx for <devel@linuxdriverproject.org>;
- Thu, 15 Dec 2022 20:28:32 +0000 (UTC)
-X-Greylist: delayed 00:07:07 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CC3CD60806
-Received: from lenlironp01-20.jcpenney.com (unknown [146.235.67.141])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CC3CD60806
- for <devel@driverdev.osuosl.org>; Thu, 15 Dec 2022 20:28:31 +0000 (UTC)
-IronPort-SDR: /AQ6VF0e5W1XRujutzQ47WdH1qoa3B2GN44u5OMsM8eebxHmy8spgeWSYzmH5BAsxGkMtgAgnA
- pLKAeBYvHlHBh8y8ucs5gKKSiLlwSJ6tkMHTj6x4p1pyOcnxRplSCzlQwz9yDlCEho1TYEHg7a
- lPjTSKI9j/9fTaPLZgAwIBescu05xAVBu2t3FZ8I+wH6+NyhnytQYca0okAwTWyDBG6v3mfkG9
- 0SfomfsOwKq81LmWHK48BnuTQc9HQu2vagFZNfaV31yongyraMmY+yJ7wH56w6nHay6j7KPyG6
- sdINB5YdVcY1VsqLmfT8q3Gq
-X-IronPort-AV: E=Sophos;i="5.96,248,1665464400"; d="scan'208";a="106140938"
-X-HTML-Disclaimer: True
-Received: from lblen16.jcpenney.com (HELO ovh.ca) ([10.111.195.0])
- by lenlironp01.jcpenney.com with ESMTP; 15 Dec 2022 14:21:18 -0600
-From: "William D. Harris" <ovh@ovh.ca>
-To: devel@driverdev.osuosl.org
-Subject: PLEASE READ CAREFULLY
-Date: 15 Dec 2022 21:21:14 +0100
-Message-ID: <20221215212113.6F8586D397C34601@ovh.ca>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Bu1hRBcIfBcc for <devel@linuxdriverproject.org>;
+ Fri, 16 Dec 2022 05:58:07 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 86D7340476
+Received: from mail-yw1-x1133.google.com (mail-yw1-x1133.google.com
+ [IPv6:2607:f8b0:4864:20::1133])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 86D7340476
+ for <devel@driverdev.osuosl.org>; Fri, 16 Dec 2022 05:58:07 +0000 (UTC)
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-3e45d25de97so20250197b3.6
+ for <devel@driverdev.osuosl.org>; Thu, 15 Dec 2022 21:58:07 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=eXC95EdRC8mdMmS4r+AbXIHHUhfLATzexj03jxl9JTU=;
+ b=tamawUOZXwbqVCBss/+uaX7+92Ugxjrl1SWkweHkPjKvpEZ0PndC66P+GezWKqfMQz
+ gxcddBNZgT2EjldS2z8JS0i5/Nhz0+ecXPF+vFI/BFdD/sj8Ho76EKwifXaZE+zIvNV8
+ QxTzo+l0eo1IgcITLzPMf0lgGY5HIdmuBH5j8hFvKc4rVu8AOlgcySedIu15DP556fgT
+ 1FA/cYLetXOlx85rhq4HZelXPTJmxvMhWNHbUmde5xT38CYYrGmfx2XtVbjCwwx/T4wp
+ igV5LAJAV2c0qUqzMttx7ZDbHrrM9BE+eu7g6+39oz5BDL/o2W6UevK65pW8WwLyVsKR
+ 7ExQ==
+X-Gm-Message-State: AFqh2krB4E0UUX2act7Mp3cmSvntATKRDSbz/qEjQFXGAsSRulhAowix
+ 3hZGjL1e9nmSKS34+eZWjmH5JGiAjWzoCzVrv8Y=
+X-Google-Smtp-Source: AMrXdXs70D+4KZ1jUDFnHKRaWGyHey7Dc9inswblNBSxfRRTWd316YI/chvCWnxKggzIopslENqFD+qYgxcgnJsPW7U=
+X-Received: by 2002:a05:690c:c85:b0:3da:bc09:40c1 with SMTP id
+ cm5-20020a05690c0c8500b003dabc0940c1mr103654ywb.460.1671170285911; Thu, 15
+ Dec 2022 21:58:05 -0800 (PST)
 MIME-Version: 1.0
+Received: by 2002:a05:7010:8e9d:b0:319:d573:607f with HTTP; Thu, 15 Dec 2022
+ 21:58:05 -0800 (PST)
+From: ATM DEPARTMENT <worldwidedeliveryagent364@gmail.com>
+Date: Fri, 16 Dec 2022 06:58:05 +0100
+Message-ID: <CAGgmfOOC9HRrmGgNN1jTQZ30MY2JpAF1-BoQAnoa1_m-DtKe4Q@mail.gmail.com>
+Subject: Attention for you outstanding payment
+To: undisclosed-recipients:;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=eXC95EdRC8mdMmS4r+AbXIHHUhfLATzexj03jxl9JTU=;
+ b=OsMMKck8FO/LGQjXR7DEIkiXiCoEgJDVDaSAEwljzc4jPILMZ/lZX3qyFllzGDUOCi
+ 3CJL9YYYHYucZuEok7RvuV7Z3dMjkY4wauNVOAhxFRxnzd4EJAzbDcOMdfqKl6ezl+r8
+ wdj/PIEd3R8holKuIi/I9QpRs0hZmz3V1XX5pFORaYbNhasuBCAyoDNB+uAogH+WulDv
+ cyc40gOcO71tGnai6TLmKBGWbTOUwaaaFziWjMn2opG6Jby31ZpYvFwTss7Bi2OR0dt8
+ grPiQpLLMbLvfas26uzdYOH4hY08YI/v6MgokazSPQHT10l+k6yLSWxCZXC856q4JUvj
+ ZgRg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=OsMMKck8
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,36 +90,48 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: director@iglesiabautistacanutillo.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: officefile_0112@yahoo.co.jp
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGVsbG8gRnJpZW5kLAoKRm9yZ2l2ZSBteSBtYW5uZXJzLCBJIGFtIExpZXV0ZW5hbnQgQ29sb25l
-bCBXaWxsaWFtIEQuIEhhcnJpcywgYSAKMXN0IFNwZWNpYWwgRm9yY2VzIENvbW1hbmQgYW5kIFNw
-ZWNpYWwgT3BlcmF0aW9ucyBDb21tYW5k4oCUQ2VudHJhbCAKYXR0YWNoZWQgdG8gVU4gcGVhY2Vr
-ZWVwaW5nIGZvcmNlIGluIFN5cmlhLiBJIGhhdmUgYSBidXNpbmVzcyAKRGVhbC8gUHJvcG9zYWwg
-Zm9yIHlvdS4gUGxlYXNlIGtpbmRseSBnZXQgYmFjayB0byBtZSBpZiAKaW50ZXJlc3RlZCwgZm9y
-IG1vcmUgZGV0YWlscy4KClJlc3BlY3RmdWxseSwKTGlldXRlbmFudCBDb2xvbmVsIFdpbGxpYW0g
-RC4gSGFycmlzClRoZSBpbmZvcm1hdGlvbiB0cmFuc21pdHRlZCBpcyBpbnRlbmRlZCBvbmx5IGZv
-ciB0aGUgcGVyc29uIG9yIGVudGl0eSB0byB3aGljaCBpdCBpcyBhZGRyZXNzZWQgYW5kCm1heSBj
-b250YWluIGNvbmZpZGVudGlhbCBhbmQvb3IgcHJpdmlsZWdlZCBtYXRlcmlhbC4gSWYgdGhlIHJl
-YWRlciBvZiB0aGlzIG1lc3NhZ2UgaXMgbm90IHRoZSBpbnRlbmRlZApyZWNpcGllbnQsIHlvdSBh
-cmUgaGVyZWJ5IG5vdGlmaWVkIHRoYXQgeW91ciBhY2Nlc3MgaXMgdW5hdXRob3JpemVkLCBhbmQg
-YW55IHJldmlldywgZGlzc2VtaW5hdGlvbiwKZGlzdHJpYnV0aW9uIG9yIGNvcHlpbmcgb2YgdGhp
-cyBtZXNzYWdlIGluY2x1ZGluZyBhbnkgYXR0YWNobWVudHMgaXMgc3RyaWN0bHkgcHJvaGliaXRl
-ZC4gSWYgeW91IGFyZSBub3QKdGhlIGludGVuZGVkIHJlY2lwaWVudCwgcGxlYXNlIGNvbnRhY3Qg
-dGhlIHNlbmRlciBhbmQgZGVsZXRlIHRoZSBtYXRlcmlhbCBmcm9tIGFueSBjb21wdXRlcgpUaGUg
-aW5mb3JtYXRpb24gdHJhbnNtaXR0ZWQgaXMgaW50ZW5kZWQgb25seSBmb3IgdGhlIHBlcnNvbiBv
-ciBlbnRpdHkgdG8NCndoaWNoIGl0IGlzIGFkZHJlc3NlZCBhbmQgbWF5IGNvbnRhaW4gY29uZmlk
-ZW50aWFsIGFuZC9vciBwcml2aWxlZ2VkDQptYXRlcmlhbC4gIElmIHRoZSByZWFkZXIgb2YgdGhp
-cyBtZXNzYWdlIGlzIG5vdCB0aGUgaW50ZW5kZWQgcmVjaXBpZW50LA0KeW91IGFyZSBoZXJlYnkg
-bm90aWZpZWQgdGhhdCB5b3VyIGFjY2VzcyBpcyB1bmF1dGhvcml6ZWQsIGFuZCBhbnkgcmV2aWV3
-LA0KZGlzc2VtaW5hdGlvbiwgZGlzdHJpYnV0aW9uIG9yIGNvcHlpbmcgb2YgdGhpcyBtZXNzYWdl
-IGluY2x1ZGluZyBhbnkNCmF0dGFjaG1lbnRzIGlzIHN0cmljdGx5IHByb2hpYml0ZWQuICBJZiB5
-b3UgYXJlIG5vdCB0aGUgaW50ZW5kZWQNCnJlY2lwaWVudCwgcGxlYXNlIGNvbnRhY3QgdGhlIHNl
-bmRlciBhbmQgZGVsZXRlIHRoZSBtYXRlcmlhbCBmcm9tIGFueQ0KY29tcHV0ZXIuCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlz
-dApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2
-ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+-- 
+ Now Your ATM Visa/Master Card is well packaged with every legal
+document to convey it not have any problem with anybody, therefore, we
+are hereby inviting you to our office here in Benin, Office Address,
+Commented Bank, Cotonou Jean-Paul 1BP 325, Benin Republic, to enable
+us to complete the normal formalities and activation process of your
+ATM Visa Card and issue the Secret PIN CODE/NUMBER to enable you to
+start using it at any ATM MACHINE worldwide of your choice nearest to
+you, as soon as it is activated, But if you are unable to come down
+here in our office in person you will be required to update our ATM
+Department Center with your contact delivery details as stated below
+so that they will proceed with the necessary arrangement for the
+delivery your ATM VISA/MASTER CARD.
+
+You're Full Name==========
+Cell Phone Number=======
+WhatsApp Number=========
+Your Company names======
+Current Home Address====
+OCCUPATION==============
+Fax Number==============
+Country=================
+City====================
+Nearest Airport ========
+Next Of Kin Name========
+Next Email Address======
+NEXT CELL PHONE=========
+ANNUAL INCOME===========
+
+contact Tony Elumelu, Chairman Email:
+tonyelumeluchairman@accountant.com or tonyelumeluchairman@gmail.com,
+
+you shall receive your ATM Card package as soon as possible.
+Best regards
+Mrs. Chantal Sevo.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
