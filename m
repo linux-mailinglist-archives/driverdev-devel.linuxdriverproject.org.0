@@ -1,46 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E6FF0653C57
-	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Dec 2022 07:57:37 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD4CF653C58
+	for <lists+driverdev-devel@lfdr.de>; Thu, 22 Dec 2022 07:57:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4B863403BE;
-	Thu, 22 Dec 2022 06:57:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4B863403BE
+	by smtp4.osuosl.org (Postfix) with ESMTP id A675341757;
+	Thu, 22 Dec 2022 06:57:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A675341757
 X-Virus-Scanned: amavisd-new at osuosl.org
 X-Amavis-Alert: BAD HEADER SECTION, Non-encoded non-ASCII data (and not UTF-8)
 	(char EB hex): From: ... t internationale financi\x{EB}n van het
 	Ameri[...]
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DXKfDY6L1a6e; Thu, 22 Dec 2022 06:57:35 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9lnz34yB8QFh; Thu, 22 Dec 2022 06:57:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1385540153;
-	Thu, 22 Dec 2022 06:57:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1385540153
+	by smtp4.osuosl.org (Postfix) with ESMTP id 273EC417AC;
+	Thu, 22 Dec 2022 06:57:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 273EC417AC
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E97141BF39D
- for <devel@linuxdriverproject.org>; Thu, 22 Dec 2022 06:57:31 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0C4841BF95C
+ for <devel@linuxdriverproject.org>; Thu, 22 Dec 2022 06:57:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C447560D96
+ by smtp1.osuosl.org (Postfix) with ESMTP id E901581F87
  for <devel@linuxdriverproject.org>; Thu, 22 Dec 2022 06:57:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C447560D96
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E901581F87
 X-Virus-Scanned: amavisd-new at osuosl.org
 X-Amavis-Alert: BAD HEADER SECTION, Non-encoded non-ASCII data (and not UTF-8)
  (char EB hex): From: ... t internationale financi\x{EB}n van
  het Ameri[...]
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aCC5lATk1KQ3 for <devel@linuxdriverproject.org>;
- Thu, 22 Dec 2022 06:57:30 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QjwGeI-2x3X7 for <devel@linuxdriverproject.org>;
+ Thu, 22 Dec 2022 06:57:31 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A90BB60BB2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 358A481F76
 Received: from 3908223e1598 (unknown [194.177.22.182])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A90BB60BB2
- for <devel@driverdev.osuosl.org>; Thu, 22 Dec 2022 06:57:30 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 358A481F76
+ for <devel@linuxdriverproject.org>; Thu, 22 Dec 2022 06:57:31 +0000 (UTC)
 Received: from User (unknown [46.148.40.74])
  by 3908223e1598 (Postfix) with SMTP id 573B06AA22;
  Wed, 21 Dec 2022 18:05:25 +0000 (UTC)
@@ -52,7 +52,7 @@ X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20221222065731.C447560D96@smtp3.osuosl.org>
+Message-Id: <20221222065731.E901581F87@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
