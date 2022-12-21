@@ -1,72 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03CD1652C07
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Dec 2022 05:06:09 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E0C65652E21
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Dec 2022 09:56:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C52A440B15;
-	Wed, 21 Dec 2022 04:06:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C52A440B15
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3DC97404A1;
+	Wed, 21 Dec 2022 08:56:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3DC97404A1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LgHDWsy8-BRj; Wed, 21 Dec 2022 04:06:05 +0000 (UTC)
+	with ESMTP id OvTbq_2pv8tN; Wed, 21 Dec 2022 08:56:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A950840499;
-	Wed, 21 Dec 2022 04:06:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A950840499
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2CED040327;
+	Wed, 21 Dec 2022 08:56:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2CED040327
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7CC6E1BF47A
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 21 Dec 2022 04:06:02 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BE00D1BF3F6
+ for <devel@linuxdriverproject.org>; Wed, 21 Dec 2022 08:56:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 57B4E60FE7
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 21 Dec 2022 04:06:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 57B4E60FE7
+ by smtp4.osuosl.org (Postfix) with ESMTP id 981D0417C1
+ for <devel@linuxdriverproject.org>; Wed, 21 Dec 2022 08:56:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 981D0417C1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lPKFO49-Fek9
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 21 Dec 2022 04:06:01 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id keyVOC5_OR_d for <devel@linuxdriverproject.org>;
+ Wed, 21 Dec 2022 08:56:04 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 053B560FD9
-Received: from prmufovs.maryiacofano.com (prmufovs.maryiacofano.com
- [88.209.254.60])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 053B560FD9
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 21 Dec 2022 04:06:00 +0000 (UTC)
-From: MACKENZIE SCOTT (The Scott Foundation) <faa.coo@maryiacofano.com>
-To: driverdev-devel@linuxdriverproject.org
-Subject: Re: CONGRATULATION.
-Date: 20 Dec 2022 19:45:42 -0800
-Message-ID: <20221220194541.0821EE3979FF7184@maryiacofano.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3612F417BB
+Received: from mail.glencoeaur.com (mail.glencoeaur.com [217.61.97.113])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3612F417BB
+ for <devel@linuxdriverproject.org>; Wed, 21 Dec 2022 08:56:04 +0000 (UTC)
+Received: by mail.glencoeaur.com (Postfix, from userid 1001)
+ id D3FE681D13; Wed, 21 Dec 2022 08:55:48 +0000 (GMT)
+Received: by mail.glencoeaur.com for <devel@linuxdriverproject.org>;
+ Wed, 21 Dec 2022 08:55:44 GMT
+Message-ID: <20221221074500-0.1.l.1bl0.0.18dqhmb2xr@glencoeaur.com>
+Date: Wed, 21 Dec 2022 08:55:44 GMT
+From: "Zbynek Spacek" <zbynek.spacek@glencoeaur.com>
+To: <devel@linuxdriverproject.org>
+Subject: Silikonmischungen
+X-Mailer: mail.glencoeaur.com
 MIME-Version: 1.0
-X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
- d=maryiacofano.com; 
- b=savO+/6s8mRsxP38zMIvmnTrrMQ8w2PhPJoMmzA8HqOv6DzuM3kw/XM0qlI+G4deK1NRfO6c4r+C
- M2grD6Y4FXF8EoZ76mwtgZ5RkkEknVTyZc9zfXf6ZWxJUQssCLRMWcrE3vUnsFZUSsKBP99M4msC
- Gi4Q1yYPD46tmA0NYm12UAaSKIfew9KwZ5uImA0rCxlHzAj13JUiR7jj8U+AAUFLQoewPJ3QyKn+
- XiM0J/OBXXNG04sspyNFHXdOe7jh5lsgi3NvG6NoSamD27F0F6hncnsanHNSm43W5xamrJ3DWVXh
- givBp7BMtyIDNwuF0f2S14Fi/2WkR4OjEcTLzA==;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
- d=maryiacofano.com; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=faa.coo@maryiacofano.com; 
- bh=0kGu+96ocW80Rtpos2ra+D9ghDs=;
- b=BVh9SYSyNvTd/+swIxLDxv1v61fiVa3uATqbXSGrT5wJJdkm69WtKC+GyYGS0fskUSiw6prFUG0G
- KSKnqJA0XEUJxxeuZ8wTmzz9xfBH5wujx2YcD0CUnvINc/iTuS0CdNn9exohlvC7yIG4TT1GzU7W
- B3o6icPkeQ123xqGwn4DnVsCwnzpGvDZB4QfGxMGf9N+ysZfhYW9ohBrwwr58n/i2/9FgeuC+cKz
- x+H+VzzbyXDda/WN69ETMmRx/Hixccj4PPb5iFZ/pH1PRHzPRioGCtdf1xiCMHmx96lO4UbocEMJ
- tqbHEGv447qrbLmNZaJ4Qhqlz4rMIN9LC4pkDQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=maryiacofano.com
- header.i=faa.coo@maryiacofano.com header.a=rsa-sha1 header.s=dkim
- header.b=BVh9SYSy
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=glencoeaur.com; s=mail; t=1671612960;
+ bh=0BgaW9t8GFER5QecxVkFsHrVi3gO/4V5KAZgJaiRYBs=;
+ h=Date:From:To:Subject:From;
+ b=bkAoCoczo9uKI5fpZ+h3TtSegE+3hjjyZ9xOluxxouCZrAk7NFVmD67YfdLHfnsPl
+ gon2EQy0OXrTvegC/AN8TPMN9YBwPBEb1CHrGqzrBDDwjCG3Lw8Pv6ZH/R6577MkAi
+ 3HzEJ6JtiMUxKCHe/fM41Yue+VOZW3/oe+cCIc5kK4n59q1bLHqBbW22tuBzRR9Ux3
+ woBzqWcBOu3ko0oDZene6Nu0As70KF2msEYl63F16e4ZZwFNcoRkRHu5ZPoQSn+fva
+ Mm3KDR5ggvMGyCFaUUrJp7AieTuQMm5m3h6Y8CBksFnZLUuJerM8JfwuFf5mlq4p3L
+ RZGTMQAm2jzPQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=glencoeaur.com header.i=@glencoeaur.com
+ header.a=rsa-sha256 header.s=mail header.b=bkAoCocz
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,38 +71,25 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ameliaalexander@scotsfoundation.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Beneficiary,
+Good morning,
 
-After signing the Giving Pledge in 2019, I decided I was going to 
-give away at least half of my fortune to charity and towards 
-improving the lives of those in dire need of immediate support as 
-a result of the Covid-19 pandemic. So far I have been able to 
-give out $12 billion USD to charities, schools, churches, 
-businesses and individuals across the globe through The Scott 
-Foundation. I'm currently donating another $4 billion to charity.
+do you need intermediates for processing, plastics (e.g. rubber) or silicone mixtures?
 
-An online ballot was conducted from which your email emerged as 
-one of the beneficiaries of my $6,850,000.00 USD donation to 
-enable you resolve your financial challenges and to also reach 
-out to those in need of support around your neighborhood. You are 
-to contact MRS. AMELIA ALEXANDER for more information if you're 
-interested in receiving this donation.
+We provide a wide range of silicone rubbers with various properties, silicone mixtures from renowned manufacturers such as Wacker, Elastosil LR and dyes, stabilizers, primers and anti-adhesive additives.
 
-MRS. AMELIA ALEXANDER
-ameliaalexander@scotsfoundation.org
+We also produce technical silicone compounds with increased resistance to oils, resistant to high temperatures and water vapor, conductive and many more.
 
-Congratulations.
+We provide fast order fulfillment, timely deliveries and cost optimization.
 
-Yours Sincerely,
-Mary Lacofano
-(For)
-Mackenzie Scott
+Can I introduce what we can offer you?
+
+
+Zbynek Spacek
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
