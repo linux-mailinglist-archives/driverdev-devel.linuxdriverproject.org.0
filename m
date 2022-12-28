@@ -2,50 +2,62 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3793657022
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Dec 2022 22:57:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 750816573BC
+	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Dec 2022 08:53:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 00BD54031E;
-	Tue, 27 Dec 2022 21:57:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 00BD54031E
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5704B40154;
+	Wed, 28 Dec 2022 07:52:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5704B40154
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7v5wR6tgJQrE; Tue, 27 Dec 2022 21:57:15 +0000 (UTC)
+	with ESMTP id sTieLMGIF8jI; Wed, 28 Dec 2022 07:52:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DF69A4018F;
-	Tue, 27 Dec 2022 21:57:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DF69A4018F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4781E40004;
+	Wed, 28 Dec 2022 07:52:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4781E40004
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 641591BF847
- for <devel@linuxdriverproject.org>; Tue, 27 Dec 2022 21:57:12 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1038A1BF34E
+ for <devel@linuxdriverproject.org>; Wed, 28 Dec 2022 07:52:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3F2FA4089D
- for <devel@linuxdriverproject.org>; Tue, 27 Dec 2022 21:57:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3F2FA4089D
+ by smtp3.osuosl.org (Postfix) with ESMTP id D8923607DE
+ for <devel@linuxdriverproject.org>; Wed, 28 Dec 2022 07:52:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D8923607DE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id e6SOGsNd5vdS for <devel@linuxdriverproject.org>;
- Tue, 27 Dec 2022 21:57:11 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xe448GFFZzO2 for <devel@linuxdriverproject.org>;
+ Wed, 28 Dec 2022 07:52:51 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 69A2E4089B
-Received: from savemail.savezone.co.kr (unknown [59.16.217.6])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 69A2E4089B
- for <devel@driverdev.osuosl.org>; Tue, 27 Dec 2022 21:57:11 +0000 (UTC)
-Received: from savezone.co.kr (156.0.212.38) by savemail.savezone.co.kr
- (2002:3b10:d906::3b10:d906) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 28 Dec 2022 06:56:59 +0900
-From: Jacques BOUCHEX <sqladmin@savezone.co.kr>
-To: <devel@driverdev.osuosl.org>
-Subject: Re : Bonjour,
-Date: Tue, 27 Dec 2022 22:55:44 +0100
-Message-ID: <20221227225543.CA3EE89F34DAAAA0@savezone.co.kr>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 27F796068B
+Received: from mail.almex.kz (mail.almex.kz [195.189.68.74])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 27F796068B
+ for <devel@driverdev.osuosl.org>; Wed, 28 Dec 2022 07:52:50 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.almex.kz (Postfix) with ESMTP id D66F24E1AC2;
+ Wed, 28 Dec 2022 09:53:06 +0600 (ALMT)
+Received: from mail.almex.kz ([127.0.0.1])
+ by localhost (mail.almex.kz [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id oDe1E4kZwzXU; Wed, 28 Dec 2022 09:53:03 +0600 (ALMT)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.almex.kz (Postfix) with ESMTP id 1D2355058E9;
+ Wed, 28 Dec 2022 08:19:31 +0600 (ALMT)
+X-Virus-Scanned: amavisd-new at almex.kz
+Received: from mail.almex.kz ([127.0.0.1])
+ by localhost (mail.almex.kz [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id EC4_FFhPPv6J; Wed, 28 Dec 2022 08:19:31 +0600 (ALMT)
+Received: from PC-HJZHILMLVP.PC-HJZHILMLVP (unknown [103.74.103.7])
+ by mail.almex.kz (Postfix) with ESMTPSA id 00F7D46523F;
+ Wed, 28 Dec 2022 07:15:52 +0600 (ALMT)
 MIME-Version: 1.0
-X-ClientProxiedBy: savemail.savezone.co.kr (2002:3b10:d906::3b10:d906) To
- savemail.savezone.co.kr (2002:3b10:d906::3b10:d906)
+Content-Description: Mail message body
+Subject: Re:
+To: Recipients <investment@storebrand.no>
+From: "HARALD HAUGE"<investment@storebrand.no>
+Date: Tue, 27 Dec 2022 19:15:45 -0600
+Message-Id: <20221228011554.00F7D46523F@mail.almex.kz>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,28 +70,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: jacques_bouchex@yahoo.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: haugehar@yandex.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Qm9uam91ciwKRMOpc29sw6kgcG91ciBjZXR0ZSBmYcOnb24gZGUgdm91cyBjb250YWN0ZXIsIGpl
-IHZpZW5zIGRlIHZvaXIgdm90cmUgCnByb2ZpbCBldCBqJ2FpIHBlbnPDqSBxdWUgdm91cyDDqXRp
-ZXogbGEgcGVyc29ubmUgZG9udCBqJ2F2YWlzIApiZXNvaW4uIEVuIGJyZWYsIGplIG0nYXBwZWxs
-ZSBKYWNxdWVzIEJPVUNIRVgsIGQnb3JpZ2luZSAKZnJhbsOnYWlzZS4gSmUgc3VpcyBhdHRlaW50
-IGQndW5lIG1hbGFkaWUgZ3JhdmUgcXVpIG1lIGNvbmRhbW5lIMOgIAp1bmUgbW9ydCBjZXJ0YWlu
-ZSwgdW4gY2FuY2VyIGR1IGNlcnZlYXUsIGV0IGplIGRpc3Bvc2UgZCd1bmUgCnNvbW1lIGRlIHZp
-bmd0LWNpbnEgbWlsbGlvbnMgY2lucSBjZW50IG1pbGxlIGV1cm9zICgyNS41MDAuMDAwIApldXJv
-cykgcXVlIGplIHNvdWhhaXRlIHJlbWV0dHJlIMOgIHVuIHRpZXJzIGZpYWJsZSBldCBob25uw6p0
-ZSBwb3VyIApzb24gYm9uIHVzYWdlLiBKJ2FpIHVuZSBlbnRyZXByaXNlIHF1aSBpbXBvcnRlIGRl
-IGwnaHVpbGUgcm91Z2UgCmVuIEZyYW5jZSBldCBkYW5zIGQnYXV0cmVzIHBheXMuIEonYWkgcGVy
-ZHUgbWEgZmVtbWUgZXQgZGV1eCAKYWRvcmFibGVzIGVuZmFudHMgaWwgeSBhIDEwIGFucyBkYW5z
-IHVuIG1hbGhldXJldXggYWNjaWRlbnQgZGUgbGEgCnJvdXRlLiBKJ2FpbWVyYWlzIGZhaXJlIGRv
-biBkZSBjZXR0ZSBzb21tZSBhdmFudCBkZSBtb3VyaXIgY2FyIAptZXMgam91cnMgc29udCBjb21w
-dMOpcy4gVmV1aWxsZXogbSdlbnZveWVyIHVuIGNvdXJyaWVsIMOgIApsJ2FkcmVzc2Ugc3VpdmFu
-dGUgOiBqYWNxdWVzX2JvdWNoZXhAeWFob28uY29tIFF1ZSBsZSBTZWlnbmV1ciAKdm91cyBiw6lu
-aXNzZS4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2
-ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZl
-cmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRl
-dmVsCg==
+Hello,
+
+
+
+I'm Harald Hauge an Investment Manager from Norway. I wish to solicit your interest in an investment project that is currently ongoing in my company (Storebrand); It is a short term investment with good returns. Simply reply for me to confirm the validity of your email so i shall give you comprehensive details about the project.
+
+
+
+Best Regards,
+
+Harald Hauge.
+
+Business Consultant
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
