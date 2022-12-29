@@ -2,63 +2,65 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A98F658AC3
-	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Dec 2022 10:02:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 188B6659329
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Dec 2022 00:27:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D8EB260C33;
-	Thu, 29 Dec 2022 09:02:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D8EB260C33
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5BB5C60B12;
+	Thu, 29 Dec 2022 23:27:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5BB5C60B12
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J1pw5T5OmXvs; Thu, 29 Dec 2022 09:02:46 +0000 (UTC)
+	with ESMTP id 0BSFR_rhkpTf; Thu, 29 Dec 2022 23:27:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AB94C605B7;
-	Thu, 29 Dec 2022 09:02:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AB94C605B7
+	by smtp3.osuosl.org (Postfix) with ESMTP id 341DC60B00;
+	Thu, 29 Dec 2022 23:27:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 341DC60B00
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A5F2B1BF3A0
- for <devel@linuxdriverproject.org>; Thu, 29 Dec 2022 09:02:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DE44A1BF35E
+ for <devel@linuxdriverproject.org>; Thu, 29 Dec 2022 23:27:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8603C40335
- for <devel@linuxdriverproject.org>; Thu, 29 Dec 2022 09:02:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8603C40335
+ by smtp4.osuosl.org (Postfix) with ESMTP id BDE4E40238
+ for <devel@linuxdriverproject.org>; Thu, 29 Dec 2022 23:27:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BDE4E40238
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PLc9BOqJJsw9 for <devel@linuxdriverproject.org>;
- Thu, 29 Dec 2022 09:02:43 +0000 (UTC)
-X-Greylist: delayed 00:08:05 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A97F74032D
-Received: from mail.elbesaale.com (unknown [193.142.59.73])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A97F74032D
- for <devel@linuxdriverproject.org>; Thu, 29 Dec 2022 09:02:41 +0000 (UTC)
-Received: by mail.elbesaale.com (Postfix, from userid 1001)
- id 3666F22AAF; Thu, 29 Dec 2022 03:49:50 -0500 (EST)
-Received: by mail.elbesaale.com for <devel@linuxdriverproject.org>;
- Thu, 29 Dec 2022 08:41:16 GMT
-Message-ID: <20221229024522-0.1.y.29ou.0.h2ogld1n4j@elbesaale.com>
-Date: Thu, 29 Dec 2022 08:41:16 GMT
-From: "Joseph Bahringer" <joseph.bahringer@elbesaale.com>
-To: <devel@linuxdriverproject.org>
-Subject: New energy drinks on offer
-X-Mailer: mail.elbesaale.com
+ with ESMTP id EpQ1NBxhveRW for <devel@linuxdriverproject.org>;
+ Thu, 29 Dec 2022 23:27:09 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8A9D94020C
+Received: from mail.emporsis.cat (mail.emporsis.cat [195.55.176.214])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8A9D94020C
+ for <devel@driverdev.osuosl.org>; Thu, 29 Dec 2022 23:27:09 +0000 (UTC)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by zcs-mta-1.hosppal.es (Postfix) with ESMTP id 94CA7624A000;
+ Fri, 30 Dec 2022 00:02:16 +0100 (CET)
+Received: from mail.emporsis.cat ([127.0.0.1])
+ by localhost (zcs-mta-1.hosppal.es [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id WWYy6H9MG7Pl; Fri, 30 Dec 2022 00:02:16 +0100 (CET)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by zcs-mta-1.hosppal.es (Postfix) with ESMTP id 52FC96247AEC;
+ Fri, 30 Dec 2022 00:02:15 +0100 (CET)
+X-Amavis-Modified: Mail body modified (using disclaimer) - zcs-mta-1.hosppal.es
+X-Virus-Scanned: amavisd-new at 
+Received: from mail.emporsis.cat ([127.0.0.1])
+ by localhost (zcs-mta-1.hosppal.es [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id RHJwq9b38R_i; Fri, 30 Dec 2022 00:02:15 +0100 (CET)
+Received: from zcs-store-1.hosppal.es (zcs-store-1.hosppal.es [194.0.101.228])
+ by zcs-mta-1.hosppal.es (Postfix) with ESMTP id 7EA266242295;
+ Fri, 30 Dec 2022 00:02:04 +0100 (CET)
+Date: Fri, 30 Dec 2022 00:02:04 +0100 (CET)
+From: Charles <mgispert@ssibe.cat>
+Message-ID: <1393486056.8623133.1672354924220.JavaMail.zimbra@ssibe.cat>
+Subject: HELLO FRIEND,
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=elbesaale.com; s=mail; t=1672303982;
- bh=wlmkcl0hB4UXFyup6zf4o3SNHK3urlErXF/0NwMt1yI=;
- h=Date:From:To:Subject:From;
- b=RmeK5Cpsu5+Orp26uLd9aKwwcPnPM5pvcSsM2odAflv9ohTgaj7S+dIyfMZ9OZvhp
- IGmDYlB9BJpVyVv80pbG9NFBoFC8vsUIGSkDOjR7Jn6sau0hWeCNtAOVksKRFxOy5u
- NZ/GepTi1ODxjTGOiEhhuZ2wo969M2HciVlat6nUNZxJyniF8QZJvkdG+N0bKudshO
- fUUKob8JUCZO4+/a5p4uc1i/hQvb5kmjoW31+zeBvb2bp6VYsrlx/7ZTbPf0za324h
- 69UDb5FP2O8BQLat9lInWiGmtvUGkQAjvxd1DKRSCS42Kwe0VvhlFBQmEVTHJYHqtR
- Yv/BjKpdtJf0w==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=elbesaale.com header.i=@elbesaale.com
- header.a=rsa-sha256 header.s=mail header.b=RmeK5Cps
+X-Originating-IP: [139.20.212.118]
+X-Mailer: Zimbra 8.8.15_GA_4464 (zclient/8.8.15_GA_4464)
+Thread-Index: QidZsmMNi7y01hQzee61Jh2I5UpqmQ==
+Thread-Topic: HELLO FRIEND,
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,27 +73,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: Charles <lukas.kimmich@marineinzynieriagleam-jobs.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Sir/Madam,
- 
-I would like to draw your attention to our range of products, which are an opportunity to improve competitiveness and increase sales.
- 
-We provide energy drinks, isotonic drinks, and vitamin drinks in aluminium cans and PET plastic bottles, available in a very wide variety of flavours.
- 
-Our success is based on a unique, patented recipe and numerous innovative flavours (e.g. cannabis), which meet the current needs of customers. As a result, customers make an informed decision to choose our products out of all the others available on the market.
- 
-Thanks to many years of experience in export sales, we offer you flexibility and drink samples for tasting.
- 
-Could we explore the potential of working with you?
- 
- 
-Yours faithfully,
-Joseph Bahringer
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGVsbG8gbHVja3kgZnJpZW5kLAoKCkkgYW0gTXIuIENoYXJsZXMgVy4gSmFja3NvbiBKci4sIHRo
+ZSBtZWdhIHdpbm5lciBvZiAkMzQ0LjYgTWlsbGlvbiAKaW4gdGhlIE1lZ2EgTWlsbGlvbnMgSmFj
+a3BvdC4gSSBhbSBkb25hdGluZyB0byA1IHJhbmRvbSBpbmRpdmlkdWFscywgc28gCmlmIHlvdSBn
+ZXQgdGhpcyBlbWFpbCB0aGVuIHlvdXIgZW1haWwgd2FzIHNlbGVjdGVkIGFmdGVyIGEgc3BpbiAK
+YmFsbC4gSSBoYXZlIHNwcmVhZCBtb3N0IG9mIG15IHdlYWx0aCBvdmVyIGEgbnVtYmVyIG9mIGNo
+YXJpdGllcyBhbmQgCm9yZ2FuaXphdGlvbnMuIEkgaGF2ZSB2b2x1bnRhcmlseSBkZWNpZGVkIHRv
+IGRvbmF0ZSB0aGUgc3VtIG9mICQzIApNaWxsaW9uIFVTRCB0byB5b3UgYXMgb25lIG9mIHRoZSBz
+ZWxlY3RlZCA1LCB0byB2ZXJpZnkgbXkgd2lubmluZ3MgCnZpYSBZb3VUdWJlIHBhZ2UgYmVsb3cu
+CgpXQVRDSCBNRSBIRVJFOiBodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PTBNVVI4UUVJ
+TVFJCgoKVGhpcyAkMyBNaWxsaW9uIFVTRCBkb25hdGlvbiB3YXMgbWFkZSB0byBlbmFibGUgeW91
+IHRvIHN0cmVuZ3RoZW4gCnlvdXIgcGVyc29uYWwgaXNzdWVzIGFuZCB0byByZWFjaCBvdXQgZ2Vu
+ZXJvdXNseSB0byB0aGUgbGVhc3QgCnByaXZpbGVnZWQsIG9ycGhhbmVkIGFuZCBjaGFyaXRhYmxl
+IG9yZ2FuaXphdGlvbnMgaW4geW91ciBjb21tdW5pdHkuCgoKVEhJUyBJUyBZT1VSIERPTkFUSU9O
+IENPREU6IERPTjIwNzE1MgoKClJlcGx5IHdpdGggdGhlIERPTkFUSU9OIENPREUgdG8gdGhpcyBl
+bWFpbCBhcyBzb29uIGFzIHBvc3NpYmxlIHNvIHdlIApjYW4gY29tcGxldGUgdGhlIHByb2NlZHVy
+ZS4KCgpIb3BlIHRvIG1ha2UgeW91IGFuZCB5b3VyIGZhbWlseSBoYXBweSBpbiB0aGUgbmV3IHll
+YXIuCgoKUmVnYXJkcywKTXIuIENoYXJsZXMgVy4gSmFja3NvbiBKci4KU2VydmVpcyBkZSBTYWx1
+dCBJbnRlZ3JhdHMgQmFpeCBFbXBvcmTDoAp3d3cuc3NpYmUuY2F0CgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
+QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
+Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
