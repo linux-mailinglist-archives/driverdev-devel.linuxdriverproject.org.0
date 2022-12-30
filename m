@@ -1,71 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4C60659677
-	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Dec 2022 09:55:57 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 18E11659981
+	for <lists+driverdev-devel@lfdr.de>; Fri, 30 Dec 2022 15:51:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9A3ED400CC;
-	Fri, 30 Dec 2022 08:55:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9A3ED400CC
+	by smtp2.osuosl.org (Postfix) with ESMTP id CE43840124;
+	Fri, 30 Dec 2022 14:51:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CE43840124
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jojvPd0i5wBM; Fri, 30 Dec 2022 08:55:55 +0000 (UTC)
+	with ESMTP id EVwJQ-kCXbb1; Fri, 30 Dec 2022 14:51:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 841A54010D;
-	Fri, 30 Dec 2022 08:55:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 841A54010D
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9372C400E2;
+	Fri, 30 Dec 2022 14:51:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9372C400E2
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3B9591BF310
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 30 Dec 2022 08:55:52 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 165F11BF3C6
+ for <devel@linuxdriverproject.org>; Fri, 30 Dec 2022 14:51:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 151B640200
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 30 Dec 2022 08:55:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 151B640200
+ by smtp2.osuosl.org (Postfix) with ESMTP id E627D40124
+ for <devel@linuxdriverproject.org>; Fri, 30 Dec 2022 14:51:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E627D40124
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FuNB32y746LR
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 30 Dec 2022 08:55:50 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4pFUvE_tgU0i for <devel@linuxdriverproject.org>;
+ Fri, 30 Dec 2022 14:51:17 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C723B401FC
-Received: from mail.concretestylevix.com (mail.concretestylevix.com
- [135.125.203.239])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C723B401FC
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 30 Dec 2022 08:55:49 +0000 (UTC)
-Received: by mail.concretestylevix.com (Postfix, from userid 1002)
- id 88398A25A4; Fri, 30 Dec 2022 08:55:46 +0000 (UTC)
-Received: by mail.concretestylevix.com for
- <driverdev-devel@linuxdriverproject.org>; Fri, 30 Dec 2022 08:55:45 GMT
-Message-ID: <20221230074500-0.1.4o.l1qh.0.8yhd4dfqdd@concretestylevix.com>
-Date: Fri, 30 Dec 2022 08:55:45 GMT
-From: "Aidan Wallace" <aidan.wallace@concretestylevix.com>
-To: <driverdev-devel@linuxdriverproject.org>
-Subject: Aluminum die casting technology
-X-Mailer: mail.concretestylevix.com
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C06BE400E2
+Received: from localhost (80-110-8-89.static.upcbusiness.at [80.110.8.89])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C06BE400E2
+ for <devel@linuxdriverproject.org>; Fri, 30 Dec 2022 14:51:16 +0000 (UTC)
+Received: from User (4-233-24-185.static.servebyte.com [185.24.233.4])
+ by localhost (Postfix) with ESMTPA id A7D5E1FC558C;
+ Fri, 30 Dec 2022 09:16:41 +0100 (CET)
+From: "John Collins"<admin@agnisurakshaservices.com>
+Subject: Investment Loan     
+Date: Fri, 30 Dec 2022 03:16:42 -0800
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=concretestylevix.com; 
- s=mail; t=1672390546;
- bh=9+GiO2Umo6CVvbu8wWH/yPwLxC2Vm5LaOIyJtGJtnMw=;
- h=Date:From:To:Subject:From;
- b=eONuvPbPn+OOaMZxeT36b+Pxk/PM5NcFsE7ACVjWh4CMRUyI2kgZrWONuLRgp2yhD
- SI3636aj3hJ2eIGJaKbvAFJK7lfREC1UVhVbT5ByMJKDDs3jUrXRVLr3Vvo26j17kJ
- c0Wo/xC3RF3dJAXSQEvusDKpsAOygHQS8RhOcJ1TGVGUDmQVg2y7zh8GZiv8Vd2diO
- b44E0a9TS3S+SijRxpiUjHdnv/VJha6gSZh496VsFC/k1Fljsvs+wuneR5sH/Zk+zI
- sZxb02hrQ1+bGybO3dGUyyoZujhc1iVoMleb2cIYZcQjCX0jugdbCCaV8aYb5lgB6l
- r2M9qjtFVaEHQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=concretestylevix.com
- header.i=@concretestylevix.com header.a=rsa-sha256 header.s=mail
- header.b=eONuvPbP
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20221230145117.E627D40124@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,25 +59,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: johncollins19672022@aol.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good morning,
+Sir/Madam
 
-we provide the technology of aluminum die casting.
+After a successful survey on business Directories in your
+location and selecting your contact email, I am pleased to let
+you know that I have an investment funding firm I work with. The
+Great Concept LLC investment funding company is the name of the
+firm, I gather business proposals for startups and also offer
+loan packages for companies and entrepreneurs who need to
+expand/boost their business. If you are interested in any of the
+above-mentioned, do revert to me so that I can refer you to the
+appropriate contact, where Mr. Farouk Hassan will guide you on
+how to obtain any of the packages above, either loan for business
+expansion or financial funding for new business startups.
 
-We have production plants located in Poland, Germany and Slovakia with the possibility of flexible shifting of production between locations.
+NB:
+If you also have a viable business plan, you can bring it to the
+table, funds will be available for the development and
+actualization of the business under good terms and agreement.
+You can also work as a sales representative in your location and
+get finders fee for any successful business closed from your
+esteem end.The funding ranges from $100,000-$5billion
 
-Our casting cells are mostly automatic or semi-automatic, which allows the production of large production runs with high flexibility of details in the areas from 50 to 3000g.
- 
-We have been trusted by many reputable clients, including BOSH, Daimler, ZF, Rockwell Automation. We provide support at every stage of project development, we develop the structure of the detail.
+You can visit our website on the link below to learn more about
+our firm.
 
-Would you like to talk about cooperation in this area?
-
-Regards
-Aidan Wallace
+Regards,
+John Collins
+Commercial Strategy Advisor
+Website: https://www.greatconcept-ae.com/
+Phone/Whatsapp : +1-929-955-0654
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
