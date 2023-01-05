@@ -2,69 +2,63 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 695E065E83D
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Jan 2023 10:54:08 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D173C65E95B
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Jan 2023 11:54:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D8BD260DFE;
-	Thu,  5 Jan 2023 09:54:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D8BD260DFE
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2DB9F60BD1;
+	Thu,  5 Jan 2023 10:54:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2DB9F60BD1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7coFGFr8Lr1U; Thu,  5 Jan 2023 09:54:06 +0000 (UTC)
+	with ESMTP id vM9R4wuQph9m; Thu,  5 Jan 2023 10:54:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9B6FA60D9D;
-	Thu,  5 Jan 2023 09:54:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9B6FA60D9D
+	by smtp3.osuosl.org (Postfix) with ESMTP id F198C60AE1;
+	Thu,  5 Jan 2023 10:54:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F198C60AE1
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0F8A11BF3DC
- for <devel@linuxdriverproject.org>; Thu,  5 Jan 2023 09:54:03 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 34A371BF302
+ for <devel@linuxdriverproject.org>; Thu,  5 Jan 2023 10:54:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id EB73540232
- for <devel@linuxdriverproject.org>; Thu,  5 Jan 2023 09:54:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EB73540232
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0E5CD4098B
+ for <devel@linuxdriverproject.org>; Thu,  5 Jan 2023 10:54:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0E5CD4098B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3P1a8iU7yCqk for <devel@linuxdriverproject.org>;
- Thu,  5 Jan 2023 09:54:02 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 20AEA4021C
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 20AEA4021C
- for <devel@driverdev.osuosl.org>; Thu,  5 Jan 2023 09:54:01 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 0A60C61958;
- Thu,  5 Jan 2023 09:54:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE69CC433D2;
- Thu,  5 Jan 2023 09:53:59 +0000 (UTC)
-Date: Thu, 5 Jan 2023 10:53:57 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: SeongJae Park <sj@kernel.org>
-Subject: Re: [driver-core:debugfs_lookup_fix] [mm/damon/dbgfs] ff25f87cfc:
- kernel_BUG_at_lib/list_debug.c
-Message-ID: <Y7aeNRf3TyTufC8L@kroah.com>
-References: <202301031611.c49a0c74-oliver.sang@intel.com>
- <20230104183539.1509-1-sj@kernel.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8HheDOhAiiW4 for <devel@linuxdriverproject.org>;
+ Thu,  5 Jan 2023 10:54:01 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 965484092C
+Received: from hosted-4-client-dedicated-live-server2.livegpstrack.com
+ (hosted-4-client-dedicated-live-server2.livegpstrack.com [103.102.239.60])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 965484092C
+ for <devel@linuxdriverproject.org>; Thu,  5 Jan 2023 10:54:01 +0000 (UTC)
+From: =?ISO-8859-1?B?TGl2ZSBHUFM=?=<noreply@livegpstrack.com>
+To: devel@linuxdriverproject.org
+Subject: =?ISO-8859-1?B?R1BTIHRyYWNrZXJz?=
+Date: 05 Jan 2023 07:54:16 -0300
+Message-ID: <20230105075415.63657062185EC82F@livegpstrack.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230104183539.1509-1-sj@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=linuxfoundation.org; 
- s=korg; t=1672912440;
- bh=FH2IdRVONYmJaCpZAfwCyvQ6r1cU3bykTJdrFIkIfbw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=YnV5FLFl6ciYvICDm9NbRpvqmPxYg9RRS8ODqfaTxKFCTfAZNfo7G2CQX7gbaBvwO
- A3MHZ2vwr+HXExWDeMXWsnBoNnun3D5JeR6DwX9o80qiVznpZLUUGDN2v1e6AGHTaO
- K4Y5ouqJbmgj1+wVsRVjmnCxlfCF7N5PcIzDgFfM=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=linuxfoundation.org
- header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg
- header.b=YnV5FLFl
+X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns;
+ s=1665719670.livegpstrack; d=livegpstrack.com; 
+ b=SPDU0944rkacey9hDJNKouz86xxMmmTDH0tfymqNKsySLZ1L13qle8Sr8DKggJFrB7fRblsiwB5E
+ /TE+vB7UGv1Ta0oae1gb3u4s1EWlKFofzf1zhptRROr/so29GpflXV+wC8HXIpZO0CbbA5+JTYnM
+ U8r3g7MjzecovvRY0Ng=;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed;
+ s=1665719670.livegpstrack; d=livegpstrack.com; 
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=noreply@livegpstrack.com; 
+ bh=8LiolrmyIWKy0602J2ivMScF1Vg=;
+ b=AvjGpwsg6yd0yIelXEyz4rUeW6CxIHS4nfcubU+RFEDaoghgTpdXok/sgNKYVvo5WUtwwFlfYKyB
+ juHNcHFXtPB8Y9EVzIbMjeLZtOE3W0bx1K9RqW1hFYVRinojhDcQRqGtCRbM/y+YebUz8RGIar8h
+ zspLCbpkk3WawdhF7iE=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=livegpstrack.com
+ header.i=noreply@livegpstrack.com header.a=rsa-sha1
+ header.s=1665719670.livegpstrack header.b=AvjGpwsg
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,53 +71,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, damon@lists.linux.dev, linux-mm@kvack.org,
- kernel test robot <oliver.sang@intel.com>, oe-lkp@lists.linux.dev,
- Andrew Morton <akpm@linux-foundation.org>, stable <stable@kernel.org>
+Reply-To: =?ISO-8859-1?B?UGF1bCBOb3Zhaw==?= <salesctg@cartrackgps.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On Wed, Jan 04, 2023 at 06:35:39PM +0000, SeongJae Park wrote:
-> Hello,
-> 
-> On Tue, 3 Jan 2023 21:16:09 +0800 kernel test robot <oliver.sang@intel.com> wrote:
-> 
-> > [-- Attachment #1: Type: text/plain, Size: 7528 bytes --]
-> > 
-> > 
-> > Greeting,
-> > 
-> > FYI, we noticed kernel_BUG_at_lib/list_debug.c due to commit (built with gcc-11):
-> 
-> Thank you for the report!
-> 
-> > 
-> > commit: ff25f87cfcfc34ebe652987f2a7beb184762785b ("mm/damon/dbgfs: fix memory leak when using debugfs_lookup()")
-> > https://git.kernel.org/cgit/linux/kernel/git/gregkh/driver-core.git debugfs_lookup_fix
-> 
-> The commit is for fixing a memory leak due to missed dput() call.  The patch
-> has posted originally by Greg and revised my I[1].  The revised version has
-> merged in mainline during v6.0 stabilization period (1552fd3ef7db).
-> 
-> The problematic tree (driver-core/debugfs_lookup_fix) is based on v6.2-rc2, so
-> the revised patch is already applied.  But the first version of the patch is
-> applied again on the tree[2], probably by mistake, and caused double 'dput()'.
-> 
-> So I think the commit seems needs to be reverted.
-> 
-> If there is anything I missed or wrong, please let me know.
-> 
-> [1] https://lore.kernel.org/damon/20220902191149.112434-1-sj@kernel.org/
-> [2] https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?h=debugfs_lookup_fix&id=5167d3e8149e332204274910da1057e8f907d7d2
+Hello devel,
 
-Yeah, this is my fault, sorry.  That branch/tree has not been looked at
-carefully in a while, I need to refresh it properly and verify it all is
-correct.  I'll drop this change as part of that work as well, sorry for
-the noise.
+My name is Pablo from Car Track GPS and we're looking for distributors for our tracking products.
+We design innovative software and hardware location technologies.
 
-greg k-h
+Our innovative web based software allows owners to track fleets in realtime by iOS or Android Apps.
+If a vehicle is stolen you can stop the engine and recover it.
+
+With our Professional Kit you can start your own tracking business or just resell the software and hardware.
+
+Our products are ideal for fleet tracking and recovery of stolen vehicles. Insurance companies, trucking companies and car dealers have been our clients for over 20 years.
+This could be a good choice If you want to start a new business or diversify your investment.
+
+The business consists in offering location services to end customers through a web site.
+This is accomplished through a Web platform that we provide as a turnkey server installed at your end.
+
+This service will allow customers to track their fleets from any web browser - even from Tablets and Smartphones - with a username and password.
+We have Professional Kits available which include full Software licenses, so once you get the KIT and start testing you will not need to invest again in the Software or have to pay any monthly fee.
+
+If you're interested I can send you the proposal for your consideration.
+
+Best regards,
+Pablo Zacheo
+CEO Car Track GPS
+Miami: +1 786 352 8766
+Car Track GPS in Google for our official .com website
+
+We have clients in over 100 countries and 20 years of experience in GPS tracking systems.
+ID: 781744
+
+If you would like to opt-out please reply to this email with the subject REMOVE.
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
