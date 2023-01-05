@@ -1,64 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D173C65E95B
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Jan 2023 11:54:08 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 342F165EF91
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Jan 2023 16:01:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2DB9F60BD1;
-	Thu,  5 Jan 2023 10:54:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2DB9F60BD1
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8E00E60AF1;
+	Thu,  5 Jan 2023 15:01:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8E00E60AF1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vM9R4wuQph9m; Thu,  5 Jan 2023 10:54:06 +0000 (UTC)
+	with ESMTP id jdX6oG2uI3-x; Thu,  5 Jan 2023 15:01:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F198C60AE1;
-	Thu,  5 Jan 2023 10:54:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F198C60AE1
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7915260AE1;
+	Thu,  5 Jan 2023 15:01:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7915260AE1
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 34A371BF302
- for <devel@linuxdriverproject.org>; Thu,  5 Jan 2023 10:54:03 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 06E661BF31B
+ for <devel@linuxdriverproject.org>; Thu,  5 Jan 2023 15:01:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0E5CD4098B
- for <devel@linuxdriverproject.org>; Thu,  5 Jan 2023 10:54:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0E5CD4098B
+ by smtp3.osuosl.org (Postfix) with ESMTP id D640B60AF1
+ for <devel@linuxdriverproject.org>; Thu,  5 Jan 2023 15:00:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D640B60AF1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8HheDOhAiiW4 for <devel@linuxdriverproject.org>;
- Thu,  5 Jan 2023 10:54:01 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 965484092C
-Received: from hosted-4-client-dedicated-live-server2.livegpstrack.com
- (hosted-4-client-dedicated-live-server2.livegpstrack.com [103.102.239.60])
- by smtp4.osuosl.org (Postfix) with ESMTP id 965484092C
- for <devel@linuxdriverproject.org>; Thu,  5 Jan 2023 10:54:01 +0000 (UTC)
-From: =?ISO-8859-1?B?TGl2ZSBHUFM=?=<noreply@livegpstrack.com>
-To: devel@linuxdriverproject.org
-Subject: =?ISO-8859-1?B?R1BTIHRyYWNrZXJz?=
-Date: 05 Jan 2023 07:54:16 -0300
-Message-ID: <20230105075415.63657062185EC82F@livegpstrack.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Mt1XtMT3NF8v for <devel@linuxdriverproject.org>;
+ Thu,  5 Jan 2023 15:00:58 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 762DB60AE1
+Received: from mail-yb1-xb36.google.com (mail-yb1-xb36.google.com
+ [IPv6:2607:f8b0:4864:20::b36])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 762DB60AE1
+ for <devel@driverdev.osuosl.org>; Thu,  5 Jan 2023 15:00:58 +0000 (UTC)
+Received: by mail-yb1-xb36.google.com with SMTP id e76so3865549ybh.11
+ for <devel@driverdev.osuosl.org>; Thu, 05 Jan 2023 07:00:58 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=7JT2Gt7y/M3YLHVCyMzZwNsFe1p6EOvnpVpu2gl496w=;
+ b=Igwora5UkB0ixY6SW7Qcahyx9zhmwR5mKtRUuOZTNFQv9xCKUyF+1LnBgiI3HoQTWf
+ VI4WllmmS82U5GF/Q81xtZOoicCiRPnljA4ZTbdpW9wjXt3LPbskR8Fc80QvGvl3d1rI
+ vIhPeS1JDqdiCDarwSfJBe/hgGlAMqaZabTVFiDqceNmYMmqETD/4CuG32ljS+4ffyCm
+ Tf8TmaLmWILH3OGvuV72p9u85BqgkICNlL5iQpc0X0J2fC0rZBnDtffeM+y9RIXw9TAg
+ YzfFHmcEOLiKOwtszJLUby8HPhekQo0no2i/Nm8kqdIapuzlplARdrGmb8FidXZyT7pF
+ saaA==
+X-Gm-Message-State: AFqh2kqF3MW1a0K37G1jL5TeNnoUYTlo7bT8GcJkR/3g7J4DnEvfWLvF
+ dFSXxob+vB3wRdVxkTNwdEi4SkEWaW2tV1XJKeo=
+X-Google-Smtp-Source: AMrXdXtJxHAxofkfpex8ul/LImkG10Ceq7Y0iNch1oseg0msZcQTS0OLGqqOmBgVK3g3z3DQ5gE7fZVvqNvAjOyqukE=
+X-Received: by 2002:a25:bbc2:0:b0:7af:fbd6:9349 with SMTP id
+ c2-20020a25bbc2000000b007affbd69349mr794651ybk.315.1672930857226; Thu, 05 Jan
+ 2023 07:00:57 -0800 (PST)
 MIME-Version: 1.0
-X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns;
- s=1665719670.livegpstrack; d=livegpstrack.com; 
- b=SPDU0944rkacey9hDJNKouz86xxMmmTDH0tfymqNKsySLZ1L13qle8Sr8DKggJFrB7fRblsiwB5E
- /TE+vB7UGv1Ta0oae1gb3u4s1EWlKFofzf1zhptRROr/so29GpflXV+wC8HXIpZO0CbbA5+JTYnM
- U8r3g7MjzecovvRY0Ng=;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed;
- s=1665719670.livegpstrack; d=livegpstrack.com; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=noreply@livegpstrack.com; 
- bh=8LiolrmyIWKy0602J2ivMScF1Vg=;
- b=AvjGpwsg6yd0yIelXEyz4rUeW6CxIHS4nfcubU+RFEDaoghgTpdXok/sgNKYVvo5WUtwwFlfYKyB
- juHNcHFXtPB8Y9EVzIbMjeLZtOE3W0bx1K9RqW1hFYVRinojhDcQRqGtCRbM/y+YebUz8RGIar8h
- zspLCbpkk3WawdhF7iE=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=livegpstrack.com
- header.i=noreply@livegpstrack.com header.a=rsa-sha1
- header.s=1665719670.livegpstrack header.b=AvjGpwsg
+Received: by 2002:a05:7010:a213:b0:321:7f6:ad55 with HTTP; Thu, 5 Jan 2023
+ 07:00:56 -0800 (PST)
+From: Western Union Agent <akakpo037@gmail.com>
+Date: Thu, 5 Jan 2023 07:00:56 -0800
+Message-ID: <CA+ctXwpTJZKrU7iUWiYDWQbpy0bkRj9N3tZyXRjv==UGkwYWCQ@mail.gmail.com>
+Subject: Hello
+To: undisclosed-recipients:;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=7JT2Gt7y/M3YLHVCyMzZwNsFe1p6EOvnpVpu2gl496w=;
+ b=gm+Qa5lH4CXxHP+puF7OfioQocA1kUEEhV5VtVTSlvhKAy8H9LP2zL0I4KNzkC5ypi
+ wpj/YAi3q/O2YY9PWrP/+rs0jQrGPhgI33PVx51+eLGiUB9syC+cSCA4dXLuPJCxYcYI
+ wRXe3dZ/XuXGghOFvF0WYfVOWiVP65RXH+wa79q4AJYuFjPEbr5cx3wLnwLgv3XskIkp
+ z66wGwatGg6TpDzOkyfNNYvXsdTynW+18Cl1Q0DTmCTgDK5HtZpXliuoxw4j4enUusVS
+ 9hfk7Ces0x0MzeUST+lrXno6TxSL6YJip3ZaVjJAtqzr2zmr92YcWLeIUlG+HcHOTcAA
+ fQZg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=gm+Qa5lH
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,44 +89,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: =?ISO-8859-1?B?UGF1bCBOb3Zhaw==?= <salesctg@cartrackgps.net>
+Reply-To: westernuniontransfer277@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello devel,
+Good day dear,
 
-My name is Pablo from Car Track GPS and we're looking for distributors for our tracking products.
-We design innovative software and hardware location technologies.
+This is to let you know that your payment is ready now, but we need
+your details now so we can complete your transfer today without
+no error, so please try to send us your information now
+so we can continue.
 
-Our innovative web based software allows owners to track fleets in realtime by iOS or Android Apps.
-If a vehicle is stolen you can stop the engine and recover it.
+We hope to confirm your information now.
 
-With our Professional Kit you can start your own tracking business or just resell the software and hardware.
-
-Our products are ideal for fleet tracking and recovery of stolen vehicles. Insurance companies, trucking companies and car dealers have been our clients for over 20 years.
-This could be a good choice If you want to start a new business or diversify your investment.
-
-The business consists in offering location services to end customers through a web site.
-This is accomplished through a Web platform that we provide as a turnkey server installed at your end.
-
-This service will allow customers to track their fleets from any web browser - even from Tablets and Smartphones - with a username and password.
-We have Professional Kits available which include full Software licenses, so once you get the KIT and start testing you will not need to invest again in the Software or have to pay any monthly fee.
-
-If you're interested I can send you the proposal for your consideration.
-
-Best regards,
-Pablo Zacheo
-CEO Car Track GPS
-Miami: +1 786 352 8766
-Car Track GPS in Google for our official .com website
-
-We have clients in over 100 countries and 20 years of experience in GPS tracking systems.
-ID: 781744
-
-If you would like to opt-out please reply to this email with the subject REMOVE.
-
+Cheers,
+Western Union Agent.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
