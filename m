@@ -2,62 +2,51 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4D35C660C56
-	for <lists+driverdev-devel@lfdr.de>; Sat,  7 Jan 2023 04:54:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F232660CEB
+	for <lists+driverdev-devel@lfdr.de>; Sat,  7 Jan 2023 09:08:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A51BB60BE8;
-	Sat,  7 Jan 2023 03:54:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A51BB60BE8
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5004E611B8;
+	Sat,  7 Jan 2023 08:08:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5004E611B8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id il8dGieUgX8u; Sat,  7 Jan 2023 03:54:40 +0000 (UTC)
+	with ESMTP id cHPXVEYkUh_8; Sat,  7 Jan 2023 08:08:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9320660BA1;
-	Sat,  7 Jan 2023 03:54:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9320660BA1
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2EBE460C08;
+	Sat,  7 Jan 2023 08:08:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2EBE460C08
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0E0FC1BF3A3
- for <devel@linuxdriverproject.org>; Sat,  7 Jan 2023 03:54:36 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D6DCF1BF489
+ for <devel@linuxdriverproject.org>; Sat,  7 Jan 2023 08:08:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DD8C281926
- for <devel@linuxdriverproject.org>; Sat,  7 Jan 2023 03:54:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DD8C281926
+ by smtp2.osuosl.org (Postfix) with ESMTP id B1ED840112
+ for <devel@linuxdriverproject.org>; Sat,  7 Jan 2023 08:08:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B1ED840112
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UPW_FB-NvdDs for <devel@linuxdriverproject.org>;
- Sat,  7 Jan 2023 03:54:34 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jGoiYhyuWbP8 for <devel@linuxdriverproject.org>;
+ Sat,  7 Jan 2023 08:08:04 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DDD85818B5
-Received: from mail.almex.kz (mail.almex.kz [195.189.68.74])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DDD85818B5
- for <devel@driverdev.osuosl.org>; Sat,  7 Jan 2023 03:54:33 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.almex.kz (Postfix) with ESMTP id 4AD8F4C1BA2;
- Sat,  7 Jan 2023 05:18:23 +0600 (ALMT)
-Received: from mail.almex.kz ([127.0.0.1])
- by localhost (mail.almex.kz [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id ci1v1aRdBgP9; Sat,  7 Jan 2023 05:18:23 +0600 (ALMT)
-Received: from localhost (localhost [127.0.0.1])
- by mail.almex.kz (Postfix) with ESMTP id 9F84B443A15;
- Fri,  6 Jan 2023 17:55:18 +0600 (ALMT)
-X-Virus-Scanned: amavisd-new at almex.kz
-Received: from mail.almex.kz ([127.0.0.1])
- by localhost (mail.almex.kz [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id 9AlWG6cff2rY; Fri,  6 Jan 2023 17:55:18 +0600 (ALMT)
-Received: from PC-HJZHILMLVP.PC-HJZHILMLVP (unknown [103.74.103.7])
- by mail.almex.kz (Postfix) with ESMTPSA id 7D28E4E195F;
- Fri,  6 Jan 2023 15:16:06 +0600 (ALMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 93CBD400CF
+Received: from localhost (80-110-8-89.static.upcbusiness.at [80.110.8.89])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 93CBD400CF
+ for <devel@linuxdriverproject.org>; Sat,  7 Jan 2023 08:08:04 +0000 (UTC)
+Received: from User (4-233-24-185.static.servebyte.com [185.24.233.4])
+ by localhost (Postfix) with ESMTPA id 4AEB31FC8803;
+ Sat,  7 Jan 2023 07:00:59 +0100 (CET)
+From: "Mazin Hussein"<info@jungleformula.in>
+Subject: Products Needed
+Date: Sat, 7 Jan 2023 01:01:00 -0800
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Re:
-To: Recipients <investment@storebrand.no>
-From: "HARALD HAUGE"<investment@storebrand.no>
-Date: Fri, 06 Jan 2023 03:15:50 -0600
-Message-Id: <20230106091606.7D28E4E195F@mail.almex.kz>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20230107080806.B1ED840112@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,25 +59,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: haugehar@yandex.com
+Reply-To: info@jungleformula.in
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+Dear Sir,
 
+We invite you to take part in ongoing rebuilding of our great country, Iraq after many years of conflicts. We are determined to purchase your products in large quantities.
 
+A consideration also is that your quotation must be CIF Port of Umm Qasr.
 
-I'm Harald Hauge an Investment Manager from Norway. I wish to solicit your interest in an investment project that is currently ongoing in my company (Storebrand); It is a short term investment with good returns. Simply reply for me to confirm the validity of your email so i shall give you comprehensive details about the project.
-
-
+Get back to me asap for more details
 
 Best Regards,
 
-Harald Hauge.
-
-Business Consultant
+Mazin Hussein
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
