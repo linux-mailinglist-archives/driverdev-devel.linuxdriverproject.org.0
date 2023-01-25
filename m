@@ -1,40 +1,40 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D40B567AA06
-	for <lists+driverdev-devel@lfdr.de>; Wed, 25 Jan 2023 06:41:55 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BE6267AA07
+	for <lists+driverdev-devel@lfdr.de>; Wed, 25 Jan 2023 06:41:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 193BB40592;
-	Wed, 25 Jan 2023 05:41:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 193BB40592
+	by smtp4.osuosl.org (Postfix) with ESMTP id 91A65415E7;
+	Wed, 25 Jan 2023 05:41:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 91A65415E7
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z6CbTjXXcSjI; Wed, 25 Jan 2023 05:41:51 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id V664laK6VUHN; Wed, 25 Jan 2023 05:41:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EE0C7416C7;
-	Wed, 25 Jan 2023 05:41:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EE0C7416C7
+	by smtp4.osuosl.org (Postfix) with ESMTP id 26137416E8;
+	Wed, 25 Jan 2023 05:41:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 26137416E8
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B04101BF5A8
- for <devel@linuxdriverproject.org>; Wed, 25 Jan 2023 05:41:47 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 20A111BF5A8
+ for <devel@linuxdriverproject.org>; Wed, 25 Jan 2023 05:41:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 96D6B61042
+ by smtp2.osuosl.org (Postfix) with ESMTP id EF5D140592
  for <devel@linuxdriverproject.org>; Wed, 25 Jan 2023 05:41:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 96D6B61042
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EF5D140592
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id deDCQkQDVgtd for <devel@linuxdriverproject.org>;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id k6Bai6kEevKr for <devel@linuxdriverproject.org>;
  Wed, 25 Jan 2023 05:41:47 +0000 (UTC)
-X-Greylist: delayed 00:05:07 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BEB4E60F8D
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 29839400FC
 Received: from mail.catlbatlery.com (unknown [43.143.33.181])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BEB4E60F8D
- for <devel@linuxdriverproject.org>; Wed, 25 Jan 2023 05:41:46 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 29839400FC
+ for <devel@driverdev.osuosl.org>; Wed, 25 Jan 2023 05:41:47 +0000 (UTC)
 Received: from localhost (unknown [127.0.0.1])
  by mail.catlbatlery.com (Postfix) with ESMTP id 4602B605F9;
  Wed, 25 Jan 2023 05:36:36 +0000 (UTC)
