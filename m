@@ -1,63 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FE0C67AA14
-	for <lists+driverdev-devel@lfdr.de>; Wed, 25 Jan 2023 06:49:27 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 43CF967B963
+	for <lists+driverdev-devel@lfdr.de>; Wed, 25 Jan 2023 19:32:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B1E6D610C1;
-	Wed, 25 Jan 2023 05:49:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B1E6D610C1
+	by smtp2.osuosl.org (Postfix) with ESMTP id 98CF541728;
+	Wed, 25 Jan 2023 18:32:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 98CF541728
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fAGnW8obkb9D; Wed, 25 Jan 2023 18:32:25 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5EAC34171D;
+	Wed, 25 Jan 2023 18:32:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5EAC34171D
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8E86F1BF39D
+ for <devel@linuxdriverproject.org>; Wed, 25 Jan 2023 18:32:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 680566117E
+ for <devel@linuxdriverproject.org>; Wed, 25 Jan 2023 18:32:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 680566117E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J4v54gXnhD39; Wed, 25 Jan 2023 05:49:25 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8E73A610B9;
-	Wed, 25 Jan 2023 05:49:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8E73A610B9
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 061E11BF5A8
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 25 Jan 2023 05:49:22 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E058C41805
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 25 Jan 2023 05:49:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E058C41805
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id V-38mrHg6LJB
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 25 Jan 2023 05:49:21 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EC83F410E9
-Received: from mail.catlbatlery.com (unknown [43.143.33.181])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EC83F410E9
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 25 Jan 2023 05:49:20 +0000 (UTC)
-Received: from localhost (unknown [127.0.0.1])
- by mail.catlbatlery.com (Postfix) with ESMTP id B4B6C605E3;
- Wed, 25 Jan 2023 05:49:16 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at catlbatlery.com
-Received: from mail.catlbatlery.com ([127.0.0.1])
- by localhost (mail.catlbatlery.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kyfodBGwy1VT; Wed, 25 Jan 2023 13:49:16 +0800 (CST)
-Received: from User (unknown [45.128.234.165])
- by mail.catlbatlery.com (Postfix) with ESMTPA id EC476605C4;
- Wed, 25 Jan 2023 13:49:03 +0800 (CST)
-From: "Mr.Fong pau tack"<test@catlbatlery.com>
-Subject: Business Partnership
-Date: Tue, 24 Jan 2023 21:49:15 -0800
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Comrymn8hTRV for <devel@linuxdriverproject.org>;
+ Wed, 25 Jan 2023 18:32:20 +0000 (UTC)
+X-Greylist: delayed 05:50:33 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6AE866117B
+Received: from bryansk.rosneft.ru (brnterm1.rosneft.ru [194.186.236.187])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6AE866117B
+ for <devel@linuxdriverproject.org>; Wed, 25 Jan 2023 18:32:19 +0000 (UTC)
+Received: from 4-233-24-185.static.servebyte.com ([185.24.233.4] helo=User)
+ by bryansk.rosneft.ru with esmtpa (Exim 4.92.2 (FreeBSD))
+ (envelope-from <admin@agnisurakshaservices.com>)
+ id 1pKezw-000CUX-C4; Wed, 25 Jan 2023 15:35:28 +0300
+From: "John Collins"<admin@agnisurakshaservices.com>
+Subject: Investment Loan
+Date: Wed, 25 Jan 2023 07:35:20 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20230125054916.B4B6C605E3@mail.catlbatlery.com>
+Message-Id: <20230125183222.680566117E@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,29 +60,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: fong_pauteck@yahoo.com
+Reply-To: johncollins19672022@aol.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Friend,
- 
-How are you doing today? I am Mr. Fong pau tack, the Head of Accounting Audit Committee Department of CIMB Bank Berhad Malaysia.
- 
-In my department, I discovered an abandoned sum of ($15.6 Million US Dollars)  please I need your assistance for the transferring of this fund into your bank account for the  benefit of both of us for a lifetime investment.
- 
-I have every inquiry document to make the bank believe you and release the fund to you within 5 banking working days, with your full co-operation with me after success. Note/ 50% for you why 50% for me after the success of the transfer to your bank account, kindly get back to me for more details.
- 
-Thanks for your understanding.
- 
- 
-Best regards,
+Sir/Madam
 
-Mr. Fong pau tack
-Head of Accounting Audit Committee Department of
-CIMB Bank Berhad Malaysia.
-Email:fong_pauteck@yahoo.com
+After a successful survey on business Directories in your
+location and selecting your contact email, I am pleased to let
+you know that I have an investment funding firm I work with. The
+Great Concept LLC investment funding company is the name of the
+firm, I gather business proposals for startups and also offer
+loan packages for companies and entrepreneurs who need to
+expand/boost their business. If you are interested in any of the
+above-mentioned, do revert to me so that I can refer you to the
+appropriate contact, where Mr. Farouk Hassan will guide you on
+how to obtain any of the packages above, either loan for business
+expansion or financial funding for new business startups.
+
+NB:
+If you also have a viable business plan, you can bring it to the
+table, funds will be available for the development and
+actualization of the business under good terms and agreement.
+You can also work as a sales representative in your location and
+get finders fee for any successful business closed from your
+esteem end.The funding ranges from $100,000-$5billion
+
+You can visit our website on the link below to learn more about
+our firm.
+
+Regards,
+John Collins
+Commercial Strategy Advisor
+Website: https://www.greatconcept-ae.com/
+Phone/Whatsapp : +1-929-955-0654
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
