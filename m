@@ -1,57 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77A7D67C494
-	for <lists+driverdev-devel@lfdr.de>; Thu, 26 Jan 2023 07:51:48 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 622A667DF92
+	for <lists+driverdev-devel@lfdr.de>; Fri, 27 Jan 2023 09:57:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AC2A960F9F;
-	Thu, 26 Jan 2023 06:51:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AC2A960F9F
+	by smtp2.osuosl.org (Postfix) with ESMTP id B97E54016D;
+	Fri, 27 Jan 2023 08:57:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B97E54016D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L4mOXihIpsuc; Thu, 26 Jan 2023 06:51:46 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Vnse8cDhPn0a; Fri, 27 Jan 2023 08:57:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7A1FE60D5B;
-	Thu, 26 Jan 2023 06:51:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7A1FE60D5B
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8ABF040128;
+	Fri, 27 Jan 2023 08:57:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8ABF040128
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2C7711BF83E
- for <devel@linuxdriverproject.org>; Thu, 26 Jan 2023 06:51:43 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2B57F1BF349
+ for <devel@linuxdriverproject.org>; Fri, 27 Jan 2023 08:57:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id F190E418DC
- for <devel@linuxdriverproject.org>; Thu, 26 Jan 2023 06:51:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F190E418DC
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0543B61217
+ for <devel@linuxdriverproject.org>; Fri, 27 Jan 2023 08:57:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0543B61217
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VXhqWo1nfRlQ for <devel@linuxdriverproject.org>;
- Thu, 26 Jan 2023 06:51:41 +0000 (UTC)
-X-Greylist: delayed 00:06:35 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 23A9341477
-Received: from mail.chi-hsen.tw (118-163-224-90.hinet-ip.hinet.net
- [118.163.224.90])
- by smtp4.osuosl.org (Postfix) with ESMTP id 23A9341477
- for <devel@linuxdriverproject.org>; Thu, 26 Jan 2023 06:51:41 +0000 (UTC)
-Received: by mail.chi-hsen.tw (Postfix, from userid 98)
- id B87A471A29; Thu, 26 Jan 2023 14:42:30 +0800 (CST)
-Received: from User (4-233-24-185.static.servebyte.com [185.24.233.4])
- by mail.chi-hsen.tw (Postfix) with ESMTPA id C8457716C0;
- Thu, 26 Jan 2023 13:15:50 +0800 (CST)
-From: "John Collins"<admin@agnisurakshaservices.com>
-Subject: Investment Loan  
-Date: Thu, 26 Jan 2023 00:16:48 -0800
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id U0CwZ__imcyf for <devel@linuxdriverproject.org>;
+ Fri, 27 Jan 2023 08:57:47 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3F41E61215
+Received: from mail.crawnon.pl (mail.crawnon.pl [51.68.198.42])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3F41E61215
+ for <devel@driverdev.osuosl.org>; Fri, 27 Jan 2023 08:57:46 +0000 (UTC)
+Received: by mail.crawnon.pl (Postfix, from userid 1002)
+ id 1187CA6240; Fri, 27 Jan 2023 08:56:45 +0000 (UTC)
+Received: by mail.crawnon.pl for <devel@driverdev.osuosl.org>;
+ Fri, 27 Jan 2023 08:56:07 GMT
+Message-ID: <20230127074500-0.1.8t.f13i.0.bdwqab6qpg@crawnon.pl>
+Date: Fri, 27 Jan 2023 08:56:07 GMT
+From: =?UTF-8?Q?"Miko=C5=82aj_Fiodorczyk"?= <mikolaj.fiodorczyk@crawnon.pl>
+To: <devel@driverdev.osuosl.org>
+Subject: Fotowoltaika - nowe warunki
+X-Mailer: mail.crawnon.pl
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20230126051550.C8457716C0@mail.chi-hsen.tw>
-To: undisclosed-recipients:;
-W-Message-ID: 84ee2850a4c697cf70abe699a76ab013
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=crawnon.pl; s=mail; 
+ t=1674809864; bh=C5hX24svv/9/TME4wPCHfYjl17BCtmuxEd1i9B4zdYs=;
+ h=Date:From:To:Subject:From;
+ b=YznNmPZEEbZFvpcHeUAdtQm+Gi5EQUeHh/LvVcHV6O2hrTSQIWABtSaS3PHSeBvYr
+ bR7haQscjEohgXbW1gJ4MagjuWb77sopDYD5MBYxAO3Vis5KCsvTwjLyBzNC2wq3Pu
+ 6cn4Qcy9LzwdUvOWZnBNMbDPK87rW2QixV8OUrhSjkPXGDN7Gtv154s6GwfzuQDlWh
+ Li+qSngvk/MDKRxxing162/oxESavsZkSY6Pce/iIFeqFCAgRxuSjyouIidwt1p2xM
+ HMHKSpZGi3Z7OvXZGu3BjeAQ+acyKeczMYP6RhskSC3zhFwWTPiQy8rynKe7z6JKsD
+ M43MBnB9xwwpw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=crawnon.pl header.i=@crawnon.pl
+ header.a=rsa-sha256 header.s=mail header.b=YznNmPZE
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,43 +71,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: johncollins19672022@aol.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Sir/Madam
-
-After a successful survey on business Directories in your
-location and selecting your contact email, I am pleased to let
-you know that I have an investment funding firm I work with. The
-Great Concept LLC investment funding company is the name of the
-firm, I gather business proposals for startups and also offer
-loan packages for companies and entrepreneurs who need to
-expand/boost their business. If you are interested in any of the
-above-mentioned, do revert to me so that I can refer you to the
-appropriate contact, where Mr. Farouk Hassan will guide you on
-how to obtain any of the packages above, either loan for business
-expansion or financial funding for new business startups.
-
-NB:
-If you also have a viable business plan, you can bring it to the
-table, funds will be available for the development and
-actualization of the business under good terms and agreement.
-You can also work as a sales representative in your location and
-get finders fee for any successful business closed from your
-esteem end.The funding ranges from $100,000-$5billion
-
-You can visit our website on the link below to learn more about
-our firm.
-
-Regards,
-John Collins
-Commercial Strategy Advisor
-Website: https://www.greatconcept-ae.com/
-Phone/Whatsapp : +1-929-955-0654
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RHppZcWEIGRvYnJ5LAoKY2hjaWHFgmJ5bSBwb2luZm9ybW93YcSHLCBpxbwgbW9nxIUgUGHFhHN0
+d28gdXp5c2thxIcgZG9maW5hbnNvd2FuaWUgbmEgc3lzdGVteSBmb3Rvd29sdGFpY3puZSB3IHJh
+bWFjaCBub3dlaiBlZHljamkgcHJvZ3JhbXUgTcOzaiBQcsSFZC4KClByb2dyYW0gemFwZXduaWEg
+NjAwMCB6xYIgZG9maW5hbnNvd2FuaWEgbmEgaW5zdGFsYWNqxJkgcGFuZWxpIGkgMTYgMDAwIHrF
+giBuYSBtYWdhenluIGVuZXJnaWksIG5pxbxzemUgY2VuIHByxIVkdSBpIG1vxbxsaXdvxZvEhyBv
+ZGxpY3plbmlhIGtvc3p0w7N3IHp3acSFemFueWNoIHogaW5zdGFsYWNqxIUgZm90b3dvbHRhaWtp
+IHcgcmFtYWNoIHJvemxpY3plbmlhIFBJVCAodHp3LiB1bGdhIHRlcm1vbW9kZXJuaXphY3lqbmEp
+LgoKQ3p5IHPEhSBQYcWEc3R3byBvdHdhcmNpIG5hIHdzdMSZcG7EhSByb3ptb3fEmSB3IHR5bSB0
+ZW1hY2llPwoKClBvemRyYXdpYW0sCk1pa2/FgmFqIEZpb2RvcmN6eWsKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
+QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
+Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
