@@ -1,77 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 09D5E67FA6F
-	for <lists+driverdev-devel@lfdr.de>; Sat, 28 Jan 2023 20:29:02 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CCCA680063
+	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Jan 2023 18:18:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 487D181E8F;
-	Sat, 28 Jan 2023 19:29:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 487D181E8F
+	by smtp2.osuosl.org (Postfix) with ESMTP id DA56E404D1;
+	Sun, 29 Jan 2023 17:18:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DA56E404D1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Jd4BUJoWqqOs; Sat, 28 Jan 2023 19:28:59 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BXkHxU3ZTO7V; Sun, 29 Jan 2023 17:18:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D839481E97;
-	Sat, 28 Jan 2023 19:28:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D839481E97
+	by smtp2.osuosl.org (Postfix) with ESMTP id B4E03400D9;
+	Sun, 29 Jan 2023 17:18:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B4E03400D9
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9B7191BF48B
- for <devel@linuxdriverproject.org>; Sat, 28 Jan 2023 19:28:53 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D8BBB1BF35F
+ for <devel@linuxdriverproject.org>; Sun, 29 Jan 2023 17:18:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 74DFC60C24
- for <devel@linuxdriverproject.org>; Sat, 28 Jan 2023 19:28:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 74DFC60C24
+ by smtp1.osuosl.org (Postfix) with ESMTP id AC6368149A
+ for <devel@linuxdriverproject.org>; Sun, 29 Jan 2023 17:18:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AC6368149A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ns4hUAaPUyN5 for <devel@linuxdriverproject.org>;
- Sat, 28 Jan 2023 19:28:51 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2CF9860E00
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2CF9860E00
- for <devel@driverdev.osuosl.org>; Sat, 28 Jan 2023 19:28:51 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10604"; a="391883124"
-X-IronPort-AV: E=Sophos;i="5.97,254,1669104000"; d="scan'208";a="391883124"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Jan 2023 11:28:50 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10604"; a="665616617"
-X-IronPort-AV: E=Sophos;i="5.97,254,1669104000"; d="scan'208";a="665616617"
-Received: from lkp-server01.sh.intel.com (HELO ffa7f14d1d0f) ([10.239.97.150])
- by fmsmga007.fm.intel.com with ESMTP; 28 Jan 2023 11:28:49 -0800
-Received: from kbuild by ffa7f14d1d0f with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pLqsa-00011m-1X;
- Sat, 28 Jan 2023 19:28:48 +0000
-Date: Sun, 29 Jan 2023 03:28:38 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- d22a837189d720a679f16eb2b20842d77e41de5a
-Message-ID: <63d57766.8thQplmgQWZoOjGx%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IbbwkFMrFEdt for <devel@linuxdriverproject.org>;
+ Sun, 29 Jan 2023 17:18:11 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8239481492
+Received: from mail.cjbihor.ro (unknown [86.127.119.34])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8239481492
+ for <devel@driverdev.osuosl.org>; Sun, 29 Jan 2023 17:18:10 +0000 (UTC)
+Received: (qmail 36692 invoked by uid 48); 29 Jan 2023 00:07:07 -0000
+Cc: recipient list not shown: ;
+Received: from 5.133.11.117
+ (SquirrelMail authenticated user primaria.uileacudebeius@cjbihor.ro)
+ by webmail.cjbihor.ro with HTTP; Sun, 29 Jan 2023 02:07:07 +0200
+Message-ID: <ba2474bc17ab7623939945fe841182c8.squirrel@webmail.cjbihor.ro>
+Date: Sun, 29 Jan 2023 02:07:07 +0200
+Subject: Re: DON207110
+From: "Charles" <primaria.uileacudebeius@cjbihor.ro>
+User-Agent: SquirrelMail/1.4.23 [SVN]-1.el7.20190710
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1674934131; x=1706470131;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=oRuYHMuCFexHJ86BA01nwTCHRw7yZ0KsYbq9/jN9ErI=;
- b=U403NY52SYTKfRhTTCgN1U4rgS3kRHuUE3DDIRdunJXU9nuRByEhh5je
- Sxmgoj0mCQIwwV467Z2TIPtW4QZa63l8xxBAcnmsJNpn5PtjF/Xw/Csxv
- m5uX0FBCSG0I3glYi+SpjLJ+8e40Sk9Wvyw5SBkaSV3ZD4gPLtKm0TceF
- GPRoueMe5uquDLCboSMWMGx6VPI5ky8Hy2ZRneUscOFVBDSE8yclUVXUC
- jgNqeRISwLcX2bDsRgftWsNufGD6/M/LPIUajGxDx5kzp9lKKHxBHVBrr
- D0MNLvh035O9GpaMx4eq4NQE/+JrUWkgugRM8a9B42AAUgVMgI3N3G3Ow
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=U403NY52
+X-Priority: 3 (Normal)
+Importance: Normal
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,62 +60,58 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: Charlesjackson@bahnhof.se
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
-branch HEAD: d22a837189d720a679f16eb2b20842d77e41de5a  soundwire: sysfs: remove unneeded ATTRIBUTE_GROUPS() comments
+Season Greetings Winner,
 
-elapsed time: 1042m
 
-configs tested: 32
-configs skipped: 3
+I am Mr. Charles W. Jackson Jr., the mega winner of $344.6 Million in the
+Mega Millions Jackpot, I am donating to 5 random individuals if you get
+this email then your email was selected after a spin ball. I have spread
+most of my wealth over a number of charities and organizations. I have
+voluntarily decided to donate the sum of $3 Million USD to you as one of
+the selected 5, to verify my winnings via YouTube page below.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
 
-gcc tested configs:
-x86_64                            allnoconfig
-um                             i386_defconfig
-um                           x86_64_defconfig
-m68k                             allyesconfig
-m68k                             allmodconfig
-alpha                            allyesconfig
-arc                              allyesconfig
-x86_64                           rhel-8.3-syz
-x86_64                         rhel-8.3-kunit
-x86_64                           rhel-8.3-kvm
-x86_64                           rhel-8.3-bpf
-arc                                 defconfig
-s390                             allmodconfig
-alpha                               defconfig
-s390                                defconfig
-s390                             allyesconfig
-i386                                defconfig
-i386                             allyesconfig
-riscv                               defconfig
-powerpc                           allnoconfig
-powerpc                          allmodconfig
-mips                             allyesconfig
-sh                               allmodconfig
-x86_64                              defconfig
-x86_64                               rhel-8.3
-x86_64                           allyesconfig
-x86_64                    rhel-8.3-kselftests
-x86_64                          rhel-8.3-func
-arm                                 defconfig
-arm64                            allyesconfig
-arm                              allyesconfig
+WATCH ME HERE: https://www.youtube.com/watch?v=0MUR8QEIMQI
 
-clang tested configs:
-x86_64                          rhel-8.3-rust
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+This $3 Million USD donation was made to enable you to strengthen your
+personal issues and to reach out generously to the least privileged,
+orphaned and charitable organizations in your community.
+
+THIS IS YOUR DONATION CODE: DON207110
+
+Reply with the DONATION CODE to this email as soon as possible so we can
+complete the procedure.
+
+
+Email: jacksonjrmrcharles1945@gmail.com
+
+
+Hope to make you and your family happy in the new year.
+
+
+Regards,
+Mr. Charles W. Jackson Jr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
