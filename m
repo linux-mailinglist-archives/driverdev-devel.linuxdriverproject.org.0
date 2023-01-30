@@ -1,56 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59119680089
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Jan 2023 18:45:19 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CA52A415D7;
-	Sun, 29 Jan 2023 17:45:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CA52A415D7
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T8I9DCF393Cw; Sun, 29 Jan 2023 17:45:15 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2CC12415D9;
-	Sun, 29 Jan 2023 17:45:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2CC12415D9
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A168F1BF35F
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 29 Jan 2023 17:45:11 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 98425680442
+	for <lists+driverdev-devel@lfdr.de>; Mon, 30 Jan 2023 04:21:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 882EC60C2E
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 29 Jan 2023 17:45:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 882EC60C2E
+	by smtp3.osuosl.org (Postfix) with ESMTP id B6A9660D6D;
+	Mon, 30 Jan 2023 03:21:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B6A9660D6D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NHrbHoaQ82Dk
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 29 Jan 2023 17:45:10 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id j_GI6eyET9Gh; Mon, 30 Jan 2023 03:21:47 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 90BB460A91;
+	Mon, 30 Jan 2023 03:21:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 90BB460A91
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 821391BF8B4
+ for <devel@linuxdriverproject.org>; Mon, 30 Jan 2023 03:21:43 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 65BA78135D
+ for <devel@linuxdriverproject.org>; Mon, 30 Jan 2023 03:21:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 65BA78135D
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id dkUWW_lBr9wu for <devel@linuxdriverproject.org>;
+ Mon, 30 Jan 2023 03:21:42 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 55D7360C1C
-Received: from a8f121480e1d (unknown [194.177.22.182])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 55D7360C1C
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 29 Jan 2023 17:45:10 +0000 (UTC)
-Received: from User (unknown [46.148.40.26])
- by a8f121480e1d (Postfix) with SMTP id 7623A72288;
- Sun, 29 Jan 2023 16:32:37 +0000 (UTC)
-From: "INFO"<test@d-kvadrat.ru>
-Subject: INFO
-Date: Sun, 29 Jan 2023 09:32:06 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5D3578135C
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5D3578135C
+ for <devel@driverdev.osuosl.org>; Mon, 30 Jan 2023 03:21:42 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10605"; a="311083801"
+X-IronPort-AV: E=Sophos;i="5.97,257,1669104000"; d="scan'208";a="311083801"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jan 2023 19:21:40 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10605"; a="696256132"
+X-IronPort-AV: E=Sophos;i="5.97,257,1669104000"; d="scan'208";a="696256132"
+Received: from lkp-server01.sh.intel.com (HELO ffa7f14d1d0f) ([10.239.97.150])
+ by orsmga001.jf.intel.com with ESMTP; 29 Jan 2023 19:21:38 -0800
+Received: from kbuild by ffa7f14d1d0f with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pMKjh-0003LK-0U;
+ Mon, 30 Jan 2023 03:21:37 +0000
+Date: Mon, 30 Jan 2023 11:21:14 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:kobject-const] BUILD SUCCESS
+ 65c7f4eba7bf98c3e2574f40e44ba40fcac64567
+Message-ID: <63d737aa.5e9IEpTJVmqerd5X%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20230129174511.882EC60C2E@smtp3.osuosl.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1675048902; x=1706584902;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=sOr+2Yo2iYIpycZeKHN9gD2zarJPm3/jaghUbmcHLkw=;
+ b=OzGPSqNh2rmVn3sBcxznMpz/qOcepWFNLH01rR6drXb8/wb322/tpGm9
+ 9liV1yN1SS/dbQUhOthVPPiLUL2skKbR1kRTmG8l3f/oRX1nHdFBLnnwo
+ le2+lyoto5sJtoBEAPPAGOgcR6JaBzwQdfYjOMGWZGfxL/1kXZAcESn1h
+ 97OnDzrw43pZozdywvCSv8Qq2sbwfkAbCKNYIO8XRlx5/R5GavYtcpWsK
+ tXnk3nB+j8/uRQh2DSrTzkyGnP8o57cy1itToM+dLQmI5oumwPdlYp7H3
+ tDq7QRqO//wbQz4lBWfREuJMhwf/hN2hwp6pn7M/jyQuiVoGatmJMC+OZ
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=OzGPSqNh
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,83 +84,106 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: 20155765@ce.pucmm.edu.do
-Content-Type: text/plain; charset="cp1251"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-TGllYmVyIEhlcnIsCkljaCBoYWJlIGVpbmVuIEludmVzdG9yLCBkZXIgNiw4IE1pbGxpYXJkZW4g
-VVMtRG9sbGFyIGluIGVpbiBVbnRlcm5laG1lbiBpbnZlc3RpZXJlbiBt9mNodGUsIGRhcyAKCm51
-ciBNaXR0ZWwgZvxyIGRpZSBFeHBhbnNpb24gYmVu9nRpZ3QuIEVyIGthbm4gZGFzIEdlbGQgbmlj
-aHQgaW4gbmV1ZSBVbnRlcm5laG1lbiBpbnZlc3RpZXJlbiwgCgpkaWUgZ3L8bmRlbiB3b2xsZW4s
-IHNvbmRlcm4gaW4gVW50ZXJuZWhtZW4sIGRpZSBndXRlIEdld2lubmUgZXJ6aWVsZW4sIGFiZXIg
-TWl0dGVsIGb8ciBkaWUgCgpFWFBBTlNJT04gYmVu9nRpZ2VuLgoKU2VpbmUgU2Nod2VycHVua3Rl
-IHNpbmQgSW1tb2JpbGllbiwgQmlvdGVjaG5vbG9naWUsIFRleHRpbGllbiwgSW5mb3JtYXRpb25z
-dGVjaG5vbG9naWUsIAoKUGhhcm1hemllLCDWbC0gdW5kIEVuZXJnaWVpbmR1c3RyaWUsIEJlcmdi
-YXUtIHVuZCBNZXRhbGxpbmR1c3RyaWUsIAoKVW50ZXJuZWhtZW5zYmVyYXR1bmdzaW5kdXN0cmll
-LCBtYXJpdGltZSBJbmR1c3RyaWUsIEtyYW5rZW5oYXVzLSB1bmQgR2VzdW5kaGVpdHNpbmR1c3Ry
-aWUsIAoKVmVyYnJhdWNoZXJkaWVuc3RsZWlzdHVuZ3NpbmR1c3RyaWUsIGludGVybmF0aW9uYWxl
-ciBIYW5kZWwgdW5kIEVudHdpY2tsdW5nIEluZHVzdHJpZSwgCgpHbPxja3NzcGllbC0gdW5kIEth
-c2lub2luZHVzdHJpZSwgRWxla3Ryby0vRWxla3Ryb25pa2luZHVzdHJpZSwgVmVyc2ljaGVydW5n
-c2luZHVzdHJpZSwgCgpjaGVtaXNjaGUgSW5kdXN0cmllLCBNYXJrZXRpbmctIHVuZCBXZXJiZWlu
-ZHVzdHJpZSwgRnJlaXplaXQsIFJlaXNlLSB1bmQgVG91cmlzbXVzaW5kdXN0cmllLCAKCkxhbmR3
-aXJ0c2NoYWZ0LCBMdWZ0ZmFocnQsIEVpbnplbGhhbmRlbCwgSW1wb3J0IHVuZCBFeHBvcnQsIEhh
-bmRlbHMtIHVuZCBFbnR3aWNrbHVuZ3NpbmR1c3RyaWUsIAoKSW1tb2JpbGllbiB1bmQgQmF1d2Vz
-ZW4gSW5kdXN0cmllIHVuZCBhbmRlcmUgcmVhbGlzaWVyYmFyZSBJbnZlc3RpdGlvbnNt9mdsaWNo
-a2VpdGVuIHdpZSBJaHJlLgoKV2VubiBTaWUgZWluZW0gVW50ZXJuZWhtZW4gZW1wZmVobGVuLCBE
-YXJsZWhlbiBvZGVyIEludmVzdG1lbnRmb25kcyB2b24gbWVpbmVtIEt1bmRlbiwgZGVtIAoKSW52
-ZXN0b3IsIGF1Znp1bmVobWVuLCBoYWJlbiBTaWUgdW5kIGljaCBBbnNwcnVjaCBhdWYgNSAlIGpl
-ZGVzIEJldHJhZ3MsIGRlbiBkYXMgVW50ZXJuZWhtZW4gdm9tIAoKSW52ZXN0b3IgZXJo5Gx0LCBh
-YmVyIHdlbm4gU2llIGRlbiBGb25kcyBkaXJla3QgYWxzIFVudGVybmVobWVuIGFubmVobWVuLCB3
-ZXJkZSBpY2ggZXMgc2VpbiAKCkFuc3BydWNoIGF1ZiAyLDUgJSB1bmQgU2llIGJlaGFsdGVuIDIs
-NSAlIGFscyBHbG9iYWwgRmluZGVyJ3MgRmVlIGVpbi4KTmFjaCBkZXIgVW50ZXJ6ZWljaG51bmcg
-KE1PVSkgZmluZGV0IGVpbiBwZXJz9m5saWNoZXMgVHJlZmZlbiB6d2lzY2hlbiBkZW0gSW52ZXN0
-b3IgdW5kIGRlbSAKCkJldGVpbGlndW5nc3VudGVybmVobWVuIHN0YXR0LCBkZXIgKEFPUkkpIHNv
-bGx0ZSBuaWNodCB3ZW5pZ2VyIGFscyAzICUgcHJvIEphaHIgYmV0cmFnZW4uCgpTdWNoZW4gU2ll
-IG5hY2ggZWluZW0genV2ZXJs5HNzaWdlbiBVbnRlcm5laG1lbiwgZGFzIGVpbmUgRmluYW56aWVy
-dW5nIGJlbvZ0aWd0LCB1bmQgd2lyIGv2bm5lbiAKCnByb2JsZW1sb3MgNSAlIGRlcyB2b20gSW52
-ZXN0b3IgZXJoYWx0ZW5lbiBCZXRyYWdzIHZlcmRpZW5lbiwgYWJlciB3aXIgbfxzc2VuIGJlaSBk
-ZXIgCgpUcmFuc2FrdGlvbiBhYnNvbHV0ZSBWZXJ0cmF1bGljaGtlaXQgd2FocmVuLCBkYSBkZXIg
-Rm9uZHNhbmJpZXRlciBzY2h3ZWlnZW4gbfZjaHRlLCBzb2Rhc3MgU2llIAoKZXMgc3RyZW5nIHZl
-cnRyYXVsaWNoIGJlaGFuZGVsbiBt/HNzZW4gendpc2NoZW4gdW5zLgpJY2ggYmVu9nRpZ2UgZGFz
-IFVudGVybmVobWVuc3Byb2ZpbCB1bmQgZGllIFByb2pla3R6dXNhbW1lbmZhc3N1bmcgZGVzIFVu
-dGVybmVobWVucywgZGFzIGVpbmUgCgpGaW5hbnppZXJ1bmcgYmVu9nRpZ3QsIHVtIGVzIG1laW5l
-bSBJbnZlc3RvciB2b3J6dWxlZ2VuLgoKSWNoIGZyZXVlIG1pY2ggdm9uIElobmVuIHp1IGj2cmVu
-LgoKCkRhbmtlCgoKCgoKCgpEZWFyIFNpciwKSSBoYXZlIGludmVzdG9yIHRoYXQgd2FudCB0byBp
-bnZlc3QgJDYuOCBCaWxsaW9uIGludG8gYSAgY29tcGFueSB0aGF0IG5lZWRzIGZ1bmQgIGZvciBl
-eHBhbnNpb24gCgpvbmx5LkhlIGNhbiBub3QgaW52ZXN0IHRoZSBtb25leSB0byBuZXcgQ29tcGFu
-aWVzIHRoYXQgd2FudCB0byBzdGFydCB1cCBidXQgaW50byBDb21wYW5pZXMgdGhhdCAKCmhhcyBi
-ZWVuIG1ha2luZyBnb29kIHByb2ZpdHMgYnV0IG5lZWRzIGZ1bmRzIGZvciBFWFBBTlNJT04uIAoK
-SGlzIEFyZWEgb2YgY29uY2VudHJhdGlvbnMgYXJlIFJlYWwgRXN0YXRlLCBCaW90ZWNoLFRleHRp
-bGVzICwgSW5mb3JtYXRpb24gdGVjaG5vbG9neSwgCgpQaGFybWFjZXV0aWNhbHMgLCBPaWwgJiBF
-bmVyZ3kgSW5kdXN0cmllcywgTWluaW5nICZNZXRhbHMgSW5kdXN0cnksIE1hbmFnZW1lbnQgQ29u
-c3VsdGluZyAKCkluZHVzdHJ5ICxNYXJpdGltZSBpbmR1c3RyeSwgSG9zcGl0YWwgJiBIZWFsdGgg
-Q2FyZSBJbmR1c3RyeSwgQ29uc3VtZXIgU2VydmljZXMgSW5kdXN0cnksIAoKSW50ZXJuYXRpb25h
-bCBUcmFkZSBhbmQgRGV2ZWxvcG1lbnQgSW5kdXN0cnkgLEdhbWJsaW5nICYgQ2FzaW5vcyBJbmR1
-c3RyeSwgRWxlY3RyaWNhbC9FbGVjdHJvbmljIAoKTWFudWZhY3R1cmluZyBJbmR1c3RyeSwgSW5z
-dXJhbmNlIEluZHVzdHJ5LCBDaGVtaWNhbCBpbmR1c3RyaWVzLCBNYXJrZXRpbmcgYW5kIEFkdmVy
-dGlzaW5nIAoKSW5kdXN0cnksIExlaXN1cmUsIFRyYXZlbCAmIFRvdXJpc20gSW5kdXN0cnksIEFn
-cmljdWx0dXJlLCBBdmlhdGlvbiwgUmV0YWlsLCBJbXBvcnQgYW5kIEV4cG9ydCwgCgpUcmFkZSBh
-bmQgZGV2ZWxvcG1lbnQgaW5kdXN0cnksIFJlYWwgRXN0YXRlICYgQ29uc3RydWN0aW9uIEluZHVz
-dHJ5IGFuZCBhbnkgb3RoZXIgdmlhYmxlIAoKaW52ZXN0bWVudCBvcHBvcnR1bml0aWVzIGp1c3Qg
-bGlrZSB5b3Vycy4KCklmIHlvdSByZWNvbW1lbmQgYSBDb21wYW55IHRvIHRha2UgbG9hbiBvciBp
-bnZlc3RtZW50IGZ1bmRzIGZyb20gZnJvbSBteSBjbGllbnQgdGhlIGludmVzdG9yLCBtZSAKCmFu
-ZCB5b3Ugd2lsbCBiZSBlbnRpdGxlZCB0byA1JSBvZiBhbnkgYW1vdW50IHJlY2VpdmVkIGJ5IHRo
-ZSBDb21wYW55IGZyb20gdGhlIGludmVzdG9yIGJ1dCBpZiAKCnlvdSBhcmUgdGFraW5nIHRoZSBm
-dW5kIGRpcmVjdGx5IGFzIGEgY29tcGFueSBpIHdpbGwgYmUgZW50aXRsZWQgdG8gMi41JSBhbmQg
-eW91IHdpbGwgcmV0YWluIAoKMi41JSBhcyBHbG9iYWwgRmluZGVyJ3MgZmVlIGNvbW1pc3Npb24u
-ClRoZXJlIHdpbGwgYmUgYSBmYWNlIHRvIGZhY2UgbWVldGluZyBiZXR3ZWVuIHRoZSBpbnZlc3Rv
-ciBhbmQgdGhlIGludmVzdGVlIGFmdGVyIHNpZ25pbmcgKE1PVSkgCgp0aGUgKEFPUkkpIHNob3Vs
-ZCBub3QgYmUgbGVzcyB0aGFuIDMlIHBlciBhbm51bS4KCkxvb2sgZm9yIGEgcmVsaWFibGUgQ29t
-cGFueSB0aGF0IG5lZWQgZnVuZGluZyBhbmQgd2UgY2FuIGVhc2lseSBtYWtlIDUlIG9mIHRoZSBh
-bW91bnQgcmVjZWl2ZWQgCgpmcm9tIHRoZSBpbnZlc3RvciBidXQgd2UgbmVlZCB0byBtYWludGFp
-biBhYnNvbHV0ZSBjb25maWRlbnRpYWxpdHkgaW4gdGhlIHRyYW5zYWN0aW9uIGFzIHRoZSAKCmZ1
-bmQgcHJvdmlkZXIgd2FudCB0byByZW1haW4gc2lsZW50LCBzbyB5b3UgaGF2ZSB0byBrZWVwIGl0
-IGhpZ2hseSBjb25maWRlbnRpYWwgYmV0d2VlbiB1cy4KSSB3aWxsIG5lZWQgdGhlIGNvbXBhbnkg
-cHJvZmlsZSBhbmQgdGhlIHByb2plY3Qgc3VtbWFyeSBvZiB0aGUgY29tcGFueSB0aGF0IHdpbGwg
-bmVlZCBmdW5kaW5nIHRvIAoKcHJlc2VudCB0byBteSBpbnZlc3Rvci4KCkkgbG9vayBmb3J3YXJk
-IHRvIGhlYXJpbmcgZnJvbSB5b3UuCgoKVGhhbmtzCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZl
-cnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const
+branch HEAD: 65c7f4eba7bf98c3e2574f40e44ba40fcac64567  bus: step 1
+
+elapsed time: 721m
+
+configs tested: 75
+configs skipped: 2
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+gcc tested configs:
+powerpc                           allnoconfig
+x86_64                            allnoconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+arc                                 defconfig
+alpha                               defconfig
+x86_64                        randconfig-a002
+x86_64                        randconfig-a004
+s390                             allmodconfig
+s390                                defconfig
+x86_64                        randconfig-a006
+x86_64                        randconfig-a013
+x86_64                    rhel-8.3-kselftests
+s390                             allyesconfig
+x86_64                          rhel-8.3-func
+arc                  randconfig-r043-20230129
+x86_64                              defconfig
+i386                                defconfig
+ia64                             allmodconfig
+x86_64                           rhel-8.3-syz
+x86_64                        randconfig-a011
+arm                                 defconfig
+i386                          randconfig-a001
+x86_64                         rhel-8.3-kunit
+x86_64                           allyesconfig
+x86_64                           rhel-8.3-kvm
+m68k                             allmodconfig
+i386                          randconfig-a003
+x86_64                           rhel-8.3-bpf
+x86_64                               rhel-8.3
+arc                              allyesconfig
+x86_64                        randconfig-a015
+sh                               allmodconfig
+arm                  randconfig-r046-20230129
+arm                              allyesconfig
+alpha                            allyesconfig
+i386                          randconfig-a014
+arm64                            allyesconfig
+i386                          randconfig-a005
+i386                          randconfig-a012
+m68k                             allyesconfig
+mips                             allyesconfig
+i386                          randconfig-a016
+powerpc                          allmodconfig
+i386                             allyesconfig
+sh                           sh2007_defconfig
+sh                           se7751_defconfig
+arm                        oxnas_v6_defconfig
+powerpc                     asp8347_defconfig
+arm                             rpc_defconfig
+powerpc                     ep8248e_defconfig
+arm                         axm55xx_defconfig
+sh                           se7722_defconfig
+xtensa                  nommu_kc705_defconfig
+sparc                            allyesconfig
+i386                          randconfig-c001
+
+clang tested configs:
+x86_64                        randconfig-a001
+x86_64                        randconfig-a003
+x86_64                        randconfig-a005
+x86_64                          rhel-8.3-rust
+x86_64                        randconfig-a016
+hexagon              randconfig-r041-20230129
+x86_64                        randconfig-a012
+riscv                randconfig-r042-20230129
+i386                          randconfig-a002
+x86_64                        randconfig-a014
+i386                          randconfig-a013
+i386                          randconfig-a004
+i386                          randconfig-a015
+hexagon              randconfig-r045-20230129
+i386                          randconfig-a011
+s390                 randconfig-r044-20230129
+i386                          randconfig-a006
+powerpc                       ebony_defconfig
+powerpc                      acadia_defconfig
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
