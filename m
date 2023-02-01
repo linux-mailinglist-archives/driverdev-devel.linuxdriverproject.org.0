@@ -1,59 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A4DF68A8FC
-	for <lists+driverdev-devel@lfdr.de>; Sat,  4 Feb 2023 09:36:54 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52BEB68AC3F
+	for <lists+driverdev-devel@lfdr.de>; Sat,  4 Feb 2023 21:16:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E963A40286;
-	Sat,  4 Feb 2023 08:36:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E963A40286
+	by smtp2.osuosl.org (Postfix) with ESMTP id 68F2140549;
+	Sat,  4 Feb 2023 20:16:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 68F2140549
 X-Virus-Scanned: amavisd-new at osuosl.org
 X-Amavis-Alert: BAD HEADER SECTION, Non-encoded non-ASCII data (and not UTF-8)
 	(char D3 hex): Subject: ...YOUR FUND / RE:RECUPERACI\x{D3}N DE SU
 	FONDO  [...]
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FLCDbA9QmVP9; Sat,  4 Feb 2023 08:36:49 +0000 (UTC)
+	with ESMTP id l0QvBwz9nHlu; Sat,  4 Feb 2023 20:16:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 566884032E;
-	Sat,  4 Feb 2023 08:36:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 566884032E
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id D1FC3408E3;
+	Sat,  4 Feb 2023 20:16:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D1FC3408E3
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 361B71BF3C9
- for <devel@linuxdriverproject.org>; Sat,  4 Feb 2023 08:36:46 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6ACCC1BF408
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  4 Feb 2023 20:16:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0946A60BA2
- for <devel@linuxdriverproject.org>; Sat,  4 Feb 2023 08:36:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0946A60BA2
+ by smtp1.osuosl.org (Postfix) with ESMTP id 435778196E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  4 Feb 2023 20:16:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 435778196E
 X-Virus-Scanned: amavisd-new at osuosl.org
 X-Amavis-Alert: BAD HEADER SECTION, Non-encoded non-ASCII data (and not UTF-8)
  (char D3 hex): Subject: ...YOUR FUND / RE:RECUPERACI\x{D3}N DE
  SU FONDO  [...]
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9G9tGgIlQYnM for <devel@linuxdriverproject.org>;
- Sat,  4 Feb 2023 08:36:44 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Vfh5WlwzXvsz
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  4 Feb 2023 20:16:30 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2F52360B6E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 675D081959
 Received: from a8f121480e1d (unknown [194.177.22.182])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2F52360B6E
- for <devel@driverdev.osuosl.org>; Sat,  4 Feb 2023 08:36:44 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 675D081959
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  4 Feb 2023 20:16:30 +0000 (UTC)
 Received: from User (unknown [46.148.40.26])
- by a8f121480e1d (Postfix) with SMTP id CF623D04CF;
- Wed,  1 Feb 2023 16:07:46 +0000 (UTC)
+ by a8f121480e1d (Postfix) with SMTP id D61ADD18FC;
+ Wed,  1 Feb 2023 17:01:24 +0000 (UTC)
 From: "International Finance of United States Treasury Departmentoffshore
  payment center United Nations"<test@d-kvadrat.ru>
 Subject: RE:RECALL OF YOUR FUND / RE:RECUPERACIÓN DE SU FONDO  / RE:HERROEP VAN UW FONDS
-Date: Wed, 1 Feb 2023 09:07:17 -0800
+Date: Wed, 1 Feb 2023 10:00:51 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20230204083646.0946A60BA2@smtp3.osuosl.org>
+Message-Id: <20230204201632.435778196E@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
