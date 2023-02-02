@@ -1,46 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CAA1168B567
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Feb 2023 06:56:58 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B48968B568
+	for <lists+driverdev-devel@lfdr.de>; Mon,  6 Feb 2023 06:57:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3CB9E605AB;
-	Mon,  6 Feb 2023 05:56:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3CB9E605AB
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4C23F8129A;
+	Mon,  6 Feb 2023 05:57:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C23F8129A
 X-Virus-Scanned: amavisd-new at osuosl.org
 X-Amavis-Alert: BAD HEADER SECTION, Non-encoded non-ASCII data (and not UTF-8)
 	(char D3 hex): Subject: ...YOUR FUND / RE:RECUPERACI\x{D3}N DE SU
 	FONDO  [...]
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wFzsLGaP-Ww1; Mon,  6 Feb 2023 05:56:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id t7SxwP6bgJ2G; Mon,  6 Feb 2023 05:57:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A28F360608;
-	Mon,  6 Feb 2023 05:56:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A28F360608
+	by smtp1.osuosl.org (Postfix) with ESMTP id B65FC812D6;
+	Mon,  6 Feb 2023 05:57:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B65FC812D6
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 15C621BF35E
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8375E1BF35E
  for <devel@linuxdriverproject.org>; Mon,  6 Feb 2023 05:56:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E3837812CC
- for <devel@linuxdriverproject.org>; Mon,  6 Feb 2023 05:56:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E3837812CC
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5E540400DD
+ for <devel@linuxdriverproject.org>; Mon,  6 Feb 2023 05:56:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5E540400DD
 X-Virus-Scanned: amavisd-new at osuosl.org
 X-Amavis-Alert: BAD HEADER SECTION, Non-encoded non-ASCII data (and not UTF-8)
  (char D3 hex): Subject: ...YOUR FUND / RE:RECUPERACI\x{D3}N DE
  SU FONDO  [...]
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cXdUx-2Z1gQx for <devel@linuxdriverproject.org>;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Z4vUTNZJOJpr for <devel@linuxdriverproject.org>;
  Mon,  6 Feb 2023 05:56:52 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A25758129A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 27C91400AF
 Received: from a8f121480e1d (unknown [194.177.22.182])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A25758129A
- for <devel@linuxdriverproject.org>; Mon,  6 Feb 2023 05:56:51 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 27C91400AF
+ for <devel@driverdev.osuosl.org>; Mon,  6 Feb 2023 05:56:51 +0000 (UTC)
 Received: from User (unknown [46.148.40.26])
  by a8f121480e1d (Postfix) with SMTP id 29B9EF42E6;
  Thu,  2 Feb 2023 08:46:59 +0000 (UTC)
@@ -53,7 +53,7 @@ X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20230206055652.E3837812CC@smtp1.osuosl.org>
+Message-Id: <20230206055653.5E540400DD@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
