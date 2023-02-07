@@ -1,64 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4AB668E1DD
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Feb 2023 21:28:51 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 10ADD68E61D
+	for <lists+driverdev-devel@lfdr.de>; Wed,  8 Feb 2023 03:39:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 25E5E81251;
-	Tue,  7 Feb 2023 20:28:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 25E5E81251
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6A31581440;
+	Wed,  8 Feb 2023 02:39:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6A31581440
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zd-zfGEsTeyb; Tue,  7 Feb 2023 20:28:49 +0000 (UTC)
+	with ESMTP id zWMjEAxju_Cb; Wed,  8 Feb 2023 02:39:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EC6A48124A;
-	Tue,  7 Feb 2023 20:28:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EC6A48124A
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2AB5781340;
+	Wed,  8 Feb 2023 02:39:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2AB5781340
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 55AFB1BF31D
- for <devel@linuxdriverproject.org>; Tue,  7 Feb 2023 20:28:46 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2ECC41BF3D4
+ for <devel@linuxdriverproject.org>; Wed,  8 Feb 2023 02:39:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2F9D560C05
- for <devel@linuxdriverproject.org>; Tue,  7 Feb 2023 20:28:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2F9D560C05
+ by smtp4.osuosl.org (Postfix) with ESMTP id 092DD40879
+ for <devel@linuxdriverproject.org>; Wed,  8 Feb 2023 02:39:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 092DD40879
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pQPJjJaHPtJm for <devel@linuxdriverproject.org>;
- Tue,  7 Feb 2023 20:28:45 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 54D6E600C9
-Received: from notifications1.foundit.sg (notifications1.monsterindia.com
- [20.198.97.41])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 54D6E600C9
- for <devel@linuxdriverproject.org>; Tue,  7 Feb 2023 20:28:45 +0000 (UTC)
-Received: from User (6.red-81-43-183.staticip.rima-tde.net [81.43.183.6])
- by notifications1.foundit.sg (Postfix) with ESMTPA id 25DE8EE3CD;
- Wed,  8 Feb 2023 01:58:18 +0530 (IST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 notifications1.foundit.sg 25DE8EE3CD
-From: "Manuel Clara"<sentry@foundit.sg>
-Subject: THIS EMAIL S FOR YOU ??
-Date: Tue, 7 Feb 2023 21:28:30 +0100
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id WFDYGSYPPEWn for <devel@linuxdriverproject.org>;
+ Wed,  8 Feb 2023 02:39:10 +0000 (UTC)
+X-Greylist: delayed 08:34:46 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C613E407D7
+Received: from mail.mahk.top (unknown [114.141.155.106])
+ by smtp4.osuosl.org (Postfix) with ESMTP id C613E407D7
+ for <devel@driverdev.osuosl.org>; Wed,  8 Feb 2023 02:39:08 +0000 (UTC)
+Received: from User (unknown [154.118.72.58])
+ by mail.mahk.top (Postfix) with SMTP id A61711C32A6;
+ Wed,  8 Feb 2023 00:25:35 +0800 (CST)
+From: "George McConnell"<info@un.org>
+Subject: Attention: Beneficiary.
+Date: Tue, 7 Feb 2023 17:25:57 +0100
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20230207202819.25DE8EE3CD@notifications1.foundit.sg>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=foundit.sg; s=default; t=1675801713;
- bh=svZ5XiuYx51bpSdoMfKeu95yZMfFN3Ro1GPMWSSBlVM=;
- h=Reply-To:From:Subject:Date:From;
- b=Y6TshmkVJMMCML6/wOvdU6uHziGeecu79ednLXzCODDdNhNIIs72DLDSE7UwSm9wU
- r2XZ6xlg7UUNklPV4GguOsFBPL1AaYOEXjlbpPEm5TFNhMS2cXSj5R+3RzAz/MZ4zq
- uwpUXmhj7kqhQeAKkTWArNVPwkMVJktVezFY0Tm4=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=foundit.sg header.i=@foundit.sg
- header.a=rsa-sha256 header.s=default header.b=Y6TshmkV
+Message-Id: <20230208023914.092DD40879@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,19 +59,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: clarajuanmanuel@yandex.com
+Reply-To: rev_fr_georgenwosu@hotmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I have very important information for you. Reply and confirm this
-e-mail address is still valid so I can send you detailed information.
+Attention: Beneficiary.
 
-That needs your urgent attention.
+I am writing to inform you that your Compensation as Reimbursement Payment has been approved today through the Foreign Board Directors of the United Nation Committee ( F B D U N C ) to pay you the sum of (US$1,720,000.00,One Million,Seven Hundred and Twenty Thousand United States Dollars) Only
 
-Mrs CLara Juan Emanuel
-Email: clarajuanmanuel@yandex.com
+This process was carried out through our email random selection for all Unpaid Contracts/Inheritance Funds and Scam victims to be compensated,your mail address was shortlisted and finally selected hence you were contact in the initial instance.
+
+You are therefore advised to reconfirm your details to avoid any mistake of paying to a wrong beneficiary before the financial department twill immediately release your payment  of (US$1,720,000.00,One Million,Seven Hundred and Twenty Thousand United
+States Dollars ) Only.
+
+For your information: Your will get your payment receive through an ATM CARD PAYMENT)  For easy withdraw at any Automated Teller  Machine center in your location.
+
+For Easy Communication Contact: Rev. .George Nwosu
+
+Email:      rev_fr_georgenwosu@hotmail.com
+
+You should immediate required to reconfirm your full details as requested:
+
+Your name:
+Your country:
+Your home address:
+Your Tel phone number:
+Identity card:
+
+We look forward to your prompt response with this email listed urgent.
+
+Thank you.
+
+George McConnell
+Director of Payment,
+UN Foreign Office
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
