@@ -1,66 +1,80 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FA0D68DAC8
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Feb 2023 15:29:30 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D75A968D93D
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Feb 2023 14:24:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A291141853;
-	Tue,  7 Feb 2023 14:29:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A291141853
+	by smtp1.osuosl.org (Postfix) with ESMTP id 41FA881497;
+	Tue,  7 Feb 2023 13:24:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 41FA881497
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GO_yYf7BVeQI; Tue,  7 Feb 2023 14:29:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id vw96HDgiQ5Tf; Tue,  7 Feb 2023 13:24:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5764841529;
-	Tue,  7 Feb 2023 14:29:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5764841529
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0785B81450;
+	Tue,  7 Feb 2023 13:24:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0785B81450
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1123D1BF2CA
- for <devel@linuxdriverproject.org>; Tue,  7 Feb 2023 14:29:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D482E1BF376;
+ Tue,  7 Feb 2023 13:24:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DFF7B409EE
- for <devel@linuxdriverproject.org>; Tue,  7 Feb 2023 14:29:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DFF7B409EE
+ by smtp2.osuosl.org (Postfix) with ESMTP id AEAA4405FD;
+ Tue,  7 Feb 2023 13:24:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AEAA4405FD
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZktiAwLUCeFw for <devel@linuxdriverproject.org>;
- Tue,  7 Feb 2023 14:29:20 +0000 (UTC)
+ with ESMTP id 1cANQhVPuPSr; Tue,  7 Feb 2023 13:24:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2B24F40232
-Received: from mail.pekanbaru.go.id (unknown [103.131.245.130])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2B24F40232
- for <devel@linuxdriverproject.org>; Tue,  7 Feb 2023 14:29:20 +0000 (UTC)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.pekanbaru.go.id (Postfix) with ESMTP id CC9CA96B0E2;
- Tue,  7 Feb 2023 11:49:57 +0700 (WIB)
-Received: from mail.pekanbaru.go.id ([127.0.0.1])
- by localhost (mail.pekanbaru.go.id [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id OtRDPpBzQwVC; Tue,  7 Feb 2023 11:49:57 +0700 (WIB)
-Received: from localhost (localhost.localdomain [127.0.0.1])
- by mail.pekanbaru.go.id (Postfix) with ESMTP id E283D968122;
- Tue,  7 Feb 2023 11:48:13 +0700 (WIB)
-X-Virus-Scanned: amavisd-new at mail.pekanbaru.go.id
-Received: from mail.pekanbaru.go.id ([127.0.0.1])
- by localhost (mail.pekanbaru.go.id [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id r8gJdaEjABwO; Tue,  7 Feb 2023 11:48:13 +0700 (WIB)
-Received: from [192.168.43.217] (unknown [129.205.124.229])
- by mail.pekanbaru.go.id (Postfix) with ESMTPSA id 2174096A1A8;
- Tue,  7 Feb 2023 11:47:03 +0700 (WIB)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B11EA40516
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+Received: from e.armgs.team (e.armgs.team [45.84.130.32])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B11EA40516;
+ Tue,  7 Feb 2023 13:24:27 +0000 (UTC)
+Received: from [10.14.68.0] (port=23784 helo=e.armgs.team)
+ by relay1.qdit with esmtp (envelope-from <timothy@inbox.lt>)
+ id 1pPNxN-000XgA-8H; Tue, 07 Feb 2023 16:24:21 +0300
+Received: from [185.246.220.87] (helo=User)
+ by tarm-mail-b01.i with smtp (Exim 4.96)
+ (envelope-from <timothy@inbox.lt>) id 1pPNxM-004I9f-1x;
+ Tue, 07 Feb 2023 16:24:21 +0300
+From: "Dr. Scott Williams"<timothy@inbox.lt>
+Date: Tue, 7 Feb 2023 05:24:20 -0800
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: =?utf-8?q?CONGRATULATION_=E2=82=AC1=2C000=2E000=2C00_HAS_BEEN_DONATED_TO_?=
- =?utf-8?q?YOU?=
-To: Recipients <pessina@info.com>
-From: STEFANO<pessina@info.com>
-Date: Mon, 06 Feb 2023 20:46:55 -0800
-X-Antivirus: AVG (VPS 230206-4, 2/6/2023), Outbound message
-X-Antivirus-Status: Clean
-Message-Id: <20230207044704.2174096A1A8@mail.pekanbaru.go.id>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <E1pPNxM-004I9f-1x@tarm-mail-b01.i>
+X-KLMS-Rule-ID: 1
+X-KLMS-Message-Action: skipped, AntiSpam
+X-KLMS-AntiSpam-Lua-Profiles: 175333 [Feb 07 2023]
+X-KLMS-AntiSpam-Version: 5.9.59.0
+X-KLMS-AntiSpam-Envelope-From: timothy@inbox.lt
+X-KLMS-AntiSpam-Rate: 95
+X-KLMS-AntiSpam-Status: spam
+X-KLMS-AntiSpam-Method: headers
+X-KLMS-AntiSpam-Info: LuaCore: 502 502
+ 69dee8ef46717dd3cb3eeb129cb7cc8dab9e30f6, {rep_avail}, {reputation ip: black},
+ {black address: 185.246.220.87}, {reputation received: black},
+ {black received address: 185.246.220.87}, {Tracking_phishing_log_reg_95_100},
+ {Prob_reply_not_match_from}, {Prob_to_header_missing},
+ {Prob_Advanced_Mass_Sender_X_Mailer}, {Prob_Reply_to_without_To},
+ {Prob_From_no_space_freehosting}, ApMailHostAddress: 185.246.220.87
+X-MS-Exchange-Organization-SCL: 9
+X-KLMS-AntiSpam-Interceptor-Info: scan successful
+X-KLMS-AntiPhishing: Clean, bases: 2023/02/07 12:40:00
+X-KLMS-AntiVirus: Kaspersky Security for Linux Mail Server, version 8.0.3.30,
+ bases: 2023/02/07 09:23:00 #20834447
+X-KLMS-AntiVirus-Status: Clean, skipped
+Subject: [Spam]Hello the beneficiary, 
+X-Mailman-Original-Authentication-Results: relay1.qdit; auth=pass
+ smtp.auth=timothy@inbox.lt smtp.mailfrom=timothy@inbox.lt;
+ iprev=pass policy.iprev=10.14.68.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,23 +87,99 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: stefanopessinaa@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: drscottwilliamsuk002@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGVsbG8sCgpJJ20gU3RlZmFubyBQZXNzaW5hLCBhbiBJdGFsaWFuIGJ1c2luZXNzIHR5Y29vbiwg
-aW52ZXN0b3IgYW5kCnBoaWxhbnRocm9waXN0IHRoZSB2aWNlIGNoYWlybWFuIGNoaWVmIGV4ZWN1
-dGl2ZSBvZmZpY2VyIChDRU8pIGFuZCB0aGUKc2luZ2xlIGxhcmdlc3Qgc2hhcmVob2xkZXIgb2Yg
-V2FsZ3JlZW5zIEJvb3RzIEFsbGlhbmNlIEkgZ2F2ZSBhd2F5IDI1CnBlcmNlbnQgb2YgbXkgcGVy
-c29uYWwgd2VhbHRoIHRvIGNoYXJpdHkgQW5kIEkgYWxzbyBwbGVkZ2VkIHRvIGdpdmUKYXdheSB0
-aGUgcmVzdCBvZiAyNSUgdGhpcyB5ZWFyIDIwMjMgdG8gSW5kaXZpZHVhbHMgSSBoYXZlIGRlY2lk
-ZWQgdG8KZG9uYXRlIOKCrDEsMDAwLjAwMCwwMCB0byB5b3UgSWYgeW91IGFyZSBpbnRlcmVzdGVk
-IGluIG15IGRvbmF0aW9uLCBkbwpjb250YWN0IG1lIGZvciBtb3JlIGluZm9ybWF0aW9uLgpXYXJt
-IFJlZ2FyZApDRU8gV2FsZ3JlZW5zIEJvb3RzIEFsbGlhbmNlClN0ZWZhbm8gUGVzc2luYQoKLS0g
-ClRoaXMgZW1haWwgaGFzIGJlZW4gY2hlY2tlZCBmb3IgdmlydXNlcyBieSBBVkcgYW50aXZpcnVz
-IHNvZnR3YXJlLgp3d3cuYXZnLmNvbQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0
-Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+The United Nations, Office UK
+
+3 Whitehall Court, London, Sw1a 2el United Kingdom
+
+Tel: +4408715036515 +4405603053391  
+ 
+
+Hello the beneficiary,  
+
+
+This is to notify you that your overdue inheritance claim/contract payment which is with a commercial bank here in Europe which we monitor for processing and approval is ready to be released through the commercial bank. Some of these funds are from African Countries which you were trying for years to claim without success.
+
+ 
+
+It is pertinent to note that an issue of this magnitude should have commenced with a formal meeting in London to clear doubts as many frauds are all over the internet, but due to the time factor and the urgency this matter requires, please bear with me for making the initial contact through email.  
+
+
+Meanwhile, a man with British Passport Number 3028882234 came to our office a few days ago with a letter of authority, claiming to be your true representative in this matter.  
+
+
+Here is his information below:  
+
+ 
+Name: Mr. James Jackson
+
+Bank Name: Citi Bank
+
+Address: Arizona, U. S. A
+
+Account number: 6503809008.  
+
+ 
+
+Please, do reconfirm to this office, as a matter of urgency, whether this man is from you truly, so that this office will not be held responsible for paying this approved fund of { $3.5M} into the nominated Citi Bank Account. If this man is not your true representative, you are requested to fill and return this information for verification purposes, so that your approved claim valued S$3.5M only will be re-approved on your name as the beneficiary of the fund. This fund was as a result of an inheritance/contract fund on your behalf as the beneficiary of it.  
+
+ 
+
+1. Your name--------------------------------
+
+ 
+
+2. Your address -----------------------------
+
+ 
+
+3. Your telephone-----------------------------
+
+ 
+
+4. Age ----------------------------------------
+
+ 
+
+5. Sex-------------------------------- ---------
+
+ 
+
+6. Your occupation ------------------------------
+
+ 
+
+7. Your identification----------------------------
+
+ 
+
+8. Your bank information-----------------------------
+
+ 
+
+As soon as we receive the above data, we shall commence with all necessary procedures in order to re-approve this fund on your name as the beneficiary through the office of the Director International Remittance/Foreign Operations of the commercial bank here in Europe who handles all foreign inheritance, contract claims etc. We shall proceed with the payment details to the said Mr. Jackson, if we do not hear from you within the next few working days from today.  
+
+ 
+
+You are advised also to stop any communications with anybody until you receive your fund to avoid further distractions. Your advice to contact me with the email below (EMAIL: drscottwilliamsuk002@gmail.com)  
+
+ 
+
+Best Regards.  
+
+ 
+
+Dr. Scott Williams.
+
+Executive Officer (Foreign Paying Dept
+
+(United Nations Office London)Hello the beneficiary, 
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
