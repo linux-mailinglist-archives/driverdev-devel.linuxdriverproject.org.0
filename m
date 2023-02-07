@@ -1,41 +1,41 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2FFA168D711
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Feb 2023 13:44:21 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D99168D712
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Feb 2023 13:44:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 536B960F31;
-	Tue,  7 Feb 2023 12:44:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 536B960F31
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5B4DE60F4A;
+	Tue,  7 Feb 2023 12:44:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5B4DE60F4A
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aOfWyJ_AJY5S; Tue,  7 Feb 2023 12:44:18 +0000 (UTC)
+	with ESMTP id uHT8oQxq-mJx; Tue,  7 Feb 2023 12:44:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 36F4460AE9;
-	Tue,  7 Feb 2023 12:44:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 36F4460AE9
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3668960F23;
+	Tue,  7 Feb 2023 12:44:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3668960F23
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4D8181BF616
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 59B171BF95C
  for <devel@linuxdriverproject.org>; Tue,  7 Feb 2023 12:44:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 351C140232
+ by smtp4.osuosl.org (Postfix) with ESMTP id 414A041061
  for <devel@linuxdriverproject.org>; Tue,  7 Feb 2023 12:44:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 351C140232
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 414A041061
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sRmCECziU5Xb for <devel@linuxdriverproject.org>;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bakyN6famGY2 for <devel@linuxdriverproject.org>;
  Tue,  7 Feb 2023 12:44:14 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6731040516
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5923B40913
 Received: from notifications1.foundit.sg (notifications1.monsterindia.com
  [20.198.97.41])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6731040516
- for <devel@linuxdriverproject.org>; Tue,  7 Feb 2023 12:44:14 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5923B40913
+ for <devel@driverdev.osuosl.org>; Tue,  7 Feb 2023 12:44:14 +0000 (UTC)
 Received: from User (119.red-81-43-182.staticip.rima-tde.net [81.43.182.119])
  by notifications1.foundit.sg (Postfix) with ESMTPA id BC589E7CE3;
  Tue,  7 Feb 2023 18:13:29 +0530 (IST)
@@ -56,7 +56,7 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  b=GVf+lXlEGm4SE2HFqgwF52+IzTqm4dOOGxxevoVgNu0ZbXYglxT4oQwRA/gMPDf83
  TGMbhx05hn0txDgb7QcH8XkvbOzWFqKtTXQZEr1VzRqOxGUrugXPc+YysmxpyizVCP
  sg42Q8gHqN7eEWWhMyyy9Z/8lwzr/kL30B7ee4F4=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (1024-bit key) header.d=foundit.sg header.i=@foundit.sg
  header.a=rsa-sha256 header.s=default header.b=GVf+lXlE
 X-BeenThere: driverdev-devel@linuxdriverproject.org
