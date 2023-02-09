@@ -1,41 +1,41 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2833D6907FD
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Feb 2023 12:57:49 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 94B216907FB
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Feb 2023 12:57:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 539F24109F;
-	Thu,  9 Feb 2023 11:57:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 539F24109F
+	by smtp3.osuosl.org (Postfix) with ESMTP id D2E7F60E8E;
+	Thu,  9 Feb 2023 11:57:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D2E7F60E8E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pX63ia-g7VHg; Thu,  9 Feb 2023 11:57:45 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ms327_rQWbSI; Thu,  9 Feb 2023 11:57:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DE230415ED;
-	Thu,  9 Feb 2023 11:57:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DE230415ED
+	by smtp3.osuosl.org (Postfix) with ESMTP id C5CAE60D94;
+	Thu,  9 Feb 2023 11:57:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C5CAE60D94
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C4B331BF96B
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B4CB91BF5AD
  for <devel@linuxdriverproject.org>; Thu,  9 Feb 2023 11:57:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9FBFC415BB
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9895081F8C
  for <devel@linuxdriverproject.org>; Thu,  9 Feb 2023 11:57:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9FBFC415BB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9895081F8C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oKE-RlekIz-3 for <devel@linuxdriverproject.org>;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id JrMbGGgbf5wR for <devel@linuxdriverproject.org>;
  Thu,  9 Feb 2023 11:57:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D63744109F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D121481F75
 Received: from notifications1.foundit.sg (notifications1.monsterindia.com
  [20.198.97.41])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D63744109F
- for <devel@driverdev.osuosl.org>; Thu,  9 Feb 2023 11:57:38 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D121481F75
+ for <devel@linuxdriverproject.org>; Thu,  9 Feb 2023 11:57:38 +0000 (UTC)
 Received: from User (119.red-81-43-182.staticip.rima-tde.net [81.43.182.119])
  by notifications1.foundit.sg (Postfix) with ESMTPA id 9E9BDD4BCE;
  Thu,  9 Feb 2023 17:27:19 +0530 (IST)
@@ -56,7 +56,7 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  b=G1kGqfGp1h1cxWjQ4ksAxLCF5hJcf2kLSC9TZyp4PtROOMGsCojutnzdhAP7WLLQs
  eJCtd+tuXsV0YlI+0xlIcWI2bQGaUND0k8qQHSKUgcV6Y5RW3FM6jaZpkmHZEVQyeL
  eVYGBzLYYEuc3PkY+UEQayisKngrnJggi4ivD33c=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key) header.d=foundit.sg header.i=@foundit.sg
  header.a=rsa-sha256 header.s=default header.b=G1kGqfGp
 X-BeenThere: driverdev-devel@linuxdriverproject.org
