@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CDA169292E
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Feb 2023 22:23:59 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E26CC6929D5
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Feb 2023 23:08:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 007D2415AA;
-	Fri, 10 Feb 2023 21:23:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 007D2415AA
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5422F60BCB;
+	Fri, 10 Feb 2023 22:07:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5422F60BCB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PCz9lb9V7O3o; Fri, 10 Feb 2023 21:23:56 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id AV7FJBHBiH6f; Fri, 10 Feb 2023 22:07:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B551B4159D;
-	Fri, 10 Feb 2023 21:23:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B551B4159D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 27C42607F9;
+	Fri, 10 Feb 2023 22:07:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 27C42607F9
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 50D061BF276
- for <devel@linuxdriverproject.org>; Fri, 10 Feb 2023 21:23:52 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D21891BF973
+ for <devel@linuxdriverproject.org>; Fri, 10 Feb 2023 22:07:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2955A4198B
- for <devel@linuxdriverproject.org>; Fri, 10 Feb 2023 21:23:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2955A4198B
+ by smtp3.osuosl.org (Postfix) with ESMTP id A7B54607B4
+ for <devel@linuxdriverproject.org>; Fri, 10 Feb 2023 22:07:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A7B54607B4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P1eUPDUbRWF5 for <devel@linuxdriverproject.org>;
- Fri, 10 Feb 2023 21:23:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KbL5_dcrstp4 for <devel@linuxdriverproject.org>;
+ Fri, 10 Feb 2023 22:07:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7360E41714
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7360E41714
- for <devel@driverdev.osuosl.org>; Fri, 10 Feb 2023 21:23:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="318547510"
-X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="318547510"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Feb 2023 13:23:49 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 796BF6077D
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 796BF6077D
+ for <devel@driverdev.osuosl.org>; Fri, 10 Feb 2023 22:07:50 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="328231546"
+X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="328231546"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Feb 2023 14:07:50 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="670133692"
-X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="670133692"
+X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="777083787"
+X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="777083787"
 Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
- by fmsmga007.fm.intel.com with ESMTP; 10 Feb 2023 13:23:48 -0800
+ by fmsmga002.fm.intel.com with ESMTP; 10 Feb 2023 14:07:48 -0800
 Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pQarz-000641-0s;
- Fri, 10 Feb 2023 21:23:47 +0000
-Date: Sat, 11 Feb 2023 05:23:44 +0800
+ (envelope-from <lkp@intel.com>) id 1pQbYZ-00064f-2s;
+ Fri, 10 Feb 2023 22:07:47 +0000
+Date: Sat, 11 Feb 2023 06:07:24 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:kobject-const-2] BUILD REGRESSION
- edb07d61689645fa19378a7a18451f91c8414b5a
-Message-ID: <63e6b5e0.5voADEZrDv0Rkcyh%lkp@intel.com>
+Subject: [driver-core:debugfs_lookup_fix] BUILD SUCCESS
+ c5388f712c9bfbdd7863b1d01438269227a0e4d1
+Message-ID: <63e6c01c.us+httKp9AjQesLo%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676064230; x=1707600230;
+ t=1676066870; x=1707602870;
  h=date:from:to:cc:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=KMmT4q4siPTHDvRRIXtXnQIDPwhVUozq2X9YaDY1zoo=;
- b=JPWsGxR7KD5UXigzJ1bRDoYMrq1uTuPAlOFLiIJn/ejejgYo1A3HbpUC
- udq8dri+dPiqmvLS10w6HViBqxS1MASOhdx4gJWzYr80wTGo4THxckrZl
- zNpuFZhnz0whRkpOvO7JTn0YLTGdHptocaX7HXS0x56uIf+BO53tmwztM
- 6mId25sUp1hK9eklG/zNuaAazQVkyTCDDAorWAwc8qOt5UEbc/Yw7RB9t
- yz2bqPmtBr7RRkKqFNPx4uzFY+O7Zj0bkrYiZMJEGdpjriKldAG6c7ghM
- LmAd9FIz795kH/DGC1UlI88oBR03A5J1EF/wS3i0Nyae6N8DrSOZ/R4Yu
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=vkiVJKBG8pwWmLid526WB97HYHp370I62mUa9PPJ3PM=;
+ b=S6Rbed5iEb3sNq0neY3bz+hyIA+JDU6Kvr7FnD+dtwaKiA3TFjRAQQnB
+ 2lldk4tY160fywPdk1hllsAFcwHQl48KmNgaKXda6EgEz+NSZ1C7asWZX
+ MGOP85EBwkMpSULLTj/rDM1Il/xygqoSX6f3Sm4U8QMM2RdECInZWAdlz
+ ZH1+l4wyPHgA1OTGvOKHa6vLjKXJMKPU+eKKoyq0hyojWz+QThJTUHJpl
+ mNq78s8xf1ockFJl3rs/8p0sb4uZZ7gYhekC2MphHm3rFlmQl9gnzTkKx
+ sA2tWMOa9j02VvrIZbXebWXaLzzOiWaItWUw8Nfyw2dAPcZ29ky+RCFHS
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=JPWsGxR7
+ header.a=rsa-sha256 header.s=Intel header.b=S6Rbed5i
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,36 +90,16 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const-2
-branch HEAD: edb07d61689645fa19378a7a18451f91c8414b5a  driver core: mark struct device's bus_type as const.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_lookup_fix
+branch HEAD: c5388f712c9bfbdd7863b1d01438269227a0e4d1  mtd: spi-nor: fix memory leak when using debugfs_lookup()
 
-Error/Warning reports:
-
-https://lore.kernel.org/oe-kbuild-all/202302110025.Hi1M9ULU-lkp@intel.com
-https://lore.kernel.org/oe-kbuild-all/202302110229.u91u71ws-lkp@intel.com
-
-Error/Warning: (recently discovered and may have been fixed)
-
-drivers/irqchip/irq-mbigen.c:248:30: error: no member named 'dev_root' in 'struct bus_type'
-drivers/irqchip/irq-mbigen.c:248:43: error: 'struct bus_type' has no member named 'dev_root'
-
-Error/Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- arm64-allyesconfig
-|   `-- drivers-irqchip-irq-mbigen.c:error:struct-bus_type-has-no-member-named-dev_root
-`-- arm64-defconfig
-    `-- drivers-irqchip-irq-mbigen.c:error:struct-bus_type-has-no-member-named-dev_root
-clang_recent_errors
-|-- arm64-randconfig-r016-20230210
-|   `-- drivers-irqchip-irq-mbigen.c:error:no-member-named-dev_root-in-struct-bus_type
-`-- arm64-randconfig-r024-20230210
-    `-- drivers-irqchip-irq-mbigen.c:error:no-member-named-dev_root-in-struct-bus_type
-
-elapsed time: 753m
+elapsed time: 798m
 
 configs tested: 73
 configs skipped: 3
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
 gcc tested configs:
 alpha                            allyesconfig
