@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D48576923AA
-	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Feb 2023 17:51:51 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 66B86692544
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 Feb 2023 19:22:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 582654198C;
-	Fri, 10 Feb 2023 16:51:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 582654198C
+	by smtp2.osuosl.org (Postfix) with ESMTP id C493041167;
+	Fri, 10 Feb 2023 18:22:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C493041167
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QdUDxbLWWUPq; Fri, 10 Feb 2023 16:51:48 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UhCxgLSTunAY; Fri, 10 Feb 2023 18:22:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7BCF1419AE;
-	Fri, 10 Feb 2023 16:51:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7BCF1419AE
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5F7F0400D1;
+	Fri, 10 Feb 2023 18:22:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5F7F0400D1
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 964D01BF28C
- for <devel@linuxdriverproject.org>; Fri, 10 Feb 2023 16:51:44 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2C38D1BF2C5
+ for <devel@linuxdriverproject.org>; Fri, 10 Feb 2023 18:22:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 705B460AC4
- for <devel@linuxdriverproject.org>; Fri, 10 Feb 2023 16:51:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 705B460AC4
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0212E41167
+ for <devel@linuxdriverproject.org>; Fri, 10 Feb 2023 18:22:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0212E41167
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yy3rMQ7yzMgz for <devel@linuxdriverproject.org>;
- Fri, 10 Feb 2023 16:51:43 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Z-JexemM3yOn for <devel@linuxdriverproject.org>;
+ Fri, 10 Feb 2023 18:22:45 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3294A60A9B
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3294A60A9B
- for <devel@driverdev.osuosl.org>; Fri, 10 Feb 2023 16:51:43 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="310095074"
-X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="310095074"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Feb 2023 08:51:42 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BBA3F400D1
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BBA3F400D1
+ for <devel@driverdev.osuosl.org>; Fri, 10 Feb 2023 18:22:45 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="314134962"
+X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="314134962"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Feb 2023 10:22:45 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="645678463"
-X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="645678463"
+X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="617974678"
+X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="617974678"
 Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
- by orsmga006.jf.intel.com with ESMTP; 10 Feb 2023 08:51:40 -0800
+ by orsmga003.jf.intel.com with ESMTP; 10 Feb 2023 10:22:43 -0800
 Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pQWce-0005uj-0P;
- Fri, 10 Feb 2023 16:51:40 +0000
-Date: Sat, 11 Feb 2023 00:50:41 +0800
+ (envelope-from <lkp@intel.com>) id 1pQY2k-0005yL-2y;
+ Fri, 10 Feb 2023 18:22:42 +0000
+Date: Sat, 11 Feb 2023 02:22:11 +0800
 From: kernel test robot <lkp@intel.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:kobject-const-2 93/100]
- drivers/irqchip/irq-mbigen.c:248:30: error: no member named 'dev_root' in
- 'struct bus_type'
-Message-ID: <202302110025.Hi1M9ULU-lkp@intel.com>
+Subject: [driver-core:kobject-const-2 71/77]
+ drivers/irqchip/irq-mbigen.c:248:43: error: 'struct bus_type' has no member
+ named 'dev_root'
+Message-ID: <202302110229.u91u71ws-lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676047903; x=1707583903;
+ t=1676053365; x=1707589365;
  h=date:from:to:cc:subject:message-id:mime-version;
- bh=+VWoD2Su6Cu0tMWNt8Er3eAnHfk0G5+mq7hzAjC78Jc=;
- b=hhYviI6HYWtCUQoRyoD9cngeu1UpypsBGZoYcOOjQmo3R/tiIixBkxkv
- 3/1rXF17ILXe6M8giBrf0NqWsowic4b2pTY48IviYyK75bw3Q+SXSlAJn
- ROI8BmOa08z5VRrKumtAEa1xDozzdzDZr2rTSXCQhOlXeCrNnDAunwA12
- YwDBv+mjQw74GtdbLfs0tMvCWhkpemHmsq9Tdi5+VUI/CBYXHxs3MEbSe
- 27EQlVvj5rjI9UGbfl/O0dCp9XC0gS4x6iaSr5iIDshELOg/149T8CckT
- 3MBpaQum9iux4c77Iu5YwCCDV7GALMQMNG5svVwWAAhVGtxgItb0cMfyw
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=cT0BmUVgAKCNZ69R7mxAJ7I+K3dJl0l83OzOKH0xG0Q=;
+ b=BujhhkTgPzqm0yLzIDhgrSVx9ZQeuCUltvWU7ZthHLX9J2aNeUDew8Cf
+ WlK1GlXTb3A4NEPaLzbFH7C5lGkjdSGm+vkGseq8mOz0atx1oDlmCGHSN
+ 3GDmKuqrzXmqWwDlvlS5/VZXa36WSRrLeoMJj24bqHLRsfB0OZeBnKu0I
+ nhY/F7iO9ELPioKg/k6gFHIGzWYSFkeLPXZ9yjiofPjMk2AkYnTG2Zs8K
+ yqs63N8Swal+bpytKxg9N93eq8itAqYDFREfakwhIB9HKxMM1CbmxFXAx
+ Ofu25RjoXFh3GRV4UXfBbD4qNfD5rSukOKMQgve9S8fzFmmzoacYg2Sud
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=hhYviI6H
+ header.a=rsa-sha256 header.s=Intel header.b=BujhhkTg
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,8 +84,7 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, llvm@lists.linux.dev,
- oe-kbuild-all@lists.linux.dev
+Cc: devel@driverdev.osuosl.org, oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -93,33 +92,31 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git kobject-const-2
 head:   edb07d61689645fa19378a7a18451f91c8414b5a
-commit: 09840de8fa7d238c6f87a3807fa0d380c4165764 [93/100] driver core: bus: move dev_root out of struct bus_type
-config: arm64-randconfig-r016-20230210 (https://download.01.org/0day-ci/archive/20230211/202302110025.Hi1M9ULU-lkp@intel.com/config)
-compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project db0e6591612b53910a1b366863348bdb9d7d2fb1)
+commit: 7389911cf9a8bc346a6aa2662645298627c44cb6 [71/77] driver core: bus: move dev_root out of struct bus_type
+config: arm64-allyesconfig (https://download.01.org/0day-ci/archive/20230211/202302110229.u91u71ws-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 12.1.0
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        # install arm64 cross compiling tool for clang build
-        # apt-get install binutils-aarch64-linux-gnu
-        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?id=09840de8fa7d238c6f87a3807fa0d380c4165764
+        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?id=7389911cf9a8bc346a6aa2662645298627c44cb6
         git remote add driver-core https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git
         git fetch --no-tags driver-core kobject-const-2
-        git checkout 09840de8fa7d238c6f87a3807fa0d380c4165764
+        git checkout 7389911cf9a8bc346a6aa2662645298627c44cb6
         # save the config file
         mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/
 
 If you fix the issue, kindly add following tag where applicable
 | Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202302110025.Hi1M9ULU-lkp@intel.com/
+| Link: https://lore.kernel.org/oe-kbuild-all/202302110229.u91u71ws-lkp@intel.com/
 
 All errors (new ones prefixed by >>):
 
->> drivers/irqchip/irq-mbigen.c:248:30: error: no member named 'dev_root' in 'struct bus_type'
-                   parent = platform_bus_type.dev_root;
-                            ~~~~~~~~~~~~~~~~~ ^
-   1 error generated.
+   drivers/irqchip/irq-mbigen.c: In function 'mbigen_of_create_domain':
+>> drivers/irqchip/irq-mbigen.c:248:43: error: 'struct bus_type' has no member named 'dev_root'
+     248 |                 parent = platform_bus_type.dev_root;
+         |                                           ^
 
 
 vim +248 drivers/irqchip/irq-mbigen.c
