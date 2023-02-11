@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 07A22692C62
-	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Feb 2023 02:04:06 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D496692C86
+	for <lists+driverdev-devel@lfdr.de>; Sat, 11 Feb 2023 02:26:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2123B41991;
-	Sat, 11 Feb 2023 01:04:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2123B41991
+	by smtp1.osuosl.org (Postfix) with ESMTP id DC7B882365;
+	Sat, 11 Feb 2023 01:25:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DC7B882365
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TmwvLohkbIA2; Sat, 11 Feb 2023 01:04:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id G-88beVwQSUk; Sat, 11 Feb 2023 01:25:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 867DD41B3F;
-	Sat, 11 Feb 2023 01:03:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 867DD41B3F
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8DC4382340;
+	Sat, 11 Feb 2023 01:25:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8DC4382340
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BEEB31BF977
- for <devel@linuxdriverproject.org>; Sat, 11 Feb 2023 01:03:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AF4B91BF33B
+ for <devel@linuxdriverproject.org>; Sat, 11 Feb 2023 01:25:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A587961148
- for <devel@linuxdriverproject.org>; Sat, 11 Feb 2023 01:03:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A587961148
+ by smtp3.osuosl.org (Postfix) with ESMTP id 95AC96118C
+ for <devel@linuxdriverproject.org>; Sat, 11 Feb 2023 01:25:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 95AC96118C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k2Tb9ERqWv4K for <devel@linuxdriverproject.org>;
- Sat, 11 Feb 2023 01:03:55 +0000 (UTC)
+ with ESMTP id cP6zfysbijqu for <devel@linuxdriverproject.org>;
+ Sat, 11 Feb 2023 01:25:54 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1CB976068A
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1CB976068A
- for <devel@driverdev.osuosl.org>; Sat, 11 Feb 2023 01:03:54 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="328262260"
-X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="328262260"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Feb 2023 17:03:54 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6D63C61045
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6D63C61045
+ for <devel@driverdev.osuosl.org>; Sat, 11 Feb 2023 01:25:54 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="330578009"
+X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="330578009"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Feb 2023 17:25:53 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="700649277"
-X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="700649277"
+X-IronPort-AV: E=McAfee;i="6500,9779,10617"; a="756970734"
+X-IronPort-AV: E=Sophos;i="5.97,287,1669104000"; d="scan'208";a="756970734"
 Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 10 Feb 2023 17:03:52 -0800
+ by FMSMGA003.fm.intel.com with ESMTP; 10 Feb 2023 17:25:52 -0800
 Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pQeIx-00069R-22;
- Sat, 11 Feb 2023 01:03:51 +0000
-Date: Sat, 11 Feb 2023 09:03:44 +0800
+ (envelope-from <lkp@intel.com>) id 1pQeeF-00069y-2z;
+ Sat, 11 Feb 2023 01:25:51 +0000
+Date: Sat, 11 Feb 2023 09:24:59 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-next] BUILD SUCCESS
- ccfc901f01170721554963745f7bd94c15235c96
-Message-ID: <63e6e970.+wlCkJXBMgA01Ci0%lkp@intel.com>
+Subject: [driver-core:driver-core-testing] BUILD REGRESSION
+ ecfd9f08fe2ef7616477c089dce1b0f05dcee13c
+Message-ID: <63e6ee6b.zRuFicE2l9mNat+q%lkp@intel.com>
 User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1676077435; x=1707613435;
+ t=1676078754; x=1707614754;
  h=date:from:to:cc:subject:message-id:mime-version:
  content-transfer-encoding;
- bh=FQNHlKgt9jGusursNeNhIycX02C1QNdjSquDj1+d4sE=;
- b=BIxjib0HqNybMDhTgQC7jUHQy20oxcF5KOgKgKQRSNiH9YUm7UxOaGyb
- jP+kOhFazepyq4YgSTI2gE9G6bv6sjBqrbS6IRAC8TAu3XsG0lWP/tlQS
- JltB9gEGmAqzNW7NRRtCAMBe3SPyh5f2CtxXHHtf/DCeFm3l4B3SeV/t0
- Hm1sFkRzeQXlNCqA0MpEbo+1evr2WoRFqUUwWgm2i1o7d3jJ8RBQx6QH5
- mNpSF3wHSPPyTaCLQ21iNB/QcyVGsz8+L6uI7sLpr5Lp1KPpT99BM2bNT
- 5AVD0eGjGQ6RqwAHDdpw6P0wAeqXloTQ3h9JHcLB88AUwdP7aGbUQNSWv
- w==;
+ bh=bYVrzRoPRq0uQ/LqEOczyY7753zJ9oRkxi5M7BKcsZ4=;
+ b=bEgrQPey8DHNldxLRh00+muKo0/bEPKCcf3NigI78xRXLtrfUT6+Qgpe
+ b9P+2vK+HcSMRn82KCB9oy2ZfhvNGLguHtVvzIwdrsx3m/quC2eZQiMhE
+ gBmfF11LC1lvJ/5PumCNHlNnnCfHLkNueZ3GKAbyZeAsa3cU5nhBtLDcI
+ JJGPxBgW75GIqF4a2wIZYxZTuGgbgAssgxbS2vHh7w9MDoLb8ASwgNp4t
+ De4S/k87CdHK2NxqWfIppf8cto0W9QQP9QdLc8UW/TwhyrjxkAbMIr1b4
+ SaVHDuPqwesA3y/Kp37OFWPoNTasAk8tkD9nQx2UACsXfbgto6VDAZKcB
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=BIxjib0H
+ header.a=rsa-sha256 header.s=Intel header.b=bEgrQPey
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,16 +90,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-next
-branch HEAD: ccfc901f01170721554963745f7bd94c15235c96  driver core: bus: update my copyright notice
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
+branch HEAD: ecfd9f08fe2ef7616477c089dce1b0f05dcee13c  devtmpfs: remove return value of devtmpfs_delete_node()
 
-elapsed time: 874m
+Error/Warning reports:
+
+https://lore.kernel.org/oe-kbuild-all/202302102345.UQfDskhW-lkp@intel.com
+
+Error/Warning: (recently discovered and may have been fixed)
+
+drivers/base/base.h:221:63: error: void function 'devtmpfs_delete_node' should not return a value [-Wreturn-type]
+drivers/base/firmware_loader/../base.h:221:63: error: void function 'devtmpfs_delete_node' should not return a value [-Wreturn-type]
+drivers/base/power/../base.h:221:63: error: void function 'devtmpfs_delete_node' should not return a value [-Wreturn-type]
+
+Error/Warning ids grouped by kconfigs:
+
+clang_recent_errors
+`-- arm-randconfig-r006-20230210
+    |-- drivers-base-base.h:error:void-function-devtmpfs_delete_node-should-not-return-a-value
+    |-- drivers-base-firmware_loader-..-base.h:error:void-function-devtmpfs_delete_node-should-not-return-a-value
+    `-- drivers-base-power-..-base.h:error:void-function-devtmpfs_delete_node-should-not-return-a-value
+
+elapsed time: 894m
 
 configs tested: 73
 configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
 
 gcc tested configs:
 alpha                            allyesconfig
