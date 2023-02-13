@@ -2,60 +2,64 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5630B694E57
-	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Feb 2023 18:47:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A6D8B694ED4
+	for <lists+driverdev-devel@lfdr.de>; Mon, 13 Feb 2023 19:07:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 55F1540936;
-	Mon, 13 Feb 2023 17:47:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 55F1540936
+	by smtp2.osuosl.org (Postfix) with ESMTP id 189C240A5F;
+	Mon, 13 Feb 2023 18:07:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 189C240A5F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z-sB6qy_rKR0; Mon, 13 Feb 2023 17:47:43 +0000 (UTC)
+	with ESMTP id qe6zrVRwKKoM; Mon, 13 Feb 2023 18:07:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1202C40982;
-	Mon, 13 Feb 2023 17:47:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1202C40982
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id BD1E140A2B;
+	Mon, 13 Feb 2023 18:07:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BD1E140A2B
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1A8401BF48D
- for <devel@linuxdriverproject.org>; Mon, 13 Feb 2023 17:47:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D18301BF289
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 13 Feb 2023 18:07:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0153D8195C
- for <devel@linuxdriverproject.org>; Mon, 13 Feb 2023 17:47:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0153D8195C
+ by smtp1.osuosl.org (Postfix) with ESMTP id B21AF81BCB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 13 Feb 2023 18:07:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B21AF81BCB
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fRObvtf7aTvX for <devel@linuxdriverproject.org>;
- Mon, 13 Feb 2023 17:47:35 +0000 (UTC)
+ with ESMTP id LIcRM349XHFG
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 13 Feb 2023 18:07:35 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 32F208137B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AFDD481C58
 Received: from mail.aptekam.ru (mail.aptekam.ru [91.232.135.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 32F208137B
- for <devel@linuxdriverproject.org>; Mon, 13 Feb 2023 17:47:35 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AFDD481C58
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 13 Feb 2023 18:07:35 +0000 (UTC)
 Received: from mail.aptekam.ru (localhost [127.0.0.1])
- by mail.aptekam.ru (Postfix) with ESMTPS id 500211044BA3;
- Tue, 14 Feb 2023 00:37:40 +0700 (+07)
+ by mail.aptekam.ru (Postfix) with ESMTPS id 7B28C1045072;
+ Tue, 14 Feb 2023 00:57:02 +0700 (+07)
 Received: from localhost (localhost [127.0.0.1])
- by mail.aptekam.ru (Postfix) with ESMTP id 90A3E1044852;
- Tue, 14 Feb 2023 00:29:54 +0700 (+07)
+ by mail.aptekam.ru (Postfix) with ESMTP id DE58C10450E6;
+ Tue, 14 Feb 2023 00:47:44 +0700 (+07)
 Received: from mail.aptekam.ru ([127.0.0.1])
  by localhost (mail.aptekam.ru [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id fGPKkez8-foh; Tue, 14 Feb 2023 00:29:54 +0700 (+07)
+ with ESMTP id mO4rg5dnuTVx; Tue, 14 Feb 2023 00:47:44 +0700 (+07)
 Received: from User (unknown [103.99.3.62])
- by mail.aptekam.ru (Postfix) with ESMTPA id 4A2F11044C54;
- Tue, 14 Feb 2023 00:29:51 +0700 (+07)
+ by mail.aptekam.ru (Postfix) with ESMTPA id 3537A10450E1;
+ Tue, 14 Feb 2023 00:47:40 +0700 (+07)
 From: "Jacques BOUCHEX"<kzn_erafarm_office@aptekam.ru>
 Subject: Bonjour,
-Date: Mon, 13 Feb 2023 09:30:38 -0800
+Date: Mon, 13 Feb 2023 09:48:28 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20230213172951.4A2F11044C54@mail.aptekam.ru>
+Message-Id: <20230213174741.3537A10450E1@mail.aptekam.ru>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
