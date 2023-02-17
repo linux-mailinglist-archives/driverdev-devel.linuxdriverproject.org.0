@@ -1,64 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A82FF698F7D
-	for <lists+driverdev-devel@lfdr.de>; Thu, 16 Feb 2023 10:14:52 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 315FC69A350
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 Feb 2023 02:14:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 234F781F63;
-	Thu, 16 Feb 2023 09:14:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 234F781F63
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9EF9360742;
+	Fri, 17 Feb 2023 01:14:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9EF9360742
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id imrBHHWBZ8_I; Thu, 16 Feb 2023 09:14:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id odJitbiz8Df4; Fri, 17 Feb 2023 01:14:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F08E881F5B;
-	Thu, 16 Feb 2023 09:14:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F08E881F5B
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5F2C9606ED;
+	Fri, 17 Feb 2023 01:14:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5F2C9606ED
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3C0B01BF82D
- for <devel@linuxdriverproject.org>; Thu, 16 Feb 2023 09:14:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D965D1BF31C
+ for <devel@linuxdriverproject.org>; Fri, 17 Feb 2023 01:13:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1E3A540297
- for <devel@linuxdriverproject.org>; Thu, 16 Feb 2023 09:14:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1E3A540297
+ by smtp2.osuosl.org (Postfix) with ESMTP id BFDC54021C
+ for <devel@linuxdriverproject.org>; Fri, 17 Feb 2023 01:13:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BFDC54021C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UZlLuCvu2fPH for <devel@linuxdriverproject.org>;
- Thu, 16 Feb 2023 09:14:46 +0000 (UTC)
+ with ESMTP id 9Qo3Iy52jmc5 for <devel@linuxdriverproject.org>;
+ Fri, 17 Feb 2023 01:13:56 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4858B40C93
-Received: from hosted-4-client-dedicated-live-server2.livegpstrack.com
- (hosted-4-client-dedicated-live-server2.livegpstrack.com [103.102.239.60])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4858B40C93
- for <devel@linuxdriverproject.org>; Thu, 16 Feb 2023 09:14:46 +0000 (UTC)
-From: =?ISO-8859-1?B?TGl2ZSBHUFM=?=<noreply@livegpstrack.com>
-To: devel@linuxdriverproject.org
-Subject: =?ISO-8859-1?B?TG9va2luZyBmb3IgRGlzdHJpYnV0b3I=?=
-Date: 16 Feb 2023 06:15:32 -0300
-Message-ID: <20230216061532.E858EA68FC902155@livegpstrack.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D0AC640138
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D0AC640138
+ for <devel@driverdev.osuosl.org>; Fri, 17 Feb 2023 01:13:56 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10623"; a="359327282"
+X-IronPort-AV: E=Sophos;i="5.97,304,1669104000"; d="scan'208";a="359327282"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Feb 2023 17:13:55 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10623"; a="739075380"
+X-IronPort-AV: E=Sophos;i="5.97,304,1669104000"; d="scan'208";a="739075380"
+Received: from lkp-server01.sh.intel.com (HELO 4455601a8d94) ([10.239.97.150])
+ by fmsmga004.fm.intel.com with ESMTP; 16 Feb 2023 17:13:54 -0800
+Received: from kbuild by 4455601a8d94 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pSpJy-000B0R-02;
+ Fri, 17 Feb 2023 01:13:54 +0000
+Date: Fri, 17 Feb 2023 09:12:56 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:driver-core-testing] BUILD SUCCESS
+ d3002468cb5d5da11e22145c9af32facd5c34352
+Message-ID: <63eed498.hZ2tWIS0ixMOBCWe%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns;
- s=1665719670.livegpstrack; d=livegpstrack.com; 
- b=NRVF5nQcW+3r2MjwrVs/KKlX7UiyYI3LD4j3nWyLu7uNZ9Mgeuks/MmVTBUv1VpbH1MzlNq4y/Z5
- 5tjrKyhUJAfhUPK1UCH9/sdqy1DyHLno+KQHFHMNkZMPwYSVMMdQmvgqkrldsoEtR+873O/tRPK5
- cTGBL8EKPxCxMRCCRuw=;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed;
- s=1665719670.livegpstrack; d=livegpstrack.com; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=noreply@livegpstrack.com; 
- bh=34sP27WfmTL9LfY9mDi7iu9hDqc=;
- b=NfL9e1eS207P0UjgDA7DX6BRKQasFBUd6svDyRYs7ilOQL0xqhAKp3Fpmwbcjjgj1cXKj0xK/nAV
- /H5ra03jS6idLDFqGjW//vpqzeyvVvl9d2ldRpd/8YBBEsMOT1Gk632wybJHgToNkRgxWmnghsY1
- ilKOtnJgasf8I9wsVy8=
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1676596436; x=1708132436;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=j0hwpZOGT+nSkA5eesS5bpdWn5sfCgnqXIAvx7uBgIg=;
+ b=V1me4Y9mBJw1SlVTXkvFCg72M/6kR/qNhOjZTbQOrhzXmyYTAY2XLkiT
+ AZ0UzjQLm5PE1kikxSH62ov3srnc/Rwz1bloeNu+5BYSzM1KorwX5KTwu
+ KJeIht/klZuZX2nGjKavac8MwerABLufX2jZvoxQrNrRREbfZi3fe20X+
+ 3WrHNCY3AA6lVucgcDsflKQJDn4As0biht8eoJO6deqz9ABQwtWvUmnaZ
+ mrynyQnkG0w1TcF/P5UJgUOKjPLBUgewMGdK8cOucCy38Ud/TjaAV8EiL
+ MbEqZpKZSCqeYkkpiQS7QrGEUszS1rRYdPQ/HXYeP0/R9drCwikFIeZj3
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=livegpstrack.com
- header.i=noreply@livegpstrack.com header.a=rsa-sha1
- header.s=1665719670.livegpstrack header.b=NfL9e1eS
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=V1me4Y9m
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,46 +84,109 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: =?ISO-8859-1?B?Q2FyVHJhY2sgR1BT?= <salesctg@cartrackgps.net>
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello devel,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
+branch HEAD: d3002468cb5d5da11e22145c9af32facd5c34352  debugfs: update comment of debugfs_rename()
 
-My name is Pablo from Car Track GPS and we're looking for distributors for our tracking products.
-We design innovative software and hardware location technologies.
+elapsed time: 720m
 
-Our innovative web based software allows owners to track fleets in realtime by iOS or Android Apps.
-If a vehicle is stolen you can stop the engine and recover it.
+configs tested: 79
+configs skipped: 3
 
-With our Professional Kit you can start your own tracking business or just resell the software and hardware.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Our products are ideal for fleet tracking and recovery of stolen vehicles. Insurance companies, trucking companies and car dealers have been our clients for over 20 years.
-This could be a good choice If you want to start a new business or diversify your investment.
+gcc tested configs:
+alpha                            allyesconfig
+alpha                               defconfig
+arc                              allyesconfig
+arc                                 defconfig
+arc                  randconfig-r043-20230212
+arc                  randconfig-r043-20230213
+arm                              allmodconfig
+arm                              allyesconfig
+arm                                 defconfig
+arm                  randconfig-r046-20230212
+arm64                            allyesconfig
+arm64                               defconfig
+csky                                defconfig
+i386                             allyesconfig
+i386                              debian-10.3
+i386                                defconfig
+i386                 randconfig-a011-20230213
+i386                 randconfig-a012-20230213
+i386                 randconfig-a013-20230213
+i386                 randconfig-a014-20230213
+i386                 randconfig-a015-20230213
+i386                 randconfig-a016-20230213
+ia64                             allmodconfig
+ia64                                defconfig
+loongarch                        allmodconfig
+loongarch                         allnoconfig
+loongarch                           defconfig
+m68k                             allmodconfig
+m68k                                defconfig
+mips                             allmodconfig
+mips                             allyesconfig
+nios2                               defconfig
+parisc                              defconfig
+parisc64                            defconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                randconfig-r042-20230213
+riscv                          rv32_defconfig
+s390                             allmodconfig
+s390                             allyesconfig
+s390                                defconfig
+s390                 randconfig-r044-20230213
+sh                               allmodconfig
+sparc                               defconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                            allnoconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                                  kexec
+x86_64               randconfig-a011-20230213
+x86_64               randconfig-a012-20230213
+x86_64               randconfig-a013-20230213
+x86_64               randconfig-a014-20230213
+x86_64               randconfig-a015-20230213
+x86_64               randconfig-a016-20230213
+x86_64                               rhel-8.3
 
-The business consists in offering location services to end customers through a web site.
-This is accomplished through a Web platform that we provide as a turnkey server installed at your end.
+clang tested configs:
+arm                  randconfig-r046-20230213
+hexagon              randconfig-r041-20230212
+hexagon              randconfig-r041-20230213
+hexagon              randconfig-r045-20230212
+hexagon              randconfig-r045-20230213
+i386                 randconfig-a001-20230213
+i386                 randconfig-a002-20230213
+i386                 randconfig-a003-20230213
+i386                 randconfig-a004-20230213
+i386                 randconfig-a005-20230213
+i386                 randconfig-a006-20230213
+riscv                randconfig-r042-20230212
+s390                 randconfig-r044-20230212
+x86_64               randconfig-a001-20230213
+x86_64               randconfig-a002-20230213
+x86_64               randconfig-a003-20230213
+x86_64               randconfig-a004-20230213
+x86_64               randconfig-a005-20230213
+x86_64               randconfig-a006-20230213
 
-This service will allow customers to track their fleets from any web browser - even from Tablets and Smartphones - with a username and password.
-We have Professional Kits available which include full Software licenses, so once you get the KIT and start testing you will not need to invest again in the Software or have to pay any monthly fee.
-
-If you're interested I can send you the proposal for your consideration.
-
-Best regards,
-Paul Novak
-Car Track GPS
-Miami: +1 786 352 8766
-
-Our official website is cartrackgps .com
-We also own the domain cartrackgps .net
-
-We have clients in over 100 countries and 20 years of experience in GPS tracking systems.
-ID: 869330
-
-If you would like to opt-out please reply to this email with the subject REMOVE.
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
