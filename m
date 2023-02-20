@@ -1,64 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98CF969C65B
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Feb 2023 09:16:03 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C137F69C6EE
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Feb 2023 09:45:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DC23881D70;
-	Mon, 20 Feb 2023 08:16:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DC23881D70
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5D83D605AD;
+	Mon, 20 Feb 2023 08:45:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5D83D605AD
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v5Aegjl4Iw7H; Mon, 20 Feb 2023 08:16:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IVkd6vt03An8; Mon, 20 Feb 2023 08:45:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B5CF681D46;
-	Mon, 20 Feb 2023 08:16:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B5CF681D46
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3AFC1605AB;
+	Mon, 20 Feb 2023 08:45:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3AFC1605AB
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 05EA71BF3C6
- for <devel@linuxdriverproject.org>; Mon, 20 Feb 2023 08:15:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D7F8E1BF3C6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Feb 2023 08:45:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D3B58408ED
- for <devel@linuxdriverproject.org>; Mon, 20 Feb 2023 08:15:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D3B58408ED
+ by smtp4.osuosl.org (Postfix) with ESMTP id BEC54415D5
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Feb 2023 08:45:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BEC54415D5
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AulzlK0qZsaa for <devel@linuxdriverproject.org>;
- Mon, 20 Feb 2023 08:15:55 +0000 (UTC)
-X-Greylist: delayed 02:31:31 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A925B4089F
-Received: from mail.itp.by (pppoe-static.178.124.152.21.telecom.mogilev.by
- [178.124.152.21])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A925B4089F
- for <devel@linuxdriverproject.org>; Mon, 20 Feb 2023 08:15:55 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.itp.by (Postfix) with ESMTP id AE59C197B97;
- Mon, 20 Feb 2023 00:24:11 -0500 (EST)
-Received: from mail.itp.by ([127.0.0.1])
- by localhost (mail.itp.by [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id JPFQIhIrISXL; Mon, 20 Feb 2023 00:24:07 -0500 (EST)
-Received: from localhost (localhost [127.0.0.1])
- by mail.itp.by (Postfix) with ESMTP id 828FC19131A;
- Sun, 19 Feb 2023 09:44:06 -0500 (EST)
-X-Virus-Scanned: amavisd-new at mail.itp.by
-Received: from mail.itp.by ([127.0.0.1])
- by localhost (mail.itp.by [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id iCsj90YFnCRZ; Sun, 19 Feb 2023 09:43:59 -0500 (EST)
-Received: from [147.78.103.27] (control [192.168.0.199])
- by mail.itp.by (Postfix) with ESMTP id 1B879143E86;
- Sat, 18 Feb 2023 23:46:29 -0500 (EST)
+ with ESMTP id jAlOUpdo9uXn
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Feb 2023 08:45:48 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6260E4156C
+Received: from mail.paretdee.com (mail.paretdee.com [141.95.17.174])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6260E4156C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Feb 2023 08:45:48 +0000 (UTC)
+Received: by mail.paretdee.com (Postfix, from userid 1002)
+ id D004FA2188; Mon, 20 Feb 2023 08:45:36 +0000 (UTC)
+Received: by mail.paretdee.com for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Feb 2023 08:45:31 GMT
+Message-ID: <20230220074500-0.1.4y.ahoh.0.t5mepftwry@paretdee.com>
+Date: Mon, 20 Feb 2023 08:45:31 GMT
+From: "Zbynek Spacek" <zbynek.spacek@paretdee.com>
+To: <driverdev-devel@linuxdriverproject.org>
+Subject: Silicone rubber - vulcanization
+X-Mailer: mail.paretdee.com
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: 178.124.152.21
-To: Recipients <2023@noreply.net>
-From: "Mr. K Adams" <2023@noreply.net>
-Date: Sat, 18 Feb 2023 20:46:24 -0800
-Message-Id: <20230219044629.1B879143E86@mail.itp.by>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=paretdee.com; s=mail; 
+ t=1676882745; bh=81y7GKW1qfpmZraEf77YtkUdBRVrEXx1Dfams4657E8=;
+ h=Date:From:To:Subject:From;
+ b=CELmUjH+yQF9j3cod73bhLP+FvWQiOd/L01KKUf5qIHjPbYd8wPa0V8NYhC/StNxw
+ J6jaORU1akJ9N34v2WTXDf5lNNpJDWLpI3g9EK8hxwEpGRjs0R9B4Y2TenNyZ7VfmT
+ Cefdf4khxAg3rodY2LSCGaYEBEp+KSjCKI0dnFA57m/b/+erNprFTqtIfbX3JL5G6R
+ YwzzkdaaUC80MAxduEAshmJYptyIhGQI2W/tWNjLSjDC6BvothjL8vpZz4+ZLW0qxo
+ NBBFSE8Ejk69Co2Uq0HNy6T2oTAU75rK00eN1UF8CPMCT+5GE4kf2tfM+TaZHDt/lB
+ 9lrwZTRQJFopA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=paretdee.com header.i=@paretdee.com
+ header.a=rsa-sha256 header.s=mail header.b=CELmUjH+
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,37 +75,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: vc220061@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-2023 Business Investment  Project.
+Good morning,
+
+a few months ago, we were contacted by a company from your industry, where too high costs were generated by the purchase of silicone rubbers and silicone mixtures with specific properties.
+
+We offered them a wide range of HTV silicone rubbers with technical properties and liquid silicone rubber (LSR), as well as dyes and stabilizers. Competitive conditions made it possible to flexibly adjust to their needs and type of production.
+
+Now the purchase and delivery of rubber runs smoothly, the client has gained a significant increase in savings in relation to the planned budget at the level of several percent per year.
+
+Would you like to check what solutions we can provide you?
 
 
-Attn:Sir.
-
-
-I'm Douglas,
-
-Am an Investment/ loan Advisor/Manager and International Outsourcing
-personnel. I recommend credible Entrepreneur/viable projects to a
-Consortium of Private Investors who are looking for a good business
-plan/Entrepreneurs to invest and manage funds on a short and long term
-basis.
-
-However my client is seeking a reliable Individual/Company to invest a
-Huge funds in your country.
-
-
-Kindly reply back to me for more details. ( vc220061@gmail.com)
-
-Sincerely,
-
-Dr.Douglas Adams
-
-investment manager/Advisor.
+Best regards
+Zbynek Spacek
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
