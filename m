@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 272E269FAD6
-	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Feb 2023 19:10:54 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 05DE169FDD2
+	for <lists+driverdev-devel@lfdr.de>; Wed, 22 Feb 2023 22:41:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 453E981344;
-	Wed, 22 Feb 2023 18:10:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 453E981344
+	by smtp3.osuosl.org (Postfix) with ESMTP id 59AA160AD4;
+	Wed, 22 Feb 2023 21:41:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 59AA160AD4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i7ywDRGwz0ce; Wed, 22 Feb 2023 18:10:49 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rP6ZEgPsZiLw; Wed, 22 Feb 2023 21:41:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F13C481345;
-	Wed, 22 Feb 2023 18:10:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F13C481345
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0D65161391;
+	Wed, 22 Feb 2023 21:41:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0D65161391
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2AFF71BF334
- for <devel@linuxdriverproject.org>; Wed, 22 Feb 2023 18:10:46 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 199801BF400
+ for <devel@linuxdriverproject.org>; Wed, 22 Feb 2023 21:41:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 11E4F40486
- for <devel@linuxdriverproject.org>; Wed, 22 Feb 2023 18:10:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 11E4F40486
+ by smtp1.osuosl.org (Postfix) with ESMTP id E5B9681306
+ for <devel@linuxdriverproject.org>; Wed, 22 Feb 2023 21:41:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E5B9681306
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GSdLa4Q1KC3I for <devel@linuxdriverproject.org>;
- Wed, 22 Feb 2023 18:10:44 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id kDpkrt3QaaTx for <devel@linuxdriverproject.org>;
+ Wed, 22 Feb 2023 21:41:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 269CD40191
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 269CD40191
- for <devel@driverdev.osuosl.org>; Wed, 22 Feb 2023 18:10:43 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10629"; a="335199422"
-X-IronPort-AV: E=Sophos;i="5.97,319,1669104000"; d="scan'208";a="335199422"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2023 10:10:29 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D3A5681302
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D3A5681302
+ for <devel@driverdev.osuosl.org>; Wed, 22 Feb 2023 21:41:35 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10629"; a="419272236"
+X-IronPort-AV: E=Sophos;i="5.97,319,1669104000"; d="scan'208";a="419272236"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2023 13:41:34 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10629"; a="1001087703"
-X-IronPort-AV: E=Sophos;i="5.97,319,1669104000"; d="scan'208";a="1001087703"
+X-IronPort-AV: E=McAfee;i="6500,9779,10629"; a="649701747"
+X-IronPort-AV: E=Sophos;i="5.97,319,1669104000"; d="scan'208";a="649701747"
 Received: from lkp-server01.sh.intel.com (HELO 3895f5c55ead) ([10.239.97.150])
- by fmsmga005.fm.intel.com with ESMTP; 22 Feb 2023 10:10:28 -0800
+ by orsmga006.jf.intel.com with ESMTP; 22 Feb 2023 13:41:33 -0800
 Received: from kbuild by 3895f5c55ead with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pUtZT-0000dN-1Q;
- Wed, 22 Feb 2023 18:10:27 +0000
-Date: Thu, 23 Feb 2023 02:10:11 +0800
+ (envelope-from <lkp@intel.com>) id 1pUwrk-0000kb-2F;
+ Wed, 22 Feb 2023 21:41:32 +0000
+Date: Thu, 23 Feb 2023 05:40:42 +0800
 From: kernel test robot <lkp@intel.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:class_cleanup 90/99] arch/mips/kernel/vpe-mt.c:320:3:
- error: field designator 'owner' does not refer to any field in type 'struct
- class'
-Message-ID: <202302230206.Ty3AABtm-lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:class_cleanup] BUILD REGRESSION
+ d695b889adbebf45a6187dccd33173dc9e58f356
+Message-ID: <63f68bda.86dkislciDOc8bTv%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Disposition: inline
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677089444; x=1708625444;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=nQOjVYMBsgFI9cFgbBVDrMGwomAo3wz3opH2REyUukQ=;
- b=auu0y3pNV3kK/lMCqjvhTPVtPnJ3stXIXfnqGUvWnI8DZ0pQSRPBStN+
- tem0b+6Up0Yp0fjkiJIiR7vwrSyHzjorYh27iQKKC7tBvZFdsPmmjVgdZ
- FZgLf+SORh1Ma35voWIEjndslBIHAXUPWQS7+8HX9bvqNkERPv/An9EZG
- o83EMW3JGxj7pLk3LFP3kSzL/XT8fVzG6lNaSTYZJ7IW4wj50UCWpl9r4
- 6VBQkoPkIdBunLt4mJRm/1noEIu6qxlDI16NCxqB+TOPLJzGgPAlfQUY9
- m47XQWmb7KU2BR2LRapah7Qn1VtlNhYBMaq36e+X8hqlXr7gf8hej/ke8
+ t=1677102095; x=1708638095;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=lTVV9oxzWMxTHb2URkSBC7M8ThCzwNZTSHPtOIAaQUw=;
+ b=C2l10eUaNwOMFFZ/AuP4KxJ2Npr4fd2uPpIhgVI/ItBHyaz8paaBRqdJ
+ OX3eUezO2Fs8hP58VedUqKMvyjv+qItKwMQ/YeYxaSO3CGYS45K4NTfIY
+ VuVmRC6YQ02iWFchmnCAjYiARext3eECgOqEMZGXwQBsAGlYh3M95jGVq
+ 0z0ir4/3g6UcZDVKTfZZf6I/XBorHzfxbGzPyd0oso7kvFvKxQPTD2VD4
+ dlU2CiJyoo+avSun/tVvMqLgVwKpoGzU9tXvOKtfh2jgMspCET3D7qAbC
+ jLV2X+I17Tu/GngIIWYHzmD1TbbzUzisgJ8PhgVyUEwlURtoyXzWu5wYZ
  Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=auu0y3pN
+ header.a=rsa-sha256 header.s=Intel header.b=C2l10eUa
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,88 +84,148 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, llvm@lists.linux.dev,
- oe-kbuild-all@lists.linux.dev
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git class_cleanup
-head:   d695b889adbebf45a6187dccd33173dc9e58f356
-commit: dc9bedfbd8ab7885e0252663c6a1df8a2d8a1ea3 [90/99] driver core: class: remove struct module owner out of struct class
-config: mips-maltaaprp_defconfig (https://download.01.org/0day-ci/archive/20230223/202302230206.Ty3AABtm-lkp@intel.com/config)
-compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project db89896bbbd2251fff457699635acbbedeead27f)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install mips cross compiling tool for clang build
-        # apt-get install binutils-mipsel-linux-gnu
-        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?id=dc9bedfbd8ab7885e0252663c6a1df8a2d8a1ea3
-        git remote add driver-core https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git
-        git fetch --no-tags driver-core class_cleanup
-        git checkout dc9bedfbd8ab7885e0252663c6a1df8a2d8a1ea3
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=mips olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=mips SHELL=/bin/bash
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git class_cleanup
+branch HEAD: d695b889adbebf45a6187dccd33173dc9e58f356  driver core: device: make device_create*() take a const struct class *
 
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202302230206.Ty3AABtm-lkp@intel.com/
+Error/Warning reports:
 
-All errors (new ones prefixed by >>):
+https://lore.kernel.org/oe-kbuild-all/202302230206.Ty3AABtm-lkp@intel.com
 
-   arch/mips/kernel/vpe-mt.c:178:7: warning: no previous prototype for function 'vpe_alloc' [-Wmissing-prototypes]
-   void *vpe_alloc(void)
-         ^
-   arch/mips/kernel/vpe-mt.c:178:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
-   void *vpe_alloc(void)
-   ^
-   static 
-   arch/mips/kernel/vpe-mt.c:196:5: warning: no previous prototype for function 'vpe_start' [-Wmissing-prototypes]
-   int vpe_start(void *vpe, unsigned long start)
-       ^
-   arch/mips/kernel/vpe-mt.c:196:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
-   int vpe_start(void *vpe, unsigned long start)
-   ^
-   static 
-   arch/mips/kernel/vpe-mt.c:206:5: warning: no previous prototype for function 'vpe_stop' [-Wmissing-prototypes]
-   int vpe_stop(void *vpe)
-       ^
-   arch/mips/kernel/vpe-mt.c:206:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
-   int vpe_stop(void *vpe)
-   ^
-   static 
-   arch/mips/kernel/vpe-mt.c:227:5: warning: no previous prototype for function 'vpe_free' [-Wmissing-prototypes]
-   int vpe_free(void *vpe)
-       ^
-   arch/mips/kernel/vpe-mt.c:227:1: note: declare 'static' if the function is not intended to be used outside of this translation unit
-   int vpe_free(void *vpe)
-   ^
-   static 
->> arch/mips/kernel/vpe-mt.c:320:3: error: field designator 'owner' does not refer to any field in type 'struct class'
-           .owner = THIS_MODULE,
-            ^
-   4 warnings and 1 error generated.
+Error/Warning: (recently discovered and may have been fixed)
 
+arch/mips/kernel/vpe-mt.c:320:3: error: field designator 'owner' does not refer to any field in type 'struct class'
+drivers/soc/qcom/rmtfs_mem.c:128:10: error: 'struct class' has no member named 'owner'
+include/linux/export.h:27:21: error: initialization of 'const char *' from incompatible pointer type 'struct module *' [-Werror=incompatible-pointer-types]
+include/linux/export.h:29:21: error: initialization of 'const char *' from incompatible pointer type 'struct module *' [-Werror=incompatible-pointer-types]
 
-vim +320 arch/mips/kernel/vpe-mt.c
+Error/Warning ids grouped by kconfigs:
 
-1a2a6d7e8816ed Dengcheng Zhu 2013-10-30  317  
-1a2a6d7e8816ed Dengcheng Zhu 2013-10-30  318  static struct class vpe_class = {
-1a2a6d7e8816ed Dengcheng Zhu 2013-10-30  319  	.name = "vpe",
-1a2a6d7e8816ed Dengcheng Zhu 2013-10-30 @320  	.owner = THIS_MODULE,
-1a2a6d7e8816ed Dengcheng Zhu 2013-10-30  321  	.dev_release = vpe_device_release,
-1a2a6d7e8816ed Dengcheng Zhu 2013-10-30  322  	.dev_groups = vpe_groups,
-1a2a6d7e8816ed Dengcheng Zhu 2013-10-30  323  };
-1a2a6d7e8816ed Dengcheng Zhu 2013-10-30  324  
+gcc_recent_errors
+|-- arm-allmodconfig
+|   |-- drivers-soc-qcom-rmtfs_mem.c:error:struct-class-has-no-member-named-owner
+|   `-- include-linux-export.h:error:initialization-of-const-char-from-incompatible-pointer-type-struct-module
+|-- arm-allyesconfig
+|   |-- drivers-soc-qcom-rmtfs_mem.c:error:struct-class-has-no-member-named-owner
+|   `-- include-linux-export.h:error:initialization-of-const-char-from-incompatible-pointer-type-struct-module
+|-- arm-defconfig
+|   |-- drivers-soc-qcom-rmtfs_mem.c:error:struct-class-has-no-member-named-owner
+|   `-- include-linux-export.h:error:initialization-of-const-char-from-incompatible-pointer-type-struct-module
+|-- arm64-allyesconfig
+|   |-- drivers-soc-qcom-rmtfs_mem.c:error:struct-class-has-no-member-named-owner
+|   `-- include-linux-export.h:error:initialization-of-const-char-from-incompatible-pointer-type-struct-module
+`-- arm64-defconfig
+    |-- drivers-soc-qcom-rmtfs_mem.c:error:struct-class-has-no-member-named-owner
+    `-- include-linux-export.h:error:initialization-of-const-char-from-incompatible-pointer-type-struct-module
+clang_recent_errors
+`-- mips-maltaaprp_defconfig
+    `-- arch-mips-kernel-vpe-mt.c:error:field-designator-owner-does-not-refer-to-any-field-in-type-struct-class
 
-:::::: The code at line 320 was first introduced by commit
-:::::: 1a2a6d7e8816ed2b2679a0c4f7ba4019cd31dd62 MIPS: APRP: Split VPE loader into separate files.
+elapsed time: 722m
 
-:::::: TO: Deng-Cheng Zhu <dengcheng.zhu@imgtec.com>
-:::::: CC: Ralf Baechle <ralf@linux-mips.org>
+configs tested: 92
+configs skipped: 3
+
+gcc tested configs:
+alpha                            allyesconfig
+alpha                               defconfig
+arc                              allyesconfig
+arc                                 defconfig
+arc                     nsimosci_hs_defconfig
+arc                  randconfig-r043-20230222
+arm                              allmodconfig
+arm                              allyesconfig
+arm                                 defconfig
+arm                  randconfig-r046-20230222
+arm64                            allyesconfig
+arm64                               defconfig
+csky                                defconfig
+i386                             allyesconfig
+i386                              debian-10.3
+i386                                defconfig
+i386                          randconfig-a001
+i386                          randconfig-a003
+i386                          randconfig-a005
+i386                          randconfig-a012
+i386                          randconfig-a014
+i386                          randconfig-a016
+ia64                             allmodconfig
+ia64                                defconfig
+loongarch                        allmodconfig
+loongarch                         allnoconfig
+loongarch                           defconfig
+m68k                             allmodconfig
+m68k                       bvme6000_defconfig
+m68k                                defconfig
+m68k                        m5272c3_defconfig
+mips                             allmodconfig
+mips                             allyesconfig
+mips                         db1xxx_defconfig
+mips                      maltasmvp_defconfig
+nios2                               defconfig
+parisc                              defconfig
+parisc64                            defconfig
+powerpc                          allmodconfig
+powerpc                           allnoconfig
+powerpc                      pasemi_defconfig
+powerpc                    sam440ep_defconfig
+riscv                            allmodconfig
+riscv                             allnoconfig
+riscv                               defconfig
+riscv                          rv32_defconfig
+s390                             allmodconfig
+s390                             allyesconfig
+s390                                defconfig
+sh                               allmodconfig
+sh                               j2_defconfig
+sh                   sh7770_generic_defconfig
+sh                          urquell_defconfig
+sparc                               defconfig
+sparc64                          alldefconfig
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64                            allnoconfig
+x86_64                           allyesconfig
+x86_64                              defconfig
+x86_64                                  kexec
+x86_64                        randconfig-a002
+x86_64                        randconfig-a004
+x86_64                        randconfig-a006
+x86_64                        randconfig-a011
+x86_64                        randconfig-a013
+x86_64                        randconfig-a015
+x86_64                               rhel-8.3
+
+clang tested configs:
+arm                          moxart_defconfig
+hexagon                          alldefconfig
+hexagon              randconfig-r041-20230222
+hexagon              randconfig-r045-20230222
+i386                              allnoconfig
+i386                          randconfig-a002
+i386                          randconfig-a004
+i386                          randconfig-a006
+i386                          randconfig-a011
+i386                          randconfig-a013
+i386                          randconfig-a015
+mips                malta_qemu_32r6_defconfig
+mips                      maltaaprp_defconfig
+powerpc                     ksi8560_defconfig
+powerpc               mpc834x_itxgp_defconfig
+powerpc                  mpc885_ads_defconfig
+riscv                randconfig-r042-20230222
+s390                 randconfig-r044-20230222
+x86_64                        randconfig-a001
+x86_64                        randconfig-a003
+x86_64                        randconfig-a005
+x86_64                        randconfig-a012
+x86_64                        randconfig-a014
+x86_64                        randconfig-a016
 
 -- 
 0-DAY CI Kernel Test Service
