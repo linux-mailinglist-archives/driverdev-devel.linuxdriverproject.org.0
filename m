@@ -1,77 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42E876A2E47
-	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Feb 2023 06:02:00 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A731D6A2EF7
+	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Feb 2023 10:10:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7364440604;
-	Sun, 26 Feb 2023 05:01:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7364440604
+	by smtp1.osuosl.org (Postfix) with ESMTP id 17B41819F5;
+	Sun, 26 Feb 2023 09:10:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 17B41819F5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oaj2lVI7T6uk; Sun, 26 Feb 2023 05:01:57 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 0v47TscD06I4; Sun, 26 Feb 2023 09:10:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 49762400DD;
-	Sun, 26 Feb 2023 05:01:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 49762400DD
+	by smtp1.osuosl.org (Postfix) with ESMTP id DBA0281959;
+	Sun, 26 Feb 2023 09:10:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DBA0281959
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 600D21BF5E0
- for <devel@linuxdriverproject.org>; Sun, 26 Feb 2023 05:01:53 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 50AED1BF31E
+ for <devel@linuxdriverproject.org>; Sun, 26 Feb 2023 09:10:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 417CE400C5
- for <devel@linuxdriverproject.org>; Sun, 26 Feb 2023 05:01:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 417CE400C5
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2A06481959
+ for <devel@linuxdriverproject.org>; Sun, 26 Feb 2023 09:10:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2A06481959
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AGBu_tIwDNXy for <devel@linuxdriverproject.org>;
- Sun, 26 Feb 2023 05:01:51 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 68E82400DD
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 68E82400DD
- for <devel@driverdev.osuosl.org>; Sun, 26 Feb 2023 05:01:51 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10632"; a="419952363"
-X-IronPort-AV: E=Sophos;i="5.97,329,1669104000"; d="scan'208";a="419952363"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Feb 2023 21:01:50 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10632"; a="847393412"
-X-IronPort-AV: E=Sophos;i="5.97,329,1669104000"; d="scan'208";a="847393412"
-Received: from lkp-server01.sh.intel.com (HELO 3895f5c55ead) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 25 Feb 2023 21:01:49 -0800
-Received: from kbuild by 3895f5c55ead with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pW9AS-0003Zz-36;
- Sun, 26 Feb 2023 05:01:48 +0000
-Date: Sun, 26 Feb 2023 13:01:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- f003e90bbe28f94d6036009c8cabf8b5c8c4002d
-Message-ID: <63fae79b.VCAyCTgShsU57Sz1%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id V-BRGQNGqVBi for <devel@linuxdriverproject.org>;
+ Sun, 26 Feb 2023 09:10:24 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 96E4F81A64
+Received: from mail-pj1-x102a.google.com (mail-pj1-x102a.google.com
+ [IPv6:2607:f8b0:4864:20::102a])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 96E4F81A64
+ for <devel@driverdev.osuosl.org>; Sun, 26 Feb 2023 09:10:24 +0000 (UTC)
+Received: by mail-pj1-x102a.google.com with SMTP id
+ m8-20020a17090a4d8800b002377bced051so7193371pjh.0
+ for <devel@driverdev.osuosl.org>; Sun, 26 Feb 2023 01:10:24 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=PPoDX1c3+QmNLXNBMadXFFRhWSIFMXQMP1vSVo61NGQ=;
+ b=bzIuU0C6Q0c5bCmjN3inW2PIhMzjrQjxYmhqySCJKaz2WGRRAV99KSYNFQCKptsAzO
+ Q+A1UQ+CzuFfPX8JPXIlQKEYVMzbPYlkbT/QDeFWOhEwwJjldURQH+LFkIqvF4f1obtw
+ 1xYS9pJZ3a/DKfP4Ll9yrqLJBZIAHBF86f6ngUl6VWEt6AqMXOxj/Te8Cm4LaqSX7wrw
+ 1eZgsU2GQuK/IaUNNfhTQmw75p1VvcPZ8hJqZHTCOMe2B1KI3g18n+cyAvAM3SDIF8EN
+ eEkcqqKr/zoHf2BByHtfsQJ88ZB4BjShlZQhOvDw3ErkIjR8D7ds/bgU9ElevQxVRw9P
+ zJDw==
+X-Gm-Message-State: AO0yUKX2+HIYtw9MjAODw0OzalSR2i9Q6JlkH36ijF4LCa49k7DKNpq0
+ LUuEE3/fj3d4s9/yf7eiXmk2NV1okOvO43pjL88=
+X-Google-Smtp-Source: AK7set+FVizu8sO5cyhvBPStQxYm83O+iVQeP6OTPXoUu6MTPCJtIz+GsAKR0STf6WGZROcmtCIxsqUT3oXrAG1oZs0=
+X-Received: by 2002:a17:902:e743:b0:19a:6b55:a44d with SMTP id
+ p3-20020a170902e74300b0019a6b55a44dmr2620947plf.1.1677402623827; Sun, 26 Feb
+ 2023 01:10:23 -0800 (PST)
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677387711; x=1708923711;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=UAnqgXuq2qcgirrMBMVeaDdETGvrmLN6URyVShWhCj4=;
- b=fxL1uLlfKHGQmJfJEVT1oE0mlc+N0cMR9ZyH/bgvaiQNJloyJIgz7M33
- cfZNc5EWqAa2axpbf2D5DfS82IxKCTbAS9iQJZHZz5EQVabEv3EJAUk/G
- De+p266h66XMCI8Lxcmr7uFsgf1IYdCeaQYE7iFwuf2ErAshUBwdo5Jbc
- iqHHHMcuI5vfDx2gb1vay+W1GAleaAbdX+cekgrEsfiLNFjdiOS4JhGbz
- Cg7O+jNBkehdEPuB6BTOy1pOrdnfOBAL080EV2nAoVSbmsdDd78R8B1uz
- RDKhQ0ccDzSHpTPe7EX3GBtU1Y6YIfhID8+3F5992RVVs59KOZWIGgXsq
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fxL1uLlf
+Received: by 2002:a05:6a20:8f06:b0:bf:c8bf:1f5a with HTTP; Sun, 26 Feb 2023
+ 01:10:23 -0800 (PST)
+From: Mr Moussa Albert <missmariewarlordlbr2017@gmail.com>
+Date: Sun, 26 Feb 2023 09:10:23 +0000
+Message-ID: <CAHRekwtS91sJOAKUtAi0gqmJoJ4v2e74heLnm9zSTnzxjxBQAA@mail.gmail.com>
+Subject: From The Desk of: Mr Moussa Albert,
+To: undisclosed-recipients:;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20210112;
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=PPoDX1c3+QmNLXNBMadXFFRhWSIFMXQMP1vSVo61NGQ=;
+ b=KIFDgYuQRug+KB13rjjLtZ35SWjQJ2HaDMAXUNxAsq7FeoggtrgLr3OBiH+iw+KFG2
+ rEbwncs9U6aM0F1EGobaSsjMzkVyhtWrmHJiscsCVhxdtXe3cqMkRXknAbBTRdmH0BCe
+ e5TVaIMvfb6F/YOIPbGSMLKgHpJhiUkD/0XLv4vSx0DvMSkDf+o8sNkdgyMahCSSF+29
+ 2LP6Ryllip8XL1JOr1dpOdKpZN0hSFjUokPKtLc6oXqexurV+dtZczx8+MmHeOTMiYQe
+ iKq9vs8BVocQHuL8HhMb86Mk5AJMSuaQrfbb7I//fbWqlFWVXzYIfksVkW/oCAngJXsC
+ wnSg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20210112 header.b=KIFDgYuQ
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,48 +90,53 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: mrmoussaalbert01@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
-branch HEAD: f003e90bbe28f94d6036009c8cabf8b5c8c4002d  soundwire: sysfs: remove unneeded ATTRIBUTE_GROUPS() comments
+From The Desk of: Mr Moussa Albert,
+CORIS BANK Audits & Accountant Manager
+CORIS BANK INTERNATIONAL DU BURKINA FASO (C.B.I)
 
-elapsed time: 725m
+Attention: Dear Friend,
 
-configs tested: 19
-configs skipped: 3
+I am Mr Moussa Albert, Working at CORIS BANK INTERNATIONAL DU BURKINA
+FASO (C.B.I) as the Manager of Auditing & Accountant Department.
+During our last banking Audits we discovered an abandoned account
+belongs to one of our Deceased Customer, Late Dr. Walid Ahmed
+Juffali,Citizen of Saudi Arabia and Billionaire Saudi businessman. He
+was the chairman of E. A. Juffali and Brothers, one of Saudi Arabia's
+largest companies.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Meanwhile, before I contacted you I have done personal investigation
+in locating any of his relatives who knows about the account, but I
+came out unsuccessful. I am writing to request your assistance in
+transferring the sum of $10.500.000.00 (Ten million, Five Hundred
+Thousand United States dollars) into your account.
 
-tested configs:
-clang                                   alpha   defconfig
-gcc                                       arc   defconfig
-gcc                                       arm   defconfig
-gcc                                     arm64   defconfig
-gcc                                      csky   defconfig
-gcc                                      i386   defconfig
-gcc                                      ia64   defconfig
-gcc                                 loongarch   defconfig
-gcc                                      m68k   defconfig
-gcc                                     nios2   defconfig
-gcc                                    parisc   defconfig
-gcc                                  parisc64   defconfig
-gcc                                     riscv   defconfig
-gcc                                     riscv   rv32_defconfig
-gcc                                      s390   defconfig
-gcc                                     sparc   defconfig
-gcc                                        um   i386_defconfig
-gcc                                        um   x86_64_defconfig
-gcc                                    x86_64   defconfig
-gcc                                                  
+After my further investigation, I discovered that Late Dr. Walid Ahmed
+Juffali died without any Next of Kin/ Relatives in his documents file
+here and because of the static of this fund, I decided to contact you
+to act as his Foreign Business Partner so that my bank will accord you
+the recognition and have the fund transfer into your account. We will
+provide the entire relevant document that will be requested to
+indicate that you are the rightful Business Partner of this legacy and
+my bank will release the fund to you without any further delay, upon
+your consideration and acceptance of this offer. The total sum Will be
+shared as follows: 60% for me and my colleagues, while 40% of the fund
+will be for you.
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+I am assuring you that this transfer is 100% risk free on both sides
+hence you are going to follow my instruction till the fund transferred
+to your account. More details information will be forwarded to you to
+breakdown explaining comprehensively what require of you.
+
+I am expecting to read from you soon.
+Best Regards
+Mr Moussa Albert,
+Audits & Accounts Manager.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
