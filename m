@@ -1,78 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1C2E6A4162
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Feb 2023 13:07:22 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB7F76A4FDD
+	for <lists+driverdev-devel@lfdr.de>; Tue, 28 Feb 2023 00:53:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 05B6E404E0;
-	Mon, 27 Feb 2023 12:07:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 05B6E404E0
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5279581EBC;
+	Mon, 27 Feb 2023 23:53:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5279581EBC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G3IiWK-YlR1x; Mon, 27 Feb 2023 12:07:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id j10zwk7hjwFY; Mon, 27 Feb 2023 23:53:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DA34D403E9;
-	Mon, 27 Feb 2023 12:07:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DA34D403E9
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3550F81EA7;
+	Mon, 27 Feb 2023 23:53:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3550F81EA7
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B5C9E1BF391
- for <devel@linuxdriverproject.org>; Mon, 27 Feb 2023 12:07:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4736B1BF2C5
+ for <devel@linuxdriverproject.org>; Mon, 27 Feb 2023 23:53:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8914D81433
- for <devel@linuxdriverproject.org>; Mon, 27 Feb 2023 12:07:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8914D81433
+ by smtp1.osuosl.org (Postfix) with ESMTP id DD6DC81EBC
+ for <devel@linuxdriverproject.org>; Mon, 27 Feb 2023 23:53:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DD6DC81EBC
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vDmEZawpeuWg for <devel@linuxdriverproject.org>;
- Mon, 27 Feb 2023 12:07:16 +0000 (UTC)
-X-Greylist: delayed 00:13:47 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F213881318
-Received: from jayabaya.inti.net.id (jayabaya.inti.net.id [103.53.76.30])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F213881318
- for <devel@driverdev.osuosl.org>; Mon, 27 Feb 2023 12:07:14 +0000 (UTC)
+ with ESMTP id UQgKg_sMvqhX for <devel@linuxdriverproject.org>;
+ Mon, 27 Feb 2023 23:53:51 +0000 (UTC)
+X-Greylist: delayed 00:55:05 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 467F781EA7
+Received: from webmail.santamaria.rs.gov.br (webmail.santamaria.rs.gov.br
+ [177.36.46.196])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 467F781EA7
+ for <devel@driverdev.osuosl.org>; Mon, 27 Feb 2023 23:53:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by jayabaya.inti.net.id (Postfix) with ESMTP id 2745520641FD3;
- Mon, 27 Feb 2023 18:51:28 +0700 (WIB)
-Received: from jayabaya.inti.net.id ([127.0.0.1])
- by localhost (jayabaya.inti.net.id [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id CYebTH2_lMj4; Mon, 27 Feb 2023 18:51:24 +0700 (WIB)
-Received: from jayabaya.inti.net.id (localhost [127.0.0.1])
- by jayabaya.inti.net.id (Postfix) with ESMTPS id 913D620633958;
- Mon, 27 Feb 2023 18:51:22 +0700 (WIB)
-DKIM-Filter: OpenDKIM Filter v2.10.3 jayabaya.inti.net.id 913D620633958
-Received: from jayabaya.inti.net.id (jayabaya.inti.net.id [103.53.76.30])
- by jayabaya.inti.net.id (Postfix) with ESMTP id 17EC120641FE4;
- Mon, 27 Feb 2023 18:51:20 +0700 (WIB)
-Date: Mon, 27 Feb 2023 18:51:19 +0700 (WIB)
-From: =?utf-8?B?0KHQuNGB0YLQtdC80L3Ri9C5INCw0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGA?=
- <ali@inti.net.id>
-Message-ID: <1281555008.85247.1677498679976.JavaMail.zimbra@inti.net.id>
-Subject: 
+ by webmail.santamaria.rs.gov.br (Postfix) with ESMTP id D86AC2C01C4C;
+ Mon, 27 Feb 2023 19:36:18 -0300 (-03)
+Received: from webmail.santamaria.rs.gov.br ([127.0.0.1])
+ by localhost (potrilho.santamaria.rs.gov.br [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id P9ydEIxSXrS6; Mon, 27 Feb 2023 19:36:18 -0300 (-03)
+Received: from localhost (localhost [127.0.0.1])
+ by webmail.santamaria.rs.gov.br (Postfix) with ESMTP id DC3342C01DE0;
+ Mon, 27 Feb 2023 19:35:37 -0300 (-03)
+DKIM-Filter: OpenDKIM Filter v2.10.3 webmail.santamaria.rs.gov.br DC3342C01DE0
+X-Virus-Scanned: amavisd-new at santamaria.rs.gov.br
+Received: from webmail.santamaria.rs.gov.br ([127.0.0.1])
+ by localhost (potrilho.santamaria.rs.gov.br [127.0.0.1]) (amavisd-new,
+ port 10026)
+ with ESMTP id gdbfapqntlwv; Mon, 27 Feb 2023 19:35:37 -0300 (-03)
+Received: from [10.23.18.246] (unknown [149.57.16.56])
+ by webmail.santamaria.rs.gov.br (Postfix) with ESMTPSA id 00F4E2C01F49;
+ Mon, 27 Feb 2023 19:34:33 -0300 (-03)
 MIME-Version: 1.0
-X-Originating-IP: [103.53.76.30]
-X-Mailer: Zimbra 8.7.11_GA_3808 (zclient/8.7.11_GA_3808)
-Thread-Index: 7JvC02YNBs/v/NRr2PA2pADKaLlA/g==
-Thread-Topic: 
+Content-Description: Mail message body
+Subject: Hallo ist David Kaltschmidt, hast du deine Spende erhalten?
+To: Recipients <dionatan.delevati@santamaria.rs.gov.br>
+From: dionatan.delevati@santamaria.rs.gov.br
+Date: Mon, 27 Feb 2023 14:34:48 -0800
+Message-Id: <20230227223436.00F4E2C01F49@webmail.santamaria.rs.gov.br>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=inti.net.id; 
- s=25E9A704-571A-11E6-9418-628C66225056; t=1677498682;
- bh=CrM1CZv8v8352BqwtRx6w2ospgnxUoQ1Qfrn1jF8Fqw=;
- h=Date:From:Message-ID:MIME-Version;
- b=WkvkW9xGf1N+RII9dF2gXVOC7tMZ68ppGIYH159V77G6/x5O2Tn8iumTT3+MRhrfe
- uZ19AomKhqDXURT34N1aLjko5HCXFG4fZY0sXOMrBNFzYVKRY+ErPrt0RGftSfoR3v
- WNp+bl2+nIdVNzvY2sQmYzsunnGB/SHW6iaGtqdoL+FjE4imMMbsF7ifsfSdH5mSp8
- +1wcqtb5/NyrRKc57UJoeAN6/HOAQrU45KnGy4nRzXKB6RGnCzAecNGQJ9yFHTBMpE
- NBdQ5RFoatLcB7omNq6VEEalTYxVTJ7eTPmReMmB2/T1FIv583Z2EqefY875MtlZc2
- 8eoYcxPfzKpWA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=fail reason="signature verification failed" (2048-bit key)
- header.d=inti.net.id header.i=@inti.net.id header.a=rsa-sha256
- header.s=25E9A704-571A-11E6-9418-628C66225056 header.b=WkvkW9xG
+ d=santamaria.rs.gov.br; s=BD0B7146-1B04-11EB-A346-9872CBB7CC57;
+ t=1677537337; bh=viYXDmp0g9bMBSLjL/zTwGOYkEaTa5K7DY0zpJzqaM8=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=Qn9eRnZoruzWpOsjtCEE+IRzvcGif6NWr+eJd9zVMLOUMNqFD4+4CkwIqoLm3590C
+ W1VWnPfcuhsQ2frwGz/G5FdXui04R3oiXCAHEgMuUopdmnzrLzqspsa8SCCFy3naq3
+ uiKQFQvwCpxCEz57iVO3RT+cKwUpn1iUwP9ctbdCKT6eQpzFqka28x3GuI3xp8Yguy
+ 15ZbB94TYKyMPiYyJt/pFZ1NPIUPgjW8uzH22CUSfjEdAZxNoZ5rVhHew5vS7lN6DC
+ zO7LaJ6U70mbMtgqn85r2DYitQ/4kdNJWXOZDwlWT2MTW1PhPpyRAhAMAwARNwJ505
+ 9USgKte768pfA==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,34 +84,18 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: sistemassadmins@mail2engineer.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: Davidkaltschmidtd@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-0JLQndCY0JzQkNCd0JjQlTsKCtCS0LDRiCDQv9C+0YfRgtC+0LLRi9C5INGP0YnQuNC6INC/0YDQ
-tdCy0YvRgdC40Lsg0L7Qs9GA0LDQvdC40YfQtdC90LjQtSDRhdGA0LDQvdC40LvQuNGJ0LAsINC6
-0L7RgtC+0YDQvtC1INGB0L7RgdGC0LDQstC70Y/QtdGCIDUg0JPQkSwg0LrQsNC6INC+0L/RgNC1
-0LTQtdC70LXQvdC+INCw0LTQvNC40L3QuNGB0YLRgNCw0YLQvtGA0L7QvCwg0LrQvtGC0L7RgNGL
-0Lkg0LIg0L3QsNGB0YLQvtGP0YnQtdC1INCy0YDQtdC80Y8g0YDQsNCx0L7RgtCw0LXRgiDQvdCw
-IDEwLDkg0JPQkSwg0LLRiyDQvdC1INGB0LzQvtC20LXRgtC1INC+0YLQv9GA0LDQstC70Y/RgtGM
-INC40LvQuCDQv9C+0LvRg9GH0LDRgtGMINC90L7QstGD0Y4g0L/QvtGH0YLRgyDQtNC+INGC0LXR
-hSDQv9C+0YAsINC/0L7QutCwINC90LUg0L/RgNC+0LLQtdGA0LjRgtC1INC/0L7Rh9GC0YMg0L/Q
-vtGH0YLQvtCy0L7Qs9C+INGP0YnQuNC60LAg0L/QvtCy0YLQvtGA0L3Qvi4g0KfRgtC+0LHRiyDQ
-v9C+0LLRgtC+0YDQvdC+INC/0YDQvtCy0LXRgNC40YLRjCDRgdCy0L7QuSDQv9C+0YfRgtC+0LLR
-i9C5INGP0YnQuNC6LCDQvtGC0L/RgNCw0LLRjNGC0LUg0YHQu9C10LTRg9GO0YnRg9GOINC40L3R
-hNC+0YDQvNCw0YbQuNGOINC90LjQttC1OgoK0LjQvNGPOgrQmNC80Y8g0L/QvtC70YzQt9C+0LLQ
-sNGC0LXQu9GPOgrQv9Cw0YDQvtC70Yw6CtCf0L7QtNGC0LLQtdGA0LTQuNGC0LUg0L/QsNGA0L7Q
-u9GMOgrQrdC70LXQutGC0YDQvtC90L3QsNGPINC/0L7Rh9GC0LA6CtCi0LXQu9C10YTQvtC9OgoK
-0JXRgdC70Lgg0LLRiyDQvdC1INC80L7QttC10YLQtSDQv9C+0LLRgtC+0YDQvdC+INC/0YDQvtCy
-0LXRgNC40YLRjCDRgdCy0L7QuSDQv9C+0YfRgtC+0LLRi9C5INGP0YnQuNC6LCDQstCw0Ygg0L/Q
-vtGH0YLQvtCy0YvQuSDRj9GJ0LjQuiDQsdGD0LTQtdGCINC+0YLQutC70Y7Rh9C10L0hCgrQn9GA
-0LjQvdC+0YHQuNC8INC40LfQstC40L3QtdC90LjRjyDQt9CwINC90LXRg9C00L7QsdGB0YLQstCw
-LgrQn9GA0L7QstC10YDQvtGH0L3Ri9C5INC60L7QtDogZW46IFdFQi4g0JDQlNCc0JjQndCY0KHQ
-otCg0JDQotCe0KDQkC4gUlUwMDYsNTI0NzY1IEAyMDIzCtCf0L7Rh9GC0L7QstCw0Y8g0YLQtdGF
-0L3QuNGH0LXRgdC60LDRjyDQv9C+0LTQtNC10YDQttC60LAgQDIwMjMKCtCh0L/QsNGB0LjQsdC+
-CtCh0LjRgdGC0LXQvNC90YvQuSDQsNC00LzQuNC90LjRgdGC0YDQsNGC0L7RgC4KX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0
-CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZl
-cnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Guten Tag Sir/ Madam Ich bin Mr. David Kaltschmidt die Gewinnerin der Virgi=
+nal Mega Millions Lotterie von 2 Millionen. Sie wurden zuf=E4llig ausgew=E4=
+hlt, um einen Teil als Mittel der Wohlt=E4tigkeit zu erhalten, haben Sie di=
+e Spende erhalten, die Ihnen zugesandt wurde, wenn Sie mich nicht unter Dav=
+idkaltschmidtd@gmail.com.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
