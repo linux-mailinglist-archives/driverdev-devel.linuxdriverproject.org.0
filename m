@@ -1,79 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1A786A6BA7
-	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Mar 2023 12:25:25 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E1E2860F29;
-	Wed,  1 Mar 2023 11:25:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E1E2860F29
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BI5qYb4OOblV; Wed,  1 Mar 2023 11:25:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4234560F96;
-	Wed,  1 Mar 2023 11:25:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4234560F96
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8711A1BF5B5
- for <devel@linuxdriverproject.org>; Wed,  1 Mar 2023 11:25:19 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id BBAFF6A6F5B
+	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Mar 2023 16:25:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 60C7B81E01
- for <devel@linuxdriverproject.org>; Wed,  1 Mar 2023 11:25:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 60C7B81E01
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1DBD281ECC;
+	Wed,  1 Mar 2023 15:25:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1DBD281ECC
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LxAzcqTcefBN for <devel@linuxdriverproject.org>;
- Wed,  1 Mar 2023 11:25:18 +0000 (UTC)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id M6rni3JRzl5n; Wed,  1 Mar 2023 15:25:31 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id B9B1781499;
+	Wed,  1 Mar 2023 15:25:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B9B1781499
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3D9C81BF378
+ for <devel@linuxdriverproject.org>; Wed,  1 Mar 2023 15:25:28 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 25226404F6
+ for <devel@linuxdriverproject.org>; Wed,  1 Mar 2023 15:25:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 25226404F6
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id L3qHOEbtFdpT for <devel@linuxdriverproject.org>;
+ Wed,  1 Mar 2023 15:25:27 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E65BD818D0
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E65BD818D0
- for <devel@driverdev.osuosl.org>; Wed,  1 Mar 2023 11:25:17 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6500,9779,10635"; a="361964032"
-X-IronPort-AV: E=Sophos;i="5.98,224,1673942400"; d="scan'208";a="361964032"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Mar 2023 03:25:16 -0800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0149640022
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0149640022
+ for <devel@driverdev.osuosl.org>; Wed,  1 Mar 2023 15:25:26 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10636"; a="399221755"
+X-IronPort-AV: E=Sophos;i="5.98,225,1673942400"; d="scan'208";a="399221755"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Mar 2023 07:25:24 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10635"; a="920211568"
-X-IronPort-AV: E=Sophos;i="5.98,224,1673942400"; d="scan'208";a="920211568"
+X-IronPort-AV: E=McAfee;i="6500,9779,10636"; a="624532303"
+X-IronPort-AV: E=Sophos;i="5.98,225,1673942400"; d="scan'208";a="624532303"
 Received: from lkp-server01.sh.intel.com (HELO 3895f5c55ead) ([10.239.97.150])
- by fmsmga006.fm.intel.com with ESMTP; 01 Mar 2023 03:25:15 -0800
+ by orsmga003.jf.intel.com with ESMTP; 01 Mar 2023 07:25:22 -0800
 Received: from kbuild by 3895f5c55ead with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pXKaB-00066l-04;
- Wed, 01 Mar 2023 11:25:15 +0000
-Date: Wed, 1 Mar 2023 19:24:42 +0800
+ (envelope-from <lkp@intel.com>) id 1pXOKX-0006F7-2Z;
+ Wed, 01 Mar 2023 15:25:21 +0000
+Date: Wed, 1 Mar 2023 23:25:03 +0800
 From: kernel test robot <lkp@intel.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:bus_cleanup 22/36]
- drivers/ata/pata_parport/pata_parport.c:618:20: error: initialization of
- 'ssize_t (*)(const struct bus_type *, const char *, size_t)' {aka 'int
- (*)(const struct bus_type *, const char *, unsigned int)'} from incompatible
- pointer type 'ssize_t (*)(struct b...
-Message-ID: <202303011947.T9OsRu7f-lkp@intel.com>
+Subject: [driver-core:bus_cleanup 21/36] drivers/irqchip/irq-mbigen.c:248:30:
+ error: no member named 'dev_root' in 'struct bus_type'
+Message-ID: <202303012310.3HsNmMM6-lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1677669917; x=1709205917;
+ t=1677684327; x=1709220327;
  h=date:from:to:cc:subject:message-id:mime-version;
- bh=aAXKStIoQ8GZYQ4MvYngkyH4KqBY/pYFyMKjRKEDOVo=;
- b=I+SO6GMBLxCbZaf/SAqLIKJ/R6GXbisHJxRQ9yL7IVK8HqrEP5P5zsQg
- CdxxiNL2G+A6X5avMGoVqs5l46h/IjIwaPqM8fDVyWliiAAtPK1t58UQT
- tt5zXXUbg6Pdn11Rat8QWNu09brR96Gc+7gi3+zZvhVMDHvDOdAfkdwo+
- Zw8gfWywwyakd8OMxm6hcwKUsj52lFT290CYJe5whhcQRggVFWOYHDBu0
- 98iF2yPUpEfQJ91olzDsX6B0PCeLKHu8CPBiz6fUrnFvS3l4r9UlKhhVI
- t9yMTx0NWHe+Eu+DoJWY8k1IFcwjf4ToCNRsMIhSB+HjK0LIinlqydGS+
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=1XI9ownShmWREBCu37gez1opwBgbmAEbewxKVoN49Pg=;
+ b=bp9SsaNAfaLvoyhmHGrQN/JHt0aJ0sLXlF/FN65Vv+Y4IYdMGsjSzUo5
+ 1XQc89TDPRjkG5EOJ34F8UYJ6qRPx+Xi5Ga+PiVKqFaIvgu4yRsgtm86t
+ PCytyxozuse6i7WeTV9wJlHy6I/gLa6m+P/ZOQxbYGHaWEU9Es45ZhNaF
+ p+MmGM7JfDzHtV83eyxEOOAMJ+4nwhC1HOx9y13Rteg6YNnDfOJz5Q30z
+ lRoGyxQTI9nJ0WxaBKGL5tEt1Qjj3AjBZbE+D4l+vFPA7gEAehMkFqTsa
+ LLmhTtvJz3J3nUd+2vGVlm6D+YvwuC0fu3Z21nl8MTr9taHGdF+ClOIu8
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=I+SO6GMB
+ header.a=rsa-sha256 header.s=Intel header.b=bp9SsaNA
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,149 +83,93 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, oe-kbuild-all@lists.linux.dev
+Cc: devel@driverdev.osuosl.org, llvm@lists.linux.dev,
+ oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git bus_cleanup
-head:   5447398fb1728b20784bfde814b2d524b9cb051a
-commit: 40cef43fa58c8d53ea4c4a531facada6147216e7 [22/36] driver core: bus: mark the struct bus_type for sysfs callbacks as constant
-config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20230301/202303011947.T9OsRu7f-lkp@intel.com/config)
-compiler: sh4-linux-gcc (GCC) 12.1.0
+head:   3e181816389768d1490b562055db5f9d5b71908f
+commit: a71647f9972e21b7cb098c8299a808992cf332bc [21/36] driver core: bus: move dev_root out of struct bus_type
+config: arm64-randconfig-r031-20230301 (https://download.01.org/0day-ci/archive/20230301/202303012310.3HsNmMM6-lkp@intel.com/config)
+compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project db89896bbbd2251fff457699635acbbedeead27f)
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
-        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?id=40cef43fa58c8d53ea4c4a531facada6147216e7
+        # install arm64 cross compiling tool for clang build
+        # apt-get install binutils-aarch64-linux-gnu
+        # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?id=a71647f9972e21b7cb098c8299a808992cf332bc
         git remote add driver-core https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git
         git fetch --no-tags driver-core bus_cleanup
-        git checkout 40cef43fa58c8d53ea4c4a531facada6147216e7
+        git checkout a71647f9972e21b7cb098c8299a808992cf332bc
         # save the config file
         mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sh olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sh SHELL=/bin/bash drivers/ata/pata_parport/
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/irqchip/
 
 If you fix the issue, kindly add following tag where applicable
 | Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303011947.T9OsRu7f-lkp@intel.com/
+| Link: https://lore.kernel.org/oe-kbuild-all/202303012310.3HsNmMM6-lkp@intel.com/
 
 All errors (new ones prefixed by >>):
 
-   In file included from include/linux/kobject.h:20,
-                    from include/linux/module.h:21,
-                    from drivers/ata/pata_parport/pata_parport.c:7:
->> drivers/ata/pata_parport/pata_parport.c:618:20: error: initialization of 'ssize_t (*)(const struct bus_type *, const char *, size_t)' {aka 'int (*)(const struct bus_type *, const char *, unsigned int)'} from incompatible pointer type 'ssize_t (*)(struct bus_type *, const char *, size_t)' {aka 'int (*)(struct bus_type *, const char *, unsigned int)'} [-Werror=incompatible-pointer-types]
-     618 | static BUS_ATTR_WO(new_device);
-         |                    ^~~~~~~~~~
-   include/linux/sysfs.h:135:19: note: in definition of macro '__ATTR_WO'
-     135 |         .store  = _name##_store,                                        \
-         |                   ^~~~~
-   drivers/ata/pata_parport/pata_parport.c:618:8: note: in expansion of macro 'BUS_ATTR_WO'
-     618 | static BUS_ATTR_WO(new_device);
-         |        ^~~~~~~~~~~
-   drivers/ata/pata_parport/pata_parport.c:618:20: note: (near initialization for 'bus_attr_new_device.store')
-     618 | static BUS_ATTR_WO(new_device);
-         |                    ^~~~~~~~~~
-   include/linux/sysfs.h:135:19: note: in definition of macro '__ATTR_WO'
-     135 |         .store  = _name##_store,                                        \
-         |                   ^~~~~
-   drivers/ata/pata_parport/pata_parport.c:618:8: note: in expansion of macro 'BUS_ATTR_WO'
-     618 | static BUS_ATTR_WO(new_device);
-         |        ^~~~~~~~~~~
-   drivers/ata/pata_parport/pata_parport.c:650:20: error: initialization of 'ssize_t (*)(const struct bus_type *, const char *, size_t)' {aka 'int (*)(const struct bus_type *, const char *, unsigned int)'} from incompatible pointer type 'ssize_t (*)(struct bus_type *, const char *, size_t)' {aka 'int (*)(struct bus_type *, const char *, unsigned int)'} [-Werror=incompatible-pointer-types]
-     650 | static BUS_ATTR_WO(delete_device);
-         |                    ^~~~~~~~~~~~~
-   include/linux/sysfs.h:135:19: note: in definition of macro '__ATTR_WO'
-     135 |         .store  = _name##_store,                                        \
-         |                   ^~~~~
-   drivers/ata/pata_parport/pata_parport.c:650:8: note: in expansion of macro 'BUS_ATTR_WO'
-     650 | static BUS_ATTR_WO(delete_device);
-         |        ^~~~~~~~~~~
-   drivers/ata/pata_parport/pata_parport.c:650:20: note: (near initialization for 'bus_attr_delete_device.store')
-     650 | static BUS_ATTR_WO(delete_device);
-         |                    ^~~~~~~~~~~~~
-   include/linux/sysfs.h:135:19: note: in definition of macro '__ATTR_WO'
-     135 |         .store  = _name##_store,                                        \
-         |                   ^~~~~
-   drivers/ata/pata_parport/pata_parport.c:650:8: note: in expansion of macro 'BUS_ATTR_WO'
-     650 | static BUS_ATTR_WO(delete_device);
-         |        ^~~~~~~~~~~
-   cc1: some warnings being treated as errors
+>> drivers/irqchip/irq-mbigen.c:248:30: error: no member named 'dev_root' in 'struct bus_type'
+                   parent = platform_bus_type.dev_root;
+                            ~~~~~~~~~~~~~~~~~ ^
+   1 error generated.
 
 
-vim +618 drivers/ata/pata_parport/pata_parport.c
+vim +248 drivers/irqchip/irq-mbigen.c
 
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  556  
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  557  static ssize_t new_device_store(struct bus_type *bus, const char *buf,
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  558  				size_t count)
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  559  {
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  560  	char port[12] = "auto";
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  561  	char protocol[8] = "auto";
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  562  	int mode = -1, unit = -1, delay = -1;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  563  	struct pi_protocol *pr, *pr_wanted;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  564  	struct device_driver *drv;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  565  	struct parport *parport;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  566  	int port_num, port_wanted, pr_num;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  567  	bool ok = false;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  568  
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  569  	if (sscanf(buf, "%11s %7s %d %d %d",
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  570  			port, protocol, &mode, &unit, &delay) < 1)
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  571  		return -EINVAL;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  572  
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  573  	if (sscanf(port, "parport%u", &port_wanted) < 1) {
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  574  		if (strcmp(port, "auto")) {
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  575  			pr_err("invalid port name %s\n", port);
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  576  			return -EINVAL;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  577  		}
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  578  		port_wanted = -1;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  579  	}
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  580  
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  581  	drv = driver_find(protocol, &pata_parport_bus_type);
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  582  	if (!drv) {
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  583  		if (strcmp(protocol, "auto")) {
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  584  			pr_err("protocol %s not found\n", protocol);
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  585  			return -EINVAL;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  586  		}
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  587  		pr_wanted = NULL;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  588  	} else {
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  589  		pr_wanted = container_of(drv, struct pi_protocol, driver);
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  590  	}
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  591  
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  592  	mutex_lock(&pi_mutex);
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  593  	/* walk all parports */
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  594  	idr_for_each_entry(&parport_list, parport, port_num) {
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  595  		if (port_num == port_wanted || port_wanted == -1) {
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  596  			parport = parport_find_number(port_num);
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  597  			if (!parport) {
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  598  				pr_err("no such port %s\n", port);
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  599  				mutex_unlock(&pi_mutex);
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  600  				return -ENODEV;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  601  			}
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  602  			/* walk all protocols */
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  603  			idr_for_each_entry(&protocols, pr, pr_num) {
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  604  				if (pr == pr_wanted || !pr_wanted)
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  605  					if (pi_init_one(parport, pr, mode, unit,
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  606  							delay))
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  607  						ok = true;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  608  			}
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  609  			parport_put_port(parport);
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  610  		}
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  611  	}
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  612  	mutex_unlock(&pi_mutex);
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  613  	if (!ok)
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  614  		return -ENODEV;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  615  
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  616  	return count;
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  617  }
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23 @618  static BUS_ATTR_WO(new_device);
-246a1c4c6b7ffb drivers/ata/pata_parport.c Ondrej Zary 2023-01-23  619  
+9650c60ebfec05 Ma Jun          2015-12-17  234  
+76e1f77f9c26ec Kefeng Wang     2017-03-07  235  static int mbigen_of_create_domain(struct platform_device *pdev,
+76e1f77f9c26ec Kefeng Wang     2017-03-07  236  				   struct mbigen_device *mgn_chip)
+717c3dbc118ecb Ma Jun          2015-12-17  237  {
+76e1f77f9c26ec Kefeng Wang     2017-03-07  238  	struct device *parent;
+ed2a1002d25ccd MaJun           2016-03-17  239  	struct platform_device *child;
+9650c60ebfec05 Ma Jun          2015-12-17  240  	struct irq_domain *domain;
+ed2a1002d25ccd MaJun           2016-03-17  241  	struct device_node *np;
+9650c60ebfec05 Ma Jun          2015-12-17  242  	u32 num_pins;
+717c3dbc118ecb Ma Jun          2015-12-17  243  
+ed2a1002d25ccd MaJun           2016-03-17  244  	for_each_child_of_node(pdev->dev.of_node, np) {
+ed2a1002d25ccd MaJun           2016-03-17  245  		if (!of_property_read_bool(np, "interrupt-controller"))
+ed2a1002d25ccd MaJun           2016-03-17  246  			continue;
+ed2a1002d25ccd MaJun           2016-03-17  247  
+ed2a1002d25ccd MaJun           2016-03-17 @248  		parent = platform_bus_type.dev_root;
+ed2a1002d25ccd MaJun           2016-03-17  249  		child = of_platform_device_create(np, NULL, parent);
+321275f0d8f593 Nishka Dasgupta 2019-07-23  250  		if (!child) {
+321275f0d8f593 Nishka Dasgupta 2019-07-23  251  			of_node_put(np);
+086eec2de00ef5 Dan Carpenter   2016-04-04  252  			return -ENOMEM;
+321275f0d8f593 Nishka Dasgupta 2019-07-23  253  		}
+ed2a1002d25ccd MaJun           2016-03-17  254  
+ed2a1002d25ccd MaJun           2016-03-17  255  		if (of_property_read_u32(child->dev.of_node, "num-pins",
+ed2a1002d25ccd MaJun           2016-03-17  256  					 &num_pins) < 0) {
+9650c60ebfec05 Ma Jun          2015-12-17  257  			dev_err(&pdev->dev, "No num-pins property\n");
+321275f0d8f593 Nishka Dasgupta 2019-07-23  258  			of_node_put(np);
+9650c60ebfec05 Ma Jun          2015-12-17  259  			return -EINVAL;
+9650c60ebfec05 Ma Jun          2015-12-17  260  		}
+9650c60ebfec05 Ma Jun          2015-12-17  261  
+ed2a1002d25ccd MaJun           2016-03-17  262  		domain = platform_msi_create_device_domain(&child->dev, num_pins,
+9650c60ebfec05 Ma Jun          2015-12-17  263  							   mbigen_write_msg,
+9650c60ebfec05 Ma Jun          2015-12-17  264  							   &mbigen_domain_ops,
+9650c60ebfec05 Ma Jun          2015-12-17  265  							   mgn_chip);
+321275f0d8f593 Nishka Dasgupta 2019-07-23  266  		if (!domain) {
+321275f0d8f593 Nishka Dasgupta 2019-07-23  267  			of_node_put(np);
+9650c60ebfec05 Ma Jun          2015-12-17  268  			return -ENOMEM;
+ed2a1002d25ccd MaJun           2016-03-17  269  		}
+321275f0d8f593 Nishka Dasgupta 2019-07-23  270  	}
+9650c60ebfec05 Ma Jun          2015-12-17  271  
+76e1f77f9c26ec Kefeng Wang     2017-03-07  272  	return 0;
+76e1f77f9c26ec Kefeng Wang     2017-03-07  273  }
+76e1f77f9c26ec Kefeng Wang     2017-03-07  274  
 
-:::::: The code at line 618 was first introduced by commit
-:::::: 246a1c4c6b7ffba88a2553d2b88f7b6280f253a2 ata: pata_parport: add driver (PARIDE replacement)
+:::::: The code at line 248 was first introduced by commit
+:::::: ed2a1002d25ccdb6606c8ccb608524118bd30614 irqchip/mbigen: Handle multiple device nodes in a mbigen module
 
-:::::: TO: Ondrej Zary <linux@zary.sk>
-:::::: CC: Damien Le Moal <damien.lemoal@opensource.wdc.com>
+:::::: TO: MaJun <majun258@huawei.com>
+:::::: CC: Thomas Gleixner <tglx@linutronix.de>
 
 -- 
 0-DAY CI Kernel Test Service
