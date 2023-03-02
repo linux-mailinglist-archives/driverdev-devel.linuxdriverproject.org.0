@@ -1,59 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D65F770DB93
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 May 2023 13:38:06 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D7A0C718EC3
+	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Jun 2023 00:48:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D396140503;
-	Tue, 23 May 2023 11:38:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D396140503
+	by smtp3.osuosl.org (Postfix) with ESMTP id A5C46614D3;
+	Wed, 31 May 2023 22:48:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A5C46614D3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b7xoQ98BXR6l; Tue, 23 May 2023 11:38:02 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CdEC-OaeQUrk; Wed, 31 May 2023 22:48:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0ABD4417B4;
-	Tue, 23 May 2023 11:37:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0ABD4417B4
+	by smtp3.osuosl.org (Postfix) with ESMTP id 704DF6074C;
+	Wed, 31 May 2023 22:48:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 704DF6074C
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5AE371BF37B
- for <devel@linuxdriverproject.org>; Tue, 23 May 2023 11:37:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EE40E1BF576
+ for <devel@linuxdriverproject.org>; Wed, 31 May 2023 22:48:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 39FC941E2E
- for <devel@linuxdriverproject.org>; Tue, 23 May 2023 11:37:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 39FC941E2E
+ by smtp4.osuosl.org (Postfix) with ESMTP id D41AD41F3B
+ for <devel@linuxdriverproject.org>; Wed, 31 May 2023 22:48:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D41AD41F3B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xKiNhn37B7Dh for <devel@linuxdriverproject.org>;
- Tue, 23 May 2023 11:37:03 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EDD7841E9A
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EDD7841E9A
- for <devel@driverdev.osuosl.org>; Tue, 23 May 2023 11:37:00 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 7E48E6316F;
- Tue, 23 May 2023 11:36:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7CE1C433EF;
- Tue, 23 May 2023 11:36:52 +0000 (UTC)
-Message-ID: <e8f8fc26-1853-d8ab-bc1b-a8cc2474bb6f@xs4all.nl>
-Date: Tue, 23 May 2023 13:36:50 +0200
+ with ESMTP id sEXckoAm-7vN for <devel@linuxdriverproject.org>;
+ Wed, 31 May 2023 22:48:22 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A7A0B4095E
+Received: from www.jhf-china.org (jhf-china.org [59.148.217.154])
+ by smtp4.osuosl.org (Postfix) with ESMTP id A7A0B4095E
+ for <devel@linuxdriverproject.org>; Wed, 31 May 2023 22:48:22 +0000 (UTC)
+Received: from localhost (localhost.localdomain [127.0.0.1])
+ by www.jhf-china.org (Postfix) with ESMTP id 4058BBAF9F6;
+ Sun, 12 Mar 2023 20:25:32 -0400 (EDT)
+Received: from [103.156.93.107] (unknown [103.156.93.107])
+ by www.jhf-china.org (Postfix) with ESMTPSA id B7DB1EA9356;
+ Wed,  1 Mar 2023 05:28:44 -0500 (EST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH] staging: media: usbvision: Remove comparision to NULL
-Content-Language: en-US
-To: Anup Sharma <anupnewsmail@gmail.com>, mchehab@kernel.org,
- gregkh@linuxfoundation.org
-References: <ZFBh54sbwiRFKyG+@yoga>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <ZFBh54sbwiRFKyG+@yoga>
+Content-Description: Mail message body
+Subject: Re: VERY URGENT PLEASE REPLY!!
+To: Recipients <pictures@jhf-china.org>
+From: "Mrs. Abiha Akten" <pictures@jhf-china.org>
+Date: Thu, 02 Mar 2023 02:39:56 -0800
+Message-Id: <20230301102845.B7DB1EA9356@www.jhf-china.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,88 +60,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org
+Reply-To: abihaakten@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Anup,
+Greetings and Sorry for intruding into your privacy.
 
-On 02/05/2023 03:05, Anup Sharma wrote:
-> Remove comparison to null in file usbvision-core.c and usbvision-i2c.c.
-> 
-> Signed-off-by: Anup Sharma <anupnewsmail@gmail.com>
-> ---
->  drivers/staging/media/usbvision/usbvision-core.c | 8 ++++----
->  drivers/staging/media/usbvision/usbvision-i2c.c  | 2 +-
->  2 files changed, 5 insertions(+), 5 deletions(-)
+My name is  Mrs Abiha Akten . I am a Cancer Patient and the disease have taken over my entire system according to medical diagnosis and I want to donate my inheritance fund ($32Million Dollars) that my late husband left with a financial house in Turkey to you because recently, the doctor told me that I might not survive the latest Surgery which I have been booked for.
 
-The usbvision driver has been removed almost 2 years ago, so this patch is for
-a really old kernel.
+I want you to use 30% of the fund to build orphanage homes while 20% goes to Cancer research programmes and then donate 25% to institutions housing elderly and retired persons who bore no children in their lifetime just like I and my late husband. The remaining 25% goes to you as the person who agreed to carry out my last wish and  I will give you more details only if you are willing and ready to handle this project. please reply me on this email mrsabiha.a@gmail.com thank you.
 
-Rather odd, but in any case, I'm rejecting this patch for obvious reasons...
-
-Regards,
-
-	Hans
-
-> 
-> diff --git a/drivers/staging/media/usbvision/usbvision-core.c b/drivers/staging/media/usbvision/usbvision-core.c
-> index e35dee35b068..a38104b2a0f9 100644
-> --- a/drivers/staging/media/usbvision/usbvision-core.c
-> +++ b/drivers/staging/media/usbvision/usbvision-core.c
-> @@ -349,7 +349,7 @@ int usbvision_scratch_alloc(struct usb_usbvision *usbvision)
->  {
->  	usbvision->scratch = vmalloc_32(scratch_buf_size);
->  	scratch_reset(usbvision);
-> -	if (usbvision->scratch == NULL) {
-> +	if (!usbvision->scratch) {
->  		dev_err(&usbvision->dev->dev,
->  			"%s: unable to allocate %d bytes for scratch\n",
->  				__func__, scratch_buf_size);
-> @@ -374,7 +374,7 @@ int usbvision_decompress_alloc(struct usb_usbvision *usbvision)
->  	int IFB_size = MAX_FRAME_WIDTH * MAX_FRAME_HEIGHT * 3 / 2;
->  
->  	usbvision->intra_frame_buffer = vmalloc_32(IFB_size);
-> -	if (usbvision->intra_frame_buffer == NULL) {
-> +	if (!usbvision->intra_frame_buffer) {
->  		dev_err(&usbvision->dev->dev,
->  			"%s: unable to allocate %d for compr. frame buffer\n",
->  				__func__, IFB_size);
-> @@ -2284,7 +2284,7 @@ int usbvision_init_isoc(struct usb_usbvision *usbvision)
->  		struct urb *urb;
->  
->  		urb = usb_alloc_urb(USBVISION_URB_FRAMES, GFP_KERNEL);
-> -		if (urb == NULL)
-> +		if (!urb)
->  			return -ENOMEM;
->  		usbvision->sbuf[buf_idx].urb = urb;
->  		usbvision->sbuf[buf_idx].data =
-> @@ -2343,7 +2343,7 @@ void usbvision_stop_isoc(struct usb_usbvision *usbvision)
->  	int buf_idx, err_code, reg_value;
->  	int sb_size = USBVISION_URB_FRAMES * usbvision->isoc_packet_size;
->  
-> -	if ((usbvision->streaming == stream_off) || (usbvision->dev == NULL))
-> +	if ((usbvision->streaming == stream_off) || (!usbvision->dev))
->  		return;
->  
->  	/* Unschedule all of the iso td's */
-> diff --git a/drivers/staging/media/usbvision/usbvision-i2c.c b/drivers/staging/media/usbvision/usbvision-i2c.c
-> index 6e4df3335b1b..3bba93293463 100644
-> --- a/drivers/staging/media/usbvision/usbvision-i2c.c
-> +++ b/drivers/staging/media/usbvision/usbvision-i2c.c
-> @@ -233,7 +233,7 @@ int usbvision_i2c_register(struct usb_usbvision *usbvision)
->  				&usbvision->i2c_adap,
->  				"tuner", 0, v4l2_i2c_tuner_addrs(type));
->  
-> -		if (sd == NULL)
-> +		if (!sd)
->  			return -ENODEV;
->  		if (usbvision->tuner_type != -1) {
->  			tun_setup.mode_mask = T_ANALOG_TV | T_RADIO;
-
+Yours Sincerely.
+Mrs. Abiha Akten
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
