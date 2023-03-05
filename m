@@ -1,87 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F3416AAF58
-	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Mar 2023 13:08:47 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5797E6AB0F6
+	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Mar 2023 15:14:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DECF381D11;
-	Sun,  5 Mar 2023 12:08:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DECF381D11
+	by smtp1.osuosl.org (Postfix) with ESMTP id B2E9F819C8;
+	Sun,  5 Mar 2023 14:14:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B2E9F819C8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id aQ3HQ6GDqj5t; Sun,  5 Mar 2023 12:08:43 +0000 (UTC)
+	with ESMTP id me5iwHySwqXD; Sun,  5 Mar 2023 14:14:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AE8A6812B2;
-	Sun,  5 Mar 2023 12:08:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AE8A6812B2
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 86FDC819BC;
+	Sun,  5 Mar 2023 14:14:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 86FDC819BC
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A94EC1BF35C
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Mar 2023 12:08:39 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7C24A1BF5A4
+ for <devel@linuxdriverproject.org>; Sun,  5 Mar 2023 14:14:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 90782812CD
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Mar 2023 12:08:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 90782812CD
+ by smtp2.osuosl.org (Postfix) with ESMTP id 56915404BB
+ for <devel@linuxdriverproject.org>; Sun,  5 Mar 2023 14:14:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 56915404BB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UI6eJ4cYAjgR
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Mar 2023 12:08:39 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CED80812B2
-Received: from mail-ed1-x52d.google.com (mail-ed1-x52d.google.com
- [IPv6:2a00:1450:4864:20::52d])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CED80812B2
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  5 Mar 2023 12:08:38 +0000 (UTC)
-Received: by mail-ed1-x52d.google.com with SMTP id a25so27963151edb.0
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 05 Mar 2023 04:08:38 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=X/CzDNddB0kx26rf/LDhmne0+vrvAsGm9OJmrB2pG+o=;
- b=GO0GWVeAqO2Ltz/OaWbT6onhJPwb+DQwb8K57A5CI5TrD8SojTleKUFXoFCa+g8GyB
- Wi8SqMguuH1MMIGxo6wnNK/abV2ZNcJvfbbwwJ5epYHewa7EqaDbbT9HkdyCvy7AsNRj
- 9pyQ5xnPn6SjxWPsP4qOtIG13kSd2xBYylTwhTHzKieDiwEoaYC5eSzYtNBU1ccH2h2P
- oTIZeIsgo1DFSQMClm7BbIQC+frHtnZd7pP5K80eA9mU23cMj5SkZPnS7c3Z8IxEKAMG
- YkrUozgCNTAa98+oFhF45r47Q2CAWc0u0rNs/gYuMq67olTGfv7RDCgXrU6QSki7pLui
- dryQ==
-X-Gm-Message-State: AO0yUKWTCSaN2onpSN9h11oQNjCfVwybHC8JwejvuGv+sCRkTp172Bcj
- l7xD5+dbRP/q5ykxY4xvt7fGf63Iz8T7Ary9HY4=
-X-Google-Smtp-Source: AK7set/OOuTvTvF4sUmyUAjm72Qx4DPWMpnVQWiojvcPgzFrfcv0UtYi+teErHfKRWMvy3EXfSk4E8bp798RW869oqU=
-X-Received: by 2002:a17:906:338b:b0:879:e5b2:e12d with SMTP id
- v11-20020a170906338b00b00879e5b2e12dmr3129699eja.13.1678018116314; Sun, 05
- Mar 2023 04:08:36 -0800 (PST)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Xe-sSxcmFVQF for <devel@linuxdriverproject.org>;
+ Sun,  5 Mar 2023 14:14:31 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6BDAF40482
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6BDAF40482
+ for <devel@driverdev.osuosl.org>; Sun,  5 Mar 2023 14:14:30 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6500,9779,10640"; a="337695546"
+X-IronPort-AV: E=Sophos;i="5.98,235,1673942400"; d="scan'208";a="337695546"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Mar 2023 06:14:30 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10640"; a="785893425"
+X-IronPort-AV: E=Sophos;i="5.98,235,1673942400"; d="scan'208";a="785893425"
+Received: from lkp-server01.sh.intel.com (HELO 776573491cc5) ([10.239.97.150])
+ by fmsmga002.fm.intel.com with ESMTP; 05 Mar 2023 06:14:28 -0800
+Received: from kbuild by 776573491cc5 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pYp88-0002nm-11;
+ Sun, 05 Mar 2023 14:14:28 +0000
+Date: Sun, 5 Mar 2023 22:14:14 +0800
+From: kernel test robot <lkp@intel.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [driver-core:debugfs_lookup_fix 1/1]
+ drivers/mtd/spi-nor/debugfs.c:254:2-16: WARNING: NULL check before some
+ freeing functions is not needed.
+Message-ID: <202303052201.l1sxpnD9-lkp@intel.com>
 MIME-Version: 1.0
-Received: by 2002:a17:906:628c:0:0:0:0 with HTTP; Sun, 5 Mar 2023 04:08:35
- -0800 (PST)
-From: FUND MANAGEMENT AND PAYMENT BUREAU <kamuliolive22@gmail.com>
-Date: Sun, 5 Mar 2023 04:08:35 -0800
-Message-ID: <CAMojCfFm-JnLEmSts-qbZykiDd1RqsJJRDFP13Sw=wx+a8PxWQ@mail.gmail.com>
-Subject: HOW ARE YOU DOING TODAY
-To: undisclosed-recipients:;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112;
- h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
- :subject:date:message-id:reply-to;
- bh=X/CzDNddB0kx26rf/LDhmne0+vrvAsGm9OJmrB2pG+o=;
- b=KrIzfPmXdZ9oZ1u3zIOEKw8nAK9xzfeZwLZvVK4Ri755DE6IWyPYpEj7pOLHrJQdn3
- T8+0awWCaMF6OeRpR7qzJ12DfY//YsWNPMGBl82+hMeuHDz7yS4cSEPFMOZFuD/0aAfn
- ntyDmkusKD4BCD/JuMdEId459KpUwlaMXe3omD4ihUqhL28X08Bua0P3XM9tAUZOWqJJ
- cxOPRVvpW3YVBIhtsBT7b0Ke/L8QmbKvMJAU0MqfdYxjh2CIlz2ENzCsgasIKOYNdGRV
- nrTHR5YADuFCKqDNhphFLKEfU7oeSPFPRyAupOFwo+8PvOr9OJQja8xG1Ayi9w8Y27Ly
- fNJQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=KrIzfPmX
+Content-Disposition: inline
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1678025671; x=1709561671;
+ h=date:from:to:cc:subject:message-id:mime-version;
+ bh=R79R2+s/I+jYKijt0uUwThRFrB7DpIUDBX0hxvl1ivU=;
+ b=ZAcV8e3mSVBKTUezKFvBb5M65OX7gu454YI/cXFaT9TGJB87ngWx8W3N
+ LTqBOIQ5L1ovSqEd8ob9+5My5Eha7W2g++HPB7beGI3d3oMizONoj7JkO
+ S0lna00CbP97dRe1/2I1rCgwH5YEHNOdQHWQHLfbHnB8wLb+ex+QADC2M
+ iBJSOcBxkkuoWhhvvO4JaVwbjH3i2nqrJpcYJC7qq7ceHGQqY/Lh+x1Ka
+ Fd32ItKcgBuC9Fl9j6HLn2ohwaCXVxKngQLH1uYJy5REWN4Wv2yB0lrEs
+ oZnQwCuHpe4j5tv9LktcBVw0O0ohd2i+u3MsjjUTPmd5c4Wlb6bY3diju
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=ZAcV8e3m
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,30 +84,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: yz277277@gmail.com
+Cc: devel@driverdev.osuosl.org, oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Customer
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_lookup_fix
+head:   416ca04cc251b11c991d466dae592f7308f52079
+commit: 416ca04cc251b11c991d466dae592f7308f52079 [1/1] mtd: spi-nor: fix memory leak when using debugfs_lookup()
+config: sh-randconfig-c033-20230305 (https://download.01.org/0day-ci/archive/20230305/202303052201.l1sxpnD9-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 12.1.0
 
-The office of FUND MANAGEMENT AND PAYMENT BUREAU on scam victims have
-approved your full compensation payment of $3.700,000.00 USD through
-ATM card for security reason due to the amount in value and the ATM
-card is ready for delivery, I am sorry for the inconveniences.
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202303052201.l1sxpnD9-lkp@intel.com/
 
-Kindly reconfirm your information as stated below to enable me
-complete the delivery arrangement of the ATM Card to your address.
+cocci warnings: (new ones prefixed by >>)
+>> drivers/mtd/spi-nor/debugfs.c:254:2-16: WARNING: NULL check before some freeing functions is not needed.
 
-Your Full Name*:..........
-Address*:..................
-Country*:.............
-Phone Number*:................
-
-Yours In Service
-Mr Yulson Zackman
-Director of Payments.
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
