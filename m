@@ -1,82 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D40996B21AC
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Mar 2023 11:39:00 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id F223E6B23C3
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Mar 2023 13:13:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E902F82090;
-	Thu,  9 Mar 2023 10:38:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E902F82090
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3A22A417E5;
+	Thu,  9 Mar 2023 12:13:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3A22A417E5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9xXJvF8Gg4OI; Thu,  9 Mar 2023 10:38:57 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id PehfhHhy6MzU; Thu,  9 Mar 2023 12:13:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AF07382074;
-	Thu,  9 Mar 2023 10:38:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AF07382074
+	by smtp4.osuosl.org (Postfix) with ESMTP id B6336417DF;
+	Thu,  9 Mar 2023 12:13:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B6336417DF
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C04271BF3D6
- for <devel@linuxdriverproject.org>; Thu,  9 Mar 2023 10:38:53 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 22B2E1BF281
+ for <devel@linuxdriverproject.org>; Thu,  9 Mar 2023 12:13:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A391E60750
- for <devel@linuxdriverproject.org>; Thu,  9 Mar 2023 10:38:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A391E60750
+ by smtp4.osuosl.org (Postfix) with ESMTP id EF142417E5
+ for <devel@linuxdriverproject.org>; Thu,  9 Mar 2023 12:13:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EF142417E5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bcZb2OEBeFIC for <devel@linuxdriverproject.org>;
- Thu,  9 Mar 2023 10:38:53 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BF2A9605B0
-Received: from mail-ed1-x52e.google.com (mail-ed1-x52e.google.com
- [IPv6:2a00:1450:4864:20::52e])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BF2A9605B0
- for <devel@driverdev.osuosl.org>; Thu,  9 Mar 2023 10:38:52 +0000 (UTC)
-Received: by mail-ed1-x52e.google.com with SMTP id j11so5108700edq.4
- for <devel@driverdev.osuosl.org>; Thu, 09 Mar 2023 02:38:52 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1678358331;
- h=to:subject:message-id:date:from:reply-to:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=f5x+3xA/pzjrb+tM4XYd/WINkB3u++ZnB2WUBZBEBSY=;
- b=JMCUIFQ2yKj4dqmAtpxqcKg7aiNwWifwyEN9skp9sFC74IlsgrMY5NW/j9o4o6x55u
- WtRHtIxrcOO6aEnMoxVwmlDiKyi7h7KjcByAqIua/YtUDr1wdou+kddfejkJPT43OGId
- D8Z7lOhtuSpKAd+MsDa2aahdNcD/YosXBrWOvmXvaNf2KkTkujzoXovZHHW1LyafnnTp
- m5wYrkW9SD1gt4nIqG4gTTC3pwBmEIy1Sh6QM/4x9rLsxWijRjD2cSKjQZO7hRnjtbF/
- QQLyBqEq4u/lXw1cSQFidAPhPZ7RMgQm/otCmigRAn5AsnhPP9asF5Q42rGoXKlGw8V4
- DHhw==
-X-Gm-Message-State: AO0yUKVvgEe0hqBKVjOnRZlb/m48dUgDKjNW7R848Olbward/F0bvner
- g/Jow7fOSrhhxxQ8lhGn8sEOXkMLtpN/A4Zl+VU=
-X-Google-Smtp-Source: AK7set+hlmqs3ii4sPDBFP/KpxZPqVfTKBsSgFNcZGAwpYOeqE3dqkh0em5k8q5wAXX45ifkvZfUUQu1XDWvNgVifmE=
-X-Received: by 2002:a17:907:33c1:b0:8b0:fbd5:2145 with SMTP id
- zk1-20020a17090733c100b008b0fbd52145mr10941171ejb.15.1678358330595; Thu, 09
- Mar 2023 02:38:50 -0800 (PST)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CVMEBxEEAz70 for <devel@linuxdriverproject.org>;
+ Thu,  9 Mar 2023 12:13:50 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+Received: from howered.tech (unknown [192.227.97.133])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 14A33417DF
+ for <devel@driverdev.osuosl.org>; Thu,  9 Mar 2023 12:13:49 +0000 (UTC)
+Received: from [45.11.91.24] (helo=PC-AVKTHLTGPU.PC-AVKTHLTGPU)
+ by howered.tech with esmtpa (Exim 4.89)
+ (envelope-from <contact@howered.tech>)
+ id 1pa1aQ-000BIF-Nr; Thu, 09 Mar 2023 04:44:38 +0700
 MIME-Version: 1.0
-Received: by 2002:a17:906:db0b:b0:917:33bf:e3df with HTTP; Thu, 9 Mar 2023
- 02:38:29 -0800 (PST)
-From: Rehama Hassan <fleon1697@gmail.com>
-Date: Thu, 9 Mar 2023 02:38:29 -0800
-Message-ID: <CAM+7t5c=tTOtNFFG5ZdFRphP7srPXy4BF11y7Y0z2CGfQpi3zQ@mail.gmail.com>
-Subject: From: Dr Rhama Hassan
-To: undisclosed-recipients:;
+Content-Description: Mail message body
+Subject: Award Notification.
+To: Recipients <contact@howered.tech>
+From: =?utf-8?b?wqhMb3R0b2hveSBHbG9iYWzCqCA8Y29udGFjdEBob3dlcmVkLnRlY2g+?=@osuosl.org
+Date: Wed, 08 Mar 2023 15:44:37 -0600
+Message-Id: <E1pa1aQ-000BIF-Nr@howered.tech>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1678358331;
- h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
- :subject:date:message-id:reply-to;
- bh=f5x+3xA/pzjrb+tM4XYd/WINkB3u++ZnB2WUBZBEBSY=;
- b=WU6BDewxlpbF5Yjg5rBnu/vKNQ3Wn10OPkUtIcBNIqYGd7QnOMUYVFUNN//BMPdU2d
- R9yBrNuRRwfzuOl6CgOTrFtSwOWjll95sPCz2wbeT/UKtiDDwOuV+rLgM+ZGLXuHMaJE
- HGwR9c0NbihBSJYTluiqNSQNKFpL4tDEZHMnbBmzmG2awUr9B0h3MtQ5d0A0ldttmufw
- QtVixVbRBzJi8NPClS7DVBYpGjMDCijmrEJkATViy4npms/eHOSJLNbxhSOeP8mtZgXh
- F6nm1t4yv3rHK2IvEGXSiW1OKrdwWNRANhvU9TI3xOvlUAazMzsCHQ8Cuk/zp8ldwWXh
- svkQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=WU6BDewx
+ d=osuosl.org; s=default; t=1678364031;
+ bh=pDKSBTyF35WUZ05KOq19s30U+yZTFr3MVlxbRuOzggg=;
+ h=Subject:To:From:Date:Reply-To:From;
+ b=KRumftF6OACDA9GNSVbGXu8U7C1NbmEmpl0Ba3ek7e+QW4sBVt3U0MC1sHqgYOna+
+ m9iXj32ADVP1VakNR9Jls9IFkStjzuerAuCM+Wq1BlcATeG3SLnomFz+zFWYKtT+GT
+ 5KCGTOgWWvzxg1RwAnSPr1hgBFaUdFwSNDj87I0OfaIojfNJxtUQuR0OwGL+nAc0jH
+ e7nbqPeJk3uvlmfm7KfKSF72clLjQhUI/o4sEMmP46tUcXy4DR18DuNj+JKnMQPncT
+ pB1fKKe7vjVTuSPwcW5xSnUGegDUzx1nbEz7KrMgg4TEls8RZol6nzczFb4VyXsnCq
+ weF22H9geXZtg==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=howered.tech; s=mail; h=Message-Id:Reply-To:Date:From:To:Subject:
+ Content-Description:Content-Transfer-Encoding:MIME-Version:Content-Type:
+ Sender:Cc:Content-ID:Resent-Date:Resent-From:Resent-Sender:Resent-To:
+ Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=pDKSBTyF35WUZ05KOq19s30U+yZTFr3MVlxbRuOzggg=; b=MEEdWNM2gYp0ehh6eQRkI+VkGJ
+ A9jmWF/Ra4AiVtBZjN4xZ43MMc4WrkZM70fdz3pYUdrpCN3UCzyNIzs62qI9sVdNO6eS7MAZt+hx2
+ H5a1iw3l3+qUDcyOXcLAoBCu5iHFFrbICJNovQO4XZrfGHqSWns8d791YYpM4+VS9Xpk=;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org (amavisd-new);
+ dkim=pass (1024-bit key) header.d=howered.tech
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,125 +79,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: rhamahassacom@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: laprimitivalalottohoy@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
--- 
-From: Dr Rhama DrwalL
-
-
-Please read carefully,
-
-
-
-
-
-This message might meet you in utmost surprise. However, it's just my
-
-
-urgent need for foreign partner that made me contact you for this
-
-
-transaction. I got your contact from yahoo tourist search while I was
-
-
-searching for a foreign partner. I am assured of your capability and
-
-
-reliability to champion this business opportunity when I prayed about you.
-
-
-
-
-
-I am a banker by profession in Burkina-Faso, West Africa and currently
-
-
-holding the post of manager in account and auditing department in our
-
-
-bank. I have the opportunity of transferring the left over funds ($5.5
-
-
-Million Dollars) belonging to our deceased customer who died along
-
-
-with his entire family in a plane crash
-
-
-
-
-
-Hence; I am inviting you for a business deal where this money can be
-
-
-shared between us in the ratio of 60/40 if you agree to my business
-
-
-proposal. Further details of the transfer will be forwarded to you as
-
-
-soon as I receive your return mail as soon as you receive this letter.
-
-
-
-
-
-Please indicate your willingness by sending the below information for
-
-
-more clarification and easy communication. For more details, Contact
-
-
-me for more details.
-
-
-
-
-
-For the Expenses, I will be the one to take care of the expenses, if
-
-
-the bank asks
-
-
-you for any money, do not pay, inform me in time i will pay it.
-
-
-I will take care of  expenses.
-
-
-
-
-
-(1) YOUR FULL NAME...
-
-
-(2) YOUR CONTACT ADDRESS....
-
-
-(3) YOUR PRIVATE PHONE N0..........
-
-
-(4) YOUR COUNTRY OF ORIGIN..................
-
-
-(5) YOUR OCCUPATION.........................
-
-
-
-
-
-Trusting to hear from you immediately.
-
-
-Thanks & Best Regards,
-
-Dr Rhama DrwalL
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RGVhciBMdWNreSBXaW5uZXIhIQoKV2UgYXJlIHBsZWFzZWQgdG8gaW5mb3JtIHlvdSBvZiB0aGUg
+cmVsZWFzZSBvZiB0aGUgKExhIFByaW1pdGl2YSBMb3R0ZXJ5IHBsYXllZCBpbiBTcGFpbiBieShD
+YW1lbG90IEdyb3VwIFBsYylvZiB3d3cubG90dG9ob3kuY29tIG9uIEZlYnJ1YXJ5LTE2LTIwMjMs
+IFlvdXIgZW1haWwgYXR0YWNoZWQgdG8gdGlja2V0IG51bWJlciAoNTE3NzUtMSkgd2l0aCBzZXJp
+YWwgbnVtYmVyKDAxLTExOTMwLTc1N0ZBRTMwRTA4Mjc0NUVCN0FCKSB3aGljaCBkcmV3IHRoZSBs
+dWNreSBudW1iZXJzIG9mICgwMi0yNC0yNS0zMi0zMy00MCkgd2hpY2ggd29uIHRoZSBsb3R0ZXJ5
+IGluIHRoZSA2IGNhdGVnb3J5LCB5b3UgaGF2ZSB0aGVyZWZvcmUgYmVlbiBhd2FyZGVkIHRoZSBz
+dW0gb2Yg4oKsNiwyOTAsMjg4Ljg4YyBFdXJvLGNyZWRpdGVkIHRvIGZpbGUgcmVmZXJlbmNlIE7C
+ujpMQS0xNTktMTM3LTMxMS1FUy4gQ09OR1JBVFVMQVRJT05TISEhIAoKQWxsIHBhcnRpY2lwYW50
+J3MgZW1haWxzIHdlcmUgc2VsZWN0ZWQgZnJvbSBBc2lhLCBBdXN0cmFsaWEsIE5ldyBaZWFsYW5k
+LCBFdXJvcGUsIE5vcnRoIGFuZCBTb3V0aCBBbWVyaWNhIE1pZGRsZSBFYXN0IGFuZCBBZnJpY2Es
+IGZvciB0aGUgR2xvYmFsIENvdmlkIDE5IFNvbGlkYXJpdHkgUHJvbW90aW9uLiAKClRvIGJlZ2lu
+IHlvdXIgbG90dGVyeSBjbGFpbSwgcGxlYXNlIGNvbnRhY3QgeW91ciBhcHBvaW50ZWQgTGF3eWVy
+L2FnZW50IE1yLiBNYXJpbyBTYW56IG9mIChNYXJpbyBTYW56IEFzc29jaWF0ZSkgb24gVGVsOiAr
+MzQtNjAzLTEyNy00MTEgYW5kIGVtYWlsIGluZm9AbWFyaW9zYW56YXNvY2lhdGUuY29tIGZvciB0
+aGUgcHJvY2Vzc2luZyBhbmQgcmVtaXR0YW5jZSBvZiB5b3VyIHdpbm5pbmcgcHJpemUgbW9uZXkg
+dG8gYSBkZXNpZ25hdGlvbiBvZiB5b3VyIGNob2ljZS4KIApSZW1lbWJlciwgYWxsIHByaXplIG1v
+bmV5IG11c3QgYmUgY2xhaW1lZCBub3QgbGF0ZXIgdGhhbiAzMXN0IE1hcmNoIDIwMjMsIGFueSBj
+bGFpbSBub3QgbWFkZSBiZWZvcmUgdGhpcyBkYXRlIHdpbGwgYmUgcmV0dXJuZWQgdG8gdGhlIE1p
+bmlzdHJ5IG9mIEVjb25vbXkgYXMgdW5jbGFpbWVkLCBhbmQgYWxzbyBiZSBpbmZvcm1lZCB0aGF0
+IDEwJSBwZXJjZW50IG9mIHlvdXIgTG90dGVyeSBXaW5uaW5nIGJlbG9uZ3MgdG8oQ2FtZWxvdCBH
+cm91cCBQbGMpYmVjYXVzZSB0aGV5IGFyZSB0aGUgcHJvbW90aW9uIGNvbXBhbnkgdGhhdCBzdWJt
+aXQgYW5kIHBsYXllZCB0aGUgbG90dGVyeSB3aXRoIHlvdXIgZW1haWwsIHRoaXMgdGVuIHBlcmNl
+bnQgd2lsbCBiZSByZW1pdHRlZCB0byB0aGVpciBhY2NvdW50IGFmdGVyIHlvdSBoYXZlIHJlY2Vp
+dmVkIHlvdXIgd2lubmluZ3MgYmVjYXVzZSB5b3VyIHdpbm5pbmcgbW9uZXkgaGFzIGJlZW4gaW5z
+dXJlZCB3aXRoIHRoZSBwYXlpbmcgYmFuayBhbHJlYWR5LiAKCk5PVEU6IFRvIGF2b2lkIHVubmVj
+ZXNzYXJ5IGRlbGF5cyBhbmQgY29tcGxpY2F0aW9ucywgcGxlYXNlIHJlbWVtYmVyIHRvIHF1b3Rl
+IHlvdXIgcmVmZXJlbmNlIG51bWJlcnMgaW4gZXZlcnkgY29ycmVzcG9uZGVuY2Ugd2l0aCB1cyBv
+ciB5b3VyIGFwcG9pbnRlZCBMYXd5ZXIvYWdlbnQuCgpDb25ncmF0dWxhdGlvbnMgb25jZSBhZ2Fp
+biBmcm9tIGFsbCBtZW1iZXJzIG9mIG91ciBzdGFmZiBhbmQgdGhhbmsgeW91IGZvciBiZWluZyBw
+YXJ0IG9mIG91ciBpbnRlcm5hdGlvbmFsIHByb21vdGlvbiBwcm9ncmFtcy4gV2Ugd2lzaCB5b3Ug
+Y29udGludWVkIGdvb2QgZm9ydHVuZXMuCgpCZXN0IHJlZ2FyZHMsCgpJc2FiZWxhIFNhbmNoZXoK
+TG90dG9ob3kgR2xvYmFsIEdhbWluZyBJbmMuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnBy
+b2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
