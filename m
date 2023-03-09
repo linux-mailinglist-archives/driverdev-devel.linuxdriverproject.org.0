@@ -1,72 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F223E6B23C3
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Mar 2023 13:13:56 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CAA4E6B272C
+	for <lists+driverdev-devel@lfdr.de>; Thu,  9 Mar 2023 15:41:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3A22A417E5;
-	Thu,  9 Mar 2023 12:13:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3A22A417E5
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0F4EA41006;
+	Thu,  9 Mar 2023 14:41:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0F4EA41006
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PehfhHhy6MzU; Thu,  9 Mar 2023 12:13:54 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WZR3OBl__Ag1; Thu,  9 Mar 2023 14:41:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B6336417DF;
-	Thu,  9 Mar 2023 12:13:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B6336417DF
+	by smtp2.osuosl.org (Postfix) with ESMTP id E4B4D41005;
+	Thu,  9 Mar 2023 14:41:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E4B4D41005
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 22B2E1BF281
- for <devel@linuxdriverproject.org>; Thu,  9 Mar 2023 12:13:51 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D80D31BF3DF
+ for <devel@linuxdriverproject.org>; Thu,  9 Mar 2023 14:41:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EF142417E5
- for <devel@linuxdriverproject.org>; Thu,  9 Mar 2023 12:13:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EF142417E5
+ by smtp2.osuosl.org (Postfix) with ESMTP id BFE4A41005
+ for <devel@linuxdriverproject.org>; Thu,  9 Mar 2023 14:41:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BFE4A41005
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CVMEBxEEAz70 for <devel@linuxdriverproject.org>;
- Thu,  9 Mar 2023 12:13:50 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id c9-BPMXVO6Bi for <devel@linuxdriverproject.org>;
+ Thu,  9 Mar 2023 14:41:23 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from howered.tech (unknown [192.227.97.133])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 14A33417DF
- for <devel@driverdev.osuosl.org>; Thu,  9 Mar 2023 12:13:49 +0000 (UTC)
-Received: from [45.11.91.24] (helo=PC-AVKTHLTGPU.PC-AVKTHLTGPU)
- by howered.tech with esmtpa (Exim 4.89)
- (envelope-from <contact@howered.tech>)
- id 1pa1aQ-000BIF-Nr; Thu, 09 Mar 2023 04:44:38 +0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AF16E41006
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AF16E41006
+ for <devel@driverdev.osuosl.org>; Thu,  9 Mar 2023 14:41:23 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id BBA4AB81E67;
+ Thu,  9 Mar 2023 14:41:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11663C433D2;
+ Thu,  9 Mar 2023 14:41:18 +0000 (UTC)
+Date: Thu, 9 Mar 2023 15:41:16 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Santosh Mahto <eisantosh95@gmail.com>
+Subject: Re: [PATCH] staging: android: ashmem.c: Declared file operation with
+ const keyword
+Message-ID: <ZAnwDL/GyCSC6xDa@kroah.com>
+References: <20230305190057.17482-1-eisantosh95@gmail.com>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Award Notification.
-To: Recipients <contact@howered.tech>
-From: =?utf-8?b?wqhMb3R0b2hveSBHbG9iYWzCqCA8Y29udGFjdEBob3dlcmVkLnRlY2g+?=@osuosl.org
-Date: Wed, 08 Mar 2023 15:44:37 -0600
-Message-Id: <E1pa1aQ-000BIF-Nr@howered.tech>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=osuosl.org; s=default; t=1678364031;
- bh=pDKSBTyF35WUZ05KOq19s30U+yZTFr3MVlxbRuOzggg=;
- h=Subject:To:From:Date:Reply-To:From;
- b=KRumftF6OACDA9GNSVbGXu8U7C1NbmEmpl0Ba3ek7e+QW4sBVt3U0MC1sHqgYOna+
- m9iXj32ADVP1VakNR9Jls9IFkStjzuerAuCM+Wq1BlcATeG3SLnomFz+zFWYKtT+GT
- 5KCGTOgWWvzxg1RwAnSPr1hgBFaUdFwSNDj87I0OfaIojfNJxtUQuR0OwGL+nAc0jH
- e7nbqPeJk3uvlmfm7KfKSF72clLjQhUI/o4sEMmP46tUcXy4DR18DuNj+JKnMQPncT
- pB1fKKe7vjVTuSPwcW5xSnUGegDUzx1nbEz7KrMgg4TEls8RZol6nzczFb4VyXsnCq
- weF22H9geXZtg==
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=howered.tech; s=mail; h=Message-Id:Reply-To:Date:From:To:Subject:
- Content-Description:Content-Transfer-Encoding:MIME-Version:Content-Type:
- Sender:Cc:Content-ID:Resent-Date:Resent-From:Resent-Sender:Resent-To:
- Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:
- List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=pDKSBTyF35WUZ05KOq19s30U+yZTFr3MVlxbRuOzggg=; b=MEEdWNM2gYp0ehh6eQRkI+VkGJ
- A9jmWF/Ra4AiVtBZjN4xZ43MMc4WrkZM70fdz3pYUdrpCN3UCzyNIzs62qI9sVdNO6eS7MAZt+hx2
- H5a1iw3l3+qUDcyOXcLAoBCu5iHFFrbICJNovQO4XZrfGHqSWns8d791YYpM4+VS9Xpk=;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org (amavisd-new);
- dkim=pass (1024-bit key) header.d=howered.tech
+Content-Disposition: inline
+In-Reply-To: <20230305190057.17482-1-eisantosh95@gmail.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=linuxfoundation.org; 
+ s=korg; t=1678372879;
+ bh=kJ/cQDrVKU2O5jbGyyeonMsCJOSRTfaSPyolev3MCfo=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=tL6J6of6FlJ9PEKCUzzD0Vkx6U+AlUbs4H/274ZyL2qDFfANCQhHG4uawA1Pli0my
+ oXarNV1619OuFNScqFpe948ApecfCvKfVIwloMof+VspaoYM/7pcrIfb4ytVD+OZDH
+ /yxrSa3Jaj1OgQW4iWyb4UAOpCW7UGqND9wuwnB0=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
+ header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg
+ header.b=tL6J6of6
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,45 +77,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: laprimitivalalottohoy@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, Todd Kjos <tkjos@android.com>,
+ linux-kernel@vger.kernel.org,
+ Arve =?iso-8859-1?B?SGr4bm5lduVn?= <arve@android.com>,
+ Joel Fernandes <joel@joelfernandes.org>, Martijn Coenen <maco@android.com>,
+ Christian Brauner <christian@brauner.io>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGVhciBMdWNreSBXaW5uZXIhIQoKV2UgYXJlIHBsZWFzZWQgdG8gaW5mb3JtIHlvdSBvZiB0aGUg
-cmVsZWFzZSBvZiB0aGUgKExhIFByaW1pdGl2YSBMb3R0ZXJ5IHBsYXllZCBpbiBTcGFpbiBieShD
-YW1lbG90IEdyb3VwIFBsYylvZiB3d3cubG90dG9ob3kuY29tIG9uIEZlYnJ1YXJ5LTE2LTIwMjMs
-IFlvdXIgZW1haWwgYXR0YWNoZWQgdG8gdGlja2V0IG51bWJlciAoNTE3NzUtMSkgd2l0aCBzZXJp
-YWwgbnVtYmVyKDAxLTExOTMwLTc1N0ZBRTMwRTA4Mjc0NUVCN0FCKSB3aGljaCBkcmV3IHRoZSBs
-dWNreSBudW1iZXJzIG9mICgwMi0yNC0yNS0zMi0zMy00MCkgd2hpY2ggd29uIHRoZSBsb3R0ZXJ5
-IGluIHRoZSA2IGNhdGVnb3J5LCB5b3UgaGF2ZSB0aGVyZWZvcmUgYmVlbiBhd2FyZGVkIHRoZSBz
-dW0gb2Yg4oKsNiwyOTAsMjg4Ljg4YyBFdXJvLGNyZWRpdGVkIHRvIGZpbGUgcmVmZXJlbmNlIE7C
-ujpMQS0xNTktMTM3LTMxMS1FUy4gQ09OR1JBVFVMQVRJT05TISEhIAoKQWxsIHBhcnRpY2lwYW50
-J3MgZW1haWxzIHdlcmUgc2VsZWN0ZWQgZnJvbSBBc2lhLCBBdXN0cmFsaWEsIE5ldyBaZWFsYW5k
-LCBFdXJvcGUsIE5vcnRoIGFuZCBTb3V0aCBBbWVyaWNhIE1pZGRsZSBFYXN0IGFuZCBBZnJpY2Es
-IGZvciB0aGUgR2xvYmFsIENvdmlkIDE5IFNvbGlkYXJpdHkgUHJvbW90aW9uLiAKClRvIGJlZ2lu
-IHlvdXIgbG90dGVyeSBjbGFpbSwgcGxlYXNlIGNvbnRhY3QgeW91ciBhcHBvaW50ZWQgTGF3eWVy
-L2FnZW50IE1yLiBNYXJpbyBTYW56IG9mIChNYXJpbyBTYW56IEFzc29jaWF0ZSkgb24gVGVsOiAr
-MzQtNjAzLTEyNy00MTEgYW5kIGVtYWlsIGluZm9AbWFyaW9zYW56YXNvY2lhdGUuY29tIGZvciB0
-aGUgcHJvY2Vzc2luZyBhbmQgcmVtaXR0YW5jZSBvZiB5b3VyIHdpbm5pbmcgcHJpemUgbW9uZXkg
-dG8gYSBkZXNpZ25hdGlvbiBvZiB5b3VyIGNob2ljZS4KIApSZW1lbWJlciwgYWxsIHByaXplIG1v
-bmV5IG11c3QgYmUgY2xhaW1lZCBub3QgbGF0ZXIgdGhhbiAzMXN0IE1hcmNoIDIwMjMsIGFueSBj
-bGFpbSBub3QgbWFkZSBiZWZvcmUgdGhpcyBkYXRlIHdpbGwgYmUgcmV0dXJuZWQgdG8gdGhlIE1p
-bmlzdHJ5IG9mIEVjb25vbXkgYXMgdW5jbGFpbWVkLCBhbmQgYWxzbyBiZSBpbmZvcm1lZCB0aGF0
-IDEwJSBwZXJjZW50IG9mIHlvdXIgTG90dGVyeSBXaW5uaW5nIGJlbG9uZ3MgdG8oQ2FtZWxvdCBH
-cm91cCBQbGMpYmVjYXVzZSB0aGV5IGFyZSB0aGUgcHJvbW90aW9uIGNvbXBhbnkgdGhhdCBzdWJt
-aXQgYW5kIHBsYXllZCB0aGUgbG90dGVyeSB3aXRoIHlvdXIgZW1haWwsIHRoaXMgdGVuIHBlcmNl
-bnQgd2lsbCBiZSByZW1pdHRlZCB0byB0aGVpciBhY2NvdW50IGFmdGVyIHlvdSBoYXZlIHJlY2Vp
-dmVkIHlvdXIgd2lubmluZ3MgYmVjYXVzZSB5b3VyIHdpbm5pbmcgbW9uZXkgaGFzIGJlZW4gaW5z
-dXJlZCB3aXRoIHRoZSBwYXlpbmcgYmFuayBhbHJlYWR5LiAKCk5PVEU6IFRvIGF2b2lkIHVubmVj
-ZXNzYXJ5IGRlbGF5cyBhbmQgY29tcGxpY2F0aW9ucywgcGxlYXNlIHJlbWVtYmVyIHRvIHF1b3Rl
-IHlvdXIgcmVmZXJlbmNlIG51bWJlcnMgaW4gZXZlcnkgY29ycmVzcG9uZGVuY2Ugd2l0aCB1cyBv
-ciB5b3VyIGFwcG9pbnRlZCBMYXd5ZXIvYWdlbnQuCgpDb25ncmF0dWxhdGlvbnMgb25jZSBhZ2Fp
-biBmcm9tIGFsbCBtZW1iZXJzIG9mIG91ciBzdGFmZiBhbmQgdGhhbmsgeW91IGZvciBiZWluZyBw
-YXJ0IG9mIG91ciBpbnRlcm5hdGlvbmFsIHByb21vdGlvbiBwcm9ncmFtcy4gV2Ugd2lzaCB5b3Ug
-Y29udGludWVkIGdvb2QgZm9ydHVuZXMuCgpCZXN0IHJlZ2FyZHMsCgpJc2FiZWxhIFNhbmNoZXoK
-TG90dG9ob3kgR2xvYmFsIEdhbWluZyBJbmMuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnBy
-b2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+On Mon, Mar 06, 2023 at 12:30:57AM +0530, Santosh Mahto wrote:
+> Warning found by checkpatch.pl script.
+> 
+> Signed-off-by: Santosh Mahto <eisantosh95@gmail.com>
+> ---
+>  drivers/staging/android/ashmem.c | 2 +-
+
+What kernel did you make this against?  This is not in my tree anymore.
+
+thanks,
+
+greg k-h
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
