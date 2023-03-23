@@ -1,49 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90DCC6CD647
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Mar 2023 11:22:45 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 50B016CD855
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Mar 2023 13:20:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1A5D141DCA;
-	Wed, 29 Mar 2023 09:22:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1A5D141DCA
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ByHXKQ5-sSmD; Wed, 29 Mar 2023 09:22:43 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C25AC41D72;
-	Wed, 29 Mar 2023 09:22:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C25AC41D72
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AF4AC1BF35D
- for <devel@linuxdriverproject.org>; Wed, 29 Mar 2023 09:22:39 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 960DF6142A
- for <devel@linuxdriverproject.org>; Wed, 29 Mar 2023 09:22:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 960DF6142A
+	by smtp3.osuosl.org (Postfix) with ESMTP id AA53161443;
+	Wed, 29 Mar 2023 11:20:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AA53161443
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3KHsWb6wl1d0 for <devel@linuxdriverproject.org>;
- Wed, 29 Mar 2023 09:22:38 +0000 (UTC)
-X-Greylist: delayed 00:09:22 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A0D4613EA
-Received: from mail.hawmndna.buzz (unknown [103.149.28.164])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3A0D4613EA
- for <devel@driverdev.osuosl.org>; Wed, 29 Mar 2023 09:22:38 +0000 (UTC)
-Received: by mail.hawmndna.buzz (Postfix, from userid 48)
- id 5CBF119E6C; Wed, 29 Mar 2023 05:11:19 -0400 (EDT)
-To: devel@driverdev.osuosl.org
-Subject: About your products
-X-PHP-Originating-Script: 0:mhawuiasm.php
-From: Richard Martins <sales56901@hotmail.com>
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VAo1-gYnldRT; Wed, 29 Mar 2023 11:20:02 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8BBC96145A;
+	Wed, 29 Mar 2023 11:20:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8BBC96145A
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 53DC51BF301
+ for <devel@linuxdriverproject.org>; Wed, 29 Mar 2023 11:19:59 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2DB7484071
+ for <devel@linuxdriverproject.org>; Wed, 29 Mar 2023 11:19:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2DB7484071
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DmCWYYJ6eFuh for <devel@linuxdriverproject.org>;
+ Wed, 29 Mar 2023 11:19:56 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F077384061
+Received: from sragenkab.go.id (mail.sragenkab.go.id [103.172.109.4])
+ by smtp1.osuosl.org (Postfix) with SMTP id F077384061
+ for <devel@driverdev.osuosl.org>; Wed, 29 Mar 2023 11:19:53 +0000 (UTC)
+Received: (qmail 85958 invoked from network); 23 Mar 2023 01:40:38 -0000
+Received: from localhost (HELO mail2.sragenkab.go.id) (127.0.0.1)
+ by localhost with SMTP; 23 Mar 2023 01:40:38 -0000
 MIME-Version: 1.0
-Message-Id: <20230329091119.5CBF119E6C@mail.hawmndna.buzz>
-Date: Wed, 29 Mar 2023 05:11:19 -0400 (EDT)
+Date: Wed, 22 Mar 2023 18:40:32 -0700
+From: Ibrahim Tafa <jurnalsukowati@sragenkab.go.id>
+To: undisclosed-recipients:;
+Subject: Loan Funding.
+Mail-Reply-To: <ibrahimtafa@abienceinvestmentsfze.com>
+Message-ID: <69c30ca1a9d8d8c70b0cec82e8f88208@sragenkab.go.id>
+X-Sender: jurnalsukowati@sragenkab.go.id
+User-Agent: Roundcube Webmail/0.8.1
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=sragenkab.go.id; 
+ h=mime-version:content-type:content-transfer-encoding:date:from
+ :to:subject:reply-to:message-id; q=dns/txt; s=dkim1; bh=BN7rar3d
+ ZroU6C9kMOTuIbHUVVRdn7+FyJDvEJCXGX0=; b=mCTsCr8uUMlPM70bXGQqr/mM
+ F7qZ8arBDf4qefAhQ0Cm3XI/mKRM3kTt+o14Et8DPypNmmE+7fDGg06m2GPaKRYt
+ J4SfYJ7DNJdD4OshdPdfc+SWz7h3+dyXOB1QBMESWTP8Z0qANTuJFnV0IMMXjyb+
+ KyUEiyx8fMScRnO2Z8Ie7ompt8NRT0FvXunAPckoRNgHQgYbkgMVqwY2xmUzcuRu
+ J83A04KWrj8nM/gJbiGVR+/meQ4Ex/ZhLOiRG7KA50npuN4oSirG7J2Psa/mLDKe
+ +YfE905uAvPoQr+1+PkK5v8/6HelxbvLvjTJjT+isJS9nVTKPLac1SuTKJEQ3w==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=sragenkab.go.id header.i=@sragenkab.go.id
+ header.a=rsa-sha256 header.s=dkim1 header.b=mCTsCr8u
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,26 +72,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: martins12290@hotmail.com
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: ibrahimtafa@abienceinvestmentsfze.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi, Friend,  
- 
-This is Richard Martins and I'm the purchasing manager from K&B Trading(SANTIAGO) in Chile.  
-We are glad to know about your company from the web and we are interested in your products.  
-Kindly send us your Latest catalog and price list for our trial order, Thanks.  
- 
-Best Regards,  
-Mr. Richard Martins  
-Purchasing Manager  
-K&B Trading (SANTIAGO) Chile  
-Add: Marchant Pereira 190,Providencia,Santiago  
-Tel.: 56 2 2204 5852
 
 
+-- 
+We offer debt funding/loans to project owners who are in need of funds 
+to complete their projects/ Businesses at low interest rates And offer a 
+good commission to brokers who introduce clients/companies to us.
+   kindly get back to me for more information
+
+Regards,
+Ibrahim Tafa
+ABIENCE INVESTMENT GROUP FZE, United Arab Emirates
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
