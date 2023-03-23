@@ -2,81 +2,86 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 229716C664F
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Mar 2023 12:16:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 40BD66C676A
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Mar 2023 12:59:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5C71F402F3;
-	Thu, 23 Mar 2023 11:16:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5C71F402F3
+	by smtp2.osuosl.org (Postfix) with ESMTP id 95B3A41D0E;
+	Thu, 23 Mar 2023 11:59:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 95B3A41D0E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pJIpev1vIHrm; Thu, 23 Mar 2023 11:16:23 +0000 (UTC)
+	with ESMTP id 8-0CpJYtmyBp; Thu, 23 Mar 2023 11:59:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3AAC54018A;
-	Thu, 23 Mar 2023 11:16:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3AAC54018A
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 71C20402F3;
+	Thu, 23 Mar 2023 11:59:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 71C20402F3
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8C2461BF40F
- for <devel@linuxdriverproject.org>; Thu, 23 Mar 2023 11:16:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BBC9D1BF21A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 23 Mar 2023 11:59:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 659CC40192
- for <devel@linuxdriverproject.org>; Thu, 23 Mar 2023 11:16:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 659CC40192
+ by smtp2.osuosl.org (Postfix) with ESMTP id 95E6641D02
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 23 Mar 2023 11:59:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 95E6641D02
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id raQxVS7xwZKD for <devel@linuxdriverproject.org>;
- Thu, 23 Mar 2023 11:16:19 +0000 (UTC)
+ with ESMTP id iKhI5hlBNBxw
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 23 Mar 2023 11:59:10 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0AD134018A
-Received: from mail-ed1-x52d.google.com (mail-ed1-x52d.google.com
- [IPv6:2a00:1450:4864:20::52d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0AD134018A
- for <devel@linuxdriverproject.org>; Thu, 23 Mar 2023 11:16:18 +0000 (UTC)
-Received: by mail-ed1-x52d.google.com with SMTP id o12so84799175edb.9
- for <devel@linuxdriverproject.org>; Thu, 23 Mar 2023 04:16:18 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8E2A0408D3
+Received: from mail-qt1-x82c.google.com (mail-qt1-x82c.google.com
+ [IPv6:2607:f8b0:4864:20::82c])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 8E2A0408D3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 23 Mar 2023 11:59:10 +0000 (UTC)
+Received: by mail-qt1-x82c.google.com with SMTP id t9so26132876qtx.8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 23 Mar 2023 04:59:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1679570177;
+ d=1e100.net; s=20210112; t=1679572749;
  h=to:subject:message-id:date:from:reply-to:mime-version
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
  bh=IE0Q22t9nDUcBAUVsmYKmeg+5EtHh5OHc8AXl8b80GM=;
- b=M5c/Dg7nOHtTNStfjAfI/Qab049pCAzeKHlcsBa1/T4XE4clIM7OfHD79RXGzaDU4A
- pISk2I2XgXFLd3rlXtdWMH4cHuf2/g4pLZIKee1pZ1Ew6/hjfox/Hw2BLyI5HqithrdJ
- ZO3sNHQuwyHMihiE9wupUdT3sl3UfgyOkmoYMhvC8IQATdUoommv7QxU+CgRBzeWAW1F
- Rew32ZIa972Q1NxhDcRqIB52VAMf382vRCM80DK6HkJ0yTYV6uXdGK23YTnEgcwQdJnH
- ZXqFsGlSDtfPln6/wezNO+nBVb+emJXBzkSnZTtcJX5FUef0lu8nIuhDQqEttbqRzbt5
- uEFA==
-X-Gm-Message-State: AO0yUKUIkVQwPVZ4+gyi8u7UttnVP8ZnWEJ0i++4LWL55X5e80ls3TKG
- PMUMVGJxpOFU5UTfAU3sTuJSKK+bKt0LCcJY76Y=
-X-Google-Smtp-Source: AK7set9x056y0rrgevJ46Wj8JBIkKnPfNP/OZ/NK6AGjEqI8MmrK+qPU5ca0050OYjftDmptoIflRV3xgSx+TsJ5NF0=
-X-Received: by 2002:a17:907:d9f:b0:8d0:2c55:1aa with SMTP id
- go31-20020a1709070d9f00b008d02c5501aamr5070988ejc.0.1679570176592; Thu, 23
- Mar 2023 04:16:16 -0700 (PDT)
+ b=7eIU/JOuNKC4+biXDnlIQf8SsXuEYKHMlXSult8oBwKHGhf/XbsGWVnioYVk2F3sLv
+ Mak95m/gyuYNJhnpOjJxtYO7wceRDjglmuwNvJP9enbErXSETh3rNQ/wuQK/7vWlC94S
+ fejejwse0QDSCVRuW1l4J73RjpDw8WJKMeNXhHfFH2cVsbxeAc+UvKw733rFXM0tm/ne
+ uD0Gd4bv/8mYKaAXOD968ADbCqnlapJi29UM8WUWoVR2cxn1HSSlDWbbX0hBMOSljd/c
+ EIjns0z5r40OpEFTgMfwCIWasKqAQjvu6IkoBvCP11/xRgvJWhtFL4CVHRySy0spOX28
+ 8JMg==
+X-Gm-Message-State: AO0yUKUYUUWHc31oS9LkMwedx9tn5fgCg3ihiSS2faBpKV6L3FnzWOFA
+ Wz+8Nmy9nh3x/q2UEA6lsgKH9VoFQYARmAnODPI=
+X-Google-Smtp-Source: AK7set+HvGlGlFLSRaeRx27jyLh/jzzynKAR9u9uhMvUe2dZ0oM3+3UjeU1/qZ1wCEPrzW2L3Bnv4cav8OeuTBr7K6M=
+X-Received: by 2002:a05:622a:83:b0:3d7:9d03:75a4 with SMTP id
+ o3-20020a05622a008300b003d79d0375a4mr2585915qtw.13.1679572749318; Thu, 23 Mar
+ 2023 04:59:09 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a98:b192:0:b0:1bd:6284:d0ad with HTTP; Thu, 23 Mar 2023
- 04:16:16 -0700 (PDT)
-From: "Leszczynska Anna Malgorzata." <saliimmatayaaya@gmail.com>
-Date: Thu, 23 Mar 2023 04:16:16 -0700
-Message-ID: <CA+EdOwRY9_yVE0NNYMCyPKVL1YgKr=0ZOFxjmne49Si3_Je-RQ@mail.gmail.com>
+Received: by 2002:a05:622a:3cc:b0:3b0:621a:2f66 with HTTP; Thu, 23 Mar 2023
+ 04:59:08 -0700 (PDT)
+From: "Leszczynska Anna Malgorzata." <madamstewartpriisca@gmail.com>
+Date: Thu, 23 Mar 2023 04:59:08 -0700
+Message-ID: <CAHesxDxDgaG_8cv4f3qCBtLGvtOgooNXjCYH3025=WxJj0Dkvg@mail.gmail.com>
 Subject: Mrs. Leszczynska Anna Malgorzata.
 To: undisclosed-recipients:;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1679570177;
+ d=gmail.com; s=20210112; t=1679572749;
  h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
  :subject:date:message-id:reply-to;
  bh=IE0Q22t9nDUcBAUVsmYKmeg+5EtHh5OHc8AXl8b80GM=;
- b=ZU32ne/IVqD61ABr2hzJp1SIDSrqBYN4odPzVSLtYCOErsYKODfevM/w6GuYGZM06H
- KZHmeLBLF0r/tW3ElSax/wWX+NoLdOOfgwqgKrBDwL9WweLX06ua/KGXZX9Q0iF8iqOm
- pToWoCVN4nqBRdSEpZVmlllqMVfdQQX72O8w/pExe4WVlbEdXtts7jjjYQRq59YtR9do
- c7U3TXfvHqi90POILA8wkqRwHKkIz9OjotxeONbg6xMs7mQBpktyH7h4nNuFKHrcGcWQ
- jC/Zml5W4BEkfU9YM0U37qr8nogFl9O9NXi0xGbksDGSDrinZCKi3tz6lY7cjSBf/iBg
- mNOQ==
+ b=NuluGt5MqhV1EegcfuOgJSFshf4eNFVheviA5+v85Q8vIHGsosOLmC+q2zhT26UJr2
+ IPBVkUMvsf5WAaK8tffCpbWr0IA8QPtIsmDJ4/JBJz3BKwCvlr3bGHFRZFEaJhz1/QXl
+ ZRcn+tHG2OvO2FHDw2yhqC4+JIrSISSaWFNKeJzu0TLm5IsJsDmaA0/WBtnoZQC3rB/K
+ gdCFknz8lRmyB8Gv/m3UDa3GfEv97LPghSLPOsSSgxFXHlNRbjl5NfsK4jGQ6yNnLsg2
+ yYAiYG4r5WiPB0AFeK/KcAYKOhLuLa8X5xeUv8+NIeaPqNhDDDy9L+q4lVEbPZz8/98i
+ Eb5w==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=ZU32ne/I
+ header.a=rsa-sha256 header.s=20210112 header.b=NuluGt5M
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
