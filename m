@@ -1,77 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63E1C6C93FC
-	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Mar 2023 13:25:51 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 348176C9403
+	for <lists+driverdev-devel@lfdr.de>; Sun, 26 Mar 2023 13:36:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C257260899;
-	Sun, 26 Mar 2023 11:25:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C257260899
+	by smtp3.osuosl.org (Postfix) with ESMTP id 481EC608D8;
+	Sun, 26 Mar 2023 11:36:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 481EC608D8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pIfCGZLXEUrP; Sun, 26 Mar 2023 11:25:46 +0000 (UTC)
+	with ESMTP id OdANs5cU6qOe; Sun, 26 Mar 2023 11:36:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3E565608D8;
-	Sun, 26 Mar 2023 11:25:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3E565608D8
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9401860ABA;
+	Sun, 26 Mar 2023 11:36:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9401860ABA
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9222B1BF410
- for <devel@linuxdriverproject.org>; Sun, 26 Mar 2023 11:25:43 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 076E01BF410
+ for <devel@linuxdriverproject.org>; Sun, 26 Mar 2023 11:36:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6B55060899
- for <devel@linuxdriverproject.org>; Sun, 26 Mar 2023 11:25:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6B55060899
+ by smtp1.osuosl.org (Postfix) with ESMTP id D201481E04
+ for <devel@linuxdriverproject.org>; Sun, 26 Mar 2023 11:36:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D201481E04
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vZP5IyLJyyf8 for <devel@linuxdriverproject.org>;
- Sun, 26 Mar 2023 11:25:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7ZHf9REfPNJU for <devel@linuxdriverproject.org>;
+ Sun, 26 Mar 2023 11:36:41 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 056C660737
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 056C660737
- for <devel@driverdev.osuosl.org>; Sun, 26 Mar 2023 11:25:41 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10660"; a="323958013"
-X-IronPort-AV: E=Sophos;i="5.98,292,1673942400"; d="scan'208";a="323958013"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2023 04:25:40 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B9D4281C26
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B9D4281C26
+ for <devel@driverdev.osuosl.org>; Sun, 26 Mar 2023 11:36:41 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10660"; a="319728216"
+X-IronPort-AV: E=Sophos;i="5.98,292,1673942400"; d="scan'208";a="319728216"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Mar 2023 04:36:41 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10660"; a="826734266"
-X-IronPort-AV: E=Sophos;i="5.98,292,1673942400"; d="scan'208";a="826734266"
+X-IronPort-AV: E=McAfee;i="6600,9927,10660"; a="660569486"
+X-IronPort-AV: E=Sophos;i="5.98,292,1673942400"; d="scan'208";a="660569486"
 Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
- by fmsmga001.fm.intel.com with ESMTP; 26 Mar 2023 04:25:39 -0700
+ by orsmga006.jf.intel.com with ESMTP; 26 Mar 2023 04:36:39 -0700
 Received: from kbuild by b613635ddfff with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pgOVG-000H63-11;
- Sun, 26 Mar 2023 11:25:38 +0000
-Date: Sun, 26 Mar 2023 19:25:09 +0800
+ (envelope-from <lkp@intel.com>) id 1pgOfu-000H6i-2r;
+ Sun, 26 Mar 2023 11:36:38 +0000
+Date: Sun, 26 Mar 2023 19:35:48 +0800
 From: kernel test robot <lkp@intel.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Subject: [driver-core:class_cleanup 77/77]
- drivers/gpio/gpiolib-sysfs.c:557:18: error: no member named 'p' in 'struct
- class'
-Message-ID: <202303261930.3hImFQWz-lkp@intel.com>
+ drivers/gpio/gpiolib-sysfs.c:557:25: error: 'struct class' has no member
+ named 'p'; did you mean 'pm'?
+Message-ID: <202303261957.UQvos3xt-lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1679829941; x=1711365941;
+ t=1679830601; x=1711366601;
  h=date:from:to:cc:subject:message-id:mime-version;
- bh=XbeqmbWfnwLwAoNzQkdlnSNyIRypRwvPWdNllCsjJDc=;
- b=AihxeJ+0jMrCnnp7EEUiDUZUamIDo01lF+sLfMMBaUFGsWgbUcj/oh++
- B8zixYZ5rD+OiPpQTHMm+w94WuCGF/D4i3KYGENYKCiPZ8jWO/PiBdmOU
- OtbcR7uzj9IV5lzSWySduNAzUpfLt/qBaI7LOguPtQsQLkW1h2wPjNWx4
- c7UAfZTGRFHNajIqp0RaC3Y5EazNzVevynbRW/vn6CPeGq8pTTepWO2zS
- L/uFmSJcriF+EIsqQLzK+LYDqoa22GMI7KrMPU1crAEPIuV6D88zfsDaV
- W/N/j9Y8rRQlL72kg9yiA0esgwaEJsS7x8JMYXWWFeJr2nbYs50XwCNHX
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=AUcoz7VHcy0tTTimM8ucDsZWY0Qd0SmmeRpc7K8G6Ls=;
+ b=oFBBeowHn75O7nQxkObffbznV5Z8sKPbPAXA6HUGn3QJfCYNKzDwUSNw
+ 0chpAjxEXwAVPQMuNaTw+JkHYSShEQyuGG4kqlGju9T2+DrjxEDqhX4Xa
+ QkECKOjsxnJiDdvp58s3iUmRqPDeT+1f/ZsOF99zUCXq6vtCaTP7BU3Do
+ vSJ1d81JaOuwgULLX2QsnYICUx7d1JY4N7MnYWhvCygSaTHB6MiA6Y9Lt
+ EEOwaVhHQVjL4VrOqS4zvoKs6vX9tu0euY2gxV4f+42fR2KmicrX2fXfG
+ y4Fcp9Rm4f8KCtp46ONW6EaN11EOUM8zz2kEOzhCrUQLLbqdxGmj72i8R
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=AihxeJ+0
+ header.a=rsa-sha256 header.s=Intel header.b=oFBBeowH
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,8 +84,7 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, llvm@lists.linux.dev,
- oe-kbuild-all@lists.linux.dev
+Cc: devel@driverdev.osuosl.org, oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -94,35 +93,34 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git class_cleanup
 head:   7c7807965477de8463e209426241adc80f5e9bb7
 commit: 7c7807965477de8463e209426241adc80f5e9bb7 [77/77] driver core: class: remove subsystem private pointer from struct class
-config: arm-randconfig-r046-20230326 (https://download.01.org/0day-ci/archive/20230326/202303261930.3hImFQWz-lkp@intel.com/config)
-compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
+config: i386-randconfig-a001 (https://download.01.org/0day-ci/archive/20230326/202303261957.UQvos3xt-lkp@intel.com/config)
+compiler: gcc-11 (Debian 11.3.0-8) 11.3.0
 reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install arm cross compiling tool for clang build
-        # apt-get install binutils-arm-linux-gnueabi
         # https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git/commit/?id=7c7807965477de8463e209426241adc80f5e9bb7
         git remote add driver-core https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git
         git fetch --no-tags driver-core class_cleanup
         git checkout 7c7807965477de8463e209426241adc80f5e9bb7
         # save the config file
         mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/gpio/
+        make W=1 O=build_dir ARCH=i386 olddefconfig
+        make W=1 O=build_dir ARCH=i386 SHELL=/bin/bash drivers/
 
 If you fix the issue, kindly add following tag where applicable
 | Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303261930.3hImFQWz-lkp@intel.com/
+| Link: https://lore.kernel.org/oe-kbuild-all/202303261957.UQvos3xt-lkp@intel.com/
 
 All errors (new ones prefixed by >>):
 
->> drivers/gpio/gpiolib-sysfs.c:557:18: error: no member named 'p' in 'struct class'
-           if (!gpio_class.p) {
-                ~~~~~~~~~~ ^
-   drivers/gpio/gpiolib-sysfs.c:731:18: error: no member named 'p' in 'struct class'
-           if (!gpio_class.p)
-                ~~~~~~~~~~ ^
-   2 errors generated.
+   drivers/gpio/gpiolib-sysfs.c: In function 'gpiod_export':
+>> drivers/gpio/gpiolib-sysfs.c:557:25: error: 'struct class' has no member named 'p'; did you mean 'pm'?
+     557 |         if (!gpio_class.p) {
+         |                         ^
+         |                         pm
+   drivers/gpio/gpiolib-sysfs.c: In function 'gpiochip_sysfs_register':
+   drivers/gpio/gpiolib-sysfs.c:731:25: error: 'struct class' has no member named 'p'; did you mean 'pm'?
+     731 |         if (!gpio_class.p)
+         |                         ^
+         |                         pm
 
 
 vim +557 drivers/gpio/gpiolib-sysfs.c
