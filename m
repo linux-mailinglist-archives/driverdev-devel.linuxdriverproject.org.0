@@ -1,90 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A53286CDC95
-	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Mar 2023 16:31:06 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B0BEC84153;
-	Wed, 29 Mar 2023 14:31:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B0BEC84153
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F5Qpr5AZr5ZH; Wed, 29 Mar 2023 14:31:04 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 78BD684135;
-	Wed, 29 Mar 2023 14:31:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 78BD684135
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id AF9701BF3E9
- for <devel@linuxdriverproject.org>; Wed, 29 Mar 2023 14:31:00 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C06D6CF1AB
+	for <lists+driverdev-devel@lfdr.de>; Wed, 29 Mar 2023 20:05:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 89784614C4
- for <devel@linuxdriverproject.org>; Wed, 29 Mar 2023 14:31:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 89784614C4
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4194061568;
+	Wed, 29 Mar 2023 18:05:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4194061568
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XMwGzdTdn0as for <devel@linuxdriverproject.org>;
- Wed, 29 Mar 2023 14:30:59 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5046161466
-Received: from mail-wm1-x329.google.com (mail-wm1-x329.google.com
- [IPv6:2a00:1450:4864:20::329])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5046161466
- for <devel@driverdev.osuosl.org>; Wed, 29 Mar 2023 14:30:59 +0000 (UTC)
-Received: by mail-wm1-x329.google.com with SMTP id p34so9061902wms.3
- for <devel@driverdev.osuosl.org>; Wed, 29 Mar 2023 07:30:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112; t=1680100257;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Zr4X6wyMqM3FaFSlbgRQtbKkzLVZE5bqrrVko5Rwa5c=;
- b=LX36vMk60P0KTtAywKYoAuvxUWy2o1R8SFeE4Oa1ykSQ/QR5sj9EwREZigHcz/fO1u
- XAMUvWDanldqq9por9/iZMx2OfLRJSfdzYFUiVHo7Rs26BLaX5l7SPWM7vI/YdFhkciL
- 0wdNBVt+USnQHX+ZP/RldM5jHLNU93KuOAL+60kzXOZddGOCP2VhGgAtRPH3MGePccCn
- 7ViqRB0+zd5XYqpHUyV5Oacqi/RDltTU1F2E3HZcviQxrvSkA7ghidIvnQNGGZ8RubBr
- YzeHijt3IVSK2+nj8wxp+kCi0urC4FeEJA21nExXiAaZ9PUpfU67hPBNupfJ4JM7PirD
- rDrw==
-X-Gm-Message-State: AO0yUKXWSiZUaj/Z5pJP8n08D1zPi0yP2ZWDDpglz2ncNvUnruSPO58J
- zgsjs+1sO5Y/Bu5Ef0ZzogY=
-X-Google-Smtp-Source: AK7set8CpQuhy+NQhip4nyXlgZTJ/O7V2iF8vnlal0JCs0FmkIvo0kzZyO6if4P9x6msOc2ZGFi4mg==
-X-Received: by 2002:a05:600c:2043:b0:3ee:4678:dde with SMTP id
- p3-20020a05600c204300b003ee46780ddemr15533132wmg.27.1680100256938; 
- Wed, 29 Mar 2023 07:30:56 -0700 (PDT)
-Received: from suse.localnet (host-95-248-13-140.retail.telecomitalia.it.
- [95.248.13.140]) by smtp.gmail.com with ESMTPSA id
- v8-20020a05600c470800b003ef71d7d64asm2670516wmo.6.2023.03.29.07.30.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Mar 2023 07:30:56 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Kloudifold <cloudifold.3125@gmail.com>
-Subject: Re: [PATCH v6] staging: sm750: Rename sm750_hw_cursor_* functions to
- snake_case
-Date: Wed, 29 Mar 2023 16:30:54 +0200
-Message-ID: <1854722.CQOukoFCf9@suse>
-In-Reply-To: <ZCQeyWW3+d7+qT+b@CloudiRingWorld>
-References: <ZCQeyWW3+d7+qT+b@CloudiRingWorld>
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rzuo7Zj-i9dQ; Wed, 29 Mar 2023 18:05:23 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id D643F6155B;
+	Wed, 29 Mar 2023 18:05:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D643F6155B
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BB61C1BF33B
+ for <devel@linuxdriverproject.org>; Wed, 29 Mar 2023 18:05:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9143B41E56
+ for <devel@linuxdriverproject.org>; Wed, 29 Mar 2023 18:05:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9143B41E56
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UPJ_uw4uMXNZ for <devel@linuxdriverproject.org>;
+ Wed, 29 Mar 2023 18:05:15 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4BA6541E54
+Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4BA6541E54
+ for <devel@driverdev.osuosl.org>; Wed, 29 Mar 2023 18:05:15 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10664"; a="339685076"
+X-IronPort-AV: E=Sophos;i="5.98,301,1673942400"; d="scan'208";a="339685076"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Mar 2023 11:05:06 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10664"; a="773677449"
+X-IronPort-AV: E=Sophos;i="5.98,301,1673942400"; d="scan'208";a="773677449"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+ by FMSMGA003.fm.intel.com with ESMTP; 29 Mar 2023 11:05:05 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1phaAS-000JnC-3C;
+ Wed, 29 Mar 2023 18:05:04 +0000
+Date: Thu, 30 Mar 2023 02:04:08 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:driver-core-next] BUILD SUCCESS
+ 8ad266d133b005e88953b08d988fac86f74a0665
+Message-ID: <64247d98.6xKxTZkl/olRTq4P%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20210112; t=1680100257;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Zr4X6wyMqM3FaFSlbgRQtbKkzLVZE5bqrrVko5Rwa5c=;
- b=KJT9KupMr4SgFRMB1R5Wh5QGDCXLeuHnE241gzx/vFvAdIk7ppT8Z1/BqjTEoZZmS3
- d0UPUn97r+cPBj80NygNM4gSJapGqb40vqiqV/fTx2iV5ugnPU5vY/faJZvPrGkmrZDS
- c2QVM/zfy5rAU1MQyTTHQMC5gtuuv2cEYSGLeg0aSDPPb28Jpac1WFoATQgNDbUxtRrb
- 1Dsv+flWW5VqXfHEWEZUqj6H47QO7/vRO2p84ZitrI76Bei2hzLJmi6IV3oYcfXh8/Fa
- 9M5LMdLzkNT5HOijXWkxgFHo3Iu/3GpRKKCJDTSMrLF8MwLTucF0eMahk8cAZxVEgDt8
- xb+w==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20210112 header.b=KJT9KupM
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1680113115; x=1711649115;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=0tuRsFJvFfQamT/guGz4FR2k3S0u59qUjLysv+71k5k=;
+ b=StgXCXt1Nz0+EKo/YXpbI6HMtjaNLEL91c5Jjotxc/bodyOvDWCZI8zf
+ uwUpDetnMgjLaGkh07KexVgQo4y59Phyv8zSEjbG9fGs+SLj0YH/xYxsj
+ f7X76I3tKdsEuQjOYGKVCzR4wDgQ/Ww1j5kmFBFgB2+KnTMdsZWawgyCX
+ H1Z868OILhQ3rV3n3H2wYT5T8ldgKX0haXHd5sEZ6XgseiQoxxXXBEJYs
+ OmzZ3qSIrwSJvfwIGakPjmr+inWkqXR0K29dfYHB8Gj/wXbpOf2V8HZKt
+ nMfrWzn36JtDgQOcFJCGs31gIfCaZfpTbGqASgyiz4YiASu0TC0pH/GbG
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=StgXCXt1
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,133 +84,345 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-fbdev@vger.kernel.org,
- Teddy Wang <teddy.wang@siliconmotion.com>, outreachy@lists.linux.dev,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, alison.schofield@intel.com,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- Sudip Mukherjee <sudipm.mukherjee@gmail.com>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-On mercoled=EC 29 marzo 2023 13:27:04 CEST Kloudifold wrote:
-> sm750 driver has sm750_hw_cursor_* functions, which are named in
-> camelcase. Rename them to snake case to follow the function naming
-> convention.
-> =
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-next
+branch HEAD: 8ad266d133b005e88953b08d988fac86f74a0665  driver core: Add CONFIG_FW_DEVLINK_SYNC_STATE_TIMEOUT
 
-> - sm750_hw_cursor_setSize  =3D> sm750_hw_cursor_set_size
-> - sm750_hw_cursor_setPos   =3D> sm750_hw_cursor_set_pos
-> - sm750_hw_cursor_setColor =3D> sm750_hw_cursor_set_color
-> - sm750_hw_cursor_setData  =3D> sm750_hw_cursor_set_data
-> - sm750_hw_cursor_setData2 =3D> sm750_hw_cursor_set_data2
-> =
+elapsed time: 1396m
 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Link:
-> https://lore.kernel.org/oe-kbuild-all/202303110849.X24WnHnM-lkp@intel.com/
+configs tested: 317
+configs skipped: 47
 
-Delete the last two lines.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-As Greg made you notice, it was not the Kernel Test Robot that had reported =
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha        buildonly-randconfig-r002-20230329   gcc  
+alpha        buildonly-randconfig-r003-20230326   gcc  
+alpha                               defconfig   gcc  
+alpha                randconfig-r003-20230329   gcc  
+alpha                randconfig-r004-20230327   gcc  
+alpha                randconfig-r005-20230329   gcc  
+alpha                randconfig-r012-20230329   gcc  
+alpha                randconfig-r015-20230329   gcc  
+alpha                randconfig-r023-20230329   gcc  
+alpha                randconfig-r025-20230326   gcc  
+alpha                randconfig-r031-20230329   gcc  
+arc                              allyesconfig   gcc  
+arc          buildonly-randconfig-r001-20230327   gcc  
+arc          buildonly-randconfig-r003-20230329   gcc  
+arc          buildonly-randconfig-r005-20230329   gcc  
+arc                                 defconfig   gcc  
+arc                        nsimosci_defconfig   gcc  
+arc                  randconfig-r012-20230326   gcc  
+arc                  randconfig-r013-20230329   gcc  
+arc                  randconfig-r016-20230329   gcc  
+arc                  randconfig-r033-20230329   gcc  
+arc                  randconfig-r034-20230329   gcc  
+arc                  randconfig-r043-20230326   gcc  
+arc                  randconfig-r043-20230327   gcc  
+arc                  randconfig-r043-20230329   gcc  
+arm                              allmodconfig   gcc  
+arm                              allyesconfig   gcc  
+arm          buildonly-randconfig-r002-20230329   gcc  
+arm          buildonly-randconfig-r006-20230329   gcc  
+arm                                 defconfig   gcc  
+arm                            dove_defconfig   clang
+arm                         lpc32xx_defconfig   clang
+arm                  randconfig-r005-20230327   clang
+arm                  randconfig-r024-20230326   clang
+arm                  randconfig-r046-20230326   clang
+arm                  randconfig-r046-20230327   gcc  
+arm                  randconfig-r046-20230329   gcc  
+arm64                            allyesconfig   gcc  
+arm64        buildonly-randconfig-r001-20230329   gcc  
+arm64        buildonly-randconfig-r002-20230329   gcc  
+arm64        buildonly-randconfig-r005-20230329   gcc  
+arm64                               defconfig   gcc  
+arm64                randconfig-r002-20230329   gcc  
+arm64                randconfig-r006-20230329   gcc  
+arm64                randconfig-r011-20230329   clang
+arm64                randconfig-r013-20230329   clang
+arm64                randconfig-r021-20230326   gcc  
+arm64                randconfig-r025-20230329   clang
+arm64                randconfig-r026-20230326   gcc  
+arm64                randconfig-r026-20230329   clang
+arm64                randconfig-r032-20230329   gcc  
+arm64                randconfig-r036-20230329   gcc  
+csky         buildonly-randconfig-r004-20230327   gcc  
+csky                                defconfig   gcc  
+csky                 randconfig-r003-20230329   gcc  
+csky                 randconfig-r004-20230329   gcc  
+csky                 randconfig-r011-20230329   gcc  
+csky                 randconfig-r014-20230329   gcc  
+csky                 randconfig-r031-20230329   gcc  
+csky                 randconfig-r032-20230326   gcc  
+csky                 randconfig-r032-20230327   gcc  
+csky                 randconfig-r034-20230329   gcc  
+hexagon              randconfig-r006-20230327   clang
+hexagon              randconfig-r013-20230327   clang
+hexagon              randconfig-r015-20230329   clang
+hexagon              randconfig-r016-20230329   clang
+hexagon              randconfig-r036-20230326   clang
+hexagon              randconfig-r041-20230326   clang
+hexagon              randconfig-r041-20230327   clang
+hexagon              randconfig-r041-20230329   clang
+hexagon              randconfig-r045-20230326   clang
+hexagon              randconfig-r045-20230327   clang
+hexagon              randconfig-r045-20230329   clang
+i386                             allyesconfig   gcc  
+i386                              debian-10.3   gcc  
+i386                                defconfig   gcc  
+i386                          randconfig-a001   gcc  
+i386                          randconfig-a002   clang
+i386                          randconfig-a003   gcc  
+i386                          randconfig-a004   clang
+i386                          randconfig-a005   gcc  
+i386                          randconfig-a006   clang
+i386                 randconfig-a011-20230327   clang
+i386                 randconfig-a012-20230327   clang
+i386                          randconfig-a012   gcc  
+i386                 randconfig-a013-20230327   clang
+i386                 randconfig-a014-20230327   clang
+i386                          randconfig-a014   gcc  
+i386                 randconfig-a015-20230327   clang
+i386                 randconfig-a016-20230327   clang
+i386                          randconfig-a016   gcc  
+i386                          randconfig-c001   gcc  
+ia64                             allmodconfig   gcc  
+ia64         buildonly-randconfig-r003-20230329   gcc  
+ia64         buildonly-randconfig-r005-20230329   gcc  
+ia64                                defconfig   gcc  
+ia64                 randconfig-r003-20230329   gcc  
+ia64                 randconfig-r004-20230329   gcc  
+ia64                 randconfig-r005-20230329   gcc  
+ia64                 randconfig-r006-20230329   gcc  
+ia64                 randconfig-r011-20230329   gcc  
+ia64                 randconfig-r035-20230327   gcc  
+ia64                 randconfig-r036-20230329   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch    buildonly-randconfig-r001-20230326   gcc  
+loongarch    buildonly-randconfig-r006-20230326   gcc  
+loongarch    buildonly-randconfig-r006-20230329   gcc  
+loongarch                           defconfig   gcc  
+loongarch            randconfig-r001-20230326   gcc  
+loongarch            randconfig-r002-20230329   gcc  
+loongarch            randconfig-r005-20230326   gcc  
+loongarch            randconfig-r012-20230327   gcc  
+loongarch            randconfig-r013-20230329   gcc  
+loongarch            randconfig-r015-20230329   gcc  
+loongarch            randconfig-r023-20230329   gcc  
+loongarch            randconfig-r025-20230329   gcc  
+loongarch            randconfig-r026-20230329   gcc  
+loongarch            randconfig-r033-20230327   gcc  
+loongarch            randconfig-r036-20230329   gcc  
+m68k                             alldefconfig   gcc  
+m68k                             allmodconfig   gcc  
+m68k         buildonly-randconfig-r002-20230329   gcc  
+m68k         buildonly-randconfig-r004-20230329   gcc  
+m68k         buildonly-randconfig-r006-20230329   gcc  
+m68k                                defconfig   gcc  
+m68k                          hp300_defconfig   gcc  
+m68k                        m5407c3_defconfig   gcc  
+m68k                        mvme16x_defconfig   gcc  
+m68k                 randconfig-r002-20230329   gcc  
+m68k                 randconfig-r012-20230329   gcc  
+m68k                 randconfig-r014-20230329   gcc  
+m68k                 randconfig-r015-20230329   gcc  
+m68k                 randconfig-r016-20230329   gcc  
+m68k                 randconfig-r021-20230326   gcc  
+m68k                 randconfig-r031-20230329   gcc  
+m68k                 randconfig-r033-20230329   gcc  
+m68k                 randconfig-r034-20230326   gcc  
+m68k                 randconfig-r035-20230329   gcc  
+m68k                           virt_defconfig   gcc  
+microblaze   buildonly-randconfig-r004-20230326   gcc  
+microblaze           randconfig-r001-20230329   gcc  
+microblaze           randconfig-r005-20230329   gcc  
+microblaze           randconfig-r015-20230329   gcc  
+microblaze           randconfig-r016-20230327   gcc  
+microblaze           randconfig-r016-20230329   gcc  
+microblaze           randconfig-r024-20230329   gcc  
+microblaze           randconfig-r032-20230329   gcc  
+mips                             allmodconfig   gcc  
+mips                             allyesconfig   gcc  
+mips         buildonly-randconfig-r002-20230326   gcc  
+mips                         db1xxx_defconfig   gcc  
+mips                           gcw0_defconfig   gcc  
+mips                      loongson3_defconfig   gcc  
+mips                 randconfig-r001-20230329   clang
+mips                 randconfig-r005-20230329   clang
+mips                 randconfig-r012-20230329   gcc  
+mips                 randconfig-r013-20230329   gcc  
+mips                 randconfig-r015-20230329   gcc  
+mips                 randconfig-r016-20230329   gcc  
+mips                 randconfig-r023-20230329   gcc  
+mips                 randconfig-r025-20230327   gcc  
+mips                 randconfig-r025-20230329   gcc  
+nios2        buildonly-randconfig-r003-20230329   gcc  
+nios2        buildonly-randconfig-r004-20230329   gcc  
+nios2        buildonly-randconfig-r005-20230329   gcc  
+nios2                               defconfig   gcc  
+nios2                randconfig-r005-20230329   gcc  
+nios2                randconfig-r011-20230329   gcc  
+nios2                randconfig-r012-20230329   gcc  
+nios2                randconfig-r015-20230327   gcc  
+nios2                randconfig-r016-20230329   gcc  
+nios2                randconfig-r022-20230326   gcc  
+nios2                randconfig-r031-20230327   gcc  
+nios2                randconfig-r031-20230329   gcc  
+nios2                randconfig-r033-20230329   gcc  
+nios2                randconfig-r035-20230329   gcc  
+openrisc     buildonly-randconfig-r003-20230329   gcc  
+openrisc     buildonly-randconfig-r006-20230329   gcc  
+openrisc                  or1klitex_defconfig   gcc  
+openrisc                    or1ksim_defconfig   gcc  
+openrisc             randconfig-r002-20230326   gcc  
+openrisc             randconfig-r003-20230326   gcc  
+openrisc             randconfig-r004-20230326   gcc  
+openrisc             randconfig-r004-20230329   gcc  
+openrisc             randconfig-r006-20230329   gcc  
+openrisc             randconfig-r021-20230329   gcc  
+openrisc             randconfig-r026-20230329   gcc  
+openrisc             randconfig-r032-20230329   gcc  
+openrisc             randconfig-r034-20230329   gcc  
+openrisc             randconfig-r036-20230329   gcc  
+parisc       buildonly-randconfig-r006-20230329   gcc  
+parisc                              defconfig   gcc  
+parisc               randconfig-r001-20230327   gcc  
+parisc               randconfig-r001-20230329   gcc  
+parisc               randconfig-r006-20230326   gcc  
+parisc               randconfig-r026-20230327   gcc  
+parisc               randconfig-r032-20230329   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                   bluestone_defconfig   clang
+powerpc                 mpc837x_rdb_defconfig   gcc  
+powerpc                     rainier_defconfig   gcc  
+powerpc              randconfig-r011-20230329   clang
+powerpc              randconfig-r023-20230326   gcc  
+powerpc              randconfig-r024-20230329   clang
+powerpc              randconfig-r032-20230329   gcc  
+powerpc              randconfig-r034-20230329   gcc  
+powerpc                    socrates_defconfig   clang
+powerpc                     tqm8548_defconfig   gcc  
+powerpc                     tqm8555_defconfig   gcc  
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   gcc  
+riscv                               defconfig   gcc  
+riscv             nommu_k210_sdcard_defconfig   gcc  
+riscv                    nommu_virt_defconfig   clang
+riscv                randconfig-r014-20230329   clang
+riscv                randconfig-r021-20230327   clang
+riscv                randconfig-r022-20230329   clang
+riscv                randconfig-r032-20230329   gcc  
+riscv                randconfig-r035-20230329   gcc  
+riscv                randconfig-r042-20230326   gcc  
+riscv                randconfig-r042-20230327   clang
+riscv                randconfig-r042-20230329   clang
+riscv                          rv32_defconfig   gcc  
+s390                             allmodconfig   gcc  
+s390                             allyesconfig   gcc  
+s390                                defconfig   gcc  
+s390                 randconfig-r001-20230329   gcc  
+s390                 randconfig-r003-20230329   gcc  
+s390                 randconfig-r005-20230329   gcc  
+s390                 randconfig-r014-20230329   clang
+s390                 randconfig-r015-20230326   gcc  
+s390                 randconfig-r016-20230329   clang
+s390                 randconfig-r022-20230329   clang
+s390                 randconfig-r023-20230329   clang
+s390                 randconfig-r035-20230329   gcc  
+s390                 randconfig-r044-20230326   gcc  
+s390                 randconfig-r044-20230327   clang
+s390                 randconfig-r044-20230329   clang
+sh                               allmodconfig   gcc  
+sh           buildonly-randconfig-r001-20230329   gcc  
+sh                         microdev_defconfig   gcc  
+sh                   randconfig-r004-20230329   gcc  
+sh                   randconfig-r006-20230329   gcc  
+sh                   randconfig-r011-20230327   gcc  
+sh                   randconfig-r022-20230326   gcc  
+sh                   randconfig-r022-20230329   gcc  
+sh                   randconfig-r031-20230326   gcc  
+sh                          rsk7203_defconfig   gcc  
+sh                           se7206_defconfig   gcc  
+sh                           se7343_defconfig   gcc  
+sh                           sh2007_defconfig   gcc  
+sparc        buildonly-randconfig-r003-20230329   gcc  
+sparc                               defconfig   gcc  
+sparc                randconfig-r015-20230329   gcc  
+sparc                randconfig-r016-20230326   gcc  
+sparc                randconfig-r033-20230326   gcc  
+sparc64      buildonly-randconfig-r002-20230327   gcc  
+sparc64      buildonly-randconfig-r003-20230329   gcc  
+sparc64      buildonly-randconfig-r005-20230327   gcc  
+sparc64      buildonly-randconfig-r005-20230329   gcc  
+sparc64      buildonly-randconfig-r006-20230329   gcc  
+sparc64              randconfig-r003-20230327   gcc  
+sparc64              randconfig-r013-20230329   gcc  
+sparc64              randconfig-r024-20230327   gcc  
+sparc64              randconfig-r031-20230329   gcc  
+um                               alldefconfig   gcc  
+um                             i386_defconfig   gcc  
+um                           x86_64_defconfig   gcc  
+x86_64                            allnoconfig   gcc  
+x86_64                           allyesconfig   gcc  
+x86_64                              defconfig   gcc  
+x86_64                                  kexec   gcc  
+x86_64               randconfig-a001-20230327   gcc  
+x86_64                        randconfig-a001   clang
+x86_64               randconfig-a002-20230327   gcc  
+x86_64                        randconfig-a002   gcc  
+x86_64               randconfig-a003-20230327   gcc  
+x86_64                        randconfig-a003   clang
+x86_64               randconfig-a004-20230327   gcc  
+x86_64                        randconfig-a004   gcc  
+x86_64               randconfig-a005-20230327   gcc  
+x86_64                        randconfig-a005   clang
+x86_64               randconfig-a006-20230327   gcc  
+x86_64                        randconfig-a006   gcc  
+x86_64               randconfig-a011-20230327   clang
+x86_64                        randconfig-a011   gcc  
+x86_64               randconfig-a012-20230327   clang
+x86_64                        randconfig-a012   clang
+x86_64               randconfig-a013-20230327   clang
+x86_64                        randconfig-a013   gcc  
+x86_64               randconfig-a014-20230327   clang
+x86_64                        randconfig-a014   clang
+x86_64               randconfig-a015-20230327   clang
+x86_64                        randconfig-a015   gcc  
+x86_64                        randconfig-a016   clang
+x86_64                        randconfig-k001   clang
+x86_64               randconfig-r014-20230327   clang
+x86_64               randconfig-r023-20230327   clang
+x86_64               randconfig-r025-20230327   clang
+x86_64                               rhel-8.3   gcc  
+xtensa       buildonly-randconfig-r004-20230329   gcc  
+xtensa                              defconfig   gcc  
+xtensa               randconfig-r002-20230327   gcc  
+xtensa               randconfig-r003-20230329   gcc  
+xtensa               randconfig-r011-20230329   gcc  
+xtensa               randconfig-r012-20230329   gcc  
+xtensa               randconfig-r021-20230329   gcc  
+xtensa               randconfig-r022-20230327   gcc  
+xtensa               randconfig-r024-20230329   gcc  
+xtensa               randconfig-r031-20230329   gcc  
+xtensa               randconfig-r033-20230329   gcc  
 
-you an issue for which you decided to make a patch to fix it.
-
-The reason you made this patch is because you know that the Linux kernel st=
-yle =
-
-guide wants developers to avoid camel-case symbols.
-
-Before your "Signed-off-by" tag, you should only credit those tools and/or =
-
-services (checkpatch.pl, Coccinelle, Smatch, Syzkaller/Syzbot, GCC, Clang, =
-and =
-
-so on) that had noticed that Linux has a problem that predates the first =
-
-version of your patch and that your first version has the purpose to fix th=
-at =
-
-problem.
-
-You made this patch because _checkpatch_ had reported issues with camel-cas=
-e =
-
-improper use, so you decided to convert some names to snake-case. You are =
-
-invited to credit only _checkpatch_ for you patch ("Reported by =
-
-checkpatch.pl.").
-
-That credit is part of the commit message so, when you credit that tool, pu=
-t a =
-
-blank line after the credit and before the "Signed-off-by" tag. =
-
-
-> Signed-off-by: Kloudifold <cloudifold.3125@gmail.com>
-> =
-
-
-Instead, you should delete this blank line after your sign.
-
-> ---
-> Changes in v6:
-> - Include missed recipients in v5, no functional change to the code
-> =
-
-> Changes in v5:
-> - Include missed recipients in v4, no functional change to the code
-> =
-
-> Changes in v4:
-> - Update the commit msg (Deepak)
-> - Use tabs replace 8 spaces
-> =
-
-> This v4 patch was prompted by 2 errors, 2 warnings and 1 checks reported
-> by the scripts/checkpatch.pl, which detected the style problem.
-> =
-
-> Changes in v3:
-> - Add this changelog (Philipp)
-> - Move lkp tags and link to the correct location in commit log (Alison)
-> - Update the commit msg (Philip)
-> - Update the commit log (Bagas, Julia)
-> =
-
-> Changes in v2:
-> - Use new function names in call sites (LKP)
-
-This is the place to credit the Kernel Test Robot for noticing that you mad=
-e =
-
-mistakes with v1 and that v2 is for fixing them.
-
-Therefore, give credit here to the Robot:
-
-Reported-by: kernel test robot <lkp@intel.com>
-> Link:
-> https://lore.kernel.org/oe-kbuild-all/202303110849.X24WnHnM-lkp@intel.com/
-
-Thanks,
-
-Fabio
-
-P.S.: Someone suggested to drop the "sm750_" prefix. I don't think you shou=
-ld =
-
-do anything like this because I don't see "static" functions prefixed by =
-
-"sm750_" in your patch. However, later you may check if they can be "static=
-" =
-
-and, if so, drop the prefix and make them "static" (in a follow up patch).  =
-
-
-
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
