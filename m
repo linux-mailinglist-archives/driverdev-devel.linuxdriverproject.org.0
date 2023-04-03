@@ -1,77 +1,141 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 602326D3B7E
-	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Apr 2023 03:25:51 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B04086D3B9D
+	for <lists+driverdev-devel@lfdr.de>; Mon,  3 Apr 2023 03:54:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 127CF4158F;
-	Mon,  3 Apr 2023 01:25:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 127CF4158F
+	by smtp4.osuosl.org (Postfix) with ESMTP id E45424109B;
+	Mon,  3 Apr 2023 01:54:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E45424109B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Bd_VL8mntXpN; Mon,  3 Apr 2023 01:25:47 +0000 (UTC)
+	with ESMTP id Ap8Keex5ti2H; Mon,  3 Apr 2023 01:54:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A82244155B;
-	Mon,  3 Apr 2023 01:25:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A82244155B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4393F410A7;
+	Mon,  3 Apr 2023 01:54:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4393F410A7
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5892C1BF36C
- for <devel@linuxdriverproject.org>; Mon,  3 Apr 2023 01:25:43 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2CC0C1BF36C
+ for <devel@linuxdriverproject.org>; Mon,  3 Apr 2023 01:54:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 29D79410CB
- for <devel@linuxdriverproject.org>; Mon,  3 Apr 2023 01:25:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 29D79410CB
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1316040441
+ for <devel@linuxdriverproject.org>; Mon,  3 Apr 2023 01:54:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1316040441
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2HfqTbVInKMm for <devel@linuxdriverproject.org>;
- Mon,  3 Apr 2023 01:25:42 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CDEE440980
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CDEE440980
- for <devel@driverdev.osuosl.org>; Mon,  3 Apr 2023 01:25:41 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10668"; a="325784983"
-X-IronPort-AV: E=Sophos;i="5.98,313,1673942400"; d="scan'208";a="325784983"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Apr 2023 18:25:40 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10668"; a="718355072"
-X-IronPort-AV: E=Sophos;i="5.98,313,1673942400"; d="scan'208";a="718355072"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 02 Apr 2023 18:25:39 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1pj8x0-000Nsd-1n;
- Mon, 03 Apr 2023 01:25:38 +0000
-Date: Mon, 03 Apr 2023 09:24:48 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:class_cleanup] BUILD SUCCESS
- 1e76198bc357818f85964e07ebcffab8a6dacb57
-Message-ID: <642a2ae0.R3gtDJ/eRTRSS4vs%lkp@intel.com>
-User-Agent: Heirloom mailx 12.5 6/20/10
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id XyqxLRxIS68R for <devel@linuxdriverproject.org>;
+ Mon,  3 Apr 2023 01:54:36 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5A33F4013D
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12rlhn2179.outbound.protection.outlook.com [40.95.45.179])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5A33F4013D
+ for <devel@driverdev.osuosl.org>; Mon,  3 Apr 2023 01:54:36 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ghS9ttFgAYAlm/IJAy/f0inW8258H2Fo8htaKsRWcj3zgufeL2Ocsy80R5vr+XDSiYI67ZyZRZlPK+ympsf3QUzpSm5pUGFY6+kOmA4ACaZApzF7/WoRWV5K8dAWc1LUAcGCtyOptpsoy/B4eyRL73ToEyVbwsOVRW9LRvblxxRJE1BAKNEwhdcssfCBKe6nUAcdA4UrYe0Zi0HfAqKh892FCOXlHWqnpK7csb9wpDsd/Ckl4aOOi3e/YnhJWnpNJVx5iPYqK/nJEiScpyoBOU8IeYWhoWfLirS3MrU0G/TuzZNhpQN4jsHiSZqzeMZ5Gn7wv2Ys6csY8qg9Ua/pEg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=gHsW1+xVmpse5DvcUqJa9N1DCECBTfxB1Tv+EUY4KH8=;
+ b=MlrPFYNSnvOufF/gLj47ckgCWfi+BYA/519rYgRWowQJW3RqrS+PY8hkc4j03VwqHuUqTWxcc3//Y4pEeZPgbDqsDahlYn9Bt8Nje3SsT+9yrouMDD5Weqkl6gxED8gTNomUfeF7jEbgS7f/vBvtWjAO3wdSTS4bkwyvL1VcSDXFi4w4XBRkjDvoZvzI6tAmfJxpZKukPZwmkd8xLwzJBznVAAAGMFnCXgG6b2cpeTY+MAMCWDXtRiSDoD8UfNQA+nHpgGCrEATd62J/meGHft3w5svDBxCy1tMagIZ/6KIB6ZmEsdgDJSokMS3mCGaQq+ssHpBR7IbRIAzJL5nyBw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
+ is 8.42.207.81) smtp.rcpttodomain=driverdev.osuosl.org
+ smtp.mailfrom=gmail.com; dmarc=fail (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=none (message not signed); arc=none
+Received: from MW4PR04CA0117.namprd04.prod.outlook.com (2603:10b6:303:83::32)
+ by DS0PR01MB7964.prod.exchangelabs.com (2603:10b6:8:148::18) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6277.21; Mon, 3 Apr 2023 01:54:34 +0000
+Received: from MW2NAM12FT011.eop-nam12.prod.protection.outlook.com
+ (2603:10b6:303:83:cafe::86) by MW4PR04CA0117.outlook.office365.com
+ (2603:10b6:303:83::32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6178.44 via Frontend
+ Transport; Mon, 3 Apr 2023 01:54:34 +0000
+X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is 8.42.207.81)
+ smtp.mailfrom=gmail.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=fail action=none header.from=gmail.com;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ gmail.com discourages use of 8.42.207.81 as permitted sender)
+Received: from mail1.jas.com (8.42.207.81) by
+ MW2NAM12FT011.mail.protection.outlook.com (10.13.180.78) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.6277.26 via Frontend Transport; Mon, 3 Apr 2023 01:54:34 +0000
+Received: from USBCDPSMBX02.jas1.ds.Jas.com (172.29.10.52) by
+ USBCDPSMBX01.jas1.ds.Jas.com (172.29.10.51) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1118.26; Sun, 2 Apr 2023 21:54:14 -0400
+Received: from User (45.81.243.115) by USBCDPSMBX02.jas1.ds.Jas.com
+ (172.29.10.52) with Microsoft SMTP Server id 15.2.1118.26 via Frontend
+ Transport; Sun, 2 Apr 2023 21:53:55 -0400
+From: "Mrs. Sharon S. Chao" <sc894284@gmail.com>
+Subject: Hello Beloved,  
+Date: Sun, 2 Apr 2023 18:54:13 -0700
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1680485141; x=1712021141;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=O4J433yZeMEPvT8v6VImNIPVdU7RcG54VqjdjdTURnk=;
- b=YFY9qO/ni5UT2j4Ga6wF/OJWcQZMOWXbq7gn93BWRtyywREQxnyi8qBI
- LI63HQSy1Sv+tx10FhJXdctCOeWQ022BA2/BqXxmxqQchgHjBvj8j9l5L
- 3BlVs+sUON/LDT15xU4NrUlVTI7rAiXfMwHIV4IDpx8Vun0KITepQ1ZFh
- joAyRnt1zriU4S0NjF1Z2HnLz6K3QWJogpTNkZoB2x1YPefW2zdNj7zOY
- xqwqKVnvfpL4X4QHmkbgkXWoLe7K5RlCSg+BVKODPjCdaMXSQcGj0STio
- 5Z3ycp/gBgW9x//+x3uBNe/GkXbkGx0xd4/49LJMfni5Vo6LiIh3pvnKX
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YFY9qO/n
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <d92d26c9-d949-4a90-8b24-5e5e043d1f98@USBCDPSMBX02.jas1.ds.Jas.com>
+To: Undisclosed recipients:;
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MW2NAM12FT011:EE_|DS0PR01MB7964:EE_
+X-MS-Office365-Filtering-Correlation-Id: 1baae25e-b96f-4608-9dbe-08db33e65f8d
+X-MS-Exchange-SenderADCheck: 2
+X-MS-Exchange-AntiSpam-Relay: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: =?windows-1251?Q?3RMGr2NWNotNI3GjiqyYoGAfTLkge3n4dmspKjD6g5/Q2/Q4qtlLbq+V?=
+ =?windows-1251?Q?uQ/f0afB4QWPThjVybv63aEst5E7BvBADvm7WVV4g20IEnVHc5WN1T3P?=
+ =?windows-1251?Q?ZrXphGAXJrywW1U6HISWlcC4UrbIHvs8CpN1RKoX8Pn1qP8kIHUQZTNi?=
+ =?windows-1251?Q?RJ9fLqJ4Y+Sqbtbp+86CLkKLl+ApRG99fsJoGtCcrXgQ4l5mrVSzAdmu?=
+ =?windows-1251?Q?jDRUyRVtmyaKf6rvPsWRT/Wrj6geq9PaCN43igfAz1teeSXIk/yTuyRE?=
+ =?windows-1251?Q?jgfoWXL3jj1ly3DObACLQpzSjBkt2chnW5bHnCUlmulb+7+vC1wBxyUv?=
+ =?windows-1251?Q?xoaM0MY5DCUptf/93UtIQrTqWmnTVB+YCbWd1yaB/fdn5Y3ETYP91tqW?=
+ =?windows-1251?Q?7pTM6l9eUHrx18uk8Z0CejcW31Lig88tsZBmzPmrhveP6adEjeshNuiD?=
+ =?windows-1251?Q?DW5z+6srjHf3Fy1l71a+6MSFJCdsB3d872k1Xbs9ADTLzB8zrXj41uI6?=
+ =?windows-1251?Q?dpwDJSvlHjkTWcvG3J5GNfEKu/9xn7p8VzqtkSialyZSZrE6dkvycRTm?=
+ =?windows-1251?Q?FIXXkKDGekYh5a22h2Xn8imxjnZGVKAtzOaU1TMwsVHxxHBF80Rvqtv3?=
+ =?windows-1251?Q?ZC48Vr/4sblPo7V9HA9/S5y8y+52W8hsL2bXvaRM4AIAGz2pDMwzzTdb?=
+ =?windows-1251?Q?NkidJWfS5grEZVSbg1OZJQFGc3DUlQrEiJ12Ie3gLn3/KoGVwWkJvIOQ?=
+ =?windows-1251?Q?SIOZCz/7kn8s7LMr060ekshVQ5jZB1LOowK75wrGojmYqMVRvxRLdgp2?=
+ =?windows-1251?Q?JaN3NKKgCAea5uYazF/uUrAIrPKklL9QmHXWc2U3Bx1V59GmPFlVreOv?=
+ =?windows-1251?Q?DFJc7M82SMjABFLZTRBZv49a5NhdINAGF1zbkNa9nO1krdsGjES8fX7f?=
+ =?windows-1251?Q?meyqh3BAfy0zi4UhTyvqf33m7/PKi2or/szu8142+Fm6Q7XoGLtZV/o+?=
+ =?windows-1251?Q?i9zlDmprYglIX97kCM8s4Rw2C1HCL2B5Z6StnLD0fZBLtSKNoBqf2Yvd?=
+ =?windows-1251?Q?q3s8er8Gpurxes86Nx3VwFBwq5mbJXKEuk9k/Dhs2Jfxm2F254FTJeYk?=
+ =?windows-1251?Q?kTESUo5u8608mbHgWlep9XsSA1oDgyfXJIUakozexHRvjhTHWa/K1eJg?=
+ =?windows-1251?Q?6owy5myHYDGTYdQx+F5v6e4SoePuCTYj?=
+X-Forefront-Antispam-Report: CIP:8.42.207.81; CTRY:US; LANG:en; SCL:6; SRV:;
+ IPV:NLI; SFV:SPM; H:mail1.jas.com; PTR:InfoDomainNonexistent; CAT:OSPM;
+ SFS:(13230028)(4636009)(376002)(39860400002)(136003)(346002)(396003)(84050400002)(109986019)(451199021)(40470700004)(40460700003)(40480700001)(32650700002)(76482006)(498600001)(41300700001)(356005)(81166007)(82740400003)(2860700004)(316002)(35950700001)(336012)(73392003)(83380400001)(956004)(70586007)(9686003)(6666004)(3480700007)(70206006)(26005)(31686004)(82202003)(86362001)(31696002)(82310400005)(2906002)(5660300002)(7116003)(7416002)(8676002)(7366002)(7406005)(8936002)(242984002);
+ DIR:OUT; SFP:1023; 
+X-OriginatorOrg: WWJWM.onmicrosoft.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Apr 2023 01:54:34.0418 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1baae25e-b96f-4608-9dbe-08db33e65f8d
+X-MS-Exchange-CrossTenant-Id: fa3414ca-197f-48b7-8ff3-892f8bdd8e93
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=fa3414ca-197f-48b7-8ff3-892f8bdd8e93; Ip=[8.42.207.81];
+ Helo=[mail1.jas.com]
+X-MS-Exchange-CrossTenant-AuthSource: MW2NAM12FT011.eop-nam12.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR01MB7964
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=wwjwm.onMicrosoft.com; 
+ s=selector2-wwjwm-onMicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=gHsW1+xVmpse5DvcUqJa9N1DCECBTfxB1Tv+EUY4KH8=;
+ b=bwOsYvLmghy5PEXhaLnwfHSwe1aN9v/peS2UylacGWcyBRtiBB2YgYkd49PFuxgI7xGIfxnpMPHYX7Ud45/GwITImKdiNRkWrqborDffHK5vXS0q3iS18bHhqwjMIapCkhcf27Q//HiIcWVNQzsHKqxsIrJo9+w8Ys1/StnMZHk=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=wwjwm.onMicrosoft.com
+ header.i=@wwjwm.onMicrosoft.com header.a=rsa-sha256
+ header.s=selector2-wwjwm-onMicrosoft-com header.b=bwOsYvLm
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,124 +148,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
+Reply-To: mrssharonchao@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git class_cleanup
-branch HEAD: 1e76198bc357818f85964e07ebcffab8a6dacb57  MIPS: vpe-cmp: remove module owner pointer from struct class usage.
+Hello Beloved,
 
-elapsed time: 961m
 
-configs tested: 96
-configs skipped: 10
+I am Mrs.Sharon S. Chao the wife of the late Mr. Richard Chao. I am an Indonesian American Citizen. My husband worked with the Brunei Shell Petroleum Co Sdn Bhd (BSP) for twenty years before he died in 2010.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+We were married for ten years without a child. My Husband died after a brief illness that lasted for only two weeks. Since his death I decided not to remarry or get a child outside my matrimonial home. When my late husband was alive we deposited the sum of $15.2 million with a bank which I will tell you later. The bank management just wrote me as the beneficiary to come forward to sign for the release of this fund or rather issue a letter of authorization to somebody to receive it on my behalf if I cannot come over.
 
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha        buildonly-randconfig-r002-20230402   gcc  
-alpha                               defconfig   gcc  
-alpha                randconfig-r033-20230402   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                  randconfig-r043-20230402   gcc  
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm          buildonly-randconfig-r006-20230402   gcc  
-arm                                 defconfig   gcc  
-arm                  randconfig-r026-20230402   gcc  
-arm                  randconfig-r046-20230402   gcc  
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                randconfig-r013-20230402   clang
-csky                                defconfig   gcc  
-hexagon              randconfig-r022-20230402   clang
-hexagon              randconfig-r035-20230402   clang
-hexagon              randconfig-r041-20230402   clang
-hexagon              randconfig-r045-20230402   clang
-i386                             allyesconfig   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                          randconfig-a001   gcc  
-i386                          randconfig-a002   clang
-i386                          randconfig-a003   gcc  
-i386                          randconfig-a004   clang
-i386                          randconfig-a005   gcc  
-i386                          randconfig-a006   clang
-i386                          randconfig-a011   clang
-i386                          randconfig-a012   gcc  
-i386                          randconfig-a013   clang
-i386                          randconfig-a014   gcc  
-i386                          randconfig-a015   clang
-i386                          randconfig-a016   gcc  
-ia64                             allmodconfig   gcc  
-ia64                                defconfig   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-m68k                             allmodconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                 randconfig-r004-20230402   gcc  
-m68k                 randconfig-r015-20230402   gcc  
-microblaze           randconfig-r012-20230402   gcc  
-microblaze           randconfig-r031-20230402   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                 randconfig-r001-20230402   clang
-nios2                               defconfig   gcc  
-nios2                randconfig-r003-20230402   gcc  
-nios2                randconfig-r011-20230402   gcc  
-nios2                randconfig-r016-20230402   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                randconfig-r042-20230402   clang
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                 randconfig-r002-20230402   gcc  
-s390                 randconfig-r044-20230402   clang
-sh                               allmodconfig   gcc  
-sh                   randconfig-r032-20230402   gcc  
-sparc        buildonly-randconfig-r001-20230402   gcc  
-sparc                               defconfig   gcc  
-sparc                randconfig-r021-20230402   gcc  
-sparc                randconfig-r023-20230402   gcc  
-sparc64      buildonly-randconfig-r004-20230402   gcc  
-sparc64              randconfig-r005-20230402   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                            allnoconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64                        randconfig-a001   clang
-x86_64                        randconfig-a002   gcc  
-x86_64                        randconfig-a003   clang
-x86_64                        randconfig-a004   gcc  
-x86_64                        randconfig-a005   clang
-x86_64                        randconfig-a006   gcc  
-x86_64                        randconfig-a011   gcc  
-x86_64                        randconfig-a012   clang
-x86_64                        randconfig-a013   gcc  
-x86_64                        randconfig-a014   clang
-x86_64                        randconfig-a015   gcc  
-x86_64                        randconfig-a016   clang
-x86_64                               rhel-8.3   gcc  
-xtensa               randconfig-r036-20230402   gcc  
+Presently, I'm in a hospital where I have been undergoing treatment for esophageal cancer. My doctor has told me that I have only a few months to live. It is my last wish to see this money distributed to charity organizations, because my husband, relatives and friends have plundered so much of my wealth since my illness, I cannot live with the agony of entrusting this huge responsibility to any of them.
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+Please, I'm seeking for any honest person who will get the Funds from the Bank. And use this money to fund the poor, orphanages, widows and charity organizations.
+
+I took this decision because I don't have any child that will inherit this money and I don't want my husband's hard earned money to be misused by his greedy relatives.
+
+I don't want a situation where this money will be used in an ungodly manner. Hence the reason for taking this bold decision. I am not afraid of death hence I know where I am going if I die. Due to the state of my health. I cannot communicate by phone because my illness has affected my throat. I prefer to communicate by email.
+
+As soon as I receive your reply I shall give you the contact details of my lawyer who is conversant with the unclaimed funds and my present situation. However I shall forward to you the bank details with the letter I will give you as she will be the one to assist you in laying claims for these funds.
+
+Above all, I wish to assure you that the funds in question are not an act of Terrorist Funding, neither Money Laundering nor Drug-funding. Thus, the transfer will follow the normal protocol of funds transfer, backed up with its papers so that you will not encounter any difficulties/problems with your Federal Monetary Control authorities. Contact me with my private email (mrssharonchao@gmail.com) or you can drop your Email address with me .
+
+Thanks
+Yours Truly,
+Mrs.Sharon S. Chao      
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
