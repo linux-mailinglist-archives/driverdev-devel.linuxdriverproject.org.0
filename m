@@ -1,51 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C2E36D69C2
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Apr 2023 19:05:36 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C0236D69C6
+	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Apr 2023 19:06:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D2506818A7;
-	Tue,  4 Apr 2023 17:05:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D2506818A7
+	by smtp1.osuosl.org (Postfix) with ESMTP id D09C08188D;
+	Tue,  4 Apr 2023 17:06:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D09C08188D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X-Oy5BiGNSva; Tue,  4 Apr 2023 17:05:31 +0000 (UTC)
+	with ESMTP id 6nphIWxUHWBI; Tue,  4 Apr 2023 17:06:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 73D8E8146B;
-	Tue,  4 Apr 2023 17:05:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 73D8E8146B
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7BDAD8146B;
+	Tue,  4 Apr 2023 17:06:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7BDAD8146B
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 13FFA1BF834
- for <devel@linuxdriverproject.org>; Tue,  4 Apr 2023 17:05:28 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BC2FC1C28F5
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  4 Apr 2023 17:06:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EEEAD60E26
- for <devel@linuxdriverproject.org>; Tue,  4 Apr 2023 17:05:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EEEAD60E26
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9651D8188D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  4 Apr 2023 17:06:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9651D8188D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gnoX9NbdvWaZ for <devel@linuxdriverproject.org>;
- Tue,  4 Apr 2023 17:05:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qBQFq9aYwOUr
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  4 Apr 2023 17:06:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D0CA460B9C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5EA598146B
 Received: from leyou.com (unknown [115.182.12.213])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D0CA460B9C
- for <devel@driverdev.osuosl.org>; Tue,  4 Apr 2023 17:05:26 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5EA598146B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  4 Apr 2023 17:06:46 +0000 (UTC)
 Received: from [192.168.8.127] (reverse.rain.network [197.184.166.83])
  (user=security@leyou.com mech=LOGIN bits=0)
- by fortimail.leyou.com  with ESMTP id 334H3Kb8011946-334H3KbC011946;
- Wed, 5 Apr 2023 01:03:43 +0800
-Message-Id: <202304041703.334H3Kb8011946-334H3KbC011946@fortimail.leyou.com>
+ by fortimail.leyou.com  with ESMTP id 334H3Kfx011943-334H3Kg7011943;
+ Wed, 5 Apr 2023 01:04:10 +0800
+Message-Id: <202304041704.334H3Kfx011943-334H3Kg7011943@fortimail.leyou.com>
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: RE: PROFITABLE BUSINESS INVESTMENT U$D400 MILLION
 To: Recipients <nnpcexecutorintrust95@gmail.com>
 From: "Mr. Godwin Okonkwo (Mgr)" <nnpcexecutorintrust95@gmail.com>
-Date: Tue, 04 Apr 2023 19:03:36 +0200
+Date: Tue, 04 Apr 2023 19:04:04 +0200
 X-FEAS-AUTH-USER: security@leyou.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
