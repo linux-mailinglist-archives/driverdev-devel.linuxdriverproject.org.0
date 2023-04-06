@@ -1,52 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6E1A6D88B5
-	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Apr 2023 22:38:13 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0620B6D8DD3
+	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Apr 2023 05:02:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 626E76114F;
-	Wed,  5 Apr 2023 20:38:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 626E76114F
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1AEA441C14;
+	Thu,  6 Apr 2023 03:02:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1AEA441C14
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hmSvsoCgqqXj; Wed,  5 Apr 2023 20:38:11 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9XPD_QcHdAHO; Thu,  6 Apr 2023 03:02:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1CF2360F40;
-	Wed,  5 Apr 2023 20:38:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1CF2360F40
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6BCCC41C07;
+	Thu,  6 Apr 2023 03:02:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6BCCC41C07
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 700181BF364
- for <devel@linuxdriverproject.org>; Wed,  5 Apr 2023 20:38:08 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 20DFA1BF861
+ for <devel@linuxdriverproject.org>; Thu,  6 Apr 2023 03:02:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4936D6114F
- for <devel@linuxdriverproject.org>; Wed,  5 Apr 2023 20:38:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4936D6114F
+ by smtp2.osuosl.org (Postfix) with ESMTP id EE3AE405E3
+ for <devel@linuxdriverproject.org>; Thu,  6 Apr 2023 03:02:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EE3AE405E3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mjng4u3frCpj for <devel@linuxdriverproject.org>;
- Wed,  5 Apr 2023 20:38:07 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id q_oaXCK8dj-2 for <devel@linuxdriverproject.org>;
+ Thu,  6 Apr 2023 03:02:36 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6498B60F40
-Received: from leyou.com (unknown [115.182.12.213])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6498B60F40
- for <devel@linuxdriverproject.org>; Wed,  5 Apr 2023 20:38:05 +0000 (UTC)
-Received: from [192.168.8.127] (reverse.rain.network [197.184.166.83])
- (user=security@leyou.com mech=LOGIN bits=0)
- by fortimail.leyou.com  with ESMTP id 335KakNi025590-335KakNn025590;
- Thu, 6 Apr 2023 04:37:16 +0800
-Message-Id: <202304052037.335KakNi025590-335KakNn025590@fortimail.leyou.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A1B0E400F2
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A1B0E400F2
+ for <devel@driverdev.osuosl.org>; Thu,  6 Apr 2023 03:02:36 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10671"; a="326664346"
+X-IronPort-AV: E=Sophos;i="5.98,322,1673942400"; d="scan'208";a="326664346"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Apr 2023 20:02:35 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10671"; a="933051468"
+X-IronPort-AV: E=Sophos;i="5.98,322,1673942400"; d="scan'208";a="933051468"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+ by fmsmga006.fm.intel.com with ESMTP; 05 Apr 2023 20:02:34 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pkFtR-000Qzy-28;
+ Thu, 06 Apr 2023 03:02:33 +0000
+Date: Thu, 06 Apr 2023 11:01:46 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 41500f45356277f20dbca6e40b33f799f3d1e72a
+Message-ID: <642e361a.MKAqISAY0eEWRjre%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: RE: PROFITABLE BUSINESS INVESTMENT U$D400 MILLION
-To: Recipients <nnpcexecutorintrust95@gmail.com>
-From: "Mr. Godwin Okonkwo (Mgr)" <nnpcexecutorintrust95@gmail.com>
-Date: Wed, 05 Apr 2023 22:37:08 +0200
-X-FEAS-AUTH-USER: security@leyou.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1680750156; x=1712286156;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=nLwU8WucZV7nUpEvOYiCSKeM7BzGJLi4j8//trKZomE=;
+ b=cXTp9Cj4bqw4RR6AhYxwlIm24HOMMgsXVsHrB+oOWSg1egoWy0OpJ1L4
+ OwujtvF46e2zmdy9D406ZV2UiDd9YeHTPe1VnvCLcytQ4mIVubT4FW0xm
+ vYptmWPGs479CWHkZeNI300s9lnu8Cu6Hfr+UZcLdOGYER5x3v46EGf3u
+ gaOgHDljeKxu23Ub6VYdEG0pObIoLzOq3Evib2ThxHwXM9i9eo71xHzM7
+ 48fkKh8ntlbuuO6fua13ViHy91ArhlUxtJDhZI8T4gNU+DKuJ+3C2P7dw
+ eXA/XK4nmU6lAe1eTyXMM05s0CUmorddLkfYML2Ov7sDsSCLGQmzo1iXs
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=cXTp9Cj4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -59,46 +84,157 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: NNPCGodwinOkonkwoMgr@hotmail.com
+Cc: devel@driverdev.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Corporate Headquarters
-NNPC Towers, Central Business District,
-Herbert Macaulay Way,
-P.M.B. 190, Garki, Abuja.         
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 41500f45356277f20dbca6e40b33f799f3d1e72a  staging: rtl8192e: Add blank lines after declarations
 
-               FINANCE AND ACCOUNTS PROFITABLE BUSINESS INVESTMENT U$D400 MILLION
- 
-Attn: president/ceo                                      
- 
-After Due deliberation with my colleagues Abdul Malik Aminu (GM, GGA, F&A Acting GGM, Accounts) Nigeria National Petroleum Corporation (NNPC), I decided to forward to you this Profitable Business Investment of U$D400 Million. We want a reliable person who can assist us to Receive this (U$D400 Million only) for Investment in your country. President Muhammad Bihari has appointed Godwin Okonkwo Mgr Planning Brass LNG GM, GM, Grp. Gen Acct the Nigeria National Petroleum Corporation (nnpc) and have also advised him to pay off all the nnpc contractors owned by Nigeria National Petroleum Corporation (NNPC).
- 
-This fund resulted from an over-invoiced contract awarded by us under the budget allocation to my ministry and the bill was approved for payment by the concerned ministries. The contract was executed, commissioned and the contractor was paid his actual cost of the contract. We are left with the balance of $400,000,000.00 only as the over invoiced amount which we have deliberately over estimated for our own use but under the protocol division, civil servants are forbidden to operate or own foreign accounts. We have agreed to share the money as follows:
- 
-1. 30% For You as the (Account owner)
-2. 60% for me and My Colleagues
-3. 10% for any expenses that we Might Encore during the Cause of this Transfer. 
- 
-As you may want to know and to make you less curious, I got your address from our reputable chamber of commerce & industry in your country's embassy here in Nigeria. My name is Godwin Okonkwo Mgr. Planning Acct of the Nigerian National Petroleum Corporation (nnpc).this transaction is 100% risk free hence the business was carefully planned before it was executed and we the NNPC. officials involved in this deal as we have put many years in service to our ministry, we have been exercising patience for this opportunity for so long, and to most of us this is a lifetime opportunity we cannot afford to miss.
- 
-To get this fund paid into your account, we have to present you as an international business outfit and consequent upon indication of your interest to fully assist us in this transaction; you will be required to finish us with the following.
- 
-1. Your Bank Name Address Phone and Fax.
-2. Your Bank Account Number/ Swift Code and Routing Number (if any).
-3. Your Private Phone and Fax Number for Easy Communication.
-4. Your Full Name and Address.
- 
-This information will enable us to seek approval of the fund from the concerned quarters within 14 banking days and the Nigeria national petroleum corporation (NNPC) payment information data will be send to you for completion. All this will only take us about 30 working days to transfer this fund into your account from the day we receive your information. Let confidentiality, honesty and trust be our watchword throughout this transaction.
+elapsed time: 724m
 
- 
-Your prompt reply will be highly appreciated.
- 
+configs tested: 129
+configs skipped: 9
 
-Best Regards.
-Godwin Okonkwo (Mgr Planning Brass LNG GM, GM, Grp. Gen Acct) 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+tested configs:
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+alpha                randconfig-r026-20230403   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                  randconfig-r023-20230405   gcc  
+arc                  randconfig-r043-20230403   gcc  
+arm                              allmodconfig   gcc  
+arm                              allyesconfig   gcc  
+arm                        clps711x_defconfig   gcc  
+arm                     davinci_all_defconfig   clang
+arm                                 defconfig   gcc  
+arm                           imxrt_defconfig   gcc  
+arm                  randconfig-r021-20230405   clang
+arm                  randconfig-r025-20230405   clang
+arm                  randconfig-r046-20230403   clang
+arm64                            allyesconfig   gcc  
+arm64        buildonly-randconfig-r001-20230404   gcc  
+arm64                               defconfig   gcc  
+arm64                randconfig-r012-20230403   gcc  
+arm64                randconfig-r024-20230403   gcc  
+arm64                randconfig-r032-20230403   clang
+csky         buildonly-randconfig-r002-20230403   gcc  
+csky                                defconfig   gcc  
+csky                 randconfig-r011-20230403   gcc  
+csky                 randconfig-r013-20230403   gcc  
+hexagon      buildonly-randconfig-r003-20230404   clang
+hexagon      buildonly-randconfig-r004-20230404   clang
+hexagon              randconfig-r024-20230403   clang
+hexagon              randconfig-r024-20230405   clang
+hexagon              randconfig-r041-20230403   clang
+hexagon              randconfig-r045-20230403   clang
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-r004-20230403   clang
+i386                              debian-10.3   gcc  
+i386                                defconfig   gcc  
+i386                 randconfig-a001-20230403   clang
+i386                 randconfig-a002-20230403   clang
+i386                 randconfig-a003-20230403   clang
+i386                 randconfig-a004-20230403   clang
+i386                 randconfig-a005-20230403   clang
+i386                 randconfig-a006-20230403   clang
+i386                 randconfig-a011-20230403   gcc  
+i386                 randconfig-a012-20230403   gcc  
+i386                 randconfig-a013-20230403   gcc  
+i386                 randconfig-a014-20230403   gcc  
+i386                 randconfig-a015-20230403   gcc  
+i386                 randconfig-a016-20230403   gcc  
+i386                 randconfig-r026-20230403   gcc  
+ia64                             allmodconfig   gcc  
+ia64         buildonly-randconfig-r001-20230403   gcc  
+ia64         buildonly-randconfig-r006-20230403   gcc  
+ia64                                defconfig   gcc  
+ia64                 randconfig-r022-20230405   gcc  
+ia64                 randconfig-r023-20230403   gcc  
+ia64                 randconfig-r026-20230405   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+m68k                             allmodconfig   gcc  
+m68k         buildonly-randconfig-r005-20230403   gcc  
+m68k                                defconfig   gcc  
+m68k                 randconfig-r014-20230403   gcc  
+microblaze   buildonly-randconfig-r002-20230404   gcc  
+microblaze           randconfig-r024-20230403   gcc  
+mips                             allmodconfig   gcc  
+mips                             allyesconfig   gcc  
+mips         buildonly-randconfig-r005-20230403   gcc  
+mips                 randconfig-r022-20230405   clang
+nios2                               defconfig   gcc  
+openrisc                 simple_smp_defconfig   gcc  
+parisc                              defconfig   gcc  
+parisc               randconfig-r011-20230403   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                      chrp32_defconfig   gcc  
+powerpc                   currituck_defconfig   gcc  
+powerpc                          g5_defconfig   clang
+powerpc                      pasemi_defconfig   gcc  
+powerpc              randconfig-r014-20230403   gcc  
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   gcc  
+riscv                               defconfig   gcc  
+riscv                randconfig-r012-20230403   gcc  
+riscv                randconfig-r016-20230403   gcc  
+riscv                randconfig-r042-20230403   gcc  
+riscv                          rv32_defconfig   gcc  
+s390                             allmodconfig   gcc  
+s390                             allyesconfig   gcc  
+s390         buildonly-randconfig-r006-20230404   clang
+s390                                defconfig   gcc  
+s390                 randconfig-r004-20230403   clang
+s390                 randconfig-r044-20230403   gcc  
+sh                               allmodconfig   gcc  
+sh                   sh7724_generic_defconfig   gcc  
+sparc        buildonly-randconfig-r001-20230403   gcc  
+sparc        buildonly-randconfig-r006-20230403   gcc  
+sparc                               defconfig   gcc  
+sparc                randconfig-r016-20230403   gcc  
+sparc                randconfig-r021-20230403   gcc  
+sparc                randconfig-r025-20230403   gcc  
+um                             i386_defconfig   gcc  
+um                           x86_64_defconfig   gcc  
+x86_64                            allnoconfig   gcc  
+x86_64                           allyesconfig   gcc  
+x86_64                              defconfig   gcc  
+x86_64                                  kexec   gcc  
+x86_64               randconfig-a001-20230403   clang
+x86_64               randconfig-a002-20230403   clang
+x86_64               randconfig-a003-20230403   clang
+x86_64               randconfig-a004-20230403   clang
+x86_64               randconfig-a005-20230403   clang
+x86_64               randconfig-a006-20230403   clang
+x86_64               randconfig-a011-20230403   gcc  
+x86_64               randconfig-a012-20230403   gcc  
+x86_64               randconfig-a013-20230403   gcc  
+x86_64               randconfig-a014-20230403   gcc  
+x86_64               randconfig-a015-20230403   gcc  
+x86_64               randconfig-a016-20230403   gcc  
+x86_64               randconfig-k001-20230403   gcc  
+x86_64               randconfig-r022-20230403   gcc  
+x86_64               randconfig-r023-20230403   gcc  
+x86_64               randconfig-r025-20230403   gcc  
+x86_64                               rhel-8.3   gcc  
+xtensa       buildonly-randconfig-r002-20230403   gcc  
+xtensa       buildonly-randconfig-r003-20230403   gcc  
+xtensa               randconfig-r021-20230403   gcc  
+xtensa               randconfig-r022-20230403   gcc  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
