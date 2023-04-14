@@ -1,46 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B3BD6E1883
-	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Apr 2023 01:58:00 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 30A5F6E1D7B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Apr 2023 09:51:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7315B42A82;
-	Thu, 13 Apr 2023 23:57:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7315B42A82
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0E265427AC;
+	Fri, 14 Apr 2023 07:51:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0E265427AC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1lh6okwJkT6k; Thu, 13 Apr 2023 23:57:55 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Qi7s-eOf-Q0K; Fri, 14 Apr 2023 07:51:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4919C4013D;
-	Thu, 13 Apr 2023 23:57:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4919C4013D
+	by smtp4.osuosl.org (Postfix) with ESMTP id A1EE642795;
+	Fri, 14 Apr 2023 07:51:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A1EE642795
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 07B1F1C3E0B
- for <devel@linuxdriverproject.org>; Thu, 13 Apr 2023 23:57:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9BB7A1C3E9B
+ for <devel@linuxdriverproject.org>; Fri, 14 Apr 2023 07:51:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CDE52841F0
- for <devel@linuxdriverproject.org>; Thu, 13 Apr 2023 23:57:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CDE52841F0
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6B13F8428E
+ for <devel@linuxdriverproject.org>; Fri, 14 Apr 2023 07:51:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6B13F8428E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Wz3ICeusCM5X for <devel@linuxdriverproject.org>;
- Thu, 13 Apr 2023 23:57:50 +0000 (UTC)
+ with ESMTP id q17xk52RZiiM for <devel@linuxdriverproject.org>;
+ Fri, 14 Apr 2023 07:51:35 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D47B484229
-Received: from alkuhaimi.com (unknown [185.225.74.180])
- by smtp1.osuosl.org (Postfix) with ESMTP id D47B484229
- for <devel@linuxdriverproject.org>; Thu, 13 Apr 2023 23:57:49 +0000 (UTC)
-From: Peter J<rud-division@alkuhaimi.com>
-To: devel@linuxdriverproject.org
-Subject: Re: Project Financing/Loan and debt management.
-Date: 14 Apr 2023 01:57:49 +0200
-Message-ID: <20230414015748.22AA1256DBAED40C@alkuhaimi.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3FFFE84230
+Received: from mail.crawnon.pl (mail.crawnon.pl [51.68.198.42])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3FFFE84230
+ for <devel@driverdev.osuosl.org>; Fri, 14 Apr 2023 07:51:34 +0000 (UTC)
+Received: by mail.crawnon.pl (Postfix, from userid 1002)
+ id D3AC3A282D; Fri, 14 Apr 2023 07:51:19 +0000 (UTC)
+Received: by mail.crawnon.pl for <devel@driverdev.osuosl.org>;
+ Fri, 14 Apr 2023 07:51:11 GMT
+Message-ID: <20230414064500-0.1.ac.yjb3.0.t17nxjp5j6@crawnon.pl>
+Date: Fri, 14 Apr 2023 07:51:11 GMT
+From: =?UTF-8?Q?"Miko=C5=82aj_Fiodorczyk"?= <mikolaj.fiodorczyk@crawnon.pl>
+To: <devel@driverdev.osuosl.org>
+Subject: Fotowoltaika- propozycja instalacji
+X-Mailer: mail.crawnon.pl
 MIME-Version: 1.0
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=crawnon.pl; s=mail; 
+ t=1681458685; bh=vdn5P4TcqbO5KLDdR/tfEP9AjvOe1HPkPv4ZFGYr8oc=;
+ h=Date:From:To:Subject:From;
+ b=j43GMjpx3NvQ2/6NCA1KBD5a2y4iJor3AXTc8jmL74Gq5gAHMhg5cY8kv40A1c1aA
+ +M2aLodjds4+hg2jrhFakoSba4dQ/fEjB+ImZ2acBRCVBt0IplWdvGMp6ofixFuqGh
+ 9+aM9G7ici+Bq8h37bRjA93OhWGjzFnyXM7dZNGt3bLAY41iJQAf1F8AOFhds22Do2
+ Mn7pvweP5zuSUCa11A+1sShGE+bdPskhF8zqNsRAJD3XviZOoAT7+RTiyu0MU6PkG3
+ J+hEIXWYSP7OwaMlG8H7VNwpPMq4oSt8oKNrhvGjov+6WMGdtJ9pkfkNSHEbNb1hth
+ paFd2c2PuaJPA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=crawnon.pl header.i=@crawnon.pl
+ header.a=rsa-sha256 header.s=mail header.b=j43GMjpx
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,42 +71,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: pj3820199@hotmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear, devel 
-
-
- Sir/Ma,
-
-How are you doing. Kindly permit me to share this information 
-with
-you. It is quiet impressive.
-Due to the Covid-19's effect on the world market & economy in 
-2020 ,Our company is expanding its global presence by investing 
-in projects within and outside the Gulf region, Asia/Europe and 
-American continents in the form of debt finance. I strongly 
-believe you have a project or projects that requires funding.
-We are here to partner with you to achieve your goal.
-1. Minimum Funding Amount: 1 Million USD
-2. Maximum Funding Amount: 500 Million USD
-3. Placement Opens to: Entrepreneurs, Corporations and Investors
-4. Funding Type:Debt Funding(100%)
-5. ROI(Return on Investment): 2%
-6. Duration of Loan: Up to 10 years - Renewable tenure
-7. We finance 100% of the total project cost
-8. We finance both ongoing and fresh projects.
-Details of our activities will be shared with you as soon as you 
-get
-back to me via email: pj3820199@gmail.com
-Best regards,
-Peter Jackson
-Chief Financial Consultant.
-Reply Email to :  pj3820199@gmail.com
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RHppZcWEIGRvYnJ5LAogCkN6eSByb3p3YcW8YWxpIFBhxYRzdHdvIG1vbnRhxbwgc3lzdGVtdSBm
+b3Rvd29sdGFpY3puZWdvPwogCkluc3RhbGFjamEgZm90b3dvbHRhaWN6bmEgamVzdCBuYWpsZXBz
+enltIHNwb3NvYmVtIG5hIG9ibmnFvGVuaWUgd3lzb2tvxZtjaSByYWNodW5rw7N3IHphIHByxIVk
+IChwb3pvc3RhasSFIHR5bGtvIG9wxYJhdHkgc3RhxYJlKSBpIHphYmV6cGllY3plbmllIHNpxJkg
+cHJ6ZWQgcm9zbsSFY3ltaSBjZW5hbWkgZW5lcmdpaSBlbGVrdHJ5Y3puZWouIEplc3QgdG8gdyBw
+ZcWCbmkgb2RuYXdpYWxuZSBpIGJlemVtaXN5am5lIMW6csOzZMWCbyBlbmVyZ2lpLCBkemnEmWtp
+IGN6ZW11IHByenljenluaWFteSBzacSZIGRvIG9jaHJvbnkgxZtyb2Rvd2lza2EgbmF0dXJhbG5l
+Z28uCiAKRHppYcWCYW15IG9kIHdpZWx1IGxhdCBuYSByeW5rdSBlbmVyZ2V0eWN6bnltLiBQcnp5
+Z290dWplbXkgcHJvamVrdCwgd3ljZW7EmSBvcmF6IGtvbXBsZWtzb3dvIHd5a29uYW15IGkgemfF
+gm9zaW15IHJlYWxpemFjasSZIGRvIHpha8WCYWR1IGVuZXJnZXR5Y3puZWdvLiAKIApDenkgY2hj
+xIUgUGHFhHN0d28gcG96bmHEhyBuYXN6xIUgcHJvcG96eWNqxJk/ICAKCgpQb3pkcmF3aWFtLApN
+aWtvxYJhaiBGaW9kb3JjenlrCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3Jn
+Cmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2RyaXZlcmRldi1kZXZlbAo=
