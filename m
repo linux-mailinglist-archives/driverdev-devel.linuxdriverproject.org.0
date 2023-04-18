@@ -1,45 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A389E6E597B
-	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Apr 2023 08:36:47 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A64986E597E
+	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Apr 2023 08:36:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0833A61321;
-	Tue, 18 Apr 2023 06:36:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0833A61321
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2C710610CB;
+	Tue, 18 Apr 2023 06:36:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2C710610CB
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KMefGAe9JVD8; Tue, 18 Apr 2023 06:36:45 +0000 (UTC)
+	with ESMTP id nmXBzlrmaX2i; Tue, 18 Apr 2023 06:36:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D0B77611E2;
-	Tue, 18 Apr 2023 06:36:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D0B77611E2
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id EE8CD6132F;
+	Tue, 18 Apr 2023 06:36:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EE8CD6132F
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 76F321BF2AB
- for <devel@linuxdriverproject.org>; Tue, 18 Apr 2023 06:36:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B8AC41C4266
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 18 Apr 2023 06:36:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 50C9781F9E
- for <devel@linuxdriverproject.org>; Tue, 18 Apr 2023 06:36:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 50C9781F9E
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9EC4083BA3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 18 Apr 2023 06:36:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9EC4083BA3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XfL0t8_CrkJ5 for <devel@linuxdriverproject.org>;
- Tue, 18 Apr 2023 06:36:40 +0000 (UTC)
+ with ESMTP id gUPfLnkCYYfD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 18 Apr 2023 06:36:42 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6161683BA3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BA39981F9E
 Received: from alkuhaimi.com (unknown [185.225.74.180])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6161683BA3
- for <devel@driverdev.osuosl.org>; Tue, 18 Apr 2023 06:36:40 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id BA39981F9E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 18 Apr 2023 06:36:41 +0000 (UTC)
 From: Peter J<rud-division@alkuhaimi.com>
-To: devel@driverdev.osuosl.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Re: Project Financing/Loan and debt management.
-Date: 18 Apr 2023 08:36:39 +0200
-Message-ID: <20230418083639.F16ADCFF1926A50B@alkuhaimi.com>
+Date: 18 Apr 2023 08:36:40 +0200
+Message-ID: <20230418083640.ADD554F6A077C4AB@alkuhaimi.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,7 +63,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear, devel 
+Dear, driverdev-devel 
 
 
  Sir/Ma,
