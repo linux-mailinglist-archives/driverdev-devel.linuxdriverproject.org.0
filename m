@@ -1,64 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C118F6E5CAA
-	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Apr 2023 10:56:56 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 434446E701D
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Apr 2023 01:57:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8EC7683C10;
-	Tue, 18 Apr 2023 08:56:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8EC7683C10
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6yrgBs23diVr; Tue, 18 Apr 2023 08:56:52 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 744DF8148F;
-	Tue, 18 Apr 2023 08:56:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 744DF8148F
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C5D851BF302
- for <devel@linuxdriverproject.org>; Tue, 18 Apr 2023 08:56:49 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9F57A41040
- for <devel@linuxdriverproject.org>; Tue, 18 Apr 2023 08:56:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9F57A41040
+	by smtp2.osuosl.org (Postfix) with ESMTP id 03D4B41771;
+	Tue, 18 Apr 2023 23:57:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 03D4B41771
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ewyF8zp3AkTg for <devel@linuxdriverproject.org>;
- Tue, 18 Apr 2023 08:56:48 +0000 (UTC)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fd_j3zIvZ-GA; Tue, 18 Apr 2023 23:57:24 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id CA26C40B75;
+	Tue, 18 Apr 2023 23:57:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CA26C40B75
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B81F91C41B3
+ for <devel@linuxdriverproject.org>; Tue, 18 Apr 2023 23:57:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id B77F482061
+ for <devel@linuxdriverproject.org>; Tue, 18 Apr 2023 23:57:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B77F482061
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0_JiRBkwODHf for <devel@linuxdriverproject.org>;
+ Tue, 18 Apr 2023 23:57:18 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0D50F402F6
-Received: from mail.edsonnith.pl (mail.edsonnith.pl [195.231.83.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0D50F402F6
- for <devel@driverdev.osuosl.org>; Tue, 18 Apr 2023 08:56:47 +0000 (UTC)
-Received: by mail.edsonnith.pl (Postfix, from userid 1002)
- id 7E8FB86AA5; Tue, 18 Apr 2023 10:53:27 +0200 (CEST)
-Received: by mail.edsonnith.pl for <devel@driverdev.osuosl.org>;
- Tue, 18 Apr 2023 08:53:15 GMT
-Message-ID: <20230418102808-0.1.r.bm55.0.icy211dxjd@edsonnith.pl>
-Date: Tue, 18 Apr 2023 08:53:15 GMT
-From: "Maciej Przybylski" <maciej.przybylski@edsonnith.pl>
-To: <devel@driverdev.osuosl.org>
-Subject: =?UTF-8?Q?Pytanie_o_wycen=C4=99_?=
-X-Mailer: mail.edsonnith.pl
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BEA1D83C53
+Received: from alkuhaimi.com (unknown [185.225.74.180])
+ by smtp1.osuosl.org (Postfix) with ESMTP id BEA1D83C53
+ for <devel@linuxdriverproject.org>; Tue, 18 Apr 2023 23:57:17 +0000 (UTC)
+From: Peter J<rud-division@alkuhaimi.com>
+To: devel@linuxdriverproject.org
+Subject: Re: Project Financing/Loan and debt management.
+Date: 19 Apr 2023 01:57:16 +0200
+Message-ID: <20230419015716.20D0D695F6CA9DA5@alkuhaimi.com>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=edsonnith.pl; s=mail; 
- t=1681808043; bh=R834O9ZKPsOqL7TcrHze/mUM6BZ0xyR+u5GqXjK8tTo=;
- h=Date:From:To:Subject:From;
- b=W1d+8WsjXj46ruKgOY4x7o1Hb6uW4RbwIMdyivF4yh3Kpa79psQU8tIFy4LF8ZoH9
- Ch3/uX4T/+PLASN0TFMfH/Yv6iSXrmSmrdStghL1U1b7vysFARnNZNNkAubWAbbdI/
- Y2PY8tl6nsJM6HxnBXNAfbMTcawRneJtP0yknxssJ/i+ty9c/wjC2BEArCN8Cdpox9
- 8rSYhtPQZ5bT/+3yNc+nbrARouV3F9PnkQ5ntWXfdRGXCCFYu1c63BBtoJPkWRdypU
- NC7kNVwCMLDvErdhuleUFgsMJnS1NCMo5JPCd3i17CmeD/4UBwcxu2wpS0/XnufLup
- WHY0gIDml2QxQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=edsonnith.pl header.i=@edsonnith.pl
- header.a=rsa-sha256 header.s=mail header.b=W1d+8Wsj
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,15 +53,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: pj3820199@hotmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RHppZcWEIGRvYnJ5LAoKQ3p5IHBvc3p1a3VqxIUgUGHFhHN0d28gYWt0dWFsbmllIG5vd3ljaCBr
-bGllbnTDs3cgeiBzZWdtZW50dSBCMkI/CgpXc3BpZXJhbXkgZmlybXkgdyBuYXdpxIV6eXdhbml1
-IHJlbGFjamkgYml6bmVzb3d5Y2guCgpDenkgbW/FvGVteSBwb3Jvem1hd2lhxIc/CgoKUG96ZHJh
-d2lhbQpNYWNpZWogUHJ6eWJ5bHNraQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0
-Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Dear, devel 
+
+
+ Sir/Ma,
+
+How are you doing. Kindly permit me to share this information 
+with
+you. It is quiet impressive.
+Due to the Covid-19's effect on the world market & economy in 
+2020 ,Our company is expanding its global presence by investing 
+in projects within and outside the Gulf region, Asia/Europe and 
+American continents in the form of debt finance. I strongly 
+believe you have a project or projects that requires funding.
+We are here to partner with you to achieve your goal.
+1. Minimum Funding Amount: 1 Million USD
+2. Maximum Funding Amount: 500 Million USD
+3. Placement Opens to: Entrepreneurs, Corporations and Investors
+4. Funding Type:Debt Funding(100%)
+5. ROI(Return on Investment): 4%
+6. Duration of Loan: Up to 10 years - Renewable tenure
+7. We finance 100% of the total project cost
+8. We finance both ongoing and fresh projects.
+Details of our activities will be shared with you as soon as you 
+get
+back to me via email: pj3820199@gmail.com
+Best regards,
+Peter Jackson
+Chief Financial Consultant.
+Reply Email to :  pj3820199@gmail.com
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
