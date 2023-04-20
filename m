@@ -2,44 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DA1C6E9658
-	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Apr 2023 15:52:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B74406E9659
+	for <lists+driverdev-devel@lfdr.de>; Thu, 20 Apr 2023 15:52:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EE19642B2E;
-	Thu, 20 Apr 2023 13:52:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EE19642B2E
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2380342B5E;
+	Thu, 20 Apr 2023 13:52:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2380342B5E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ee5cg91m7sLl; Thu, 20 Apr 2023 13:52:36 +0000 (UTC)
+	with ESMTP id vnuTKMnk3EII; Thu, 20 Apr 2023 13:52:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CCE344048D;
-	Thu, 20 Apr 2023 13:52:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CCE344048D
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id C870942B38;
+	Thu, 20 Apr 2023 13:52:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C870942B38
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 627761BF36C
- for <devel@linuxdriverproject.org>; Thu, 20 Apr 2023 13:52:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0F15B1BF36C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Apr 2023 13:52:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 37A708425C
- for <devel@linuxdriverproject.org>; Thu, 20 Apr 2023 13:52:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 37A708425C
+ by smtp1.osuosl.org (Postfix) with ESMTP id E56DB8424A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Apr 2023 13:52:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E56DB8424A
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id onL1R2OxjnmP for <devel@linuxdriverproject.org>;
- Thu, 20 Apr 2023 13:52:29 +0000 (UTC)
+ with ESMTP id j7ep017-Zh4a
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Apr 2023 13:52:31 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4D67984257
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B971D84255
 Received: from alkuhaimi.com (unknown [185.225.74.180])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4D67984257
- for <devel@driverdev.osuosl.org>; Thu, 20 Apr 2023 13:52:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B971D84255
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 20 Apr 2023 13:52:30 +0000 (UTC)
 From: Peter J<rud-division@alkuhaimi.com>
-To: devel@driverdev.osuosl.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Re: Project Financing/Loan 
-Date: 20 Apr 2023 15:52:28 +0200
-Message-ID: <20230420155228.A1FFE1EBD26A54BA@alkuhaimi.com>
+Date: 20 Apr 2023 15:52:29 +0200
+Message-ID: <20230420155229.B103B21CDF9C4C0A@alkuhaimi.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,7 +63,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear, devel 
+Dear, driverdev-devel 
 
 
  Sir/Ma,
