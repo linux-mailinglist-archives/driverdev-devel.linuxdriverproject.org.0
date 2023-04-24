@@ -2,44 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE4EF6ED2BB
-	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Apr 2023 18:43:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 56BE76ED2BD
+	for <lists+driverdev-devel@lfdr.de>; Mon, 24 Apr 2023 18:44:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 39CB3410D4;
-	Mon, 24 Apr 2023 16:43:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 39CB3410D4
+	by smtp4.osuosl.org (Postfix) with ESMTP id 638F2410A3;
+	Mon, 24 Apr 2023 16:44:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 638F2410A3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id On5DJPIbmBs3; Mon, 24 Apr 2023 16:43:56 +0000 (UTC)
+	with ESMTP id AFfha5vcCmLw; Mon, 24 Apr 2023 16:44:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DCAB4410A0;
-	Mon, 24 Apr 2023 16:43:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DCAB4410A0
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2227E410CB;
+	Mon, 24 Apr 2023 16:44:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2227E410CB
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3B8E41C2B95
- for <devel@linuxdriverproject.org>; Mon, 24 Apr 2023 16:43:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7ACFC1BF869
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 24 Apr 2023 16:43:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 155B981434
- for <devel@linuxdriverproject.org>; Mon, 24 Apr 2023 16:43:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 155B981434
+ by smtp1.osuosl.org (Postfix) with ESMTP id CFCE2817D3
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 24 Apr 2023 16:43:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CFCE2817D3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NrK7_rTb7OtM for <devel@linuxdriverproject.org>;
- Mon, 24 Apr 2023 16:43:51 +0000 (UTC)
+ with ESMTP id DQAMGuoFTXBt
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 24 Apr 2023 16:43:53 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0D9D38146A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 165F981434
 Received: from alkuhaimi.com (unknown [185.225.74.180])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0D9D38146A
- for <devel@driverdev.osuosl.org>; Mon, 24 Apr 2023 16:43:50 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 165F981434
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 24 Apr 2023 16:43:52 +0000 (UTC)
 From: Peter J<rud-division@alkuhaimi.com>
-To: devel@driverdev.osuosl.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Re: Project Financing/Loan facilitation
-Date: 24 Apr 2023 18:43:50 +0200
-Message-ID: <20230424184350.FBD334D2ABC6A9FE@alkuhaimi.com>
+Date: 24 Apr 2023 18:43:52 +0200
+Message-ID: <20230424184352.4B5C8C40B668ADFC@alkuhaimi.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,7 +63,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear, devel 
+Dear, driverdev-devel 
 
 
  Sir/Ma,
