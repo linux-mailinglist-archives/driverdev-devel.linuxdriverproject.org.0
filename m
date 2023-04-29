@@ -1,56 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86A3E6F263C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Apr 2023 22:10:15 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id DFF8C6F2649
+	for <lists+driverdev-devel@lfdr.de>; Sat, 29 Apr 2023 22:19:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 647E960FBC;
-	Sat, 29 Apr 2023 20:10:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 647E960FBC
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3D33960AE9;
+	Sat, 29 Apr 2023 20:19:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3D33960AE9
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2gvroRuUZlgG; Sat, 29 Apr 2023 20:10:12 +0000 (UTC)
+	with ESMTP id 991BG4l3vkqb; Sat, 29 Apr 2023 20:19:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 470BC60F5E;
-	Sat, 29 Apr 2023 20:10:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 470BC60F5E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2D9FF60A69;
+	Sat, 29 Apr 2023 20:19:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2D9FF60A69
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 152BF1BF405
- for <devel@linuxdriverproject.org>; Sat, 29 Apr 2023 20:10:09 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 814B71BF405
+ for <devel@linuxdriverproject.org>; Sat, 29 Apr 2023 20:19:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EBAC160FBC
- for <devel@linuxdriverproject.org>; Sat, 29 Apr 2023 20:10:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EBAC160FBC
+ by smtp2.osuosl.org (Postfix) with ESMTP id 56049402F6
+ for <devel@linuxdriverproject.org>; Sat, 29 Apr 2023 20:19:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 56049402F6
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id j2h2AE7soy6G for <devel@linuxdriverproject.org>;
- Sat, 29 Apr 2023 20:10:07 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Xs2Hp7CIYKIW for <devel@linuxdriverproject.org>;
+ Sat, 29 Apr 2023 20:19:33 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 963F560F5E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B888E400FB
 Received: from mail.dashan.tw (122-117-11-104.hinet-ip.hinet.net
  [122.117.11.104])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 963F560F5E
- for <devel@linuxdriverproject.org>; Sat, 29 Apr 2023 20:10:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B888E400FB
+ for <devel@driverdev.osuosl.org>; Sat, 29 Apr 2023 20:19:33 +0000 (UTC)
 Received: from [46.148.41.90] (unknown [46.148.41.90])
- by mail.dashan.tw (Postfix) with ESMTPA id 9770135E1EAC;
- Sun, 30 Apr 2023 02:07:48 +0800 (CST)
+ by mail.dashan.tw (Postfix) with ESMTPA id 0399235E1EF6;
+ Sun, 30 Apr 2023 02:07:54 +0800 (CST)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Oil Contract
 To: Recipients <support@cito-pro.ru>
 From: "Saudi Aramco Crude Oil Company" <support@cito-pro.ru>
-Date: Sat, 29 Apr 2023 11:07:35 -0700
-X-MailScanner-ID: 9770135E1EAC.A3C01
+Date: Sat, 29 Apr 2023 11:07:42 -0700
+X-MailScanner-ID: 0399235E1EF6.A3E11
 X-MailScanner: Not scanned: please contact your Internet E-Mail Service
  Provider for details
 X-MailScanner-SpamScore: s
 X-MailScanner-From: support@cito-pro.ru
-Message-Id: <20230429201008.EBAC160FBC@smtp3.osuosl.org>
+Message-Id: <20230429201934.56049402F6@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
