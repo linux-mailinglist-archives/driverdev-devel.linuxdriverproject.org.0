@@ -2,44 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A98D26F28E2
-	for <lists+driverdev-devel@lfdr.de>; Sun, 30 Apr 2023 14:44:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D9366F28E4
+	for <lists+driverdev-devel@lfdr.de>; Sun, 30 Apr 2023 14:44:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 950BD84152;
-	Sun, 30 Apr 2023 12:44:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 950BD84152
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8237784150;
+	Sun, 30 Apr 2023 12:44:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8237784150
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PA3al1Ov1wQS; Sun, 30 Apr 2023 12:44:36 +0000 (UTC)
+	with ESMTP id DP1ZgPRzKqdC; Sun, 30 Apr 2023 12:44:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 79E6382236;
-	Sun, 30 Apr 2023 12:44:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 79E6382236
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 655448415D;
+	Sun, 30 Apr 2023 12:44:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 655448415D
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3AB9C1BF47F
- for <devel@linuxdriverproject.org>; Sun, 30 Apr 2023 12:44:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1A0C61BF47F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 30 Apr 2023 12:44:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 131448410C
- for <devel@linuxdriverproject.org>; Sun, 30 Apr 2023 12:44:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 131448410C
+ by smtp1.osuosl.org (Postfix) with ESMTP id E0AAD82236
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 30 Apr 2023 12:44:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E0AAD82236
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2AbaM3uirS3S for <devel@linuxdriverproject.org>;
- Sun, 30 Apr 2023 12:44:31 +0000 (UTC)
+ with ESMTP id 7v6ege9PVM78
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 30 Apr 2023 12:44:33 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 274EC82236
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A1A184075
 Received: from alkuhaimi.com (unknown [84.54.50.104])
- by smtp1.osuosl.org (Postfix) with ESMTP id 274EC82236
- for <devel@driverdev.osuosl.org>; Sun, 30 Apr 2023 12:44:30 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0A1A184075
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 30 Apr 2023 12:44:32 +0000 (UTC)
 From: Abdullah Moe <rud-division@alkuhaimi.com>
-To: devel@driverdev.osuosl.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: How are you doing and your family?
-Date: 30 Apr 2023 14:44:30 +0200
-Message-ID: <20230430144430.9114B570CB47258F@alkuhaimi.com>
+Date: 30 Apr 2023 14:44:32 +0200
+Message-ID: <20230430144432.262050C2DA62B8AD@alkuhaimi.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,7 +63,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear, devel
+Dear, driverdev-devel
 
 
 Hello good friend,
