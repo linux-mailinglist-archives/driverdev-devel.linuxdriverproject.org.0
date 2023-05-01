@@ -1,63 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4EE1A6F2E45
-	for <lists+driverdev-devel@lfdr.de>; Mon,  1 May 2023 05:55:36 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 593C06F2E46
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 May 2023 05:55:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5716B416B4;
-	Mon,  1 May 2023 03:55:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5716B416B4
+	by smtp4.osuosl.org (Postfix) with ESMTP id A7A8841736;
+	Mon,  1 May 2023 03:55:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A7A8841736
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0aoiXrkUv1Jo; Mon,  1 May 2023 03:55:32 +0000 (UTC)
+	with ESMTP id 5ocvwbXX8kqj; Mon,  1 May 2023 03:55:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E11A4416AD;
-	Mon,  1 May 2023 03:55:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E11A4416AD
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2BDC841583;
+	Mon,  1 May 2023 03:55:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2BDC841583
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C55EC1BF574
- for <devel@linuxdriverproject.org>; Mon,  1 May 2023 03:43:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 69FE91BF574
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  1 May 2023 03:52:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A21C88205E
- for <devel@linuxdriverproject.org>; Mon,  1 May 2023 03:43:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A21C88205E
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3F15E81EBD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  1 May 2023 03:52:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3F15E81EBD
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zx1v7rhmDj9V for <devel@linuxdriverproject.org>;
- Mon,  1 May 2023 03:43:17 +0000 (UTC)
+ with ESMTP id 3gQe97e_N_1M
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  1 May 2023 03:52:08 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3A8AF8205A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 134CF81EB0
 Received: from mail.sudeaseg.gob.ve (mail.sudeaseg.gob.ve [190.202.88.12])
- by smtp1.osuosl.org (Postfix) with SMTP id 3A8AF8205A
- for <devel@driverdev.osuosl.org>; Mon,  1 May 2023 03:43:16 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with SMTP id 134CF81EB0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  1 May 2023 03:52:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.sudeaseg.gob.ve (Postfix) with ESMTP id DFFBC3821FA7
- for <devel@driverdev.osuosl.org>; Mon,  1 May 2023 03:41:01 +0000 (UTC)
+ by mail.sudeaseg.gob.ve (Postfix) with ESMTP id 04D393822958
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  1 May 2023 03:50:24 +0000 (UTC)
 Received: from mail.sudeaseg.gob.ve ([127.0.0.1])
  by localhost (mail.sudeaseg.gob.ve [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id pkdst__WpUjo for <devel@driverdev.osuosl.org>;
- Mon,  1 May 2023 03:41:01 +0000 (UTC)
+ with ESMTP id QU52TmvkWS6W
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  1 May 2023 03:50:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.sudeaseg.gob.ve (Postfix) with ESMTP id ADC8D3821FAC
- for <devel@driverdev.osuosl.org>; Mon,  1 May 2023 03:41:01 +0000 (UTC)
+ by mail.sudeaseg.gob.ve (Postfix) with ESMTP id C7D8F3822959
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  1 May 2023 03:50:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at mail.sudeaseg.gob.ve
 Received: from mail.sudeaseg.gob.ve ([127.0.0.1])
  by localhost (mail.sudeaseg.gob.ve [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id AOr81FgCkNef for <devel@driverdev.osuosl.org>;
- Mon,  1 May 2023 03:41:01 +0000 (UTC)
+ with ESMTP id de-x-cOcp56E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  1 May 2023 03:50:23 +0000 (UTC)
 Received: from danielstores.co.uk (ip138.ip-51-254-149.eu [51.254.149.138])
- by mail.sudeaseg.gob.ve (Postfix) with ESMTPSA id 25B5B3821FA3
- for <devel@driverdev.osuosl.org>; Mon,  1 May 2023 03:41:00 +0000 (UTC)
+ by mail.sudeaseg.gob.ve (Postfix) with ESMTPSA id 43A273822958
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon,  1 May 2023 03:50:23 +0000 (UTC)
 From: W.J Daniel & Co Ltd <a.derek8@danielstores.co.uk>
-To: devel@driverdev.osuosl.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Pr Order Enquiry 2023
-Date: 30 Apr 2023 20:42:43 -0700
-Message-ID: <20230430125606.F6128CD8CE46807A@danielstores.co.uk>
+Date: 30 Apr 2023 20:52:06 -0700
+Message-ID: <20230430125606.A4A65B2F87B08855@danielstores.co.uk>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -77,7 +86,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear devel
+Dear driverdev-devel
 
 The world notable brand W.J Daniel & Co Ltd, is UK's largest 
 multi-channel retailer.
