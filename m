@@ -2,57 +2,65 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 530F56F4EB7
-	for <lists+driverdev-devel@lfdr.de>; Wed,  3 May 2023 04:01:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 295AB6F391B
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 May 2023 22:22:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E391741C0A;
-	Wed,  3 May 2023 02:00:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E391741C0A
+	by smtp4.osuosl.org (Postfix) with ESMTP id EC68D41680;
+	Mon,  1 May 2023 20:22:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EC68D41680
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XnTvhDuaR10a; Wed,  3 May 2023 02:00:58 +0000 (UTC)
+	with ESMTP id 4Ul-MZX42Opp; Mon,  1 May 2023 20:22:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2A16B41BC1;
-	Wed,  3 May 2023 02:00:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2A16B41BC1
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9F63C41675;
+	Mon,  1 May 2023 20:22:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9F63C41675
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 432C81BF414
- for <devel@linuxdriverproject.org>; Wed,  3 May 2023 02:00:56 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A2C271BF419
+ for <devel@linuxdriverproject.org>; Mon,  1 May 2023 20:22:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1D49140176
- for <devel@linuxdriverproject.org>; Wed,  3 May 2023 02:00:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1D49140176
+ by smtp4.osuosl.org (Postfix) with ESMTP id 773CD41680
+ for <devel@linuxdriverproject.org>; Mon,  1 May 2023 20:22:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 773CD41680
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id D1hX7igmxXvt for <devel@linuxdriverproject.org>;
- Wed,  3 May 2023 02:00:55 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Qnswdf_DYIh5 for <devel@linuxdriverproject.org>;
+ Mon,  1 May 2023 20:22:00 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7051D40120
-Received: from srv1.bpibs.sch.id (unknown [103.144.127.226])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7051D40120
- for <devel@linuxdriverproject.org>; Wed,  3 May 2023 02:00:55 +0000 (UTC)
-Received: from User (unknown [192.168.200.1])
- by srv1.bpibs.sch.id (Postfix) with SMTP id EB43E28331AE;
- Mon,  1 May 2023 23:14:55 +0700 (WIB)
-DKIM-Filter: OpenDKIM Filter v2.11.0 srv1.bpibs.sch.id EB43E28331AE
-From: "Cpt. Mohika Moore"<test11@it-expertise.ru>
-Subject: Hi " Dear 
-Date: Mon, 1 May 2023 09:18:19 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5927B41675
+Received: from mail.clicheriablumenau.com.br (mail.clicheriablumenau.com.br
+ [189.85.67.208])
+ by smtp4.osuosl.org (Postfix) with SMTP id 5927B41675
+ for <devel@linuxdriverproject.org>; Mon,  1 May 2023 20:21:48 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.clicheriablumenau.com.br (Postfix) with ESMTP id C821A40E6D4FD;
+ Mon,  1 May 2023 15:41:33 -0300 (-03)
+Received: from mail.clicheriablumenau.com.br ([127.0.0.1])
+ by localhost (mail.clicheriablumenau.com.br [127.0.0.1]) (amavisd-new,
+ port 10032)
+ with ESMTP id QL3ixLbPPn5z; Mon,  1 May 2023 15:41:32 -0300 (-03)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.clicheriablumenau.com.br (Postfix) with ESMTP id 59E5940E62C23;
+ Mon,  1 May 2023 15:41:11 -0300 (-03)
+X-Virus-Scanned: amavisd-new at clicheriablumenau.com.br
+Received: from mail.clicheriablumenau.com.br ([127.0.0.1])
+ by localhost (mail.clicheriablumenau.com.br [127.0.0.1]) (amavisd-new,
+ port 10026)
+ with ESMTP id CYtn9hkkUP7C; Mon,  1 May 2023 15:41:10 -0300 (-03)
+Received: from [46.148.41.90] (unknown [46.148.41.90])
+ by mail.clicheriablumenau.com.br (Postfix) with ESMTPA id 7B56D40E62C29;
+ Mon,  1 May 2023 15:40:15 -0300 (-03)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-Greylist: Default is to whitelist mail, not delayed by milter-greylist-4.6.2
- (srv1.bpibs.sch.id [0.0.0.0]); Mon, 01 May 2023 23:15:25 +0700 (WIB)
-X-Greylist: inspected by milter-greylist-4.6.2 (srv1.bpibs.sch.id [0.0.0.0]);
- Mon, 01 May 2023 23:15:25 +0700 (WIB) for IP:'192.168.200.1'
- DOMAIN:'[192.168.200.1]' HELO:'User' FROM:'test11@it-expertise.ru' RCPT:''
-Message-Id: <20230503020056.1D49140176@smtp2.osuosl.org>
+Content-Description: Mail message body
+Subject: Oil Contract
+To: Recipients <sales@mail.com>
+From: "Saudi Aramco Crude Oil Company" <sales@mail.com>
+Date: Mon, 01 May 2023 11:39:51 -0700
+Message-Id: <20230501184016.7B56D40E62C29@mail.clicheriablumenau.com.br>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,28 +73,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: au9019469333874@gmail.com
+Reply-To: reemnasser003302@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greeting,
+Saudi Aramco Crude Oil Company.
+P.O. Box 5000. Dhahran 31311,
+Dhahran-Saudi Arabia.
 
-My name is Capt. Monica Moore,I am an American member of the U.S. ARMY medical team in  UKraine.
+Hello,
 
-I just discovered One Package boxes containing  American Dollars in UKraine. I  have deposited Package boxes with a security company in  UKraine
+I have a legit and genuine lucrative business deal to discuss with you. Can i trust you to be a sincere partner to handle the business?
 
-Am looking for a trustworthy individual who will assist me receive the fund before I come over and join him as soon as the fund gets into your hand. Please, I want this to be between me and you since I am still in the army.
-
-To Prove my sincerity, We both should be honest with ourselves and be trustworthy because without trust and honestly nothing works in this life.
-
- 
-I look forward to your prompt reply to enable us move forward and I will get back to you ASAP with details.
+If you received this message in your SPAM/JUNK folder, it is because of the restrictions imposed by your Mail/Internet Service Provider, I urge you to treat it genuinely, reply back for more information.
 
 Regards,
 
-Cpt. Mohika Moore
+Mrs.Reem Nasser,
+Sales/Marketing Manager
+Saudi Aramco Crude Oil Company
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
