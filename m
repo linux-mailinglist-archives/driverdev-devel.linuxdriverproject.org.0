@@ -2,44 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4F3E6F4A3C
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 May 2023 21:20:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 445C56F4A3D
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 May 2023 21:20:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7C98F41C50;
-	Tue,  2 May 2023 19:20:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7C98F41C50
+	by smtp2.osuosl.org (Postfix) with ESMTP id AA32741C4E;
+	Tue,  2 May 2023 19:20:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AA32741C4E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bw1JgXyoz6td; Tue,  2 May 2023 19:20:20 +0000 (UTC)
+	with ESMTP id qKcAMDcmBr2D; Tue,  2 May 2023 19:20:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 63145405AA;
-	Tue,  2 May 2023 19:20:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 63145405AA
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7585B41C51;
+	Tue,  2 May 2023 19:20:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7585B41C51
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2874C1BF312
- for <devel@linuxdriverproject.org>; Tue,  2 May 2023 19:20:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6C3751BF312
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  2 May 2023 19:20:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0B41682302
- for <devel@linuxdriverproject.org>; Tue,  2 May 2023 19:20:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0B41682302
+ by smtp1.osuosl.org (Postfix) with ESMTP id A98EF82660
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  2 May 2023 19:20:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A98EF82660
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5ChA5YODw-cm for <devel@linuxdriverproject.org>;
- Tue,  2 May 2023 19:20:14 +0000 (UTC)
+ with ESMTP id zTtb_VBcmDf4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  2 May 2023 19:20:16 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4072282321
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C278582304
 Received: from alkuhaimi.com (unknown [84.54.50.104])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4072282321
- for <devel@linuxdriverproject.org>; Tue,  2 May 2023 19:20:13 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C278582304
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  2 May 2023 19:20:15 +0000 (UTC)
 From: Peter Jack <rud-division@alkuhaimi.com>
-To: devel@linuxdriverproject.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Re: Project Financing/Loan and debt management.
-Date: 2 May 2023 21:20:13 +0200
-Message-ID: <20230502212013.71B458ADB76A5158@alkuhaimi.com>
+Date: 2 May 2023 21:20:14 +0200
+Message-ID: <20230502212014.D7A050C8E975F545@alkuhaimi.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,7 +63,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear, devel
+Dear, driverdev-devel
 
 
 Sir/Ma,
