@@ -1,50 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 564E66F4989
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 May 2023 20:13:54 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FB836F48D2
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 May 2023 19:05:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C21778175F;
-	Tue,  2 May 2023 18:13:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C21778175F
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9352041DA7;
+	Tue,  2 May 2023 17:05:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9352041DA7
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fa8rJN3B-7Ev; Tue,  2 May 2023 18:13:52 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ENg12__YPGo5; Tue,  2 May 2023 17:05:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A182081586;
-	Tue,  2 May 2023 18:13:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A182081586
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5016B41D86;
+	Tue,  2 May 2023 17:05:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5016B41D86
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C69D61BF401
- for <devel@linuxdriverproject.org>; Tue,  2 May 2023 18:13:48 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DDDB31BF403
+ for <devel@linuxdriverproject.org>; Tue,  2 May 2023 17:05:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A058E60B2E
- for <devel@linuxdriverproject.org>; Tue,  2 May 2023 18:13:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A058E60B2E
+ by smtp4.osuosl.org (Postfix) with ESMTP id B5E2841D86
+ for <devel@linuxdriverproject.org>; Tue,  2 May 2023 17:05:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B5E2841D86
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wuusYXVeM91O for <devel@linuxdriverproject.org>;
- Tue,  2 May 2023 18:13:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 17DC460B97
-Received: from water.thirdage.com.tw (mail.demeter.com.tw [113.196.182.68])
- by smtp3.osuosl.org (Postfix) with ESMTP id 17DC460B97
- for <devel@driverdev.osuosl.org>; Tue,  2 May 2023 18:13:48 +0000 (UTC)
-Received: from [46.148.41.90] (unknown [46.148.41.90])
- by water.thirdage.com.tw (Postfix) with ESMTPA id 521811DFF34;
- Tue,  2 May 2023 22:01:04 +0800 (CST)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wy1vQ-U6MecA for <devel@linuxdriverproject.org>;
+ Tue,  2 May 2023 17:05:51 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9008641C2C
+Received: from mail.httek.vn (mail.httek.vn [123.30.107.92])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9008641C2C
+ for <devel@linuxdriverproject.org>; Tue,  2 May 2023 17:05:48 +0000 (UTC)
+Received: from User (unknown [185.225.74.224])
+ (Authenticated sender: bantin@khcndongnai.gov.vn)
+ by mail.httek.vn (Postfix) with ESMTPA id 4D2AF2EBED1;
+ Tue,  2 May 2023 22:38:29 +0700 (+07)
+From: "Angel Melissa"<bantin@khcndongnai.gov.vn>
+Subject: Hello My Friend,
+Date: Tue, 2 May 2023 08:38:48 -0700
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Oil Benefit
-To: Recipients <sales@mail.com>
-From: "Saudi Aramco Crude Oil Company" <sales@mail.com>
-Date: Tue, 02 May 2023 07:00:48 -0700
-Message-Id: <20230502181348.A058E60B2E@smtp3.osuosl.org>
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Spam: Yes
+Message-Id: <20230502170551.B5E2841D86@smtp4.osuosl.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=khcndongnai.gov.vn; 
+ s=default; t=1683041928;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:to:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=YIZa8PC20C/+VY+LBs5hug4wo7h7Cj8XkzJm6fSSPJg=;
+ b=vHF3nQINQxvnaLVxQyCtk15MHlejho4gvh1CDsq3xNpTIPVbVR5lYlguCERYJcS8QJbs4M
+ kwp7SS8oFy3Jy+nYlZfaBByFrUp3LN56l7rrVCE2ePgANC1OAG6+/+o33zvsiIvgfQtVl6
+ RIvr/GGy/9Ka1h2D3998KvRlpCYm0xgq3l5ElugtUBm+Av6Kt2nF5PFpkIMrGZphRKeCDb
+ b1tZobRk8HmwkpgqK+l5kpGLm0JV2dV1V4LwwX3Jo3z+HrG6Z5wZq/oW5CzicGChlNZnki
+ avEwMyR7rmpjKyLYiqXcj5l/vxTdLHpEDqEAmGFSHpOaWkcGvZCCVRGEjIUyAg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=khcndongnai.gov.vn
+ header.i=@khcndongnai.gov.vn header.a=rsa-sha256 header.s=default
+ header.b=vHF3nQIN
+X-Mailman-Original-Authentication-Results: mail.httek.vn;
+ auth=pass smtp.auth=bantin@khcndongnai.gov.vn
+ smtp.mailfrom=bantin@khcndongnai.gov.vn
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,27 +80,17 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: reemnasser003302@gmail.com
+Reply-To: unitednationteam37@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Saudi Aramco Crude Oil Company.
-P.O. Box 5000. Dhahran 31311,
-Dhahran-Saudi Arabia.
+In consideration of the legislative/legal resolution reached by the World Governing Bodies: The International Monetary Fund, United Nations Organization, World Bank Group, United States Government, British Government and the European Union Commission Committee on Financial and Allied Matters have good news for you contact the email below for more full details,
 
-Hello,
-
-I have a legit and genuine lucrative business deal to discuss with you. Can i trust you to be a sincere partner to handle the business?
-
-If you received this message in your SPAM/JUNK folder, it is because of the restrictions imposed by your Mail/Internet Service Provider, I urge you to treat it genuinely, reply back for more information.
-
-Regards,
-
-Mrs.Reem Nasser,
-Sales/Marketing Manager
-Saudi Aramco Crude Oil Company
+Email: unitednationteam37@gmail.com
+Email: changeissure@usa.com
+contact person: Angel Melissa.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
