@@ -1,45 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 493416F3F43
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 May 2023 10:38:13 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BEAFD6F3F44
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 May 2023 10:38:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3884C4017F;
-	Tue,  2 May 2023 08:38:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3884C4017F
+	by smtp4.osuosl.org (Postfix) with ESMTP id 46CB040316;
+	Tue,  2 May 2023 08:38:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 46CB040316
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l5HiBOKZPbfH; Tue,  2 May 2023 08:38:09 +0000 (UTC)
+	with ESMTP id Gj6urqXtT7U2; Tue,  2 May 2023 08:38:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EA6A14008A;
-	Tue,  2 May 2023 08:38:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EA6A14008A
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1C603402E5;
+	Tue,  2 May 2023 08:38:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1C603402E5
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 157241BF3A1
- for <devel@linuxdriverproject.org>; Tue,  2 May 2023 08:38:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1C1A51BF3A1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  2 May 2023 08:38:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1FCAD82020
- for <devel@linuxdriverproject.org>; Tue,  2 May 2023 08:38:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1FCAD82020
+ by smtp1.osuosl.org (Postfix) with ESMTP id 653B78200E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  2 May 2023 08:38:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 653B78200E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XrivqaRfwkZB for <devel@linuxdriverproject.org>;
- Tue,  2 May 2023 08:38:02 +0000 (UTC)
+ with ESMTP id ixZuwx6giDaU
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  2 May 2023 08:38:04 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 374688201E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 746A981FFE
 Received: from alkuhaimi.com (unknown [84.54.50.104])
- by smtp1.osuosl.org (Postfix) with ESMTP id 374688201E
- for <devel@linuxdriverproject.org>; Tue,  2 May 2023 08:38:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 746A981FFE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  2 May 2023 08:38:03 +0000 (UTC)
 From: Abdullah Moe <rud-division@alkuhaimi.com>
-To: devel@linuxdriverproject.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: How are you doing and your family?
-Date: 2 May 2023 10:38:01 +0200
-Message-ID: <20230502103801.21009965FB8A78F9@alkuhaimi.com>
+Date: 2 May 2023 10:38:02 +0200
+Message-ID: <20230502103802.40AC3E4AFED52AF8@alkuhaimi.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,7 +63,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear, devel
+Dear, driverdev-devel
 
 
 Hello good friend,
