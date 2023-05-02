@@ -1,73 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E1C76F3FD8
-	for <lists+driverdev-devel@lfdr.de>; Tue,  2 May 2023 11:08:55 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3618A6F4981
+	for <lists+driverdev-devel@lfdr.de>; Tue,  2 May 2023 20:10:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0554D80DA6;
-	Tue,  2 May 2023 09:08:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0554D80DA6
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9FF9680A7E;
+	Tue,  2 May 2023 18:10:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9FF9680A7E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BL6_n_1dXCYB; Tue,  2 May 2023 09:08:52 +0000 (UTC)
+	with ESMTP id EwnXN1KpE4Uj; Tue,  2 May 2023 18:10:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D479C81065;
-	Tue,  2 May 2023 09:08:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D479C81065
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7F7DD80896;
+	Tue,  2 May 2023 18:10:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7F7DD80896
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CCD421BF36B
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 May 2023 09:08:49 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2F2361BF401
+ for <devel@linuxdriverproject.org>; Tue,  2 May 2023 18:10:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A4D69404C5
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 May 2023 09:08:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A4D69404C5
+ by smtp2.osuosl.org (Postfix) with ESMTP id 08B554048B
+ for <devel@linuxdriverproject.org>; Tue,  2 May 2023 18:10:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 08B554048B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id L6i8BRp92iGa
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 May 2023 09:08:48 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RBwVj5PvslVZ for <devel@linuxdriverproject.org>;
+ Tue,  2 May 2023 18:10:04 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4760B40325
-Received: from mail.sudeaseg.gob.ve (mail.sudeaseg.gob.ve [190.202.88.12])
- by smtp4.osuosl.org (Postfix) with SMTP id 4760B40325
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 May 2023 09:08:47 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.sudeaseg.gob.ve (Postfix) with ESMTP id 1E7C23824608
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 May 2023 09:06:42 +0000 (UTC)
-Received: from mail.sudeaseg.gob.ve ([127.0.0.1])
- by localhost (mail.sudeaseg.gob.ve [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id j-H4TsE2N_to
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 May 2023 09:06:41 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.sudeaseg.gob.ve (Postfix) with ESMTP id E165D3824607
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 May 2023 09:06:41 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at mail.sudeaseg.gob.ve
-Received: from mail.sudeaseg.gob.ve ([127.0.0.1])
- by localhost (mail.sudeaseg.gob.ve [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id OvMKjHd5iPWb
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 May 2023 09:06:41 +0000 (UTC)
-Received: from danielstores.co.uk (ip138.ip-51-254-149.eu [51.254.149.138])
- by mail.sudeaseg.gob.ve (Postfix) with ESMTPSA id 624813824605
- for <driverdev-devel@linuxdriverproject.org>;
- Tue,  2 May 2023 09:06:41 +0000 (UTC)
-From: W.J Daniel & Co Ltd <a.derek44@danielstores.co.uk>
-To: driverdev-devel@linuxdriverproject.org
-Subject: Pr Order Enquiry 5/2/2023
-Date: 02 May 2023 02:08:26 -0700
-Message-ID: <20230502001634.1C61EB5E0AA3FB93@danielstores.co.uk>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 404DA40120
+Received: from water.thirdage.com.tw (mail.demeter.com.tw [113.196.182.68])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 404DA40120
+ for <devel@linuxdriverproject.org>; Tue,  2 May 2023 18:10:04 +0000 (UTC)
+Received: from [46.148.41.90] (unknown [46.148.41.90])
+ by water.thirdage.com.tw (Postfix) with ESMTPA id C0E501DFF24;
+ Tue,  2 May 2023 22:00:52 +0800 (CST)
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: Oil Benefit
+To: Recipients <sales@mail.com>
+From: "Saudi Aramco Crude Oil Company" <sales@mail.com>
+Date: Tue, 02 May 2023 07:00:36 -0700
+Message-Id: <20230502181005.08B554048B@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,50 +57,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: albert.derek@danielstoresgroup.com, albert.derekdanielcoltd@gmail.com
+Reply-To: reemnasser003302@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear driverdev-devel
+Saudi Aramco Crude Oil Company.
+P.O. Box 5000. Dhahran 31311,
+Dhahran-Saudi Arabia.
 
-The world notable brand W.J Daniel & Co Ltd, is UK's largest 
-multi-channel retailer.
+Hello,
 
-We are presently sourcing new products to attract new customers 
-and retain our existing ones, creating new partnerships globally 
-with companies dealing with different kinds of goods.
+I have a legit and genuine lucrative business deal to discuss with you. Can i trust you to be a sincere partner to handle the business?
 
-After due consultation by our research team, we're happy to 
-inform you that your company has been shortlisted among companies 
-we would like to collaborate with, if this is acceptable with 
-your management.       
+If you received this message in your SPAM/JUNK folder, it is because of the restrictions imposed by your Mail/Internet Service Provider, I urge you to treat it genuinely, reply back for more information.
 
-We have an amazing market for your company's products beyond your 
-imagination.
+Regards,
 
-We hope to be able to order with you and start a long-term 
-friendly, respectable, and solid business partnership.            
-
-Share with us your recent catalogue via email for our 
-consideration.
-
-All our transactions are strictly on OA basics.
-
-For immediate response Send your reply to 
-"albert.derek@danielstoresgroup.com" for our attention only.
-
-
-Best Regards
-
-Mr. Albert Derek
-Purchase Director
-W.J Daniel & Co Ltd
-Email: albert.derek@danielstoresgroup.com
-Tell: +447497483925
-WhatsApp: +447497483925
-www.danielstores.co.uk
+Mrs.Reem Nasser,
+Sales/Marketing Manager
+Saudi Aramco Crude Oil Company
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
