@@ -2,44 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 419B96F79A2
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 May 2023 01:11:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E18F6F79A4
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 May 2023 01:11:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7A40441C7F;
-	Thu,  4 May 2023 23:11:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7A40441C7F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6802841D0B;
+	Thu,  4 May 2023 23:11:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6802841D0B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yJXhJw5aIUQp; Thu,  4 May 2023 23:11:20 +0000 (UTC)
+	with ESMTP id slMoLXj0RCCR; Thu,  4 May 2023 23:11:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5912A41C78;
-	Thu,  4 May 2023 23:11:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5912A41C78
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6023341C80;
+	Thu,  4 May 2023 23:11:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6023341C80
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 180AB1BF3A7
- for <devel@linuxdriverproject.org>; Thu,  4 May 2023 23:11:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5C0E11BF3A7
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  4 May 2023 23:11:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D749F84184
- for <devel@linuxdriverproject.org>; Thu,  4 May 2023 23:11:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D749F84184
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5C2EE84184
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  4 May 2023 23:11:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5C2EE84184
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bgG8I0Zx39p3 for <devel@linuxdriverproject.org>;
- Thu,  4 May 2023 23:11:15 +0000 (UTC)
+ with ESMTP id reudHuAOmuvh
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  4 May 2023 23:11:16 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DE7FC84199
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 712AE8417A
 Received: from alkuhaimi.com (unknown [84.54.50.104])
- by smtp1.osuosl.org (Postfix) with ESMTP id DE7FC84199
- for <devel@linuxdriverproject.org>; Thu,  4 May 2023 23:11:14 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 712AE8417A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  4 May 2023 23:11:15 +0000 (UTC)
 From: Abdullah  M<rud-division@alkuhaimi.com>
-To: devel@linuxdriverproject.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Greetings to you and the family
 Date: 5 May 2023 01:11:14 +0200
-Message-ID: <20230505011113.8A513AF4331F2C9F@alkuhaimi.com>
+Message-ID: <20230505011114.DAF7B60BFC42A7C8@alkuhaimi.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,7 +63,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear, devel
+Dear, driverdev-devel
 
 Hello my good friend,How are you doing and your family?
 I am Mr.Abdullah Mohammed, I am the managing director head of 
