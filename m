@@ -1,45 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 496106F8B9D
-	for <lists+driverdev-devel@lfdr.de>; Fri,  5 May 2023 23:50:08 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E26B6F8B9E
+	for <lists+driverdev-devel@lfdr.de>; Fri,  5 May 2023 23:50:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0DCE8408AE;
-	Fri,  5 May 2023 21:50:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0DCE8408AE
+	by smtp2.osuosl.org (Postfix) with ESMTP id E347B40CA1;
+	Fri,  5 May 2023 21:50:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E347B40CA1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QKXmbJbX2ZVE; Fri,  5 May 2023 21:50:03 +0000 (UTC)
+	with ESMTP id tJPH7ZZB4pR1; Fri,  5 May 2023 21:50:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D856740519;
-	Fri,  5 May 2023 21:50:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D856740519
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id C8EA640574;
+	Fri,  5 May 2023 21:50:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C8EA640574
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 55A3D1BF387
- for <devel@linuxdriverproject.org>; Fri,  5 May 2023 21:49:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5D2C11BF387
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  5 May 2023 21:49:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9E8F883C8D
- for <devel@linuxdriverproject.org>; Fri,  5 May 2023 21:49:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9E8F883C8D
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2EDA583B25
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  5 May 2023 21:49:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2EDA583B25
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id g1JG7_bM2QLC for <devel@linuxdriverproject.org>;
+ with ESMTP id c642Ybo1pM1O
+ for <driverdev-devel@linuxdriverproject.org>;
  Fri,  5 May 2023 21:49:57 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A85B483C9D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 40C6283E33
 Received: from alkuhaimi.com (unknown [84.54.50.104])
- by smtp1.osuosl.org (Postfix) with ESMTP id A85B483C9D
- for <devel@linuxdriverproject.org>; Fri,  5 May 2023 21:49:56 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 40C6283E33
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri,  5 May 2023 21:49:57 +0000 (UTC)
 From: Abdullah  M<rud-division@alkuhaimi.com>
-To: devel@linuxdriverproject.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Greetings to you and the family
-Date: 5 May 2023 23:49:55 +0200
-Message-ID: <20230505234955.A39DE442E58494B5@alkuhaimi.com>
+Date: 5 May 2023 23:49:56 +0200
+Message-ID: <20230505234956.BD66EF1652D525AA@alkuhaimi.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,7 +63,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear, devel
+Dear, driverdev-devel
 
 Hello my good friend,How are you doing and your family?
 I am Mr.Abdullah Mohammed, I am the managing director head of 
