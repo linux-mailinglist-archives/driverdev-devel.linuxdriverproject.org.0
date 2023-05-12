@@ -2,49 +2,49 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A4E9D7004B2
-	for <lists+driverdev-devel@lfdr.de>; Fri, 12 May 2023 12:06:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 710FD7004C6
+	for <lists+driverdev-devel@lfdr.de>; Fri, 12 May 2023 12:07:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BC09442A1D;
-	Fri, 12 May 2023 10:06:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BC09442A1D
+	by smtp4.osuosl.org (Postfix) with ESMTP id DDBD242A34;
+	Fri, 12 May 2023 10:07:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DDBD242A34
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NNy173bVzixe; Fri, 12 May 2023 10:06:35 +0000 (UTC)
+	with ESMTP id Z2c4jN6gRFC2; Fri, 12 May 2023 10:07:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6FA744299E;
-	Fri, 12 May 2023 10:06:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6FA744299E
+	by smtp4.osuosl.org (Postfix) with ESMTP id 957E442A30;
+	Fri, 12 May 2023 10:07:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 957E442A30
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E2E7C1BF2C6
- for <devel@linuxdriverproject.org>; Fri, 12 May 2023 10:06:32 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 80C8F1BF2C6
+ for <devel@linuxdriverproject.org>; Fri, 12 May 2023 10:07:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C2F72840CB
- for <devel@linuxdriverproject.org>; Fri, 12 May 2023 10:06:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C2F72840CB
+ by smtp3.osuosl.org (Postfix) with ESMTP id 667DB60EE4
+ for <devel@linuxdriverproject.org>; Fri, 12 May 2023 10:07:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 667DB60EE4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id M7YqvZQX-9-D for <devel@linuxdriverproject.org>;
- Fri, 12 May 2023 10:06:32 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jPLVCmg8Y9vB for <devel@linuxdriverproject.org>;
+ Fri, 12 May 2023 10:07:13 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1E5CA84032
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C398B60810
 Received: from mail.sairocloud.com (unknown [188.213.65.21])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1E5CA84032
- for <devel@linuxdriverproject.org>; Fri, 12 May 2023 10:06:32 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C398B60810
+ for <devel@driverdev.osuosl.org>; Fri, 12 May 2023 10:07:12 +0000 (UTC)
 Received: from [194.87.151.39] (unknown [194.87.151.39])
- by mail.sairocloud.com (Postfix) with ESMTPSA id 0189DC578B;
- Fri, 12 May 2023 08:21:17 +0000 (UTC)
+ by mail.sairocloud.com (Postfix) with ESMTPSA id D215DC57A1;
+ Fri, 12 May 2023 08:21:21 +0000 (UTC)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Oil Contract
 To: Recipients <sales@mail.com>
 From: "Saudi Aramco Crude Oil Company" <sales@mail.com>
-Date: Fri, 12 May 2023 01:21:12 -0700
-Message-Id: <20230512100632.C2F72840CB@smtp1.osuosl.org>
+Date: Fri, 12 May 2023 01:21:16 -0700
+Message-Id: <20230512100713.667DB60EE4@smtp3.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
