@@ -1,59 +1,46 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7C08701E54
-	for <lists+driverdev-devel@lfdr.de>; Sun, 14 May 2023 18:59:41 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 584B5701ED8
+	for <lists+driverdev-devel@lfdr.de>; Sun, 14 May 2023 20:04:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 18E63409F1;
-	Sun, 14 May 2023 16:59:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 18E63409F1
+	by smtp2.osuosl.org (Postfix) with ESMTP id A9FA4405FC;
+	Sun, 14 May 2023 18:04:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A9FA4405FC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lBp7z7Yfbglq; Sun, 14 May 2023 16:59:39 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id G_ThnhQNPThe; Sun, 14 May 2023 18:04:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D1D84409B3;
-	Sun, 14 May 2023 16:59:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D1D84409B3
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 827F4401C2;
+	Sun, 14 May 2023 18:04:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 827F4401C2
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4AF8E1BF21A
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 May 2023 16:59:36 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id ADE4A1BF5A2
+ for <devel@linuxdriverproject.org>; Sun, 14 May 2023 18:04:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 231D040987
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 May 2023 16:59:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 231D040987
+ by smtp1.osuosl.org (Postfix) with ESMTP id 94B7381FE0
+ for <devel@linuxdriverproject.org>; Sun, 14 May 2023 18:04:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 94B7381FE0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i-f33WygwlPW
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 May 2023 16:59:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FtkEoPejfZOx for <devel@linuxdriverproject.org>;
+ Sun, 14 May 2023 18:04:52 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 99B8240978
-Received: from atsb-mta-03.mailfarm.slicedtech.com.au
- (atsb-mta-04.mailfarm.slicedtech.com.au [103.29.195.44])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 99B8240978
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 May 2023 16:59:34 +0000 (UTC)
-Received: from User ([185.225.74.224])
- by st-mta-03.mailfarm.slicedtech.com.au with SMTP id
- 34EGraWF010052-34EGraWH010052; Mon, 15 May 2023 02:53:37 +1000
-Message-Id: <202305141653.34EGraWF010052-34EGraWH010052@st-mta-03.mailfarm.slicedtech.com.au>
-From: "Angel Melissa"<atsbasir@atsb.gov.au>
-Subject: Hi Friend,
-Date: Sun, 14 May 2023 09:53:52 -0700
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A597C81FE7
+Received: from alkuhaimi.com (unknown [84.54.50.104])
+ by smtp1.osuosl.org (Postfix) with ESMTP id A597C81FE7
+ for <devel@driverdev.osuosl.org>; Sun, 14 May 2023 18:04:51 +0000 (UTC)
+From: Mr. Peter Jack<rud-division@alkuhaimi.com>
+To: devel@driverdev.osuosl.org
+Subject: Re: Project Financing/Loan and debt management.
+Date: 14 May 2023 20:04:50 +0200
+Message-ID: <20230514200450.C868AF0AA8028FB0@alkuhaimi.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-FE-Last-Public-Client-IP: 185.225.74.224
-X-FE-Policy-ID: 82:1:0:SYSTEM
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,17 +53,42 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: contact@unitednationteams.org
+Reply-To: pjacksonconsultant009@outlook.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-In consideration of the legislative/legal resolution reached by the World Governing Bodies: The International Monetary Fund, United Nations Organization, World Bank Group, United States Government, British Government and the European Union Commission Committee on Financial and Allied Matters have good news for you contact the email below for more full details,
+Dear, devel
 
-Email: contact@unitednationteams.org
-Email: changeissure@usa.com
-contact person: Angel Melissa.
+Sir/Ma,
+
+How are you doing? Kindly permit me to share this information 
+with you. It is quite impressive.
+Due to the Covid-19's effect on the world market & economy in 
+2020 and the recent Global tensions, Our Company is expanding its 
+global presence by investing in projects within and outside the 
+Gulf region, Asia/Europe and American continents in the form of 
+debt finance. I strongly believe you have a project or projects 
+that require funding.
+We are here to partner with you to achieve your goal.
+1. Minimum Funding Amount: 1 Million USD
+2. Maximum Funding Amount: 1 Billion USD
+3. Placement Opens to: Entrepreneurs, Corporations and Investors
+4. Funding Type: Debt Funding (100%)
+5. ROI (Return on Investment): 4%
+6. Duration of Loan: Up to 10 years - Renewable tenure
+7. We finance 100% of the total project cost
+8. We finance both ongoing and fresh projects.
+Details of our activities will be shared with you as soon as you 
+get back to me directly via email: pj3820199@gmail.com
+Best regards,
+Peter Jackson
+Asst Chief Financial Consultant.
+Kindly reply Email to:  pj3820199@gmail.com
+
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
