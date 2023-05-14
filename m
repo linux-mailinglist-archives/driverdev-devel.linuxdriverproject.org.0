@@ -2,44 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49B5A701B1F
-	for <lists+driverdev-devel@lfdr.de>; Sun, 14 May 2023 04:06:03 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 486CB701B20
+	for <lists+driverdev-devel@lfdr.de>; Sun, 14 May 2023 04:06:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9CBAA61521;
-	Sun, 14 May 2023 02:06:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9CBAA61521
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8BC086151B;
+	Sun, 14 May 2023 02:06:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8BC086151B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X6CYOPGBuv69; Sun, 14 May 2023 02:05:59 +0000 (UTC)
+	with ESMTP id ilfDEvnxKYif; Sun, 14 May 2023 02:06:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6EB1261518;
-	Sun, 14 May 2023 02:05:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6EB1261518
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 63BB46151F;
+	Sun, 14 May 2023 02:06:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 63BB46151F
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9C1481BF42E
- for <devel@linuxdriverproject.org>; Sun, 14 May 2023 02:05:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1B9A81BF42E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 May 2023 02:05:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 75047821AC
- for <devel@linuxdriverproject.org>; Sun, 14 May 2023 02:05:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 75047821AC
+ by smtp1.osuosl.org (Postfix) with ESMTP id E5779821AC
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 May 2023 02:05:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E5779821AC
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Zd3P-2qk1Slt for <devel@linuxdriverproject.org>;
- Sun, 14 May 2023 02:05:54 +0000 (UTC)
+ with ESMTP id KDSFrUkhZItz
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 May 2023 02:05:55 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 86DAE821DE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0DCE6821D8
 Received: from alkuhaimi.com (unknown [84.54.50.104])
- by smtp1.osuosl.org (Postfix) with ESMTP id 86DAE821DE
- for <devel@linuxdriverproject.org>; Sun, 14 May 2023 02:05:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0DCE6821D8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun, 14 May 2023 02:05:54 +0000 (UTC)
 From: Mr. Peter Jack<rud-division@alkuhaimi.com>
-To: devel@linuxdriverproject.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Re: Project Financing/Loan and debt management.
-Date: 14 May 2023 04:05:52 +0200
-Message-ID: <20230514040552.C17B2985A798DD82@alkuhaimi.com>
+Date: 14 May 2023 04:05:54 +0200
+Message-ID: <20230514040554.044634ECA2456735@alkuhaimi.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -59,7 +63,7 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear, devel
+Dear, driverdev-devel
 
 Sir/Ma,
 
