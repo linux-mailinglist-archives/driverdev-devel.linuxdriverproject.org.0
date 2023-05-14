@@ -1,50 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 486CB701B20
-	for <lists+driverdev-devel@lfdr.de>; Sun, 14 May 2023 04:06:05 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 88F0D701D9E
+	for <lists+driverdev-devel@lfdr.de>; Sun, 14 May 2023 15:39:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8BC086151B;
-	Sun, 14 May 2023 02:06:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8BC086151B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 13D0541916;
+	Sun, 14 May 2023 13:39:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 13D0541916
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ilfDEvnxKYif; Sun, 14 May 2023 02:06:01 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id P-LA3FYV9xto; Sun, 14 May 2023 13:39:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 63BB46151F;
-	Sun, 14 May 2023 02:06:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 63BB46151F
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9538441E48;
+	Sun, 14 May 2023 13:39:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9538441E48
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1B9A81BF42E
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 May 2023 02:05:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 885CD1BF5A4
+ for <devel@linuxdriverproject.org>; Sun, 14 May 2023 13:38:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E5779821AC
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 May 2023 02:05:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E5779821AC
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6F9CF81C20
+ for <devel@linuxdriverproject.org>; Sun, 14 May 2023 13:38:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6F9CF81C20
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KDSFrUkhZItz
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 May 2023 02:05:55 +0000 (UTC)
+ with ESMTP id Rnks3RU3Crcu for <devel@linuxdriverproject.org>;
+ Sun, 14 May 2023 13:38:57 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0DCE6821D8
-Received: from alkuhaimi.com (unknown [84.54.50.104])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0DCE6821D8
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 14 May 2023 02:05:54 +0000 (UTC)
-From: Mr. Peter Jack<rud-division@alkuhaimi.com>
-To: driverdev-devel@linuxdriverproject.org
-Subject: Re: Project Financing/Loan and debt management.
-Date: 14 May 2023 04:05:54 +0200
-Message-ID: <20230514040554.044634ECA2456735@alkuhaimi.com>
-MIME-Version: 1.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 89E2381B69
+Received: from dxtdxt.com (unknown [182.107.182.50])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 89E2381B69
+ for <devel@linuxdriverproject.org>; Sun, 14 May 2023 13:38:55 +0000 (UTC)
+From: rtdscnghvjerdfh@dxtdxt.com
+Subject: =?GB2312?B?tPrpX7eixrExMzUzNzUzODQ0Mg==?=
+To: devel@linuxdriverproject.org
+Date: Sun, 14 May 2023 21:38:55 +0800
+X-Priority: 3
+X-Mailer: Foxmail 5.0 beta2 [cn]
+Message-Id: <20230514133858.6F9CF81C20@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,43 +54,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: pjacksonconsultant009@outlook.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============5044157184263650712=="
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear, driverdev-devel
-
-Sir/Ma,
-
-How are you doing? Kindly permit me to share this information 
-with you. It is quite impressive.
-Due to the Covid-19's effect on the world market & economy in 
-2020 and the recent Global tensions, Our Company is expanding its 
-global presence by investing in projects within and outside the 
-Gulf region, Asia/Europe and American continents in the form of 
-debt finance. I strongly believe you have a project or projects 
-that require funding.
-We are here to partner with you to achieve your goal.
-1. Minimum Funding Amount: 1 Million USD
-2. Maximum Funding Amount: 1 Billion USD
-3. Placement Opens to: Entrepreneurs, Corporations and Investors
-4. Funding Type: Debt Funding (100%)
-5. ROI (Return on Investment): 4%
-6. Duration of Loan: Up to 10 years - Renewable tenure
-7. We finance 100% of the total project cost
-8. We finance both ongoing and fresh projects.
-Details of our activities will be shared with you as soon as you 
-get back to me directly via email: pj3820199@gmail.com
-Best regards,
-Peter Jackson
-Asst Chief Financial Consultant.
-Kindly reply Email to:  pj3820199@gmail.com
+--===============5044157184263650712==
+Content-Type: text/plain;charset="GB2312"
+Content-Transfer-Encoding: 8bit
 
 
+你好 本公司 有各地行业增值税发票代開
+
+有需要欢迎联系：13537538442陈 《微信同号》
+
+--===============5044157184263650712==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+
+--===============5044157184263650712==--
