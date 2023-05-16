@@ -1,89 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C30A77047F5
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 May 2023 10:37:00 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 11248705943
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 May 2023 23:04:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 05EE5418B2;
-	Tue, 16 May 2023 08:36:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 05EE5418B2
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5394F841D4;
+	Tue, 16 May 2023 21:04:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5394F841D4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nbe7MRVykYSm; Tue, 16 May 2023 08:36:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Snm8FG5TuXK0; Tue, 16 May 2023 21:04:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 819BA418AA;
-	Tue, 16 May 2023 08:36:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 819BA418AA
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7F6C6841D7;
+	Tue, 16 May 2023 21:04:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7F6C6841D7
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4111E1BF2CF
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 16 May 2023 08:36:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7AE3A1BF29D
+ for <devel@linuxdriverproject.org>; Tue, 16 May 2023 21:04:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 18FB3418B2
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 16 May 2023 08:36:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 18FB3418B2
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5256141F95
+ for <devel@linuxdriverproject.org>; Tue, 16 May 2023 21:04:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5256141F95
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qAOGn_yCjV_t
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 16 May 2023 08:36:53 +0000 (UTC)
-X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 20B95418AA
-Received: from mail-wm1-x331.google.com (mail-wm1-x331.google.com
- [IPv6:2a00:1450:4864:20::331])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 20B95418AA
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 16 May 2023 08:36:53 +0000 (UTC)
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-3f509ec3196so16067325e9.1
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 16 May 2023 01:36:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684226211; x=1686818211;
- h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=WWJbStyIsHB+j5oTR+02CgsauyEmKbYmKesWqjFNg6k=;
- b=c6TQ1MNix0pvWzM44yPJaNcuJeZCpivQkY+Mw3SFE7D7VEHIPCFJfa/uSSN/ctEh9w
- 334VY6ZA63aEzESe4Kzjhtv7FjLKYPJ7Dj2tDyfznJ2Fi8IJhgpIemTicXRiM5PEHgFN
- QXP3AEiTHSBTjo2v8nZPzhxK9e712btY1KL1qAjOa4RQZNoRk5g/ZFxsxeSfVV052ATh
- zGq0KBgK6LgeuXUcWJTsJy0sMmJ52TxijvTQ0maRsGkTvU44+mqSxcnHLlgTVBFWMIcd
- bGajIw/rjP3Qmtt82LrtOhpQfAPaUswqNAInIAtqp4GkDSPXyx73K+c5tdXn66LLgqlX
- nGoA==
-X-Gm-Message-State: AC+VfDxIrmbFWvV0XhpwdyDo+tkUNYnSn04X0BXMB+qz5oG/y2qG5Fr/
- pTfldhaufJcRfq3ThU5FI52nQxozJtYy1UnZVSs=
-X-Google-Smtp-Source: ACHHUZ7ZZLjf4vjBWtWPYhyqty6sEOhReNEjIArE1WRm53N6O+L+IMKU87lsKl83WKdiOLLs8E98Tqc9XrS6U9ThWzs=
-X-Received: by 2002:a05:600c:8507:b0:3f4:e432:7589 with SMTP id
- gw7-20020a05600c850700b003f4e4327589mr15191533wmb.10.1684226210796; Tue, 16
- May 2023 01:36:50 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a05:6020:7114:b0:284:4261:16cf with HTTP; Tue, 16 May 2023
- 01:36:50 -0700 (PDT)
-From: "Mrs. Kristalina Georgieva" <nwaoze12345678@gmail.com>
-Date: Tue, 16 May 2023 08:36:50 +0000
-Message-ID: <CALAR95QRjRh6AMOk=ckot9=0YQ_5cV-yanxenVLf208vGZ9nhA@mail.gmail.com>
-Subject: hi
-To: undisclosed-recipients:;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1684226211; x=1686818211;
- h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=WWJbStyIsHB+j5oTR+02CgsauyEmKbYmKesWqjFNg6k=;
- b=LGQAWixhyPYSr46Wmt4i1xe1ZdAZYM5KwCMFt8R2wYrJ8TieqNfszTiH5tyPNuTqis
- 8qeJYBfIshpayFOghPvjvtM01o1ndTovUO3VGVzgh+OAup7XNMZ8rCc+PzMKNtx9GkDL
- Vf0+fhObjbDhPm2/3KlsqFpHPnXIiCsjLu7KJCNMvR7vtNg6/46aq+5w8m66Gg9ygNuF
- NJbMLNztO9m8FGEEUFIli4FT6oaVVMP5sGLD8o2Zi4vfV3hzz/6DzcAfZnRKqj6yhn2J
- BPkHylHz4jt2me1g5iuFWdVYB0R8tIsRRN/kPJGObmuGIqOfeCezQe8Z/VXsZ2voyufs
- VjrA==
+ with ESMTP id h08X_xBfyzla for <devel@linuxdriverproject.org>;
+ Tue, 16 May 2023 21:04:35 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8D16941F7D
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8D16941F7D
+ for <devel@driverdev.osuosl.org>; Tue, 16 May 2023 21:04:35 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10712"; a="349093501"
+X-IronPort-AV: E=Sophos;i="5.99,278,1677571200"; d="scan'208";a="349093501"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 May 2023 14:04:34 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10712"; a="695612149"
+X-IronPort-AV: E=Sophos;i="5.99,278,1677571200"; d="scan'208";a="695612149"
+Received: from lkp-server01.sh.intel.com (HELO dea6d5a4f140) ([10.239.97.150])
+ by orsmga007.jf.intel.com with ESMTP; 16 May 2023 14:04:35 -0700
+Received: from kbuild by dea6d5a4f140 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1pz1qS-0007pa-31;
+ Tue, 16 May 2023 21:04:32 +0000
+Date: Wed, 17 May 2023 05:04:24 +0800
+From: kernel test robot <lkp@intel.com>
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:readfile] BUILD SUCCESS
+ d331d916726a20604dc10d98b9733fc106c705cd
+Message-ID: <20230516210424.6dkq5%lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1684271075; x=1715807075;
+ h=date:from:to:cc:subject:message-id;
+ bh=abhsQXT7PDcHcF/GCyhnQzCp/sE/UZz/RyQT3VdBd0c=;
+ b=K7RwwHmnqnp8jUzS8btvSjAAcHQLkGgu5txalOANAG9VNHiEu/0sLpLS
+ CO+Q3UQ4yFaC19WHXaku58VO1nZ1PP+fz+GTqL6wVUpvijB51W3e7+jsW
+ jB1w/yO9m4iGzAGlC8MSqVNMgDDEm8lh354VCiQ2fUKl8U+3g5PmddF5o
+ iEc7pbmkna0NIzjpQ2WGDJa+4ARPtNH0eTAf0HfN72bBdhXHLpr7xo7db
+ lLCXoawEASGQsT/Mj/gqFGJZj1zzYE7Whwzqe4jYFoaSvhp4TAIFixekC
+ fk/Bj8aRXJFLrlvkS2OD4lIZufqSuMgDAWgwJabWESUjWtgysAEepEzmn
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20221208 header.b=LGQAWixh
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=K7RwwHmn
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,74 +82,407 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: didieracouetey2@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-5rOo5oSPOiDopqrmhJvjgarjgovln7rph5Hlj5fnm4rogIXjga7nmobmp5gNCg0KICAg5oWO6YeN
-44Gr6Kqt44KA77yB77yB77yBDQoNCiAgIOOBk+OBrumbu+WtkOODoeODg+OCu+ODvOOCuOOBr+ap
-n+WvhuOBp+OBguOCiuOAgeWOs+WvhuOBq+OBguOBquOBn+Wum+OBruOCguOBruOBp+OBmeOAgg0K
-DQrjgYLjgarjgZ/jgYwxNeWEhOODieODq+imj+aooeOBruizh+mHkeOCkuWPl+OBkeWPluOBo+OB
-puOBhOOBquOBhOOBruOBr+aYjuOCieOBi+OBp+OBmeOAguOBk+OCjOOBr+OAgemBjuWOu+OBruiF
-kOaVl+OBl+OBn+aUv+W6nOW9ueS6uuOBjOWIqeW3seeahOOBqueQhueUseOBp+izh+mHkeOCkuOB
-u+OBqOOCk+OBqeiHquWIhuOBn+OBoeOBoOOBkeOBruOCguOBruOBq+OBl+OAgeOBguOBquOBn+OB
-ruizh+mHkeOCkuOBmeOBueOBpuipkOasuuOBl+OCiOOBhuOBqOOBl+OBpuWIqeeUqOOBl+OBn+OB
-n+OCgeOBp+OBmeOAgg0K5Z+66YeR44CCIOOBk+OCjOOBq+OCiOOCiuOAgeOBiuWuouanmOWBtOOB
-q+WkmuWkp+OBquaQjeWkseOBjOeZuueUn+OBl+OAgeizh+mHkeOBruWPl+OBkeWPluOCiuOBq+S4
-jeW/heimgeOBqumBheOCjOOBjOeUn+OBmOOBvuOBl+OBn+OAgg0KDQrjgqTjg7Pjgr/jg7zjg53j
-g7zjg6vjga7lm73lrrbkuK3lpK7lsYDjga/jgIHlm73pgKPjgajpgKPpgqbmjZzmn7vlsYDvvIhG
-SULvvInjga7mlK/mj7TjgpLlj5fjgZHjgabjgIHnj77lm73pmpvpgJrosqjln7rph5Hnt4/oo4Hj
-gavlr77jgZfjgIHjgYLjgarjgZ/jgoTku5bjga7kurrjgZ/jgaHjgavlr77jgZnjgovjgZnjgbnj
-gabjga7lr77lpJblgrXli5njga7muIXnrpfjgpLmjqjpgLLjgZnjgovjgojjgYblp5Tku7vjgZnj
-govjgZPjgajjgavmiJDlip/jgZfjgb7jgZfjgZ/jgIINCuWlkee0hOmHkeOAgeWuneOBj+OBmC/j
-gq7jg6Pjg7Pjg5bjg6vjgIHnm7jntprjgarjganjgpLlj5fjgZHlj5bjgonjgarjgYTlgIvkurrj
-gIIgQVRN44Kr44O844OJ44Gn5pSv5omV44GE44KS5Y+X44GR5Y+W44KK44G+44GZ44CCDQoNCk9S
-QSDjg5Djg7Pjgq8g44Kr44O844OJOiDlkI3liY3jgYzmmpflj7fljJbjgZXjgozjgZ/jg5Hjg7zj
-gr3jg4rjg6njgqTjgrrjgZXjgozjgZ8gT1JBIOODkOODs+OCryBBVE0NCuOCq+ODvOODieOCkueZ
-uuihjOOBl+OBvuOBmeOAguOBk+OBruOCq+ODvOODieOCkuS9v+eUqOOBmeOCi+OBqOOAgVZpc2Eg
-44Kr44O844OJ44Gu44Ot44K044GM5LuY44GE44Gm44GE44KLIEFUTSDjgYvjgokgMSDml6XjgYLj
-gZ/jgormnIDlpKcgMjAsMDAwDQrjg4njg6vjgpLlvJXjgY3lh7rjgZnjgZPjgajjgYzjgafjgY3j
-gb7jgZnjgIIg44G+44Gf44CBT1JBIOODkOODs+OCryDjgqvjg7zjg4njgpLkvb/nlKjjgZnjgovj
-gajjgIHos4fph5HjgpLpioDooYzlj6PluqfjgavpgIHph5HjgafjgY3jgb7jgZnjgIIgQVRNDQrj
-gqvjg7zjg4njgavjga/jgIHjgYLjgarjgZ/jga7lm73jgYrjgojjgbPkuJbnlYzkuK3jga7jganj
-ga4gQVRNIOapn+OBp+OCguS9v+eUqOOBp+OBjeOCi+OBk+OBqOOCkuaYjueiuuOBq+OBmeOCi+OD
-nuODi+ODpeOCouODq+OBjOS7mOWxnuOBl+OBpuOBhOOBvuOBmeOAgg0KDQros4fph5Hjga8gQVRN
-IFZpc2Eg44Kr44O844OJ57WM55Sx44Gn6YCB44KJ44KM44CBRmVkRXggRXhwcmVzcyDntYznlLHj
-gafphY3pgZTjgZXjgozjgb7jgZnjgIIg56eB44Gf44Gh44GvIEZlZEV4IEV4cHJlc3MNCuOBqOWl
-kee0hOOCkue1kOOCk+OBp+OBhOOBvuOBmeOAgumAo+e1oeOBmeOCi+W/heimgeOBjOOBguOCi+OB
-ruOBr+OAgU9SQSDpioDooYzjga7jg4fjgqPjg6zjgq/jgr/jg7zjgafjgYLjgosgTVIg44Gg44GR
-44Gn44GZ44CCIERJRElFUiBBQ09VRVRFWQ0K44GT44Gu44Oh44O844Or44Ki44OJ44Os44K544GL
-44KJOiAsIChkaWRpZXJhY291ZXRleTJAZ21haWwuY29tKQ0KDQoNCumAmuW4uOOBruODrOODvOOD
-iOOCkui2heOBiOOCi+mHkemhjeOCkuimgeaxguOBmeOCi+S6uuOBr+mWk+mBleOBhOOBquOBj+ip
-kOasuuW4q+OBp+OBguOCiuOAgeS7luOBruS6uuOBq+mAo+e1oeOCkuWPluOBo+OBn+WgtOWQiOOB
-r+OBneOBruS6uuOBqOOBrumAo+e1oeOCkuS4reatouOBmeOCi+W/heimgeOBjOOBguOCi+OBk+OB
-qOOBq+azqOaEj+OBl+OBpuOBj+OBoOOBleOBhOOAgg0KDQrjgb7jgZ/jgIHjgZTosqDmi4XjgYTj
-gZ/jgaDjgY/jga7jga/phY3pgIHmlpnjga7jgb/jgafjgZnjga7jgafjgZTlronlv4PjgY/jgaDj
-gZXjgYTjgIIg44Gd44KM5Lul5LiK44Gu44KC44Gu44Gv44GC44KK44G+44Gb44KT77yBIOW/heim
-geOBquaDheWgseOBqOmFjemAgeaWmeOCkuWPl+OBkeWPluOBo+OBpuOBi+OCiSAyDQrllrbmpa3m
-l6Xku6XlhoXjgavos4fph5HjgpLlj5fjgZHlj5bjgovjgZPjgajjgpLkv53oqLzjgZfjgb7jgZnj
-gIINCg0K5rOoOiDnqI7ph5HmiYvmlbDmlpnjgpLlkKvjgoHjgIHjgZnjgbnjgabjga8gSU1GIOOB
-qOS4lueVjOmKgOihjOOBq+OCiOOBo+OBpuWHpueQhuOBleOCjOOCi+OBn+OCgeOAgeaUr+aJleOB
-huW/heimgeOBjOOBguOCi+OBruOBryBGZWRFeCDjga7phY3pgIHmlpnjgaDjgZHjgafjgZnjgIIN
-CuOBk+OCjOOBr+OAgUZlZEV4IEV4cHJlc3Mg44GuIENPRCAo5Luj6YeR5byV5o+bKSDjgrXjg7zj
-g5PjgrnjgYzopo/ntITjgavjgojjgorlm73pmpvphY3pgIHjgavjga/pgannlKjjgZXjgozjgarj
-gYTjgZ/jgoHjgafjgZnjgIINCg0KMTUg5YSE44OJ44Or55u45b2T44Gu44OV44Kh44Oz44OJ44KS
-44Oq44Oq44O844K544GZ44KL44Gr44Gv44CB6Kqk6YWN6YCB44KS6YG/44GR44KL44Gf44KB44Gr
-6YWN6YCB5oOF5aCx44KS5o+Q5L6b44GZ44KL5b+F6KaB44GM44GC44KK44G+44GZ44CCDQoNCiAg
-IDEuIOOBguOBquOBn+OBruODleODq+ODjeODvOODoCAuLi4uLi4uLi4uLi4uLi4uLi4uDQoyLiDj
-gYLjgarjgZ/jga7lm70uLi4uLg0KMy4g44GC44Gq44Gf44Gu6KGXLi4uLi4NCjQuIOOBguOBquOB
-n+OBruWujOWFqOOBquS9j+aJgCAuLi4uLi4NCjUuIOWbveexjSAuLi4uLi4NCjYuIOeUn+W5tOac
-iOaXpS/mgKfliKXigKbigKYNCjcuIOiBt+alreKApuKApg0KOC4g6Zu76Kmx55Wq5Y+34oCm4oCm
-DQo5LiDosrTnpL7jga7jg6Hjg7zjg6vjgqLjg4njg6zjgrkg4oCm4oCmDQoxMC4g5YCL5Lq644Oh
-44O844Or44Ki44OJ44Os44K5IC4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLi4uLg0KMTEu
-IOWbvemam+ODkeOCueODneODvOODiOOBvuOBn+OBr+acieWKueOBqui6q+WIhuiovOaYjuabuOOB
-ruOCs+ODlOODvDoNCg0K5b+F6KaB5LqL6aCF44KSTVLjgb7jgafjgYrpgIHjgorjgY/jgaDjgZXj
-gYTjgIIgRElESUVSIEFDT1VFVEVZIE9yYUJhbmsg44OH44Kj44Os44Kv44K/44O844CB44Oh44O8
-44Or44Ki44OJ44Os44K5ID0NCihkaWRpZXJhY291ZXRleTJAZ21haWwuY29tKSDjgb7jgafku4rj
-gZnjgZDjgZTpgKPntaHjgY/jgaDjgZXjgYTjgIINCg0K44GK44KB44Gn44Go44GG44GU44GW44GE
-44G+44GZDQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpk
-ZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJp
-dmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYt
-ZGV2ZWwK
+tree/branch: INFO setup_repo_specs: /db/releases/20230516180935/lkp-src/repo/*/driver-core
+https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git readfile
+branch HEAD: d331d916726a20604dc10d98b9733fc106c705cd  readfile.2: new page describing readfile(2)
+
+elapsed time: 729m
+
+configs tested: 375
+configs skipped: 26
+
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+tested configs:
+alpha                            allyesconfig   gcc  
+alpha        buildonly-randconfig-r001-20230515   gcc  
+alpha                               defconfig   gcc  
+alpha                randconfig-r005-20230516   gcc  
+alpha                randconfig-r013-20230516   gcc  
+alpha                randconfig-r025-20230515   gcc  
+alpha                randconfig-r032-20230515   gcc  
+alpha                randconfig-r033-20230516   gcc  
+alpha                randconfig-r034-20230515   gcc  
+alpha                randconfig-r036-20230516   gcc  
+arc                              allyesconfig   gcc  
+arc          buildonly-randconfig-r003-20230515   gcc  
+arc          buildonly-randconfig-r006-20230515   gcc  
+arc                                 defconfig   gcc  
+arc                  randconfig-r005-20230515   gcc  
+arc                  randconfig-r015-20230515   gcc  
+arc                  randconfig-r015-20230516   gcc  
+arc                  randconfig-r022-20230516   gcc  
+arc                  randconfig-r043-20230515   gcc  
+arc                  randconfig-r043-20230516   gcc  
+arm                              alldefconfig   clang
+arm                              allmodconfig   gcc  
+arm                              allyesconfig   gcc  
+arm                         axm55xx_defconfig   gcc  
+arm                     davinci_all_defconfig   clang
+arm                                 defconfig   gcc  
+arm                            dove_defconfig   clang
+arm                           imxrt_defconfig   gcc  
+arm                  randconfig-r001-20230515   gcc  
+arm                  randconfig-r002-20230515   gcc  
+arm                  randconfig-r004-20230515   gcc  
+arm                  randconfig-r025-20230515   clang
+arm                  randconfig-r032-20230515   gcc  
+arm                  randconfig-r036-20230515   gcc  
+arm                  randconfig-r046-20230515   clang
+arm                  randconfig-r046-20230516   gcc  
+arm                           spitz_defconfig   clang
+arm                           sunxi_defconfig   gcc  
+arm                       versatile_defconfig   clang
+arm64                            allyesconfig   gcc  
+arm64        buildonly-randconfig-r005-20230515   clang
+arm64                               defconfig   gcc  
+arm64                randconfig-r006-20230515   clang
+arm64                randconfig-r014-20230515   gcc  
+csky         buildonly-randconfig-r001-20230515   gcc  
+csky         buildonly-randconfig-r002-20230515   gcc  
+csky         buildonly-randconfig-r003-20230515   gcc  
+csky                                defconfig   gcc  
+csky                 randconfig-r003-20230516   gcc  
+csky                 randconfig-r004-20230515   gcc  
+csky                 randconfig-r006-20230515   gcc  
+csky                 randconfig-r012-20230516   gcc  
+csky                 randconfig-r022-20230515   gcc  
+csky                 randconfig-r026-20230517   gcc  
+csky                 randconfig-r031-20230515   gcc  
+csky                 randconfig-r031-20230516   gcc  
+csky                 randconfig-r036-20230515   gcc  
+hexagon              randconfig-r006-20230515   clang
+hexagon              randconfig-r021-20230515   clang
+hexagon              randconfig-r023-20230515   clang
+hexagon              randconfig-r024-20230516   clang
+hexagon              randconfig-r025-20230516   clang
+hexagon              randconfig-r041-20230515   clang
+hexagon              randconfig-r041-20230516   clang
+hexagon              randconfig-r045-20230515   clang
+hexagon              randconfig-r045-20230516   clang
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-r001-20230515   clang
+i386         buildonly-randconfig-r005-20230515   clang
+i386                              debian-10.3   gcc  
+i386                                defconfig   gcc  
+i386                 randconfig-a001-20230515   clang
+i386                 randconfig-a002-20230515   clang
+i386                          randconfig-a002   clang
+i386                 randconfig-a003-20230515   clang
+i386                 randconfig-a004-20230515   clang
+i386                          randconfig-a004   clang
+i386                 randconfig-a005-20230515   clang
+i386                 randconfig-a006-20230515   clang
+i386                          randconfig-a006   clang
+i386                 randconfig-a011-20230515   gcc  
+i386                 randconfig-a012-20230515   gcc  
+i386                          randconfig-a012   gcc  
+i386                 randconfig-a013-20230515   gcc  
+i386                 randconfig-a014-20230515   gcc  
+i386                          randconfig-a014   gcc  
+i386                 randconfig-a015-20230515   gcc  
+i386                 randconfig-a016-20230515   gcc  
+i386                          randconfig-a016   gcc  
+i386                 randconfig-i051-20230515   clang
+i386                 randconfig-i052-20230515   clang
+i386                          randconfig-i052   clang
+i386                 randconfig-i053-20230515   clang
+i386                 randconfig-i054-20230515   clang
+i386                          randconfig-i054   clang
+i386                 randconfig-i055-20230515   clang
+i386                 randconfig-i056-20230515   clang
+i386                          randconfig-i056   clang
+i386                 randconfig-i061-20230515   clang
+i386                          randconfig-i061   gcc  
+i386                 randconfig-i062-20230515   clang
+i386                          randconfig-i062   clang
+i386                 randconfig-i063-20230515   clang
+i386                          randconfig-i063   gcc  
+i386                 randconfig-i064-20230515   clang
+i386                          randconfig-i064   clang
+i386                 randconfig-i065-20230515   clang
+i386                          randconfig-i065   gcc  
+i386                 randconfig-i066-20230515   clang
+i386                          randconfig-i066   clang
+i386                 randconfig-i071-20230515   gcc  
+i386                          randconfig-i071   clang
+i386                 randconfig-i072-20230515   gcc  
+i386                 randconfig-i073-20230515   gcc  
+i386                          randconfig-i073   clang
+i386                 randconfig-i074-20230515   gcc  
+i386                 randconfig-i075-20230515   gcc  
+i386                          randconfig-i075   clang
+i386                 randconfig-i076-20230515   gcc  
+i386                 randconfig-i081-20230515   gcc  
+i386                 randconfig-i082-20230515   gcc  
+i386                          randconfig-i082   clang
+i386                 randconfig-i083-20230515   gcc  
+i386                 randconfig-i084-20230515   gcc  
+i386                          randconfig-i084   clang
+i386                 randconfig-i085-20230515   gcc  
+i386                 randconfig-i086-20230515   gcc  
+i386                          randconfig-i086   clang
+i386                 randconfig-i091-20230515   clang
+i386                 randconfig-i092-20230515   clang
+i386                 randconfig-i093-20230515   clang
+i386                 randconfig-i094-20230515   clang
+i386                 randconfig-i095-20230515   clang
+i386                 randconfig-i096-20230515   clang
+ia64                             allmodconfig   gcc  
+ia64                         bigsur_defconfig   gcc  
+ia64         buildonly-randconfig-r004-20230515   gcc  
+ia64                                defconfig   gcc  
+ia64                 randconfig-r002-20230515   gcc  
+ia64                 randconfig-r011-20230515   gcc  
+ia64                 randconfig-r011-20230516   gcc  
+ia64                 randconfig-r013-20230515   gcc  
+ia64                 randconfig-r024-20230516   gcc  
+ia64                 randconfig-r032-20230516   gcc  
+ia64                 randconfig-r033-20230515   gcc  
+ia64                          tiger_defconfig   gcc  
+ia64                            zx1_defconfig   gcc  
+loongarch                        alldefconfig   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch            randconfig-r001-20230516   gcc  
+loongarch            randconfig-r002-20230515   gcc  
+loongarch            randconfig-r023-20230516   gcc  
+loongarch            randconfig-r031-20230515   gcc  
+loongarch            randconfig-r035-20230515   gcc  
+m68k                             allmodconfig   gcc  
+m68k         buildonly-randconfig-r002-20230515   gcc  
+m68k         buildonly-randconfig-r004-20230515   gcc  
+m68k                                defconfig   gcc  
+m68k                        mvme147_defconfig   gcc  
+m68k                            q40_defconfig   gcc  
+m68k                 randconfig-r002-20230516   gcc  
+m68k                 randconfig-r005-20230515   gcc  
+m68k                 randconfig-r016-20230515   gcc  
+m68k                 randconfig-r022-20230515   gcc  
+m68k                 randconfig-r033-20230515   gcc  
+m68k                        stmark2_defconfig   gcc  
+microblaze           randconfig-r002-20230516   gcc  
+microblaze           randconfig-r013-20230515   gcc  
+microblaze           randconfig-r014-20230515   gcc  
+microblaze           randconfig-r015-20230515   gcc  
+microblaze           randconfig-r021-20230515   gcc  
+microblaze           randconfig-r036-20230516   gcc  
+mips                             allmodconfig   gcc  
+mips                             allyesconfig   gcc  
+mips                        bcm47xx_defconfig   gcc  
+mips                        bcm63xx_defconfig   clang
+mips                       bmips_be_defconfig   gcc  
+mips         buildonly-randconfig-r006-20230515   gcc  
+mips                     loongson1c_defconfig   clang
+mips                      maltasmvp_defconfig   gcc  
+mips                 randconfig-r002-20230515   gcc  
+mips                 randconfig-r004-20230515   gcc  
+mips                 randconfig-r022-20230515   clang
+mips                 randconfig-r035-20230515   gcc  
+mips                           rs90_defconfig   clang
+nios2        buildonly-randconfig-r005-20230515   gcc  
+nios2                               defconfig   gcc  
+nios2                randconfig-r005-20230515   gcc  
+nios2                randconfig-r005-20230516   gcc  
+nios2                randconfig-r011-20230515   gcc  
+nios2                randconfig-r021-20230515   gcc  
+nios2                randconfig-r022-20230515   gcc  
+nios2                randconfig-r023-20230515   gcc  
+nios2                randconfig-r024-20230515   gcc  
+openrisc                    or1ksim_defconfig   gcc  
+openrisc             randconfig-r014-20230515   gcc  
+openrisc             randconfig-r015-20230515   gcc  
+openrisc             randconfig-r023-20230515   gcc  
+openrisc             randconfig-r036-20230515   gcc  
+openrisc                       virt_defconfig   gcc  
+parisc       buildonly-randconfig-r001-20230515   gcc  
+parisc       buildonly-randconfig-r004-20230515   gcc  
+parisc       buildonly-randconfig-r005-20230515   gcc  
+parisc                              defconfig   gcc  
+parisc               randconfig-r006-20230516   gcc  
+parisc               randconfig-r012-20230516   gcc  
+parisc               randconfig-r013-20230515   gcc  
+parisc               randconfig-r021-20230515   gcc  
+parisc               randconfig-r026-20230515   gcc  
+parisc               randconfig-r026-20230516   gcc  
+parisc               randconfig-r031-20230515   gcc  
+parisc               randconfig-r031-20230516   gcc  
+parisc               randconfig-r032-20230516   gcc  
+parisc               randconfig-r034-20230516   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                       ebony_defconfig   clang
+powerpc                        fsp2_defconfig   clang
+powerpc                      makalu_defconfig   gcc  
+powerpc                   microwatt_defconfig   clang
+powerpc                 mpc832x_rdb_defconfig   clang
+powerpc                 mpc836x_rdk_defconfig   clang
+powerpc                 mpc8560_ads_defconfig   clang
+powerpc                      pasemi_defconfig   gcc  
+powerpc                      pmac32_defconfig   clang
+powerpc              randconfig-r001-20230515   clang
+powerpc              randconfig-r004-20230515   clang
+powerpc              randconfig-r025-20230515   gcc  
+powerpc              randconfig-r025-20230517   gcc  
+powerpc                     skiroot_defconfig   clang
+powerpc                    socrates_defconfig   clang
+powerpc                     stx_gp3_defconfig   gcc  
+powerpc                     tqm8560_defconfig   clang
+powerpc                      tqm8xx_defconfig   gcc  
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   gcc  
+riscv        buildonly-randconfig-r002-20230515   gcc  
+riscv                               defconfig   gcc  
+riscv                randconfig-r003-20230515   clang
+riscv                randconfig-r004-20230515   clang
+riscv                randconfig-r004-20230516   gcc  
+riscv                randconfig-r012-20230515   gcc  
+riscv                randconfig-r022-20230517   gcc  
+riscv                randconfig-r042-20230515   gcc  
+riscv                randconfig-r042-20230516   clang
+riscv                          rv32_defconfig   clang
+riscv                          rv32_defconfig   gcc  
+s390                             allmodconfig   gcc  
+s390                             allyesconfig   gcc  
+s390         buildonly-randconfig-r002-20230515   gcc  
+s390         buildonly-randconfig-r003-20230515   gcc  
+s390                                defconfig   gcc  
+s390                 randconfig-r004-20230515   clang
+s390                 randconfig-r005-20230515   clang
+s390                 randconfig-r012-20230515   gcc  
+s390                 randconfig-r013-20230515   gcc  
+s390                 randconfig-r022-20230516   clang
+s390                 randconfig-r023-20230516   clang
+s390                 randconfig-r026-20230516   clang
+s390                 randconfig-r032-20230515   clang
+s390                 randconfig-r033-20230515   clang
+s390                 randconfig-r044-20230515   gcc  
+s390                 randconfig-r044-20230516   clang
+sh                               allmodconfig   gcc  
+sh                        apsh4ad0a_defconfig   gcc  
+sh           buildonly-randconfig-r005-20230515   gcc  
+sh                        dreamcast_defconfig   gcc  
+sh                            migor_defconfig   gcc  
+sh                   randconfig-r001-20230515   gcc  
+sh                   randconfig-r003-20230515   gcc  
+sh                   randconfig-r011-20230516   gcc  
+sh                   randconfig-r013-20230516   gcc  
+sh                   randconfig-r024-20230515   gcc  
+sh                   randconfig-r033-20230515   gcc  
+sh                   randconfig-r034-20230515   gcc  
+sh                   randconfig-r036-20230516   gcc  
+sh                          sdk7786_defconfig   gcc  
+sh                   sh7770_generic_defconfig   gcc  
+sh                            shmin_defconfig   gcc  
+sparc                               defconfig   gcc  
+sparc                randconfig-r001-20230515   gcc  
+sparc                randconfig-r015-20230515   gcc  
+sparc                randconfig-r032-20230515   gcc  
+sparc                randconfig-r034-20230515   gcc  
+sparc64      buildonly-randconfig-r004-20230515   gcc  
+sparc64      buildonly-randconfig-r006-20230515   gcc  
+sparc64              randconfig-r006-20230515   gcc  
+sparc64              randconfig-r011-20230515   gcc  
+sparc64              randconfig-r033-20230516   gcc  
+sparc64              randconfig-r035-20230516   gcc  
+um                             i386_defconfig   gcc  
+um                           x86_64_defconfig   gcc  
+x86_64                            allnoconfig   gcc  
+x86_64                           allyesconfig   gcc  
+x86_64       buildonly-randconfig-r002-20230515   clang
+x86_64                              defconfig   gcc  
+x86_64                                  kexec   gcc  
+x86_64               randconfig-a001-20230515   clang
+x86_64                        randconfig-a001   clang
+x86_64               randconfig-a002-20230515   clang
+x86_64               randconfig-a003-20230515   clang
+x86_64                        randconfig-a003   clang
+x86_64               randconfig-a004-20230515   clang
+x86_64               randconfig-a005-20230515   clang
+x86_64                        randconfig-a005   clang
+x86_64               randconfig-a006-20230515   clang
+x86_64               randconfig-a011-20230515   gcc  
+x86_64                        randconfig-a011   gcc  
+x86_64               randconfig-a012-20230515   gcc  
+x86_64                        randconfig-a012   clang
+x86_64               randconfig-a013-20230515   gcc  
+x86_64                        randconfig-a013   gcc  
+x86_64               randconfig-a014-20230515   gcc  
+x86_64                        randconfig-a014   clang
+x86_64               randconfig-a015-20230515   gcc  
+x86_64                        randconfig-a015   gcc  
+x86_64               randconfig-a016-20230515   gcc  
+x86_64                        randconfig-a016   clang
+x86_64               randconfig-k001-20230515   gcc  
+x86_64               randconfig-r011-20230515   gcc  
+x86_64               randconfig-r014-20230515   gcc  
+x86_64               randconfig-r016-20230515   gcc  
+x86_64               randconfig-x051-20230515   gcc  
+x86_64               randconfig-x052-20230515   gcc  
+x86_64                        randconfig-x052   clang
+x86_64               randconfig-x053-20230515   gcc  
+x86_64               randconfig-x054-20230515   gcc  
+x86_64                        randconfig-x054   clang
+x86_64               randconfig-x055-20230515   gcc  
+x86_64               randconfig-x056-20230515   gcc  
+x86_64                        randconfig-x056   clang
+x86_64               randconfig-x061-20230515   gcc  
+x86_64                        randconfig-x061   gcc  
+x86_64               randconfig-x062-20230515   gcc  
+x86_64               randconfig-x063-20230515   gcc  
+x86_64                        randconfig-x063   gcc  
+x86_64               randconfig-x064-20230515   gcc  
+x86_64               randconfig-x065-20230515   gcc  
+x86_64                        randconfig-x065   gcc  
+x86_64               randconfig-x066-20230515   gcc  
+x86_64               randconfig-x071-20230515   clang
+x86_64               randconfig-x072-20230515   clang
+x86_64               randconfig-x073-20230515   clang
+x86_64               randconfig-x074-20230515   clang
+x86_64               randconfig-x075-20230515   clang
+x86_64               randconfig-x076-20230515   clang
+x86_64               randconfig-x081-20230515   clang
+x86_64               randconfig-x082-20230515   clang
+x86_64                        randconfig-x082   clang
+x86_64               randconfig-x083-20230515   clang
+x86_64               randconfig-x084-20230515   clang
+x86_64                        randconfig-x084   clang
+x86_64               randconfig-x085-20230515   clang
+x86_64               randconfig-x086-20230515   clang
+x86_64                        randconfig-x086   clang
+x86_64               randconfig-x091-20230515   gcc  
+x86_64               randconfig-x092-20230515   gcc  
+x86_64                        randconfig-x092   gcc  
+x86_64               randconfig-x093-20230515   gcc  
+x86_64               randconfig-x094-20230515   gcc  
+x86_64                        randconfig-x094   gcc  
+x86_64               randconfig-x095-20230515   gcc  
+x86_64               randconfig-x096-20230515   gcc  
+x86_64                        randconfig-x096   gcc  
+x86_64                               rhel-8.3   gcc  
+xtensa                  audio_kc705_defconfig   gcc  
+xtensa       buildonly-randconfig-r001-20230515   gcc  
+xtensa       buildonly-randconfig-r006-20230515   gcc  
+xtensa               randconfig-r003-20230515   gcc  
+xtensa               randconfig-r014-20230516   gcc  
+xtensa               randconfig-r021-20230517   gcc  
+xtensa               randconfig-r026-20230515   gcc  
+xtensa                    smp_lx200_defconfig   gcc  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
