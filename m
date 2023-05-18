@@ -1,48 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E6F270A5BA
-	for <lists+driverdev-devel@lfdr.de>; Sat, 20 May 2023 07:44:11 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DF2A270AC23
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 May 2023 05:13:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EBC99610A9;
-	Sat, 20 May 2023 05:44:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EBC99610A9
+	by smtp2.osuosl.org (Postfix) with ESMTP id E32D340153;
+	Sun, 21 May 2023 03:13:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E32D340153
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WFjEpkH_qcj4; Sat, 20 May 2023 05:44:09 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hGVrzk8YOf_P; Sun, 21 May 2023 03:13:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AD2F160F66;
-	Sat, 20 May 2023 05:44:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AD2F160F66
+	by smtp2.osuosl.org (Postfix) with ESMTP id C79DC400EC;
+	Sun, 21 May 2023 03:13:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C79DC400EC
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 24FA21BF40F
- for <devel@linuxdriverproject.org>; Sat, 20 May 2023 05:44:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7A5F11BF847
+ for <devel@linuxdriverproject.org>; Sun, 21 May 2023 03:13:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F26CA400FB
- for <devel@linuxdriverproject.org>; Sat, 20 May 2023 05:44:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F26CA400FB
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5B0E940153
+ for <devel@linuxdriverproject.org>; Sun, 21 May 2023 03:13:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5B0E940153
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Cj9PyN5YSbep for <devel@linuxdriverproject.org>;
- Sat, 20 May 2023 05:44:05 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 746F0400EF
-Received: from dj1.dowhosting.net (aws.dowhosting.net [54.200.8.95])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 746F0400EF
- for <devel@linuxdriverproject.org>; Sat, 20 May 2023 05:44:05 +0000 (UTC)
-Received: by dj1.dowhosting.net (Postfix, from userid 10031)
- id 8BFFC19742B9; Sat, 20 May 2023 05:29:12 +0000 (UTC)
-To: devel@linuxdriverproject.org
-Subject: Re: Funds transfer information
-Date: Sat, 20 May 2023 05:29:12 +0000
-From: Ivan Dawson <support@castleescapestravel.com>
-Message-ID: <b7689ee87b5a28a9a6c19df8b2513df6@castleescapestravel.com>
+ with ESMTP id yiPXPyZoi1KS for <devel@linuxdriverproject.org>;
+ Sun, 21 May 2023 03:13:49 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9451B400EC
+Received: from 192-168-3-71.localdomain (unknown [106.75.250.224])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9451B400EC
+ for <devel@driverdev.osuosl.org>; Sun, 21 May 2023 03:13:49 +0000 (UTC)
+Received: from User (localhost [127.0.0.1])
+ by 192-168-3-71.localdomain (Postfix) with SMTP id 644689EB6E1;
+ Thu, 18 May 2023 17:47:49 +0800 (CST)
+From: "Mr. Alan Lambert"<lambert.alan466@gmail.com>
+Subject: From Mr. Alan Lambert
+Date: Thu, 18 May 2023 16:48:29 -0700
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20230518094751.644689EB6E1@192-168-3-71.localdomain>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -55,29 +59,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: ivandawn084@ivandaw.net
+Reply-To: lambert.alan466@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear friend,
 
-It is with trust and sincerity that I approach you for assistance to transfer some funds into your bank account. Please accept my apology if my mail infringes on your personal ethics. My name is Barrister Ivan Dawson, a Private Lawyer based here in London, United Kingdom. Honestly it will be my humble pleasure if we can work together.
+There's a DRC (Deposit Release Case) which is open in a Security and vaults company because the owner is now deceased and there's no clear next of kin to inherit the DRC valued at $10.3m.
 
-I would like you to act as the next of kin to my deceased client Mr. Franz Hoffmann, a German citizen who made a deposit of GBP25Million only with a bank here in England a few years back. He died in a plane crash with his immediate family without any registered next of kin and as such the funds now have an open beneficiary mandate with the bank. This means that any person from your country can act as the next of kin and claim the inheritance funds without any risk.
+As a financial consultant working with the  Security and Vaults company, I
+propose that we work together to clear the DRC deposit.
 
-I have received an official letter from the bank suggesting a likely proceeding for confiscation of the Fund in line with existing laws by the bank in which my client deposited the sum of GBP25million. According to the Government Law as provided in section 129 sub 63(N), Bank of England Banking Edit of 1961 at the expiration of 11 years the fund will revert to the ownership of the British Government, if nobody applies to claim the fund.
+This is totally 100% risk-free and would be mutually beneficial.
 
-My proposition to you is to present you to the bank as the Next of Kin and beneficiary of my deceased client so that the bank will pay this GBP25million to you for us to share the amount on a mutually agreed percentage of 60% for me 40% for you.
-
-All legal documents to back up your claim as the deceased Next of Kin will be provided by me. All I require is your honest cooperation to enable us to see this transaction through. I guarantee you that this will be executed under a legitimate arrangement that will protect you from any breach of the law.
-
-If you are interested in this transaction, Please do let me know immediately so that I can give you comprehensive details on how to proceed.  This is my private email address.
-
+That's all the detail I can divulge for now until I receive your
+positive reply and I can expatiate further.
 Regards,
-Barrister Ivan Dawson.
-
+Mr. Alan Lambert
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
