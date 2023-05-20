@@ -1,65 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D16C709697
-	for <lists+driverdev-devel@lfdr.de>; Fri, 19 May 2023 13:33:37 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE39170A4C6
+	for <lists+driverdev-devel@lfdr.de>; Sat, 20 May 2023 05:04:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9875741EEF;
-	Fri, 19 May 2023 11:33:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9875741EEF
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1F145839A4;
+	Sat, 20 May 2023 03:04:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F145839A4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jHw1Frzvwb84; Fri, 19 May 2023 11:33:34 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6_59ka-rk_ro; Sat, 20 May 2023 03:04:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 560F540488;
-	Fri, 19 May 2023 11:33:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 560F540488
+	by smtp1.osuosl.org (Postfix) with ESMTP id 061C483AD0;
+	Sat, 20 May 2023 03:04:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 061C483AD0
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3C4371BF40B
- for <devel@linuxdriverproject.org>; Fri, 19 May 2023 11:33:32 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C58C91BF35D
+ for <devel@linuxdriverproject.org>; Sat, 20 May 2023 03:04:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1522760A4F
- for <devel@linuxdriverproject.org>; Fri, 19 May 2023 11:33:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1522760A4F
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9E11E40432
+ for <devel@linuxdriverproject.org>; Sat, 20 May 2023 03:04:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9E11E40432
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qCxn7SqsZs4s for <devel@linuxdriverproject.org>;
- Fri, 19 May 2023 11:33:31 +0000 (UTC)
-X-Greylist: delayed 00:25:21 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0565B605A9
-Received: from proxy-log.kcn.ne.jp (proxy-log.kcn.ne.jp [61.86.4.98])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0565B605A9
- for <devel@driverdev.osuosl.org>; Fri, 19 May 2023 11:33:30 +0000 (UTC)
-Received: from mailgw04.kcn.ne.jp (mailgw04.kcn.ne.jp [61.86.7.211])
- by proxy-log.kcn.ne.jp (Postfix) with ESMTP id B80EA2A2C47
- for <devel@driverdev.osuosl.org>; Fri, 19 May 2023 20:04:44 +0900 (JST)
-Received: from mxs02-s (mailgw2.kcn.ne.jp [61.86.15.234])
- by mailgw04.kcn.ne.jp (Postfix) with ESMTP id E2F4E80B34
- for <devel@driverdev.osuosl.org>; Fri, 19 May 2023 20:04:39 +0900 (JST)
-X-matriXscan-loop-detect: 4602de3c9bfdaf987878f9e566d9e05a96f9e695
-Received: from mail-jp14.kcn.jp ([61.86.6.124]) by mxs02-s with ESMTP;
- Fri, 19 May 2023 20:04:35 +0900 (JST)
-Received: from User (pknn033-115.kcn.ne.jp [220.153.184.115])
- by mail-jp14.kcn.jp (Postfix) with SMTP id 0487DC1A7478;
- Fri, 19 May 2023 20:04:10 +0900 (JST)
-From: "Mrs. Monica Paul"<ttcfkk@thaitrade.jp>
-To: You@osuosl.org
-Subject: My Beloved Friend
-Date: Fri, 19 May 2023 04:04:35 -0700
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1LSUDcTZGsKo for <devel@linuxdriverproject.org>;
+ Sat, 20 May 2023 03:04:23 +0000 (UTC)
+X-Greylist: whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 87BC3400FB
+Received: from mail-qt1-x844.google.com (mail-qt1-x844.google.com
+ [IPv6:2607:f8b0:4864:20::844])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 87BC3400FB
+ for <devel@linuxdriverproject.org>; Sat, 20 May 2023 03:04:23 +0000 (UTC)
+Received: by mail-qt1-x844.google.com with SMTP id
+ d75a77b69052e-3f41b73104eso21128931cf.3
+ for <devel@linuxdriverproject.org>; Fri, 19 May 2023 20:04:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1684551862; x=1687143862;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=9nI98n7hQHfgZ0b03oeYOgjjGhyapNQ2IwWuc24Y3aA=;
+ b=UQYD8QTak14YE0qLPm2JGTAW3g6avgkbD9vKASW4xkKjYi8oF+RdNc83k+Mo6X2caJ
+ +kCvCffKrojQXJF3uU9LzsYG6Ln8odIUb1jLuiXfnDLQ+EicTrlF1pKSCQ6e3zE22wFS
+ FBYlXqBDa8mqha2YoOykgQHWV7Zcr9LX4awY5rAefVjumcWrD8NpLkEg4jlpMwSy47ft
+ PXqDkUzJCIyxdN7NuR2hMfUE3oUMX6MuTisbmOa1CWzLa/C+fCIklQYH2Qz3TVeMWShL
+ xARaqbbKFahajMTUbgRuUl9O+jrSOu2Q/+b7ud/X7Z2xiSkTn3uRngY/ZT6DyjwAu93c
+ zXig==
+X-Gm-Message-State: AC+VfDwrSM0m0PerwqAH04BHvrWRBQBQ+4z32/W4OYD+yywWIKRce8Ks
+ sfqM5NGI6yWHhfRmP6IB4E1hsirDdLsAK7DaE5A=
+X-Google-Smtp-Source: ACHHUZ5o87Dxk7OCObj2G2G8ejREZHe8QPwPhFt4hVDnPR/2xxEE+xxm6yGJOD4cAdw26t90B+e96tmlLplWIjfo910=
+X-Received: by 2002:ac8:4e56:0:b0:3f4:c9b:24ca with SMTP id
+ e22-20020ac84e56000000b003f40c9b24camr7319309qtw.53.1684551862151; Fri, 19
+ May 2023 20:04:22 -0700 (PDT)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <3d56067c.1684494275.905469.3769.27126@mxs02-s>
-X-matriXscan-msec-AV: Clean
-X-matriXscan-Action: Approve
-X-matriXscan: Uncategorized
+Received: by 2002:ac8:5a4b:0:b0:3e4:e411:44a2 with HTTP; Fri, 19 May 2023
+ 20:04:21 -0700 (PDT)
+From: Fatima Muhammad <tehalsingh1965@gmail.com>
+Date: Sat, 20 May 2023 03:04:21 +0000
+Message-ID: <CA+r7bWHq-c-D5V5CATXT6qL35K1qX9G4NsyhrPHDYqEF5QtVsQ@mail.gmail.com>
+Subject: CHARITY
+To: undisclosed-recipients:;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1684551862; x=1687143862;
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=9nI98n7hQHfgZ0b03oeYOgjjGhyapNQ2IwWuc24Y3aA=;
+ b=YG0XJRNyfqioGBcGs5BK7DCf7NWfy/8qmzExHJqSrZhCSXzLnR+ICKnZfztX5ICdMP
+ OeuSQIqciVuQ5lpxq6sLKJporenlKZbCx+nwibFpq7qKwESZC++Oh+9tHnA4rOZnXDrY
+ /9ceQUzU2VzRfgwKzRIG5prNLk0rvqIl3myclWjdXdKNHjilGnGZ47v467h1v88Zt+iw
+ wuZD2Ro4b4lhXY43B1GInUDib6mQTnJ5EbrYln285YUudl6RGpirud6oKCBj91PPT6lF
+ vXtki7khk0PNi+2zQmTfofT+AN2BQv4Q+WYFqZYBGoiMTt9evqPJJwdxgTdiEiOnLCQy
+ S6fg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20221208 header.b=YG0XJRNy
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,34 +90,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: monicampaul2023@gmail.com
+Reply-To: fatimatmuham24@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greetings Beloved Friend.
- 
-I'm sorry to interrupt your daily activities, I'm sending this message, please take a moment to read my email as it requires immediate and helpful response. I am Mrs. Monica Miriam Paul from the Kingdom of Bahrain, a widow to the late Dr. Steve Paul. l am 69 years old, suffering from long term cancer of the breast, from all indication my condition is really deteriorating and it is quite obvious that I might not live more than Six (6) months, according to my doctor because the cancer has gotten to a very worst / dangerous stage.
- 
-My late husband and my only child died last five years ago, his death was politically motivated. My late husband was a very rich and wealthy businessman who was running his Gold/Diamond Business here in the United States. After his death, I inherited all his business and wealth. My doctors have advised me that I may not live for more than Six (6) months, so I now decided to divide the part of this wealth, to contribute to the development of the churches in Africa, Middle-East, America, Asia, and Europe. I collected your email address during my desperate search on the internet and I prayed over it and the spirit of our Lord Jesus directed me to you as an honest person who can assist me to fulfill my wish here on earth.
- 
-I decided to donate the sum of $15,600,000.00 USD (Fifteen Million Six hundred thousand United States dollars) to the less privileged because I cannot take this money to the grave. Please I want you to note that this fund is lodged in a bank here in the United States of America (USA).
- 
-Once I hear from you, I will forward to you all the information you will use to get this fund released from the bank here in the United States and to be transferred to your bank account. I honestly pray that this money when transferred to you will be used for the said purpose because l has come to find out that wealth acquisition without Christ is vanity. May the grace of our lord Jesus the love of God and the fellowship of God be with you and your family.
- 
-Kindly Send the below details to my private email: ( paulmonicamiriam@gmail.com ) to enable us to proceed.
- 
-1. Your Full Names:
-2. Your Full Address:
-3. Your Tel/cell Numbers:
-4. Your Occupation:
- 
-God Bless you as I look forward to your positive response.
- 
-Mrs. Monica Miriam Paul
-My Private Email:  paulmonicamiriam@gmail.com
- 
+Hello Greetings
+
+My name is Mrs. Fatima Muhammad. I am 56 years old woman and I am
+legally married to late Mr. Malik Muhammad. who worked with an oil
+drilling company as an expatriate for many years before he died I and
+my late husband did not have a single biological child of our own.
+Presently I have a serious breast cancer sickness and my private
+doctor just informed me that my breast cancer sickness has gotten
+worst and they are going to carry out a serious cancer surgery on my
+heart by next weekend which I might not survive.
+
+When my late husband was alive, he deposited the sum of Three million
+five hundred thousand dollars  in a bank and he signed an agreement
+with the bank that the funds will be used for charity and humanitarian
+purposes, My Dear I contacted you today for this charity and humanity
+work  If I die during my surgery, the bank will embezzle the money
+because I have no child to claim the money  I want you to take  forty
+percent of the total amount for your compensation and use the
+remaining sixty percent  to do the charity work in your country.
+please kindly reply back to me for more details  if you are interested
+
+Best Regards
+Mrs. Fatima Muhammad
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
