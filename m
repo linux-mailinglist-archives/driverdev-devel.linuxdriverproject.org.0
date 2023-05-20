@@ -1,51 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E859870A5B9
-	for <lists+driverdev-devel@lfdr.de>; Sat, 20 May 2023 07:42:38 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6526E70A5BB
+	for <lists+driverdev-devel@lfdr.de>; Sat, 20 May 2023 07:44:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BEF8A60F74;
-	Sat, 20 May 2023 05:42:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BEF8A60F74
+	by smtp3.osuosl.org (Postfix) with ESMTP id C8757612D6;
+	Sat, 20 May 2023 05:44:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C8757612D6
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PRSD8U-iPT63; Sat, 20 May 2023 05:42:36 +0000 (UTC)
+	with ESMTP id UrOvAI1VkpgP; Sat, 20 May 2023 05:44:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9227960F66;
-	Sat, 20 May 2023 05:42:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9227960F66
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id A3A366104F;
+	Sat, 20 May 2023 05:44:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A3A366104F
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 935B31BF40F
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 20 May 2023 05:42:32 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4E4071BF40F
+ for <devel@linuxdriverproject.org>; Sat, 20 May 2023 05:44:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7420983C91
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 20 May 2023 05:42:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7420983C91
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3484A400FB
+ for <devel@linuxdriverproject.org>; Sat, 20 May 2023 05:44:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3484A400FB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jlswzRdLNb_j
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 20 May 2023 05:42:31 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id g2LTRgsH-tuV for <devel@linuxdriverproject.org>;
+ Sat, 20 May 2023 05:44:06 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C88B583C89
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9D88C400EF
 Received: from dj1.dowhosting.net (aws.dowhosting.net [54.200.8.95])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C88B583C89
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 20 May 2023 05:42:31 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9D88C400EF
+ for <devel@driverdev.osuosl.org>; Sat, 20 May 2023 05:44:06 +0000 (UTC)
 Received: by dj1.dowhosting.net (Postfix, from userid 10031)
- id C3E5A18B7BA9; Sat, 20 May 2023 05:27:56 +0000 (UTC)
-To: driverdev-devel@linuxdriverproject.org
+ id A5E1C194A411; Sat, 20 May 2023 05:29:12 +0000 (UTC)
+To: devel@driverdev.osuosl.org
 Subject: Re: Funds transfer information
-Date: Sat, 20 May 2023 05:27:56 +0000
+Date: Sat, 20 May 2023 05:29:12 +0000
 From: Ivan Dawson <support@castleescapestravel.com>
-Message-ID: <50b3497d41184f8c7647ea6321cac7cf@castleescapestravel.com>
+Message-ID: <93529d25963b654daa23a5a223e8ebbf@castleescapestravel.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
