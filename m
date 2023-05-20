@@ -1,52 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75995713576
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 May 2023 17:31:41 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19A7E713224
+	for <lists+driverdev-devel@lfdr.de>; Sat, 27 May 2023 05:20:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8E366404AF;
-	Sat, 27 May 2023 15:31:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8E366404AF
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5BB286F635;
+	Sat, 27 May 2023 03:20:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5BB286F635
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Zeh1KFnq7V41; Sat, 27 May 2023 15:31:38 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7gKL-U0LQabn; Sat, 27 May 2023 03:20:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5E021402A7;
-	Sat, 27 May 2023 15:31:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5E021402A7
-X-Original-To: devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 36EA06F637;
+	Sat, 27 May 2023 03:20:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 36EA06F637
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 845341BF2A6
- for <devel@linuxdriverproject.org>; Sat, 27 May 2023 15:31:35 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id EE06F1BF373
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 May 2023 03:20:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5DC74404AF
- for <devel@linuxdriverproject.org>; Sat, 27 May 2023 15:31:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5DC74404AF
+ by smtp4.osuosl.org (Postfix) with ESMTP id D3F4A42A33
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 May 2023 03:20:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D3F4A42A33
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LcA-8q72ais6 for <devel@linuxdriverproject.org>;
- Sat, 27 May 2023 15:31:34 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id M6Z1tRWTRgeP
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 May 2023 03:20:38 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E7F90402A7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8144342A1D
 Received: from 192-168-3-71.localdomain (unknown [106.75.250.224])
- by smtp2.osuosl.org (Postfix) with ESMTP id E7F90402A7
- for <devel@driverdev.osuosl.org>; Sat, 27 May 2023 15:31:33 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8144342A1D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 27 May 2023 03:20:38 +0000 (UTC)
 Received: from User (localhost [127.0.0.1])
- by 192-168-3-71.localdomain (Postfix) with SMTP id C4F68168F22C;
- Sat, 20 May 2023 21:18:20 +0800 (CST)
+ by 192-168-3-71.localdomain (Postfix) with SMTP id 8CEBD169867F;
+ Sat, 20 May 2023 21:24:50 +0800 (CST)
 From: "Attorney Brad Smit"<bs1984760@gmail.com>
 Subject: From Attorney Brad Smit
-Date: Sat, 20 May 2023 06:18:39 -0700
+Date: Sat, 20 May 2023 06:25:09 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20230520131821.C4F68168F22C@192-168-3-71.localdomain>
+Message-Id: <20230520132451.8CEBD169867F@192-168-3-71.localdomain>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
