@@ -1,50 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 081AA70D25C
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 May 2023 05:29:05 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1E9370D38C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 23 May 2023 08:03:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B4EEE818B5;
-	Tue, 23 May 2023 03:29:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B4EEE818B5
+	by smtp2.osuosl.org (Postfix) with ESMTP id B7756402D4;
+	Tue, 23 May 2023 06:03:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B7756402D4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id CjYglZWcR3i2; Tue, 23 May 2023 03:29:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id e6tTEt1l3D2M; Tue, 23 May 2023 06:03:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 985B781987;
-	Tue, 23 May 2023 03:29:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 985B781987
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9204B400C1;
+	Tue, 23 May 2023 06:03:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9204B400C1
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2BFDE1BF334
- for <devel@linuxdriverproject.org>; Tue, 23 May 2023 03:28:58 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BE34E1BF37F
+ for <devel@linuxdriverproject.org>; Tue, 23 May 2023 06:03:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 03AF360EE4
- for <devel@linuxdriverproject.org>; Tue, 23 May 2023 03:28:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 03AF360EE4
+ by smtp4.osuosl.org (Postfix) with ESMTP id A36A64086D
+ for <devel@linuxdriverproject.org>; Tue, 23 May 2023 06:03:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A36A64086D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2sZkyiQPWjCM for <devel@linuxdriverproject.org>;
- Tue, 23 May 2023 03:28:48 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7E81160EDB
-Received: from smtp01-smtpout08.jh.za.mtnbusiness.net (unknown
- [41.181.159.147])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7E81160EDB
- for <devel@driverdev.osuosl.org>; Tue, 23 May 2023 03:28:48 +0000 (UTC)
-Received: from [41.113.68.96] (helo=111-PC)
- by smtp.mtnbusiness.co.za with esmtp (Blowfish SMTP)
- (envelope-from <j09090@mweb.co.za>) id 1q1IKy-0003Yw-83
- for devel@driverdev.osuosl.org; Tue, 23 May 2023 05:05:24 +0200
-From: "Jon" <j09090@mweb.co.za>
-Subject: HELLO...
-To: devel@driverdev.osuosl.org
-Date: Mon, 22 May 2023 22:07:58 -0500
-Message-Id: <20230523032858.03AF360EE4@smtp3.osuosl.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nyy9o5nV0UEQ for <devel@linuxdriverproject.org>;
+ Tue, 23 May 2023 06:03:44 +0000 (UTC)
+X-Greylist: delayed 05:46:16 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 619FF41558
+Received: from mail.weeksenterprises.net (unknown [173.161.249.211])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 619FF41558
+ for <devel@driverdev.osuosl.org>; Tue, 23 May 2023 06:03:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.weeksenterprises.net (Postfix) with ESMTP id 01C975FF342C;
+ Mon, 22 May 2023 18:43:17 -0400 (EDT)
+Received: from mail.weeksenterprises.net ([127.0.0.1])
+ by localhost (weeksenterprises.net [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FNY1tQd-miGe; Mon, 22 May 2023 18:43:17 -0400 (EDT)
+Received: from [212.162.149.204] (unknown [212.162.149.204])
+ by mail.weeksenterprises.net (Postfix) with ESMTPA id 669605FF1B34;
+ Mon, 22 May 2023 18:27:09 -0400 (EDT)
+MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: Re:
+To: Recipients <gtonn@wodistrict.org>
+From: "Advance Funding LTD" <gtonn@wodistrict.org>
+Date: Mon, 22 May 2023 15:25:15 -0700
+Message-Id: <20230522222710.669605FF1B34@mail.weeksenterprises.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,22 +63,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: jon919782@outlook.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: aflimited@secretary.net
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
-
-I have been trying to reach you.
-
-Get back to me.
-
-Regards,
-Jon
-
+Wir sind ein erstklassiges Finanzinstitut, das interessierten Privatpersone=
+n oder Unternehmen flexible Kredite in der Gr=F6=DFenordnung von 10.000 bis=
+ 10 Millionen Euro zu einem Zinssatz von 2 % anbietet. E-Mail:aflimited@sec=
+retary.net
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
