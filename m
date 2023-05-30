@@ -2,44 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9700B7164AF
-	for <lists+driverdev-devel@lfdr.de>; Tue, 30 May 2023 16:46:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A77C1716632
+	for <lists+driverdev-devel@lfdr.de>; Tue, 30 May 2023 17:08:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5BE1C8318C;
-	Tue, 30 May 2023 14:46:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5BE1C8318C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 037BA83C89;
+	Tue, 30 May 2023 15:08:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 037BA83C89
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 67Z6zNOB5-k0; Tue, 30 May 2023 14:46:20 +0000 (UTC)
+	with ESMTP id orpIvwKcfAOb; Tue, 30 May 2023 15:08:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 39A2E8316A;
-	Tue, 30 May 2023 14:46:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 39A2E8316A
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id E02F781EF6;
+	Tue, 30 May 2023 15:08:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E02F781EF6
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9B88A1BF5DF
- for <devel@linuxdriverproject.org>; Tue, 30 May 2023 14:46:17 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B66491BF5DE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 30 May 2023 15:08:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 73806417E3
- for <devel@linuxdriverproject.org>; Tue, 30 May 2023 14:46:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 73806417E3
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9DA6A41742
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 30 May 2023 15:08:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9DA6A41742
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZqTNeFoZ8XbS for <devel@linuxdriverproject.org>;
- Tue, 30 May 2023 14:46:16 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jG4dP8FSfoXa
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 30 May 2023 15:08:10 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 88C5F417E2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0F7E4410AD
 Received: from yncll.com (yncll.com [69.12.91.126])
- by smtp4.osuosl.org (Postfix) with ESMTP id 88C5F417E2
- for <devel@driverdev.osuosl.org>; Tue, 30 May 2023 14:46:16 +0000 (UTC)
-To: devel@driverdev.osuosl.org
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0F7E4410AD
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 30 May 2023 15:08:09 +0000 (UTC)
+To: driverdev-devel@linuxdriverproject.org
 Subject: logo products and apparel
-Message-ID: <1cffb2ffffe9f2cb6bc4180ced60daab@vistaprint.com>
-Date: Tue, 30 May 2023 16:45:59 +0200
-From: "Christina Bevins" <alexkn@juniorshooters.net>
+Message-ID: <7cdb4f5451ee2ad524673d32e6b6d2d5@vistaprint.com>
+Date: Tue, 30 May 2023 16:57:56 +0200
+From: "Christina Bevins" <alexti@joyofquotes.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
