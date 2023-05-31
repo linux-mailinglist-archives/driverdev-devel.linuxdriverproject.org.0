@@ -2,74 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72611718EDF
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Jun 2023 00:58:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 49CF5718EE0
+	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Jun 2023 00:58:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DB9D9614D8;
-	Wed, 31 May 2023 22:58:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DB9D9614D8
+	by smtp3.osuosl.org (Postfix) with ESMTP id C2AD2614DA;
+	Wed, 31 May 2023 22:58:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C2AD2614DA
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rqI1OGsFqhif; Wed, 31 May 2023 22:58:51 +0000 (UTC)
+	with ESMTP id 5I3jlFt1ZIVL; Wed, 31 May 2023 22:58:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9BC96614C5;
-	Wed, 31 May 2023 22:58:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9BC96614C5
+	by smtp3.osuosl.org (Postfix) with ESMTP id A152E6068F;
+	Wed, 31 May 2023 22:58:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A152E6068F
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CCEA31BF576
- for <devel@linuxdriverproject.org>; Wed, 31 May 2023 22:58:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3A2781BF576
+ for <devel@linuxdriverproject.org>; Wed, 31 May 2023 22:58:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A55C8429F2
+ by smtp2.osuosl.org (Postfix) with ESMTP id D78DC429BF
  for <devel@linuxdriverproject.org>; Wed, 31 May 2023 22:58:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A55C8429F2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D78DC429BF
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Qv9naOGBwq_5 for <devel@linuxdriverproject.org>;
- Wed, 31 May 2023 22:58:46 +0000 (UTC)
+ with ESMTP id UsUqm2aJtelJ for <devel@linuxdriverproject.org>;
+ Wed, 31 May 2023 22:58:47 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9AA79429BF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0B1D6429D8
 Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9AA79429BF
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0B1D6429D8
  for <devel@driverdev.osuosl.org>; Wed, 31 May 2023 22:58:46 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10727"; a="357784797"
-X-IronPort-AV: E=Sophos;i="6.00,207,1681196400"; d="scan'208";a="357784797"
+X-IronPort-AV: E=McAfee;i="6600,9927,10727"; a="357784800"
+X-IronPort-AV: E=Sophos;i="6.00,207,1681196400"; d="scan'208";a="357784800"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  31 May 2023 15:58:45 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10727"; a="881381264"
-X-IronPort-AV: E=Sophos;i="6.00,207,1681196400"; d="scan'208";a="881381264"
+X-IronPort-AV: E=McAfee;i="6600,9927,10727"; a="881381263"
+X-IronPort-AV: E=Sophos;i="6.00,207,1681196400"; d="scan'208";a="881381263"
 Received: from lkp-server01.sh.intel.com (HELO fb1ced2c09fb) ([10.239.97.150])
  by orsmga005.jf.intel.com with ESMTP; 31 May 2023 15:58:43 -0700
 Received: from kbuild by fb1ced2c09fb with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1q4UmB-0001fK-1O;
+ (envelope-from <lkp@intel.com>) id 1q4UmB-0001fF-1F;
  Wed, 31 May 2023 22:58:43 +0000
-Date: Thu, 01 Jun 2023 06:58:23 +0800
+Date: Thu, 01 Jun 2023 06:58:29 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:readfile] BUILD SUCCESS
- 17bf34035ab3075dff250fbd9a5f8d8689bd114d
-Message-ID: <20230531225823.-Nc2-%lkp@intel.com>
+Subject: [driver-core:bus_cleanup] BUILD SUCCESS
+ a8feae5c21152ff7233805b3b16648162fe334d3
+Message-ID: <20230531225829.Ddz8V%lkp@intel.com>
 User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685573926; x=1717109926;
+ t=1685573927; x=1717109927;
  h=date:from:to:cc:subject:message-id;
- bh=nM6rA/F5MRPZ2nwDgm5FJvx0A+hymbRhKl6GPiWsgew=;
- b=RPwIT2MS5BA9vURvotA6oTM9w8viGgmacuHhXq6CI5LP0zO+marCzvJS
- z7SdPcVqQZbsSvA/q9GHnwcwEtGKon0SdbQ0SzeRpDKX87KwEYW+OKzIV
- qCiA+vDQOwUA5tH1DKSD/otMGfk/FazJTP74hjIgaTV5Q9yCre1yGlQoZ
- WYFWJaw7KcJKRNRySKNb2IhsJY/Hi9GE/K7Nanh4Npf9dCVSk+UE5koyC
- fC8WUE7S0xm+S/CYUlsRgnXcRgarwBbt0Q7+KqR86o/ljmEAGrir/oCqD
- l+5eukPrHUkRYiB4qIHzkrWWL42DA/+8StqlhxXcJ3oJ0WI2ZH2CLRE2f
- w==;
+ bh=DH65xvWV8ZKwPCZCBFirU3qJwweOWgvfy0q6pN9mkZQ=;
+ b=bvbND9bOnsfq6yeaa15ubYW9NY0IX9+h1T2DHezFDw8AjgiP7gHDO5Mu
+ zE9vajCEBvo8j686PE4tyfAGr0dARYlI9o/8+SOX7yINSTAd9bFLik29l
+ 0Qw0wpTyfK+n8Gwv2dRxARy1aAlvf3XDm7u1sQeehaYrfUaMSkgzn8AmJ
+ 8xSZMoQaIRKl5lDeoxZE4qqdmWtTOD2lCC3oVe+LMZNcgMTxqETfWks5f
+ afIQRWp4GY5n069hHH4qpoXxsJ8+O++MzCqgsrceraAZgf1ljJEHuT3jE
+ VUh5zEfm4W2ZDQgADDICHqUHAaTNLQ2ttYEnKsElvprQc3PodmQGNNHeQ
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RPwIT2MS
+ header.a=rsa-sha256 header.s=Intel header.b=bvbND9bO
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,8 +89,8 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git readfile
-branch HEAD: 17bf34035ab3075dff250fbd9a5f8d8689bd114d  readfile.2: new page describing readfile(2)
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git bus_cleanup
+branch HEAD: a8feae5c21152ff7233805b3b16648162fe334d3  FIXME: driver core: platform: make platform_bus_type constant
 
 elapsed time: 724m
 
