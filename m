@@ -1,75 +1,78 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F61F718EE1
-	for <lists+driverdev-devel@lfdr.de>; Thu,  1 Jun 2023 00:58:57 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 606A9723624
+	for <lists+driverdev-devel@lfdr.de>; Tue,  6 Jun 2023 06:19:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EC16E614E1;
-	Wed, 31 May 2023 22:58:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EC16E614E1
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4E9EE40933;
+	Tue,  6 Jun 2023 04:19:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E9EE40933
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id R_vYr8VEyOOp; Wed, 31 May 2023 22:58:55 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id z98jyGdZx-f1; Tue,  6 Jun 2023 04:19:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AA842614D5;
-	Wed, 31 May 2023 22:58:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AA842614D5
+	by smtp4.osuosl.org (Postfix) with ESMTP id D811D40976;
+	Tue,  6 Jun 2023 04:19:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D811D40976
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4A62E1BF576
- for <devel@linuxdriverproject.org>; Wed, 31 May 2023 22:58:49 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1890C1BF3F9
+ for <devel@linuxdriverproject.org>; Tue,  6 Jun 2023 04:18:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 13250429D8
- for <devel@linuxdriverproject.org>; Wed, 31 May 2023 22:58:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 13250429D8
+ by smtp3.osuosl.org (Postfix) with ESMTP id C1F0860E91
+ for <devel@linuxdriverproject.org>; Tue,  6 Jun 2023 04:18:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C1F0860E91
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Bt665dvCpFWa for <devel@linuxdriverproject.org>;
- Wed, 31 May 2023 22:58:47 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4129B429E4
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4129B429E4
- for <devel@driverdev.osuosl.org>; Wed, 31 May 2023 22:58:47 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10727"; a="357784802"
-X-IronPort-AV: E=Sophos;i="6.00,207,1681196400"; d="scan'208";a="357784802"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 May 2023 15:58:45 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10727"; a="881381262"
-X-IronPort-AV: E=Sophos;i="6.00,207,1681196400"; d="scan'208";a="881381262"
-Received: from lkp-server01.sh.intel.com (HELO fb1ced2c09fb) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 31 May 2023 15:58:43 -0700
-Received: from kbuild by fb1ced2c09fb with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1q4UmB-0001fI-1I;
- Wed, 31 May 2023 22:58:43 +0000
-Date: Thu, 01 Jun 2023 06:58:34 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD SUCCESS
- 03cd47eac6e21131423090acd10cd8a91fc87509
-Message-ID: <20230531225834.bfvKi%lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1685573927; x=1717109927;
- h=date:from:to:cc:subject:message-id;
- bh=zpjFcAWRZClmgh1sxw7tnhgDWjGpfD+uyB8zkQ5IAkU=;
- b=Q7svj4YimD+zRukMdee3TSvgMNbKoPY4a7O7q9Mn0f1EGT8ihbCc+/Lt
- jhKImpLZW/PmJ9ZGl8uVJbCu/vAI16s8G4no/odnvJ14kcmmRPtwpfN4U
- V3PM9FD69HHfqm0FDCx0o9c+5m8SawwRUgcVGR5AeiR79+IgJYmYhrixW
- p+s38QUOBgYQ5nbYls8dATtgaTt+TAiBB3AjTDg06BSVQ1IorHaFac3Qh
- oowpUTIMp60wymlgJ5P4GyyQL3c2FKpHwFYMNgxLR5WaTGT0jOOEzdcbF
- 5ZIWNG83QldMinEXICPE2jEoaxzMItD9RHoIaVZAxUTFkdeI9gxJzStVT
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Q7svj4Yi
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eGausw-YSsnO for <devel@linuxdriverproject.org>;
+ Tue,  6 Jun 2023 04:18:56 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1832460DFD
+Received: from srv.cprapid.com (unknown [185.8.173.223])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1832460DFD
+ for <devel@driverdev.osuosl.org>; Tue,  6 Jun 2023 04:18:54 +0000 (UTC)
+Received: from eduffect by srv.cprapid.com with local (Exim 4.96)
+ (envelope-from <support@eduffect.com>) id 1q4XN1-0006BK-1d
+ for devel@driverdev.osuosl.org; Thu, 01 Jun 2023 03:44:55 +0200
+To: devel@driverdev.osuosl.org
+Subject: hello
+X-PHP-Script: eduffect.com/wp-content/N138UVkOgLJ.php for 154.160.26.225
+X-PHP-Originating-Script: 1009:N138UVkOgLJ.php
+Date: Thu, 1 Jun 2023 01:44:55 +0000
+From: "Nearra Houphouet." <support@eduffect.com>
+Message-ID: <4ec1a0b118ef360740f2185be613ca51@eduffect.com>
+MIME-Version: 1.0
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - srv.cprapid.com
+X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Originator/Caller UID/GID - [1009 993] / [47 12]
+X-AntiAbuse: Sender Address Domain - eduffect.com
+X-Get-Message-Sender-Via: srv.cprapid.com: authenticated_id: eduffect/from_h
+X-Authenticated-Sender: srv.cprapid.com: support@eduffect.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=eduffect.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:Message-ID:Reply-To:From:Date:Subject:To:Sender:Cc:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=Vhhj1KDdhEsPkYIiAkk6TKYo/eTPbyNSAoCMHmMywcw=; b=hVTkX4UXWtwfBfTeGaLmYEDQMs
+ M84Dz4faliYa4M5obb95/KvGUZoPNtNu+XVMv7y1z4WJqN6xtKurzXsMI3wdPVyh2NjMFBFcnHHGu
+ N1ExeEdWiTXW4uO8OHwapyogqUiKxdd2J4wgQGRJf/YSoCIyN8FnS16yhVMacewFvHrxWH0dE/Uo+
+ GneYj+LtQwy1zk6T3XIa9BxdG/u0iNi5JX/hchB/Vt1L+AGPuVhSX8TAFNAZi+YYhY4u4HGARRTW/
+ XqlpzvupdxCmUD8tRmgrcq0Zi32V4QzmuotLCc5f6+nGA28gy9FvKNAIouzz2u7UXSkvqxXJ8sw0s
+ JIPuUh+g==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=eduffect.com header.i=@eduffect.com
+ header.a=rsa-sha256 header.s=default header.b=hVTkX4UX
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,70 +85,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: nearrah2023@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
-branch HEAD: 03cd47eac6e21131423090acd10cd8a91fc87509  soundwire: sysfs: remove unneeded ATTRIBUTE_GROUPS() comments
-
-elapsed time: 724m
-
-configs tested: 40
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arm                              allmodconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                                 defconfig   gcc  
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-csky                                defconfig   gcc  
-i386                             allyesconfig   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-m68k                             allmodconfig   gcc  
-m68k                                defconfig   gcc  
-mips                             allmodconfig   gcc  
-mips                             allyesconfig   gcc  
-nios2                               defconfig   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-sh                               allmodconfig   gcc  
-sparc                               defconfig   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64                               rhel-8.3   gcc  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RnJvbSBOZWFycmEgSG91cGhvdWV0CkRlYXJlc3QgT25lCsKgCkkgYW0gd3JpdGluZyB0aGlzIGxl
+dHRlciB3aXRoIGR1ZSByZXNwZWN0IGFuZCBoZWFydGJyZWFrIHNpbmNlIHdlIGhhdmUgbm90IGtu
+b3duIG9yIG1ldCBvdXJzZWx2ZXMgcHJldmlvdXNseS4gSSBhbSBhc2tpbmcgZm9yIHlvdXIgYXNz
+aXN0YW5jZSBhZnRlciBJIGhhdmUgZ29uZSB0aHJvdWdoIGEgcHJvZmlsZSB0aGF0IHNwZWFrcyBn
+b29kIG9mIHlvdS4gSSB3YW50IHRvIGZpbmQgb3V0IGlmIGl0J3MgcG9zc2libGUgZm9yIHlvdSB0
+byBkZWFsIHdpdGggaW5kaXZpZHVhbHMgYXMgdG8gaW52ZXN0bWVudC4gSSBjYW1lIGFjcm9zcyB5
+b3VyIHByb2ZpbGUgYW5kIEkgZmVlbCBpdCdzIGhpZ2hseSByZXB1dGFibGUgdGhhdCBpcyB3aHkg
+SSBwaWNrZWQgYW4gaW50ZXJlc3QgaW4gZ2V0dGluZyBhY3Jvc3MgdG8geW91IGluIHJlc3BlY3Qg
+b2YgdGhlIGludmVzdG1lbnQgYXQgbXkgZGlzcG9zYWwuIMKgSSB3aWxsIGJlIHNvIGdsYWQgaWYg
+eW91IGNhbiBhbGxvdyBtZSBhbmQgbGVhZCBtZSB0byB0aGUgcmlnaHQgY2hhbm5lbCB0b3dhcmRz
+IHlvdXIgYXNzaXN0YW5jZSB0byBteSBzaXR1YXRpb24gbm93Lkkgd2lsbCBtYWtlIG15IHByb3Bv
+c2FsIHdlbGwga25vd24gaWYgSSBhbSBnaXZlbiB0aGUgb3Bwb3J0dW5pdHkuCsKgCkkgd291bGQg
+bGlrZSB0byB1c2UgdGhpcyBvcHBvcnR1bml0eSB0byBpbnRyb2R1Y2UgbXlzZWxmIHRvIHlvdS5J
+IGFtIDI1WWVhcnMgT2xkIEdpcmwgZnJvbSDCoChDT1RFIEQnSVZPSVJFIFdFU1QgQUZSSUNBKSAs
+dGhlIG9ubHkgRGF1Z2h0ZXIgb2YgSG91cGhvdWV0LCBNeSBmYXRoZXIgaXMgbm93IGxhdGUsaGUg
+d2FzIGEgd2VsbCBrbm93biBjb2NvYSBtZXJjaGFudCBidXNpbmVzc21hbiBpbiBteSBjb3VudHJ5
+IChjw7R0ZSBkIGl2b2lyZSkgwqBoZSB3YXMgwqBwb2lzb25lZCBieSBoaXMgY28tYnVzaW5lc3Mg
+cGFydG5lci4gVGhlIG1haW4gcmVhc29uIHdoeSBJIGFtIGNvbnRhY3RpbmcgeW91IG5vdyBpcyB0
+byBzZWVrIHlvdXIgYXNzaXN0YW5jZSBpbiB0aGUgYXJlYSBvZiBteSBmdXR1cmUgaW52ZXN0bWVu
+dCBhbmQgYWxzbyBmb3IgYSBoZWxwIHRvIGhhbmQgb3ZlciBzb21lIGh1Z2UgYW1vdW50IG9mIG1v
+bmV5IGluIG15IHBvc3Nlc3Npb24uCsKgClRoaXMgwqBmdW5kIMKgKFVTNS43IE1pbGxpb24gZG9s
+bGFycykgd2FzIMKgZGVwb3NpdGVkIGluIGEgwqBwcml2YXRlIHNlY3VyaXR5IGNvbXBhbnkgb3V0
+c2lkZSBteSBjb3VudHJ5IGluIChFVVJPUEVBTikgYSB5ZWFyIGFnbyBieSBteSBmYXRoZXIgaGUg
+bWFkZSBtZSB0aGUgc29sZSBiZW5lZmljaWFyeS5JIGFtIG5vdyBhc2tpbmcgeW91IHRvIHN0YW5k
+IG9uIG15IGJlaGFsZix0byBzdGFuZCBhcyBteSBwYXJ0bmVyIGFuZCBpbiB0aW1lIG9mIHRoZSBj
+bGFpbSBhbmQgaW52ZXN0bWVudCBhcyB3ZWxsLgrCoApJIGhhdmUgbWFkZSB1cCBteSBtaW5kIHRv
+IG9mZmVyIHlvdSAzMCVvZiB0aGUgdG90YWwgbW9uZXkgd2hpbGUgdGhlIHJlbWFpbmluZyB3aWxs
+IGdvIGludG8gYSBwcm9kdWN0aXZlIGludmVzdG1lbnQuCsKgClBscyBhdHRhY2ggeW91ciBkaXJl
+Y3QgYW5kIGZ1bGwgaW5mb3JtYXRpb24gYXMgeW91IHJlcGx5IHRvIG1lLiDCoHBsZWFzZSDCoGVt
+YWlsIG1lIHdpdGggwqBteSBwcml2YXRlIGVtYWlsIDogwqBuZWFycmFoMjAyM0BnbWFpbC5jb20g
+wqAgZm9yIG1vcmUgZGV0YWlscy4KwqAKVGhhbmtzIGFuZCByZW1haW4gYmxlc3MuCkJlc3QgUmVn
+YXJkcwpOZWFycmEgSG91cGhvdWV0LgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVj
+dC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlz
+dGluZm8vZHJpdmVyZGV2LWRldmVsCg==
