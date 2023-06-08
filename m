@@ -2,84 +2,84 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E615C7272E4
-	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Jun 2023 01:25:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 39CFF727396
+	for <lists+driverdev-devel@lfdr.de>; Thu,  8 Jun 2023 02:10:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3F29560FFA;
-	Wed,  7 Jun 2023 23:25:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3F29560FFA
+	by smtp3.osuosl.org (Postfix) with ESMTP id 97E36613AF;
+	Thu,  8 Jun 2023 00:10:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 97E36613AF
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NVigv42G0T9k; Wed,  7 Jun 2023 23:25:00 +0000 (UTC)
+	with ESMTP id ZZ8rjBfT8Gos; Thu,  8 Jun 2023 00:10:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0F69C60BA3;
-	Wed,  7 Jun 2023 23:25:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0F69C60BA3
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6BE9D6137D;
+	Thu,  8 Jun 2023 00:10:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6BE9D6137D
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BED681BF3CA
- for <devel@linuxdriverproject.org>; Wed,  7 Jun 2023 23:24:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9B74C1BF3C2
+ for <devel@linuxdriverproject.org>; Thu,  8 Jun 2023 00:10:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 966184050F
- for <devel@linuxdriverproject.org>; Wed,  7 Jun 2023 23:24:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 966184050F
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7217D41B75
+ for <devel@linuxdriverproject.org>; Thu,  8 Jun 2023 00:10:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7217D41B75
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id saKjwdDWioXT for <devel@linuxdriverproject.org>;
- Wed,  7 Jun 2023 23:24:56 +0000 (UTC)
+ with ESMTP id hIarqDXNmPgC for <devel@linuxdriverproject.org>;
+ Thu,  8 Jun 2023 00:10:47 +0000 (UTC)
 X-Greylist: whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8C2E940509
-Received: from mail-ua1-x933.google.com (mail-ua1-x933.google.com
- [IPv6:2607:f8b0:4864:20::933])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8C2E940509
- for <devel@linuxdriverproject.org>; Wed,  7 Jun 2023 23:24:56 +0000 (UTC)
-Received: by mail-ua1-x933.google.com with SMTP id
- a1e0cc1a2514c-783f88ce557so24786241.3
- for <devel@linuxdriverproject.org>; Wed, 07 Jun 2023 16:24:56 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EF856418BC
+Received: from mail-ej1-x644.google.com (mail-ej1-x644.google.com
+ [IPv6:2a00:1450:4864:20::644])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EF856418BC
+ for <devel@driverdev.osuosl.org>; Thu,  8 Jun 2023 00:10:46 +0000 (UTC)
+Received: by mail-ej1-x644.google.com with SMTP id
+ a640c23a62f3a-973bf581759so13089466b.0
+ for <devel@driverdev.osuosl.org>; Wed, 07 Jun 2023 17:10:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686180295; x=1688772295;
+ d=1e100.net; s=20221208; t=1686183045; x=1688775045;
  h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
  bh=lwmqmz3SLTAm/5XHn54kA2Qkz1KiGdBlOiEDAaxIk1A=;
- b=HSL+ES9v9DPZZ1bVTKmC+VnvSi4BjshMe00T4sqCgXs0JO7kjbI1ABAc2DmWD1/6i6
- GUVAaVQykq4kLilF2QhEE/DUe1BFP4WJ54VIIhYZN1XQkwxVS9v4iFpdauO8qvCLHS6R
- geGkE80r4FaZLHJSg482CY+rJEl/kZZ5EjE1BOm20+DP3d25P9C1WcinWEYDD8daqg64
- c0qQ8Fy9DIcHXsB/A6XHAJFyx56THdTdgecFQI4n+RUZsOUkDwVjcj9VSY2NqruPaug9
- f2MKFyNSjYD0LkS/2y/QTdPI5RpvZXzyC3dFdrzDnZKZZXvWqugWfWVhZvszskVwVP2S
- ev5A==
-X-Gm-Message-State: AC+VfDy2qVjA9Ir1qJv8CpHtWqUfgnFXlCN3r08+UYx/QStnXIaGoUbF
- PNm1byLS8MPn/MkOwpNmJxbN8/D07mVfms49ZXk=
-X-Google-Smtp-Source: ACHHUZ7fpeaKssFgYSTd2Jo1l0iBWxyoZACNUniS47bLuH+jSeLbWj52IEagnK3W0VCd3SekeVaJdsSPQx1ilSBG0zo=
-X-Received: by 2002:a67:ee45:0:b0:43b:3553:f53 with SMTP id
- g5-20020a67ee45000000b0043b35530f53mr1249625vsp.29.1686180295214; Wed, 07 Jun
- 2023 16:24:55 -0700 (PDT)
+ b=F4Tedf3u7XSSjn3cfM/nxIrkwLpD8EecTF0vj1R0oK6mabTMu73bSGFYpYCUIybSR4
+ 3rrVHVNyEUIkkzaFFT9xcABYn3skj4M3cQKnG4CnZCljzZWTbXg6+M3y5p7xm1fgT0h5
+ yMGqtgXB+/d7uWnD22XDWiv8Q4N6w549/ZIQhM7m1vomtqujJ0AKsfSFpKzuDVK/xCQW
+ AZ+HYpFHmOwPoP9iVynU3Ea/l4T7xqbWlOKaHLRc8fZj5osqTw7Oaifae4uolFWJM1cO
+ MA2pz6oVZD01dF7PGAY+eQs83fYEDMkxQjwbVOyImNKQ9ifEdHdsm7k7x4dXmSm3fWMp
+ cidQ==
+X-Gm-Message-State: AC+VfDzETMvLLGlaQuDlo1A7bAp0mw1XXt1Q8nJERYqsVYwqBg7+dZ6Q
+ /7pwV+avbKBW0ayF/ZAkUnZKJTntN0ZFKTvZt2Y=
+X-Google-Smtp-Source: ACHHUZ7euoT0+EJOZeez30GFsvcVLyXtdgVI/4eopJ8eX1lRCe1Z/RbLJR0AelzN6/keVdqhcSl/SvlPzpZdJSTIafA=
+X-Received: by 2002:a17:907:2d94:b0:970:e010:3bb2 with SMTP id
+ gt20-20020a1709072d9400b00970e0103bb2mr8362122ejc.35.1686183044693; Wed, 07
+ Jun 2023 17:10:44 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:ab0:3244:0:b0:785:6e9:a396 with HTTP; Wed, 7 Jun 2023
- 16:24:54 -0700 (PDT)
+Received: by 2002:a54:2b01:0:b0:213:b140:ccc6 with HTTP; Wed, 7 Jun 2023
+ 17:10:44 -0700 (PDT)
 From: "UNITED NATION DEPUTY SECRETARY-GENERAL (U.N)"
- <ww.westernunionfreetransfer@gmail.com>
-Date: Wed, 7 Jun 2023 16:24:54 -0700
-Message-ID: <CANnY+t5FJx9DBhDs57UnXAhNb9VL4w1XCaFApYonAhE3odgwdg@mail.gmail.com>
+ <recoversfund.ng@gmail.com>
+Date: Wed, 7 Jun 2023 17:10:44 -0700
+Message-ID: <CAEeG17iP7_LYdkA99mPyo4tPh6ZtD+SZnvP26EkSkBy=fKKnAQ@mail.gmail.com>
 Subject: CONTACT DHL OFFICE IMMEDIATELY FOR YOUR ATM MASTER CARD 1.5 MILLION,
 To: undisclosed-recipients:;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1686180295; x=1688772295;
+ d=gmail.com; s=20221208; t=1686183045; x=1688775045;
  h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
  bh=lwmqmz3SLTAm/5XHn54kA2Qkz1KiGdBlOiEDAaxIk1A=;
- b=XJxpYe+iSMaB5qEHgHHr0M9Lb/s9YcZGOU94wMy2Aj9hLgIRSfIP8DYMwNp1vqGKZJ
- lgvteuM4DqBSokcgpvqXzh4gTiO3LUQmS6KSW8R0Rqc323JEdoMZgnKdArVHQcINTuKm
- 9dxrv9KuK35wAxQBdsLQI+pRVFuy2oE8iSjTiy3SeCKKPXdXR+D929aDqCkxHe/hJA4J
- nIywWY5Us07iPpHgZaRBlqiV9JI3xZ1E8ffM0ohc7VRu+n97Ais2ew+72jNOvrmEaIGY
- f4Q6NgsW3tTfggiiYMDSgdeuGKK2Whqhu811FXzqYcIU36WO9AOBPUnkPLvdTMBoIWK3
- 9Blw==
+ b=ARbrLxLUNJOZZ8QyT5ipNAd3QCbeEKzrGoYJ4psklRhFt56d/du4G7BW1yK83weOz2
+ XRFOeNsawH8W+vK2XvRkXtMNEelMyjWwIvtD/r4L86lYBbrbeoePUOYPWeArnedOPu2g
+ wKD4IkTxFEmzVUpIC3B5tgzIwkUF8CtG7hAdLo98gOlqip8UAZ0R2VBm8NLDzoD7Vcv3
+ rD/PhkFqwLmh6qClaig0gw8BmdH+IKhPvZD4dNI73f33OTxJM9m5KVc2rP/qeRHHEDx7
+ f2emFwLAtHMhcn3KC4tnFYfOueoVnqlcmVeqTpdaWgZ1XA6XxiShQsasiIIa+WVnFqR+
+ nzpQ==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20221208 header.b=XJxpYe+i
+ header.a=rsa-sha256 header.s=20221208 header.b=ARbrLxLU
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
