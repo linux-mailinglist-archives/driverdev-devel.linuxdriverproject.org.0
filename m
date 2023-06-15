@@ -1,56 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3EF8972A93D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Jun 2023 07:48:39 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9EACC731476
+	for <lists+driverdev-devel@lfdr.de>; Thu, 15 Jun 2023 11:50:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D8D48417A8;
-	Sat, 10 Jun 2023 05:48:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D8D48417A8
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oaj8E8caDuuu; Sat, 10 Jun 2023 05:48:36 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7CF78417FE;
-	Sat, 10 Jun 2023 05:48:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7CF78417FE
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 233211BF369
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Jun 2023 05:48:32 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0A097402A7
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Jun 2023 05:48:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0A097402A7
+	by smtp2.osuosl.org (Postfix) with ESMTP id C3004401B7;
+	Thu, 15 Jun 2023 09:50:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C3004401B7
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 61G6ulxBDSyu
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Jun 2023 05:48:31 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 178BC40017
-Received: from patra.aviohelitronics.com (unknown [182.156.92.102])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 178BC40017
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Jun 2023 05:48:30 +0000 (UTC)
-Received: from User (unknown [125.18.47.92])
- by Forcepoint Email with SMTP id 69894123044677037B45;
- Sat, 10 Jun 2023 11:16:12 +0530 (IST)
-From: "Gregory Goff"<info@aviohelitronics.com>
-Subject: Sir/Ma
-Date: Fri, 9 Jun 2023 22:48:24 -0700
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GGEgWQyQzl-H; Thu, 15 Jun 2023 09:50:41 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id AE3D640114;
+	Thu, 15 Jun 2023 09:50:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AE3D640114
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 086951BF32A
+ for <devel@linuxdriverproject.org>; Thu, 15 Jun 2023 09:50:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id D5C5E60B95
+ for <devel@linuxdriverproject.org>; Thu, 15 Jun 2023 09:50:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D5C5E60B95
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NJx4tYGoMVJ2 for <devel@linuxdriverproject.org>;
+ Thu, 15 Jun 2023 09:50:35 +0000 (UTC)
+X-Greylist: delayed 01:12:12 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 879FC60A7D
+Received: from gauss.matem.unam.mx (gauss.matem.unam.mx [132.248.17.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 879FC60A7D
+ for <devel@driverdev.osuosl.org>; Thu, 15 Jun 2023 09:50:35 +0000 (UTC)
+Received: from gauss.matem.unam.mx (negrita.matem.unam.mx [132.248.17.55])
+ (using TLSv1 with cipher DHE-RSA-AES128-SHA (128/128 bits))
+ (No client certificate requested)
+ by gauss.matem.unam.mx (Postfix) with ESMTP id 322785469A;
+ Thu, 15 Jun 2023 03:36:00 -0500 (CDT)
+Received: from [23.83.132.154] ([23.83.132.154]) by negrita.matem.unam.mx
+ (Horde Framework) with HTTPS; Thu, 15 Jun 2023 02:36:00 -0600
+Date: Thu, 15 Jun 2023 02:36:00 -0600
+Message-ID: <20230615023600.Horde.PxQgeawW5S6d7PyLJELlY3D@negrita.matem.unam.mx>
+From: Kenichi Koseki <kenichikoseki90@gmail.com>
+User-Agent: Horde Application Framework 5
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20230610054832.0A097402A7@smtp2.osuosl.org>
+Content-Disposition: inline
+To: undisclosed-recipients:;
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,19 +61,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: contact@exxonnmobilusa.com
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: kenichikoss@gmail.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"; DelSp="Yes"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I am Mr.Gregory J. Goff , a representative of Exxon Mobil in United State (http://www.exxonmobil.com) As a senior representative of Exxon that handle contract related matters,I over invoiced a contract which is not known by anybody and, I need your full cooperation and partnership to re-profile this contract funds amounting to US$12.2M to your name as a Contractor that executed this contract in Asia few years ago. At the completion of this transaction, the sharing rates shall be 60% for me, 40% for you,get back to me for contract documents and prove of the fund in bank.
 
-Best Wishes,
-Gregory J. Goff,
-Managing Director,
-EXXON MOBIL.
-*******This e-mail and any attachment(s) are intended for the above addressee. It contains confidential information. If you are not the addressee you must not copy, distribute, disclose or use any of the information in it. If you have received it in error, please delete it and immediately notify the sender. Any opinion expressed in this communication may be personal to the sender and may not necessarily reflect the opinion of AvioHeliTronics InfoSystems. While we scan all e-mails, the Company does not guarantee that any e-mail is virus-free and cannot accept any liability for damages caused by any virus transmitted by this e-mail.*******
+
+-- 
+Dear Friend,
+
+I am Kenichi Koseki, the Executive Officer & General Manager of the  
+Risk Management Division of Chiba Bank, 1-2 Chiba-minato, Chuo-ku,  
+Chiba City, Chiba 260-8720 Japan. I have a business proposal of  
+$27,800,000.00 (Twenty Seven Million, Eight Hundred Thousand USD) only  
+for you to transact with me from my bank to your country.
+
+All conformable documents to back up the claims will be made available  
+to you prior to your acceptance and as soon as I receive your return  
+mail and I will let you know what is required of you.
+
+Your earliest response to this letter will be appreciated.
+
+Best Regards,
+Kenichi Koseki
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
