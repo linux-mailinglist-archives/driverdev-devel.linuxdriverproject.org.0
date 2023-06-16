@@ -1,41 +1,41 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EFCE2733A21
-	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Jun 2023 21:45:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 51913733A1F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Jun 2023 21:45:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8FAEB420F2;
-	Fri, 16 Jun 2023 19:45:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8FAEB420F2
+	by smtp4.osuosl.org (Postfix) with ESMTP id 136E04244B;
+	Fri, 16 Jun 2023 19:45:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 136E04244B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dHH6lP6kiyeb; Fri, 16 Jun 2023 19:45:18 +0000 (UTC)
+	with ESMTP id HFj_Po-3G8o9; Fri, 16 Jun 2023 19:45:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 30BE7420AE;
-	Fri, 16 Jun 2023 19:45:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 30BE7420AE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 93D99423EC;
+	Fri, 16 Jun 2023 19:45:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 93D99423EC
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7562B1BF5E0
- for <devel@linuxdriverproject.org>; Fri, 16 Jun 2023 19:45:08 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D37C71BF5E0
+ for <devel@linuxdriverproject.org>; Fri, 16 Jun 2023 19:45:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4D38042461
- for <devel@linuxdriverproject.org>; Fri, 16 Jun 2023 19:45:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4D38042461
+ by smtp1.osuosl.org (Postfix) with ESMTP id AD27B83C6E
+ for <devel@linuxdriverproject.org>; Fri, 16 Jun 2023 19:45:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AD27B83C6E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZUIJB87iawns for <devel@linuxdriverproject.org>;
- Fri, 16 Jun 2023 19:45:07 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 958384245E
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZDRicEWXcw6C for <devel@linuxdriverproject.org>;
+ Fri, 16 Jun 2023 19:45:06 +0000 (UTC)
+X-Greylist: delayed 13:02:37 by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8209183C74
 Received: from mx.kyzran.com (172-104-82-62.ip.linodeusercontent.com
  [172.104.82.62])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 958384245E
- for <devel@driverdev.osuosl.org>; Fri, 16 Jun 2023 19:45:06 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8209183C74
+ for <devel@linuxdriverproject.org>; Fri, 16 Jun 2023 19:45:06 +0000 (UTC)
 Received: from User (unknown [66.235.168.165])
  by mx.kyzran.com (Postfix) with SMTP id 01A153B2D4;
  Fri, 16 Jun 2023 02:25:45 +0000 (UTC)
@@ -47,7 +47,7 @@ X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20230616194508.4D38042461@smtp4.osuosl.org>
+Message-Id: <20230616194507.AD27B83C6E@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
