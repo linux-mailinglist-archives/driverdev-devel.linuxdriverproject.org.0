@@ -1,66 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5ED5773AE94
-	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Jun 2023 04:24:50 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 59E9073CA0E
+	for <lists+driverdev-devel@lfdr.de>; Sat, 24 Jun 2023 11:23:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ABA2E60B15;
-	Fri, 23 Jun 2023 02:24:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ABA2E60B15
+	by smtp1.osuosl.org (Postfix) with ESMTP id DF6FC80F57;
+	Sat, 24 Jun 2023 09:23:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DF6FC80F57
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2XUMHwu_T4oW; Fri, 23 Jun 2023 02:24:47 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2-_37SKnuAc0; Sat, 24 Jun 2023 09:23:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 839FA60A91;
-	Fri, 23 Jun 2023 02:24:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 839FA60A91
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id BF8FA80F4D;
+	Sat, 24 Jun 2023 09:23:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BF8FA80F4D
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 186601BF3A1
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Jun 2023 02:24:44 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1B7151BF3E9
+ for <devel@linuxdriverproject.org>; Sat, 24 Jun 2023 09:23:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E5CAF4000B
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Jun 2023 02:24:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E5CAF4000B
+ by smtp4.osuosl.org (Postfix) with ESMTP id 00D7A415FB
+ for <devel@linuxdriverproject.org>; Sat, 24 Jun 2023 09:23:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 00D7A415FB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kda97sm_FDux
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Jun 2023 02:24:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Krgpvaj9_9s2 for <devel@linuxdriverproject.org>;
+ Sat, 24 Jun 2023 09:23:43 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-Received: from mail.gpdati.com (mail.gpdati.com [81.208.100.89])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2ABC940142
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Jun 2023 02:24:43 +0000 (UTC)
-Received: from User (87.120.88.40) by mail.gpdati.com (10.0.1.1) with
- Microsoft SMTP Server id 14.3.498.0; Fri, 23 Jun 2023 04:13:26 +0200
-From: KOCH@osuosl.org
-Subject: CRYPTO CURRENCY PORTFOLIO
-Date: Fri, 23 Jun 2023 04:13:26 +0200
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0BC84415EC
+Received: from mtk0.covanta.com (unknown [74.201.28.6])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0BC84415EC
+ for <devel@linuxdriverproject.org>; Sat, 24 Jun 2023 09:23:42 +0000 (UTC)
+From: fosgateperez@yahoo.com
+To: devel@linuxdriverproject.org
+Date: 24 Jun 2023 05:23:39 -0400
+Message-ID: <20230624052339.DFB663452FF54747@yahoo.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <d0c98c65-3dbd-472b-ab27-dd8d1d4d8a11@gpdc.pellegrini.locale>
-To: Undisclosed recipients:;
-X-Originating-IP: [87.120.88.40]
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=osuosl.org; s=default; t=1687487083;
- bh=EBLFPaBCGf4WA/xd7w7G5Sgb6148/hyzfec/zAiQu84=;
- h=Reply-To:From:Subject:Date:To:From;
- b=LeQZdFaXf7lN+CTmXKyw8Q3p1zRFA4OhExyKGoXJeYE+ZVLA1M3kSBFU+aBX7ElY0
- VCp2t2m2dmJNFod62TXMP5WAjeoFIL8NwjnAQU5LwC8RFO+/jEcZTgC7CIEFHnNtUh
- M5pzSmX61ll8gYbkzTe2U9Bv9ECM6fuqVSlKH9Yv80sYY9KRhQRfHHeobezqTaZTAI
- R/aL/9vcB2f6ESlVj7N28npWHPYXY/0kUPESgYeddqdCyrmDtrf6/PnPqs7nYrJKGi
- z51uZ6TMCH42f3NvoAn8HGZ0gb/nDwKm5wE14PfmoTL9Lv/hjLWW0AACz9qLuEBnT1
- WHZzgkPYtxb8Q==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,27 +52,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: aminusmanesq@outlook.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: fosgateperez@yahoo.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello my dear friend. 
-
-
-This mail is originally my swift capital fx trader Inc, (A platform for Bitcoins and all other Crypto currency investment)
-
-We are contacting you because one Mr Eric Ervin had an investment portfolio with us, which we managed well for him and his profit is overdue for withdrawal, we saw your name on his record with us as his next of kin, and we have been trying to reach you or anyone related to him by name to come for this withdrawal since we can't reach Mr Eric Ervin for a long time now and from our findings, we were told he died in an accident.
-
-Kindly let us know if we are on to the right person and if you are available to receive his investment capital with his overdue profits.
-
-More details about the investment amount and profit made will be made known after full confirmation and verification of your identity.
-
-We Hope to hear from you soon.
-
-Sincerely
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RGF0ZSBGcmlkYXkgMjNyZCBqdW5lIDIwMjMKRnJvbTogQWRkcmVzczogMTEgVGVtcGxlIERyaXZl
+IEdyZWVubWVhZG93cwpTdWJkaXZpc2lvbiA4NTEwIFF1ZXpvbiBDaXR5LCBQaGlsaXBwaW5lcwoK
+TXkgRGVhciBCZWxvdmVkIGluIENocmlzdAoKR3JlZXRpbmdzIHRvIHlvdSBhbmQgeW91ciBmYW1p
+bHkuIEkgYW0gTXJzLlBlcmV6IEZvc2dhdGUsIHdpZmUgdG8gCk1yLlJhb3VsIEZvc2dhdGUgZnJv
+bSBQaGlsaXBwaW5lcywgSSBhbSA2OCB5ZWFycyBvbGQsIG15IGxhdGUgCkh1c2JhbmQgd2FzIGEg
+RGlyZWN0b3Igd2l0aCBDb25zdHJ1Y3Rpb24gQ29tcGFueSBoZXJlIGJlZm9yZSBoaXMgClN1ZGRl
+biBEZWF0aCBhZnRlciBhIGJyaWVmIG9mIGlsbG5lc3MgdGhhdCBsYXN0ZWQgZm9yIG9ubHkgZm91
+ciAKZGF5cywgYnV0IGJlZm9yZSBoaXMgZGVhdGgsIGhlIERlcG9zaXRlZCB0aGUgU3VtIG9mIMKj
+NSwyMDAsMDAwLjAwIApHQlAgd2l0aCBvbmUgb2YgdGhlIEJhbmsgaGVyZSBpbiBQaGlsaXBwaW5l
+cyB3aXRoIG15IG5hbWUgYW5kIGkgCmFtIHN1ZmZlcmluZyBmcm9tIHBhbmNyZWF0aWMgY2FuY2Vy
+LCBNeSBjb25kaXRpb24gaXMgcmVhbGx5IGJhZCAKYW5kIGl0IGlzIHF1aXRlIG9idmlvdXMgdGhh
+dCBJIHdvbuKAmXQgbGl2ZSBtb3JlIHRoYW4gdHdvIG1vbnRocyAKYWNjb3JkaW5nIHRvIG15IGRv
+Y3RvciwgYW5kIGkgaGF2ZSBubyBDaGlsZCB3aG8gaXMgZ29pbmcgdG8gdGFrZSAKY2FyZSBvZiB0
+aGlzIEh1Z2UgYW1vdW50IG9mIE1vbmV5LCBJIGFtIHdpbGxpbmcgdG8gZG9uYXRlIHRoZSBzdW0g
+Cm9mICDCozUsMjAwLDAwMC4wMCBHQlAgZm9yIHlvdSB0byBoZWxwIHdpZG93cyBhbmQgdGhlIGxl
+c3MgCnByaXZpbGVnZWQgb25lcyBpbiB0aGUgcnVyYWwgYW5kIHVyYmFuIGFyZWFzIGFuZCB0byBj
+YXJyeSBvdXQgCmNoYXJpdHkgd29ya3MgaW4geW91ciBDb3VudHJ5IGFuZCBhcm91bmQgdGhlIFdv
+cmxkIG9uIG15IEJlaGFsZi4KCldhaXRpbmcgZm9yIHlvdXIgVXJnZW50IFJlc3BvbnNlLgoKUmVt
+YWluIGJsZXNzZWQgaW4gdGhlIG5hbWUgb2YgdGhlIExvcmQuCgpZb3VycyBpbiBDaHJpc3QgCgpN
+cnMuRm9zZ2F0ZQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8v
+ZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJk
+ZXYtZGV2ZWwK
