@@ -1,64 +1,45 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 95D0D73F666
-	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Jun 2023 10:04:24 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3A88782138;
-	Tue, 27 Jun 2023 08:04:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3A88782138
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zE-mxN2DIWo9; Tue, 27 Jun 2023 08:04:22 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0BDBA81336;
-	Tue, 27 Jun 2023 08:04:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0BDBA81336
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 849E01BF2B8
- for <devel@linuxdriverproject.org>; Tue, 27 Jun 2023 08:04:19 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id AA72973FCE0
+	for <lists+driverdev-devel@lfdr.de>; Tue, 27 Jun 2023 15:29:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6A8CC60797
- for <devel@linuxdriverproject.org>; Tue, 27 Jun 2023 08:04:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6A8CC60797
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4734761400;
+	Tue, 27 Jun 2023 13:29:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4734761400
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3YVJUbm_5yom for <devel@linuxdriverproject.org>;
- Tue, 27 Jun 2023 08:04:18 +0000 (UTC)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gZ4heEeuXnrj; Tue, 27 Jun 2023 13:29:49 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1FB74613FD;
+	Tue, 27 Jun 2023 13:29:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1FB74613FD
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id B034F1BF841
+ for <devel@linuxdriverproject.org>; Tue, 27 Jun 2023 13:29:46 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8A2F480A86
+ for <devel@linuxdriverproject.org>; Tue, 27 Jun 2023 13:29:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8A2F480A86
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3AywufSR1LxO for <devel@linuxdriverproject.org>;
+ Tue, 27 Jun 2023 13:29:46 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9F6C16076C
-Received: from hosted-4-client-dedicated-live-server2.livegpstrack.com
- (hosted-4-client-dedicated-live-server2.livegpstrack.com [103.102.239.60])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9F6C16076C
- for <devel@linuxdriverproject.org>; Tue, 27 Jun 2023 08:04:18 +0000 (UTC)
-From: =?ISO-8859-1?B?Q2FyVHJhY2sgR1BT?=<noreply@livegpstrack.com>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D5F6280A5F
+Received: from mtk0.wrenchgroup.com (unknown [74.201.28.73])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D5F6280A5F
+ for <devel@linuxdriverproject.org>; Tue, 27 Jun 2023 13:29:45 +0000 (UTC)
+From: dorisgomo4@gmail.com
 To: devel@linuxdriverproject.org
-Subject: =?ISO-8859-1?B?T2ZmaWNpYWwgRGVhbGVyIGZvciBDYXJUcmFjaw==?=
-Date: 27 Jun 2023 05:05:00 -0300
-Message-ID: <20230627050500.B0C48468281F5C46@livegpstrack.com>
+Date: 27 Jun 2023 09:29:37 -0400
+Message-ID: <20230627092936.5F601ED4C73BD13F@gmail.com>
 MIME-Version: 1.0
-X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns;
- s=1665719670.livegpstrack; d=livegpstrack.com; 
- b=gSRekP9zVcEqKDmGCbSoDwIHQzihsMCfLB94tQHRvBYHVlB4G+6YZbQBNFKzTEsOc01OAWWpFwgH
- zsjwNAC/ycVWxyMTg6CO7eOhUs5aK7iqhf3XIeMTeIx3wgvqjEg+5Pfgc0W5SpBhPWw5XS/PFozG
- /ywLvZY9S81o0DVfEfI=;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed;
- s=1665719670.livegpstrack; d=livegpstrack.com; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=noreply@livegpstrack.com; 
- bh=u0Q2yr7MNpmdxWhOKgt5zAaU+Dc=;
- b=OTyU98Zwv2/CZGiufRS6RO6Qv1oB/iQmSauO0co+6QU7gx08ciSl15KdNK0YLeazwFPVg7GvpSWq
- 0FqU+0B+eokXYaHBoRqGOLZasFB2OWoOvJTlmkPj5LAJ9/NTexHqkB/N4lT94OoSFLgLtB4n0670
- 1OJZiRevWe5+UMPsszQ=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=livegpstrack.com
- header.i=noreply@livegpstrack.com header.a=rsa-sha1
- header.s=1665719670.livegpstrack header.b=OTyU98Zw
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,45 +52,60 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: =?ISO-8859-1?B?Q2FyVHJhY2sgR1BT?= <salesgps@cartrackgps.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: dorisgomo4@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Looking for distributors
-
-My name is Paul Novak from Car Track GPS and we're looking for distributors for our tracking products.
-We design innovative software and hardware location technologies.
-
-Our innovative web based software allows owners to track fleets in realtime by iOS or Android Apps.
-If a vehicle is stolen you can stop the engine and recover it.
-
-With our Professional Kit you can start your own tracking business or just resell the software and hardware.
-
-Our products are ideal for fleet tracking and recovery of stolen vehicles. Insurance companies, trucking companies and car dealers have been our clients for over 20 years.
-This could be a good choice If you want to start a new business or diversify your investment.
-
-The business consists in offering location services to end customers through a web site.
-This is accomplished through a Web platform that we provide as a turnkey server installed at your end.
-
-This service will allow customers to track their fleets from any web browser - even from Tablets and Smartphones - with a username and password.
-We have Professional Kits available which include full Software licenses, so once you get the KIT and start testing you will not need to invest again in the Software or have to pay any monthly fee.
-
-If you're interested I can send you the proposal for your consideration.
-
-Best regards,
-Paul Novak
-Car Track GPS
-Miami: +1 786 352 8766
-cartrack gps .com
-
-We have clients in over 100 countries and 20 years of experience in GPS tracking systems.
-ID: 213281
-
-If you would like to opt-out please reply to this email with the subject REMOVE.
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RGVhciBGcmllbmQsCgpNeSBOYW1lIGlzIE1pc3MgRG9yaXMgR29tbyBmcm9tIENvdGUgZCdJdm9p
+cmUsIEknbSAxNiB5ZWFycyBvbGQKb3JpZ2luYXRlZCBmcm9tIEJvbmRvdWtvdSwgQ8O0dGUgIGQn
+SXZvaXJlIC4gSSBiZWxpZXZlIHRoYXQgaXQgaXMgCmJldHRlciB3ZSBrbm93IGVhY2ggb3RoZXIg
+YmV0dGVyIGJlY2F1c2UgSSBiZWxpZXZlIHRoYXQgYW55IGdvb2QgCnJlbGF0aW9uc2hpcCB3aWxs
+IG9ubHkgbGFzdCBpZgppdCBpcyBidWlsdCBvbiB0cnVzdCBhbmQgbXV0dWFsIHVuZGVyc3RhbmRp
+bmcuCgpQbGVhc2UgSSB3YW50IHlvdSB0byByZWFkIHRoaXMgbGV0dGVyIHZlcnkgY2FyZWZ1bGx5
+IGFuZCBJIG11c3QKYXBvbG9naXplIGZvciBiYXJnaW5nIHRoaXMgbWVzc2FnZSBpbnRvIHlvdXIg
+bWFpbGJveCB3aXRob3V0IGFueQpmb3JtYWwgaW50cm9kdWN0aW9uIGR1ZSB0byB0aGUgdXJnZW5j
+eSBhbmQgY29uZmlkZW50aWFsaXR5IG9mIAp0aGlzIGlzc3VlLgoKSSBsb3N0IG15IHBhcmVudHMg
+dGhyb3VnaCB0aGUgY3Jpc2VzIHdhciBsYXN0IHRpbWUgaW4gQ29uZ28gUkRQLCAKaGUgaXMgYSBn
+b2xkIG1pbmVyLCBteSB1bmNsZSBjb25zcGlyZWQgYW5kIHNvbGQgbXkgZmF0aGVyJ3MgCnByb3Bl
+cnRpZXMgYW5kIGxlZnQgbm90aGluZyBmb3IgbWUsIG9uIGEgZmFpdGhmdWwgbW9ybmluZyBJIApv
+cGVuZWQgbXkgbGF0ZSBmYXRoZXIncyByb29tIHdoaWNoIEkgc2F3IGEgYnJpZWZjYXNlIGFuZCBJ
+IG9wZW5lZCAKaXQgdGhlcmUgSSBmb3VuZCBkb2N1bWVudHMgaW4gd2hpY2ggaW5kaWNhdGVkIHRo
+YXQgbXkgbGF0ZQpmYXRoZXIgZGVwb3NpdGVkIGFtb3VudCBvZiBtb25leSBpbiBvbmUgb2YgdGhl
+IGJhbmsgaW4gTG9uZG9uIGluCm15IG5hbWUgYXMgaGlzIG5leHQgb2Yga2luLgoKSSBoYXZlIGNv
+bnRhY3RlZCB0aGUgYmFuayBieSBjYWxsIGFuZCBieSBlbWFpbCB0byB3aXRoZHJhdyB0aGUgCm1v
+bmV5IHNvIHRoYXQgSSBjYW4gc3RhcnQgYSBiZXR0ZXIgbGlmZSBhbmQgdGFrZSBjYXJlIG9mIG15
+c2VsZi4gIApUaGUgYnJhbmNoIG1hbmFnZXIgb2YgdGhlIGJhbmsgd2hvbSBJIGVtYWlsZWQgIHRv
+bGQgbWUgdGhhdCBteSAKZmF0aGVyJ3MgaW5zdHJ1Y3Rpb24gdG8gdGhlIGJhbmsgd2FzIHRoYXQg
+dGhlIG1vbmV5IHNob3VsZCBiZSAKcmVsZWFzZWQgdG8gbWUgb25seSB3aGVuIEkgYW0gbWFycmll
+ZCBvciBpZiBJIHByZXNlbnQgYSB0cnVzdGVlIAp3aG8gd2lsbCBoZWxwIG1lIGFuZCBpbnZlc3Qg
+dGhlIG1vbmV5IG92ZXJzZWFzLgoKSSBoYXZlIGNob3NlbiB0byBjb250YWN0IHlvdSBhbmQgSSBi
+ZWxpZXZlIHRoYXQgeW91IHdpbGwgbm90IApiZXRyYXkgbXkKdHJ1c3Qgb24geW91LCB0aG91Z2gg
+eW91IG1heSB3b25kZXIgd2h5IEkgc28gc29vbiByZXZlYWxlZCBteXNlbGYgCnRvCnlvdSB3aXRo
+b3V0IGtub3dpbmcgeW91IHdlbGwsIEkgYW0gY29udmluY2UgdGhhdCB5b3UgYXJlIHRoZSByZWFs
+CnBlcnNvbiB0byBoZWxwIG1lIG91dC4gSSB3aWxsIGRpc2Nsb3NlIG11Y2ggdG8geW91IGlmIHlv
+dSBjYW4gCmFzc2lzdAptZSB0byByZWxvY2F0ZSB0byB5b3VyIGNvdW50cnkgYmVjYXVzZSBteSB3
+aWNrZWQgdW5jbGUgaGFzIAp0aHJlYXRlbmVkCnRvIGFzc2Fzc2luYXRlIG1lLiBUaGUgYW1vdW50
+IGludm9sdmVkIGlzICQxMC41IE1pbGxpb24gRG9sbGFycyAKd2l0aApzb21lIGtpbG9zIG9mIEdv
+bGQgQmFycyBhbmQgSSBoYXZlIGNvbmZpcm1lZCBmcm9tIHRoZSBiYW5rIGluIApMb25kb24gd2hl
+cmUgdGhlIEdvbGQgQkFSUyB3ZXJlIGRlcG9zaXRlZC4gWW91IHdpbGwgYWxzbyBoZWxwIG1lIAp0
+byBwbGFjZQp0aGUgbW9uZXkgaW4gYSBtb3JlIHByb2ZpdGFibGUgYnVzaW5lc3MgdmVudHVyZSBp
+biB5b3VyIGNvdW50cnkuCgpIb3dldmVyIHlvdSB3aWxsIGhlbHAgbWUgYnkgcmVjb21tZW5kaW5n
+IGEgbmljZSB1bml2ZXJzaXR5IGluIAp5b3VyCmNvdW50cnkgc28gdGhhdCBJIGNhbiBjb21wbGV0
+ZSBteSBlZHVjYXRpb24sIGl0IGlzIG15IGludGVudGlvbiAKdG8KY29tcGVuc2F0ZSB5b3Ugd2l0
+aCAzMCUgZnJvbSB0aGUgdG90YWwgbW9uZXkgZm9yIHlvdXIgbm9ibGUgCmFzc2lzdGFuY2UKYW5k
+IHRoZSBiYWxhbmNlIHNoYWxsIGJlIG15IGNhcGl0YWwgZm9yIGVzdGFibGlzaG1lbnQgYWZ0ZXIg
+bXkgCnNjaG9vbC4KCgpJbiByZWNlaXB0IG9mIHlvdXIgYmVsb3cgaW5mb3JtYXRpb27igJlzLCBJ
+IHdpbGwgc3VtbWl0IGEgbGV0dGVyIG9mCmludHJvZHVjdGlvbi9yZWNvbW1lbmRhdGlvbiB0byB0
+aGUgYmFuayBpbW1lZGlhdGVseSBpbiB5b3VyIG5hbWUgCmFzIG15CnRydXN0ZWUuIFBsZWFzZSBy
+ZWFkIHRoaXMgcHJvcG9zYWwgYXMgdXJnZW50IGFuZCBjb250YWN0IG1lIHdpdGggCnlvdXIKaW5m
+b3JtYXRpb24gYmVsb3c6IGhlcmUgaXMgbXkgcHJpdmF0ZSBlbWFpbCBhZGRyZXNzLgooIGRvcmlz
+Z29tbzRAZ21haWwuY29tICkKCjEuIE5hbWUgSW4gZnVsbDouLi4uLi4uLi4KMi4gQWRkcmVzczou
+Li4uLi4uLi4uLi4uLgozLiBOYXRpb25hbGl0eTouLi4uLi4uLi4uCjQuIEFnZTouLi4uLi4uLi4K
+NS4gU2V4Li4uLi4uLi4uLgo2LiBPY2N1cGF0aW9uOiAuLi4uLi4uLi4uCjcuIE1hcml0YWwgU3Rh
+dHVzOi4uLi4uLi4KOC4gUGhvbmUuLi4uLi4uLi4KCllvdXJzIEZhaXRoZnVsbHksCgpNaXNzIERv
+cmlzIEdvbW8uCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9k
+cml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRl
+di1kZXZlbAo=
