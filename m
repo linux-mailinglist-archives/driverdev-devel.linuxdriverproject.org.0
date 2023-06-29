@@ -2,62 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3CBC47418C4
-	for <lists+driverdev-devel@lfdr.de>; Wed, 28 Jun 2023 21:18:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D46F741E2B
+	for <lists+driverdev-devel@lfdr.de>; Thu, 29 Jun 2023 04:19:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 304B340904;
-	Wed, 28 Jun 2023 19:18:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 304B340904
+	by smtp2.osuosl.org (Postfix) with ESMTP id 18AB54011F;
+	Thu, 29 Jun 2023 02:19:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 18AB54011F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vhqz9pR-F1VH; Wed, 28 Jun 2023 19:18:29 +0000 (UTC)
+	with ESMTP id BmlhjlCz84mn; Thu, 29 Jun 2023 02:19:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 08F1940570;
-	Wed, 28 Jun 2023 19:18:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 08F1940570
+	by smtp2.osuosl.org (Postfix) with ESMTP id EF3C8400BF;
+	Thu, 29 Jun 2023 02:19:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EF3C8400BF
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 013321BF2A7
- for <devel@linuxdriverproject.org>; Wed, 28 Jun 2023 19:18:25 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8F27A1BF277
+ for <devel@linuxdriverproject.org>; Thu, 29 Jun 2023 02:19:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CB5E2832C9
- for <devel@linuxdriverproject.org>; Wed, 28 Jun 2023 19:18:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CB5E2832C9
+ by smtp1.osuosl.org (Postfix) with ESMTP id 698AE81415
+ for <devel@linuxdriverproject.org>; Thu, 29 Jun 2023 02:19:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 698AE81415
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GDy2sR3j1ERL for <devel@linuxdriverproject.org>;
- Wed, 28 Jun 2023 19:18:23 +0000 (UTC)
-X-Greylist: delayed 03:08:28 by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 76A5A819C8
-Received: from mail.tavsvolga.ru (mail.tavsvolga.ru [213.234.28.234])
- by smtp1.osuosl.org (Postfix) with ESMTP id 76A5A819C8
- for <devel@driverdev.osuosl.org>; Wed, 28 Jun 2023 19:18:23 +0000 (UTC)
-Received: by tavsvolga.ru (Sendmail, from userid 1002)
- id 0EB816D697; Wed, 28 Jun 2023 19:09:48 +0300 (KALT)
-X-Envelope-Sender: 777@tavsvolga.ru
-X-Envelope-Recipient: devel@driverdev.osuosl.org
-X-Original-To: devel@driverdev.osuosl.org
-Received: from DESKTOP-Q9P0FP8.TL-WA850RE (unknown [41.85.181.27])
- (Authenticated sender: 777@tavsvolga.ru)
- by tavsvolga.ru (Sendmail) with ESMTPA id 7032D6643A;
- Wed, 28 Jun 2023 16:35:58 +0300 (KALT)
+ with ESMTP id rJNy8vny2uMX for <devel@linuxdriverproject.org>;
+ Thu, 29 Jun 2023 02:19:24 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6EF528140E
+Received: from mail.silverplan.com.hk.local (mail.silverplan.com.hk
+ [203.85.32.252])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6EF528140E
+ for <devel@driverdev.osuosl.org>; Thu, 29 Jun 2023 02:19:24 +0000 (UTC)
+Received: from User (141.98.6.89) by mail.silverplan.com.hk.local
+ (192.168.168.10) with Microsoft SMTP Server id 14.3.382.0; Thu, 29 Jun 2023
+ 10:21:11 +0800
+From: "Ms. Marylyne Vantelli" <canon@silverplan.com.hk>
+Subject: Greetings:
+Date: Thu, 29 Jun 2023 04:19:17 +0200
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Representative Needed
-To: Recipients <777@tavsvolga.ru>
-From: Global Trader<777@tavsvolga.ru>
-Date: Wed, 28 Jun 2023 14:35:50 +0100
-Message-Id: <20230628160948.0EB816D697@tavsvolga.ru>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=tavsvolga.ru; s=default; t=1687968588;
- bh=72nh04VcPo93HxZk/za927slPj2ojceNsiNd2aFTGUY=;
- h=Subject:To:From:Date:Reply-To;
- b=C+rxhtJZXn9lAIIOxKcF7M7kTSMwUIZVCj8AjUhEkP4TjrO2Vecp+yb21UGTZI4SJ
- ezN+0BMVApoclyGQvLq4BGPEYuMPmS32Dwro8WcjlQ3kxYWk6nNSw7X2+53xsMtKof
- LUptq8o2Xe4TD1USq36zRuo/y649NfFJdeFVFPw8=
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <11d96ba4-0ffb-42df-9b77-b7280a618fc5@mail.silverplan.com.hk.local>
+To: Undisclosed recipients:;
+X-Originating-IP: [141.98.6.89]
+X-EsetResult: clean, is OK
+X-EsetId: 37303A29BA41935B657467
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,14 +64,31 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: pr5502782@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: marylynevantelli20@gmail.com
+Content-Type: text/plain; charset="cp1251"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is , Mrs Rita Potter Rogers we need a Company Representative in your city location, you can work online or at home and get good payment, contact us if interested on this Email: pr5502782@gmail.com
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RGVhciBCZWxvdmVkLCAKCkxpZmUgaXMgZ3JhZHVhbGx5IHBhc3NpbmcgYXdheSBmcm9tIG1lIGFz
+IGEgcmVzdWx0IG9mIG15IHByZXNlbnQgbWVkaWNhbCBjb25kaXRpb24sIGknbSBiYXR0bGluZyB3
+aXRoIGx1bmcgY2FuY2VyIGFuZCBteSBwZXJzb25hbCBkb2N0b3IgY29uZmlkZWQgaW4gbWUgeWVz
+dGVyZGF5IHRoYXQgSSBoYXZlIG9ubHkgYSBmZXcgbW9yZSB3ZWVrcyB0byBsaXZlLiBJbiB2aWV3
+IG9mIHRoaXMgc2V0YmFjaywgSSB3YW50IHRvIGRvbmF0ZSBteSBlc3RhdGUgZm9yIGh1bWFuaXRh
+cmlhbiBhc3Npc3RhbmNlLCBzaW5jZSB0aGlzIGhhcyBhbHdheXMgYmVlbiB0aGUgcGxhbiBvZiBt
+eSBsYXRlIGh1c2JhbmQgYW5kIGJlc2lkZXMgSSBoYXZlIG5vIGNoaWxkIGFsc28gd2l0aCB0aGUg
+Y3VycmVudCByZWZ1Z2VlIGNyaXNpcyBhcm91bmQgdGhlIHdvcmxkLiBJbiBhbiBlZmZvcnQgdG8g
+Y29tcGxpbWVudCB0aGUgZ29vZCB3b3JrIG9mIG91ciBjcmVhdG9yIGZvciBodW1hbml0eSBhbmQg
+dGhlIHdpc2ggb2YgbXkgbGF0ZSBIdXNiYW5kIEkgZG9uYXRlIHRoZSBzdW0gb2YgozEwLDAwMCww
+MDAuMDAgR0JQIChUZW4gTWlsbGlvbiBHQlApIHRvIHlvdS4gVXBvbiB5b3VyIGFja25vd2xlZGdl
+bWVudCBvZiB0aGlzIGVtYWlsIGFuZCBpbmZvcm1pbmcgbWUgb2YgeW91ciBuYXRpb25hbGl0eSBh
+bmQgY3VycmVudCBwbGFjZSBvZiByZXNpZGVudCwgbXkgQmFuayB3aWxsIGZhY2lsaXRhdGUgZHVl
+IHByb2Nlc3NlcyBmb3IgdHJhbnNmZXIgb2YgdGhpcyBsZWdhY3kgdG8geW91LiBNYXkgR29kIGJs
+ZXNzIHlvdSBhcyB5b3UgdXNlIHRoaXMgbW9uZXkganVkaWNpb3VzbHkgZm9yIHRoZSB3b3JrIG9m
+IGNoYXJpdHkgdG8gaGVscCB0aGUgbGVzcyBwcml2aWxlZ2VkLiBJIGludGVuZCBmb3IgeW91IHRv
+IHJldGFpbiAzMCUgb2YgdGhlIGZ1bmRzIGZvciB5b3VyIGNvbW1pdG1lbnQgYW5kIHNhY3JpZmlj
+ZSB0byBtYWtlIHRoaXMgcG9zc2libGUuIFRoYW5rIHlvdQoKU2luY2VyZSByZWdhcmRzLCAKCk1z
+LiBNYXJ5bHluZSBWYW50ZWxsaSAKRW1haWw6IG1hcnlseW5ldmFudGVsbGkyMEBnbWFpbC5jb20K
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFp
+bGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5s
+aW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
