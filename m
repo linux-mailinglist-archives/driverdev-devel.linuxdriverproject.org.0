@@ -1,46 +1,60 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4977974D70E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jul 2023 15:09:32 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D697B74E84D
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Jul 2023 09:45:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E0613811F3;
-	Mon, 10 Jul 2023 13:09:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E0613811F3
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RWR5cgUWf3LD; Mon, 10 Jul 2023 13:09:30 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B8B478133A;
-	Mon, 10 Jul 2023 13:09:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B8B478133A
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 190701BF418
- for <devel@linuxdriverproject.org>; Mon, 10 Jul 2023 13:09:26 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 00250404F6
- for <devel@linuxdriverproject.org>; Mon, 10 Jul 2023 13:09:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 00250404F6
+	by smtp2.osuosl.org (Postfix) with ESMTP id 78DFB402D0;
+	Tue, 11 Jul 2023 07:45:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 78DFB402D0
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QFabjL9_ZDxW for <devel@linuxdriverproject.org>;
- Mon, 10 Jul 2023 13:09:25 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 565EB40220
-Received: from mtk0.wrenchgroup.com (unknown [74.201.28.155])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 565EB40220
- for <devel@driverdev.osuosl.org>; Mon, 10 Jul 2023 13:09:25 +0000 (UTC)
-From: dorisgomo4@gmail.com
-To: devel@driverdev.osuosl.org
-Subject: Re:FROM DORRIS GOMO
-Date: 10 Jul 2023 09:09:23 -0400
-Message-ID: <20230710090923.6A5BDD771DF93207@gmail.com>
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id eR1svemOPLUp; Tue, 11 Jul 2023 07:45:12 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6614C404BA;
+	Tue, 11 Jul 2023 07:45:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6614C404BA
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BF10E1BF2C4
+ for <devel@linuxdriverproject.org>; Tue, 11 Jul 2023 07:45:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id A62B1815AD
+ for <devel@linuxdriverproject.org>; Tue, 11 Jul 2023 07:45:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A62B1815AD
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UML24AUXpoew for <devel@linuxdriverproject.org>;
+ Tue, 11 Jul 2023 07:45:09 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 113D581501
+Received: from pollux.zolcomp.hu (pollux.zolcomp.hu [86.101.129.155])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 113D581501
+ for <devel@linuxdriverproject.org>; Tue, 11 Jul 2023 07:45:08 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by pollux.zolcomp.hu (Postfix) with ESMTP id 344C0401AC;
+ Tue,  4 Jul 2023 02:46:58 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at pollux.zolcomp.hu
+Received: from pollux.zolcomp.hu ([127.0.0.1])
+ by localhost (pollux.zolcomp.hu [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id 8rwqOkZ_9nwP; Tue,  4 Jul 2023 02:46:57 +0200 (CEST)
+Received: from User (unknown [93.95.27.122])
+ (Authenticated sender: info@bermuszvizsga.hu)
+ by pollux.zolcomp.hu (Postfix) with ESMTPA id 5A5CB35988;
+ Mon,  3 Jul 2023 15:14:40 +0200 (CEST)
+From: "RoyalLink Cargo And Logistics Company"<info@bermuszvizsga.hu>
+Subject: Package Delivery
+Date: Mon, 3 Jul 2023 06:14:43 -0700
 MIME-Version: 1.0
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20230704004658.344C0401AC@pollux.zolcomp.hu>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -53,59 +67,23 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: dorisgomo4@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: patrickclack990@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGVhciBGcmllbmQsCgpNeSBOYW1lIGlzIE1pc3MgRG9yaXMgR29tbyBmcm9tIENvdGUgZCdJdm9p
-cmUsIEknbSAxNiB5ZWFycyBvbGQKb3JpZ2luYXRlZCBmcm9tIEJvbmRvdWtvdSwgQ8O0dGUgZCdJ
-dm9pcmUgLiBJIGJlbGlldmUgdGhhdCBpdCBpcwpiZXR0ZXIgd2Uga25vdyBlYWNoIG90aGVyIGJl
-dHRlciBiZWNhdXNlIEkgYmVsaWV2ZSB0aGF0IGFueSBnb29kCnJlbGF0aW9uc2hpcCB3aWxsIG9u
-bHkgbGFzdCBpZiBpdCBpcyBidWlsdCBvbiB0cnVzdCBhbmQgbXV0dWFsCnVuZGVyc3RhbmRpbmcu
-CgpQbGVhc2UgSSB3YW50IHlvdSB0byByZWFkIHRoaXMgbGV0dGVyIHZlcnkgY2FyZWZ1bGx5IGFu
-ZCBJIG11c3QKYXBvbG9naXplIGZvciBiYXJnaW5nIHRoaXMgbWVzc2FnZSBpbnRvIHlvdXIgbWFp
-bGJveCB3aXRob3V0IGFueQpmb3JtYWwgaW50cm9kdWN0aW9uIGR1ZSB0byB0aGUgdXJnZW5jeSBh
-bmQgY29uZmlkZW50aWFsaXR5IG9mCnRoaXMgaXNzdWUuCgpJIGxvc3QgbXkgcGFyZW50cyB0aHJv
-dWdoIHRoZSBjcmlzZXMgd2FyIGxhc3QgdGltZSBpbiBDb25nbyBSRFAsCmhlIGlzIGEgZ29sZCBt
-aW5lciwgbXkgdW5jbGUgY29uc3BpcmVkIGFuZCBzb2xkIG15IGZhdGhlcidzCnByb3BlcnRpZXMg
-YW5kIGxlZnQgbm90aGluZyBmb3IgbWUsIG9uIGEgZmFpdGhmdWwgbW9ybmluZyBJCm9wZW5lZCBt
-eSBsYXRlIGZhdGhlcidzIHJvb20gd2hpY2ggSSBzYXcgYSBicmllZmNhc2UgYW5kIEkgb3BlbmVk
-Cml0IHRoZXJlIEkgZm91bmQgZG9jdW1lbnRzIGluIHdoaWNoIGluZGljYXRlZCB0aGF0IG15IGxh
-dGUgZmF0aGVyCmRlcG9zaXRlZCBhbW91bnQgb2YgbW9uZXkgaW4gb25lIG9mIHRoZSBiYW5rIGlu
-IExvbmRvbiBpbiBteSBuYW1lCmFzIGhpcyBuZXh0IG9mIGtpbi4KCkkgaGF2ZSBjb250YWN0ZWQg
-dGhlIGJhbmsgYnkgY2FsbCBhbmQgYnkgZW1haWwgdG8gd2l0aGRyYXcgdGhlCm1vbmV5IHNvIHRo
-YXQgSSBjYW4gc3RhcnQgYSBiZXR0ZXIgbGlmZSBhbmQgdGFrZSBjYXJlIG9mIG15c2VsZi4KVGhl
-IGJyYW5jaCBtYW5hZ2VyIG9mIHRoZSBiYW5rIHdob20gSSBlbWFpbGVkIHRvbGQgbWUgdGhhdCBt
-eQpGYXRoZXIncyBpbnN0cnVjdGlvbiB0byB0aGUgYmFuayB3YXMgdGhhdCB0aGUgbW9uZXkgc2hv
-dWxkIGJlCnJlbGVhc2VkIHRvIG1lIG9ubHkgd2hlbiBJIGFtIG1hcnJpZWQgb3IgaWYgSSBwcmVz
-ZW50IGEgdHJ1c3RlZQp3aG8gd2lsbCBoZWxwIG1lIGFuZCBpbnZlc3QgdGhlIG1vbmV5IG92ZXJz
-ZWFzLgoKSSBoYXZlIGNob3NlbiB0byBjb250YWN0IHlvdSBhbmQgSSBiZWxpZXZlIHRoYXQgeW91
-IHdpbGwgbm90CmJldHJheSBteSB0cnVzdCBvbiB5b3UsIHRob3VnaCB5b3UgbWF5IHdvbmRlciB3
-aHkgSSBzbyBzb29uCnJldmVhbGVkIG15c2VsZiB0byB5b3Ugd2l0aG91dCBrbm93aW5nIHlvdSB3
-ZWxsLCBJIGFtIGNvbnZpbmNlCnRoYXQgeW91IGFyZSB0aGUgcmVhbCBwZXJzb24gdG8gaGVscCBt
-ZSBvdXQuIEkgd2lsbCBkaXNjbG9zZSBtdWNoCnRvIHlvdSBpZiB5b3UgY2FuIGFzc2lzdCBtZSB0
-byByZWxvY2F0ZSB0byB5b3VyIGNvdW50cnkgYmVjYXVzZQpNeSB3aWNrZWQgdW5jbGUgaGFzIHRo
-cmVhdGVuZWQgdG8gYXNzYXNzaW5hdGUgbWUuIFRoZSBhbW91bnQKaW52b2x2ZWQgaXMgJDEwLjUg
-TWlsbGlvbiBEb2xsYXJzIHdpdGggc29tZSBraWxvcyBvZiBHb2xkIEJhcnMKYW5kIEkgaGF2ZSBj
-b25maXJtZWQgZnJvbSB0aGUgYmFuayBpbiBMb25kb24gd2hlcmUgdGhlIEdvbGQgQkFSUwp3ZXJl
-IGRlcG9zaXRlZC4gWW91IHdpbGwgYWxzbyBoZWxwIG1lIHRvIHBsYWNlIHRoZSBtb25leSBpbiBh
-Cm1vcmUgcHJvZml0YWJsZSBidXNpbmVzcyB2ZW50dXJlcyBpbiB5b3VyIGNvdW50cnkuCgpIb3dl
-dmVyIHlvdSB3aWxsIGhlbHAgbWUgYnkgcmVjb21tZW5kaW5nIGEgbmljZSB1bml2ZXJzaXR5IGlu
-CnlvdXIgY291bnRyeSBzbyB0aGF0IEkgY2FuIGNvbXBsZXRlIG15IGVkdWNhdGlvbiwgaXQgaXMg
-bXkKaW50ZW50aW9uIHRvIGNvbXBlbnNhdGUgeW91IHdpdGggMzAlIGZyb20gdGhlIHRvdGFsIG1v
-bmV5IGZvcgp5b3VyIG5vYmxlIGFzc2lzdGFuY2UgYW5kIHRoZSBiYWxhbmNlIHNoYWxsIGJlIG15
-IGNhcGl0YWwgZm9yCmVzdGFibGlzaG1lbnQgYWZ0ZXIgbXkgc2Nob29sLgoKCkluIHJlY2VpcHQg
-b2YgeW91ciBiZWxvdyBpbmZvcm1hdGlvbiwgSSB3aWxsIHN1bW1pdCBhIGxldHRlciBvZgppbnRy
-b2R1Y3Rpb24vcmVjb21tZW5kYXRpb24gdG8gdGhlIGJhbmsgaW1tZWRpYXRlbHkgaW4geW91ciBu
-YW1lCmFzIG15IHRydXN0ZWUuIFBsZWFzZSByZWFkIHRoaXMgcHJvcG9zYWwgYXMgdXJnZW50IGFu
-ZCBjb250YWN0IG1lCndpdGggeW91ciBpbmZvcm1hdGlvbiBiZWxvdzogaGVyZSBpcyBteSBwcml2
-YXRlIGVtYWlsIGFkZHJlc3MuCijCoGRvcmlzZ29tbzRAZ21haWwuY29twqApCgoxLiBOYW1lIElu
-IGZ1bGw6Li4uLi4uLi4uCjIuIEFkZHJlc3M6Li4uLi4uLi4uLi4uLi4KMy4gTmF0aW9uYWxpdHk6
-Li4uLi4uLi4uLgo0LiBBZ2U6Li4uLi4uLi4uCjUuIFNleC4uLi4uLi4uLi4KNi4gT2NjdXBhdGlv
-bjogLi4uLi4uLi4uLgo3LiBNYXJpdGFsIFN0YXR1czouLi4uLi4uCjguIFBob25lLi4uLi4uLi4u
-CgpZb3VycyBGYWl0aGZ1bGx5LAoKTWlzcyBEb3JpcyBHb21vLgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGlu
-dXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Hello,
+
+I am writing you this email to bring to your attention that you have a package with us and we want to know when you will be available to receive it. kindly reply back to us as soon as you receive this message.
+
+Regards,
+
+Mr Patrick Clackson
+Information Team
+RoyalLink Cargo
+And Logistics Company
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
