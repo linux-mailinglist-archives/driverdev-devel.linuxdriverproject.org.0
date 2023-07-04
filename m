@@ -1,50 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 82CE27479A8
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Jul 2023 23:42:38 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F1889747A2A
+	for <lists+driverdev-devel@lfdr.de>; Wed,  5 Jul 2023 00:28:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A958440519;
-	Tue,  4 Jul 2023 21:42:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A958440519
+	by smtp3.osuosl.org (Postfix) with ESMTP id E63FE60A9A;
+	Tue,  4 Jul 2023 22:28:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E63FE60A9A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 15giQ_o3dPFO; Tue,  4 Jul 2023 21:42:35 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ryjIIy35QnDo; Tue,  4 Jul 2023 22:28:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5897E40022;
-	Tue,  4 Jul 2023 21:42:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5897E40022
+	by smtp3.osuosl.org (Postfix) with ESMTP id BA13C60A70;
+	Tue,  4 Jul 2023 22:28:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BA13C60A70
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 72FAE1BF25F
- for <devel@linuxdriverproject.org>; Tue,  4 Jul 2023 21:42:32 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2D4851BF297
+ for <devel@linuxdriverproject.org>; Tue,  4 Jul 2023 22:28:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 58D7440983
- for <devel@linuxdriverproject.org>; Tue,  4 Jul 2023 21:42:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 58D7440983
+ by smtp1.osuosl.org (Postfix) with ESMTP id 14744812B6
+ for <devel@linuxdriverproject.org>; Tue,  4 Jul 2023 22:28:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 14744812B6
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sWKQ04mHUQZh for <devel@linuxdriverproject.org>;
- Tue,  4 Jul 2023 21:42:31 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 1hp7S4icWTeT for <devel@linuxdriverproject.org>;
+ Tue,  4 Jul 2023 22:28:39 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 42D7240980
-Received: from tnstc.in (unknown [103.230.86.141])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 42D7240980
- for <devel@driverdev.osuosl.org>; Tue,  4 Jul 2023 21:42:30 +0000 (UTC)
-Received: from [141.98.6.89] ([141.98.6.89]) (authenticated bits=0)
- by tnstc.in (8.14.4/8.14.4) with ESMTP id 364HvNqZ011621;
- Wed, 5 Jul 2023 03:09:00 +0530
-Message-Id: <202307042139.364HvNqZ011621@tnstc.in>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C6736812AB
+Received: from mail.cereson.cn (unknown [113.31.110.247])
+ by smtp1.osuosl.org (Postfix) with ESMTP id C6736812AB
+ for <devel@driverdev.osuosl.org>; Tue,  4 Jul 2023 22:28:38 +0000 (UTC)
+Received: from [93.95.27.188] (unknown [93.95.27.188])
+ by mail.cereson.cn (Postfix) with ESMTPS id 637B92020EA
+ for <devel@driverdev.osuosl.org>; Tue,  4 Jul 2023 11:26:58 -0400 (EDT)
+From: user1@cereson.cn
+To: devel@driverdev.osuosl.org
+Subject: URGENT
+Date: 4 Jul 2023 08:28:30 -0700
+Message-ID: <20230704082830.53B82152FC46DD9F@cereson.cn>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Greetings:
-To: Recipients <ETicket@tnstc.in>
-From: "Ms. Melvida Bullock" <ETicket@tnstc.in>
-Date: Tue, 04 Jul 2023 23:42:04 +0200
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -57,35 +56,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: melvidabullock@gmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: 20051890@ce.pucmm.edu.do
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Please kindly allow me share this information with you,
+Dear Sir,
+I have investor that want to invest $6.8 Billion into a  company 
+that needs fund  for expansion only.He can not invest the money 
+to new Companies that want to start up but into Companies that 
+has been making good profits but needs funds for EXPANSION. 
+
+His Area of concentrations are Real Estate, Biotech,Textiles , 
+Information technology, Pharmaceuticals , Oil & Energy 
+Industries, Mining &Metals Industry, Management Consulting 
+Industry ,Maritime industry, Hospital & Health Care Industry, 
+Consumer Services Industry, International Trade and Development 
+Industry ,Gambling & Casinos Industry, Electrical/Electronic 
+Manufacturing Industry, Insurance Industry, Chemical industries, 
+Marketing and Advertising Industry, Leisure, Travel & Tourism 
+Industry, Agriculture, Aviation, Retail, Import and Export, Trade 
+and development industry, Real Estate & Construction Industry and 
+any other viable investment opportunities just like yours.
+
+If you recommend a Company to take loan or investment funds from 
+from my client the investor, me and you will be entitled to 5% of 
+any amount received by the Company from the investor but if you 
+are taking the fund directly as a company i will be entitled to 
+2.5% and you will retain 2.5% as Global Finder's fee commission.
+There will be a face to face meeting between the investor and the 
+investee after signing (MOU) the (AORI) should not be less than 
+3% per annum.
+
+Look for a reliable Company that need funding and we can easily 
+make 5% of the amount received from the investor but we need to 
+maintain absolute confidentiality in the transaction as the fund 
+provider want to remain silent, so you have to keep it highly 
+confidential between us.
+I will need the company profile and the project summary of the 
+company that will need funding to present to my investor.
+
+I look forward to hearing from you.
 
 
-Dear Beloved, Life is gradually passing away from me as a result of my pres=
-ent medical condition, i'm battling with lung cancer and my personal doctor=
- confided in me yesterday that I have only a few more weeks to live. In vie=
-w of this setback, I want to donate my estate for humanitarian assistance, =
-since this has always been the plan of my late husband and besides I have n=
-o child also with the current refugee crisis around the world. In an effort=
- to compliment the good work of our creator for humanity and the wish of my=
- late Husband I donate the sum of =A310,000,000.00 GBP (Ten Million GBP) to=
- you. Upon your acknowledgement of this email and informing me of your nati=
-onality and current place of resident, my Bank will facilitate due processe=
-s for transfer of this legacy to you. May God bless you as you use this mon=
-ey judiciously for the work of charity to help the less privileged. I inten=
-d for you to retain 40% of the funds for your commitment and sacrifice to m=
-ake this possible. Thank you
-
-Sincere regards, =
-
-
-Ms. Melvida Bullock
-Email: melvidabullock@gmail.com
+Thanks
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
