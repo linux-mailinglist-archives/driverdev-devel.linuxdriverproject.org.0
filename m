@@ -1,78 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68AE6746EFB
-	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Jul 2023 12:43:02 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 44AC77478C6
+	for <lists+driverdev-devel@lfdr.de>; Tue,  4 Jul 2023 21:41:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 53B4282020;
-	Tue,  4 Jul 2023 10:43:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 53B4282020
+	by smtp4.osuosl.org (Postfix) with ESMTP id BD3BA409E3;
+	Tue,  4 Jul 2023 19:41:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BD3BA409E3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QhFC5XaPTSif; Tue,  4 Jul 2023 10:42:59 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TfmR_eF9Esnp; Tue,  4 Jul 2023 19:41:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 095F881ADE;
-	Tue,  4 Jul 2023 10:42:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 095F881ADE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3B210408CC;
+	Tue,  4 Jul 2023 19:41:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3B210408CC
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A013F1BF95D
- for <devel@linuxdriverproject.org>; Tue,  4 Jul 2023 10:42:54 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C4C5D1BF5F8
+ for <devel@linuxdriverproject.org>; Tue,  4 Jul 2023 19:41:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 85E704046F
- for <devel@linuxdriverproject.org>; Tue,  4 Jul 2023 10:42:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 85E704046F
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9CA61817C3
+ for <devel@linuxdriverproject.org>; Tue,  4 Jul 2023 19:41:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9CA61817C3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lsq9-Xf64UOW for <devel@linuxdriverproject.org>;
- Tue,  4 Jul 2023 10:42:53 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6A876402DC
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6A876402DC
- for <devel@driverdev.osuosl.org>; Tue,  4 Jul 2023 10:42:53 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10760"; a="361956222"
-X-IronPort-AV: E=Sophos;i="6.01,180,1684825200"; d="scan'208";a="361956222"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jul 2023 03:42:52 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10760"; a="748385220"
-X-IronPort-AV: E=Sophos;i="6.01,180,1684825200"; d="scan'208";a="748385220"
-Received: from lkp-server01.sh.intel.com (HELO 783282924a45) ([10.239.97.150])
- by orsmga008.jf.intel.com with ESMTP; 04 Jul 2023 03:42:50 -0700
-Received: from kbuild by 783282924a45 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qGdUg-000ICV-0Y;
- Tue, 04 Jul 2023 10:42:50 +0000
-Date: Tue, 4 Jul 2023 18:42:13 +0800
-From: kernel test robot <lkp@intel.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup 1/7]
- drivers/hwmon/oxp-sensors.c:437:23: error: implicit declaration of function
- 'devm_device_add_groups'; did you mean 'devm_device_add_group'?
-Message-ID: <202307041850.vqrtdhj7-lkp@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3fC1ENA19g48 for <devel@linuxdriverproject.org>;
+ Tue,  4 Jul 2023 19:41:36 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3E70D817C0
+Received: from mail.cereson.cn (unknown [113.31.110.247])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3E70D817C0
+ for <devel@linuxdriverproject.org>; Tue,  4 Jul 2023 19:41:36 +0000 (UTC)
+Received: from [93.95.27.188] (unknown [93.95.27.188])
+ by mail.cereson.cn (Postfix) with ESMTPS id 991D93F2E65
+ for <devel@linuxdriverproject.org>; Tue,  4 Jul 2023 11:26:58 -0400 (EDT)
+From: user1@cereson.cn
+To: devel@linuxdriverproject.org
+Subject: URGENT
+Date: 4 Jul 2023 08:28:30 -0700
+Message-ID: <20230704082830.73567118BA0C938D@cereson.cn>
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1688467373; x=1720003373;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=3CQ1tTl22nOiPye/bE0JkiW9wIH+fqqYlCYmSWJUdYE=;
- b=FR0PWJgPPbD8mLexFJw0blRYtIRdygKio7mYel6hNX5CjIDXCsKVKT2x
- dg8vC31TL6VDCZbSzJb+6LBk+vpQwDYCaRGkaQkcaaqp8l7d9amjxFFuX
- fhIsis/eOoRQv2vl/pCcZjYkrH/d8xTbmKlmkqcInTo9rl+C+uDr4X7JK
- zk581ZXvEZrZqYTx9PU0mKl9mVo+QqIv6lVEMVU5o1M5QJ5Hs2mQO2UGs
- fcbZH6Hfq8hNiLqILo8zxo3m1V0/VLvaS0MtiZf4GFoaXNjcTwt/IDY67
- Z+O7iVTGvpsM/VN7F+hnWEoGjWIVGowdZTrd4bq44bpK8hjxUPrxf6f5p
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=FR0PWJgP
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,126 +56,51 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, oe-kbuild-all@lists.linux.dev
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: 20051890@ce.pucmm.edu.do
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.=
-git debugfs_cleanup
-head:   3b24ae38f8fe0b3d0877a909072bf871c65654a9
-commit: 1893121f03c6880cd4942d43f47fd7318a713809 [1/7] driver core: remove =
-devm_device_add_groups()
-config: x86_64-randconfig-x012-20230703 (https://download.01.org/0day-ci/ar=
-chive/20230704/202307041850.vqrtdhj7-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
-reproduce: (https://download.01.org/0day-ci/archive/20230704/202307041850.v=
-qrtdhj7-lkp@intel.com/reproduce)
+Dear Sir,
+I have investor that want to invest $6.8 Billion into a  company 
+that needs fund  for expansion only.He can not invest the money 
+to new Companies that want to start up but into Companies that 
+has been making good profits but needs funds for EXPANSION. 
 
-If you fix the issue in a separate patch/commit (i.e. not just a new versio=
-n of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202307041850.vqrtdhj7-lkp@i=
-ntel.com/
+His Area of concentrations are Real Estate, Biotech,Textiles , 
+Information technology, Pharmaceuticals , Oil & Energy 
+Industries, Mining &Metals Industry, Management Consulting 
+Industry ,Maritime industry, Hospital & Health Care Industry, 
+Consumer Services Industry, International Trade and Development 
+Industry ,Gambling & Casinos Industry, Electrical/Electronic 
+Manufacturing Industry, Insurance Industry, Chemical industries, 
+Marketing and Advertising Industry, Leisure, Travel & Tourism 
+Industry, Agriculture, Aviation, Retail, Import and Export, Trade 
+and development industry, Real Estate & Construction Industry and 
+any other viable investment opportunities just like yours.
 
-All errors (new ones prefixed by >>):
+If you recommend a Company to take loan or investment funds from 
+from my client the investor, me and you will be entitled to 5% of 
+any amount received by the Company from the investor but if you 
+are taking the fund directly as a company i will be entitled to 
+2.5% and you will retain 2.5% as Global Finder's fee commission.
+There will be a face to face meeting between the investor and the 
+investee after signing (MOU) the (AORI) should not be less than 
+3% per annum.
 
-   drivers/hwmon/oxp-sensors.c: In function 'oxp_platform_probe':
->> drivers/hwmon/oxp-sensors.c:437:23: error: implicit declaration of funct=
-ion 'devm_device_add_groups'; did you mean 'devm_device_add_group'? [-Werro=
-r=3Dimplicit-function-declaration]
-     437 |                 ret =3D devm_device_add_groups(dev, oxp_ec_group=
-s);
-         |                       ^~~~~~~~~~~~~~~~~~~~~~
-         |                       devm_device_add_group
-   cc1: some warnings being treated as errors
+Look for a reliable Company that need funding and we can easily 
+make 5% of the amount received from the investor but we need to 
+maintain absolute confidentiality in the transaction as the fund 
+provider want to remain silent, so you have to keep it highly 
+confidential between us.
+I will need the company profile and the project summary of the 
+company that will need funding to present to my investor.
 
-
-vim +437 drivers/hwmon/oxp-sensors.c
-
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  411  =
-
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  412  /* Initializa=
-tion logic */
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  413  static int ox=
-p_platform_probe(struct platform_device *pdev)
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  414  {
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  415  	const struct=
- dmi_system_id *dmi_entry;
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  416  	struct devic=
-e *dev =3D &pdev->dev;
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  417  	struct devic=
-e *hwdev;
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  418  	int ret;
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  419  =
-
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  420  	/*
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  421  	 * Have to c=
-heck for AMD processor here because DMI strings are the
-ebd4bfee2b972d Derek J. Clark            2022-12-28  422  	 * same between =
-Intel and AMD boards, the only way to tell them apart
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  423  	 * is the CP=
-U.
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  424  	 * Intel boa=
-rds seem to have different EC registers and values to
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  425  	 * read/writ=
-e.
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  426  	 */
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  427  	dmi_entry =
-=3D dmi_first_match(dmi_table);
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  428  	if (!dmi_ent=
-ry || boot_cpu_data.x86_vendor !=3D X86_VENDOR_AMD)
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  429  		return -ENO=
-DEV;
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  430  =
-
-5d06ec4279a860 Joaqu=EDn Ignacio Aramend=EDa 2023-04-29  431  	board =3D (e=
-num oxp_board)(unsigned long)dmi_entry->driver_data;
-3ca0f12a02582c Joaqu=EDn Ignacio Aramend=EDa 2022-11-25  432  =
-
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  433  	switch (boar=
-d) {
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  434  	case aok_zoe=
-_a1:
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  435  	case oxp_min=
-i_amd_a07:
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  436  	case oxp_min=
-i_amd_pro:
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11 @437  		ret =3D dev=
-m_device_add_groups(dev, oxp_ec_groups);
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  438  		if (ret)
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  439  			return ret;
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  440  		break;
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  441  	default:
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  442  		break;
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  443  	}
-be144ee4912721 Joaqu=EDn Ignacio Aramend=EDa 2023-06-11  444  =
-
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  445  	hwdev =3D de=
-vm_hwmon_device_register_with_info(dev, "oxpec", NULL,
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  446  						     &o=
-xp_ec_chip_info, NULL);
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  447  =
-
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  448  	return PTR_E=
-RR_OR_ZERO(hwdev);
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  449  }
-ed264e8a7d18c5 Joaqu=EDn Ignacio Aramend=EDa 2022-11-04  450  =
+I look forward to hearing from you.
 
 
-:::::: The code at line 437 was first introduced by commit
-:::::: be144ee49127216b456da26f1a32b6ba281ac505 hwmon: (oxp-sensors) Add tt=
-_toggle attribute on supported boards
-
-:::::: TO: Joaqu=EDn Ignacio Aramend=EDa <samsagax@gmail.com>
-:::::: CC: Guenter Roeck <linux@roeck-us.net>
-
--- =
-
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Thanks
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
