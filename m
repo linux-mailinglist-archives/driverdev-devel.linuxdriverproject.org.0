@@ -1,50 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91C0774A708
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jul 2023 00:28:35 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0932074A70F
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jul 2023 00:32:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C1620415BD;
-	Thu,  6 Jul 2023 22:28:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C1620415BD
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6621B415AD;
+	Thu,  6 Jul 2023 22:32:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6621B415AD
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id utvV8gKV3O2H; Thu,  6 Jul 2023 22:28:32 +0000 (UTC)
+	with ESMTP id TqspAQorqNuA; Thu,  6 Jul 2023 22:32:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 815DF4034B;
-	Thu,  6 Jul 2023 22:28:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 815DF4034B
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2E0EE400B8;
+	Thu,  6 Jul 2023 22:32:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2E0EE400B8
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 003F11BF4D5
- for <devel@linuxdriverproject.org>; Thu,  6 Jul 2023 22:28:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F285F1BF4D5
+ for <devel@linuxdriverproject.org>; Thu,  6 Jul 2023 22:32:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C7D3A418B6
- for <devel@linuxdriverproject.org>; Thu,  6 Jul 2023 22:28:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C7D3A418B6
+ by smtp4.osuosl.org (Postfix) with ESMTP id CB61B41926
+ for <devel@linuxdriverproject.org>; Thu,  6 Jul 2023 22:32:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CB61B41926
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4xYBkc7oXcot for <devel@linuxdriverproject.org>;
- Thu,  6 Jul 2023 22:28:28 +0000 (UTC)
+ with ESMTP id TLLpJHjmg9-d for <devel@linuxdriverproject.org>;
+ Thu,  6 Jul 2023 22:32:35 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8784940113
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A421E41921
 Received: from mx.inetcontrol.net (unknown [123.125.194.146])
- by smtp4.osuosl.org (Postfix) with SMTP id 8784940113
- for <devel@driverdev.osuosl.org>; Thu,  6 Jul 2023 22:28:17 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with SMTP id A421E41921
+ for <devel@linuxdriverproject.org>; Thu,  6 Jul 2023 22:32:24 +0000 (UTC)
 Received: from [192.168.8.128] (unknown [197.185.102.104])
- by mx.inetcontrol.net (Postfix) with ESMTPA id 3DE77F87513;
- Thu,  6 Jul 2023 23:48:25 +0800 (CST)
+ by mx.inetcontrol.net (Postfix) with ESMTPA id AFB54F875BF;
+ Thu,  6 Jul 2023 23:50:13 +0800 (CST)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: RE: PROFITABLE BUSINESS INVESTMENT U$D400 MILLION
 To: Recipients <test@inetcontrol.net>
 From: "Mr. Godwin Okonkwo (Mgr)" <test@inetcontrol.net>
-Date: Thu, 06 Jul 2023 17:48:13 +0200
-Message-Id: <20230706222828.C7D3A418B6@smtp4.osuosl.org>
+Date: Thu, 06 Jul 2023 17:49:59 +0200
+Message-Id: <20230706223235.CB61B41926@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
