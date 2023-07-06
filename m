@@ -1,64 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6F577749ED9
-	for <lists+driverdev-devel@lfdr.de>; Thu,  6 Jul 2023 16:20:43 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 91C0774A708
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jul 2023 00:28:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E13AC82255;
-	Thu,  6 Jul 2023 14:20:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E13AC82255
+	by smtp2.osuosl.org (Postfix) with ESMTP id C1620415BD;
+	Thu,  6 Jul 2023 22:28:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C1620415BD
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Sd7S9jd83hVc; Thu,  6 Jul 2023 14:20:41 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id utvV8gKV3O2H; Thu,  6 Jul 2023 22:28:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BF69982254;
-	Thu,  6 Jul 2023 14:20:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BF69982254
+	by smtp2.osuosl.org (Postfix) with ESMTP id 815DF4034B;
+	Thu,  6 Jul 2023 22:28:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 815DF4034B
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7F3061BF591
- for <devel@linuxdriverproject.org>; Thu,  6 Jul 2023 14:20:38 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 003F11BF4D5
+ for <devel@linuxdriverproject.org>; Thu,  6 Jul 2023 22:28:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 65F9682255
- for <devel@linuxdriverproject.org>; Thu,  6 Jul 2023 14:20:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 65F9682255
+ by smtp4.osuosl.org (Postfix) with ESMTP id C7D3A418B6
+ for <devel@linuxdriverproject.org>; Thu,  6 Jul 2023 22:28:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C7D3A418B6
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id uOmRC6ILttWI for <devel@linuxdriverproject.org>;
- Thu,  6 Jul 2023 14:20:37 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7E06682254
-Received: from hosted-4-client-dedicated-live-server4.livegpstrack.com
- (hosted-4-client-dedicated-live-server4.livegpstrack.com [103.102.239.62])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7E06682254
- for <devel@driverdev.osuosl.org>; Thu,  6 Jul 2023 14:20:37 +0000 (UTC)
-From: =?ISO-8859-1?B?Q2FyVHJhY2sgR1BT?=<noreply@livegpstrack.com>
-To: devel@driverdev.osuosl.org
-Subject: =?ISO-8859-1?B?T2ZmaWNpYWwgRGVhbGVyIGZvciBDYXJUcmFjaw==?=
-Date: 06 Jul 2023 11:21:18 -0300
-Message-ID: <20230706112118.C003B365968DDC59@livegpstrack.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4xYBkc7oXcot for <devel@linuxdriverproject.org>;
+ Thu,  6 Jul 2023 22:28:28 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8784940113
+Received: from mx.inetcontrol.net (unknown [123.125.194.146])
+ by smtp4.osuosl.org (Postfix) with SMTP id 8784940113
+ for <devel@driverdev.osuosl.org>; Thu,  6 Jul 2023 22:28:17 +0000 (UTC)
+Received: from [192.168.8.128] (unknown [197.185.102.104])
+ by mx.inetcontrol.net (Postfix) with ESMTPA id 3DE77F87513;
+ Thu,  6 Jul 2023 23:48:25 +0800 (CST)
 MIME-Version: 1.0
-X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns;
- s=1665719670.livegpstrack; d=livegpstrack.com; 
- b=Te+WBERGQv20Iq5pt4LgHZggvr7PvxBZoMx8t10ZpptRxJ8NzLhh18I7NmI8GonNI1rLKO6gspU2
- vqCGLbc+1vtMNYvVy7AuT0gu+32S5JZAXS4YqbVhqlhPZQDpXnevtimizCiDG16oheXYx20Eex6d
- PDtMM+iPtNJGX7UF24c=;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed;
- s=1665719670.livegpstrack; d=livegpstrack.com; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
- i=noreply@livegpstrack.com; 
- bh=5ZeNOdk7qbI7Av9nQTLSeVk53go=;
- b=pK1AoNRLsKEkA6QIQNeue8LpVL8AqYx7D0Xu8O0AZoEIYe4sQPWGM8hzdg4SuDtwHQa3F4ku0lBn
- mSKGNMVtI+2iLKXycXve9/A4MhEUkB5jWLWc1YqkoZpnxMi+6zFweAhzNTWcVbPwZTD/JTlnkmOS
- GJjQ2QbUwMy5ZL/G1Jc=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=livegpstrack.com
- header.i=noreply@livegpstrack.com header.a=rsa-sha1
- header.s=1665719670.livegpstrack header.b=pK1AoNRL
+Content-Description: Mail message body
+Subject: RE: PROFITABLE BUSINESS INVESTMENT U$D400 MILLION
+To: Recipients <test@inetcontrol.net>
+From: "Mr. Godwin Okonkwo (Mgr)" <test@inetcontrol.net>
+Date: Thu, 06 Jul 2023 17:48:13 +0200
+Message-Id: <20230706222828.C7D3A418B6@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,44 +57,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: =?ISO-8859-1?B?Q2FyVHJhY2sgR1BT?= <salesgps@cartrackgps.net>
+Reply-To: NNPCGodwinOkonkwoMgr@hotmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Looking for distributors
+Corporate Headquarters
+NNPC Towers, Central Business District,
+Herbert Macaulay Way,
+P.M.B. 190, Garki, Abuja.         
 
-My name is Paul Novak from Car Track GPS and we're looking for distributors for our tracking products.
-We design innovative software and hardware location technologies.
+               FINANCE AND ACCOUNTS PROFITABLE BUSINESS INVESTMENT U$D400 MILLION
+ 
+Attn: president/ceo                                      
+ 
+After Due deliberation with my colleagues Abdul Malik Aminu (GM, GGA, F&A Acting GGM, Accounts) Nigeria National Petroleum Corporation (NNPC), I decided to forward to you this Profitable Business Investment of U$D400 Million. We want a reliable person who can assist us to Receive this (U$D400 Million only) for Investment in your country. President Muhammad Bihari has appointed Godwin Okonkwo Mgr Planning Brass LNG GM, GM, Grp. Gen Acct the Nigeria National Petroleum Corporation (nnpc) and have also advised him to pay off all the nnpc contractors owned by Nigeria National Petroleum Corporation (NNPC).
+ 
+This fund resulted from an over-invoiced contract awarded by us under the budget allocation to my ministry and the bill was approved for payment by the concerned ministries. The contract was executed, commissioned and the contractor was paid his actual cost of the contract. We are left with the balance of $400,000,000.00 only as the over invoiced amount which we have deliberately over estimated for our own use but under the protocol division, civil servants are forbidden to operate or own foreign accounts. We have agreed to share the money as follows:
+ 
+1. 30% For You as the (Account owner)
+2. 60% for me and My Colleagues
+3. 10% for any expenses that we Might Encore during the Cause of this Transfer. 
+ 
+As you may want to know and to make you less curious, I got your address from our reputable chamber of commerce & industry in your country's embassy here in Nigeria. My name is Godwin Okonkwo Mgr. Planning Acct of the Nigerian National Petroleum Corporation (nnpc).this transaction is 100% risk free hence the business was carefully planned before it was executed and we the NNPC. officials involved in this deal as we have put many years in service to our ministry, we have been exercising patience for this opportunity for so long, and to most of us this is a lifetime opportunity we cannot afford to miss.
+ 
+To get this fund paid into your account, we have to present you as an international business outfit and consequent upon indication of your interest to fully assist us in this transaction; you will be required to finish us with the following.
+ 
+1. Your Bank Name Address Phone and Fax.
+2. Your Bank Account Number/ Swift Code and Routing Number (if any).
+3. Your Private Phone and Fax Number for Easy Communication.
+4. Your Full Name and Address.
+ 
+This information will enable us to seek approval of the fund from the concerned quarters within 14 banking days and the Nigeria national petroleum corporation (NNPC) payment information data will be send to you for completion. All this will only take us about 30 working days to transfer this fund into your account from the day we receive your information. Let confidentiality, honesty and trust be our watchword throughout this transaction.
 
-Our innovative web based software allows owners to track fleets in realtime by iOS or Android Apps.
-If a vehicle is stolen you can stop the engine and recover it.
+ 
+Your prompt reply will be highly appreciated.
+ 
 
-With our Professional Kit you can start your own tracking business or just resell the software and hardware.
-
-Our products are ideal for fleet tracking and recovery of stolen vehicles. Insurance companies, trucking companies and car dealers have been our clients for over 20 years.
-This could be a good choice If you want to start a new business or diversify your investment.
-
-The business consists in offering location services to end customers through a web site.
-This is accomplished through a Web platform that we provide as a turnkey server installed at your end.
-
-This service will allow customers to track their fleets from any web browser - even from Tablets and Smartphones - with a username and password.
-We have Professional Kits available which include full Software licenses, so once you get the KIT and start testing you will not need to invest again in the Software or have to pay any monthly fee.
-
-If you're interested I can send you the proposal for your consideration.
-
-Best regards,
-Paul Novak
-Car Track GPS
-Miami: +1 786 352 8766
-cartrack gps .com
-
-We have clients in over 100 countries and 20 years of experience in GPS tracking systems.
-ID: 954134
-
-If you would like to opt-out please reply to this email with the subject REMOVE.
-
+Best Regards.
+Godwin Okonkwo (Mgr Planning Brass LNG GM, GM, Grp. Gen Acct) 
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
