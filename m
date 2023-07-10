@@ -1,49 +1,44 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD28574CF6D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jul 2023 10:06:10 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2BB3674D48C
+	for <lists+driverdev-devel@lfdr.de>; Mon, 10 Jul 2023 13:25:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 770FB408D8;
-	Mon, 10 Jul 2023 08:06:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 770FB408D8
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5974460675;
+	Mon, 10 Jul 2023 11:25:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5974460675
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id afF2GHhBsEqg; Mon, 10 Jul 2023 08:06:08 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id diuS0j7JQuKz; Mon, 10 Jul 2023 11:25:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E4A73408D3;
-	Mon, 10 Jul 2023 08:06:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E4A73408D3
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2D2F960592;
+	Mon, 10 Jul 2023 11:25:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2D2F960592
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0DECA1BF429
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 10 Jul 2023 08:06:05 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 29D551BF40A
+ for <devel@linuxdriverproject.org>; Mon, 10 Jul 2023 11:25:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DC39040360
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 10 Jul 2023 08:06:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DC39040360
+ by smtp3.osuosl.org (Postfix) with ESMTP id 10B5560592
+ for <devel@linuxdriverproject.org>; Mon, 10 Jul 2023 11:25:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 10B5560592
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FEsy9Gr7zaKJ
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 10 Jul 2023 08:06:04 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id N7qYTdPpjUPB for <devel@linuxdriverproject.org>;
+ Mon, 10 Jul 2023 11:25:19 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3C683400CB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 661F960675
 Received: from mtk0.wrenchgroup.com (unknown [74.201.28.155])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3C683400CB
- for <driverdev-devel@linuxdriverproject.org>;
- Mon, 10 Jul 2023 08:06:04 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 661F960675
+ for <devel@linuxdriverproject.org>; Mon, 10 Jul 2023 11:25:19 +0000 (UTC)
 From: dorisgomo4@gmail.com
-To: driverdev-devel@linuxdriverproject.org
-Subject: Re:FROM DORRIS GOMO
-Date: 10 Jul 2023 04:06:02 -0400
-Message-ID: <20230710040602.36E539A561EA771A@gmail.com>
+To: devel@linuxdriverproject.org
+Date: 10 Jul 2023 07:25:17 -0400
+Message-ID: <20230710072517.58AC9FACA841AE56@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
