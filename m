@@ -1,49 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 96047752015
-	for <lists+driverdev-devel@lfdr.de>; Thu, 13 Jul 2023 13:38:37 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 850C8753333
+	for <lists+driverdev-devel@lfdr.de>; Fri, 14 Jul 2023 09:30:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D0D496135B;
-	Thu, 13 Jul 2023 11:38:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D0D496135B
+	by smtp1.osuosl.org (Postfix) with ESMTP id DE0AA83FA0;
+	Fri, 14 Jul 2023 07:30:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DE0AA83FA0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n9_CocorHAJX; Thu, 13 Jul 2023 11:38:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hNmgwsRKBmvp; Fri, 14 Jul 2023 07:30:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A19DE612FE;
-	Thu, 13 Jul 2023 11:38:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A19DE612FE
+	by smtp1.osuosl.org (Postfix) with ESMTP id ADA5383F82;
+	Fri, 14 Jul 2023 07:30:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ADA5383F82
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 65C301BF3BC
- for <devel@linuxdriverproject.org>; Thu, 13 Jul 2023 11:38:31 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 61C801BF36A
+ for <devel@linuxdriverproject.org>; Fri, 14 Jul 2023 07:30:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4CA5E6135B
- for <devel@linuxdriverproject.org>; Thu, 13 Jul 2023 11:38:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4CA5E6135B
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3A0C842107
+ for <devel@linuxdriverproject.org>; Fri, 14 Jul 2023 07:30:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3A0C842107
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QGcdUr4ieJXt for <devel@linuxdriverproject.org>;
- Thu, 13 Jul 2023 11:38:30 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id HCi69ibe4gKZ for <devel@linuxdriverproject.org>;
+ Fri, 14 Jul 2023 07:30:48 +0000 (UTC)
 X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2F9A9612FE
-Received: from mail.cereson.cn (unknown [113.31.110.247])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2F9A9612FE
- for <devel@driverdev.osuosl.org>; Thu, 13 Jul 2023 11:38:29 +0000 (UTC)
-Received: from [93.95.27.188] (unknown [93.95.27.188])
- by mail.cereson.cn (Postfix) with ESMTPS id 39F0118FE35
- for <devel@driverdev.osuosl.org>; Thu, 13 Jul 2023 07:13:01 -0400 (EDT)
-From: user1@cereson.cn
-To: devel@driverdev.osuosl.org
-Subject: INFO
-Date: 13 Jul 2023 04:14:29 -0700
-Message-ID: <20230713041428.EED0DD9217857481@cereson.cn>
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1F763420F5
+Received: from mail.venturelinkbiz.com (mail.venturelinkbiz.com
+ [51.195.119.142])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1F763420F5
+ for <devel@linuxdriverproject.org>; Fri, 14 Jul 2023 07:30:48 +0000 (UTC)
+Received: by mail.venturelinkbiz.com (Postfix, from userid 1002)
+ id 871C34589A; Fri, 14 Jul 2023 07:30:38 +0000 (UTC)
+Received: by venturelinkbiz.com for <devel@linuxdriverproject.org>;
+ Fri, 14 Jul 2023 07:30:34 GMT
+Message-ID: <20230714064520-0.1.17.2yv5.0.4se16vmazm@venturelinkbiz.com>
+Date: Fri, 14 Jul 2023 07:30:34 GMT
+From: "Michal Rmoutil" <michal.rmoutil@venturelinkbiz.com>
+To: <devel@linuxdriverproject.org>
+Subject: =?UTF-8?Q?Syst=C3=A9m_sledov=C3=A1n=C3=AD_a_optimalizace_v=C3=BDroby?=
+X-Mailer: mail.venturelinkbiz.com
 MIME-Version: 1.0
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=venturelinkbiz.com; s=mail; t=1689319845;
+ bh=Mjfq+hZZ0+rPTC06HjjASvlnsTMgj1yAndWxi/OAu2M=;
+ h=Date:From:To:Subject:From;
+ b=OouPsgvrh0T9xtxUjBX/ia4UQ9yPnFTf5wrVjZeVjfvz1/AHKfPBR4VT95qR6bGA4
+ 1Dp4eE/UiuTak8aslOKxN9DF2BCd3KG5F5LKU2vjN9sWx/0wJDt9gx5T0yzCh0QeoM
+ 5b891fgh+TgM2Fwpfkt8xEx1ckQRsgHT6ntoJhS9ZmkQxil/QeOXXr6DHVvuUINJyE
+ Kf243Bi+etOoZXICXHJUfYFK0KEFm6menq7Cm//6XAHd5gkIivMwfrgPoQUNaM67Wv
+ SnyqTw9HeLzBXVg27N+FTjPaXDty46OzzTFirnIHCx1zHhOSA9v7jnp/foaZZo2ZGb
+ 0ppboYL9g+kzw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=venturelinkbiz.com
+ header.i=@venturelinkbiz.com header.a=rsa-sha256 header.s=mail
+ header.b=OouPsgvr
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,53 +73,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: 20051893@ce.pucmm.edu.do
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-
-Dear Sir,
-I have investor that want to invest $6.8 Billion into a  company 
-that needs fund  for expansion only.He can not invest the money 
-to new Companies that want to start up but into Companies that 
-has been making good profits but needs funds for EXPANSION. 
-
-His Area of concentrations are Real Estate, Biotech,Textiles , 
-Information technology, Pharmaceuticals , Oil & Energy 
-Industries, Mining &Metals Industry, Management Consulting 
-Industry ,Maritime industry, Hospital & Health Care Industry, 
-Consumer Services Industry, International Trade and Development 
-Industry ,Gambling & Casinos Industry, Electrical/Electronic 
-Manufacturing Industry, Insurance Industry, Chemical industries, 
-Marketing and Advertising Industry, Leisure, Travel & Tourism 
-Industry, Agriculture, Aviation, Retail, Import and Export, Trade 
-and development industry, Real Estate & Construction Industry and 
-any other viable investment opportunities just like yours.
-
-If you recommend a Company to take loan or investment funds from 
-from my client the investor, me and you will be entitled to 5% of 
-any amount received by the Company from the investor but if you 
-are taking the fund directly as a company i will be entitled to 
-2.5% and you will retain 2.5% as Global Finder's fee commission.
-There will be a face to face meeting between the investor and the 
-investee after signing (MOU) the (AORI) should not be less than 
-3% per annum.
-
-Look for a reliable Company that need funding and we can easily 
-make 5% of the amount received from the investor but we need to 
-maintain absolute confidentiality in the transaction as the fund 
-provider want to remain silent, so you have to keep it highly 
-confidential between us.
-I will need the company profile and the project summary of the 
-company that will need funding to present to my investor.
-
-I look forward to hearing from you.
-
-
-Thanks
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RG9icsOpIHLDoW5vCgpabsOhdGUgc3lzdMOpbSwga3RlcsO9IG5lamVuIGhsw61kw6EsIGFsZSBp
+IG9wdGltYWxpenVqZSB2w71yb2J1IGEgcMWZaW7DocWhw60gc3TDoWzDvSBwxZnDrWplbT8KCkTD
+rWt5IG5lam5vdsSbasWhw61tIHRlY2hub2xvZ2nDrW0gYSBhbmFsw716ZSBkYXQgbmHFoWUgxZll
+xaFlbsOtIGlkZW50aWZpa3VqZSBvYmxhc3RpIG9wdGltYWxpemFjZSwgenbDvcWhZW7DrSBlZmVr
+dGl2aXR5IGEgc27DrcW+ZW7DrSBuw6FrbGFkxa8uIE5hxaFpIGtsaWVudGkgemF6bmFtZW5hbGkg
+bsOhcsWvc3QgcMWZw61qbcWvIHYgcHLFr23Em3J1IG8gMjAgJSBhIGRuZXMgc2kgdG8gbcWvxb5l
+dGUgdnl6a291xaFldCBuYSA2MCBkbsOtIHpkYXJtYS4KClBva3VkIGNoY2V0ZSBkYWzFocOtIHBv
+ZHJvYm5vc3RpLCBvZHBvdsSbenRlIHByb3PDrW0gbmEga29udGFrdG7DrSDEjcOtc2xvLgoKClBv
+emRyYXZ5Ck1pY2hhbCBSbW91dGlsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qu
+b3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaXZlcmRldi1kZXZlbAo=
