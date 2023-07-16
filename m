@@ -1,54 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3C3F7547FB
-	for <lists+driverdev-devel@lfdr.de>; Sat, 15 Jul 2023 11:30:10 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ABED360A62;
-	Sat, 15 Jul 2023 09:30:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ABED360A62
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L0Oq9Ec4cNxI; Sat, 15 Jul 2023 09:30:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6D5D460A8A;
-	Sat, 15 Jul 2023 09:30:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6D5D460A8A
-X-Original-To: driverdev-devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4BCA01BF307
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 15 Jul 2023 09:30:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 01CDA75589F
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jul 2023 00:55:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 25BA5400CB
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 15 Jul 2023 09:30:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 25BA5400CB
+	by smtp2.osuosl.org (Postfix) with ESMTP id E327C400D0;
+	Sun, 16 Jul 2023 22:55:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E327C400D0
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id g6N3-6I9P75I
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 15 Jul 2023 09:30:03 +0000 (UTC)
-X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D8267401CC
-Received: from mail.cereson.cn (unknown [113.31.110.247])
- by smtp2.osuosl.org (Postfix) with ESMTP id D8267401CC
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 15 Jul 2023 09:30:02 +0000 (UTC)
-Received: from [93.95.27.188] (unknown [93.95.27.188])
- by mail.cereson.cn (Postfix) with ESMTPS id E92AF2AC287
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 15 Jul 2023 05:03:04 -0400 (EDT)
-From: user1@cereson.cn
-To: driverdev-devel@linuxdriverproject.org
-Subject: INFO
-Date: 15 Jul 2023 02:04:37 -0700
-Message-ID: <20230715020437.DB63483BC53B8201@cereson.cn>
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id sCNxxCMbE_7Y; Sun, 16 Jul 2023 22:55:38 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id C0D31408A8;
+	Sun, 16 Jul 2023 22:55:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0D31408A8
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6394A1BF2FD
+ for <devel@linuxdriverproject.org>; Sun, 16 Jul 2023 22:55:35 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4A47F80C05
+ for <devel@linuxdriverproject.org>; Sun, 16 Jul 2023 22:55:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4A47F80C05
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ll6qd36YdCmW for <devel@linuxdriverproject.org>;
+ Sun, 16 Jul 2023 22:55:34 +0000 (UTC)
+X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A4E2880C01
+Received: from kernelhost.info (kernelhost.info [91.218.67.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A4E2880C01
+ for <devel@linuxdriverproject.org>; Sun, 16 Jul 2023 22:55:34 +0000 (UTC)
+Received: from [192.168.1.116]
+ (dynamic-046-114-039-041.46.114.pool.telefonica.de [46.114.39.41])
+ by kernelhost.info (Postfix) with ESMTPA id 9FD8F15DE19;
+ Sun, 16 Jul 2023 21:53:00 +0200 (CEST)
+Received-SPF: pass (kernelhost.info: connection is authenticated)
 MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: Hello Good Friend
+To: Recipients <glennterry@azovstal.org>
+From: "Eng. Terry Glenn" <glennterry@azovstal.org>
+Date: Sun, 16 Jul 2023 21:52:53 +0200
+X-Antivirus: Avast (VPS 230716-8, 7/16/2023), Outbound message
+X-Antivirus-Status: Clean
+X-PPP-Message-ID: <168953718546.20879.14589312994123827805@kernelhost.info>
+X-PPP-Vhost: azovstal.org
+Message-Id: <20230716225535.4A47F80C05@smtp1.osuosl.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=azovstal.org; s=default; t=1689537185;
+ bh=wA2I3hYIO9lGXYkWDvKUWzT1T9/vFaQq7c8LdyrqQIU=; h=Subject:To:From;
+ b=Y1e6BixA2ThG4/4ruH6UbH1C31jJCNe8N7I+mkMuLPe+28Qrnd71/cwIEiSajaGlz
+ RK2WTI5xHrtvoYedBiuGZQ6/8TpdD0uAl+AnUeCfQ2UAJfIxOX/ULnaDyHzSghc1J8
+ dqCxURroOSuh/yuV/ixQc3mV9I2yTg50OZfa0tRw=
+X-Mailman-Original-Authentication-Results: kernelhost.info;
+ spf=pass (sender IP is 46.114.39.41) smtp.mailfrom=glennterry@azovstal.org
+ smtp.helo=[192.168.1.116]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,52 +72,27 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: 20051893@ce.pucmm.edu.do
+Reply-To: azovstal@mail2engineer.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Hello Friend,
 
-Dear Sir,
-I have investor that want to invest $6.8 Billion into a  company 
-that needs fund  for expansion only.He can not invest the money 
-to new Companies that want to start up but into Companies that 
-has been making good profits but needs funds for EXPANSION. 
+I am Engineer Terry Glenn, I work by Azovstal metallurgical plant in
+Mariupol Ukraine, I am getting in touch with you regarding an
+extremely important and urgent matter. If you would oblige me the
+opportunity, I shall provide you with details upon your response.
 
-His Area of concentrations are Real Estate, Biotech,Textiles , 
-Information technology, Pharmaceuticals , Oil & Energy 
-Industries, Mining &Metals Industry, Management Consulting 
-Industry ,Maritime industry, Hospital & Health Care Industry, 
-Consumer Services Industry, International Trade and Development 
-Industry ,Gambling & Casinos Industry, Electrical/Electronic 
-Manufacturing Industry, Insurance Industry, Chemical industries, 
-Marketing and Advertising Industry, Leisure, Travel & Tourism 
-Industry, Agriculture, Aviation, Retail, Import and Export, Trade 
-and development industry, Real Estate & Construction Industry and 
-any other viable investment opportunities just like yours.
+Please you can contact me through my personal email: terryglenn050@gmail.com
 
-If you recommend a Company to take loan or investment funds from 
-from my client the investor, me and you will be entitled to 5% of 
-any amount received by the Company from the investor but if you 
-are taking the fund directly as a company i will be entitled to 
-2.5% and you will retain 2.5% as Global Finder's fee commission.
-There will be a face to face meeting between the investor and the 
-investee after signing (MOU) the (AORI) should not be less than 
-3% per annum.
+Faithfully,
+Eng. Terry Glenn
 
-Look for a reliable Company that need funding and we can easily 
-make 5% of the amount received from the investor but we need to 
-maintain absolute confidentiality in the transaction as the fund 
-provider want to remain silent, so you have to keep it highly 
-confidential between us.
-I will need the company profile and the project summary of the 
-company that will need funding to present to my investor.
-
-I look forward to hearing from you.
-
-
-Thanks
+-- 
+This email has been checked for viruses by Avast antivirus software.
+www.avast.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
