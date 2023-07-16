@@ -1,62 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 01CDA75589F
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jul 2023 00:55:40 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 70DD575589E
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jul 2023 00:39:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E327C400D0;
-	Sun, 16 Jul 2023 22:55:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E327C400D0
+	by smtp2.osuosl.org (Postfix) with ESMTP id 405644064C;
+	Sun, 16 Jul 2023 22:39:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 405644064C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sCNxxCMbE_7Y; Sun, 16 Jul 2023 22:55:38 +0000 (UTC)
+	with ESMTP id AI7hECOTHVPH; Sun, 16 Jul 2023 22:39:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C0D31408A8;
-	Sun, 16 Jul 2023 22:55:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0D31408A8
+	by smtp2.osuosl.org (Postfix) with ESMTP id 19DB2400D0;
+	Sun, 16 Jul 2023 22:39:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 19DB2400D0
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6394A1BF2FD
- for <devel@linuxdriverproject.org>; Sun, 16 Jul 2023 22:55:35 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 86F051BF2FD
+ for <devel@linuxdriverproject.org>; Sun, 16 Jul 2023 22:39:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4A47F80C05
- for <devel@linuxdriverproject.org>; Sun, 16 Jul 2023 22:55:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4A47F80C05
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5F374408CE
+ for <devel@linuxdriverproject.org>; Sun, 16 Jul 2023 22:39:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F374408CE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ll6qd36YdCmW for <devel@linuxdriverproject.org>;
- Sun, 16 Jul 2023 22:55:34 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FbFXxSRDgvyz for <devel@linuxdriverproject.org>;
+ Sun, 16 Jul 2023 22:39:50 +0000 (UTC)
 X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A4E2880C01
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98774408CA
 Received: from kernelhost.info (kernelhost.info [91.218.67.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A4E2880C01
- for <devel@linuxdriverproject.org>; Sun, 16 Jul 2023 22:55:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 98774408CA
+ for <devel@driverdev.osuosl.org>; Sun, 16 Jul 2023 22:39:50 +0000 (UTC)
 Received: from [192.168.1.116]
  (dynamic-046-114-039-041.46.114.pool.telefonica.de [46.114.39.41])
- by kernelhost.info (Postfix) with ESMTPA id 9FD8F15DE19;
- Sun, 16 Jul 2023 21:53:00 +0200 (CEST)
+ by kernelhost.info (Postfix) with ESMTPA id 7F38015DE8A;
+ Sun, 16 Jul 2023 21:53:23 +0200 (CEST)
 Received-SPF: pass (kernelhost.info: connection is authenticated)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Hello Good Friend
 To: Recipients <glennterry@azovstal.org>
 From: "Eng. Terry Glenn" <glennterry@azovstal.org>
-Date: Sun, 16 Jul 2023 21:52:53 +0200
+Date: Sun, 16 Jul 2023 21:53:16 +0200
 X-Antivirus: Avast (VPS 230716-8, 7/16/2023), Outbound message
 X-Antivirus-Status: Clean
-X-PPP-Message-ID: <168953718546.20879.14589312994123827805@kernelhost.info>
+X-PPP-Message-ID: <168953720797.22719.15889735368414644614@kernelhost.info>
 X-PPP-Vhost: azovstal.org
-Message-Id: <20230716225535.4A47F80C05@smtp1.osuosl.org>
+Message-Id: <20230716223951.5F374408CE@smtp4.osuosl.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=azovstal.org; s=default; t=1689537185;
+ d=azovstal.org; s=default; t=1689537208;
  bh=wA2I3hYIO9lGXYkWDvKUWzT1T9/vFaQq7c8LdyrqQIU=; h=Subject:To:From;
- b=Y1e6BixA2ThG4/4ruH6UbH1C31jJCNe8N7I+mkMuLPe+28Qrnd71/cwIEiSajaGlz
- RK2WTI5xHrtvoYedBiuGZQ6/8TpdD0uAl+AnUeCfQ2UAJfIxOX/ULnaDyHzSghc1J8
- dqCxURroOSuh/yuV/ixQc3mV9I2yTg50OZfa0tRw=
+ b=are1ZNnDAQA5ruLQufXGNUWVJCaHeWLyxS0Q+JW/4sWysp4joWON4Xu8OpwSkmh4w
+ Ho540CsFHJrnQ8pammNZmny7VuhmR0RWxVF8k1LzQDM3rWT8zZDIhQSfyO/k8YIfCS
+ I4fNQekA+IQAe4Wg4BdbJnjTurP0rjFHbbRCyTqk=
 X-Mailman-Original-Authentication-Results: kernelhost.info;
  spf=pass (sender IP is 46.114.39.41) smtp.mailfrom=glennterry@azovstal.org
  smtp.helo=[192.168.1.116]
