@@ -1,65 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70DD575589E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jul 2023 00:39:58 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 405644064C;
-	Sun, 16 Jul 2023 22:39:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 405644064C
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AI7hECOTHVPH; Sun, 16 Jul 2023 22:39:54 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 19DB2400D0;
-	Sun, 16 Jul 2023 22:39:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 19DB2400D0
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 86F051BF2FD
- for <devel@linuxdriverproject.org>; Sun, 16 Jul 2023 22:39:51 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BE02755DB1
+	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jul 2023 10:01:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5F374408CE
- for <devel@linuxdriverproject.org>; Sun, 16 Jul 2023 22:39:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F374408CE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 368F44031E;
+	Mon, 17 Jul 2023 08:01:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 368F44031E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FbFXxSRDgvyz for <devel@linuxdriverproject.org>;
- Sun, 16 Jul 2023 22:39:50 +0000 (UTC)
-X-Greylist: domain auto-whitelisted by SQLgrey-1.8.0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98774408CA
-Received: from kernelhost.info (kernelhost.info [91.218.67.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 98774408CA
- for <devel@driverdev.osuosl.org>; Sun, 16 Jul 2023 22:39:50 +0000 (UTC)
-Received: from [192.168.1.116]
- (dynamic-046-114-039-041.46.114.pool.telefonica.de [46.114.39.41])
- by kernelhost.info (Postfix) with ESMTPA id 7F38015DE8A;
- Sun, 16 Jul 2023 21:53:23 +0200 (CEST)
-Received-SPF: pass (kernelhost.info: connection is authenticated)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id k87wsuDTJqAw; Mon, 17 Jul 2023 08:01:05 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id ED826408C2;
+	Mon, 17 Jul 2023 08:01:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED826408C2
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D2A2F1BF2C9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jul 2023 08:01:01 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id B97A481252
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jul 2023 08:01:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B97A481252
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jjgkOp__LZDv
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jul 2023 08:01:01 +0000 (UTC)
+X-Greylist: from auto-whitelisted by SQLgrey-1.8.0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E80E580FBA
+Received: from mail.venturelinkbiz.com (mail.venturelinkbiz.com
+ [51.195.119.142])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E80E580FBA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jul 2023 08:01:00 +0000 (UTC)
+Received: by mail.venturelinkbiz.com (Postfix, from userid 1002)
+ id 7785C4478D; Mon, 17 Jul 2023 08:00:51 +0000 (UTC)
+Received: by venturelinkbiz.com for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 17 Jul 2023 08:00:44 GMT
+Message-ID: <20230717064500-0.1.18.33xq.0.7c3zj99rcw@venturelinkbiz.com>
+Date: Mon, 17 Jul 2023 08:00:44 GMT
+From: "Michal Rmoutil" <michal.rmoutil@venturelinkbiz.com>
+To: <driverdev-devel@linuxdriverproject.org>
+Subject: =?UTF-8?Q?Syst=C3=A9m_sledov=C3=A1n=C3=AD_a_optimalizace_v=C3=BDroby?=
+X-Mailer: mail.venturelinkbiz.com
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Hello Good Friend
-To: Recipients <glennterry@azovstal.org>
-From: "Eng. Terry Glenn" <glennterry@azovstal.org>
-Date: Sun, 16 Jul 2023 21:53:16 +0200
-X-Antivirus: Avast (VPS 230716-8, 7/16/2023), Outbound message
-X-Antivirus-Status: Clean
-X-PPP-Message-ID: <168953720797.22719.15889735368414644614@kernelhost.info>
-X-PPP-Vhost: azovstal.org
-Message-Id: <20230716223951.5F374408CE@smtp4.osuosl.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=azovstal.org; s=default; t=1689537208;
- bh=wA2I3hYIO9lGXYkWDvKUWzT1T9/vFaQq7c8LdyrqQIU=; h=Subject:To:From;
- b=are1ZNnDAQA5ruLQufXGNUWVJCaHeWLyxS0Q+JW/4sWysp4joWON4Xu8OpwSkmh4w
- Ho540CsFHJrnQ8pammNZmny7VuhmR0RWxVF8k1LzQDM3rWT8zZDIhQSfyO/k8YIfCS
- I4fNQekA+IQAe4Wg4BdbJnjTurP0rjFHbbRCyTqk=
-X-Mailman-Original-Authentication-Results: kernelhost.info;
- spf=pass (sender IP is 46.114.39.41) smtp.mailfrom=glennterry@azovstal.org
- smtp.helo=[192.168.1.116]
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=venturelinkbiz.com; s=mail; t=1689580858;
+ bh=Mjfq+hZZ0+rPTC06HjjASvlnsTMgj1yAndWxi/OAu2M=;
+ h=Date:From:To:Subject:From;
+ b=PMzq9G2hP62T3Sf3DGp/kysT0rSFULei2J6m1QTB1QUd/mQgPiITTrJkJhb1Kz4Np
+ P6+YE/PQsv1YcVlsMWsAN7zYSq+Ke66H9gEPrt9bSjhCD5ukAcSXoznNib0bx6ARiu
+ B1j7sOogRVkiDJtLI4sO9XUS/p2xbjeOXpzYLIH5t71rL07UPeWmYLMsrcsUw3QUDO
+ D3xSDK6Gf3DDzvVBfAzNKpt6BLzR5LkbAZlWJRL3JaPJW8UwKMMmQclPWCUxkfAb/u
+ qaBex/AXHuvPOqhAIbAsESxxWu+OmD3jniRnhDkkBM7uq+SDwHCBbFMDjephcU8IWy
+ bNsaQxofj49jQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=venturelinkbiz.com
+ header.i=@venturelinkbiz.com header.a=rsa-sha256 header.s=mail
+ header.b=PMzq9G2h
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,28 +77,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: azovstal@mail2engineer.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello Friend,
-
-I am Engineer Terry Glenn, I work by Azovstal metallurgical plant in
-Mariupol Ukraine, I am getting in touch with you regarding an
-extremely important and urgent matter. If you would oblige me the
-opportunity, I shall provide you with details upon your response.
-
-Please you can contact me through my personal email: terryglenn050@gmail.com
-
-Faithfully,
-Eng. Terry Glenn
-
--- 
-This email has been checked for viruses by Avast antivirus software.
-www.avast.com
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RG9icsOpIHLDoW5vCgpabsOhdGUgc3lzdMOpbSwga3RlcsO9IG5lamVuIGhsw61kw6EsIGFsZSBp
+IG9wdGltYWxpenVqZSB2w71yb2J1IGEgcMWZaW7DocWhw60gc3TDoWzDvSBwxZnDrWplbT8KCkTD
+rWt5IG5lam5vdsSbasWhw61tIHRlY2hub2xvZ2nDrW0gYSBhbmFsw716ZSBkYXQgbmHFoWUgxZll
+xaFlbsOtIGlkZW50aWZpa3VqZSBvYmxhc3RpIG9wdGltYWxpemFjZSwgenbDvcWhZW7DrSBlZmVr
+dGl2aXR5IGEgc27DrcW+ZW7DrSBuw6FrbGFkxa8uIE5hxaFpIGtsaWVudGkgemF6bmFtZW5hbGkg
+bsOhcsWvc3QgcMWZw61qbcWvIHYgcHLFr23Em3J1IG8gMjAgJSBhIGRuZXMgc2kgdG8gbcWvxb5l
+dGUgdnl6a291xaFldCBuYSA2MCBkbsOtIHpkYXJtYS4KClBva3VkIGNoY2V0ZSBkYWzFocOtIHBv
+ZHJvYm5vc3RpLCBvZHBvdsSbenRlIHByb3PDrW0gbmEga29udGFrdG7DrSDEjcOtc2xvLgoKClBv
+emRyYXZ5Ck1pY2hhbCBSbW91dGlsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qu
+b3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2RyaXZlcmRldi1kZXZlbAo=
