@@ -2,45 +2,45 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 193E6759688
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jul 2023 15:22:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 46C16759689
+	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jul 2023 15:22:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AE27941893;
-	Wed, 19 Jul 2023 13:22:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AE27941893
+	by smtp4.osuosl.org (Postfix) with ESMTP id D56F2418A4;
+	Wed, 19 Jul 2023 13:22:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D56F2418A4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zJuSbgl8uKbH; Wed, 19 Jul 2023 13:22:21 +0000 (UTC)
+	with ESMTP id fKLuTNiQtZbO; Wed, 19 Jul 2023 13:22:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5D255417B6;
-	Wed, 19 Jul 2023 13:22:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5D255417B6
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7A523418AA;
+	Wed, 19 Jul 2023 13:22:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7A523418AA
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5DEEC1BF41A
- for <devel@linuxdriverproject.org>; Wed, 19 Jul 2023 13:22:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9A98A1BF41A
+ for <devel@linuxdriverproject.org>; Wed, 19 Jul 2023 13:22:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 45048401DD
- for <devel@linuxdriverproject.org>; Wed, 19 Jul 2023 13:22:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 45048401DD
+ by smtp2.osuosl.org (Postfix) with ESMTP id 751054038E
+ for <devel@linuxdriverproject.org>; Wed, 19 Jul 2023 13:22:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 751054038E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Tc2S8MCPCdBV for <devel@linuxdriverproject.org>;
- Wed, 19 Jul 2023 13:22:17 +0000 (UTC)
+ with ESMTP id tMsJGW7OOudY for <devel@linuxdriverproject.org>;
+ Wed, 19 Jul 2023 13:22:26 +0000 (UTC)
 X-Greylist: delayed 601 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 19 Jul 2023 13:22:17 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ADBD4400AC
+ Wed, 19 Jul 2023 13:22:25 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E3430400AC
 Received: from mtk0.wrenchgroup.com (unknown [74.201.28.155])
- by smtp2.osuosl.org (Postfix) with ESMTPS id ADBD4400AC
- for <devel@linuxdriverproject.org>; Wed, 19 Jul 2023 13:22:17 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E3430400AC
+ for <devel@driverdev.osuosl.org>; Wed, 19 Jul 2023 13:22:25 +0000 (UTC)
 From: legal.dpthsbc@gmail.com
-To: devel@linuxdriverproject.org
+To: devel@driverdev.osuosl.org
 Subject: Re:FROM HSBC BANK
-Date: 19 Jul 2023 09:12:14 -0400
-Message-ID: <20230719091214.039E83100CB41AAA@gmail.com>
+Date: 19 Jul 2023 09:12:20 -0400
+Message-ID: <20230719091220.61D6B9740F796550@gmail.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
