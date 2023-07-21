@@ -1,44 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5DA9759E02
-	for <lists+driverdev-devel@lfdr.de>; Wed, 19 Jul 2023 20:58:12 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B66A75C3D8
+	for <lists+driverdev-devel@lfdr.de>; Fri, 21 Jul 2023 11:58:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5C54C60EA7;
-	Wed, 19 Jul 2023 18:58:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5C54C60EA7
+	by smtp2.osuosl.org (Postfix) with ESMTP id 75019403C0;
+	Fri, 21 Jul 2023 09:58:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 75019403C0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5ZatpRPuMhsE; Wed, 19 Jul 2023 18:58:09 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DVEND3P4IEeJ; Fri, 21 Jul 2023 09:58:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2263960BB8;
-	Wed, 19 Jul 2023 18:58:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2263960BB8
+	by smtp2.osuosl.org (Postfix) with ESMTP id 37D4440135;
+	Fri, 21 Jul 2023 09:58:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 37D4440135
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9CE401BF321
- for <devel@linuxdriverproject.org>; Wed, 19 Jul 2023 18:58:06 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 63FF91BF276
+ for <devel@linuxdriverproject.org>; Fri, 21 Jul 2023 09:58:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 76AC560BCC
- for <devel@linuxdriverproject.org>; Wed, 19 Jul 2023 18:58:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 76AC560BCC
+ by smtp4.osuosl.org (Postfix) with ESMTP id 353D141EB4
+ for <devel@linuxdriverproject.org>; Fri, 21 Jul 2023 09:58:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 353D141EB4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wrzJ0qlCGfVl for <devel@linuxdriverproject.org>;
- Wed, 19 Jul 2023 18:58:06 +0000 (UTC)
-Received: from mtk0.wrenchgroup.com (unknown [74.201.28.155])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DBBF960BB8
- for <devel@driverdev.osuosl.org>; Wed, 19 Jul 2023 18:58:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DBBF960BB8
-From: legal.dpthsbc@gmail.com
-To: devel@driverdev.osuosl.org
-Date: 19 Jul 2023 14:57:56 -0400
-Message-ID: <20230719145756.B046339F2D89D4F0@gmail.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NBvvqUCoVFHc for <devel@linuxdriverproject.org>;
+ Fri, 21 Jul 2023 09:58:23 +0000 (UTC)
+X-Greylist: delayed 1942 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 21 Jul 2023 09:58:22 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 86CAE41E7B
+Received: from portalia.es (unknown [185.76.77.187])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 86CAE41E7B
+ for <devel@driverdev.osuosl.org>; Fri, 21 Jul 2023 09:58:22 +0000 (UTC)
+Received: from webmail.portalia.es (localhost.localdomain [IPv6:::1])
+ by cranky-rosalind.185-129-248-31.plesk.page (Postfix) with ESMTPSA id
+ B9896211B0; Fri, 21 Jul 2023 11:07:12 +0200 (CEST)
+Received-SPF: pass (server.idealis.es: connection is authenticated)
 MIME-Version: 1.0
+Date: Fri, 21 Jul 2023 09:07:12 +0000
+From: "Mr. George Clifford" <mjose@portalia.es>
+To: undisclosed-recipients:;
+Subject: RE RE Donation >>
+User-Agent: Roundcube Webmail/1.4.13
+Message-ID: <9e06cc4a2e301e1a1a502afda1749e33@portalia.es>
+X-Sender: mjose@portalia.es
+X-PPP-Message-ID: <168993043456.5700.10448235952073824252@localhost.localdomain>
+X-PPP-Vhost: portalia.es
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=portalia.es; s=default; t=1689930448;
+ bh=VtI+cICcLgiVwyeUjNf4UJTVRwu+UTRCSwoQGDhEHpI=; h=From:To:Subject;
+ b=Qjq9Ncv10JAyve1yIHoIqkhwjEw9arG7pszqaT1shE+Xz2olpyb9grwhlf9mxrl6j
+ acIZfGK5XSHFJEkO/FLfhXeh0+zj9Yi/EUV9smURfxaScaymVW6fke+/ROPegaRpaa
+ BhVk9UfByQdO3AWt9sQ4lIyQV9lJwhKB+uDjPt3k=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=portalia.es header.i=@portalia.es
+ header.a=rsa-sha256 header.s=default header.b=Qjq9Ncv1
+X-Mailman-Original-Authentication-Results: server.idealis.es;
+ spf=pass (sender IP is ::1) smtp.mailfrom=mjose@portalia.es
+ smtp.helo=webmail.portalia.es
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -51,24 +74,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: legal@hsbconlineuk.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: mrgoergeclifford@gmail.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGVhciBTaXIsCgpEaWQgeW91IGluc3RydWN0IHRoZSBwYXltZW50IG9mIHlvdXIgZGVwb3NpdGVk
-IGZ1bmQgd2l0aCB1cyB0bwpNci5XaWxsaWFtIFdhbHRlciBXZXN0IG9mIEF1c3RyYWxpYSwgZm9y
-IGhlIHByZXNlbnRlZCB0aGUgYmFuawpkZXRhaWxzIGJlbGxvdyAsIGluZm9ybWluZyB1cyB0aGF0
-IHlvdSBhdXRob3JpemUgdGhlIHBheW1lbnQ6CgpCYW5rOiBTdCBHZW9yZ2UgQmFuayBMaW1pdGVk
-CkFkZHJlc3M6IDM0IE5lcmFuZyBTdHJlZXQgU291dGhwb3J0IFF1ZWVuc2xhbmQgQVVTVFJBTElB
-IDQyMTUKU1dJRlQgQ09ERSDigJMgU0dCTCBBVTJTCkJTQiBOdW1iZXIg4oCTIDExNCDigJMgODc5
-CkFjY291bnQgTnVtYmVyIOKAkyA0MzAgNTgxIDczMQpOYW1lIG9mIEFjY291bnQg4oCTIFdJTExJ
-QU0gV0FMVEVSIFdFU1QKCktpbmRseSBjb25maXJtIGlmIHlvdSBkaWQgYXV0aG9yaXplIHRoaXMg
-cGF5bWVudCwgd2UgdHJ5IHRvIGdldAp5b3Ugb24gdGhlIHBob25lIGJ1dCBub3QgYWNjZXNzaWJs
-ZS4KV2UgaG9sZCB0byB5b3VyIHJlcGx5IGJlZm9yZSB3ZSBjYW4gZWZmZWN0IHRoZSBwYXltZW50
-LgoKQmVzdCBSZWdhcmRzLAoKTXJzLiBKYXN3aW5kZXIgV2VzdGJyb29rCkZpbmFuY2lhbCBPZmZp
-Y2VyCkhlYWQgb2ZmaWNlIEhTQkMgQmFuayAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJv
-amVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4v
-bGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+
+
+-- 
+The sum of $7,000,000.00 dollars has been donated to you by Success.
+Donation Foundation, you are to reply to this mail to claim your
+donation funds, you are to contact immediately stay safe. THIS IS YOUR
+DONATION CODE: [ 0043034]
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
