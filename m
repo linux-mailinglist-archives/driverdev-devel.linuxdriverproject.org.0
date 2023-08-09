@@ -1,71 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F14F775446
-	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Aug 2023 09:38:07 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BBE3477662D
+	for <lists+driverdev-devel@lfdr.de>; Wed,  9 Aug 2023 19:12:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 21557404D1;
-	Wed,  9 Aug 2023 07:38:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 21557404D1
+	by smtp3.osuosl.org (Postfix) with ESMTP id A6DDE60FD8;
+	Wed,  9 Aug 2023 17:12:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A6DDE60FD8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KexhBsD5YfXI; Wed,  9 Aug 2023 07:38:04 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 2t2Y-N8FdXvI; Wed,  9 Aug 2023 17:12:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F083240151;
-	Wed,  9 Aug 2023 07:38:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F083240151
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8A28860746;
+	Wed,  9 Aug 2023 17:12:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8A28860746
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2C1241BF281
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  9 Aug 2023 07:38:01 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7A6821BF3B9
+ for <devel@linuxdriverproject.org>; Wed,  9 Aug 2023 17:12:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 05FD482B3E
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  9 Aug 2023 07:38:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 05FD482B3E
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5E772418DB
+ for <devel@linuxdriverproject.org>; Wed,  9 Aug 2023 17:12:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5E772418DB
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f-SlqZ22LyiK
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  9 Aug 2023 07:38:00 +0000 (UTC)
-X-Greylist: delayed 411 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 09 Aug 2023 07:38:00 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5545B82B1B
-Received: from mail.venturelinkbiz.com (mail.venturelinkbiz.com
- [51.195.119.142])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5545B82B1B
- for <driverdev-devel@linuxdriverproject.org>;
- Wed,  9 Aug 2023 07:38:00 +0000 (UTC)
-Received: by mail.venturelinkbiz.com (Postfix, from userid 1002)
- id E2BF344843; Wed,  9 Aug 2023 07:30:55 +0000 (UTC)
-Received: by mail.venturelinkbiz.com for
- <driverdev-devel@linuxdriverproject.org>; Wed,  9 Aug 2023 07:30:51 GMT
-Message-ID: <20230809064500-0.1.1p.4czo.0.ah4a63y5oe@venturelinkbiz.com>
-Date: Wed,  9 Aug 2023 07:30:51 GMT
-From: "Michal Rmoutil" <michal.rmoutil@venturelinkbiz.com>
-To: <driverdev-devel@linuxdriverproject.org>
-Subject: =?UTF-8?Q?Syst=C3=A9m_sledov=C3=A1n=C3=AD_a_optimalizace_v=C3=BDroby?=
-X-Mailer: mail.venturelinkbiz.com
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id SjkHPzP1tco0 for <devel@linuxdriverproject.org>;
+ Wed,  9 Aug 2023 17:12:50 +0000 (UTC)
+X-Greylist: delayed 982 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 09 Aug 2023 17:12:50 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3B0C8418C9
+Received: from hosted-4-client-dedicated-live-server4.livegpstrack.com
+ (hosted-4-client-dedicated-live-server4.livegpstrack.com [103.102.239.62])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3B0C8418C9
+ for <devel@linuxdriverproject.org>; Wed,  9 Aug 2023 17:12:50 +0000 (UTC)
+From: =?ISO-8859-1?B?Q2FyVHJhY2sgR1BT?=<noreply@livegpstrack.com>
+To: devel@linuxdriverproject.org
+Subject: =?ISO-8859-1?B?T2ZmaWNpYWwgRGVhbGVyIGZvciBDYXJUcmFjaw==?=
+Date: 09 Aug 2023 13:56:20 -0300
+Message-ID: <20230809135620.EE0ED0A3E9924F3F@livegpstrack.com>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=venturelinkbiz.com; s=mail; t=1691566266;
- bh=Mjfq+hZZ0+rPTC06HjjASvlnsTMgj1yAndWxi/OAu2M=;
- h=Date:From:To:Subject:From;
- b=STbR3qV8cwNxiZIuvorktFoFlakTTt5YEKJ69SfP2/NQirU87FSw1wEVqePIs2A8W
- AMPEdOrfJTmfWCAy49W4R+2nLXnWhCmQNOzBiWVW4emMUv7XeV00ytOXX0O1Bq2wpY
- E7GT+/REJxtgHjZctv7GyJ42W+FYa5iJquGHYn/6qi4TjPShvjlgYzC3BSoCDgusrY
- YqW2Is5CA4Ls9vSI385857G4Qbt75b4ZILMcvWci8chiWP2ykvqfl+JV5m+/hbXreB
- DU9qtd/9DaVoYVR3cA/6nUK/VmqTX5cYTbxRkqW8QEtT9hos7MlbDiX+PVD9mPCnzS
- ZQV8FctNo0G+w==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=venturelinkbiz.com
- header.i=@venturelinkbiz.com header.a=rsa-sha256 header.s=mail
- header.b=STbR3qV8
+X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns;
+ s=1665719670.livegpstrack; d=livegpstrack.com; 
+ b=O62ctoihelIvriOfAaC4SdZau47a3TtlLl9lD0P2+2V1YGNF1m2DXVLDWg89SvY7Y0+Eauqsc8jj
+ 2dxAjIRRNZc+E/I64oM233jpa6JJ+4G673WwCj9ygZMP/m0iCM7VApQY2VPg1Jjy6YKUnmcJAk5o
+ DQT5AL1WRCfQ5Jd2AF0=;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed;
+ s=1665719670.livegpstrack; d=livegpstrack.com; 
+ h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ i=noreply@livegpstrack.com; 
+ bh=lpQcGtBz8zXEnEvBg+M7ANQSfcg=;
+ b=Ks01oygOR+JJOsmgWk2wZ2/TMXkXi11v5t2mUuqHo3c1xxe7bi88z/AUqJScYkZgfzY4NLhN6iiS
+ 70x2Mu5oZX7bJEvuWuq/A01dhFPBtgmyQZx1Q/fWya20SjwDWUhzDEJ/DUcBFLoDP6KNP2p23tM8
+ FAfToWZOgBVvdBxqd2A=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=livegpstrack.com
+ header.i=noreply@livegpstrack.com header.a=rsa-sha1
+ header.s=1665719670.livegpstrack header.b=Ks01oygO
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,20 +72,45 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: =?ISO-8859-1?B?Q2FyVHJhY2sgR1BT?= <salesgps@cartrackgps.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RG9icsOpIHLDoW5vCgpabsOhdGUgc3lzdMOpbSwga3RlcsO9IG5lamVuIGhsw61kw6EsIGFsZSBp
-IG9wdGltYWxpenVqZSB2w71yb2J1IGEgcMWZaW7DocWhw60gc3TDoWzDvSBwxZnDrWplbT8KCkTD
-rWt5IG5lam5vdsSbasWhw61tIHRlY2hub2xvZ2nDrW0gYSBhbmFsw716ZSBkYXQgbmHFoWUgxZll
-xaFlbsOtIGlkZW50aWZpa3VqZSBvYmxhc3RpIG9wdGltYWxpemFjZSwgenbDvcWhZW7DrSBlZmVr
-dGl2aXR5IGEgc27DrcW+ZW7DrSBuw6FrbGFkxa8uIE5hxaFpIGtsaWVudGkgemF6bmFtZW5hbGkg
-bsOhcsWvc3QgcMWZw61qbcWvIHYgcHLFr23Em3J1IG8gMjAgJSBhIGRuZXMgc2kgdG8gbcWvxb5l
-dGUgdnl6a291xaFldCBuYSA2MCBkbsOtIHpkYXJtYS4KClBva3VkIGNoY2V0ZSBkYWzFocOtIHBv
-ZHJvYm5vc3RpLCBvZHBvdsSbenRlIHByb3PDrW0gbmEga29udGFrdG7DrSDEjcOtc2xvLgoKClBv
-emRyYXZ5Ck1pY2hhbCBSbW91dGlsCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qu
-b3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaXZlcmRldi1kZXZlbAo=
+Looking for distributors
+
+My name is Paul Novak from Car Track GPS and we're looking for distributors for our tracking products.
+We design innovative software and hardware location technologies.
+
+Our innovative web based software allows owners to track fleets in realtime by iOS or Android Apps.
+If a vehicle is stolen you can stop the engine and recover it.
+
+With our Professional Kit you can start your own tracking business or just resell the software and hardware.
+
+Our products are ideal for fleet tracking and recovery of stolen vehicles. Insurance companies, trucking companies and car dealers have been our clients for over 20 years.
+This could be a good choice If you want to start a new business or diversify your investment.
+
+The business consists in offering location services to end customers through a web site.
+This is accomplished through a Web platform that we provide as a turnkey server installed at your end.
+
+This service will allow customers to track their fleets from any web browser - even from Tablets and Smartphones - with a username and password.
+We have Professional Kits available which include full Software licenses, so once you get the KIT and start testing you will not need to invest again in the Software or have to pay any monthly fee.
+
+If you're interested I can send you the proposal for your consideration.
+
+Best regards,
+Paul Novak
+Car Track GPS
+Miami: +1 786 352 8766
+cartrack gps .com
+
+We have clients in over 100 countries and 20 years of experience in GPS tracking systems.
+ID: 213230
+
+If you would like to opt-out please reply to this email with the subject REMOVE.
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
