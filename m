@@ -1,67 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA8187771DB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Aug 2023 09:47:17 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EA1C783B38;
-	Thu, 10 Aug 2023 07:47:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EA1C783B38
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rebEZdkZ-PnI; Thu, 10 Aug 2023 07:47:15 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C99D483B2A;
-	Thu, 10 Aug 2023 07:47:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C99D483B2A
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2F9781BF377
- for <devel@linuxdriverproject.org>; Thu, 10 Aug 2023 07:47:12 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D310E777902
+	for <lists+driverdev-devel@lfdr.de>; Thu, 10 Aug 2023 15:03:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 03315402E0
- for <devel@linuxdriverproject.org>; Thu, 10 Aug 2023 07:47:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 03315402E0
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3F0934175A;
+	Thu, 10 Aug 2023 13:02:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3F0934175A
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mLhtY8ohhOSc for <devel@linuxdriverproject.org>;
- Thu, 10 Aug 2023 07:47:11 +0000 (UTC)
-X-Greylist: delayed 356 seconds by postgrey-1.37 at util1.osuosl.org;
- Thu, 10 Aug 2023 07:47:11 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 492C3400E7
-Received: from mail.untappedopportunity.pl (mail.untappedopportunity.pl
- [51.89.164.15])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 492C3400E7
- for <devel@driverdev.osuosl.org>; Thu, 10 Aug 2023 07:47:11 +0000 (UTC)
-Received: by mail.untappedopportunity.pl (Postfix, from userid 1002)
- id 7DC61A2BED; Thu, 10 Aug 2023 07:41:10 +0000 (UTC)
-Received: by mail.untappedopportunity.pl for <devel@driverdev.osuosl.org>;
- Thu, 10 Aug 2023 07:41:00 GMT
-Message-ID: <20230810064500-0.1.ag.1if2m.0.zgdvp6h3d3@untappedopportunity.pl>
-Date: Thu, 10 Aug 2023 07:41:00 GMT
-From: "Roman Duda" <roman.duda@untappedopportunity.pl>
-To: <devel@driverdev.osuosl.org>
-Subject: =?UTF-8?Q?Obroty_na_terminalu_p=C5=82atniczym_?=
-X-Mailer: mail.untappedopportunity.pl
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XXLO8kUDhYm5; Thu, 10 Aug 2023 13:02:58 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0DDC5416D1;
+	Thu, 10 Aug 2023 13:02:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0DDC5416D1
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 515271BF2E4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 10 Aug 2023 13:02:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8166041BC4
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 10 Aug 2023 13:02:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8166041BC4
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VTWEfhdlgm_9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 10 Aug 2023 13:02:51 +0000 (UTC)
+Received: from gbook.cl (54.16.198.104.bc.googleusercontent.com
+ [104.198.16.54])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8D93041BBB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu, 10 Aug 2023 13:02:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8D93041BBB
+Received: from User (84.127.94.252.dyn.user.ono.com [84.127.94.252])
+ by gbook.cl (Postfix) with ESMTPA id 392B012A14C;
+ Thu, 10 Aug 2023 08:14:40 -0400 (-04)
+From: "MAX"<max_tony@aim.com>
+Subject: YOUR URGENT SUPPORTS NEEDED+*
+Date: Thu, 10 Aug 2023 14:14:45 +0200
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=untappedopportunity.pl; s=mail; t=1691653271;
- bh=5wpyoptbyYUuT+vHxbSH1QDt05st4RxEdvSzMPzrBhg=;
- h=Date:From:To:Subject:From;
- b=oHkEgkyJwqhLv3T1Tu+hzp/gkCpYbBPYXl5Y+gAcOA6FPlM5pCb9LKA3ZXSYb8xFi
- VYcGdSSzyyUlm1zuBeNYrUXczEn0gG7TPT+cISYXG9rAJlaf0a5neGUyQKX+j7ghQc
- 6CqFeGFuZmyWl+dnv+dPqc5k9Ty3fZgD6LWtrPW/VPXN+4TZR306bX1llJT7B6SIxU
- 2BnOy6kWAlZ+0dNMDKbliRgmvi7FCTwa16sU5lf9Ze+aRxQuV5TXR+VlDx+JtXiaEG
- OP2/DvSodgEn9wdFskjgFq3MehLGDEd+kJa5f2rJ1D+1Wytmbk3l3cFZLqpR7qvJY+
- S1t2VLZj90B8Q==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=untappedopportunity.pl
- header.i=@untappedopportunity.pl header.a=rsa-sha256 header.s=mail
- header.b=oHkEgkyJ
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20230810130252.8166041BC4@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,23 +63,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: ttonymaxwell@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-U3phbm93bmkgUGHFhHN0d28sCgp6d3JhY2FtIHNpxJkgZG8gUGHFhHN0d2EgdyB6d2nEhXprdSB6
-IHdwcm93YWR6ZW5pZW0gbm93ZWdvIHNwb3NvYnUgZmluYW5zb3dhbmlhIHBvZCBvYnLDs3QgbmEg
-dGVybWluYWx1IHDFgmF0bmljenltIC0gYmV6IHpixJlkbnljaCBmb3JtYWxub8WbY2kgaSBiZXog
-b2RzZXRlay4KCk5hc3plIHdzcGFyY2llIGtpZXJ1amVteSBkbyBwcnplZHNpxJliaW9yY8Ozdywg
-a3TDs3J6eSBkemlhxYJhasSFIG5hIHJ5bmt1IHByemV6IGNvIG5ham1uaWVqIHJvaywga29yenlz
-dGFqxIUgeiB0ZXJtaW5hbGEgcMWCYXRuaWN6ZWdvIG9kIG1pbi4gNiBtaWVzacSZY3kgaSBnZW5l
-cnVqxIUgbmllIG1uaWVqIG5pxbwgNzUwMCB6xYIgbWllc2nEmWN6bmVnbyBvYnJvdHUgbmEgdGVy
-bWluYWx1IHDFgmF0bmljenltLgoKSmXFvGVsaSBzcGXFgm5pYWrEhSBQYcWEc3R3byB0ZSBrcnl0
-ZXJpYSBpIGludGVyZXN1amUgUGHFhHN0d2Egc3p5YmtpZSBwb3p5c2thbmllIGRvZGF0a293eWNo
-IMWbcm9ka8OzdyB6IGF1dG9tYXR5Y3puxIUgc3DFgmF0xIUgZWxhc3R5Y3pueWNoIHJhdCBkb3N0
-b3Nvd2FueWNoIGRvIGR6aWVubnljaCBvYnJvdMOzdyAtIHByb3N6xJkgbyB3aWFkb21vxZvEhy4g
-Q2jEmXRuaWUgcHJ6ZWRzdGF3acSZIHN6Y3plZ8OzxYJ5LgoKClBvemRyYXdpYW0KUm9tYW4gRHVk
-YQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBt
-YWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2
-LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Dear Friend
+
+I am  techinical consultant,tony maxwell by name, I have a client .who made a fixed deposit of fund valued at USD$8,500,000.00 (Eight  Million, Five Hundred Thousand United States Dollars) with a depositing firm, here in Europe and unfortunately, He lost his life in the Libyan  Civil War.
+He left no person  as next of kin, except some vital documents related to the deposit still in my possession.
+Recently, the Depositing firm  contacted me, asking for the next of kin to the funds/deposit or the amount may be declared as unclaimed.
+Upon a clear and legitimate agreement with you, I seek your consent to present you as the next of kin, so that my late client's funds will not beconfiscated by the Financial Regulatory Authority.
+You will be entitled to 40% of the total fund for your involvement.
+Be informed that there is no risk involved as all necessary legal documents that will be used to back you up as the legal beneficiary and next of kin of my late client willbe procured.
+Kindly, get in touch with me by my e-mail (ttonymaxwell@gmail.com)  For more detail if your interested.
+ Sincerely
+Tony  maxwell.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
