@@ -1,59 +1,79 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4224781F41
-	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Aug 2023 20:24:45 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B9C9678200A
+	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Aug 2023 23:01:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9377E81B7B;
-	Sun, 20 Aug 2023 18:24:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9377E81B7B
+	by smtp3.osuosl.org (Postfix) with ESMTP id 11F6660B32;
+	Sun, 20 Aug 2023 21:01:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 11F6660B32
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2pIKxnNyXKp1; Sun, 20 Aug 2023 18:24:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UuuszwAICdto; Sun, 20 Aug 2023 21:01:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8F43281B83;
-	Sun, 20 Aug 2023 18:24:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8F43281B83
+	by smtp3.osuosl.org (Postfix) with ESMTP id EC36E60B0B;
+	Sun, 20 Aug 2023 21:01:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EC36E60B0B
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3BB221BF425
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E08CD1BF2F7
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Aug 2023 18:24:39 +0000 (UTC)
+ Sun, 20 Aug 2023 21:01:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1BFE681B83
+ by smtp2.osuosl.org (Postfix) with ESMTP id C337640273
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Aug 2023 18:24:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1BFE681B83
+ Sun, 20 Aug 2023 21:01:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C337640273
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id leBGQ-wwNU3I
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UBbvwjPlWSsH
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Aug 2023 18:24:38 +0000 (UTC)
-X-Greylist: delayed 1011 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 20 Aug 2023 18:24:38 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1345C81B7B
-Received: from mail.OPHLM-ST-OUEN.FR (mail.stouen-habitat-public.fr
- [86.65.168.242])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1345C81B7B
+ Sun, 20 Aug 2023 21:01:44 +0000 (UTC)
+Received: from cg.mcloud.vc (cg.mcloud.vc [79.171.174.85])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2AC7C40136
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Aug 2023 18:24:38 +0000 (UTC)
-Received: from User (85.31.45.11) by mail.stouen-habitat-public.fr
- (192.168.1.74) with Microsoft SMTP Server id 14.1.438.0; Sat, 19 Aug 2023
- 09:19:50 +0200
-From: Vicente <efrank.broker44@gmail.com>
-Subject: LOANS PROJECT FUNDING    
-Date: Sat, 19 Aug 2023 00:19:51 -0700
+ Sun, 20 Aug 2023 21:01:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2AC7C40136
+Received: from ksmg.cluster01.mcloud.vc (localhost [127.0.0.1])
+ by cg.mcloud.vc (Postfix) with ESMTP id 3562C2920D;
+ Sun, 20 Aug 2023 17:52:14 +0300 (MSK)
+Received: from User (unknown [192.168.255.2])
+ by cg.mcloud.vc (Postfix) with SMTP;
+ Sun, 20 Aug 2023 17:52:08 +0300 (MSK)
+From: "Vicente"<efrank.broker44@gmail.com>
+Date: Sun, 20 Aug 2023 07:52:13 -0700
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <27489d18-2982-48ad-981c-33e0cdf968d6@MAIL.OPHLM-ST-OUEN.FR>
-To: Undisclosed recipients:;
+X-KSMG-Rule-ID: 1
+X-KSMG-Message-Action: skipped, AntiSpam
+X-KSMG-AntiSpam-Lua-Profiles: 179340 [Aug 20 2023]
+X-KSMG-AntiSpam-Version: 5.9.59.0
+X-KSMG-AntiSpam-Envelope-From: efrank.broker44@gmail.com
+X-KSMG-AntiSpam-Rate: 100
+X-KSMG-AntiSpam-Status: spam
+X-KSMG-AntiSpam-Method: headers
+X-KSMG-AntiSpam-Info: LuaCore: 526 526
+ 7a6a9b19f6b9b3921b5701490f189af0e0cd5310, {vsh_silent_1},
+ {Prob_Advanced_Mass_Sender_X_Mailer}, {Prob_Reply_to_without_To},
+ {Prob_From_no_space_freehosting}, {Std_Spam_X_Mailer_wo_msgid},
+ d41d8cd98f00b204e9800998ecf8427e.com:7.1.1; gmail.com:7.1.1,5.0.1;
+ 127.0.0.199:7.1.2, FromAlignment: s, {Tracking_white_helo}
+X-MS-Exchange-Organization-SCL: 9
+X-KSMG-AntiSpam-Interceptor-Info: scan successful
+X-KSMG-AntiPhishing: Clean
+X-KSMG-LinksScanning: Clean
+X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.0.1.6960,
+ bases: 2023/08/20 13:37:00 #21659701
+X-KSMG-AntiVirus-Status: Clean, skipped
+Subject: [Spam]LOANS PROJECT FUNDING
+Message-Id: <20230820210144.C337640273@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
