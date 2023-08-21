@@ -1,79 +1,55 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9C9678200A
-	for <lists+driverdev-devel@lfdr.de>; Sun, 20 Aug 2023 23:01:50 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8EB22782628
+	for <lists+driverdev-devel@lfdr.de>; Mon, 21 Aug 2023 11:20:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 11F6660B32;
-	Sun, 20 Aug 2023 21:01:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 11F6660B32
+	by smtp4.osuosl.org (Postfix) with ESMTP id 10278408AF;
+	Mon, 21 Aug 2023 09:20:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 10278408AF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UuuszwAICdto; Sun, 20 Aug 2023 21:01:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id p_CuBiY8QuCz; Mon, 21 Aug 2023 09:20:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EC36E60B0B;
-	Sun, 20 Aug 2023 21:01:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EC36E60B0B
+	by smtp4.osuosl.org (Postfix) with ESMTP id D2C8B408AB;
+	Mon, 21 Aug 2023 09:20:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D2C8B408AB
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E08CD1BF2F7
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id F3A9F1BF3C0
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Aug 2023 21:01:44 +0000 (UTC)
+ Mon, 21 Aug 2023 09:20:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C337640273
+ by smtp4.osuosl.org (Postfix) with ESMTP id D8219408AA
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Aug 2023 21:01:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C337640273
+ Mon, 21 Aug 2023 09:20:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D8219408AA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UBbvwjPlWSsH
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2gIpZ_I9jTy8
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Aug 2023 21:01:44 +0000 (UTC)
-Received: from cg.mcloud.vc (cg.mcloud.vc [79.171.174.85])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2AC7C40136
+ Mon, 21 Aug 2023 09:20:10 +0000 (UTC)
+X-Greylist: delayed 333 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 21 Aug 2023 09:20:10 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 768F5408A9
+Received: from mail.bioind.com (unknown [212.199.63.46])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 768F5408A9
  for <driverdev-devel@linuxdriverproject.org>;
- Sun, 20 Aug 2023 21:01:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2AC7C40136
-Received: from ksmg.cluster01.mcloud.vc (localhost [127.0.0.1])
- by cg.mcloud.vc (Postfix) with ESMTP id 3562C2920D;
- Sun, 20 Aug 2023 17:52:14 +0300 (MSK)
-Received: from User (unknown [192.168.255.2])
- by cg.mcloud.vc (Postfix) with SMTP;
- Sun, 20 Aug 2023 17:52:08 +0300 (MSK)
-From: "Vicente"<efrank.broker44@gmail.com>
-Date: Sun, 20 Aug 2023 07:52:13 -0700
+ Mon, 21 Aug 2023 09:20:10 +0000 (UTC)
+Received: from [94.156.102.149] (94.156.102.149) by mail.bioind.com
+ (192.168.20.202) with Microsoft SMTP Server (TLS) id 14.3.408.0; Mon, 21 Aug
+ 2023 12:14:29 +0300
+From: David Brennan <info@bioind.com>
+To: <driverdev-devel@linuxdriverproject.org>
+Subject: Investment Consultation
+Date: Mon, 21 Aug 2023 02:14:28 -0700
+Message-ID: <20230821021428.0D43A7221FE09E4C@bioind.com>
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-KSMG-Rule-ID: 1
-X-KSMG-Message-Action: skipped, AntiSpam
-X-KSMG-AntiSpam-Lua-Profiles: 179340 [Aug 20 2023]
-X-KSMG-AntiSpam-Version: 5.9.59.0
-X-KSMG-AntiSpam-Envelope-From: efrank.broker44@gmail.com
-X-KSMG-AntiSpam-Rate: 100
-X-KSMG-AntiSpam-Status: spam
-X-KSMG-AntiSpam-Method: headers
-X-KSMG-AntiSpam-Info: LuaCore: 526 526
- 7a6a9b19f6b9b3921b5701490f189af0e0cd5310, {vsh_silent_1},
- {Prob_Advanced_Mass_Sender_X_Mailer}, {Prob_Reply_to_without_To},
- {Prob_From_no_space_freehosting}, {Std_Spam_X_Mailer_wo_msgid},
- d41d8cd98f00b204e9800998ecf8427e.com:7.1.1; gmail.com:7.1.1,5.0.1;
- 127.0.0.199:7.1.2, FromAlignment: s, {Tracking_white_helo}
-X-MS-Exchange-Organization-SCL: 9
-X-KSMG-AntiSpam-Interceptor-Info: scan successful
-X-KSMG-AntiPhishing: Clean
-X-KSMG-LinksScanning: Clean
-X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.0.1.6960,
- bases: 2023/08/20 13:37:00 #21659701
-X-KSMG-AntiVirus-Status: Clean, skipped
-Subject: [Spam]LOANS PROJECT FUNDING
-Message-Id: <20230820210144.C337640273@smtp2.osuosl.org>
+X-Originating-IP: [94.156.102.149]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,25 +62,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: efrank.broker@gmail.com
+Reply-To: davbrennanb@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-We are offering Loan/Investment funds to Companies and Individuals with profitable projects in any area of specialization at 3% interest rate APR for a duration of 2 to 20 years with a year  grace period.
+Attn:
+I'm an Investment Consultant in the United Kingdom, I specialize 
+in searching for potential investments opportunities for high 
+net-worth clients worldwide.
+Should this be of interest to you, please do not hesitate to 
+email me for further information. 
+Kind regards,
+David Brennan
+eMail:davbrennanb@gmail.com
 
-Our Loan offer is between USD$10M to USD$10B loan for business owners. Our lenders or investors are well vetted according to European Union financial institutions. Let us know if you are interested.
-
-You can contact our loan provider immediately with the following email address: jp7354667@gmail.com
-
-CONTACT PERSON: Mr. Sachchidananda Banerjee
-
-Facilitator
-ReplyEmail-To: jp7354667@gmail.com
-
-Yours Faithfully,
-Mr. Vicente
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
