@@ -1,67 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D153B78BFE1
-	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Aug 2023 10:06:45 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B3D0E78C014
+	for <lists+driverdev-devel@lfdr.de>; Tue, 29 Aug 2023 10:16:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C813A60803;
-	Tue, 29 Aug 2023 08:06:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C813A60803
+	by smtp2.osuosl.org (Postfix) with ESMTP id 96B48405AA;
+	Tue, 29 Aug 2023 08:16:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 96B48405AA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fLgtShvhELdW; Tue, 29 Aug 2023 08:06:43 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qbJWGTRkw5Tl; Tue, 29 Aug 2023 08:16:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C059B60776;
-	Tue, 29 Aug 2023 08:06:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C059B60776
+	by smtp2.osuosl.org (Postfix) with ESMTP id 83562400C7;
+	Tue, 29 Aug 2023 08:16:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 83562400C7
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2FD3E1BF29D
- for <devel@linuxdriverproject.org>; Tue, 29 Aug 2023 08:06:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 075E21BF29D
+ for <devel@linuxdriverproject.org>; Tue, 29 Aug 2023 08:16:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0846A40935
- for <devel@linuxdriverproject.org>; Tue, 29 Aug 2023 08:06:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0846A40935
+ by smtp4.osuosl.org (Postfix) with ESMTP id D051F40963
+ for <devel@linuxdriverproject.org>; Tue, 29 Aug 2023 08:16:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D051F40963
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ivqQixChXtcZ for <devel@linuxdriverproject.org>;
- Tue, 29 Aug 2023 08:06:39 +0000 (UTC)
-X-Greylist: delayed 331 seconds by postgrey-1.37 at util1.osuosl.org;
- Tue, 29 Aug 2023 08:06:39 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2D7D440928
+ with ESMTP id 7KO0jN-JHTZv for <devel@linuxdriverproject.org>;
+ Tue, 29 Aug 2023 08:16:45 +0000 (UTC)
+X-Greylist: delayed 368 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 29 Aug 2023 08:16:45 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2488F40955
 Received: from mail.corebizinsight.com (mail.corebizinsight.com
  [217.61.112.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2D7D440928
- for <devel@linuxdriverproject.org>; Tue, 29 Aug 2023 08:06:39 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2488F40955
+ for <devel@driverdev.osuosl.org>; Tue, 29 Aug 2023 08:16:45 +0000 (UTC)
 Received: by mail.corebizinsight.com (Postfix, from userid 1002)
- id 02BBF82DD1; Tue, 29 Aug 2023 10:00:48 +0200 (CEST)
-Received: by mail.corebizinsight.com for <devel@linuxdriverproject.org>;
- Tue, 29 Aug 2023 08:00:30 GMT
-Message-ID: <20230829084500-0.1.g.17k0.0.gjle45bviy@corebizinsight.com>
-Date: Tue, 29 Aug 2023 08:00:30 GMT
+ id 1DE398304A; Tue, 29 Aug 2023 10:10:30 +0200 (CEST)
+Received: by mail.corebizinsight.com for <devel@driverdev.osuosl.org>;
+ Tue, 29 Aug 2023 08:10:28 GMT
+Message-ID: <20230829084500-0.1.g.186t.0.l6rr8xdfi5@corebizinsight.com>
+Date: Tue, 29 Aug 2023 08:10:28 GMT
 From: "Jakub Kovarik" <jakub.kovarik@corebizinsight.com>
-To: <devel@linuxdriverproject.org>
+To: <devel@driverdev.osuosl.org>
 Subject: =?UTF-8?Q?Pros=C3=ADm_kontaktujte?=
 X-Mailer: mail.corebizinsight.com
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=corebizinsight.com; s=mail; t=1693296065;
+ d=corebizinsight.com; s=mail; t=1693296635;
  bh=CEmchsDu5Oe+RNHCZSBmKSgMOuy1xnO2dydqkEjt3Qs=;
  h=Date:From:To:Subject:From;
- b=Wa1stYT4XlCVJQBLQR4EK7WWSpXdtrjNq+HiDQHfC1yqMZC81lbw6xiq6YI7Z4pvk
- sxxF+MKQYcCDCNWaK6lFagkNFhGnP8tOVG3qWA4zFj+bh2DRwSNFX659Patbs+cvmA
- 6xgkwFIrqAGYCOl+4tVIuYIQim55v0UZgK86sASBOT03j+uTrIP3+n6C8wXPskac04
- RL8Tdd15k6Rw5N6pMK79GZRYG9g3b+c8flrcSHSVS14BlZF1tOYcOQL09plqzGz0g/
- 3mozL8V7Sq/8F4ibszYFZcuyUn2DIGF4HWWd8ip839Ll2cVisx3S16gk5vIYeekRwN
- PotfSZ0lmkzbg==
+ b=6pQPWRU28bY+X6x+u/NnZASRTacOQZ9aWgcofDWbNsiTdUP7mfqoi6GXU3bog0sZb
+ 1U24GntDYJMN0cNHyAFxs4lpNkpdN5wkiWxb7ahz4qGn/QnaLNU1FY3SLdAItbhPcq
+ bsTIknUgE+MwAkcC7yJNGvewV331fLA1AlCQAJ/DBWUv3S2hlYYt24Va35oyoDeQja
+ eOLHbsKVEXV7vDuvqtVIWiaK4qIllM6Ygf+ydcQcuBdG+zHgTOYNkOXTbIN/abv4OM
+ vBFoazZCUX4dR3xRta5WMWGKA26kcXgfJModlbfP1wNfXb2rUcML5V3oAYGSG7zU6k
+ i/oWXqDERyxGw==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=corebizinsight.com
  header.i=@corebizinsight.com header.a=rsa-sha256 header.s=mail
- header.b=Wa1stYT4
+ header.b=6pQPWRU2
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
