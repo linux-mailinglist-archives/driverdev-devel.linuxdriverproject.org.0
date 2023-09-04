@@ -1,52 +1,50 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0D2E791BB4
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Sep 2023 18:40:14 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1FFD3791BC2
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Sep 2023 18:48:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3188581E57;
-	Mon,  4 Sep 2023 16:40:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3188581E57
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7290281BBD;
+	Mon,  4 Sep 2023 16:48:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7290281BBD
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0s4asgL73lMa; Mon,  4 Sep 2023 16:40:11 +0000 (UTC)
+	with ESMTP id GshXlGqDtRHy; Mon,  4 Sep 2023 16:48:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 02AD381BD4;
-	Mon,  4 Sep 2023 16:40:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 02AD381BD4
+	by smtp1.osuosl.org (Postfix) with ESMTP id 50E4D81BA8;
+	Mon,  4 Sep 2023 16:48:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 50E4D81BA8
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DA0F71BF364
- for <devel@linuxdriverproject.org>; Mon,  4 Sep 2023 16:40:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2D4DB1BF364
+ for <devel@linuxdriverproject.org>; Mon,  4 Sep 2023 16:48:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AD57440C2E
- for <devel@linuxdriverproject.org>; Mon,  4 Sep 2023 16:40:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AD57440C2E
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0716940C3F
+ for <devel@linuxdriverproject.org>; Mon,  4 Sep 2023 16:48:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0716940C3F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q-ZneXMZwCdw for <devel@linuxdriverproject.org>;
- Mon,  4 Sep 2023 16:40:07 +0000 (UTC)
-X-Greylist: delayed 1463 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 04 Sep 2023 16:40:06 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F227540B67
+ with ESMTP id cIRRonkqOFU6 for <devel@linuxdriverproject.org>;
+ Mon,  4 Sep 2023 16:48:25 +0000 (UTC)
 Received: from panel.govhost.st (unknown [5.150.254.174])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F227540B67
- for <devel@driverdev.osuosl.org>; Mon,  4 Sep 2023 16:40:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5C74A40B67
+ for <devel@driverdev.osuosl.org>; Mon,  4 Sep 2023 16:48:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5C74A40B67
 Received: from [127.0.0.1] (helo=minsaude.gov.st)
  by panel.govhost.st with esmtp (Exim 4.92.3)
  (envelope-from <lemba@minsaude.gov.st>)
- id 1qdCRT-000KjR-PL; Mon, 04 Sep 2023 19:28:47 +0300
+ id 1qdCaX-000LfJ-SI; Mon, 04 Sep 2023 19:38:09 +0300
 MIME-Version: 1.0
-Date: Mon, 04 Sep 2023 09:28:47 -0700
+Date: Mon, 04 Sep 2023 09:38:09 -0700
 From: "From the desk of Mr.Udoo K.Banney  UBA Bank " <lemba@minsaude.gov.st>
 To: undisclosed-recipients:;
 Subject: Attention:Email Owner
 Mail-Reply-To: ozudo00@gmail.com
-Message-ID: <f114e75b87dd3ec3374598d4898b1119@minsaude.gov.st>
+Message-ID: <18048edf5c3774c3e2ee373fdda37d8a@minsaude.gov.st>
 X-Sender: lemba@minsaude.gov.st
 User-Agent: Roundcube Webmail/0.9.5
 X-BeenThere: driverdev-devel@linuxdriverproject.org
