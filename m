@@ -1,50 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E26D8791BC5
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Sep 2023 18:48:44 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 722DB791BE4
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Sep 2023 19:15:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 611C6810D6;
-	Mon,  4 Sep 2023 16:48:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 611C6810D6
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9CDC181E3A;
+	Mon,  4 Sep 2023 17:15:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9CDC181E3A
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8EhMEBmuito2; Mon,  4 Sep 2023 16:48:42 +0000 (UTC)
+	with ESMTP id 92nVLVySylFd; Mon,  4 Sep 2023 17:15:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 523DE8120A;
-	Mon,  4 Sep 2023 16:48:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 523DE8120A
+	by smtp1.osuosl.org (Postfix) with ESMTP id 799C381E03;
+	Mon,  4 Sep 2023 17:15:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 799C381E03
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5B3321BF364
- for <devel@linuxdriverproject.org>; Mon,  4 Sep 2023 16:48:39 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E80211BF369;
+ Mon,  4 Sep 2023 17:15:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 357128119E
- for <devel@linuxdriverproject.org>; Mon,  4 Sep 2023 16:48:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 357128119E
+ by smtp2.osuosl.org (Postfix) with ESMTP id C0FDF4012F;
+ Mon,  4 Sep 2023 17:15:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0FDF4012F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TLYg7HQHI5KO for <devel@linuxdriverproject.org>;
- Mon,  4 Sep 2023 16:48:38 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IiT8sl6h-OmL; Mon,  4 Sep 2023 17:15:14 +0000 (UTC)
 Received: from panel.govhost.st (unknown [5.150.254.174])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 842E6810D6
- for <devel@driverdev.osuosl.org>; Mon,  4 Sep 2023 16:48:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 842E6810D6
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 636E7405DD;
+ Mon,  4 Sep 2023 17:15:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 636E7405DD
 Received: from [127.0.0.1] (helo=minsaude.gov.st)
  by panel.govhost.st with esmtp (Exim 4.92.3)
  (envelope-from <lemba@minsaude.gov.st>)
- id 1qdCBP-000JLc-0v; Mon, 04 Sep 2023 19:12:11 +0300
+ id 1qdCCh-000JPY-Ub; Mon, 04 Sep 2023 19:13:32 +0300
 MIME-Version: 1.0
-Date: Mon, 04 Sep 2023 09:12:10 -0700
+Date: Mon, 04 Sep 2023 09:13:31 -0700
 From: "From the desk of Mr.Udoo K.Banney  UBA Bank " <lemba@minsaude.gov.st>
 To: undisclosed-recipients:;
 Subject: Attention:Email Owner
 Mail-Reply-To: ozudo00@gmail.com
-Message-ID: <2e72a361e4cda035a7375d922acf0f95@minsaude.gov.st>
+Message-ID: <6d31a379c03ce203938a3831937eb519@minsaude.gov.st>
 X-Sender: lemba@minsaude.gov.st
 User-Agent: Roundcube Webmail/0.9.5
 X-BeenThere: driverdev-devel@linuxdriverproject.org
