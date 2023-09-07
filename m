@@ -1,69 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D81D79719E
-	for <lists+driverdev-devel@lfdr.de>; Thu,  7 Sep 2023 13:02:37 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4441E79719C
+	for <lists+driverdev-devel@lfdr.de>; Thu,  7 Sep 2023 13:02:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DEE7B41C5A;
-	Thu,  7 Sep 2023 11:02:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DEE7B41C5A
+	by smtp4.osuosl.org (Postfix) with ESMTP id 905C241C48;
+	Thu,  7 Sep 2023 11:02:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 905C241C48
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Q0-vuSEsD7u1; Thu,  7 Sep 2023 11:02:27 +0000 (UTC)
+	with ESMTP id eRsc4xksBilJ; Thu,  7 Sep 2023 11:02:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 598CE41C3F;
-	Thu,  7 Sep 2023 11:02:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 598CE41C3F
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1CF6141BD5;
+	Thu,  7 Sep 2023 11:02:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1CF6141BD5
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 809111BF990
- for <devel@linuxdriverproject.org>; Thu,  7 Sep 2023 11:02:21 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7228D1BF41A
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  7 Sep 2023 11:02:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4FD4841C1F
- for <devel@linuxdriverproject.org>; Thu,  7 Sep 2023 11:02:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4FD4841C1F
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4A1FB40489
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  7 Sep 2023 11:02:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4A1FB40489
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hIRvrXHhts6Z for <devel@linuxdriverproject.org>;
- Thu,  7 Sep 2023 11:02:20 +0000 (UTC)
-X-Greylist: delayed 814 seconds by postgrey-1.37 at util1.osuosl.org;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hzV-iqs1q-3m
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  7 Sep 2023 11:02:19 +0000 (UTC)
+X-Greylist: delayed 407 seconds by postgrey-1.37 at util1.osuosl.org;
  Thu, 07 Sep 2023 11:02:18 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2C89B41BD5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 09C024015E
 Received: from beach.zedfm.com (beach.zedfm.com [82.115.209.116])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2C89B41BD5
- for <devel@driverdev.osuosl.org>; Thu,  7 Sep 2023 11:02:17 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 09C024015E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Thu,  7 Sep 2023 11:02:17 +0000 (UTC)
 From: info@zedfm.com
-To: devel@driverdev.osuosl.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: Request for Quotation
-Date: 07 Sep 2023 03:48:42 -0700
-Message-ID: <20230907034841.1135B494C57E535F@zedfm.com>
+Date: 07 Sep 2023 03:55:28 -0700
+Message-ID: <20230907035528.4805D2F18343B764@zedfm.com>
 MIME-Version: 1.0
 Content-Type: multipart/mixed;
- boundary="----=_NextPart_000_0012_559F44FF.BA533AE7"
+ boundary="----=_NextPart_000_0012_394B4B51.B80E82A3"
 X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
  d=zedfm.com; 
- b=TdjHEG5ZZfXgdoZAOPa8pRSvCAxBdk23NJTrpgtxjDINj199YVhLAZmNsGlZ3/aaaStXLQLDtBnq
- hGeynbPjC3UPHtsK+b0ORVH/1GiK2EGADo3uUdzX0NkOE5zEPVAucIPgznIPAmggRD1andnf+HYb
- mYLbOw1N9EPfGaX9HM82ujHwfDd/ywLEgwiHaat34dbWwFahal62+mv4/TXtImg30hYvr+SHay8U
- NuSI+Wt8MkQZa5g7H7kMYdwm6MOl+EVfPTWnzBuLnCW47yYW7+tLOnOnBECoSxoNJBGx5TaIYI2Z
- c4b5ki6zrg2qPZRhPHh9aOA0rnKdgJz3O4ZMdg==;
+ b=CcB9y0CABNHEHWXxsTrThfqRWMDB+OuHLJc6nEtjdAG37KLvw399mh5KJ6iMb6H1LqDxg2jeCa6x
+ O8X82OWHl8KKCCabwedi749C8JVP/VochLBLvsUG26N6R1YfgSXVhgFSJkGToCUTwxzOqq9AAOBc
+ SepUCWTwCTTa/QVaKb04jR8gKwn2MdAbhrM+TtkyBb2+qfhKEDXxJAMKp8ACtlHrQp9RW4t2LTWf
+ byeq+dKmSsbyiChkQa5wNAqvy0FRtUuCFB9RMs8DgBWda787YJl9cGT6T6U7mDVahz+43GDxLQrT
+ l0jx2gQNED8TU81bpEsZv1mGSc+BaOhj9aBJZA==;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
  d=zedfm.com; 
  h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type;
  i=info@zedfm.com; 
- bh=Nmo0OLVlv5F8wGBYdkTfaTiAJOQ=;
- b=Gq4Llswj0Cy90TED0z8LrMeX4b8hybsKuM4Mz+B895qcBKuqmnMOSGwsjhhMHFiXICQ3mVrwwnTA
- +UAdv1ke0yOZ0+X70K2vY2SiCFhkZssq3Vw6B6rLT2Xvy5/ybnSmTNOqf9PaftSYQWpS6AlR5vwK
- 7OddA8cK4tzAv8YEk9xVK8VU8Qtp3UExiRCIzay7urnxbUclquSsmZTYNV17KaBYk/WuPcN0Pm6x
- RqMPZdUg0l26WWtcq8eLOw5K+igH+U5cQ7wqoMmnrSfpfW5eQxOTFo5Ohun6sJ/J1qOieEXqW3k7
- DZ466iCQMsqtSKiyy77ZwLyGMJo5b2s6d2wjNA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=31RpIcng278oOYiHs9mW7NKLe4s=;
+ b=uRuBcX/ZTSA/9gjwHJIgLselfRwA0imfmfm/FjSJpuixBEJqnbFl8sswSVHLcSuZpnZ4FK9+9kkf
+ mmZIs4nBkVpqLaNBQBtTg//QwnPMgIJcQtM+SSv4NS1VLaRZD10ObW9bCF+IvcQkLLjC07C75mmF
+ zlRdoITbjEWaU+dkuOfnYOKA0x0MVyRsjanfciYOukNYM6+1s0nnbndsYzm6RDnsigBM5iukBCrn
+ cZtp4QWFJkou295mDjF6YB1g/UiWdzwfsUzoLWR7MFxCGuj9qaWSd5q3v9V2HxoTv5+czB4FKSjh
+ XXVtlACcnq5x9EQUa7/FTJmJaNgTrP5rlX2bIQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=zedfm.com header.i=info@zedfm.com
- header.a=rsa-sha1 header.s=dkim header.b=Gq4Llswj
+ header.a=rsa-sha1 header.s=dkim header.b=uRuBcX/Z
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,7 +86,7 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 This is a multi-part message in MIME format.
 
-------=_NextPart_000_0012_559F44FF.BA533AE7
+------=_NextPart_000_0012_394B4B51.B80E82A3
 Content-Type: text/plain;
 	charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
@@ -97,7 +101,7 @@ Kindly:send your quotation to:purchasing@unilevnetherlands.nl
 
 Kind Regards,
 Mr.Prinsen Hannes
-------=_NextPart_000_0012_559F44FF.BA533AE7
+------=_NextPart_000_0012_394B4B51.B80E82A3
 Content-Type: application/pdf; name="REQUEST.pdf"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="REQUEST.pdf"
@@ -2781,7 +2785,7 @@ m/IbTx/lF+Y3sb2FpVvZwaeEXMOXLBPHK+TXdXlMM+rJaxzL4OIyTl7gwpWsYTWCuR1MH8lL
 MJwkdyfkKs3glFzCyIH9Lyc0osYNJv4BJA9E3AplbmRzdHJlYW0KZW5kb2JqCnN0YXJ0eHJl
 ZgoxNDQwNzUKJSVFT0YK
 
-------=_NextPart_000_0012_559F44FF.BA533AE7
+------=_NextPart_000_0012_394B4B51.B80E82A3
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -2792,7 +2796,7 @@ devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
 
-------=_NextPart_000_0012_559F44FF.BA533AE7--
+------=_NextPart_000_0012_394B4B51.B80E82A3--
 
 
 
