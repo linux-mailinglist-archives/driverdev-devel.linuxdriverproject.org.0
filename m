@@ -1,74 +1,87 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38AF579F7EB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Sep 2023 04:23:50 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D2B4E79FC3E
+	for <lists+driverdev-devel@lfdr.de>; Thu, 14 Sep 2023 08:41:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B265840A4D;
-	Thu, 14 Sep 2023 02:23:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B265840A4D
+	by smtp1.osuosl.org (Postfix) with ESMTP id 28F8783336;
+	Thu, 14 Sep 2023 06:41:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 28F8783336
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AuHyCd3Aswhn; Thu, 14 Sep 2023 02:23:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ytDomF2whEhl; Thu, 14 Sep 2023 06:41:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0557140A59;
-	Thu, 14 Sep 2023 02:23:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0557140A59
+	by smtp1.osuosl.org (Postfix) with ESMTP id C04EE83339;
+	Thu, 14 Sep 2023 06:41:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C04EE83339
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 98EBA1BF859
- for <devel@linuxdriverproject.org>; Thu, 14 Sep 2023 02:23:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0116E1BF2E4
+ for <devel@linuxdriverproject.org>; Thu, 14 Sep 2023 06:41:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 72B0260EFC
- for <devel@linuxdriverproject.org>; Thu, 14 Sep 2023 02:23:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 72B0260EFC
+ by smtp3.osuosl.org (Postfix) with ESMTP id CD9E560F0F
+ for <devel@linuxdriverproject.org>; Thu, 14 Sep 2023 06:41:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CD9E560F0F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZWXLef634Npr for <devel@linuxdriverproject.org>;
- Thu, 14 Sep 2023 02:23:42 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 286FC60EEB
- for <devel@driverdev.osuosl.org>; Thu, 14 Sep 2023 02:23:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 286FC60EEB
-X-IronPort-AV: E=McAfee;i="6600,9927,10832"; a="377741993"
-X-IronPort-AV: E=Sophos;i="6.02,144,1688454000"; d="scan'208";a="377741993"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Sep 2023 19:23:41 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10832"; a="694062703"
-X-IronPort-AV: E=Sophos;i="6.02,144,1688454000"; d="scan'208";a="694062703"
-Received: from lkp-server02.sh.intel.com (HELO 9ef86b2655e5) ([10.239.97.151])
- by orsmga003.jf.intel.com with ESMTP; 13 Sep 2023 19:23:39 -0700
-Received: from kbuild by 9ef86b2655e5 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qgc13-00010M-2Y;
- Thu, 14 Sep 2023 02:23:37 +0000
-Date: Thu, 14 Sep 2023 10:23:23 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 4c5ba1d7a93e098aececbf93afbdd7add98ec6f3
-Message-ID: <202309141020.kT1yZaAy-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1694658222; x=1726194222;
- h=date:from:to:cc:subject:message-id;
- bh=JviPXVgyY8pa99X9HRAVUGhriGzZUzogxAnKzagt0L8=;
- b=k9b7YynohoEZTyRSRcfqwc9sYDKo2n9O4KnIfDbAl7ERIBy7ZRFiVFnn
- s4ohVdxDaol2wC8Xbjkig/s9ZzbXMq9HkOe/1pEu3h1pKS11eyX1rV9ot
- A6JgOc0IP8uEQyWDyEnjZ3q2cL7Ur1G3xXD9F9XES+iG4HJ1VbEcuv3m6
- 4YC+UfhJip7QnILNgKv6xrw82o9weIvgYS8NjYir9Ckt2Lh7Q8y906Owp
- ly+8vv4sDDKFY4RTgLWSErF7kCk0DEVWmOx1z3fBUoDlayZDMBnyrGwdT
- prGNlaqcrtTffZhKWa/mtEgvfXZPxGmPrkwnj/wLmoWW5P+FdrySolIh8
- w==;
+ with ESMTP id aFqCFQnXGMbJ for <devel@linuxdriverproject.org>;
+ Thu, 14 Sep 2023 06:41:34 +0000 (UTC)
+Received: from mail-wm1-x329.google.com (mail-wm1-x329.google.com
+ [IPv6:2a00:1450:4864:20::329])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 613C260F04
+ for <devel@driverdev.osuosl.org>; Thu, 14 Sep 2023 06:41:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 613C260F04
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-404571cbb8dso2802285e9.3
+ for <devel@driverdev.osuosl.org>; Wed, 13 Sep 2023 23:41:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1694673692; x=1695278492;
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mbPn8jG0aaiKDlxm4t2ttIZEEd6U3lKk9eO8XNX7zCA=;
+ b=JuHjjypu24tl3TfAvz0UUre9SAmjZQ2xHi8+Haq9+/YQcg8UMqIs5AAF2g+XteLLxu
+ ca0XHz8+YrOBRW/vfNOaA2bHoFaiYRfgU81htpV8wNgmCO2A57y9rr0AcoJ0plJy94fi
+ JCePp/F2+y9mAPqTHAmbss3cQwZEqQyLSS1iw4Av8636BFn4+ii4w0Qv972lgwWNRNoG
+ Cjxgkcc/lkkEFE2EoNfEnCR8EjnGINWo19hnqrGwLXKLnL/bcIKY6PdbWf6DpmGaVVU/
+ foRTwhRNJSrIJgqx9EsDwy7zRhpxPsEih3XBqb2Gw8C9l8XtrIKwopdOKLhy7ivt7p+u
+ G91A==
+X-Gm-Message-State: AOJu0YxwynC6zO7NGUSCzjExjZyb2N7LtiuW51ADFmbSb/hSHKKjRthI
+ PW/wg1kfpaKHOQqbo4mAfew8QA==
+X-Google-Smtp-Source: AGHT+IFgeGqKGjC19iBPDtNMSzCBGblrqc4Ak12Todt8W8/zsACpjAIRkD+d9CMRsRDWUFDe6Nn7WA==
+X-Received: by 2002:a1c:7204:0:b0:403:442:5421 with SMTP id
+ n4-20020a1c7204000000b0040304425421mr3855814wmc.4.1694673692426; 
+ Wed, 13 Sep 2023 23:41:32 -0700 (PDT)
+Received: from localhost ([102.36.222.112]) by smtp.gmail.com with ESMTPSA id
+ m10-20020a7bce0a000000b003fee53feab5sm1061962wmc.10.2023.09.13.23.41.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 Sep 2023 23:41:32 -0700 (PDT)
+Date: Thu, 14 Sep 2023 09:41:29 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: oe-kbuild@lists.linux.dev, Jinjie Ruan <ruanjinjie@huawei.com>
+Subject: [staging:staging-testing 17/17] drivers/staging/vme_user/vme.c:296
+ vme_slave_request() error: we previously assumed 'slave_image' could be null
+ (see line 297)
+Message-ID: <87c5de5b-ecb8-46ec-8489-605971214683@kadam.mountain>
+MIME-Version: 1.0
+Content-Disposition: inline
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1694673692; x=1695278492; darn=driverdev.osuosl.org; 
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mbPn8jG0aaiKDlxm4t2ttIZEEd6U3lKk9eO8XNX7zCA=;
+ b=Um5606JW+pFNVN9EDV/1UzXbZmRFhv5Uw+1cuALTRpywpmu7TvOFggbOEHxX1mGd5C
+ 2hhPfK6j4gUcbAdpUpwejLARnf95b0a8DidlCJcjGkpBRL0O5ggHy8MTp4jHFe6EWv0N
+ YylcXEstiAyiXUtWu3JLsdYg50u1mSM9cfNAcS/a2g8x63CzlcyCsNF+zDlaFVIaIqLd
+ 5dYdEqLR2QugB9zL28zMJZQ845B/kp5oOtXVYRlO8xvsnFyWonnWxKtL2U8cJdnIzQKR
+ f6EFL4yC3FryXqdv6jCbni00Bea3RGT4VEVsLfujwRuh5iViw3fLkso0zDQis7X4Wn7k
+ 1KKg==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=k9b7Yyno
+ dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org
+ header.a=rsa-sha256 header.s=google header.b=Um5606JW
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,297 +94,82 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: 4c5ba1d7a93e098aececbf93afbdd7add98ec6f3  staging: vme_user: Use list_for_each_entry() helper
+Hi Jinjie,
 
-Unverified Warning (likely false positive, please contact us if interested):
+FYI, the error/warning was bisected to this commit, please ignore it if it's irrelevant.
 
-drivers/staging/vme_user/vme.c:1460 vme_lm_request() error: we previously assumed 'lm' could be null (see line 1461)
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+head:   4c5ba1d7a93e098aececbf93afbdd7add98ec6f3
+commit: 4c5ba1d7a93e098aececbf93afbdd7add98ec6f3 [17/17] staging: vme_user: Use list_for_each_entry() helper
+config: x86_64-randconfig-161-20230913 (https://download.01.org/0day-ci/archive/20230914/202309140330.fgOxoRhE-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+reproduce: (https://download.01.org/0day-ci/archive/20230914/202309140330.fgOxoRhE-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+| Closes: https://lore.kernel.org/r/202309140330.fgOxoRhE-lkp@intel.com/
+
+smatch warnings:
 drivers/staging/vme_user/vme.c:296 vme_slave_request() error: we previously assumed 'slave_image' could be null (see line 297)
 drivers/staging/vme_user/vme.c:492 vme_master_request() error: we previously assumed 'master_image' could be null (see line 493)
 drivers/staging/vme_user/vme.c:866 vme_dma_request() error: we previously assumed 'dma_ctrlr' could be null (see line 867)
+drivers/staging/vme_user/vme.c:1460 vme_lm_request() error: we previously assumed 'lm' could be null (see line 1461)
 
-Warning ids grouped by kconfigs:
+vim +/slave_image +296 drivers/staging/vme_user/vme.c
 
-gcc_recent_errors
-`-- x86_64-randconfig-161-20230913
-    |-- drivers-staging-vme_user-vme.c-vme_dma_request()-error:we-previously-assumed-dma_ctrlr-could-be-null-(see-line-)
-    |-- drivers-staging-vme_user-vme.c-vme_lm_request()-error:we-previously-assumed-lm-could-be-null-(see-line-)
-    |-- drivers-staging-vme_user-vme.c-vme_master_request()-error:we-previously-assumed-master_image-could-be-null-(see-line-)
-    `-- drivers-staging-vme_user-vme.c-vme_slave_request()-error:we-previously-assumed-slave_image-could-be-null-(see-line-)
+6af04b065b048e drivers/staging/vme/vme.c      Martyn Welch    2011-12-01  281  struct vme_resource *vme_slave_request(struct vme_dev *vdev, u32 address,
+6af04b065b048e drivers/staging/vme/vme.c      Martyn Welch    2011-12-01  282  				       u32 cycle)
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  283  {
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  284  	struct vme_bridge *bridge;
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  285  	struct vme_slave_resource *allocated_image = NULL;
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  286  	struct vme_slave_resource *slave_image = NULL;
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  287  	struct vme_resource *resource = NULL;
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  288  
+8f966dc444b11a drivers/staging/vme/vme.c      Manohar Vanga   2011-09-26  289  	bridge = vdev->bridge;
+61282c04984e40 drivers/vme/vme.c              Markus Elfring  2017-08-24  290  	if (!bridge) {
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  291  		printk(KERN_ERR "Can't find VME bus\n");
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  292  		goto err_bus;
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  293  	}
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  294  
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  295  	/* Loop through slave resources */
+4c5ba1d7a93e09 drivers/staging/vme_user/vme.c Jinjie Ruan     2023-08-23 @296  	list_for_each_entry(slave_image, &bridge->slave_resources, list) {
+                                                                                                    ^^^^^^^^^^^
+This is the iterator.
 
-elapsed time: 1049m
+61282c04984e40 drivers/vme/vme.c              Markus Elfring  2017-08-24 @297  		if (!slave_image) {
 
-configs tested: 240
-configs skipped: 2
+And list iterators are never NULL.  Please remove this if statement.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allmodconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                          axs103_defconfig   gcc  
-arc                                 defconfig   gcc  
-arc                            hsdk_defconfig   gcc  
-arc                   randconfig-001-20230914   gcc  
-arc                  randconfig-r004-20230913   gcc  
-arc                  randconfig-r033-20230913   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                        clps711x_defconfig   gcc  
-arm                                 defconfig   gcc  
-arm                      integrator_defconfig   gcc  
-arm                        keystone_defconfig   gcc  
-arm                            mps2_defconfig   gcc  
-arm                   randconfig-001-20230914   gcc  
-arm                           sunxi_defconfig   gcc  
-arm                        vexpress_defconfig   clang
-arm64                            allmodconfig   gcc  
-arm64                             allnoconfig   gcc  
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                randconfig-r012-20230913   clang
-arm64                randconfig-r014-20230913   clang
-csky                             allmodconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
-csky                                defconfig   gcc  
-csky                 randconfig-r032-20230913   gcc  
-hexagon                             defconfig   clang
-hexagon               randconfig-001-20230913   clang
-hexagon               randconfig-002-20230913   clang
-i386                             allmodconfig   gcc  
-i386                              allnoconfig   gcc  
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-001-20230913   gcc  
-i386         buildonly-randconfig-001-20230914   gcc  
-i386         buildonly-randconfig-002-20230913   gcc  
-i386         buildonly-randconfig-002-20230914   gcc  
-i386         buildonly-randconfig-003-20230913   gcc  
-i386         buildonly-randconfig-003-20230914   gcc  
-i386         buildonly-randconfig-004-20230913   gcc  
-i386         buildonly-randconfig-004-20230914   gcc  
-i386         buildonly-randconfig-005-20230913   gcc  
-i386         buildonly-randconfig-005-20230914   gcc  
-i386         buildonly-randconfig-006-20230913   gcc  
-i386         buildonly-randconfig-006-20230914   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                  randconfig-001-20230914   gcc  
-i386                  randconfig-002-20230914   gcc  
-i386                  randconfig-003-20230914   gcc  
-i386                  randconfig-004-20230914   gcc  
-i386                  randconfig-005-20230913   gcc  
-i386                  randconfig-005-20230914   gcc  
-i386                  randconfig-006-20230913   gcc  
-i386                  randconfig-006-20230914   gcc  
-i386                  randconfig-011-20230913   clang
-i386                  randconfig-011-20230913   gcc  
-i386                  randconfig-011-20230914   gcc  
-i386                  randconfig-012-20230913   clang
-i386                  randconfig-012-20230913   gcc  
-i386                  randconfig-012-20230914   gcc  
-i386                  randconfig-013-20230913   clang
-i386                  randconfig-013-20230913   gcc  
-i386                  randconfig-013-20230914   gcc  
-i386                  randconfig-014-20230913   clang
-i386                  randconfig-014-20230913   gcc  
-i386                  randconfig-014-20230914   gcc  
-i386                  randconfig-015-20230913   clang
-i386                  randconfig-015-20230913   gcc  
-i386                  randconfig-015-20230914   gcc  
-i386                  randconfig-016-20230913   clang
-i386                  randconfig-016-20230913   gcc  
-i386                  randconfig-016-20230914   gcc  
-i386                 randconfig-r016-20230913   clang
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                        allyesconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch             randconfig-001-20230913   gcc  
-loongarch             randconfig-001-20230914   gcc  
-m68k                             allmodconfig   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                       bvme6000_defconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                       m5275evb_defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-microblaze           randconfig-r015-20230913   gcc  
-mips                             allmodconfig   gcc  
-mips                              allnoconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                           ci20_defconfig   gcc  
-mips                 randconfig-r012-20230913   gcc  
-mips                 randconfig-r015-20230913   gcc  
-mips                 randconfig-r016-20230913   gcc  
-mips                 randconfig-r031-20230913   clang
-mips                         rt305x_defconfig   gcc  
-nios2                            alldefconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-nios2                randconfig-r011-20230913   gcc  
-openrisc                         allmodconfig   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                         allyesconfig   gcc  
-openrisc                            defconfig   gcc  
-openrisc             randconfig-r006-20230913   gcc  
-parisc                           allmodconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc                generic-64bit_defconfig   gcc  
-parisc               randconfig-r014-20230913   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   gcc  
-powerpc                      bamboo_defconfig   gcc  
-powerpc                       holly_defconfig   gcc  
-powerpc                      obs600_defconfig   clang
-powerpc                      pcm030_defconfig   gcc  
-powerpc                     powernv_defconfig   clang
-powerpc              randconfig-r013-20230913   clang
-powerpc              randconfig-r036-20230913   gcc  
-powerpc                     stx_gp3_defconfig   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                 randconfig-001-20230914   gcc  
-riscv                randconfig-r001-20230913   gcc  
-riscv                randconfig-r005-20230913   gcc  
-riscv                randconfig-r031-20230913   gcc  
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                              allnoconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                  randconfig-001-20230913   clang
-s390                  randconfig-001-20230914   gcc  
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                                  defconfig   gcc  
-sh                        edosk7705_defconfig   gcc  
-sh                          sdk7786_defconfig   gcc  
-sh                           se7724_defconfig   gcc  
-sh                   secureedge5410_defconfig   gcc  
-sh                             sh03_defconfig   gcc  
-sh                            titan_defconfig   gcc  
-sparc                            allmodconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                            allyesconfig   gcc  
-sparc                               defconfig   gcc  
-sparc                 randconfig-001-20230914   gcc  
-sparc                randconfig-r035-20230913   gcc  
-sparc64                          alldefconfig   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-sparc64              randconfig-r003-20230913   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   clang
-um                                  defconfig   gcc  
-um                             i386_defconfig   gcc  
-um                   randconfig-r011-20230913   gcc  
-um                   randconfig-r032-20230913   clang
-um                           x86_64_defconfig   gcc  
-x86_64                            allnoconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64       buildonly-randconfig-001-20230913   gcc  
-x86_64       buildonly-randconfig-001-20230914   gcc  
-x86_64       buildonly-randconfig-002-20230913   gcc  
-x86_64       buildonly-randconfig-002-20230914   gcc  
-x86_64       buildonly-randconfig-003-20230913   gcc  
-x86_64       buildonly-randconfig-003-20230914   gcc  
-x86_64       buildonly-randconfig-004-20230913   gcc  
-x86_64       buildonly-randconfig-004-20230914   gcc  
-x86_64       buildonly-randconfig-005-20230913   gcc  
-x86_64       buildonly-randconfig-005-20230914   gcc  
-x86_64       buildonly-randconfig-006-20230913   gcc  
-x86_64       buildonly-randconfig-006-20230914   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64                randconfig-001-20230913   clang
-x86_64                randconfig-001-20230913   gcc  
-x86_64                randconfig-001-20230914   gcc  
-x86_64                randconfig-002-20230913   clang
-x86_64                randconfig-002-20230913   gcc  
-x86_64                randconfig-002-20230914   gcc  
-x86_64                randconfig-003-20230913   clang
-x86_64                randconfig-003-20230913   gcc  
-x86_64                randconfig-003-20230914   gcc  
-x86_64                randconfig-004-20230913   clang
-x86_64                randconfig-004-20230913   gcc  
-x86_64                randconfig-004-20230914   gcc  
-x86_64                randconfig-005-20230913   clang
-x86_64                randconfig-005-20230913   gcc  
-x86_64                randconfig-005-20230914   gcc  
-x86_64                randconfig-006-20230913   clang
-x86_64                randconfig-006-20230913   gcc  
-x86_64                randconfig-006-20230914   gcc  
-x86_64                randconfig-011-20230913   gcc  
-x86_64                randconfig-011-20230914   gcc  
-x86_64                randconfig-012-20230913   gcc  
-x86_64                randconfig-012-20230914   gcc  
-x86_64                randconfig-013-20230913   gcc  
-x86_64                randconfig-013-20230914   gcc  
-x86_64                randconfig-014-20230913   gcc  
-x86_64                randconfig-014-20230914   gcc  
-x86_64                randconfig-015-20230913   gcc  
-x86_64                randconfig-015-20230914   gcc  
-x86_64                randconfig-016-20230914   gcc  
-x86_64                randconfig-071-20230913   gcc  
-x86_64                randconfig-071-20230914   gcc  
-x86_64                randconfig-072-20230913   gcc  
-x86_64                randconfig-072-20230914   gcc  
-x86_64                randconfig-073-20230913   gcc  
-x86_64                randconfig-073-20230914   gcc  
-x86_64                randconfig-074-20230913   gcc  
-x86_64                randconfig-074-20230914   gcc  
-x86_64                randconfig-075-20230913   gcc  
-x86_64                randconfig-075-20230914   gcc  
-x86_64                randconfig-076-20230914   gcc  
-x86_64               randconfig-r025-20230913   clang
-x86_64               randconfig-r034-20230913   gcc  
-x86_64                           rhel-8.3-bpf   gcc  
-x86_64                          rhel-8.3-func   gcc  
-x86_64                    rhel-8.3-kselftests   gcc  
-x86_64                         rhel-8.3-kunit   gcc  
-x86_64                           rhel-8.3-ltp   gcc  
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
-xtensa                            allnoconfig   gcc  
-xtensa                           allyesconfig   gcc  
-xtensa                  cadence_csp_defconfig   gcc  
-xtensa                       common_defconfig   gcc  
-xtensa                              defconfig   gcc  
-xtensa                    smp_lx200_defconfig   gcc  
-xtensa                         virt_defconfig   gcc  
+ead1f3e301e2d8 drivers/staging/vme/vme.c      Martyn Welch    2009-12-15  298  			printk(KERN_ERR "Registered NULL Slave resource\n");
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  299  			continue;
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  300  		}
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  301  
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  302  		/* Find an unlocked and compatible image */
+886953e9b70bcb drivers/staging/vme/vme.c      Emilio G. Cota  2010-11-12  303  		mutex_lock(&slave_image->mtx);
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  304  		if (((slave_image->address_attr & address) == address) &&
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  305  		    ((slave_image->cycle_attr & cycle) == cycle) &&
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  306  		    (slave_image->locked == 0)) {
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  307  			slave_image->locked = 1;
+886953e9b70bcb drivers/staging/vme/vme.c      Emilio G. Cota  2010-11-12  308  			mutex_unlock(&slave_image->mtx);
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  309  			allocated_image = slave_image;
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  310  			break;
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  311  		}
+886953e9b70bcb drivers/staging/vme/vme.c      Emilio G. Cota  2010-11-12  312  		mutex_unlock(&slave_image->mtx);
+a17a75e2666f71 drivers/staging/vme/vme.c      Martyn Welch    2009-07-31  313  	}
 
 -- 
 0-DAY CI Kernel Test Service
 https://github.com/intel/lkp-tests/wiki
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
