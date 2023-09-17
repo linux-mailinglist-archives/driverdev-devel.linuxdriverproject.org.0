@@ -1,74 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1B457A2A3F
-	for <lists+driverdev-devel@lfdr.de>; Sat, 16 Sep 2023 00:11:44 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BAACE7A34F3
+	for <lists+driverdev-devel@lfdr.de>; Sun, 17 Sep 2023 11:42:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3646D60E0B;
-	Fri, 15 Sep 2023 22:11:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3646D60E0B
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2104160F79;
+	Sun, 17 Sep 2023 09:42:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2104160F79
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pfwiFmmiVOKl; Fri, 15 Sep 2023 22:11:42 +0000 (UTC)
+	with ESMTP id MhEJYrinu9L4; Sun, 17 Sep 2023 09:42:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D8AEF613DF;
-	Fri, 15 Sep 2023 22:11:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D8AEF613DF
+	by smtp3.osuosl.org (Postfix) with ESMTP id A1D5260B92;
+	Sun, 17 Sep 2023 09:42:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A1D5260B92
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 52BE71BF3EA
- for <devel@linuxdriverproject.org>; Fri, 15 Sep 2023 22:11:39 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A608D1BF3E5
+ for <devel@linuxdriverproject.org>; Sun, 17 Sep 2023 09:42:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 246F383ECB
- for <devel@linuxdriverproject.org>; Fri, 15 Sep 2023 22:11:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 246F383ECB
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8C31440192
+ for <devel@linuxdriverproject.org>; Sun, 17 Sep 2023 09:42:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8C31440192
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cWigyo3IVZLb for <devel@linuxdriverproject.org>;
- Fri, 15 Sep 2023 22:11:37 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.43])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 889CD83EC5
- for <devel@driverdev.osuosl.org>; Fri, 15 Sep 2023 22:11:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 889CD83EC5
-X-IronPort-AV: E=McAfee;i="6600,9927,10834"; a="465712624"
-X-IronPort-AV: E=Sophos;i="6.02,150,1688454000"; d="scan'208";a="465712624"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Sep 2023 15:11:35 -0700
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KET4cmfIkZIl for <devel@linuxdriverproject.org>;
+ Sun, 17 Sep 2023 09:42:29 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0BD6C400C1
+ for <devel@driverdev.osuosl.org>; Sun, 17 Sep 2023 09:42:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0BD6C400C1
+X-IronPort-AV: E=McAfee;i="6600,9927,10835"; a="369809953"
+X-IronPort-AV: E=Sophos;i="6.02,153,1688454000"; d="scan'208";a="369809953"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Sep 2023 02:42:27 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10834"; a="694862829"
-X-IronPort-AV: E=Sophos;i="6.02,150,1688454000"; d="scan'208";a="694862829"
+X-IronPort-AV: E=McAfee;i="6600,9927,10835"; a="919143070"
+X-IronPort-AV: E=Sophos;i="6.02,153,1688454000"; d="scan'208";a="919143070"
 Received: from lkp-server02.sh.intel.com (HELO 9ef86b2655e5) ([10.239.97.151])
- by orsmga003.jf.intel.com with ESMTP; 15 Sep 2023 15:11:34 -0700
+ by orsmga005.jf.intel.com with ESMTP; 17 Sep 2023 02:42:26 -0700
 Received: from kbuild by 9ef86b2655e5 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qhH2B-0003Wy-2S;
- Fri, 15 Sep 2023 22:11:31 +0000
-Date: Sat, 16 Sep 2023 06:11:21 +0800
+ (envelope-from <lkp@intel.com>) id 1qhoIK-00057Q-0f;
+ Sun, 17 Sep 2023 09:42:24 +0000
+Date: Sun, 17 Sep 2023 17:42:12 +0800
 From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-linus] BUILD SUCCESS
- 139e08188babf7a4c5f0df54b605105852fc347a
-Message-ID: <202309160619.TyIZE88M-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+To: Philipp Hortmann <philipp.g.hortmann@gmail.com>
+Subject: [staging:staging-testing 32/56]
+ drivers/staging/rtl8192e/rtllib.h:735:1: warning: alignment 1 of 'struct
+ rtllib_authentication' is less than 2
+Message-ID: <202309171733.Gl96cmYd-lkp@intel.com>
+MIME-Version: 1.0
+Content-Disposition: inline
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1694815897; x=1726351897;
- h=date:from:to:cc:subject:message-id;
- bh=3Ch5ZX9HxjRyaz/0X5XqkiQsEMOCDl+ixZV+2AVeGOg=;
- b=jdpS8Svaa/P48KGqBoObbFpAywi03K9XKmgJwBmWIAG7QyaMr8Q+ZVWU
- 7OXYRdjxW77eV0ZApleujTDmbDiy0/5Co6TUk++ZIgaaq0pWwXdMwSDin
- wKGt0rLuQAF0Hyt56b3ma3gXdqDZtYCPtjMn1S/wpnZR/EcohNTSu0DfW
- ehqlSZBxRGX9JBy6K4LA5SjEqCAfveDZb0ORPUr3DYtloJnt+6ogCTUgr
- Atsab0sGIbWDWfrIukjJtZyLILoWhZnnWm/X6NOp7OEfqD8kdvxUuNvAD
- UJRtwfuOe276+1E6/tmf2g5qJwW7HMnbGAxYqPva/n0zlW4MtkUCRYLNi
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1694943749; x=1726479749;
+ h=date:from:to:cc:subject:message-id:mime-version;
+ bh=fGMtN/mVOzsT0GmWl1Fwug6G8L/janPTa86s5cscyRU=;
+ b=NgbxolBnLjQyM0C3zd+SM13MM7sgXYFoISNO2FryIN+AHplbdv/6TW36
+ YzYc0cfHF5BW+8rvaXxaT4UPjPOnUGHmGgYKvCWxJM/4rNMAKQXDKyss6
+ vSvV+o952WzMNQkQlSpNGFFJup5fB+yMH7d+5ycIi1IPogzmPk2/xp8Gz
+ xftGWNw6wV3gUWfHpqyf6XqoL6K/idjVicUEkBulzPP33CCnzDzVK+7n6
+ frs2tc7/kCDHdlPZK0iX4wShC8EbUjxGvXw8/j1N3HB5T0EXnRPcRQho8
+ Vhf6BWhda5JLjICTGrJQeVVidk/eQuIwF13A0e2lcpO7zJ8sztMnXMYJ7
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=jdpS8Sva
+ header.a=rsa-sha256 header.s=Intel header.b=NgbxolBn
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,178 +83,170 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-linus
-branch HEAD: 139e08188babf7a4c5f0df54b605105852fc347a  Documentation: embargoed-hardware-issues.rst: Add myself for RISC-V
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+head:   a7705e54e1c895713a09e17bdcfaf507f80de3a0
+commit: 71ddc43ed7c712b386adeb3a16a616fa3a9e52c8 [32/56] staging: rtl8192e: Replace struct rtllib_hdr_3addr in structs of rtllib.h
+config: alpha-allyesconfig (https://download.01.org/0day-ci/archive/20230917/202309171733.Gl96cmYd-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230917/202309171733.Gl96cmYd-lkp@intel.com/reproduce)
 
-elapsed time: 893m
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202309171733.Gl96cmYd-lkp@intel.com/
 
-configs tested: 153
-configs skipped: 2
+All warnings (new ones prefixed by >>):
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+   In file included from drivers/staging/rtl8192e/dot11d.h:11,
+                    from drivers/staging/rtl8192e/dot11d.c:8:
+>> drivers/staging/rtl8192e/rtllib.h:735:1: warning: alignment 1 of 'struct rtllib_authentication' is less than 2 [-Wpacked-not-aligned]
+     735 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:740:1: warning: alignment 1 of 'struct rtllib_disauth' is less than 2 [-Wpacked-not-aligned]
+     740 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:745:1: warning: alignment 1 of 'struct rtllib_disassoc' is less than 2 [-Wpacked-not-aligned]
+     745 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:751:1: warning: alignment 1 of 'struct rtllib_probe_request' is less than 2 [-Wpacked-not-aligned]
+     751 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:762:1: warning: alignment 1 of 'struct rtllib_probe_response' is less than 2 [-Wpacked-not-aligned]
+     762 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:773:1: warning: alignment 1 of 'struct rtllib_assoc_request_frame' is less than 2 [-Wpacked-not-aligned]
+     773 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:781:1: warning: alignment 1 of 'struct rtllib_assoc_response_frame' is less than 2 [-Wpacked-not-aligned]
+     781 | } __packed;
+         | ^
+--
+   In file included from drivers/staging/rtl8192e/rtllib_wx.c:19:
+>> drivers/staging/rtl8192e/rtllib.h:735:1: warning: alignment 1 of 'struct rtllib_authentication' is less than 2 [-Wpacked-not-aligned]
+     735 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:740:1: warning: alignment 1 of 'struct rtllib_disauth' is less than 2 [-Wpacked-not-aligned]
+     740 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:745:1: warning: alignment 1 of 'struct rtllib_disassoc' is less than 2 [-Wpacked-not-aligned]
+     745 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:751:1: warning: alignment 1 of 'struct rtllib_probe_request' is less than 2 [-Wpacked-not-aligned]
+     751 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:762:1: warning: alignment 1 of 'struct rtllib_probe_response' is less than 2 [-Wpacked-not-aligned]
+     762 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:773:1: warning: alignment 1 of 'struct rtllib_assoc_request_frame' is less than 2 [-Wpacked-not-aligned]
+     773 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtllib.h:781:1: warning: alignment 1 of 'struct rtllib_assoc_response_frame' is less than 2 [-Wpacked-not-aligned]
+     781 | } __packed;
+         | ^
+   drivers/staging/rtl8192e/rtllib_wx.c: In function 'rtl819x_translate_scan':
+   drivers/staging/rtl8192e/rtllib_wx.c:69:51: warning: '%s' directive output may be truncated writing up to 15 bytes into a region of size 6 [-Wformat-truncation=]
+      69 |         snprintf(iwe.u.name, IFNAMSIZ, "IEEE802.11%s", proto_name);
+         |                                                   ^~   ~~~~~~~~~~
+   drivers/staging/rtl8192e/rtllib_wx.c:69:9: note: 'snprintf' output between 11 and 26 bytes into a destination of size 16
+      69 |         snprintf(iwe.u.name, IFNAMSIZ, "IEEE802.11%s", proto_name);
+         |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--
+   In file included from drivers/staging/rtl8192e/rtl8192e/rtl_core.h:35,
+                    from drivers/staging/rtl8192e/rtl8192e/r8192E_dev.c:10:
+>> drivers/staging/rtl8192e/rtl8192e/../rtllib.h:735:1: warning: alignment 1 of 'struct rtllib_authentication' is less than 2 [-Wpacked-not-aligned]
+     735 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtl8192e/../rtllib.h:740:1: warning: alignment 1 of 'struct rtllib_disauth' is less than 2 [-Wpacked-not-aligned]
+     740 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtl8192e/../rtllib.h:745:1: warning: alignment 1 of 'struct rtllib_disassoc' is less than 2 [-Wpacked-not-aligned]
+     745 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtl8192e/../rtllib.h:751:1: warning: alignment 1 of 'struct rtllib_probe_request' is less than 2 [-Wpacked-not-aligned]
+     751 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtl8192e/../rtllib.h:762:1: warning: alignment 1 of 'struct rtllib_probe_response' is less than 2 [-Wpacked-not-aligned]
+     762 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtl8192e/../rtllib.h:773:1: warning: alignment 1 of 'struct rtllib_assoc_request_frame' is less than 2 [-Wpacked-not-aligned]
+     773 | } __packed;
+         | ^
+>> drivers/staging/rtl8192e/rtl8192e/../rtllib.h:781:1: warning: alignment 1 of 'struct rtllib_assoc_response_frame' is less than 2 [-Wpacked-not-aligned]
+     781 | } __packed;
+         | ^
 
-tested configs:
-alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allmodconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                   randconfig-001-20230915   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                                 defconfig   gcc  
-arm                       imx_v4_v5_defconfig   clang
-arm                          pxa3xx_defconfig   gcc  
-arm                   randconfig-001-20230915   gcc  
-arm                   randconfig-001-20230916   gcc  
-arm                        vexpress_defconfig   clang
-arm64                            allmodconfig   gcc  
-arm64                             allnoconfig   gcc  
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-csky                             allmodconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
-csky                                defconfig   gcc  
-i386                             allmodconfig   gcc  
-i386                              allnoconfig   gcc  
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-001-20230915   gcc  
-i386         buildonly-randconfig-002-20230915   gcc  
-i386         buildonly-randconfig-003-20230915   gcc  
-i386         buildonly-randconfig-004-20230915   gcc  
-i386         buildonly-randconfig-005-20230915   gcc  
-i386         buildonly-randconfig-006-20230915   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                  randconfig-001-20230915   gcc  
-i386                  randconfig-002-20230915   gcc  
-i386                  randconfig-003-20230915   gcc  
-i386                  randconfig-004-20230915   gcc  
-i386                  randconfig-005-20230915   gcc  
-i386                  randconfig-006-20230915   gcc  
-i386                  randconfig-011-20230915   gcc  
-i386                  randconfig-012-20230915   gcc  
-i386                  randconfig-013-20230915   gcc  
-i386                  randconfig-014-20230915   gcc  
-i386                  randconfig-015-20230915   gcc  
-i386                  randconfig-016-20230915   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                        allyesconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch             randconfig-001-20230915   gcc  
-m68k                             allmodconfig   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                       bvme6000_defconfig   gcc  
-m68k                                defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-mips                             allmodconfig   gcc  
-mips                              allnoconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                        bcm63xx_defconfig   clang
-mips                      loongson3_defconfig   gcc  
-mips                           xway_defconfig   gcc  
-nios2                            alldefconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-openrisc                         allmodconfig   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                         allyesconfig   gcc  
-openrisc                            defconfig   gcc  
-parisc                           allmodconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                 randconfig-001-20230915   gcc  
-riscv                 randconfig-001-20230916   gcc  
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                              allnoconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                  randconfig-001-20230915   gcc  
-s390                  randconfig-001-20230916   gcc  
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                                  defconfig   gcc  
-sh                         ecovec24_defconfig   gcc  
-sh                          rsk7269_defconfig   gcc  
-sh                           se7712_defconfig   gcc  
-sparc                            allmodconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                            allyesconfig   gcc  
-sparc                               defconfig   gcc  
-sparc                 randconfig-001-20230915   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   clang
-um                                  defconfig   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                            allnoconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64       buildonly-randconfig-001-20230915   gcc  
-x86_64       buildonly-randconfig-002-20230915   gcc  
-x86_64       buildonly-randconfig-003-20230915   gcc  
-x86_64       buildonly-randconfig-004-20230915   gcc  
-x86_64       buildonly-randconfig-005-20230915   gcc  
-x86_64       buildonly-randconfig-006-20230915   gcc  
-x86_64                              defconfig   gcc  
-x86_64                                  kexec   gcc  
-x86_64                randconfig-001-20230915   gcc  
-x86_64                randconfig-002-20230915   gcc  
-x86_64                randconfig-003-20230915   gcc  
-x86_64                randconfig-004-20230915   gcc  
-x86_64                randconfig-005-20230915   gcc  
-x86_64                randconfig-006-20230915   gcc  
-x86_64                randconfig-011-20230915   gcc  
-x86_64                randconfig-012-20230915   gcc  
-x86_64                randconfig-013-20230915   gcc  
-x86_64                randconfig-014-20230915   gcc  
-x86_64                randconfig-015-20230915   gcc  
-x86_64                randconfig-016-20230915   gcc  
-x86_64                randconfig-071-20230915   gcc  
-x86_64                randconfig-072-20230915   gcc  
-x86_64                randconfig-073-20230915   gcc  
-x86_64                randconfig-074-20230915   gcc  
-x86_64                randconfig-075-20230915   gcc  
-x86_64                randconfig-076-20230915   gcc  
-x86_64                           rhel-8.3-bpf   gcc  
-x86_64                         rhel-8.3-kunit   gcc  
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
-xtensa                            allnoconfig   gcc  
-xtensa                           allyesconfig   gcc  
+
+vim +735 drivers/staging/rtl8192e/rtllib.h
+
+94a799425eee82 Larry Finger        2011-08-23  727  
+94a799425eee82 Larry Finger        2011-08-23  728  struct rtllib_authentication {
+71ddc43ed7c712 Philipp Hortmann    2023-09-15  729  	struct ieee80211_hdr_3addr header;
+94a799425eee82 Larry Finger        2011-08-23  730  	__le16 algorithm;
+94a799425eee82 Larry Finger        2011-08-23  731  	__le16 transaction;
+94a799425eee82 Larry Finger        2011-08-23  732  	__le16 status;
+94a799425eee82 Larry Finger        2011-08-23  733  	/*challenge*/
+5979afa2c4d1c8 Gustavo A. R. Silva 2020-02-20  734  	struct rtllib_info_element info_element[];
+8567829a6cfe13 Larry Finger        2011-08-25 @735  } __packed;
+94a799425eee82 Larry Finger        2011-08-23  736  
+94a799425eee82 Larry Finger        2011-08-23  737  struct rtllib_disauth {
+71ddc43ed7c712 Philipp Hortmann    2023-09-15  738  	struct ieee80211_hdr_3addr header;
+94a799425eee82 Larry Finger        2011-08-23  739  	__le16 reason;
+8567829a6cfe13 Larry Finger        2011-08-25 @740  } __packed;
+94a799425eee82 Larry Finger        2011-08-23  741  
+94a799425eee82 Larry Finger        2011-08-23  742  struct rtllib_disassoc {
+71ddc43ed7c712 Philipp Hortmann    2023-09-15  743  	struct ieee80211_hdr_3addr header;
+94a799425eee82 Larry Finger        2011-08-23  744  	__le16 reason;
+8567829a6cfe13 Larry Finger        2011-08-25 @745  } __packed;
+94a799425eee82 Larry Finger        2011-08-23  746  
+94a799425eee82 Larry Finger        2011-08-23  747  struct rtllib_probe_request {
+71ddc43ed7c712 Philipp Hortmann    2023-09-15  748  	struct ieee80211_hdr_3addr header;
+94a799425eee82 Larry Finger        2011-08-23  749  	/* SSID, supported rates */
+5979afa2c4d1c8 Gustavo A. R. Silva 2020-02-20  750  	struct rtllib_info_element info_element[];
+8567829a6cfe13 Larry Finger        2011-08-25 @751  } __packed;
+94a799425eee82 Larry Finger        2011-08-23  752  
+94a799425eee82 Larry Finger        2011-08-23  753  struct rtllib_probe_response {
+71ddc43ed7c712 Philipp Hortmann    2023-09-15  754  	struct ieee80211_hdr_3addr header;
+94a799425eee82 Larry Finger        2011-08-23  755  	u32 time_stamp[2];
+94a799425eee82 Larry Finger        2011-08-23  756  	__le16 beacon_interval;
+94a799425eee82 Larry Finger        2011-08-23  757  	__le16 capability;
+94a799425eee82 Larry Finger        2011-08-23  758  	/* SSID, supported rates, FH params, DS params,
+14b40d92881533 Mateusz Kulikowski  2015-04-01  759  	 * CF params, IBSS params, TIM (if beacon), RSN
+14b40d92881533 Mateusz Kulikowski  2015-04-01  760  	 */
+5979afa2c4d1c8 Gustavo A. R. Silva 2020-02-20  761  	struct rtllib_info_element info_element[];
+8567829a6cfe13 Larry Finger        2011-08-25 @762  } __packed;
+94a799425eee82 Larry Finger        2011-08-23  763  
+94a799425eee82 Larry Finger        2011-08-23  764  /* Alias beacon for probe_response */
+94a799425eee82 Larry Finger        2011-08-23  765  #define rtllib_beacon rtllib_probe_response
+94a799425eee82 Larry Finger        2011-08-23  766  
+94a799425eee82 Larry Finger        2011-08-23  767  struct rtllib_assoc_request_frame {
+71ddc43ed7c712 Philipp Hortmann    2023-09-15  768  	struct ieee80211_hdr_3addr header;
+94a799425eee82 Larry Finger        2011-08-23  769  	__le16 capability;
+94a799425eee82 Larry Finger        2011-08-23  770  	__le16 listen_interval;
+94a799425eee82 Larry Finger        2011-08-23  771  	/* SSID, supported rates, RSN */
+5979afa2c4d1c8 Gustavo A. R. Silva 2020-02-20  772  	struct rtllib_info_element info_element[];
+8567829a6cfe13 Larry Finger        2011-08-25 @773  } __packed;
+94a799425eee82 Larry Finger        2011-08-23  774  
+94a799425eee82 Larry Finger        2011-08-23  775  struct rtllib_assoc_response_frame {
+71ddc43ed7c712 Philipp Hortmann    2023-09-15  776  	struct ieee80211_hdr_3addr header;
+94a799425eee82 Larry Finger        2011-08-23  777  	__le16 capability;
+94a799425eee82 Larry Finger        2011-08-23  778  	__le16 status;
+94a799425eee82 Larry Finger        2011-08-23  779  	__le16 aid;
+5979afa2c4d1c8 Gustavo A. R. Silva 2020-02-20  780  	struct rtllib_info_element info_element[]; /* supported rates */
+8567829a6cfe13 Larry Finger        2011-08-25 @781  } __packed;
+94a799425eee82 Larry Finger        2011-08-23  782  
+
+:::::: The code at line 735 was first introduced by commit
+:::::: 8567829a6cfe13e2a8b366794fffa54e5fd06e9f staging: rtl8192e: Cleanup checkpatch -f warnings and errors - Part XII
+
+:::::: TO: Larry Finger <Larry.Finger@lwfinger.net>
+:::::: CC: Greg Kroah-Hartman <gregkh@suse.de>
 
 -- 
 0-DAY CI Kernel Test Service
