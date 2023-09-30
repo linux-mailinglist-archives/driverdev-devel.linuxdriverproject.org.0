@@ -1,83 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D6A577B2888
-	for <lists+driverdev-devel@lfdr.de>; Fri, 29 Sep 2023 00:45:59 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3ECCB7B3ED8
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Sep 2023 09:38:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 54CF1818A2;
-	Thu, 28 Sep 2023 22:45:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 54CF1818A2
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m8WgJmerh1WH; Thu, 28 Sep 2023 22:45:57 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D582D8197D;
-	Thu, 28 Sep 2023 22:45:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D582D8197D
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7539B1BF263
- for <devel@linuxdriverproject.org>; Thu, 28 Sep 2023 22:45:53 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5BEAE42CD8
- for <devel@linuxdriverproject.org>; Thu, 28 Sep 2023 22:45:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5BEAE42CD8
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7D83F4226E;
+	Sat, 30 Sep 2023 07:38:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7D83F4226E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wU___wRO053B for <devel@linuxdriverproject.org>;
- Thu, 28 Sep 2023 22:45:52 +0000 (UTC)
-Received: from mail-yw1-x1133.google.com (mail-yw1-x1133.google.com
- [IPv6:2607:f8b0:4864:20::1133])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 239F742CD7
- for <devel@driverdev.osuosl.org>; Thu, 28 Sep 2023 22:45:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 239F742CD7
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-5a2379a8b69so7841007b3.2
- for <devel@driverdev.osuosl.org>; Thu, 28 Sep 2023 15:45:51 -0700 (PDT)
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hzc3Hu5FfQdo; Sat, 30 Sep 2023 07:38:22 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 22E7D416CC;
+	Sat, 30 Sep 2023 07:38:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 22E7D416CC
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 353F71BF397
+ for <devel@linuxdriverproject.org>; Sat, 30 Sep 2023 07:38:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 09BD560F07
+ for <devel@linuxdriverproject.org>; Sat, 30 Sep 2023 07:38:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 09BD560F07
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RBL4lPwlIq8g for <devel@linuxdriverproject.org>;
+ Sat, 30 Sep 2023 07:38:18 +0000 (UTC)
+Received: from mail-yb1-xb42.google.com (mail-yb1-xb42.google.com
+ [IPv6:2607:f8b0:4864:20::b42])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 459BE60E6D
+ for <devel@driverdev.osuosl.org>; Sat, 30 Sep 2023 07:38:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 459BE60E6D
+Received: by mail-yb1-xb42.google.com with SMTP id
+ 3f1490d57ef6-d852b28ec3bso15937354276.2
+ for <devel@driverdev.osuosl.org>; Sat, 30 Sep 2023 00:38:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695941151; x=1696545951;
+ d=1e100.net; s=20230601; t=1696059497; x=1696664297;
  h=to:subject:message-id:date:from:reply-to:mime-version
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
- b=SCNfHgUb8xjJB5Jli1rO5+pPzwOsEjtCFq0lsR6S8LTwj+is40iaD6HCkisD3/Y1Ey
- 5kGWL/vz4Xna9uy8s3YgxLXGLBVYR2BHfFsboSLjrvhOxEnMRAyOl1kYEXuaVoFceNgE
- 8ynzM5h6OHaDTswDVmvRrTkn58zBOMeYyGXzWmdiM8qe//foFVgRYUWtXeF9WgM06b+e
- woGNtesSYqE0XHGVuZ9AvPbfGlfk3d6rhtjkcyby4ZKd0mICG5Tf1t8+6unUSYS7cRX7
- t2mUZLkVOAdkgXcU4TJuRM3ahw/xvDg+FJkhiiQhXRnHJfc9kMdGFW8E3MdEuJHTy69D
- 8DWQ==
-X-Gm-Message-State: AOJu0Yx96czJNBDqC2rT+yGKPBbDikCvlTtTtFh85SSQv9KFlRQkAdYY
- GvQvmcbxHMe8RA6btgw7uKaD17P1iPRqCv23m1E=
-X-Google-Smtp-Source: AGHT+IFlsOlyZomgh/PV2cH+hT1bZW2iNCTvLbShLtVsFWsvgMz2mkXDJOP1vHfR2tK0SU1tuKe0bHz/+bv9i9CjL74=
-X-Received: by 2002:a81:de4e:0:b0:592:5def:5c0d with SMTP id
- o14-20020a81de4e000000b005925def5c0dmr2619393ywl.45.1695941150961; Thu, 28
- Sep 2023 15:45:50 -0700 (PDT)
+ bh=E4hILv0ZJTPcTKq+HIPobDeeLsNePmqEbf2vve78uUU=;
+ b=qZqDhkVvOyTaDeVaEzxO/ElZoQmrW0TpLIBV4AF6L+W2aBH28kdj391Ekc6tnrCVar
+ BmHlUqsU2S5Ni1L0gjcvXTgt5lABcvWcnSPswU/J+rMQRILu6ivmZ77fDocITS5lcoyL
+ G0xfoNtIDOnYWGiqQ7y6qfi9F2DoTES0Pv0GaSIyzwU4kVslLDpNpmkPzpwZuz+S1L4t
+ sWBEKIzWgzOe/8KcwTX7zjD2mqEcef59Bq8DJ1m3ApQJB/ZRjEl9FP8cO7PxZJ54OREp
+ 7dWTeJBAVn0+koh1n9/kV61ELtNeI3nIXUtFCKTbh1heF/8dZ7bNU+MVnOQmQyQ6hMyc
+ LcYw==
+X-Gm-Message-State: AOJu0YxWdI/3/7RlYDglvVxJAl0WizdZUB4G/ZY+QFzzzikArW4/e8Zk
+ p41GgReN9xufCM3KaPACJmU+RVEik7AwRkQctoY=
+X-Google-Smtp-Source: AGHT+IE2FVEfqS/1Pp+DdVg2cmInWcIKFipU5/jbnSD77qOCeX1ElIMif+iFeRrKlbzO+DfL+xRUcFFFmJBkp11Qe70=
+X-Received: by 2002:a25:e7cc:0:b0:d7f:f5e:a2bd with SMTP id
+ e195-20020a25e7cc000000b00d7f0f5ea2bdmr5961992ybh.10.1696059496732; Sat, 30
+ Sep 2023 00:38:16 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a05:7010:1409:b0:386:8bb3:6703 with HTTP; Thu, 28 Sep 2023
- 15:45:50 -0700 (PDT)
-From: ken morgan <kenmorganchambershouse@gmail.com>
-Date: Thu, 28 Sep 2023 22:45:50 +0000
-Message-ID: <CALDkM7L8dz+axmdOtHD+tGXUiCAb3q+XQUcTWN=0bVJoD-Pxhg@mail.gmail.com>
-Subject: Hello my friend, a very urgent and confidential message kindly get
- back to me for more details?
+Received: by 2002:a05:7000:4a56:b0:4fc:dad8:dbcf with HTTP; Sat, 30 Sep 2023
+ 00:38:16 -0700 (PDT)
+From: Dr Rhama David Benson <sarr33375@gmail.com>
+Date: Sat, 30 Sep 2023 00:38:16 -0700
+Message-ID: <CADcpudvEcMt83t+6jtvnQFyAs6W4-xSmwb2iT678HQY3EsJBkQ@mail.gmail.com>
+Subject: URGENT RESPOND
 To: undisclosed-recipients:;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1695941151; x=1696545951; darn=driverdev.osuosl.org;
+ d=gmail.com; s=20230601; t=1696059497; x=1696664297; darn=driverdev.osuosl.org;
  h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
  :subject:date:message-id:reply-to;
- bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
- b=TjgadvlZbsULgTzQaS0+N7WDg7qlGmtIpoPI+/nL9Q42MyictlVM36or1VnkxxHj4Y
- VZRef3e2qBXAcL1OhNo+n4jPdD+08a1OXZnU1i81O5zL41KrlIZVVJrfiysmz8SvQ0Qk
- cQsIEpKZ5Taum25+RG3JLwYi2P6amSTsNaxXdz05z9V7Qt2zV3x43QgGFUmg14nAy4ay
- FFFbM9OMthIAT5/oAzyhYDOQt6j2KCIybm/9799j7G98jJJ/eFpDJ+6EoIxlNVLaQf5h
- HmwZvFQ39Ku4yovh/iKek1bsNKXz4KTEqdLOIRIRUZHdiqcn9smAXjy3Mvxr64JBh/pT
- Vt8A==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=E4hILv0ZJTPcTKq+HIPobDeeLsNePmqEbf2vve78uUU=;
+ b=Q7wbgxnFCe1bXd9PyLuwBL7XhEpfYjtdHUEKugQKIFbEmc6/VWbJ/ko7pvn31x4Nct
+ G4ICq1RNKSMvOf5kFmCxoUrVYNc6GNv+01Cm/97J1FKUcGYOjDnNDBFaJtlqfNA1FWOQ
+ mvIF9ztm1R15OU9M4eTjAxB1XIUVH+ArRer+57fdxEtFQAKaXwdaCrZPRPV6PPJQWR7L
+ KJlIHvtr0PpmtUDTARdqlCToQePHSiYdGIcm8IOaY/iKwe4KhcmaaWE50plXn5HjbFag
+ BWZr4muM+NT/aH2x7TqykFruFWuajdaYnQ+zwd3yBUjCDhWy55Z96kAKEAcrEljWE9f1
+ oOXQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=TjgadvlZ
+ header.a=rsa-sha256 header.s=20230601 header.b=Q7wbgxnF
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,13 +89,46 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: kenmorganlawhouse@hotmail.com
+Reply-To: drrhamadavidbenson@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+I NEED YOUR URGENT RESPOND
 
+Dear friend,
+I am Dr. Rhama David Benson, I work with an accredited bank here in Burkina
+Faso.as manager in the audit department. During our last bank audits,
+we discovered that an abandoned account belongs to one of our deceased
+client, Mr. Park Seoungjae, a billionaire businessman.
+
+Meanwhile, before contacting you, I did a personal investigation. to
+locate one of his relatives who knows the account, but I came out
+without success. I am writing to request your assistance in
+transferring the sum of 10,500,000.00 (ten million five hundred
+Thousand dollars) in your account.
+
+I decided to contact you to act as his foreign business partner that
+my bank will grant you recognition and will have the fund transfer to
+your account. More detailed information will be sent for you.
+
+Therefore, to start processing, I will need the following information from you:
+Your full name (as written on your ID card
+or passport)
+Your full name.........
+Your sex ..............
+Your age..................
+Your country...........
+Passport / driving license .......
+Marital status (married or single)
+Your occupation.......
+Your personal mobile number .....
+
+
+I hope to read from you soon.
+Sincerely
+ Dr. Rhama David Benson,
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
