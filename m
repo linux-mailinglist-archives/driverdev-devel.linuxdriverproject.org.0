@@ -1,54 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 819AF7C476C
-	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Oct 2023 03:48:23 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 920907C59D6
+	for <lists+driverdev-devel@lfdr.de>; Wed, 11 Oct 2023 19:03:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 10B6661095;
-	Wed, 11 Oct 2023 01:48:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 10B6661095
+	by smtp1.osuosl.org (Postfix) with ESMTP id 06B3F826E5;
+	Wed, 11 Oct 2023 17:03:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 06B3F826E5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V9j-1Tg8FHYo; Wed, 11 Oct 2023 01:48:21 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IMZaTxT891IS; Wed, 11 Oct 2023 17:03:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F28E6605B1;
-	Wed, 11 Oct 2023 01:48:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F28E6605B1
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2C6DD826C7;
+	Wed, 11 Oct 2023 17:03:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2C6DD826C7
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6CAB91BF35C
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5318B1BF420
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Oct 2023 01:48:18 +0000 (UTC)
+ Wed, 11 Oct 2023 17:03:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 534D44012E
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2ABD541695
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Oct 2023 01:48:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 534D44012E
+ Wed, 11 Oct 2023 17:03:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2ABD541695
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2mnwHGocIFVH
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GB_zq4HtE0rs
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Oct 2023 01:48:17 +0000 (UTC)
-Received: from qm-mon.msk.ip.rostelecom.ru (unknown [213.59.216.42])
- by smtp2.osuosl.org (Postfix) with ESMTP id 073F840108
+ Wed, 11 Oct 2023 17:03:13 +0000 (UTC)
+Received: from 192-232-254-23.unifiedlayer.com (unknown [192.232.254.23])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 89CB1414C6
  for <driverdev-devel@linuxdriverproject.org>;
- Wed, 11 Oct 2023 01:48:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 073F840108
-Received: from WIN-HM6FI4VOIEP (localhost [IPv6:::1])
- by qm-mon.msk.ip.rostelecom.ru (Postfix) with ESMTP id EAB6B2236CBE
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 10 Oct 2023 12:56:58 +0300 (MSK)
-Message-ID: <0434d37d-45209-300d4979043519@win-hm6fi4voiep>
-From: "Thomas Harwood" <elaine@emg-ents.com>
-To: driverdev-devel@linuxdriverproject.org
-Subject: Contact me here for detailed information
-Date: Tue, 10 Oct 2023 11:56:00 +0200
+ Wed, 11 Oct 2023 17:03:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 89CB1414C6
+Received: from [147.124.214.125] (port=55930)
+ by loc.locallogicmedia.com with esmtpa (Exim 4.96.1)
+ (envelope-from <info@jimmiestowing.com>) id 1qorWZ-000352-2Q;
+ Fri, 06 Oct 2023 20:34:19 +0000
 MIME-Version: 1.0
-X-Priority: 3
+Content-Description: Mail message body
+Subject: Good day
+To: Recipients <info@jimmiestowing.com>
+From: "Gong Zhengyanga" <info@jimmiestowing.com>
+Date: Fri, 06 Oct 2023 13:34:13 -0700
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - loc.locallogicmedia.com
+X-AntiAbuse: Original Domain - linuxdriverproject.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - jimmiestowing.com
+X-Get-Message-Sender-Via: loc.locallogicmedia.com: authenticated_id:
+ info@jimmiestowing.com
+X-Authenticated-Sender: loc.locallogicmedia.com: info@jimmiestowing.com
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+Message-Id: <20231011170314.2ABD541695@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,20 +73,18 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: Thomas Harwood <thomasharwood79@gmail.com>
+Reply-To: gong_zhengyang@yahoo.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
+I have been trying to establish direct communication with you. Kindly let me know if you are available at the moment.
 
-Good Day Sir/Madam, Please Confirm if you still use this email address, I have a legacy in your last Name. Contact me here for detailed information.
+I await your prompt response.
 
-
-Greetings
-Thomas Harwood
-
+Regards,
+Gong Zhengyang.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
