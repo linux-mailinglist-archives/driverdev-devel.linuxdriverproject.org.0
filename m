@@ -1,62 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FB047CA46A
-	for <lists+driverdev-devel@lfdr.de>; Mon, 16 Oct 2023 11:41:57 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 23B047CB867
+	for <lists+driverdev-devel@lfdr.de>; Tue, 17 Oct 2023 04:29:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 073E7415BF;
-	Mon, 16 Oct 2023 09:41:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 073E7415BF
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5D0DE60C28;
+	Tue, 17 Oct 2023 02:29:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5D0DE60C28
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xew-bRYcf6E4; Mon, 16 Oct 2023 09:41:53 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YcKk19VWVkC9; Tue, 17 Oct 2023 02:29:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 99E7B415ED;
-	Mon, 16 Oct 2023 09:41:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 99E7B415ED
+	by smtp3.osuosl.org (Postfix) with ESMTP id 388F560C1A;
+	Tue, 17 Oct 2023 02:29:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 388F560C1A
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 0A9021BF3AA
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8B3181BF575
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Oct 2023 09:41:49 +0000 (UTC)
+ Tue, 17 Oct 2023 02:29:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0FF3241700
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6405560C28
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Oct 2023 09:41:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0FF3241700
+ Tue, 17 Oct 2023 02:29:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6405560C28
 X-Virus-Scanned: amavisd-new at osuosl.org
-X-Amavis-Alert: BAD HEADER SECTION, MIME error: error: unexpected end of header
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0Fzv829O7Eml
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wUL9GLck57bD
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Oct 2023 09:41:46 +0000 (UTC)
-X-Greylist: delayed 1802 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 16 Oct 2023 09:41:45 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BDA1A4168A
-Received: from trace-ea.com (trace-ea.com [185.236.228.152])
- by smtp2.osuosl.org (Postfix) with ESMTP id BDA1A4168A
+ Tue, 17 Oct 2023 02:29:51 +0000 (UTC)
+Received: from DB-GAS.localdomain (unknown [101.96.76.242])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0878760C1A
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 16 Oct 2023 09:41:45 +0000 (UTC)
-From: "Email Administrator"  <info@trace-ea.com>
+ Tue, 17 Oct 2023 02:29:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0878760C1A
+Received: from WIN-HM6FI4VOIEP (localhost [IPv6:::1])
+ by DB-GAS.localdomain (Postfix) with ESMTP id 268874A55A48
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue, 10 Oct 2023 20:39:18 +0700 (+07)
+Message-ID: <04329e4f-45209-ae4f6522920486@win-hm6fi4voiep>
+From: "Thomas Harwood" <elaine@emg-ents.com>
 To: driverdev-devel@linuxdriverproject.org
-Subject: Account setting...
-Date: 16 Oct 2023 11:11:41 +0200
-Message-ID: <20231016111141.2CA11995D4F73906@trace-ea.com>
+Subject: Good Luck Charms
+Date: Tue, 10 Oct 2023 15:38:19 +0200
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=trac;
- d=trace-ea.com; 
- h=From:To:Subject:Date:Message-ID:MIME-Version; i=info@trace-ea.com;
- bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
- b=vjDYGop4nv0dCen4Gf2kPKY4EkQ7IqDzSmuG9qkYR8fhrEeudyqg63n3r6/XfgZ8Ohetukr/pRMZ
- YRa8QIWhSYEMCMFqSkI7s9G5qu+cfEaInyqaXzU94oXj7kyXXn0tO+wk8oFliPAc1xBizXLXhgbO
- AZ+UThl9H38h25k0TIo=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=trace-ea.com header.i=info@trace-ea.com
- header.a=rsa-sha256 header.s=trac header.b=vjDYGop4
+X-Priority: 3
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,11 +61,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+Reply-To: Thomas Harwood <info.omaralmoffice@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
+Hello,
+
+Good Day Sir/Madam,
+
+Please Confirm if you still use this email address, I have a legacy in your last Name. Contact me here for detailed information
+
+
+Greetings
+Thomas Harwood 
 
 _______________________________________________
 devel mailing list
