@@ -1,57 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA1E17B600A
-	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Oct 2023 06:52:46 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BB6277B6A8F
+	for <lists+driverdev-devel@lfdr.de>; Tue,  3 Oct 2023 15:30:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4066340140;
-	Tue,  3 Oct 2023 04:52:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4066340140
+	by smtp1.osuosl.org (Postfix) with ESMTP id 39BAA82282;
+	Tue,  3 Oct 2023 13:30:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 39BAA82282
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id n3BQMtT7Mt2N; Tue,  3 Oct 2023 04:52:44 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BOtA9rVaqOdx; Tue,  3 Oct 2023 13:30:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1EFA7403A9;
-	Tue,  3 Oct 2023 04:52:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1EFA7403A9
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9A6318229F;
+	Tue,  3 Oct 2023 13:30:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9A6318229F
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 96CC31BF584
- for <devel@linuxdriverproject.org>; Tue,  3 Oct 2023 04:52:40 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 12DE91BF3CD
+ for <devel@linuxdriverproject.org>; Tue,  3 Oct 2023 13:30:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6F43961028
- for <devel@linuxdriverproject.org>; Tue,  3 Oct 2023 04:52:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6F43961028
+ by smtp4.osuosl.org (Postfix) with ESMTP id ECC574152D
+ for <devel@linuxdriverproject.org>; Tue,  3 Oct 2023 13:30:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ECC574152D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZgQQXe6jf7Ir for <devel@linuxdriverproject.org>;
- Tue,  3 Oct 2023 04:52:37 +0000 (UTC)
-Received: from mail0.sallyindtop.co (mail0.sallyindtop.co [81.161.229.230])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8651960E0A
- for <devel@driverdev.osuosl.org>; Tue,  3 Oct 2023 04:52:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8651960E0A
-From: user34@sallyindtop.co
-To: devel@driverdev.osuosl.org
-Subject: Re: Investment Offer
-Date: 03 Oct 2023 06:52:33 +0200
-Message-ID: <20231003065233.5735DE0D0736D76C@sallyindtop.co>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id i541tF0TTumy for <devel@linuxdriverproject.org>;
+ Tue,  3 Oct 2023 13:30:46 +0000 (UTC)
+X-Greylist: delayed 105482 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 03 Oct 2023 13:30:45 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 99ACD414D8
+Received: from webmail.dolphiran.ir (unknown [185.208.175.235])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 99ACD414D8
+ for <devel@driverdev.osuosl.org>; Tue,  3 Oct 2023 13:30:44 +0000 (UTC)
+Received: from User ([185.24.233.7]) by dolphiran.ir with
+ MailEnable ESMTPA; Sun, 1 Oct 2023 14:49:43 -0700
+From: "BANK OF CHINA"<admin@dolphiran.ir>
+Subject: INTRODUCTION/OFFER
+Date: Tue, 17 Oct 2023 14:09:57 -0700
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- s=default; d=sallyindtop.co; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
- Content-Transfer-Encoding; i=user34@sallyindtop.co;
- bh=VkFOP9rZ0slIzWfe5cRBL/RLZ7mm907kUkV+vryFHHI=;
- b=JFfIDof9A/r5FytBJAdDmXetIE/r9uvjIfscljBb4Ll3+1tIqRdgjVCt08MYtFRFORdG2WUOVRmi
- 6rsPAPgU+CYk405LG9Zb0bMMmGdBiGEumvAUMIahzjTGUvmm8ZdgfhmNdkBDcqvBDe+h2/PtAytm
- lx1KTOtYd9pq/xxKa2g=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=sallyindtop.co
- header.i=user34@sallyindtop.co header.a=rsa-sha256 header.s=default
- header.b=JFfIDof9
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <32D88F45C26047849D9C9B8EA75531ED.MAI@dolphiran.ir>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,36 +59,24 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: owenmery3@gmail.com
+Reply-To: zhouxnuk@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I hope this message finds you in good health and high spirits.
-My name is Owen Mery, and I am pleased to introduce myself as a 
-representing Calin Finance Group. A Canadian and United Kingdom 
-based company, we specialize in offering bespoke private project 
-funding and global loan financing solutions. Calin Finance Group 
-takes pride in its seasoned team of professionals who excel in 
-delivering and funding business growth and innovation. Over the 
-years, we have been instrumental in funing a multitude of 
-projects and ventures, providing capitals to suit a wide array of 
-our unique clients requirements. I am confident that our 
-expertise and resources could be a driving force in your journey.
-Whether your aspirations involve project funding, operational 
-expansion, or venturing into uncharted territories, our 
-comprehensive suite of financial services is adept at 
-transforming dreams into reality. Should the prospect intrigue 
-you, I would be thrilled to share pertinent business insights and 
-delve into the exciting realm of potential collaboration. Our 
-team stands ready to initiate further conversations at your 
-convenience, ready to tailor our approach according to your 
-preferences and needs. We look forward to the possibility of
-working together to unlock new avenues of success for your 
-business.
-Owen Mery
-financial expert
+ZHOU XIN
+Chief Financial Officer
+Bank of China 
+Level 17, 99 Bishopsgate, London EC2M 3XD,U.K
+
+Good Day,
+ZHOU XIN is my name with Bank of China. I want to partner with you to transfer funds into
+your account for investment. Please, state your direct phone number and full names in your
+reply so that we can discuss on benefits and process. 
+I await your reply on your willingness to partner with me.
+Yours sincerely
+ZHOU XIN
 
 _______________________________________________
 devel mailing list
