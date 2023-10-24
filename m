@@ -1,63 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 43A3C7D3D14
-	for <lists+driverdev-devel@lfdr.de>; Mon, 23 Oct 2023 19:09:49 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 22B527D5ED6
+	for <lists+driverdev-devel@lfdr.de>; Wed, 25 Oct 2023 01:53:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B9175417EF;
-	Mon, 23 Oct 2023 17:09:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B9175417EF
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tmB95SHfqiVZ; Mon, 23 Oct 2023 17:09:45 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1F49A40012;
-	Mon, 23 Oct 2023 17:09:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1F49A40012
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E44AA1BF371
- for <devel@linuxdriverproject.org>; Mon, 23 Oct 2023 17:09:41 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B09FF42263
- for <devel@linuxdriverproject.org>; Mon, 23 Oct 2023 17:09:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B09FF42263
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1D4964F03E;
+	Tue, 24 Oct 2023 23:53:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1D4964F03E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rOTsOv68EUGB for <devel@linuxdriverproject.org>;
- Mon, 23 Oct 2023 17:09:40 +0000 (UTC)
-X-Greylist: delayed 24174 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 23 Oct 2023 17:09:40 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 74F9042254
-Received: from mta.kafila.in (unknown [103.127.158.23])
- by smtp4.osuosl.org (Postfix) with ESMTP id 74F9042254
- for <devel@driverdev.osuosl.org>; Mon, 23 Oct 2023 17:09:40 +0000 (UTC)
-Received: from mta.kafila.in (localhost.localdomain [127.0.0.1])
- by mta.kafila.in (Proxmox) with ESMTP id 22CFD313020;
- Mon, 23 Oct 2023 14:30:26 +0530 (IST)
-X-Virus-Scanned: amavisd-new at mail.kafila.in
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tFpAVbYkt2Ol; Tue, 24 Oct 2023 23:53:00 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id A35E44F04A;
+	Tue, 24 Oct 2023 23:52:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A35E44F04A
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CD9C61BF379
+ for <devel@linuxdriverproject.org>; Tue, 24 Oct 2023 23:52:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id A1392402DC
+ for <devel@linuxdriverproject.org>; Tue, 24 Oct 2023 23:52:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A1392402DC
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 33_lvWSf5HPd for <devel@linuxdriverproject.org>;
+ Tue, 24 Oct 2023 23:52:54 +0000 (UTC)
+Received: from mail.07d02.mspz7.gob.ec (mail.07d02.mspz7.gob.ec
+ [181.196.186.147])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 91FEF40105
+ for <devel@driverdev.osuosl.org>; Tue, 24 Oct 2023 23:52:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 91FEF40105
+Received: from localhost (localhost [127.0.0.1])
+ by mail.07d02.mspz7.gob.ec (Postfix) with ESMTP id 57D0B613A67FA;
+ Tue, 24 Oct 2023 16:45:38 -0500 (-05)
+Received: from mail.07d02.mspz7.gob.ec ([127.0.0.1])
+ by localhost (mail.07d02.mspz7.gob.ec [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id UExbwhb9fW_E; Tue, 24 Oct 2023 16:45:38 -0500 (-05)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.07d02.mspz7.gob.ec (Postfix) with ESMTP id B20B3613A680E;
+ Tue, 24 Oct 2023 16:45:37 -0500 (-05)
+X-Virus-Scanned: amavisd-new at 07d02.mspz7.gob.ec
+Received: from mail.07d02.mspz7.gob.ec ([127.0.0.1])
+ by localhost (mail.07d02.mspz7.gob.ec [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id YHQkPFKT254Y; Tue, 24 Oct 2023 16:45:37 -0500 (-05)
+Received: from [192.168.0.171] (unknown [197.210.84.117])
+ by mail.07d02.mspz7.gob.ec (Postfix) with ESMTPSA id 0B7B8613A477C;
+ Tue, 24 Oct 2023 16:45:27 -0500 (-05)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Kontakt-E-Mail: alfagroupfridman@hotmail.com
-To: Recipients <testmail@kafila.in>
-From: testmail@kafila.in
-Date: Mon, 23 Oct 2023 09:52:02 +0100
-Message-Id: <20231023085316.118E010D956@mail.kafila.in>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kafila.in; h=cc
- :content-description:content-transfer-encoding:content-type
- :content-type:date:from:from:message-id:mime-version:reply-to
- :reply-to:subject:subject:to:to; s=default; bh=VmM2eLH3pix0zM/7w
- 3zv5lJHpesjEaNKKf5eTp5M9bI=; b=lQks18NmKGZOCnscA0Xlja7P3Beuvj65Q
- GXwLqTsYhaxHjGfF5aMAjkU2a4+58niH4LvrVV+wCiJ7OF1EMCQ/dOwmQWyhltMj
- Doe9qST4CkIdpzFw2MDGdeRYSNOctP38JB3RYJvXmy6rFSI8iDQUTn7P9Oy4wT/j
- Fn9kRwE9YBXY9hry7DvMEdMxC27pN+h/IalyWaqSkWSeQ4C66Lo9nBIhcjG3tjnJ
- 1rCty8ZcjdRhH7NzSW/LSwcIYw1TbygwXEkfg5uqGn8ZJQLvZhFI5E+no23D5rx0
- LSK6KkVt930VQdQ0ohMmUXSJq+R7awjsjKqdifHDvP5OoWLW3nS6A==
+Subject: Good news
+To: Recipients <hilvia.figueroa@07d02.mspz7.gob.ec>
+From: "Lisa Robinson" <hilvia.figueroa@07d02.mspz7.gob.ec>
+Date: Tue, 24 Oct 2023 14:45:15 -0700
+Message-Id: <20231024214528.0B7B8613A477C@mail.07d02.mspz7.gob.ec>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,15 +70,14 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: alfagroupfridman@outlook.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: lsarbn01@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RGllIFN1bW1lIHZvbiAyLjUwMC4wMDAsMDAg4oKsIHd1cmRlIElobmVuIHZvbiBNaWtoYWlsIEZy
-aWRtYW4gZ2VzcGVuZGV0LiBGw7xyIHdlaXRlcmUgSW5mb3JtYXRpb25lbiB3ZW5kZW4gU2llIHNp
-Y2ggYml0dGUgYW4gQWxmYWdyb3VwZnJpZG1hbkBvdXRsb29rLmNvbQoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
-QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
-Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
+Your email came out victorious in a random selection and you have been chosen for a cash donation of $950,000.00. Get back for your urgent claim.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
