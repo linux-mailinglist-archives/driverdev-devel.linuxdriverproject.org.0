@@ -2,37 +2,37 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7ED737DAB78
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Oct 2023 08:28:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D31507DAB77
+	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Oct 2023 08:28:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DC0F34EC33;
-	Sun, 29 Oct 2023 07:28:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CDE6E4EC28;
+	Sun, 29 Oct 2023 07:28:03 +0000 (UTC)
 Authentication-Results:smtp4.osuosl.org; dkim=permerror (bad message/signature format)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UzdoohYa5_TF; Sun, 29 Oct 2023 07:28:06 +0000 (UTC)
+	with ESMTP id fBuHVn-1egnA; Sun, 29 Oct 2023 07:28:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BA8234EC2D;
-	Sun, 29 Oct 2023 07:28:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A54454EC24;
+	Sun, 29 Oct 2023 07:28:02 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E70231BF20B
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 118FC1BF20B
  for <devel@linuxdriverproject.org>; Sun, 29 Oct 2023 07:28:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C07FF4EC24
- for <devel@linuxdriverproject.org>; Sun, 29 Oct 2023 07:28:00 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id q4QwZxLS-e76 for <devel@linuxdriverproject.org>;
- Sun, 29 Oct 2023 07:28:00 +0000 (UTC)
-X-Greylist: delayed 107548 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 29 Oct 2023 07:28:00 UTC
-Received: from ns1.niglobalsoft.com (niglobalsoft.com [122.176.88.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 03EB24EC2A
+ by smtp3.osuosl.org (Postfix) with ESMTP id DDED9610A8
  for <devel@linuxdriverproject.org>; Sun, 29 Oct 2023 07:27:59 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7qI3kVXkDRKx for <devel@linuxdriverproject.org>;
+ Sun, 29 Oct 2023 07:27:59 +0000 (UTC)
+X-Greylist: delayed 107547 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 29 Oct 2023 07:27:59 UTC
+Received: from ns1.niglobalsoft.com (niglobalsoft.com [122.176.88.136])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 33C6F60FF9
+ for <devel@driverdev.osuosl.org>; Sun, 29 Oct 2023 07:27:59 +0000 (UTC)
 Received: from [80.76.51.43] (unknown [80.76.51.43])
  by ns1.niglobalsoft.com (Postfix) with ESMTPA id 845B5899803;
  Sat, 28 Oct 2023 08:11:07 +0530 (IST)
@@ -42,8 +42,8 @@ Subject: I am Mr. MARK C. Joseph, Manager In charge of Foreign Remittance..
 To: Recipients <>
 From: "Mr.MARK C. Joseph" <>
 Date: Fri, 27 Oct 2023 15:22:53 -0700
-Message-Id: <20231029072800.C07FF4EC24@smtp4.osuosl.org>
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Message-Id: <20231029072759.DDED9610A8@smtp3.osuosl.org>
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=permerror (bad
  message/signature format)
 X-BeenThere: driverdev-devel@linuxdriverproject.org
