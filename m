@@ -1,62 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0EA267DAE15
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Oct 2023 20:58:27 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A295770928;
-	Sun, 29 Oct 2023 19:58:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A295770928
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id woAk4R3E6lrF; Sun, 29 Oct 2023 19:58:24 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6DC4670924;
-	Sun, 29 Oct 2023 19:58:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6DC4670924
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 975F41BF3EE
- for <devel@linuxdriverproject.org>; Sun, 29 Oct 2023 19:58:21 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 933F97DE270
+	for <lists+driverdev-devel@lfdr.de>; Wed,  1 Nov 2023 15:42:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6A30D43531
- for <devel@linuxdriverproject.org>; Sun, 29 Oct 2023 19:58:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6A30D43531
+	by smtp2.osuosl.org (Postfix) with ESMTP id 502034158E;
+	Wed,  1 Nov 2023 14:42:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 502034158E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id f1zCbFvRU1RE for <devel@linuxdriverproject.org>;
- Sun, 29 Oct 2023 19:58:20 +0000 (UTC)
-X-Greylist: delayed 602 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 29 Oct 2023 19:58:20 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5D424430A5
-Received: from service.rng658.com (unknown [198.46.215.41])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5D424430A5
- for <devel@driverdev.osuosl.org>; Sun, 29 Oct 2023 19:58:20 +0000 (UTC)
-Received: from [2.58.150.248] (2.58.150.248) by service.rng658.com id
- h7qtgs0001gc for <devel@driverdev.osuosl.org>;
- Sun, 29 Oct 2023 15:55:26 -0400 (envelope-from <ey@service.rng658.com>)
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rC2QxrZ-K7zq; Wed,  1 Nov 2023 14:42:17 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id E7E4D43187;
+	Wed,  1 Nov 2023 14:42:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E7E4D43187
+X-Original-To: driverdev-devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A0C9F1BF277
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  1 Nov 2023 14:42:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7AB32844C2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  1 Nov 2023 14:42:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7AB32844C2
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id tQhnTPJbk5Wc
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  1 Nov 2023 14:42:11 +0000 (UTC)
+Received: from mx1.gpdp.it (93-63-133-114.ip27.fastwebnet.it [93.63.133.114])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 254C9844A0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  1 Nov 2023 14:42:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 254C9844A0
+Received: from MERCURIO-1.garanteprivacy.intranet ([10.0.7.211])
+ by mx1.gpdp.it  with ESMTP id 39SMYF8J001077-39SMYF8L001077
+ (version=TLSv1.2 cipher=AES256-SHA256 bits=256 verify=CAFAIL);
+ Sun, 29 Oct 2023 00:34:15 +0200
+From: chris edward <ap@garanteprivacy.it>
+Subject: Looking Forward
+Date: Sun, 29 Oct 2023 00:34:12 +0200
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: ATTN; BENEFICIARY, REF/MTCN No {2334167617}
-To: Recipients <ey@service.rng658.com>
-From: "Mr. Michael Williams" <ey@service.rng658.com>
-Date: Sun, 29 Oct 2023 12:47:27 -0700
-Message-ID: <0.0.3.854.1DA0AA1DC363C42.0@service.rng658.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mykey;
- d=service.rng658.com; 
- h=Content-Type:MIME-Version:Content-Transfer-Encoding:Content-Description:Subject:To:From:Date:Reply-To:Message-ID;
- bh=Sh78RCmMdyC3DTxaG6qzMIljadw=;
- b=dbF35SM49lxLd7HgONg0wDFhIG7xcypf8hEEyqrzSFPhlBaehgL7zCNqwDQKArosyXTnJi+5cPuV
- JDcu4V4ctl6f5TXwzT9CbZQ3YPvC4uMIy/sqARI6AV2MvNdXU691CE8RU6YPie0aBYXcryJLS6hC
- iEagd1eqRJSe/geP/Xk=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=service.rng658.com
- header.i=@service.rng658.com header.a=rsa-sha1 header.s=mykey
- header.b=dbF35SM4
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-ID: <4c1ce9a0-1547-492c-92be-85ca11029184@MERCURIO-1.garanteprivacy.intranet>
+To: Undisclosed recipients:;
+X-FEAS-Client-IP: 10.0.7.211
+X-FE-Policy-ID: 1:3:4:SYSTEM
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,49 +66,29 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: officefile_0112@yahoo.co.jp
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: bizzinfo11@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-QVRUTjsgQkVORUZJQ0lBUlksIFJFRi9NVENOIE5vIHsyMzM0MTY3NjE3fSBTZW5kZXIncyBOYW1l
-OiBEb21pbmlxdWUgUmVuZQoKSSBhbSBoZXJlIHRvIGluZm9ybSB5b3UgdGhhdCB5b3VyIHRvdGFs
-IGZ1bmQgb2YgJDIuNSBNaWxsaW9uIGhhcyBiZWVuIGRlcG9zaXRlZCB3aXRoIChXZXN0ZXJuIFVu
-aW9uIFVTQSkgZm9yIGltbWVkaWF0ZSB0cmFuc2ZlcnJpbmcgb2YgaXQgdG8geW91LCBZb3Ugd2ls
-bCBiZSByZWNlaXZpbmcgJDUsMDAwIFVTRCBwZXIgZGF5LCBZb3VyIGZpcnN0IHBheW1lbnQgQmF0
-Y2ggaGFzIGJlZW4gcHJvZ3JhbW1lZCBpbiBvdXIgc3lzdGVtLiBCdXQgeW91IGhhdmUgdG8gcGF5
-ICQ1MCBmb3IgdGhlIGFjdGl2YXRpb24gb2YgeW91ciBmaXJzdCBwYXltZW50IGZpbGUgdGhyb3Vn
-aCBpVHVuZXMgZ2lmdCBjYXJkcywKCk5vdGU6IFRoaXMgJDUwIGlzIHRoZSBvbmx5IGZlZSB5b3Ug
-YXJlIHJlcXVpcmVkIHRvIHBheSBoZW5jZSB0aGlzIFRyYW5zYWN0aW9uIGlzIGNvbmNlcm5lZCwg
-Tm8gQXV0aG9yaXR5IG9yIGFueSBib2R5IHNob3VsZCBhc2sgeW91IGZvciBhZGRpdGlvbmFsIG1v
-bmV5IGFmdGVyIHRoZSBwYXltZW50IG9mICQ1MC4KClRoZXJlZm9yZSwgdGhlIGRheXMgb2YgeW91
-IGJlaW5nIHN1YmplY3RlZCB0byBwYXlpbmcgdHdpY2UgaXMgb3ZlciBhcyB0aGF0IGlzIHRoZSBj
-YXNlIHdpdGggc29tZSBjb3JydXB0IG9mZmljaWFscywgd2hvIGFsd2F5cyBzdHJpZmUgdG8gc3Vi
-amVjdCBiZW5lZmljaWFyaWVzIHRvIGhhcmQgYnVyZWF1Y3JhdGljIGJvdHRsZS1uZWNrLCB0aGVy
-ZWJ5IG1ha2luZyBpdCBpbXBvc3NpYmxlIGZvciBtb3N0IGlubm9jZW50IFVTQSBjaXRpemVucyBh
-bmQgdGhlIGxpa2VzIHRvIGNsYWltIHdoYXQgcmlnaHRmdWxseSBiZWxvbmdzIHRvIHRoZW0KCgpU
-aGFuayBHb2QgdGhhdCB5b3VyIGZ1bmRzIGFyZSBoZXJlIGluIFVTQSwgaWYgeW91IGNvbnNjaW91
-c2x5IGFkaGVyZSB0byB0aGUgYWJvdmUgaW5zdHJ1Y3Rpb24gYnkgcmVtaXR0aW5nIHRoZSBQcm9j
-dXJlbWVudCBGZWUgY2FsY3VsYXRlZCB0byBiZSAkNTAgVVNEIFRoZSDigJxQcm9jdXJlbWVudCBG
-ZWUiIG9mICQ1MCBVU0QgaXMgcGF5YWJsZSBpbiB0aHJlZSAoMykgcGF5bWVudCBvcHRpb25zIGZy
-b20gd2hpY2ggeW91IGFyZSB0byBjaG9vc2UgdGhlIG9uZSB5b3UgcHJlZmVyLklmIHlvdSB3aXNo
-IHRvIHNlbmQgYnkgR2lmdCBjYXJkcyBpdCBpcyBvay4gT3IgWW91IGNhbiBTZW5kIHRoZSBmZWUg
-b2YgJDUwIGJ5IFJpYSBUcmFuc2ZlciwgJDUwIEl0dW5lcyBDYXJkIHN0ZWFtIE9SICQ1MCB3YWxs
-ZXQgZ2lmdCBjYXJkLCBvciBBbWVyaWNhbiBFeHByZXNzIEdpZnQgY2FyZCwgR29vZ2xlIFBsYXkg
-Q2FyZC5Zb3UgYXJlIGhlcmVieSBhZHZpY2UgdG8gc2VuZCB0aGlzIGNvbXBsZXRlIGluZm9ybWF0
-aW9uIHRvIGF2b2lkIHdyb25nIHRyYW5zZmVyIG9mIGZ1bmQuCgpCRUxPVyBJUyBUSEUgTVRDTiBB
-TkQgVFJBQ0tJTkcgV0VCU0lURSBUTyBFTkFCTEUgWU9VIFRSQUNLIFlPVVIgRklSU1QgUFJPR1JB
-TU1FRCBBUFBST1ZFRCBQQVlNRU5ULAoKaHR0cHM6IC8vd3d3LiB3ZXN0ZXJudW5pb24uY29tL2ds
-b2JhbC1zZXJ2aWNlL3RyYWNrLXRyYW5zZmVyCgpNVENOIzo6MjMzNDE2NzYxNwpBbW91bnQgUHJv
-Z3JhbW1lZDogJDUwMDAKClBMRUFTRSBZT1UgQVJFIFJFUVVJUkVEIFRPIFJFQ09ORklSTSBUSElT
-IElORk9STUFUSU9OIEJFTE9XLgoKWW91ciBmdWxsIG5hbWUuLi4uLgp5b3VyIGNvbnRhY3QgYWRk
-cmVzcy4uLgp5b3VyIGNvdW50cnkuLi4uLi4KeW91ciBjaXR5Li4uLi4uCnlvdXIgcGhvbmUgbnVt
-YmVyLi4uLgp5b3VyIGFnZSAvbS9mLi4uLi4uLi4uLi4KeW91ciBJRCBjYXJkLi4uLi4uLi4KCkkg
-d2lsbCBiZSBsb29raW5nIHVwIHRvIHlvdXIgZW1haWwgcmVzcG9uc2UKCk1yLiBNaWNoYWVsIFdp
-bGxpYW1zCkUtbWFpbDogd2VzdGVybl91bmlvbjMyMzIzMkBob3RtYWlsLmNvbQpSZW1pdHRhbmNl
-IERlcHQuV2VzdGVybiBVbmlvbiBVZ2FuZGEgQ29uc3RpdHVlbmN5LgpXZXN0ZXJuIHVuaW9uIG1v
-bmV5IHRyYW5zZmVyCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
-Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
-cmRldi1kZXZlbAo=
+Hello
+
+How are you, I hope this email finds you in good health and spirit? Before I continue let me humbly apologize for coming into your space unsolicited. Nonetheless, I take solace in the fact that it is with the best intention and for our mutual benefit.
+
+I chose you among other contacts I came across in my search for someone who can be of help to the both of us.  It took a great deal of brain storming to arrive at my decision I must say with the hope that my contact with you is private and confidential.
+
+The business idea that I have is to partner with you by investing in your country and you being my fund manager. This whole idea is borne out of the fact that presently I am totally indisposed to carry out any financial transaction owing to restrictions relating to the Russia /Ukraine war and the suspicious death of my husband. 
+
+I will be an absolute pleasure, if you would have the wherewithal to handle this project and to my satisfaction. Every detail of me, where Im coming from and the urgency of this project will be layed bare to you upon your indication of interest. 
+
+Strictly use this email address for your respons (bizzinfo11@gmail.com).
+
+
+Best regards
+
+Anna Pechorin.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
