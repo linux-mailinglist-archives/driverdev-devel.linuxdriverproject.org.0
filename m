@@ -1,51 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D31507DAB77
-	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Oct 2023 08:28:07 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CDE6E4EC28;
-	Sun, 29 Oct 2023 07:28:03 +0000 (UTC)
-Authentication-Results:smtp4.osuosl.org; dkim=permerror (bad message/signature format)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fBuHVn-1egnA; Sun, 29 Oct 2023 07:28:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A54454EC24;
-	Sun, 29 Oct 2023 07:28:02 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 118FC1BF20B
- for <devel@linuxdriverproject.org>; Sun, 29 Oct 2023 07:28:00 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0EA267DAE15
+	for <lists+driverdev-devel@lfdr.de>; Sun, 29 Oct 2023 20:58:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DDED9610A8
- for <devel@linuxdriverproject.org>; Sun, 29 Oct 2023 07:27:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A295770928;
+	Sun, 29 Oct 2023 19:58:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A295770928
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7qI3kVXkDRKx for <devel@linuxdriverproject.org>;
- Sun, 29 Oct 2023 07:27:59 +0000 (UTC)
-X-Greylist: delayed 107547 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 29 Oct 2023 07:27:59 UTC
-Received: from ns1.niglobalsoft.com (niglobalsoft.com [122.176.88.136])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 33C6F60FF9
- for <devel@driverdev.osuosl.org>; Sun, 29 Oct 2023 07:27:59 +0000 (UTC)
-Received: from [80.76.51.43] (unknown [80.76.51.43])
- by ns1.niglobalsoft.com (Postfix) with ESMTPA id 845B5899803;
- Sat, 28 Oct 2023 08:11:07 +0530 (IST)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id woAk4R3E6lrF; Sun, 29 Oct 2023 19:58:24 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6DC4670924;
+	Sun, 29 Oct 2023 19:58:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6DC4670924
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 975F41BF3EE
+ for <devel@linuxdriverproject.org>; Sun, 29 Oct 2023 19:58:21 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6A30D43531
+ for <devel@linuxdriverproject.org>; Sun, 29 Oct 2023 19:58:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6A30D43531
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id f1zCbFvRU1RE for <devel@linuxdriverproject.org>;
+ Sun, 29 Oct 2023 19:58:20 +0000 (UTC)
+X-Greylist: delayed 602 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 29 Oct 2023 19:58:20 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5D424430A5
+Received: from service.rng658.com (unknown [198.46.215.41])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5D424430A5
+ for <devel@driverdev.osuosl.org>; Sun, 29 Oct 2023 19:58:20 +0000 (UTC)
+Received: from [2.58.150.248] (2.58.150.248) by service.rng658.com id
+ h7qtgs0001gc for <devel@driverdev.osuosl.org>;
+ Sun, 29 Oct 2023 15:55:26 -0400 (envelope-from <ey@service.rng658.com>)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: I am Mr. MARK C. Joseph, Manager In charge of Foreign Remittance..
-To: Recipients <>
-From: "Mr.MARK C. Joseph" <>
-Date: Fri, 27 Oct 2023 15:22:53 -0700
-Message-Id: <20231029072759.DDED9610A8@smtp3.osuosl.org>
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=permerror (bad
- message/signature format)
+Subject: ATTN; BENEFICIARY, REF/MTCN No {2334167617}
+To: Recipients <ey@service.rng658.com>
+From: "Mr. Michael Williams" <ey@service.rng658.com>
+Date: Sun, 29 Oct 2023 12:47:27 -0700
+Message-ID: <0.0.3.854.1DA0AA1DC363C42.0@service.rng658.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mykey;
+ d=service.rng658.com; 
+ h=Content-Type:MIME-Version:Content-Transfer-Encoding:Content-Description:Subject:To:From:Date:Reply-To:Message-ID;
+ bh=Sh78RCmMdyC3DTxaG6qzMIljadw=;
+ b=dbF35SM49lxLd7HgONg0wDFhIG7xcypf8hEEyqrzSFPhlBaehgL7zCNqwDQKArosyXTnJi+5cPuV
+ JDcu4V4ctl6f5TXwzT9CbZQ3YPvC4uMIy/sqARI6AV2MvNdXU691CE8RU6YPie0aBYXcryJLS6hC
+ iEagd1eqRJSe/geP/Xk=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=service.rng658.com
+ header.i=@service.rng658.com header.a=rsa-sha1 header.s=mykey
+ header.b=dbF35SM4
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,21 +69,49 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: markjoseph4789@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: officefile_0112@yahoo.co.jp
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I am Mr. MARK C. Joseph, Manager In charge of Foreign Remittance department of  ROYAL TRANSFER UNIT (RTU). The main reason for contacting you is to propose a business cooperation that will be of mutual benefit to both of us and requires absolute trust and total confidentiality. To get down to brass tacks, I want you to accommodate a large volume of funds worth (US$95.5 Million) which I want to transfer from an abandoned account to your personal bank account, It is 100% risk free.
-
-If you are interested in this proposition, kindly respond back to me through
-my email,(markjoseph4789@gmail.com) So I can give you further details and what is required for our trust, We will also negotiate an appropriate compensation for your efforts.
-
-Yours faithfully
-
-Mark
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+QVRUTjsgQkVORUZJQ0lBUlksIFJFRi9NVENOIE5vIHsyMzM0MTY3NjE3fSBTZW5kZXIncyBOYW1l
+OiBEb21pbmlxdWUgUmVuZQoKSSBhbSBoZXJlIHRvIGluZm9ybSB5b3UgdGhhdCB5b3VyIHRvdGFs
+IGZ1bmQgb2YgJDIuNSBNaWxsaW9uIGhhcyBiZWVuIGRlcG9zaXRlZCB3aXRoIChXZXN0ZXJuIFVu
+aW9uIFVTQSkgZm9yIGltbWVkaWF0ZSB0cmFuc2ZlcnJpbmcgb2YgaXQgdG8geW91LCBZb3Ugd2ls
+bCBiZSByZWNlaXZpbmcgJDUsMDAwIFVTRCBwZXIgZGF5LCBZb3VyIGZpcnN0IHBheW1lbnQgQmF0
+Y2ggaGFzIGJlZW4gcHJvZ3JhbW1lZCBpbiBvdXIgc3lzdGVtLiBCdXQgeW91IGhhdmUgdG8gcGF5
+ICQ1MCBmb3IgdGhlIGFjdGl2YXRpb24gb2YgeW91ciBmaXJzdCBwYXltZW50IGZpbGUgdGhyb3Vn
+aCBpVHVuZXMgZ2lmdCBjYXJkcywKCk5vdGU6IFRoaXMgJDUwIGlzIHRoZSBvbmx5IGZlZSB5b3Ug
+YXJlIHJlcXVpcmVkIHRvIHBheSBoZW5jZSB0aGlzIFRyYW5zYWN0aW9uIGlzIGNvbmNlcm5lZCwg
+Tm8gQXV0aG9yaXR5IG9yIGFueSBib2R5IHNob3VsZCBhc2sgeW91IGZvciBhZGRpdGlvbmFsIG1v
+bmV5IGFmdGVyIHRoZSBwYXltZW50IG9mICQ1MC4KClRoZXJlZm9yZSwgdGhlIGRheXMgb2YgeW91
+IGJlaW5nIHN1YmplY3RlZCB0byBwYXlpbmcgdHdpY2UgaXMgb3ZlciBhcyB0aGF0IGlzIHRoZSBj
+YXNlIHdpdGggc29tZSBjb3JydXB0IG9mZmljaWFscywgd2hvIGFsd2F5cyBzdHJpZmUgdG8gc3Vi
+amVjdCBiZW5lZmljaWFyaWVzIHRvIGhhcmQgYnVyZWF1Y3JhdGljIGJvdHRsZS1uZWNrLCB0aGVy
+ZWJ5IG1ha2luZyBpdCBpbXBvc3NpYmxlIGZvciBtb3N0IGlubm9jZW50IFVTQSBjaXRpemVucyBh
+bmQgdGhlIGxpa2VzIHRvIGNsYWltIHdoYXQgcmlnaHRmdWxseSBiZWxvbmdzIHRvIHRoZW0KCgpU
+aGFuayBHb2QgdGhhdCB5b3VyIGZ1bmRzIGFyZSBoZXJlIGluIFVTQSwgaWYgeW91IGNvbnNjaW91
+c2x5IGFkaGVyZSB0byB0aGUgYWJvdmUgaW5zdHJ1Y3Rpb24gYnkgcmVtaXR0aW5nIHRoZSBQcm9j
+dXJlbWVudCBGZWUgY2FsY3VsYXRlZCB0byBiZSAkNTAgVVNEIFRoZSDigJxQcm9jdXJlbWVudCBG
+ZWUiIG9mICQ1MCBVU0QgaXMgcGF5YWJsZSBpbiB0aHJlZSAoMykgcGF5bWVudCBvcHRpb25zIGZy
+b20gd2hpY2ggeW91IGFyZSB0byBjaG9vc2UgdGhlIG9uZSB5b3UgcHJlZmVyLklmIHlvdSB3aXNo
+IHRvIHNlbmQgYnkgR2lmdCBjYXJkcyBpdCBpcyBvay4gT3IgWW91IGNhbiBTZW5kIHRoZSBmZWUg
+b2YgJDUwIGJ5IFJpYSBUcmFuc2ZlciwgJDUwIEl0dW5lcyBDYXJkIHN0ZWFtIE9SICQ1MCB3YWxs
+ZXQgZ2lmdCBjYXJkLCBvciBBbWVyaWNhbiBFeHByZXNzIEdpZnQgY2FyZCwgR29vZ2xlIFBsYXkg
+Q2FyZC5Zb3UgYXJlIGhlcmVieSBhZHZpY2UgdG8gc2VuZCB0aGlzIGNvbXBsZXRlIGluZm9ybWF0
+aW9uIHRvIGF2b2lkIHdyb25nIHRyYW5zZmVyIG9mIGZ1bmQuCgpCRUxPVyBJUyBUSEUgTVRDTiBB
+TkQgVFJBQ0tJTkcgV0VCU0lURSBUTyBFTkFCTEUgWU9VIFRSQUNLIFlPVVIgRklSU1QgUFJPR1JB
+TU1FRCBBUFBST1ZFRCBQQVlNRU5ULAoKaHR0cHM6IC8vd3d3LiB3ZXN0ZXJudW5pb24uY29tL2ds
+b2JhbC1zZXJ2aWNlL3RyYWNrLXRyYW5zZmVyCgpNVENOIzo6MjMzNDE2NzYxNwpBbW91bnQgUHJv
+Z3JhbW1lZDogJDUwMDAKClBMRUFTRSBZT1UgQVJFIFJFUVVJUkVEIFRPIFJFQ09ORklSTSBUSElT
+IElORk9STUFUSU9OIEJFTE9XLgoKWW91ciBmdWxsIG5hbWUuLi4uLgp5b3VyIGNvbnRhY3QgYWRk
+cmVzcy4uLgp5b3VyIGNvdW50cnkuLi4uLi4KeW91ciBjaXR5Li4uLi4uCnlvdXIgcGhvbmUgbnVt
+YmVyLi4uLgp5b3VyIGFnZSAvbS9mLi4uLi4uLi4uLi4KeW91ciBJRCBjYXJkLi4uLi4uLi4KCkkg
+d2lsbCBiZSBsb29raW5nIHVwIHRvIHlvdXIgZW1haWwgcmVzcG9uc2UKCk1yLiBNaWNoYWVsIFdp
+bGxpYW1zCkUtbWFpbDogd2VzdGVybl91bmlvbjMyMzIzMkBob3RtYWlsLmNvbQpSZW1pdHRhbmNl
+IERlcHQuV2VzdGVybiBVbmlvbiBVZ2FuZGEgQ29uc3RpdHVlbmN5LgpXZXN0ZXJuIHVuaW9uIG1v
+bmV5IHRyYW5zZmVyCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
+Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
+cmRldi1kZXZlbAo=
