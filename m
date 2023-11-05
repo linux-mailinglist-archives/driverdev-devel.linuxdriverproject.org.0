@@ -1,74 +1,88 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3EEF77E1303
-	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Nov 2023 11:23:46 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 75C807E1732
+	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Nov 2023 23:00:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 62BA960FA2;
-	Sun,  5 Nov 2023 10:23:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 62BA960FA2
+	by smtp2.osuosl.org (Postfix) with ESMTP id 10F2C40184;
+	Sun,  5 Nov 2023 22:00:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 10F2C40184
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SwegHfF7TCwD; Sun,  5 Nov 2023 10:23:43 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9Q9kVhZWifhU; Sun,  5 Nov 2023 22:00:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 07B6460BA3;
-	Sun,  5 Nov 2023 10:23:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 07B6460BA3
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9E9D340586;
+	Sun,  5 Nov 2023 22:00:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9E9D340586
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 84A2E1BF5A6
- for <devel@linuxdriverproject.org>; Sun,  5 Nov 2023 10:23:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EBEE21BF869
+ for <devel@linuxdriverproject.org>; Sun,  5 Nov 2023 22:00:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5E26760FA2
- for <devel@linuxdriverproject.org>; Sun,  5 Nov 2023 10:23:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5E26760FA2
+ by smtp3.osuosl.org (Postfix) with ESMTP id C481461059
+ for <devel@linuxdriverproject.org>; Sun,  5 Nov 2023 22:00:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C481461059
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id omHrQfC2M0rp for <devel@linuxdriverproject.org>;
- Sun,  5 Nov 2023 10:23:39 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 09F3560BA3
- for <devel@driverdev.osuosl.org>; Sun,  5 Nov 2023 10:23:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 09F3560BA3
-X-IronPort-AV: E=McAfee;i="6600,9927,10884"; a="369344480"
-X-IronPort-AV: E=Sophos;i="6.03,279,1694761200"; d="scan'208";a="369344480"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2023 02:23:37 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10884"; a="797037911"
-X-IronPort-AV: E=Sophos;i="6.03,279,1694761200"; d="scan'208";a="797037911"
-Received: from lkp-server01.sh.intel.com (HELO 17d9e85e5079) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 05 Nov 2023 02:23:36 -0800
-Received: from kbuild by 17d9e85e5079 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qzaI1-0005KN-2E;
- Sun, 05 Nov 2023 10:23:33 +0000
-Date: Sun, 05 Nov 2023 18:22:55 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup] BUILD REGRESSION
- 447e92735758c923913ee53b75c6b92ef756985b
-Message-ID: <202311051853.9BCMeGgp-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1699179819; x=1730715819;
- h=date:from:to:cc:subject:message-id;
- bh=MzjMmTzO7Iz6vgmy8p3ODsyA4U0PMnHYX6xw5UfO9zY=;
- b=e6+K/Fp8Qc9N7SgHvoop2zpldQob8k/KY3b3C7uBhr3UnvXxjpwARjYY
- xi8m3ZBWO4LNIqDDYToyTXsm9PIOkWrEAv3PzD+0qzdbxfMFogCn2Kj/h
- xBwkU8nMVZwRezmk8539zGeSmUptUQGNwOSwZDorWbQMB3jdqBEHw8SLM
- ciVyeK6SC9xW+u+dYZjH9YrUcarffBC+Jw2VAC3WgBZagPxcWqKsOAQqw
- EmDC7DlZnODbaQLPphC16Xji+M6jZH/oo3I6t6LtyKtdPd5Gmjmn60Ro3
- ELsI+sa0uCNE1iwB0jl+Y4qn07bv7V+QY/TPmEXPEBr5420HOdsoImzfO
- g==;
+ with ESMTP id 5RqaKxx3gHrT for <devel@linuxdriverproject.org>;
+ Sun,  5 Nov 2023 22:00:33 +0000 (UTC)
+X-Greylist: delayed 5240 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 05 Nov 2023 22:00:33 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 223EC61058
+Received: from SMTP-HCRC-200.brggroup.vn (unknown [42.112.212.144])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 223EC61058
+ for <devel@driverdev.osuosl.org>; Sun,  5 Nov 2023 22:00:32 +0000 (UTC)
+Received: from SMTP-HCRC-200.brggroup.vn (localhost [127.0.0.1])
+ by SMTP-HCRC-200.brggroup.vn (SMTP-CTTV) with ESMTP id A586618EFD;
+ Mon,  6 Nov 2023 01:57:33 +0700 (+07)
+Received: from zimbra.hcrc.vn (unknown [192.168.200.66])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by SMTP-HCRC-200.brggroup.vn (SMTP-CTTV) with ESMTPS id 9D3341909F;
+ Mon,  6 Nov 2023 01:57:33 +0700 (+07)
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra.hcrc.vn (Postfix) with ESMTP id 364511B8203A;
+ Mon,  6 Nov 2023 01:57:35 +0700 (+07)
+Received: from zimbra.hcrc.vn ([127.0.0.1])
+ by localhost (zimbra.hcrc.vn [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id Uq5rommShO1a; Mon,  6 Nov 2023 01:57:35 +0700 (+07)
+Received: from localhost (localhost [127.0.0.1])
+ by zimbra.hcrc.vn (Postfix) with ESMTP id 050B21B8253E;
+ Mon,  6 Nov 2023 01:57:35 +0700 (+07)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra.hcrc.vn 050B21B8253E
+X-Virus-Scanned: amavisd-new at hcrc.vn
+Received: from zimbra.hcrc.vn ([127.0.0.1])
+ by localhost (zimbra.hcrc.vn [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id c6_6wKo2WC2V; Mon,  6 Nov 2023 01:57:34 +0700 (+07)
+Received: from [192.168.1.152] (unknown [51.179.100.52])
+ by zimbra.hcrc.vn (Postfix) with ESMTPSA id BB4D31B8203A;
+ Mon,  6 Nov 2023 01:57:28 +0700 (+07)
+MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: =?utf-8?b?4oKsIDEwMC4wMDAuMDAwPw==?=
+To: Recipients <ch.31hamnghi@hcrc.vn>
+From: ch.31hamnghi@hcrc.vn
+Date: Sun, 05 Nov 2023 19:57:18 +0100
+Message-Id: <20231105185728.BB4D31B8203A@zimbra.hcrc.vn>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=hcrc.vn; 
+ s=64D43D38-C7D6-11ED-8EFE-0027945F1BFA; t=1699210655;
+ bh=WOZURJ77pkiMUL2pPLC14ifVPRvyTQIBEQmxuN1ezAA=;
+ h=MIME-Version:To:From:Date:Message-Id;
+ b=e3sM4jQ3SHlS5unL4YpNQ1ThweCNn2sIhiiMoGrLzhoT97RtUYpQWkbqyxiEYSmLq
+ xYMa6zYYfFOOs6JFIbTJXrFCzu+004njRhUZ8jLt75d8FOck1AjrUXM2hRbnT+i8k9
+ FiKPNQy6pDi1QQTJugMzNRKxWGzC1tR6h89kMulPt3ZiSmY5n0wm9lSJK8wDl4U85A
+ fLMsW/vxmUfznL4fH5+eF01NedPC6cERBJ/3BQEN2LoRj3fwXgtJuBybbVTlw6/KFz
+ 5hIwS8M8cVV+3Q++WQ2hUZrzz2+g6Z2Z90dG4nUnVLx+YwBvhYrxa/uc5slYP2pN6L
+ /Elk3/mfY/0Nw==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=e6+K/Fp8
+ dkim=pass (2048-bit key) header.d=hcrc.vn header.i=@hcrc.vn
+ header.a=rsa-sha256 header.s=64D43D38-C7D6-11ED-8EFE-0027945F1BFA
+ header.b=e3sM4jQ3
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,201 +95,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: joliushk@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
-branch HEAD: 447e92735758c923913ee53b75c6b92ef756985b  sysfs: do not create empty directories if no attributes are present
-
-Error/Warning reports:
-
-https://lore.kernel.org/oe-kbuild-all/202311050113.QCp9Dss3-lkp@intel.com
-
-Error/Warning: (recently discovered and may have been fixed)
-
-drivers/platform/x86/amd/hsmp.c:474:16: error: implicit declaration of function 'devm_device_add_groups'; did you mean 'devm_device_add_group'? [-Werror=implicit-function-declaration]
-
-Error/Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- x86_64-allyesconfig
-|   `-- drivers-platform-x86-amd-hsmp.c:error:implicit-declaration-of-function-devm_device_add_groups
-|-- x86_64-randconfig-002-20231105
-|   `-- drivers-platform-x86-amd-hsmp.c:error:implicit-declaration-of-function-devm_device_add_groups
-|-- x86_64-randconfig-004-20231105
-|   `-- drivers-platform-x86-amd-hsmp.c:error:implicit-declaration-of-function-devm_device_add_groups
-|-- x86_64-randconfig-005-20231104
-|   `-- drivers-platform-x86-amd-hsmp.c:error:implicit-declaration-of-function-devm_device_add_groups
-`-- x86_64-randconfig-076-20231105
-    `-- drivers-platform-x86-amd-hsmp.c:error:implicit-declaration-of-function-devm_device_add_groups
-
-elapsed time: 1507m
-
-configs tested: 152
-configs skipped: 2
-
-tested configs:
-alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allmodconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                   randconfig-001-20231104   gcc  
-arc                   randconfig-002-20231104   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                                 defconfig   gcc  
-arm                   randconfig-001-20231104   gcc  
-arm                   randconfig-002-20231104   gcc  
-arm                   randconfig-003-20231104   gcc  
-arm                   randconfig-004-20231104   gcc  
-arm64                             allnoconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                 randconfig-001-20231104   gcc  
-arm64                 randconfig-002-20231104   gcc  
-arm64                 randconfig-003-20231104   gcc  
-arm64                 randconfig-004-20231104   gcc  
-csky                             allmodconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
-csky                                defconfig   gcc  
-csky                  randconfig-001-20231104   gcc  
-csky                  randconfig-002-20231104   gcc  
-i386                             allmodconfig   gcc  
-i386                              allnoconfig   gcc  
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-001-20231104   gcc  
-i386         buildonly-randconfig-002-20231104   gcc  
-i386         buildonly-randconfig-003-20231104   gcc  
-i386         buildonly-randconfig-004-20231104   gcc  
-i386         buildonly-randconfig-005-20231104   gcc  
-i386         buildonly-randconfig-006-20231104   gcc  
-i386                              debian-10.3   gcc  
-i386                                defconfig   gcc  
-i386                  randconfig-001-20231105   gcc  
-i386                  randconfig-002-20231105   gcc  
-i386                  randconfig-003-20231105   gcc  
-i386                  randconfig-004-20231105   gcc  
-i386                  randconfig-005-20231105   gcc  
-i386                  randconfig-006-20231105   gcc  
-i386                  randconfig-011-20231104   gcc  
-i386                  randconfig-012-20231104   gcc  
-i386                  randconfig-013-20231104   gcc  
-i386                  randconfig-014-20231104   gcc  
-i386                  randconfig-015-20231104   gcc  
-i386                  randconfig-016-20231104   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                        allyesconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch             randconfig-001-20231104   gcc  
-loongarch             randconfig-002-20231104   gcc  
-m68k                             allmodconfig   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-mips                             allmodconfig   gcc  
-mips                              allnoconfig   gcc  
-mips                             allyesconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-openrisc                         allmodconfig   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                         allyesconfig   gcc  
-openrisc                            defconfig   gcc  
-parisc                           allmodconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   gcc  
-powerpc               randconfig-001-20231104   gcc  
-powerpc               randconfig-002-20231104   gcc  
-powerpc               randconfig-003-20231104   gcc  
-powerpc64             randconfig-001-20231104   gcc  
-powerpc64             randconfig-002-20231104   gcc  
-powerpc64             randconfig-003-20231104   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                 randconfig-002-20231104   gcc  
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                              allnoconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                  randconfig-001-20231104   gcc  
-s390                  randconfig-002-20231104   gcc  
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                                  defconfig   gcc  
-sparc                            allmodconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                            allyesconfig   gcc  
-sparc                               defconfig   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-sparc64               randconfig-002-20231104   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   clang
-um                                  defconfig   gcc  
-um                             i386_defconfig   gcc  
-um                    randconfig-001-20231104   gcc  
-um                    randconfig-002-20231104   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                            allnoconfig   gcc  
-x86_64                           allyesconfig   gcc  
-x86_64                              defconfig   gcc  
-x86_64                randconfig-001-20231104   gcc  
-x86_64                randconfig-001-20231105   gcc  
-x86_64                randconfig-002-20231104   gcc  
-x86_64                randconfig-002-20231105   gcc  
-x86_64                randconfig-003-20231105   gcc  
-x86_64                randconfig-004-20231104   gcc  
-x86_64                randconfig-004-20231105   gcc  
-x86_64                randconfig-005-20231104   gcc  
-x86_64                randconfig-005-20231105   gcc  
-x86_64                randconfig-006-20231105   gcc  
-x86_64                randconfig-011-20231104   gcc  
-x86_64                randconfig-012-20231104   gcc  
-x86_64                randconfig-013-20231104   gcc  
-x86_64                randconfig-014-20231104   gcc  
-x86_64                randconfig-015-20231104   gcc  
-x86_64                randconfig-016-20231104   gcc  
-x86_64                randconfig-071-20231105   gcc  
-x86_64                randconfig-072-20231105   gcc  
-x86_64                randconfig-073-20231105   gcc  
-x86_64                randconfig-074-20231105   gcc  
-x86_64                randconfig-075-20231105   gcc  
-x86_64                randconfig-076-20231105   gcc  
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
-xtensa                randconfig-001-20231104   gcc  
-xtensa                randconfig-002-20231104   gcc  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R29lZGVkYWcsCklrIGJlbiBtZXZyb3V3IEpvYW5uYSBMaXUgZW4gZWVuIG1lZGV3ZXJrZXIgdmFu
+IENpdGkgQmFuayBIb25nIEtvbmcuCkthbiBpayDigqwgMTAwLjAwMC4wMDAgYWFuIHUgb3Zlcm1h
+a2VuPyBLYW4gaWsgamUgdmVydHJvdXdlbgoKCklrIHdhY2h0IG9wIGp1bGxpZSByZWFjdGllcwpN
+ZXQgdnJpZW5kZWxpamtlIGdyb2V0ZW4KbWV2cm91dyBKb2FubmEgTGl1CgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2
+ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJv
+amVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
