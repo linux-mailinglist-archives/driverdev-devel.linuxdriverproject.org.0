@@ -1,74 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88EDF7E3805
-	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Nov 2023 10:43:52 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 976A27E3EC7
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Nov 2023 13:42:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 064B5417CB;
-	Tue,  7 Nov 2023 09:43:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 064B5417CB
+	by smtp1.osuosl.org (Postfix) with ESMTP id 18C20822F3;
+	Tue,  7 Nov 2023 12:42:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 18C20822F3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bDZED-U9N1TD; Tue,  7 Nov 2023 09:43:47 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id F5BL06Ew4vgB; Tue,  7 Nov 2023 12:42:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AC8F4417AB;
-	Tue,  7 Nov 2023 09:43:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AC8F4417AB
+	by smtp1.osuosl.org (Postfix) with ESMTP id D3F86822F2;
+	Tue,  7 Nov 2023 12:42:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D3F86822F2
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5236C1BF3C3
- for <devel@linuxdriverproject.org>; Tue,  7 Nov 2023 09:43:44 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 605CF1BF39E
+ for <devel@linuxdriverproject.org>; Tue,  7 Nov 2023 12:42:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2A62A421C3
- for <devel@linuxdriverproject.org>; Tue,  7 Nov 2023 09:43:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2A62A421C3
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3855D417FD
+ for <devel@linuxdriverproject.org>; Tue,  7 Nov 2023 12:42:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3855D417FD
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PEAb36zRgnvy for <devel@linuxdriverproject.org>;
- Tue,  7 Nov 2023 09:43:40 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6F314421C1
- for <devel@driverdev.osuosl.org>; Tue,  7 Nov 2023 09:43:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6F314421C1
-X-IronPort-AV: E=McAfee;i="6600,9927,10886"; a="379859829"
-X-IronPort-AV: E=Sophos;i="6.03,283,1694761200"; d="scan'208";a="379859829"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Nov 2023 01:43:34 -0800
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id i6lsj-1xoN0O for <devel@linuxdriverproject.org>;
+ Tue,  7 Nov 2023 12:42:05 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9A32B4138F
+ for <devel@driverdev.osuosl.org>; Tue,  7 Nov 2023 12:42:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9A32B4138F
+X-IronPort-AV: E=McAfee;i="6600,9927,10886"; a="8148940"
+X-IronPort-AV: E=Sophos;i="6.03,283,1694761200"; 
+   d="scan'208";a="8148940"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Nov 2023 04:42:04 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10886"; a="853312795"
-X-IronPort-AV: E=Sophos;i="6.03,283,1694761200"; d="scan'208";a="853312795"
+X-IronPort-AV: E=Sophos;i="6.03,283,1694761200"; d="scan'208";a="10401938"
 Received: from lkp-server01.sh.intel.com (HELO 17d9e85e5079) ([10.239.97.150])
- by FMSMGA003.fm.intel.com with ESMTP; 07 Nov 2023 01:43:31 -0800
+ by orviesa001.jf.intel.com with ESMTP; 07 Nov 2023 04:42:04 -0800
 Received: from kbuild by 17d9e85e5079 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1r0IcM-00070u-10;
- Tue, 07 Nov 2023 09:43:30 +0000
-Date: Tue, 07 Nov 2023 17:42:15 +0800
+ (envelope-from <lkp@intel.com>) id 1r0LP7-00076N-0n;
+ Tue, 07 Nov 2023 12:42:01 +0000
+Date: Tue, 07 Nov 2023 20:41:28 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:class_cleanup] BUILD SUCCESS
- a8287f754ed44cf2e8040439b1a8e3b6e24f3588
-Message-ID: <202311071710.DneP63ct-lkp@intel.com>
+Subject: [driver-core:debugfs_cleanup] BUILD REGRESSION
+ 900ab3cf5fb44b9a5e272d0e947fee74dc894ca5
+Message-ID: <202311072025.3s1zVsHS-lkp@intel.com>
 User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1699350220; x=1730886220;
+ t=1699360926; x=1730896926;
  h=date:from:to:cc:subject:message-id;
- bh=UE6hMT7Om01rDfMDgsx+BVmkXDo/WPnOGPM9DsbhmY4=;
- b=MXb6y/kd5ML9rmLKFVEcpZHUr5vULAmRUol3VTnXUP/WRk72/j06nxPl
- 4opnKdoA3429pegPjq7kksj1WGXiEZCBzrh/xFm/fQDSzCKgEkkdaR6ZA
- G+BQjrZtI1zlgFEDljiOE0wp9PTtvBoXEnrBJsGCGKdjB1vxPHcJsErPX
- nhuq5MGzp/vFQvZi1Xh+lamyIhJ4rPp/73KdJ+4ryJWUi+p+xgLTCnTOt
- LtcWTpqEGi2+46wF9uvEtwrfJe0L5uP++5HrT9DH8XTw4hRfAQHCM4byB
- VBrxg5IKj4a2muPXWhb9pYmpL2qyk5OQQMvrp9B5z9wbAEXOrJQI+5Y+r
+ bh=CXq73b8wLE+/hV6zDb+Gemi3JhFGYJcWnmk9XYJxEgQ=;
+ b=f/3pJmHVJv8p0WqsvGwUJPOFOUmJHByFVBbi3hM4JLbuVQS8oyANbbGX
+ FmXj84LR0NUM7klEva7G3GEEph0L632ulxRnmjqw2PVy3+p4XRkCUM8S7
+ DKmyvhtPd71XKp+sxnk/RvvflizCmpW8m/6ksm7UaN88dkeDhYIJMvd2J
+ mSfGxTkolkqSdABEH067EdDUGkckxuyvleitCKb1TY00UCICm9Iz9RiB1
+ buNjLZlBUwwKp7Xzalzqhb6V3YwGBKONx2fNx1RcHl+xCTg5fC/RF/lhT
+ 17FCh98pFHJoszoGnSHMdazSCYWjZCAVElZVH1q2y0HPkXW+nh1KiwJtv
  g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=MXb6y/kd
+ header.a=rsa-sha256 header.s=Intel header.b=f/3pJmHV
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,417 +88,71 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git class_cleanup
-branch HEAD: a8287f754ed44cf2e8040439b1a8e3b6e24f3588  crypto: qat: make adf_ctl_class constant
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
+branch HEAD: 900ab3cf5fb44b9a5e272d0e947fee74dc894ca5  sysfs: do not create empty directories if no attributes are present
 
-Warning ids grouped by kconfigs:
+Error/Warning reports:
+
+https://lore.kernel.org/oe-kbuild-all/202311050113.QCp9Dss3-lkp@intel.com
+
+Error/Warning: (recently discovered and may have been fixed)
+
+drivers/platform/x86/amd/hsmp.c:474:16: error: implicit declaration of function 'devm_device_add_groups'; did you mean 'devm_device_add_group'? [-Werror=implicit-function-declaration]
+
+Error/Warning ids grouped by kconfigs:
 
 gcc_recent_errors
-|-- alpha-allyesconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   |-- drivers-iio-gyro-bmg160_i2c.c:warning:bmg160_acpi_match-defined-but-not-used
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- arc-randconfig-001-20231106
-|   `-- drivers-iio-gyro-bmg160_i2c.c:warning:bmg160_acpi_match-defined-but-not-used
-|-- arc-randconfig-001-20231107
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- arc-randconfig-002-20231107
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- arm-defconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   `-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|-- i386-allmodconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- i386-allyesconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- i386-randconfig-002-20231107
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- i386-randconfig-003-20231107
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- i386-randconfig-006-20231107
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- loongarch-allmodconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- m68k-allmodconfig
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- m68k-allyesconfig
-|   |-- drivers-iio-gyro-bmg160_i2c.c:warning:bmg160_acpi_match-defined-but-not-used
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- mips-allyesconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   |-- drivers-iio-gyro-bmg160_i2c.c:warning:bmg160_acpi_match-defined-but-not-used
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- nios2-allmodconfig
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- nios2-allyesconfig
-|   |-- drivers-iio-gyro-bmg160_i2c.c:warning:bmg160_acpi_match-defined-but-not-used
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- openrisc-allmodconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- openrisc-allyesconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   |-- drivers-iio-gyro-bmg160_i2c.c:warning:bmg160_acpi_match-defined-but-not-used
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- parisc-defconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   `-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|-- parisc-randconfig-001-20231107
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   `-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|-- parisc64-defconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   `-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|-- powerpc-allmodconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   |-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_disable_pm_interrupts
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_enable_pm_interrupts
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_read_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_set_ctr_size
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_write_phys_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_write_pm
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-ctr-not-described-in-ps3_read_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-ctr-not-described-in-ps3_write_pm07_control
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-mask-not-described-in-ps3_enable_pm_interrupts
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-phys_ctr-not-described-in-ps3_get_ctr_size
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-phys_ctr-not-described-in-ps3_read_phys_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-phys_ctr-not-described-in-ps3_set_ctr_size
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-phys_ctr-not-described-in-ps3_write_phys_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-val-not-described-in-ps3_write_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-val-not-described-in-ps3_write_pm07_control
-|   |-- drivers-ps3-ps3-lpm.c:warning:cannot-understand-function-prototype:struct-ps3_lpm_priv-lpm_priv
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Enum-value-PS3_SM_CMD_SHUTDOWN-not-described-in-enum-ps3_sys_manager_cmd
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-attr-not-described-in-ps3_sys_manager_send_attr
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_final_power_off
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_handle_cmd
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_send_next_op
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_send_request_shutdown
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_send_response
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_write
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-payload-not-described-in-ps3_sys_manager_write
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Incorrect-use-of-kernel-doc-format:struct-ps3_sys_manager_header-System-manager-message-header.
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:cannot-understand-function-prototype:u32-user_wake_sources-PS3_SM_WAKE_DEFAULT
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-_private-not-described-in-ps3_vuart_irq_handler
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-buf-not-described-in-ps3_vuart_raw_write
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-buf-not-described-in-ps3_vuart_write
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-bytes-not-described-in-ps3_vuart_raw_read
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-bytes-not-described-in-ps3_vuart_read
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-bytes-not-described-in-ps3_vuart_write
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-bytes_written-not-described-in-ps3_vuart_raw_write
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_vuart_handle_interrupt_rx
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-drv-not-described-in-ps3_vuart_port_driver_register
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-irq-not-described-in-ps3_vuart_irq_handler
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-link-not-described-in-list_buffer
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-rx_list-not-described-in-ps3_vuart_port_priv
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-stats-not-described-in-ps3_vuart_port_priv
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-status-not-described-in-ports_bmp
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-tail-not-described-in-list_buffer
-|   `-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-unused-not-described-in-ports_bmp
-|-- powerpc-allyesconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   |-- drivers-iio-gyro-bmg160_i2c.c:warning:bmg160_acpi_match-defined-but-not-used
-|   |-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_disable_pm_interrupts
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_enable_pm_interrupts
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_read_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_set_ctr_size
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_write_phys_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-cpu-not-described-in-ps3_write_pm
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-ctr-not-described-in-ps3_read_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-ctr-not-described-in-ps3_write_pm07_control
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-mask-not-described-in-ps3_enable_pm_interrupts
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-phys_ctr-not-described-in-ps3_get_ctr_size
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-phys_ctr-not-described-in-ps3_read_phys_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-phys_ctr-not-described-in-ps3_set_ctr_size
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-phys_ctr-not-described-in-ps3_write_phys_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-val-not-described-in-ps3_write_ctr
-|   |-- drivers-ps3-ps3-lpm.c:warning:Function-parameter-or-member-val-not-described-in-ps3_write_pm07_control
-|   |-- drivers-ps3-ps3-lpm.c:warning:cannot-understand-function-prototype:struct-ps3_lpm_priv-lpm_priv
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Enum-value-PS3_SM_CMD_SHUTDOWN-not-described-in-enum-ps3_sys_manager_cmd
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-attr-not-described-in-ps3_sys_manager_send_attr
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_final_power_off
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_handle_cmd
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_send_next_op
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_send_request_shutdown
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_send_response
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_sys_manager_write
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Function-parameter-or-member-payload-not-described-in-ps3_sys_manager_write
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:Incorrect-use-of-kernel-doc-format:struct-ps3_sys_manager_header-System-manager-message-header.
-|   |-- drivers-ps3-ps3-sys-manager.c:warning:cannot-understand-function-prototype:u32-user_wake_sources-PS3_SM_WAKE_DEFAULT
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-_private-not-described-in-ps3_vuart_irq_handler
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-buf-not-described-in-ps3_vuart_raw_write
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-buf-not-described-in-ps3_vuart_write
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-bytes-not-described-in-ps3_vuart_raw_read
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-bytes-not-described-in-ps3_vuart_read
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-bytes-not-described-in-ps3_vuart_write
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-bytes_written-not-described-in-ps3_vuart_raw_write
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-dev-not-described-in-ps3_vuart_handle_interrupt_rx
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-drv-not-described-in-ps3_vuart_port_driver_register
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-irq-not-described-in-ps3_vuart_irq_handler
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-link-not-described-in-list_buffer
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-rx_list-not-described-in-ps3_vuart_port_priv
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-stats-not-described-in-ps3_vuart_port_priv
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-status-not-described-in-ports_bmp
-|   |-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-tail-not-described-in-list_buffer
-|   `-- drivers-ps3-ps3-vuart.c:warning:Function-parameter-or-member-unused-not-described-in-ports_bmp
-|-- riscv-allmodconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- riscv-allyesconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- riscv-defconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   `-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|-- riscv-rv32_defconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   `-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|-- s390-allmodconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- s390-allyesconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   |-- drivers-iio-gyro-bmg160_i2c.c:warning:bmg160_acpi_match-defined-but-not-used
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- sh-allyesconfig
-|   |-- drivers-iio-gyro-bmg160_i2c.c:warning:bmg160_acpi_match-defined-but-not-used
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- sparc-allmodconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- sparc-allyesconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   |-- drivers-iio-gyro-bmg160_i2c.c:warning:bmg160_acpi_match-defined-but-not-used
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- sparc64-allmodconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-|-- sparc64-allyesconfig
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-|   |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-|   |-- drivers-iio-gyro-bmg160_i2c.c:warning:bmg160_acpi_match-defined-but-not-used
-|   `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-`-- x86_64-allyesconfig
-    |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_index_io
-    |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_io_condition
-    |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:Function-parameter-or-member-init-not-described-in-init_zm_reg
-    |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_INDEX_IO().-Prototype-was-for-init_index_io()-instead
-    |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_IO_CONDITION().-Prototype-was-for-init_io_condition()-instead
-    |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_RAM_RESTRICT_PLL().-Prototype-was-for-init_ram_restrict_pll()-instead
-    |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG().-Prototype-was-for-init_zm_reg()-instead
-    |-- drivers-gpu-drm-nouveau-nvkm-subdev-bios-init.c:warning:expecting-prototype-for-INIT_ZM_REG16().-Prototype-was-for-init_zm_reg16()-instead
-    `-- drivers-pinctrl-pinctrl-cy8c95x0.c:warning:Function-parameter-or-member-gpio_reset-not-described-in-cy8c95x0_pinctrl
-clang_recent_errors
-|-- um-allmodconfig
-|   |-- arch-x86-um-shared-sysdep-kernel-offsets.h:warning:no-previous-prototype-for-function-foo
-|   |-- arch-x86-um-vdso-um_vdso.c:warning:no-previous-prototype-for-function-__vdso_getcpu
-|   `-- arch-x86-um-vdso-um_vdso.c:warning:no-previous-prototype-for-function-__vdso_gettimeofday
-|-- um-allnoconfig
-|   |-- arch-x86-um-shared-sysdep-kernel-offsets.h:warning:no-previous-prototype-for-function-foo
-|   |-- arch-x86-um-vdso-um_vdso.c:warning:no-previous-prototype-for-function-__vdso_getcpu
-|   `-- arch-x86-um-vdso-um_vdso.c:warning:no-previous-prototype-for-function-__vdso_gettimeofday
-`-- um-allyesconfig
-    |-- arch-x86-um-shared-sysdep-kernel-offsets.h:warning:no-previous-prototype-for-function-foo
-    |-- arch-x86-um-vdso-um_vdso.c:warning:no-previous-prototype-for-function-__vdso_getcpu
-    `-- arch-x86-um-vdso-um_vdso.c:warning:no-previous-prototype-for-function-__vdso_gettimeofday
+|-- x86_64-allyesconfig
+|   `-- drivers-platform-x86-amd-hsmp.c:error:implicit-declaration-of-function-devm_device_add_groups
+`-- x86_64-buildonly-randconfig-002-20231107
+    `-- drivers-platform-x86-amd-hsmp.c:error:implicit-declaration-of-function-devm_device_add_groups
 
-elapsed time: 1610m
+elapsed time: 1635m
 
-configs tested: 76
+configs tested: 98
 configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
 
 tested configs:
 alpha                             allnoconfig   gcc  
 alpha                            allyesconfig   gcc  
 alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
 arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
 arc                                 defconfig   gcc  
 arc                   randconfig-001-20231106   gcc  
-arc                   randconfig-001-20231107   gcc  
-arc                   randconfig-002-20231107   gcc  
+arc                   randconfig-002-20231106   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   gcc  
+arm                              allyesconfig   gcc  
 arm                                 defconfig   gcc  
+arm                   randconfig-001-20231107   gcc  
+arm                   randconfig-002-20231107   gcc  
+arm                   randconfig-003-20231107   gcc  
+arm                   randconfig-004-20231107   gcc  
+arm64                 randconfig-001-20231107   gcc  
+arm64                 randconfig-002-20231107   gcc  
+arm64                 randconfig-003-20231107   gcc  
+arm64                 randconfig-004-20231107   gcc  
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
 csky                                defconfig   gcc  
-i386                             allmodconfig   gcc  
-i386                              allnoconfig   gcc  
-i386                             allyesconfig   gcc  
-i386                              debian-10.3   gcc  
+csky                  randconfig-001-20231106   gcc  
+csky                  randconfig-002-20231106   gcc  
 i386                                defconfig   gcc  
-i386                  randconfig-001-20231107   gcc  
-i386                  randconfig-002-20231107   gcc  
-i386                  randconfig-003-20231107   gcc  
-i386                  randconfig-004-20231107   gcc  
-i386                  randconfig-005-20231107   gcc  
-i386                  randconfig-006-20231107   gcc  
 loongarch                        allmodconfig   gcc  
 loongarch                         allnoconfig   gcc  
 loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20231106   gcc  
+loongarch             randconfig-002-20231106   gcc  
 m68k                             allmodconfig   gcc  
 m68k                              allnoconfig   gcc  
 m68k                             allyesconfig   gcc  
 m68k                                defconfig   gcc  
 microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
 microblaze                          defconfig   gcc  
+mips                             allmodconfig   gcc  
 mips                              allnoconfig   gcc  
 mips                             allyesconfig   gcc  
 nios2                            allmodconfig   gcc  
@@ -510,30 +164,34 @@ openrisc                         allmodconfig   gcc
 openrisc                          allnoconfig   gcc  
 openrisc                         allyesconfig   gcc  
 openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
 parisc                              defconfig   gcc  
 parisc                randconfig-001-20231107   gcc  
 parisc64                            defconfig   gcc  
 powerpc                          allmodconfig   gcc  
 powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   gcc  
+powerpc               randconfig-001-20231107   gcc  
+powerpc               randconfig-002-20231107   gcc  
+powerpc               randconfig-003-20231107   gcc  
+powerpc64             randconfig-001-20231107   gcc  
+powerpc64             randconfig-002-20231107   gcc  
+powerpc64             randconfig-003-20231107   gcc  
 riscv                            allmodconfig   gcc  
 riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   gcc  
 riscv                               defconfig   gcc  
 riscv                          rv32_defconfig   gcc  
 s390                             allmodconfig   gcc  
 s390                              allnoconfig   gcc  
-s390                             allyesconfig   gcc  
 s390                                defconfig   gcc  
 sh                                allnoconfig   gcc  
 sh                               allyesconfig   gcc  
 sh                                  defconfig   gcc  
+sh                    randconfig-001-20231107   gcc  
 sparc                            allmodconfig   gcc  
 sparc                             allnoconfig   gcc  
-sparc                            allyesconfig   gcc  
 sparc                               defconfig   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
 sparc64                             defconfig   gcc  
 um                               allmodconfig   clang
 um                                allnoconfig   clang
@@ -543,15 +201,21 @@ um                             i386_defconfig   gcc
 um                           x86_64_defconfig   gcc  
 x86_64                            allnoconfig   gcc  
 x86_64                           allyesconfig   gcc  
+x86_64       buildonly-randconfig-001-20231107   gcc  
+x86_64       buildonly-randconfig-002-20231107   gcc  
+x86_64       buildonly-randconfig-003-20231107   gcc  
+x86_64       buildonly-randconfig-004-20231107   gcc  
+x86_64       buildonly-randconfig-005-20231107   gcc  
+x86_64       buildonly-randconfig-006-20231107   gcc  
 x86_64                              defconfig   gcc  
+x86_64                randconfig-002-20231107   gcc  
 x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
 
 -- 
 0-DAY CI Kernel Test Service
 https://github.com/intel/lkp-tests/wiki
-
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
