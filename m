@@ -1,88 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75C807E1732
-	for <lists+driverdev-devel@lfdr.de>; Sun,  5 Nov 2023 23:00:40 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BB5C67E3711
+	for <lists+driverdev-devel@lfdr.de>; Tue,  7 Nov 2023 10:00:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 10F2C40184;
-	Sun,  5 Nov 2023 22:00:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 10F2C40184
+	by smtp1.osuosl.org (Postfix) with ESMTP id D59C481F5D;
+	Tue,  7 Nov 2023 09:00:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D59C481F5D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9Q9kVhZWifhU; Sun,  5 Nov 2023 22:00:37 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pZAGMgHv4dSX; Tue,  7 Nov 2023 09:00:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9E9D340586;
-	Sun,  5 Nov 2023 22:00:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9E9D340586
+	by smtp1.osuosl.org (Postfix) with ESMTP id B961581F20;
+	Tue,  7 Nov 2023 09:00:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B961581F20
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EBEE21BF869
- for <devel@linuxdriverproject.org>; Sun,  5 Nov 2023 22:00:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 14C221BF2FD
+ for <devel@linuxdriverproject.org>; Tue,  7 Nov 2023 09:00:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C481461059
- for <devel@linuxdriverproject.org>; Sun,  5 Nov 2023 22:00:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C481461059
+ by smtp3.osuosl.org (Postfix) with ESMTP id E1D7361392
+ for <devel@linuxdriverproject.org>; Tue,  7 Nov 2023 09:00:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E1D7361392
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5RqaKxx3gHrT for <devel@linuxdriverproject.org>;
- Sun,  5 Nov 2023 22:00:33 +0000 (UTC)
-X-Greylist: delayed 5240 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 05 Nov 2023 22:00:33 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 223EC61058
-Received: from SMTP-HCRC-200.brggroup.vn (unknown [42.112.212.144])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 223EC61058
- for <devel@driverdev.osuosl.org>; Sun,  5 Nov 2023 22:00:32 +0000 (UTC)
-Received: from SMTP-HCRC-200.brggroup.vn (localhost [127.0.0.1])
- by SMTP-HCRC-200.brggroup.vn (SMTP-CTTV) with ESMTP id A586618EFD;
- Mon,  6 Nov 2023 01:57:33 +0700 (+07)
-Received: from zimbra.hcrc.vn (unknown [192.168.200.66])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by SMTP-HCRC-200.brggroup.vn (SMTP-CTTV) with ESMTPS id 9D3341909F;
- Mon,  6 Nov 2023 01:57:33 +0700 (+07)
+ with ESMTP id gJzC1yLzM5i8 for <devel@linuxdriverproject.org>;
+ Tue,  7 Nov 2023 09:00:27 +0000 (UTC)
+X-Greylist: delayed 430 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 07 Nov 2023 09:00:27 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8ECA561320
+Received: from mail.alnilebank.com (mail.alnilebank.com [212.0.139.227])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8ECA561320
+ for <devel@driverdev.osuosl.org>; Tue,  7 Nov 2023 09:00:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by zimbra.hcrc.vn (Postfix) with ESMTP id 364511B8203A;
- Mon,  6 Nov 2023 01:57:35 +0700 (+07)
-Received: from zimbra.hcrc.vn ([127.0.0.1])
- by localhost (zimbra.hcrc.vn [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id Uq5rommShO1a; Mon,  6 Nov 2023 01:57:35 +0700 (+07)
+ by mail.alnilebank.com (Postfix) with ESMTP id 0049C8560298;
+ Tue,  7 Nov 2023 10:51:49 +0200 (CAT)
+Received: from mail.alnilebank.com ([127.0.0.1])
+ by localhost (mail.alnilebank.com [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id X93mz-PETHAa; Tue,  7 Nov 2023 10:51:49 +0200 (CAT)
 Received: from localhost (localhost [127.0.0.1])
- by zimbra.hcrc.vn (Postfix) with ESMTP id 050B21B8253E;
- Mon,  6 Nov 2023 01:57:35 +0700 (+07)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zimbra.hcrc.vn 050B21B8253E
-X-Virus-Scanned: amavisd-new at hcrc.vn
-Received: from zimbra.hcrc.vn ([127.0.0.1])
- by localhost (zimbra.hcrc.vn [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id c6_6wKo2WC2V; Mon,  6 Nov 2023 01:57:34 +0700 (+07)
-Received: from [192.168.1.152] (unknown [51.179.100.52])
- by zimbra.hcrc.vn (Postfix) with ESMTPSA id BB4D31B8203A;
- Mon,  6 Nov 2023 01:57:28 +0700 (+07)
+ by mail.alnilebank.com (Postfix) with ESMTP id B537B856029B;
+ Tue,  7 Nov 2023 10:51:48 +0200 (CAT)
+X-Virus-Scanned: amavisd-new at alnilebank.com
+Received: from mail.alnilebank.com ([127.0.0.1])
+ by localhost (mail.alnilebank.com [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id aFs1KLMCaErM; Tue,  7 Nov 2023 10:51:48 +0200 (CAT)
+Received: from [2.58.150.252] (gateway [10.113.11.1])
+ by mail.alnilebank.com (Postfix) with ESMTP id EC2468560298;
+ Tue,  7 Nov 2023 10:51:44 +0200 (CAT)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: =?utf-8?b?4oKsIDEwMC4wMDAuMDAwPw==?=
-To: Recipients <ch.31hamnghi@hcrc.vn>
-From: ch.31hamnghi@hcrc.vn
-Date: Sun, 05 Nov 2023 19:57:18 +0100
-Message-Id: <20231105185728.BB4D31B8203A@zimbra.hcrc.vn>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=hcrc.vn; 
- s=64D43D38-C7D6-11ED-8EFE-0027945F1BFA; t=1699210655;
- bh=WOZURJ77pkiMUL2pPLC14ifVPRvyTQIBEQmxuN1ezAA=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=e3sM4jQ3SHlS5unL4YpNQ1ThweCNn2sIhiiMoGrLzhoT97RtUYpQWkbqyxiEYSmLq
- xYMa6zYYfFOOs6JFIbTJXrFCzu+004njRhUZ8jLt75d8FOck1AjrUXM2hRbnT+i8k9
- FiKPNQy6pDi1QQTJugMzNRKxWGzC1tR6h89kMulPt3ZiSmY5n0wm9lSJK8wDl4U85A
- fLMsW/vxmUfznL4fH5+eF01NedPC6cERBJ/3BQEN2LoRj3fwXgtJuBybbVTlw6/KFz
- 5hIwS8M8cVV+3Q++WQ2hUZrzz2+g6Z2Z90dG4nUnVLx+YwBvhYrxa/uc5slYP2pN6L
- /Elk3/mfY/0Nw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=hcrc.vn header.i=@hcrc.vn
- header.a=rsa-sha256 header.s=64D43D38-C7D6-11ED-8EFE-0027945F1BFA
- header.b=e3sM4jQ3
+Subject: You can acquire the Loan Funds both for individual projects
+To: Recipients <jsmith@alnilebank.com>
+From: "Sir, CRAIG W.S. PhD"<jsmith@alnilebank.com>
+Date: Tue, 07 Nov 2023 00:51:42 -0800
+Message-Id: <20231107085144.EC2468560298@mail.alnilebank.com>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,16 +71,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: joliushk@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: joet55205@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-R29lZGVkYWcsCklrIGJlbiBtZXZyb3V3IEpvYW5uYSBMaXUgZW4gZWVuIG1lZGV3ZXJrZXIgdmFu
-IENpdGkgQmFuayBIb25nIEtvbmcuCkthbiBpayDigqwgMTAwLjAwMC4wMDAgYWFuIHUgb3Zlcm1h
-a2VuPyBLYW4gaWsgamUgdmVydHJvdXdlbgoKCklrIHdhY2h0IG9wIGp1bGxpZSByZWFjdGllcwpN
-ZXQgdnJpZW5kZWxpamtlIGdyb2V0ZW4KbWV2cm91dyBKb2FubmEgTGl1CgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2
-ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJv
-amVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Greetings and Compliments,
+
+I write to inform you that I am an accredited agent to an estimable financial company in Europe who are ready to finance huge projects in any country. They have Funds between $100Million to $5Billion already designed for loan funding to credible investors who can utilize this opportunity. You can acquire the Loan Funds both for individual projects and/or company.
+
+ 
+
+I humbly request you to confirm your capability to invest this huge amount in any projects, and you will be faithful to repay the Loan within a space of twenty-five (25) years with the lowest interest rate APR.
+
+Also worthy of note, the Finance Compan y will definitely and expeditiously process the Transfer of the Loan Funds, which must be successfully credited and confirmed in your own bank account coordinates
+
+
+
+Upon receiving your reply today, I will furnish you with detailed information of the financial institution to enable prompt and effective commencement of this transaction.
+
+We can complete this viable transaction in the next four days.
+
+ 
+Contact me URGENTLY via email address: trustrobertsbiz@gmail.com 
+
+Kind Regards,
+Sir CRAIG W.S. PhD
+Financial Advisor/Facilitator.
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
