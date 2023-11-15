@@ -2,54 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 86EA87EB9A2
-	for <lists+driverdev-devel@lfdr.de>; Tue, 14 Nov 2023 23:52:34 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 059757EBD2F
+	for <lists+driverdev-devel@lfdr.de>; Wed, 15 Nov 2023 07:46:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E3AD381E4F;
-	Tue, 14 Nov 2023 22:52:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E3AD381E4F
+	by smtp1.osuosl.org (Postfix) with ESMTP id 94EEA824D4;
+	Wed, 15 Nov 2023 06:46:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 94EEA824D4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bQdsunqfyyMY; Tue, 14 Nov 2023 22:52:32 +0000 (UTC)
+	with ESMTP id ZDMEbZgQms7u; Wed, 15 Nov 2023 06:46:32 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C0B8481E2D;
-	Tue, 14 Nov 2023 22:52:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C0B8481E2D
+	by smtp1.osuosl.org (Postfix) with ESMTP id 68DE181E58;
+	Wed, 15 Nov 2023 06:46:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 68DE181E58
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D4BD61BF35C
- for <devel@linuxdriverproject.org>; Tue, 14 Nov 2023 22:52:28 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A5E91BF844
+ for <devel@linuxdriverproject.org>; Wed, 15 Nov 2023 06:46:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B97B360EA7
- for <devel@linuxdriverproject.org>; Tue, 14 Nov 2023 22:52:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B97B360EA7
+ by smtp1.osuosl.org (Postfix) with ESMTP id 703F38223B
+ for <devel@linuxdriverproject.org>; Wed, 15 Nov 2023 06:46:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 703F38223B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kaqlBlbzXDQT for <devel@linuxdriverproject.org>;
- Tue, 14 Nov 2023 22:52:28 +0000 (UTC)
-X-Greylist: delayed 1215 seconds by postgrey-1.37 at util1.osuosl.org;
- Tue, 14 Nov 2023 22:52:28 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3C88760E4B
-Received: from mail.jan.ne.jp (mail.jan.ne.jp [211.10.90.133])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3C88760E4B
- for <devel@driverdev.osuosl.org>; Tue, 14 Nov 2023 22:52:28 +0000 (UTC)
-Received: from www10.jan.ne.jp (www10.jan.ne.jp [211.10.90.141])
- by mail.jan.ne.jp (Postfix) with SMTP id 8493A19F648
- for <devel@driverdev.osuosl.org>; Wed, 15 Nov 2023 07:27:53 +0900 (JST)
-Received: (qmail 17035 invoked from network); 15 Nov 2023 05:35:01 +0900
-Received: from unknown (HELO ?51.195.53.194?)
- (eiji.i@isono-body.co.jp@51.195.53.194)
- by www10.jan.ne.jp with SMTP; 15 Nov 2023 05:35:01 +0900
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 59pltf_tiYHd for <devel@linuxdriverproject.org>;
+ Wed, 15 Nov 2023 06:46:29 +0000 (UTC)
+X-Greylist: delayed 3608 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 15 Nov 2023 06:46:28 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B619B81E58
+Received: from hddjys.com (hddjys.com [85.239.52.41])
+ by smtp1.osuosl.org (Postfix) with ESMTP id B619B81E58
+ for <devel@linuxdriverproject.org>; Wed, 15 Nov 2023 06:46:28 +0000 (UTC)
+To: devel@linuxdriverproject.org
+Subject: Do you already order printed products, custom branded,
+ or logo merchandise?
+Message-ID: <041622cf9d9995ec42546797763f3213@stephenmorrisauthor.com>
+Date: Wed, 15 Nov 2023 02:04:35 +0100
+From: "Christina Pantone" <logomj@stephenmorrisauthor.com>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: my subject
-To: Recipients <eiji.i@isono-body.co.jp>
-From: "Ms Toni"<eiji.i@isono-body.co.jp>
-Date: Tue, 14 Nov 2023 12:34:49 -0800
-Message-ID: <20231114203502.15573.qmail@www10.jan.ne.jp>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,13 +55,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: tran24358@gmail.com
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: pantone@zzmdyy.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I'm Toni Harris and I'm looking for a partner to work with in your country. I need assistance investing funds in your country. Email me to discuss this opportunity with you. Contact email: tran24358@gmail.com
+Hi there,
+
+Do you already order printed products, custom branded, or logo merchandise?
+
+
+Please keep reading.
+
+Let me get straight to the point:  We will save you on current and future
+promo orders.
+
+Who is the best person at your company to discuss this with?
+
+Here is the "hot list" of the best products that our clients buy for their
+customers, employees and events.
+
+-T-shirts
+-Mugs
+-Water Bottles
+-USB Flash Drives
+-Pens
+-Plus 300,000 more tailored products for your business
+
+We've been delivering creative, quality products to our customers since
+2003. We specialize in crafting custom-branded merchandise that not only
+enhances your brand but also boosts customer loyalty and drives sales.
+
+
+Regards,
+
+Christina Pantone
+Promo Product Specialist
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
