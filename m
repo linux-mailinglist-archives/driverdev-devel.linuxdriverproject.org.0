@@ -1,63 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 338BC7EEDD9
-	for <lists+driverdev-devel@lfdr.de>; Fri, 17 Nov 2023 09:51:27 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 865A67EEE53
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 Nov 2023 10:19:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1767E81E16;
-	Fri, 17 Nov 2023 08:51:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1767E81E16
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9C7FE83BDA;
+	Fri, 17 Nov 2023 09:19:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9C7FE83BDA
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZCNNPMr1Rhwv; Fri, 17 Nov 2023 08:51:23 +0000 (UTC)
+	with ESMTP id MzR-TgcMAgnl; Fri, 17 Nov 2023 09:19:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E8316817AE;
-	Fri, 17 Nov 2023 08:51:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E8316817AE
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7330F83BC8;
+	Fri, 17 Nov 2023 09:19:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7330F83BC8
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 25F551BF3C8
- for <devel@linuxdriverproject.org>; Fri, 17 Nov 2023 08:51:20 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id CFC1F1BF580
+ for <devel@linuxdriverproject.org>; Fri, 17 Nov 2023 09:19:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F3839610AB
- for <devel@linuxdriverproject.org>; Fri, 17 Nov 2023 08:51:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F3839610AB
+ by smtp4.osuosl.org (Postfix) with ESMTP id A888C41E8E
+ for <devel@linuxdriverproject.org>; Fri, 17 Nov 2023 09:19:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A888C41E8E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5gLFstbzGWIp for <devel@linuxdriverproject.org>;
- Fri, 17 Nov 2023 08:51:19 +0000 (UTC)
-Received: from mail.thrivehub.pl (mail.thrivehub.pl [164.132.48.43])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5AA1761065
- for <devel@driverdev.osuosl.org>; Fri, 17 Nov 2023 08:51:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5AA1761065
-Received: by mail.thrivehub.pl (Postfix, from userid 1002)
- id 0E86226EAB; Fri, 17 Nov 2023 08:50:30 +0000 (UTC)
-Received: by mail.thrivehub.pl for <devel@driverdev.osuosl.org>;
- Fri, 17 Nov 2023 08:50:22 GMT
-Message-ID: <20231117074500-0.1.2z.18pzm.0.39gem48hpl@thrivehub.pl>
-Date: Fri, 17 Nov 2023 08:50:22 GMT
-From: "Szymon Jankowski" <szymon.jankowski@thrivehub.pl>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KQi-jUkFGAwz for <devel@linuxdriverproject.org>;
+ Fri, 17 Nov 2023 09:19:16 +0000 (UTC)
+X-Greylist: delayed 493 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 17 Nov 2023 09:19:15 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EBB4942D15
+Received: from mail.corebizinsight.com (mail.corebizinsight.com
+ [217.61.112.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EBB4942D15
+ for <devel@driverdev.osuosl.org>; Fri, 17 Nov 2023 09:19:15 +0000 (UTC)
+Received: by mail.corebizinsight.com (Postfix, from userid 1002)
+ id 6BD8A83EE4; Fri, 17 Nov 2023 10:10:35 +0100 (CET)
+Received: by mail.corebizinsight.com for <devel@driverdev.osuosl.org>;
+ Fri, 17 Nov 2023 09:10:17 GMT
+Message-ID: <20231117084500-0.1.22.9yn1.0.20eha6be5d@corebizinsight.com>
+Date: Fri, 17 Nov 2023 09:10:17 GMT
+From: "Jakub Kovarik" <jakub.kovarik@corebizinsight.com>
 To: <devel@driverdev.osuosl.org>
-Subject: Zapytanie ofertowe 
-X-Mailer: mail.thrivehub.pl
+Subject: =?UTF-8?Q?Pros=C3=ADm_kontaktujte?=
+X-Mailer: mail.corebizinsight.com
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=thrivehub.pl; s=mail; 
- t=1700211075; bh=m3ZUCTPRVLoDFM+cXi7VhHW+xNF3eUdGHrj1eDbLwQI=;
+ d=corebizinsight.com; s=mail; t=1700212259;
+ bh=CEmchsDu5Oe+RNHCZSBmKSgMOuy1xnO2dydqkEjt3Qs=;
  h=Date:From:To:Subject:From;
- b=fHr9vptSRC/GKHbFKjd0wJb9wiXubpjyacnY2rvph97QE/2O0I5HP6mN/SJfTeDd8
- W+DVKjnTZr+9XvAjn06vUZums6W3hqwYAGv99y7D0DkrtMTNhiusV0NI/Rmt3QvRgA
- RM/Ul3Bd6OuNaofpqPjrDxObAhKq8+ExgiBFs/dkFEIbc4sml6UnFD7KLCsQO8sTBQ
- lCBv5r5HLRwF0FXK9qMTQi7kamRObilTccN07pv2rfKRH+ugj1VTD+kWgtROKs8Ah9
- Bw1DT/ZRhEmgyqRLdTGSS1TW+eXiai2KzSBxhfLGmjVYlX1cwjPRJHjtoODhtJueFV
- BTcc+a2uVtuog==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=thrivehub.pl header.i=@thrivehub.pl
- header.a=rsa-sha256 header.s=mail header.b=fHr9vptS
+ b=ScYKnzlj/WpkUfG+4th42ewjJ1dQYdYlcidL3raN98DjI5NeF5mPbmJIfO5euCgt0
+ RzUXWcEaY5jwEfPQL3WiUA3VCtl4PK8vQLO6DePr1kHFDJrb6sKMz4o5Q5Qj6G1eIS
+ ofXH50a4WHJdLEatSTlcZ69C0/jVrDJPgu/jkuZuFvlrVzqw2fhGnr1Is/XAfFh50I
+ KABnn2Rkb1Pb0BGG4diyaq0N+lPzL2Hkvkw0WKNcQBnlJoR+5j7twY0ExCymKy8VjL
+ ACg00o+Aj5sumgwV527w+DqdXVzibp2sSXUG6+bJ/mFA1qmvnfuqbuH66lVAuNdh+H
+ q23J4NIll9n8g==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=corebizinsight.com
+ header.i=@corebizinsight.com header.a=rsa-sha256 header.s=mail
+ header.b=ScYKnzlj
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,12 +79,12 @@ Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RHppZcWEIGRvYnJ5LAoKUG96d29sacWCZW0gc29iaWUgbmEga29udGFrdCwgcG9uaWV3YcW8IGpl
-c3RlbSB6YWludGVyZXNvd2FueSB3ZXJ5ZmlrYWNqxIUgbW/FvGxpd2/Fm2NpIG5hd2nEhXphbmlh
-IHdzcMOzxYJwcmFjeS4KCldzcGllcmFteSBmaXJteSB3IHBvenlza2l3YW5pdSBub3d5Y2gga2xp
-ZW50w7N3IGJpem5lc293eWNoLgoKQ3p5IG1vxbxlbXkgcG9yb3ptYXdpYcSHIHcgY2VsdSBwcnpl
-ZHN0YXdpZW5pYSBzemN6ZWfDs8WCb3d5Y2ggaW5mb3JtYWNqaT8gCgoKUG96ZHJhd2lhbQpTenlt
-b24gSmFua293c2tpCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
-Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
-cmRldi1kZXZlbAo=
+RG9icsOpIHLDoW5vLAoKSmUgbW/Fvm7DqSBzIHbDoW1pIG5hdsOhemF0IHNwb2x1cHLDoWNpPwoK
+UsOhZCBzaSBwcm9tbHV2w61tIHMgb3NvYm91IHphYsO9dmFqw61jw60gc2UgcHJvZGVqbsOtIMSN
+aW5ub3N0w60uCgpQb23DoWjDoW1lIGVmZWt0aXZuxJsgesOtc2vDoXZhdCBub3bDqSB6w6FrYXpu
+w61reS4KCk5ldmFoZWp0ZSBtZSBrb250YWt0b3ZhdC4KClYgcMWZw61wYWTEmyB6w6FqbXUgVsOh
+cyBidWRlIGtvbnRha3RvdmF0IG7DocWhIGFuZ2xpY2t5IG1sdXbDrWPDrSB6w6FzdHVwY2UuCgoK
+UG96ZHJhdnkKSmFrdWIgS292YXJpawpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0
+Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcml2ZXJkZXYtZGV2ZWwK
