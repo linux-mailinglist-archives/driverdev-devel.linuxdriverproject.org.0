@@ -1,49 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCCC47EFFE4
-	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Nov 2023 14:32:50 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A4ED7F014C
+	for <lists+driverdev-devel@lfdr.de>; Sat, 18 Nov 2023 18:25:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ED7B74167E;
-	Sat, 18 Nov 2023 13:32:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED7B74167E
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0C69640338;
+	Sat, 18 Nov 2023 17:25:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0C69640338
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T5wGIstjhYnz; Sat, 18 Nov 2023 13:32:47 +0000 (UTC)
+	with ESMTP id 1RE4bQwWjPhy; Sat, 18 Nov 2023 17:25:01 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5F2DD40070;
-	Sat, 18 Nov 2023 13:32:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F2DD40070
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id DC02440328;
+	Sat, 18 Nov 2023 17:25:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DC02440328
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A86981BF2C2
- for <devel@linuxdriverproject.org>; Sat, 18 Nov 2023 13:32:44 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0385B1BF34C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 18 Nov 2023 17:24:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8A71A8225D
- for <devel@linuxdriverproject.org>; Sat, 18 Nov 2023 13:32:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8A71A8225D
+ by smtp2.osuosl.org (Postfix) with ESMTP id D4DD240132
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 18 Nov 2023 17:24:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D4DD240132
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H9nrG2ZVWC5W for <devel@linuxdriverproject.org>;
- Sat, 18 Nov 2023 13:32:44 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lIqPfe-azQD6
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 18 Nov 2023 17:24:56 +0000 (UTC)
 Received: from border2.document.co.uk (border.document.co.uk [194.217.143.251])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A458A82253
- for <devel@linuxdriverproject.org>; Sat, 18 Nov 2023 13:32:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A458A82253
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A7B9A400CB
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 18 Nov 2023 17:24:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A7B9A400CB
 Received: from [85.195.105.114] ([85.195.105.114])
- by border2.document.co.uk  with ESMTP id 3AIDW5Xi010828-3AIDW5Y5010828
- for <devel@linuxdriverproject.org>; Sat, 18 Nov 2023 13:32:11 GMT
-Message-Id: <202311181332.3AIDW5Xi010828-3AIDW5Y5010828@border2.document.co.uk>
+ by border2.document.co.uk  with ESMTP id 3AIHOKQj007708-3AIHOKQv007708
+ for <driverdev-devel@linuxdriverproject.org>; Sat, 18 Nov 2023 17:24:23 GMT
+Message-Id: <202311181724.3AIHOKQj007708-3AIHOKQv007708@border2.document.co.uk>
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Understand me
-To: devel@linuxdriverproject.org
+To: driverdev-devel@linuxdriverproject.org
 From: "Anna Pechorin"<ap@document.co.uk>
-Date: Sat, 18 Nov 2023 15:32:03 -0800
+Date: Sat, 18 Nov 2023 19:24:15 -0800
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
