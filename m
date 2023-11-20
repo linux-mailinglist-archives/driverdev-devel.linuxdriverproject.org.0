@@ -1,59 +1,67 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4D4D7F0B1E
-	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Nov 2023 04:42:17 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 406D17F0B63
+	for <lists+driverdev-devel@lfdr.de>; Mon, 20 Nov 2023 05:25:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9CAE4607AA;
-	Mon, 20 Nov 2023 03:42:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9CAE4607AA
+	by smtp4.osuosl.org (Postfix) with ESMTP id 359C0409AD;
+	Mon, 20 Nov 2023 04:25:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 359C0409AD
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PwW7C8PEePOS; Mon, 20 Nov 2023 03:42:13 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VulS1oqOc-LV; Mon, 20 Nov 2023 04:25:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8116760A79;
-	Mon, 20 Nov 2023 03:42:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8116760A79
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0457B40972;
+	Mon, 20 Nov 2023 04:25:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0457B40972
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D0AD21BF304
- for <devel@linuxdriverproject.org>; Mon, 20 Nov 2023 03:42:08 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 41A771BF30F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Nov 2023 04:25:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B2456400F9
- for <devel@linuxdriverproject.org>; Mon, 20 Nov 2023 03:42:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B2456400F9
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1A48781465
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Nov 2023 04:25:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1A48781465
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hF6hrVXirr7R for <devel@linuxdriverproject.org>;
- Mon, 20 Nov 2023 03:42:07 +0000 (UTC)
-X-Greylist: delayed 5588 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 20 Nov 2023 03:42:06 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EE8C7400CB
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ljf8pBku_no5
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Nov 2023 04:25:47 +0000 (UTC)
+X-Greylist: delayed 8140 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 20 Nov 2023 04:25:46 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8788C81463
 Received: from mx08.samokat.ru (mx08.samokat.ru [45.90.244.230])
- by smtp2.osuosl.org (Postfix) with ESMTPS id EE8C7400CB
- for <devel@linuxdriverproject.org>; Mon, 20 Nov 2023 03:42:06 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8788C81463
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Nov 2023 04:25:45 +0000 (UTC)
 Received: from os-081902002.samokat.io (localhost.localdomain [127.0.0.1])
- by mx08.samokat.ru (Proxmox) with ESMTP id BD48BDC783
- for <devel@linuxdriverproject.org>; Mon, 20 Nov 2023 04:41:14 +0300 (MSK)
-Received: from ksmg-08.samokat.ru (os-081902003.samokat.io [10.18.145.3])
- by mx08.samokat.ru (Proxmox) with ESMTPS id 9CD20D3FF3
- for <devel@linuxdriverproject.org>; Mon, 20 Nov 2023 04:41:14 +0300 (MSK)
+ by mx08.samokat.ru (Proxmox) with ESMTP id 0806ACDB40
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Nov 2023 04:42:43 +0300 (MSK)
+Received: from ksmg-08.samokat.ru (ksmg-08.samokat.ru [10.18.145.3])
+ by mx08.samokat.ru (Proxmox) with ESMTPS id C4151DE5BE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Nov 2023 04:42:42 +0300 (MSK)
 Received: from os-081902003.samokat.io (localhost [127.0.0.1])
- by ksmg-08.samokat.ru (Postfix) with ESMTP id 9D3371A0005
- for <devel@linuxdriverproject.org>; Mon, 20 Nov 2023 04:41:14 +0300 (MSK)
+ by ksmg-08.samokat.ru (Postfix) with ESMTP id C43471A0005
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Nov 2023 04:42:42 +0300 (MSK)
 Received: from [85.195.105.114] (os-081144001.samokat.io [10.18.144.1])
  by ksmg-08.samokat.ru (Postfix) with ESMTP
- for <devel@linuxdriverproject.org>; Mon, 20 Nov 2023 04:41:14 +0300 (MSK)
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 20 Nov 2023 04:42:42 +0300 (MSK)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Re; Ready to go  
-To: devel@linuxdriverproject.org
+To: driverdev-devel@linuxdriverproject.org
 From: "Anna Pechorin"<ap@samokat.ru>
-Date: Mon, 20 Nov 2023 03:40:36 -0800
+Date: Mon, 20 Nov 2023 03:42:04 -0800
 X-KSMG-Rule-ID: 1
 X-KSMG-Message-Action: clean
 X-KSMG-AntiSpam-Lua-Profiles: 181465 [Nov 19 2023]
@@ -78,21 +86,21 @@ X-KSMG-LinksScanning: Clean
 X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.0.1.6960,
  bases: 2023/11/19 23:01:00 #22484322
 X-KSMG-AntiVirus-Status: Clean, skipped
-Message-Id: <20231120014114.BD48BDC783@mx08.samokat.ru>
+Message-Id: <20231120014243.0806ACDB40@mx08.samokat.ru>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=samokat.ru; h=cc
  :content-description:content-transfer-encoding:content-type
  :content-type:date:from:from:mime-version:reply-to:reply-to
  :subject:subject:to:to; s=mx08; bh=wSHYj3zMRASjd2oGetWftcUZuxtsQ
- Mbu522BCrAWxM0=; b=qdyoFW1o2Os7Th8FfdIFPylMAcfisa4sirpu30tGCoAwK
- YhBIk4HfuiyombPM1SNoWxccoQqQtSFfbuj8fjfDkkocJ8llR5lHums6V4jQxw33
- PRupcYl2LNF2Q6AMUUGQzHhEc66Liubf7D9LXl6xj633lHj30iy9Q8da9CUFgCX3
- kyptp2UO8wsFnuZx4el/FMw5OPRNerA5dswpC1hQAVpPZJPO36sEt65FwyCSxzm9
- p9nuEbHD2+T5N4m7J40Z1ITn9gxKnxWJKiJh90dh7mmHwLaR1mYhLhRQqRyWEjrZ
- AGlLGw+w59v36alYoqHmLzC3ILTku5f6M5ie/5VxA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ Mbu522BCrAWxM0=; b=bt9HRZwZjb7uFQW/voCSB1o2zoomgps3p2Cg+l9YBMb3x
+ cO9BYVd4xugJseOgIdyQIDb3WS8ztOeHU5PwzYzHnTF09EKKd7GdXpOwdVqWdFnf
+ 5jzjCuY5E1BbsPRPvtw1c9DTdVWKvWITLPN91XQaCZwCRURpubxZVybZFBVhnkMJ
+ VQDyGxoY311ELPP6Djt2G9gPhBcF+04Gxy1q7+3KfWcGUV+LN9hHIC5SUgYIqg0/
+ qHHI35s9pF1CBtHCJLatVylAM8+EysgqrJvgXFxNWgvnqFGHNrwWtrlrvUPnpS/Y
+ 1d8SregdMkNqcw1zgmnlguqXrAzrGe81yuQbCHZ7w==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=samokat.ru header.i=@samokat.ru
- header.a=rsa-sha256 header.s=mx08 header.b=qdyoFW1o
+ header.a=rsa-sha256 header.s=mx08 header.b=bt9HRZwZ
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
