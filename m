@@ -1,67 +1,77 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B3707F5A9D
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Nov 2023 09:54:22 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E4FCE7F66BD
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 Nov 2023 19:56:11 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 788AA60E7A;
-	Thu, 23 Nov 2023 08:54:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 788AA60E7A
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3FA7F81FFE;
+	Thu, 23 Nov 2023 18:56:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3FA7F81FFE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id np3f45MOmszg; Thu, 23 Nov 2023 08:54:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id bVwoyN_vmGjV; Thu, 23 Nov 2023 18:56:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 75E5160AB9;
-	Thu, 23 Nov 2023 08:54:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 75E5160AB9
+	by smtp1.osuosl.org (Postfix) with ESMTP id 20E4E8208B;
+	Thu, 23 Nov 2023 18:56:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 20E4E8208B
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6A44B1BF855
- for <devel@linuxdriverproject.org>; Thu, 23 Nov 2023 08:54:16 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AF67B1BF57F
+ for <devel@linuxdriverproject.org>; Thu, 23 Nov 2023 18:56:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3B0C541695
- for <devel@linuxdriverproject.org>; Thu, 23 Nov 2023 08:54:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3B0C541695
+ by smtp3.osuosl.org (Postfix) with ESMTP id 954A360C15
+ for <devel@linuxdriverproject.org>; Thu, 23 Nov 2023 18:56:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 954A360C15
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KTA6cFy8Eqvb for <devel@linuxdriverproject.org>;
- Thu, 23 Nov 2023 08:54:14 +0000 (UTC)
-X-Greylist: delayed 478 seconds by postgrey-1.37 at util1.osuosl.org;
- Thu, 23 Nov 2023 08:54:14 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1F3BC4097A
-Received: from mail.venturelinkbiz.com (mail.venturelinkbiz.com
- [51.195.119.142])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1F3BC4097A
- for <devel@driverdev.osuosl.org>; Thu, 23 Nov 2023 08:54:13 +0000 (UTC)
-Received: by mail.venturelinkbiz.com (Postfix, from userid 1002)
- id 3F39047C0B; Thu, 23 Nov 2023 08:46:07 +0000 (UTC)
-Received: by mail.venturelinkbiz.com for <devel@driverdev.osuosl.org>;
- Thu, 23 Nov 2023 08:46:03 GMT
-Message-ID: <20231123074500-0.1.3r.assk.0.ibeekrpne3@venturelinkbiz.com>
-Date: Thu, 23 Nov 2023 08:46:03 GMT
-From: "Michal Rmoutil" <michal.rmoutil@venturelinkbiz.com>
-To: <devel@driverdev.osuosl.org>
-Subject: =?UTF-8?Q?Efektivn=C3=AD_sledov=C3=A1n=C3=AD_a_optimalizace_v=C3=BDroby_pro_va=C5=A1i_spole=C4=8Dnost?=
-X-Mailer: mail.venturelinkbiz.com
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5iJ8sK2hhMTt for <devel@linuxdriverproject.org>;
+ Thu, 23 Nov 2023 18:56:04 +0000 (UTC)
+X-Greylist: delayed 8320 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 23 Nov 2023 18:56:04 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4412260A4F
+Received: from barracuda.compuservelive.co.uk (barracuda.compuservelive.co.uk
+ [31.28.93.214])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4412260A4F
+ for <devel@driverdev.osuosl.org>; Thu, 23 Nov 2023 18:56:04 +0000 (UTC)
+X-ASG-Debug-ID: 1700755698-243d5a796c329520085-qY8YKe
+Received: from djsimons.co.uk (64.228.140.78.bcube.co.uk [140.228.64.78]) by
+ barracuda.compuservelive.co.uk with SMTP id hgGdIDu4BKPouEI8;
+ Thu, 23 Nov 2023 16:25:31 +0000 (GMT)
+X-Barracuda-Envelope-From: wang@bcube.co.uk
+X-Barracuda-Effective-Source-IP: 64.228.140.78.bcube.co.uk[140.228.64.78]
+X-Barracuda-Apparent-Source-IP: 140.228.64.78
+Received: from [147.78.103.83] by djsimons.co.uk with smtp id ds23598;
+ Wed, 22 Nov 2023 22:16:54 +0100 (LONDON)
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=venturelinkbiz.com; s=mail; t=1700729173;
- bh=JBV4b8UUo1MSngn/QBoedt1Dv52bT8rWeq4R22MtJMs=;
- h=Date:From:To:Subject:From;
- b=Tx9dxHurHD0R2wyS2KfaxwPyyUqAMlr6K/UPdzArPFzlyuDoRHTEGIiRUUeUJmywt
- AoRDoS0HhQnnjq8a2G6xeIP9mgP/ea6bns3vi3OlFfinDURZs/eVBhB2hz53v5DngM
- venqWqtc2yU/6Udn9OMKEq0iJwZ6/Xfalhw07GzD2qQfyqf+JpRGZ83PBVhbylqXq8
- PFj3H+UftH+j6Ofv7KvZclyXcpvwdg4+PFFmSY7bx+lehgal87az6AlJKibmnDhEte
- mchYFsdGbJ2cXeIRgimH/khrHS+979M32RUW7YezoRbxPbY/XpfMlYJ6LSPU8lJEa0
- 9+FZvcrQ92TsA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=venturelinkbiz.com
- header.i=@venturelinkbiz.com header.a=rsa-sha256 header.s=mail
- header.b=Tx9dxHur
+Content-Description: Mail message body
+Subject: Re: Contract Supply Offer. 
+To: Recipients <wang@bcube.co.uk>
+X-ASG-Orig-Subj: Re: Contract Supply Offer. 
+From: Greetings  <wang@bcube.co.uk>
+Date: Wed, 22 Nov 2023 14:17:14 -0800
+Message-ID: <202311222216.ds23598@djsimons.co.uk>
+X-Barracuda-Connect: 64.228.140.78.bcube.co.uk[140.228.64.78]
+X-Barracuda-Start-Time: 1700756725
+X-Barracuda-URL: https://192.168.17.61:443/cgi-mod/mark.cgi
+X-Virus-Scanned: by bsmtpd at compuservelive.co.uk
+X-Barracuda-Scan-Msg-Size: 441
+X-Barracuda-BRTS-Status: 1
+X-Barracuda-BRTS-Evidence: 4b3729267b5d99ee51ebdfc8e2d1bef4-428-txt
+X-Barracuda-Spam-Score: 2.71
+X-Barracuda-Spam-Status: No, SCORE=2.71 using global scores of TAG_LEVEL=1000.0
+ QUARANTINE_LEVEL=1000.0 KILL_LEVEL=9.0 tests=BSF_SC0_SA912_RP_FR,
+ BSF_SC7_SA298e, BSF_SC7_SG0031_1a
+X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.117153
+ Rule breakdown below
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ 0.01 BSF_SC0_SA912_RP_FR    Custom Rule BSF_SC0_SA912_RP_FR
+ 0.20 BSF_SC7_SA298e         Custom Rule SA298e
+ 2.50 BSF_SC7_SG0031_1a      Custom rule SG0031_1a
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,25 +84,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: colephilip435@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RG9icsOpIHLDoW5vLAoKbcOhdGUgbW/Fvm5vc3Qgc2xlZG92YXQgc3RhdiBrYcW+ZMOpaG8gc3Ry
-b2plIGEgdsO9cm9ibsOtaG8gcHJvY2VzdSB6IGthbmNlbMOhxZllLCBrb25mZXJlbsSNbsOtIG3D
-rXN0bm9zdGkgbmVibyBkb2tvbmNlIHogZG9tb3ZhIMSNaSBuYSBjZXN0w6FjaCDigJMgbmEgdmHF
-oWVtIHRlbGVmb251PwoKUG9za3l0dWplbWUgcnljaGxlIGltcGxlbWVudG92YXRlbG7DvSBhIHNu
-YWRubyBwb3XFvml0ZWxuw70gbsOhc3Ryb2osIGt0ZXLDvSB6YWNoeXTDrSBpIG7Em2tvbGlrYXNl
-a3VuZG92w70gbWlrcm9wcm9zdG9qIGEgb2thbcW+aXTEmyBwxZllcG/EjcOtdMOhIHZ5dcW+aXTD
-rSBzdHJvamUgdiBrb250ZXh0dSBkYW7DqSB2w71yb2Juw60gemFrw6F6a3kuCgpLZHlrb2xpIHZp
-ZMOtdGUgc3RhdiBvYmplZG7DoXZreSBhIGpzdGUgaW5mb3Jtb3bDoW5pIG8gcMWZw61wYWRuw6lt
-IHNuw63FvmVuw60gZWZla3Rpdml0eS4gU3lzdMOpbSBzw6FtIGFuYWx5enVqZSBkYXRhIGEgcMWZ
-aXByYXZ1amUgY2VubsOpIHJlcG9ydHksIGNvxb4gb3BlcsOhdG9yxa9tIHVtb8W+xYh1amUgc291
-c3TFmWVkaXQgc2UgbmEgdsO9cm9ibsOtIGPDrWwuCgpDw61sIGplIGplZG5vZHVjaMO9OiBqZWRl
-biBwb2hsZWQg4oCTIGNlbMOhIHRvdsOhcm5hLiDEjGVrw6FtIG5hIG9kcG92xJvEjywgamVzdGxp
-IHZpZMOtdGUgbW/Fvm5vc3Qgdnl1xb5pdMOtIHRha292w6lobyBuw6FzdHJvamUgdmUgdmHFocOt
-IGZpcm3Emy4KCgpQb3pkcmF2eQpNaWNoYWwgUm1vdXRpbApfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhk
-cml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Dear,
+
+Our company needs contractors and suppliers to execute contract supply of raw materials to
+a pharmaceutical company based in UK..
+
+Can you bring a competent person to handle the contract to earn 10% commission on profit share?
+
+or can you execute the contract to share 60% profit and pay me 40% profit share for bringing this opportunity to you?
+
+Contact me to receive a more  comprehensive offer
+
+Thanks..
+Stock Manager
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
