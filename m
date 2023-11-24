@@ -1,58 +1,58 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 225657F6F7F
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Nov 2023 10:27:02 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 55AD67F6F80
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Nov 2023 10:27:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D766C61340;
-	Fri, 24 Nov 2023 09:26:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D766C61340
+	by smtp3.osuosl.org (Postfix) with ESMTP id DDBB0613E4;
+	Fri, 24 Nov 2023 09:27:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DDBB0613E4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ehB4dKSShUSL; Fri, 24 Nov 2023 09:26:59 +0000 (UTC)
+	with ESMTP id EaC2oa4zNrkI; Fri, 24 Nov 2023 09:27:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D157960AE8;
-	Fri, 24 Nov 2023 09:26:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D157960AE8
+	by smtp3.osuosl.org (Postfix) with ESMTP id BF4A760AE8;
+	Fri, 24 Nov 2023 09:27:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BF4A760AE8
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 34D951BF336
- for <devel@linuxdriverproject.org>; Fri, 24 Nov 2023 09:26:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D5FA81BF336
+ for <devel@linuxdriverproject.org>; Fri, 24 Nov 2023 09:27:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0C3CA61340
- for <devel@linuxdriverproject.org>; Fri, 24 Nov 2023 09:26:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0C3CA61340
+ by smtp3.osuosl.org (Postfix) with ESMTP id AAED1613E4
+ for <devel@linuxdriverproject.org>; Fri, 24 Nov 2023 09:27:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AAED1613E4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WDl4T76kjkUe for <devel@linuxdriverproject.org>;
- Fri, 24 Nov 2023 09:26:55 +0000 (UTC)
-X-Greylist: delayed 2053 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 24 Nov 2023 09:26:55 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7731160AE8
+ with ESMTP id hcPoFhzlMe-C for <devel@linuxdriverproject.org>;
+ Fri, 24 Nov 2023 09:27:00 +0000 (UTC)
+X-Greylist: delayed 2045 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 24 Nov 2023 09:27:00 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 20E2A60AE8
 Received: from mail.07d05.mspz7.gob.ec (mail.07d05.mspz7.gob.ec
  [181.211.163.250])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7731160AE8
- for <devel@driverdev.osuosl.org>; Fri, 24 Nov 2023 09:26:55 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 20E2A60AE8
+ for <devel@linuxdriverproject.org>; Fri, 24 Nov 2023 09:27:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.07d05.mspz7.gob.ec (Postfix) with ESMTP id AF332803F7BFF;
- Fri, 24 Nov 2023 03:24:17 -0500 (-05)
+ by mail.07d05.mspz7.gob.ec (Postfix) with ESMTP id 2FE34803F7BFC;
+ Fri, 24 Nov 2023 03:24:18 -0500 (-05)
 Received: from mail.07d05.mspz7.gob.ec ([127.0.0.1])
  by localhost (mail.07d05.mspz7.gob.ec [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id EBl03wV_eiOe; Fri, 24 Nov 2023 03:24:17 -0500 (-05)
+ with ESMTP id IW1SSq1z48TW; Fri, 24 Nov 2023 03:24:17 -0500 (-05)
 Received: from localhost (localhost [127.0.0.1])
- by mail.07d05.mspz7.gob.ec (Postfix) with ESMTP id BE1BF803F7BF7;
- Fri, 24 Nov 2023 03:24:16 -0500 (-05)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mail.07d05.mspz7.gob.ec BE1BF803F7BF7
+ by mail.07d05.mspz7.gob.ec (Postfix) with ESMTP id 4B1B0803F7C03;
+ Fri, 24 Nov 2023 03:24:17 -0500 (-05)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.07d05.mspz7.gob.ec 4B1B0803F7C03
 X-Amavis-Modified: Mail body modified (using disclaimer) -
  mail.07d05.mspz7.gob.ec
 X-Virus-Scanned: amavisd-new at 07d05.mspz7.gob.ec
 Received: from mail.07d05.mspz7.gob.ec ([127.0.0.1])
  by localhost (mail.07d05.mspz7.gob.ec [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id oQZIKDePZCiv; Fri, 24 Nov 2023 03:24:16 -0500 (-05)
+ with ESMTP id dy2NHI2G58vM; Fri, 24 Nov 2023 03:24:16 -0500 (-05)
 Received: from mail.07d05.mspz7.gob.ec (mail.07d05.mspz7.gob.ec
  [181.211.163.250])
  by mail.07d05.mspz7.gob.ec (Postfix) with ESMTP id 887C9803F7BE1;
