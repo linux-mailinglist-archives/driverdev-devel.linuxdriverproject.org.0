@@ -1,70 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 81F137F6C79
-	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Nov 2023 07:49:21 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 225657F6F7F
+	for <lists+driverdev-devel@lfdr.de>; Fri, 24 Nov 2023 10:27:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E8F9E8206A;
-	Fri, 24 Nov 2023 06:49:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E8F9E8206A
+	by smtp3.osuosl.org (Postfix) with ESMTP id D766C61340;
+	Fri, 24 Nov 2023 09:26:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D766C61340
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 53vcBcvX5eUj; Fri, 24 Nov 2023 06:49:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ehB4dKSShUSL; Fri, 24 Nov 2023 09:26:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DAE6482005;
-	Fri, 24 Nov 2023 06:49:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DAE6482005
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id D157960AE8;
+	Fri, 24 Nov 2023 09:26:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D157960AE8
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3EFC81BF681
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 24 Nov 2023 06:49:16 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 34D951BF336
+ for <devel@linuxdriverproject.org>; Fri, 24 Nov 2023 09:26:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1173A40223
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 24 Nov 2023 06:49:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1173A40223
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0C3CA61340
+ for <devel@linuxdriverproject.org>; Fri, 24 Nov 2023 09:26:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0C3CA61340
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id y0kiCXZlYvtL
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 24 Nov 2023 06:49:14 +0000 (UTC)
-X-Greylist: delayed 4627 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 24 Nov 2023 06:49:14 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BF63C401F3
-Received: from bjclq318.hostpapavps.net (bjclq318.hostpapavps.net
- [216.7.88.197])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BF63C401F3
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 24 Nov 2023 06:49:14 +0000 (UTC)
-Received: from [197.184.180.57] (port=24971 helo=tillybabe.lan)
- by bjclq318.hostpapavps.net with esmtpa (Exim 4.96.2)
- (envelope-from <host@positrontelecom.com>) id 1r6C5K-0000Bt-2L
- for driverdev-devel@linuxdriverproject.org;
- Thu, 23 Nov 2023 15:57:44 +0000
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id WDl4T76kjkUe for <devel@linuxdriverproject.org>;
+ Fri, 24 Nov 2023 09:26:55 +0000 (UTC)
+X-Greylist: delayed 2053 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 24 Nov 2023 09:26:55 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7731160AE8
+Received: from mail.07d05.mspz7.gob.ec (mail.07d05.mspz7.gob.ec
+ [181.211.163.250])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7731160AE8
+ for <devel@driverdev.osuosl.org>; Fri, 24 Nov 2023 09:26:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.07d05.mspz7.gob.ec (Postfix) with ESMTP id AF332803F7BFF;
+ Fri, 24 Nov 2023 03:24:17 -0500 (-05)
+Received: from mail.07d05.mspz7.gob.ec ([127.0.0.1])
+ by localhost (mail.07d05.mspz7.gob.ec [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id EBl03wV_eiOe; Fri, 24 Nov 2023 03:24:17 -0500 (-05)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.07d05.mspz7.gob.ec (Postfix) with ESMTP id BE1BF803F7BF7;
+ Fri, 24 Nov 2023 03:24:16 -0500 (-05)
+DKIM-Filter: OpenDKIM Filter v2.10.3 mail.07d05.mspz7.gob.ec BE1BF803F7BF7
+X-Amavis-Modified: Mail body modified (using disclaimer) -
+ mail.07d05.mspz7.gob.ec
+X-Virus-Scanned: amavisd-new at 07d05.mspz7.gob.ec
+Received: from mail.07d05.mspz7.gob.ec ([127.0.0.1])
+ by localhost (mail.07d05.mspz7.gob.ec [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id oQZIKDePZCiv; Fri, 24 Nov 2023 03:24:16 -0500 (-05)
+Received: from mail.07d05.mspz7.gob.ec (mail.07d05.mspz7.gob.ec
+ [181.211.163.250])
+ by mail.07d05.mspz7.gob.ec (Postfix) with ESMTP id 887C9803F7BE1;
+ Fri, 24 Nov 2023 03:24:15 -0500 (-05)
+Date: Fri, 24 Nov 2023 03:24:15 -0500 (ECT)
+From: Thomas Mark <chrystian.encarnacion@07d05.mspz7.gob.ec>
+Message-ID: <2134094494.42915.1700814255549.JavaMail.zimbra@07d05.mspz7.gob.ec>
+Subject: anbieten
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Hello
-To: driverdev-devel@linuxdriverproject.org
-From: "Engr. Namir Morgan" <host@positrontelecom.com>
-Date: Thu, 23 Nov 2023 17:51:25 +0800
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - bjclq318.hostpapavps.net
-X-AntiAbuse: Original Domain - linuxdriverproject.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - positrontelecom.com
-X-Get-Message-Sender-Via: bjclq318.hostpapavps.net: authenticated_id:
- host@positrontelecom.com
-X-Authenticated-Sender: bjclq318.hostpapavps.net: host@positrontelecom.com
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-Message-Id: <20231124064916.1173A40223@smtp2.osuosl.org>
+X-Originating-IP: [181.211.163.250]
+X-Mailer: Zimbra 8.8.15_GA_4545 (zclient/8.8.15_GA_4545)
+Thread-Index: AUsup5SGIY8TDrEBNOVVilx7QxCQug==
+Thread-Topic: anbieten
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=07d05.mspz7.gob.ec; 
+ s=19FF43F2-B76A-11EC-B674-AA5B8448773A; t=1700814257;
+ bh=GgLlNVqQKO3528e7kuaZrEMOR9C8OVRQXqlKeuL1ZKM=;
+ h=Date:From:Message-ID:MIME-Version;
+ b=h2pNnJo16fvHuvuoo4+3zp6IAgTsDo041Y9R5F11xuWbgq4ro82UaPykwNyZNC0ug
+ dD4+ggUCmTbFEccXAegZBWuu0YObg9It3VDtYnMuSYvb4jePpr25DjOA5XoFCgYsqK
+ 2z2nMz0lAUjYDAkDlte+BE0bG0XKdWzVIphXMXQLGoZYltPiLVV/vK4v/9+Pbgxorf
+ MVJTsKA58RQQ1CvacKq4AczOPXC/HeSyZPXoRHmB8HbgHkQvRwnUmZwwpiBlMD6TJ6
+ 9eCSJHkGmuaN2K617fEMKuvJZq7qrOqAiIm1cXzp8Hc0+cXLA20FuqmIIyobFmB4v8
+ YNMm+xIDT4tpw==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,20 +89,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: jjttddds@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: thomasmarkstarting@skiff.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
-
-I am Engr. Namir Morgan from Syria. I am looking for a possible tie up with a Business or Individual in your country so that I can do some investments worth Millions and be able to qualify for an investor immigration visa to your Country. Please email me back so that we can discuss further.
-
-Best Regards,
-
-Engr. Namir Morgan
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CgpIYWxsb8KgwqBXaXIgZnJldWVuIHVucywgSWhuZW4gZWluIERhcmxlaGVuIG1pdCBlaW5lbSBq
+w6RocmxpY2hlbiBaaW5zc2F0eiB2b24gMSw1JSBhbmJpZXRlbiB6dSBrw7ZubmVuLiBNaXQgS3Jl
+ZGl0YmV0csOkZ2VuIHZvbiAyMC4wMDAgRXVybyBiaXMgNTAuMDAwLjAwMCBFdXJvIGvDtm5uZW4g
+d2lyIElobmVuIGhlbGZlbiwgSWhyZW4gZmluYW56aWVsbGVuIEJlZGFyZiB6dSBkZWNrZW4uwqAg
+wqBXZW5uIFNpZSBhbiBkaWVzZXIgTcO2Z2xpY2hrZWl0IGludGVyZXNzaWVydCBzaW5kLCB0ZWls
+ZW4gU2llIHVuc2RpZXMgYml0dGUgbWl0LiBXZW5uIFNpZSB1bnNlcmUgRS1NYWlscyBuaWNodCBt
+ZWhyIGVyaGFsdGVuIG3DtmNodGVuLCBzZW5kZW4gU2llIHVucyBlaW5lIEUtTWFpbCBtaXQgZGVt
+IEJldHJlZmYgQWJtZWxkZW4sIHVuZCB3aXIgd2VyZGVuIFNpZWF1cyB1bnNlcmVyIE1haWxpbmds
+aXN0ZSBlbnRmZXJuZW4uwqAgwqBNaXQgZnJldW5kbGljaGVuIEdyw7zDn2VuwqAgwqBUaG9tYXMg
+TWFyawoobnVsbCkKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDov
+L2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVy
+ZGV2LWRldmVsCg==
