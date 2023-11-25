@@ -1,59 +1,49 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7BF7E7F8DA7
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Nov 2023 20:08:22 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D72C7F8FBC
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Nov 2023 23:21:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8625B81767;
-	Sat, 25 Nov 2023 19:08:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8625B81767
+	by smtp3.osuosl.org (Postfix) with ESMTP id A96EB60A4F;
+	Sat, 25 Nov 2023 22:21:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A96EB60A4F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KA48CgxNkaUN; Sat, 25 Nov 2023 19:08:17 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id koDvWXIVDiCV; Sat, 25 Nov 2023 22:21:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 57F5B8175D;
-	Sat, 25 Nov 2023 19:08:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 57F5B8175D
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8F99F607C7;
+	Sat, 25 Nov 2023 22:21:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8F99F607C7
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8F42A1BF3DE
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 25 Nov 2023 19:08:14 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A08F71BF47F
+ for <devel@linuxdriverproject.org>; Sat, 25 Nov 2023 22:21:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 685E381767
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 25 Nov 2023 19:08:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 685E381767
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6E0444089C
+ for <devel@linuxdriverproject.org>; Sat, 25 Nov 2023 22:21:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6E0444089C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CwdBXDqvya8h
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 25 Nov 2023 19:08:13 +0000 (UTC)
-X-Greylist: delayed 902 seconds by postgrey-1.37 at util1.osuosl.org;
- Sat, 25 Nov 2023 19:08:13 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 864CF8175D
-Received: from mx01.impress.biz (mx01.impress.biz [78.10.47.244])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 864CF8175D
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 25 Nov 2023 19:08:13 +0000 (UTC)
-Received: from IMPEXT001.impress.int (192.168.61.139) by
- PLELKEXC003.impress.int (192.168.61.135) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1258.12; Sat, 25 Nov 2023 19:53:08 +0100
-Received: from [85.195.105.114] (85.195.105.114) by IMPEXT001.impress.int
- (192.168.61.139) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Sat, 25 Nov 2023 19:53:08 +0100
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NaDxAcFa40VE for <devel@linuxdriverproject.org>;
+ Sat, 25 Nov 2023 22:21:10 +0000 (UTC)
+Received: from office.bluestream.hk (office.bluestream.hk [94.190.216.143])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 043AA4089B
+ for <devel@driverdev.osuosl.org>; Sat, 25 Nov 2023 22:21:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 043AA4089B
+Received: from [10.12.18.39] (unknown [45.133.193.46])
+ by office.bluestream.hk (Postfix) with ESMTPA id 4FEC120CA9628;
+ Sun, 26 Nov 2023 02:04:46 +0800 (HKT)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Understand me
-To: <driverdev-devel@linuxdriverproject.org>
-From: Anna Pechorin <ap@letron.de>
-Date: Sat, 25 Nov 2023 10:53:08 -0800
-Message-ID: <9c8825df-1fb2-4a29-9306-0ebe66e2fc05@IMPEXT001.impress.int>
+Subject: Kontaktm
+To: Recipients <francisco@bluestream.hk>
+From: Mikhail Fridman<francisco@bluestream.hk>
+Date: Sat, 25 Nov 2023 19:04:34 +0100
+Message-Id: <20231125222111.6E0444089C@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,28 +56,20 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: dealings100@hotmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: alfagroupfridman@hotmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello
+Hallo, ich, Mikhail Fridman, werde Ihnen im Namen einer Wohlt=E4tigkeitsorg=
+anisation 2.500.000 Euro aus einem Teil meiner Investition spenden. Bitte a=
+ntworten Sie mit Ihren Anspruchsdetails. Ich erwarte Ihre fr=FCheste Antwor=
+t und
 
-How are you, I hope this email finds you in good health and spirit? Before I continue let me humbly apologize for coming into your space unsolicited. Nonetheless, I take solace in the fact that it is with the best intention and for our mutual benefit.
-
-I chose you among other contacts I came across in my search for someone who can be of help.  It took a great deal of brain storming to arrive at my decision I must say, with the hope that my contact with you will be private and confidential.
-
-The business idea that I have is to partner with you by investing in your country and you becoming my fund manager. This whole idea is borne out of the fact that presently I am totally indisposed to carry out any financial transaction owing to restrictions relating to the Russia /Ukraine war and the suspicious death of my husband, Ivan Pechorin in the hand of our President Vladimir Putin. 
-
-It will be an absolute pleasure, if you would have the wherewithal to handle this project to my satisfaction. Every detail concerning this project would be laid bare to you upon indication of your interest. 
-
-Pls. strictly send response to: dealings100@hotmail.com
-
-
-Best regards
-
-Anna Pechorin.
+Gott sch=FCtze dich.
+Viel Gl=FCck, Mikhail Fridman
+Kontakt-E-Mail: alfagroupfridman@hotmail.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
