@@ -1,56 +1,59 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E7C07F8D3B
-	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Nov 2023 19:46:45 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7BF7E7F8DA7
+	for <lists+driverdev-devel@lfdr.de>; Sat, 25 Nov 2023 20:08:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7B0108140F;
-	Sat, 25 Nov 2023 18:46:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7B0108140F
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8625B81767;
+	Sat, 25 Nov 2023 19:08:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8625B81767
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DpAL77pqPUcT; Sat, 25 Nov 2023 18:46:41 +0000 (UTC)
+	with ESMTP id KA48CgxNkaUN; Sat, 25 Nov 2023 19:08:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4C2F7813F8;
-	Sat, 25 Nov 2023 18:46:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C2F7813F8
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 57F5B8175D;
+	Sat, 25 Nov 2023 19:08:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 57F5B8175D
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1185D1BF39E
- for <devel@linuxdriverproject.org>; Sat, 25 Nov 2023 18:46:38 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8F42A1BF3DE
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 25 Nov 2023 19:08:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EB20260838
- for <devel@linuxdriverproject.org>; Sat, 25 Nov 2023 18:46:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EB20260838
+ by smtp1.osuosl.org (Postfix) with ESMTP id 685E381767
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 25 Nov 2023 19:08:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 685E381767
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DC9ipHVET4bV for <devel@linuxdriverproject.org>;
- Sat, 25 Nov 2023 18:46:37 +0000 (UTC)
-X-Greylist: delayed 302 seconds by postgrey-1.37 at util1.osuosl.org;
- Sat, 25 Nov 2023 18:46:36 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 018DD60810
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CwdBXDqvya8h
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 25 Nov 2023 19:08:13 +0000 (UTC)
+X-Greylist: delayed 902 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sat, 25 Nov 2023 19:08:13 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 864CF8175D
 Received: from mx01.impress.biz (mx01.impress.biz [78.10.47.244])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 018DD60810
- for <devel@linuxdriverproject.org>; Sat, 25 Nov 2023 18:46:36 +0000 (UTC)
-Received: from IMPEXT001.impress.int (192.168.61.139) by IMPEXT001.impress.int
- (192.168.61.139) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Sat, 25 Nov
- 2023 19:41:32 +0100
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 864CF8175D
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat, 25 Nov 2023 19:08:13 +0000 (UTC)
+Received: from IMPEXT001.impress.int (192.168.61.139) by
+ PLELKEXC003.impress.int (192.168.61.135) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1258.12; Sat, 25 Nov 2023 19:53:08 +0100
 Received: from [85.195.105.114] (85.195.105.114) by IMPEXT001.impress.int
  (192.168.61.139) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Sat, 25 Nov 2023 19:41:32 +0100
+ Transport; Sat, 25 Nov 2023 19:53:08 +0100
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Understand me
-To: <devel@linuxdriverproject.org>
+To: <driverdev-devel@linuxdriverproject.org>
 From: Anna Pechorin <ap@letron.de>
-Date: Sat, 25 Nov 2023 10:41:32 -0800
-Message-ID: <5bed4847-b62f-4912-8e39-fee20347f68a@IMPEXT001.impress.int>
-X-C2ProcessedOrg: f83d9b5b-f98c-46a9-ad62-35ef3e01b1a5
+Date: Sat, 25 Nov 2023 10:53:08 -0800
+Message-ID: <9c8825df-1fb2-4a29-9306-0ebe66e2fc05@IMPEXT001.impress.int>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
