@@ -1,62 +1,62 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4B7897F9B12
-	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Nov 2023 08:39:36 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 220B87FA582
+	for <lists+driverdev-devel@lfdr.de>; Mon, 27 Nov 2023 17:01:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A0BCB81257;
-	Mon, 27 Nov 2023 07:39:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A0BCB81257
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4139C40877;
+	Mon, 27 Nov 2023 16:01:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4139C40877
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DrOqP6hxSEMu; Mon, 27 Nov 2023 07:39:34 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MJbDbU8ljl5E; Mon, 27 Nov 2023 16:01:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8940981255;
-	Mon, 27 Nov 2023 07:39:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8940981255
+	by smtp4.osuosl.org (Postfix) with ESMTP id 13C6840549;
+	Mon, 27 Nov 2023 16:01:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 13C6840549
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4FE1E1BF36C
- for <devel@linuxdriverproject.org>; Mon, 27 Nov 2023 07:39:30 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 425DE1BF40D
+ for <devel@linuxdriverproject.org>; Mon, 27 Nov 2023 16:01:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2161E60AFF
- for <devel@linuxdriverproject.org>; Mon, 27 Nov 2023 07:39:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2161E60AFF
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1B94B4062E
+ for <devel@linuxdriverproject.org>; Mon, 27 Nov 2023 16:01:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1B94B4062E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hfqwNfrsrUEy for <devel@linuxdriverproject.org>;
- Mon, 27 Nov 2023 07:39:29 +0000 (UTC)
-Received: from mail.decipherhealth.in (unknown [103.2.233.28])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4F1D160A91
- for <devel@driverdev.osuosl.org>; Mon, 27 Nov 2023 07:39:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4F1D160A91
-Received: from localhost (localhost [127.0.0.1])
- by mail.decipherhealth.in (Postfix) with ESMTP id EF3EBD62520;
- Mon, 27 Nov 2023 03:01:12 +0000 (UTC)
-Received: from mail.decipherhealth.in ([127.0.0.1])
- by localhost (mail.decipherhealth.in [127.0.0.1]) (amavis, port 10032)
- with ESMTP id 4pvJQEPMf9x1; Mon, 27 Nov 2023 03:01:12 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.decipherhealth.in (Postfix) with ESMTP id A8647989285;
- Mon, 27 Nov 2023 02:36:39 +0000 (UTC)
-X-Virus-Scanned: amavis at decipherhealth.in
-Received: from mail.decipherhealth.in ([127.0.0.1])
- by localhost (mail.decipherhealth.in [127.0.0.1]) (amavis, port 10026)
- with ESMTP id LLbMh7JjajOo; Mon, 27 Nov 2023 02:36:39 +0000 (UTC)
-Received: from [87.120.84.39] (unknown [192.168.164.1])
- by mail.decipherhealth.in (Postfix) with ESMTP id B886BD05F75;
- Sun, 26 Nov 2023 23:56:55 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iwiorCXMSBSF for <devel@linuxdriverproject.org>;
+ Mon, 27 Nov 2023 16:01:52 +0000 (UTC)
+X-Greylist: delayed 15132 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 27 Nov 2023 16:01:52 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3D0D240549
+Received: from inside.srm-medias.com (inside.srm-medias.com [144.76.155.178])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3D0D240549
+ for <devel@linuxdriverproject.org>; Mon, 27 Nov 2023 16:01:52 +0000 (UTC)
+Received: from [91.224.92.17] (unknown [91.224.92.17])
+ by inside.srm-medias.com (Postfix) with ESMTPA id 735232F8E4D;
+ Mon, 27 Nov 2023 09:05:19 +0100 (CET)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: JOINT VENTURE PROPOSAL
-To: Recipients <info@yashtel.co.in>
-From: "Mr. Bradley Wick" <info@yashtel.co.in>
-Date: Sun, 26 Nov 2023 23:56:48 -0800
-Message-Id: <20231126235656.B886BD05F75@mail.decipherhealth.in>
+Subject: RE
+To: Recipients <prakash@srm-medias.com>
+From: "Cristy Davis" <prakash@srm-medias.com>
+Date: Mon, 27 Nov 2023 00:05:26 -0800
+X-PPP-Message-ID: <170107232121.1391937.7557568281052078557@inside.srm-medias.com>
+X-PPP-Vhost: srm-medias.com
+Message-Id: <20231127160153.1B94B4062E@smtp4.osuosl.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=srm-medias.com; s=default; t=1701072321;
+ bh=yzpcAkhxrSagXueYeLlsstuXoOXbU1UGk0bJjtHfEpM=; h=Subject:To:From;
+ b=LCJdxBolcFCxXkAwR6TFAlBm7bDPJ+xpNvJFvDd64uTpEJk1Fd+Aub1JnsHcmaVBo
+ dlCTyFiLGyUyFcuxHYNKy3I+5dWuonqtkOej0wkGIfburF071jXp3ODte7hGF6sVo2
+ Uggqu5XJv0+5P90ecdA27wGIAxgkenpKMyHHr/C4=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=srm-medias.com header.i=@srm-medias.com
+ header.a=rsa-sha256 header.s=default header.b=LCJdxBol
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,18 +69,19 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: wickbradley910@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: cristydavis7788@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-JOINT VENTURE PROPOSAL,
-
-?I am Consultant Bradley Wick. My Client deposited funds for investments in a private Financial Firm. I want you to be part of the investment plans. I shall provide you with details and documents when you reply positively to this proposal. This is urgent.
-
-Bradley Wick
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGVsbG8sIG15IG5hbWUgaXMgQ3Jpc3R5IERhdmlzLCBJ4oCZbSBmcm9tIE1pY2hpZ2FuLiBUd28g
+TWlsbGlvbiwgVW5pdGVkIFN0YXRlcyBEb2xsYXJzIGhhcyBiZWVuIGRvbmF0ZWQgdG8geW91LCBJ
+IHdvbiB0aGUgJDcwIG1pbGxpb24gUG93ZXJiYWxsIGxvdHRlcnkgLCBhbmQgSSBoYXZlIHZvbHVu
+dGFyaWx5IGRlY2lkZWQgdG8gZG9uYXRlIHRoZSBzdW0gb2YgJDIsMDAwLDAwMC4wMCB0byB5b3Us
+IENvbnRhY3QgbWUgdXJnZW50bHkgdmlhOyBjcmlzdHlkYXZpczc3ODhAZ21haWwuY29tICBmb3Ig
+Y2xhaW1zLndhdGNoIG15IGZ1bGwgaW50ZXJ2aWV3IGhlcmU6aHR0cHM6Ly93d3cueW91dHViZS5j
+b20vd2F0Y2g/dj1xb2QxU2d4eWk2VQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0
+Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9kcml2ZXJkZXYtZGV2ZWwK
