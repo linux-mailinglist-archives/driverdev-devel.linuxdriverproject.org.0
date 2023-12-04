@@ -2,48 +2,56 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0178880335F
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Dec 2023 13:50:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A5B46804111
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Dec 2023 22:42:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2B2BE40168;
-	Mon,  4 Dec 2023 12:50:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2B2BE40168
+	by smtp2.osuosl.org (Postfix) with ESMTP id 05F5A40201;
+	Mon,  4 Dec 2023 21:42:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 05F5A40201
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4GFDGYP-Hiy6; Mon,  4 Dec 2023 12:50:49 +0000 (UTC)
+	with ESMTP id a5-7IiYJvXCD; Mon,  4 Dec 2023 21:42:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BF499400DC;
-	Mon,  4 Dec 2023 12:50:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BF499400DC
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7BD2440151;
+	Mon,  4 Dec 2023 21:42:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7BD2440151
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D1EF71BF349
- for <devel@linuxdriverproject.org>; Mon,  4 Dec 2023 12:50:45 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id F0CF81BF86D
+ for <devel@linuxdriverproject.org>; Mon,  4 Dec 2023 21:42:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AC32D60F1B
- for <devel@linuxdriverproject.org>; Mon,  4 Dec 2023 12:50:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AC32D60F1B
+ by smtp2.osuosl.org (Postfix) with ESMTP id C702140201
+ for <devel@linuxdriverproject.org>; Mon,  4 Dec 2023 21:42:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C702140201
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iTQqsGSsSneg for <devel@linuxdriverproject.org>;
- Mon,  4 Dec 2023 12:50:45 +0000 (UTC)
-Received: from mail.web3email.fun (mx.web3email.fun [107.172.137.4])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 38C156066D
- for <devel@driverdev.osuosl.org>; Mon,  4 Dec 2023 12:50:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 38C156066D
-Received: from [10.3.18.177] (unknown [77.81.142.63])
- by mail.web3email.fun (Postfix) with ESMTPA id 2FC1B1CBD7ED;
- Mon,  4 Dec 2023 07:40:17 -0500 (EST)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id C5gbTG8SRyYA for <devel@linuxdriverproject.org>;
+ Mon,  4 Dec 2023 21:42:51 +0000 (UTC)
+X-Greylist: delayed 600 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 04 Dec 2023 21:42:51 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BA38440151
+Received: from mail0.fhgr.ch (unknown [107.174.244.118])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BA38440151
+ for <devel@driverdev.osuosl.org>; Mon,  4 Dec 2023 21:42:51 +0000 (UTC)
+From: Mr.Sibu@osuosl.org, "Kebi <kebi"@suncor.com
+To: devel@driverdev.osuosl.org
+Subject: Re: Important Message
+Date: 04 Dec 2023 22:31:12 +0100
+Message-ID: <20231204223112.3AD7E3C586576211@suncor.com>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: =?utf-8?b?R3J1w58=?=
-To: Recipients <www@web3email.fun>
-From: www@web3email.fun
-Date: Mon, 04 Dec 2023 13:40:11 +0100
-Message-Id: <20231204125045.AC32D60F1B@smtp3.osuosl.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=osuosl.org; s=default; t=1701726172;
+ bh=zRg+J9+xobKQWVDoU21YsPu8aZIzGzk+AasazhJ8lBE=;
+ h=Reply-To:From:To:Subject:Date:From;
+ b=v0sY6k6TvZOSrJit+0enoFpGuj4uYCA2cDknVa7f6AO6R/4mnWehed3AUT6GsSYkC
+ 2hf57Stvt9PkMdIQK1IrFXThahAHbvSHDBIH49R0EvkFm7CQC3uiLaUGMa296uWNtg
+ 48oZDv+A/GY6ORTAsLIGp9L0qF9tgRspwtfguQPSHmP48fMVdKA9/Bl/TiQKG5nMxW
+ EVINc0H5cFtpMf8oEAEt79wnR7OqxxKzWOujqy+Lp7qxQun5Vd7KkhjJmeXz9JQU8i
+ LdCJPQlkB51zR9x5/J/kP//rBRosB2qhg70n50DU1KXdV4cOP50xuySg9sULDtsidv
+ lKybMlYSnzWMQ==
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,18 +64,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: alfagroupfridman@hotmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Reply-To: jerrysong001100@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hallo, ich, Mikhail Fridman, werde Ihnen im Namen einer Wohlt=E4tigkeitsorg=
-anisation 2.500.000 Euro aus einem Teil meiner Investition spenden. Bitte a=
-ntworten Sie mit Ihren Anspruchsdetails. Ich erwarte Ihre fr=FCheste Antwor=
-t und
+Hello Sir/Madam,
 
-Gott sch=FCtze dich.
+I only got your contact details from the South Africa Exchange 
+Information On-line Service on my personal programmed search on 
+the internet for a reputable company or individual to assist me 
+sincerely & confidential which your information & profiles were 
+very satisfactory, so I decided to contact you immediately.
+ 
+It is my great pleasure to write you this letter. Within the 
+Eskom Holdings Limited where I work as a Director of Audit and 
+Project Implementation, I have in my possession an overdue 
+payment in US funds.
+
+The said funds represent a certain percentage of the total 
+contract value executed on behalf of my Department by a foreign 
+contracting firm, which, I the official over-invoiced to the 
+amount of US$45,000, 000.00 (Forty-Five Million United States 
+Dollars). Though the actual contract cost has been paid to the 
+original contractor leaving the excess balance unclaimed. Since 
+the present elected Government is determined to pay foreign 
+contractors all debts owed, so as to maintain a good relationship 
+with foreign governments and non-government agencies, I included 
+the bills for approvals with the Department of Finance and the 
+South Africa Reserve Bank (SARB).
+ 
+I am seeking your assistance to front as a beneficiary of the 
+unclaimed funds since I am not allowed to operate foreign 
+accounts, details, and change of beneficiary information upon 
+application for claim to reflect payment and approvals will be 
+secured on behalf of you/your Company. I have to propose that 
+should you be willing to assist me in this transaction your share 
+as compensation will be (35%), and the balance of (65%) will be 
+for me. The business is completely safe and secure, provided you 
+treat it with the utmost confidentiality. It does not matter 
+whether you/your Company does contract projects, as a transfer of 
+powers will be secured in favor of you/your Company. Also, your 
+area of specialization is not a hindrance to the successful 
+execution of this transaction.
+ 
+I have reposed my confidence in you and hope that you will not 
+disappoint me.
+
+For more information kindly reply to me immediately through my 
+consultant Mr.Jerry Song. email  
+jerrysongconsultant0101@gmail.com
+
+Thanks for your co-operation.
+
+Kindest Regards,
+Mr. Sibu Kebi
+
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
