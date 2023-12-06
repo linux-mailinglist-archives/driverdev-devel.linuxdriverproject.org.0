@@ -2,84 +2,89 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4E0C807392
-	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Dec 2023 16:17:23 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0CB7F807493
+	for <lists+driverdev-devel@lfdr.de>; Wed,  6 Dec 2023 17:12:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D16E382FCB;
-	Wed,  6 Dec 2023 15:17:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D16E382FCB
+	by smtp1.osuosl.org (Postfix) with ESMTP id E953482AEF;
+	Wed,  6 Dec 2023 16:12:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E953482AEF
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tR-3zhAOuBUv; Wed,  6 Dec 2023 15:17:21 +0000 (UTC)
+	with ESMTP id 9efxoTTKLyaX; Wed,  6 Dec 2023 16:12:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9F7B183265;
-	Wed,  6 Dec 2023 15:17:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9F7B183265
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id C3ACF821C8;
+	Wed,  6 Dec 2023 16:12:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C3ACF821C8
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 61FEB1BF406
- for <devel@linuxdriverproject.org>; Wed,  6 Dec 2023 15:17:18 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 59F641BF82F
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Dec 2023 16:12:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3B46A41915
- for <devel@linuxdriverproject.org>; Wed,  6 Dec 2023 15:17:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3B46A41915
+ by smtp2.osuosl.org (Postfix) with ESMTP id 31BE740296
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Dec 2023 16:12:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 31BE740296
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id biR-FO7Spjwf for <devel@linuxdriverproject.org>;
- Wed,  6 Dec 2023 15:17:17 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lF6f_Sx-T2Z8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Dec 2023 16:12:12 +0000 (UTC)
 Received: from lhr.gtn-esa2.in (gtnesa2.ptcl.net [59.103.87.20])
- by smtp4.osuosl.org (Postfix) with ESMTP id 434E041E6F
- for <devel@driverdev.osuosl.org>; Wed,  6 Dec 2023 15:17:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 434E041E6F
-Message-Id: <573856$1heqjh@lhr.gtn-esa2.in>
-X-IPAS-Result: =?us-ascii?q?A2EfMwBjj3Bl/7FksbYNTRwBAQE8AQEEBAEBAgEBBwEBF?=
- =?us-ascii?q?QmBPQYBAQMBgU4CAYM9hFOvZBOBag8BAQEBAQEBAQEdEx0EAQGFAQECAQGHL?=
- =?us-ascii?q?Sc6BA0BAgQBAQEBAwIDAQEBAQEBAwEBAQUBAQEBAQEGAwECAoEZhS+HEyc6H?=
- =?us-ascii?q?BsNDQImAkkWE7MleoEyGmeEX7FOLAIBAQGBZoEGhR8BgVCECIQ2hw4+hA4BE?=
- =?us-ascii?q?gEhg1sVglMEiRcHMoVKKYk4hnoHAgVOIkdwGwMHA38PKwcELRsHBgkUGBUjB?=
- =?us-ascii?q?lEEKCEJExI+BGuCRAqBAj8PDhGCPSs2NhlIglsVDDRKdRBCF4ERBGobEx43E?=
- =?us-ascii?q?RIXDQMIdB0CMjwDBQMEMwoSDQshBVYDRQZJCwMCGgUDAwSBMwUNHgIQGgYMJ?=
- =?us-ascii?q?wMDEkkCEBQDOwMDBgMLMQMwgRkMTwNrHzYJPA8MHwI5DScjAixWBRICFgMkG?=
- =?us-ascii?q?jYRCQsoAy8GOwITDAYGCV4mFgkEJwMIBANjAzMRHTcJA3g9NQgMG0QIISYdE?=
- =?us-ascii?q?qMyeAGBR0SBECGFQo12g2iNbKBOBwOOD5tHAZNeA5I2mEIgqjUNf3CEJ1KiR?=
- =?us-ascii?q?mk7AgcLAQEDCYpiAQE?=
-IronPort-Data: A9a23:elTwiK2e6bozPajk6vbD5ehxkn2cJEfYwER7XKvMYLTBsI5bp2YPy
- GpLX2jUM/aLM2v3Ldl1a4y0/UhTuJCDmt9kHFNoqSg9HnlHgPSeCIXCJC8cHc8zwu4v7q5Dx
- 59DAjUVBJlsFhcwnj/0bv656yMUOZigHtIQMsadUsxKbVEiEHtJZS5LwbZj2dcy2YbhWWthh
- PuryyHhEA79s9JLGj9Mg06zgEsHUCPa4W5wUvQWPJinjXeG/5UnJMt3yZKZdhMUdrJp8tuSH
- I4v+l0bElTxpH/BAvv9+lryn9ZjrrT6ZWBigVIOM0Sub4QrSoXfHc/XOdJFAXq7hQllkPhcl
- dlKjISiVTsNfaTjw7gnfDZfIj1XaPguFL/veRBTsOSglhycNSKyk7M3ShtsYLhwFuRfWDEUs
- 6VHd3ZUNkjF3r3pqF64YrAEasALBdPqMsU8unhm5SnFBvJgR53fBb3JjTNd9Gpp1p4QR6yDD
- yYfQSF+YDbwaUdpBgdNOokmsfmyhHDQKzIN/Tp5ooJyuQA/1jdZz7XnNdPOZtGQbcFUgwCDq
- wru/Hv4CRIeNdKRxBKG9Wq2h+nEkGXwX4d6PLK57uN4g1qa7mMSEAAEVlyy5/SkkSaWUt5BJ
- lYI+zEjhbQy+UyqSt27VBq9yFaBtwQAWtwWH+o84R2N4rHN/geVCHUCTXhKb9lOnNArVSwmk
- FOVt9PoASBotvueTnf13reZqSuaMDIFLHFEYjULJSMA5NXuuogvjxXJZt95AK+ryNrvFlnYx
- j2PpiUknLUSleYCzbW64xbAmT3EjpPOSBI87Rn/Q2uk5UVjY+aNYoGt41XB9t5PK4KXRVCHt
- XQN3cOXhMgPC5+KvCOKROsGFbeg6//DOzS0qURrGJYo8Ryi/HqtdolW6T13YkxgWu4LcDj5Y
- UbVtlkMzJ9ONWSnbOl8ZIfZI8Ary7XwUNr+Wv3KY95mfJd8bkmE8TtoaErW2Hri+GAgnL8yP
- b+Xa8eyAGwWBLohyyGrQPwZl7gxyUgW22LJQrjpwhKmz/yaZXiIWfECKlTIc+NRxKeFphjFt
- tVSLc2Hzz1BX+DkJCra64geKRYNN3dTLZ/spsNUdsaHIwx7CG8mFvndyK8gfIojmL5a/tok5
- VnkChUekQWgwySfcUPTNS8LhK7TYKuTZEkTZUQEVWtEEVB4CWpzxM/zvKfbsVXqGCKPABK0o
- zQ4lx28P8ly
-IronPort-HdrOrdr: A9a23:tkleXaCdzx6g7oblHem855DYdb4zR+YMi2TDGXoQdfSdGvb1qy
- nIppkmPH7P4wr5N0tQ+uxoVJPgfZq+z/RICOAqVN+ftW/dyQmVxepZgrcKrQePJxHD
-X-Talos-CUID: 9a23:+CQ4GWNEBcYeJu5DdXRr83cMCNwZVj7U4yyMGWCXDld1YejA
-X-Talos-MUID: 9a23:vPXBOQVpG4/3k57q/CT9iBNSPp1O3/T0OlsVvIscucCrbSMlbg==
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1FF67400B9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Wed,  6 Dec 2023 16:12:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1FF67400B9
+Message-Id: <573856$1hgp40@lhr.gtn-esa2.in>
+X-IPAS-Result: =?us-ascii?q?A2E5DAAlnHBl/0+gtbZaHQEBAQEJARIBBQUBQAmBRgKFD?=
+ =?us-ascii?q?4RTlAeVFoZHE4FqDwEBAQEBAQEBAU0EAQGFBoctJzoEDQECBAEBAQEDAgMBA?=
+ =?us-ascii?q?QEBAQEDAQEBBQEBAQEBAQYDAQICgRmFL0aGTSdWKA0CJgJJFhOFX65dgTIaZ?=
+ =?us-ascii?q?4RfsU4uAYJuhR8BgVCECJAQARIBg3wVglMEiRcHMoVKKYk4hnoHAgVwR3AbA?=
+ =?us-ascii?q?wcDfw8rBwQtIgYJFC0jBlEEKCEJExI+BGuCRAqBAj8PDhGCPWE2GUiCWxUMN?=
+ =?us-ascii?q?Ep1EEIXgRFuGxMeNxESFw0DCHQdAjI8AwUDBDMKEg0LIQVWA0UGSQsDAhoFA?=
+ =?us-ascii?q?wMEgTMFDR4CECwnAwMSSQIQFAM7AwMGAwsxAzCBGQxPA2sfNgk8DwwfAjkNJ?=
+ =?us-ascii?q?yMCLFYFEgIWAyQaNhEJCygDLwY7AhMMBgYJXiYWCQQnAwgEA2MDMxEdNwkDe?=
+ =?us-ascii?q?D01CAwbRAhHHRKjMngBgUdEgRAhhUKNdoNoih6DTqBOB44Sm0cBk14DkjZHh?=
+ =?us-ascii?q?ziEaotZIKo1DX9whCdSGaItaTsCBwsBAQMJimIBAQ?=
+IronPort-Data: A9a23:OVh0/alq0SbAQmpwfAt4/rPo5gxJJkRdPkR7XQ2eYbSJt1+Wr1Gzt
+ xIfUW+HO6uKa2Wjfo9+PI3g8khQ7cWHyNA3TQdtqnsxQS4T+ZvOCP2ndUqhZCn6wu8v7a5EA
+ 2fyTvGacajYm1eF/k/F3oDJ9CU6jefSLlbFILas1hpZHGeIcw9/z0o/8wIFqtQw24PgWVvT4
+ YmaT/D3YTdJ5RYlagr41Ire8HuDjNyq0N/PlgVjDRzjlAa2e0g9VPrzF4noR5fLatA88tqBe
+ gr25OrRElU1XfsaIojNfr7TKiXmS1NJVOSEoiI+t6OK2nCuqsGuu0qS2TV1hUp/0l20c95NJ
+ Npl5bycFlwKIq32p74aThlFHR4gE5ZI9+qSSZS/mZT7I0zuT0Cq2/xoSVk/NowW++0xCmZLs
+ +AHQNwPRknT3aTvkOv9E7c0wJtyRCXoFNp3VnVI5CvYA7AFQZnFa73W7tse2joswNhNdRrbT
+ 5dAOGE3NkiYC/FJEn0GC4xngsqmvz7YeBtogVe8r4xuoEGGmWSd15CoarI5YOeiT8FSkW6Vr
+ X3H8yLyBRRyHN2T0yuC93WyruDKlCL/HokVEdWQ/fNygBify3IeDDUIWlah5/q0kEizX5RYM
+ UN80jYnqacz3EmmSt30WRqo5nWDu3Y0XtNbCeoS7ACL17qR5geBHS4DVDEpQMQivdM4QiYvk
+ 1OTns3kH3l/4OO9V32Q7PGXoCm0NCxTKnUNDQccQBEI8/H7rZs+nlTEXL5LG6q4i9DzAhn0y
+ jyLtyM+wbke5eYH0KO05lDKhT3qt5HPQSY47x7GRX6s5QA/b4jNT4eo81nA8fdJKsCWVF6Eu
+ VABmsOE6+sODInLnyuIKM0SB7iB+/aIdTHGjFdqBN8t+lyF92SiY41K7DxgYUtkLMsAUTvoZ
+ lLDtRlQ+pJJJGGtb6J8f8S2EctC5azhE8n1E+3PZPJQbZVrMgyK5idjYQiXxW+FuEM3uaUyM
+ JuWa8GqADARD8xP1z2yWvsc1rkw7jgkxHjPRJb2iR+g1PyCexa9Ur4BPUDXNsgy/KeVrBeT+
+ NFaX+OI1hFeXcX9eTXS8IUJKhYMIGRTLYD3ospYdueFLQ57H0k6CvnYh7gmfuRNnqJbkc/B5
+ G2wQUNVzFH2n3zNJEOBbXULVV/0dc8v9zRibXVqZAjwnSdyCWqy0Joim1IMVeFP3IReITRcF
+ ZHpp+3o7j9zpvgrNtjTgVQRbGCvSfhzuT+zAg==
+IronPort-HdrOrdr: A9a23:9PvtRKj/FJ75GpBWvvhExM9C6nBQXsoji2hC6mlwRA09TyVXra
+ CTdD1y73PJYVEqNU3I+OrqBEDuewK+yXcY2+gs1NSZNjUO0VHARL2Ki7GSoQEIcBeQygcy78
+ ldT5Q=
+X-Talos-CUID: =?us-ascii?q?9a23=3AncoF9GjYkArHoEoGOL30RmgM3zJuIl3xkyzzP0+?=
+ =?us-ascii?q?CNjxuVb2IR2DO1phqnJ87?=
+X-Talos-MUID: 9a23:I/7/ewUqU8fzM3Pq/BX9hy87Kupm2uOJA2Y9uJAvse/ddgUlbg==
 X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-AV: E=Sophos;i="6.04,255,1695668400"; d="scan'208";a="51866225"
+X-IronPort-AV: E=Sophos;i="6.04,255,1695668400"; d="scan'208";a="51930240"
 X-Amp-Result: SKIPPED(no attachment in message)
 X-Amp-File-Uploaded: False
-Received: from unknown (HELO [192.168.1.225]) ([182.177.100.177])
- by lhr.gtn-esa2.in with ESMTP; 06 Dec 2023 20:17:02 +0500
+Received: from unknown (HELO TS.pan-pacific.com.tw) ([182.181.160.79])
+ by lhr.gtn-esa2.in with ESMTP; 06 Dec 2023 21:11:52 +0500
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: Re: Congrat!!
-To: "tom.sugiyama@thk.co.jp" <Arif.Khan@ptcl.net.pk>
-From: "Warren.E"<Arif.Khan@ptcl.net.pk>
-Date: Wed, 06 Dec 2023 23:16:52 +0800
+Subject: #Congrat!!
+To: "t.maruyama@n-mtec.co.jp" <Arif.Khan@ptcl.net.pk>
+From: <Arif.Khan@ptcl.net.pk>
+Date: Thu, 07 Dec 2023 00:11:36 +0800
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,7 +98,7 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Reply-To: grantsprogram@cpn.it
-Cc: tom.sugiyama@thk.co.jp
+Cc: asghar.meo@ptcl.net.pk
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
