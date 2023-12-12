@@ -2,48 +2,48 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3552480E670
-	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Dec 2023 09:43:28 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 16B0D80E64B
+	for <lists+driverdev-devel@lfdr.de>; Tue, 12 Dec 2023 09:35:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9998E823E3;
-	Tue, 12 Dec 2023 08:43:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9998E823E3
+	by smtp1.osuosl.org (Postfix) with ESMTP id E67E48148D;
+	Tue, 12 Dec 2023 08:35:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E67E48148D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KRpWYwqhHQyJ; Tue, 12 Dec 2023 08:43:26 +0000 (UTC)
+	with ESMTP id 2qmLWvDy8Lsg; Tue, 12 Dec 2023 08:35:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8435B81E3F;
-	Tue, 12 Dec 2023 08:43:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8435B81E3F
+	by smtp1.osuosl.org (Postfix) with ESMTP id CC62981425;
+	Tue, 12 Dec 2023 08:35:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CC62981425
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A84A41BF27A
- for <devel@linuxdriverproject.org>; Tue, 12 Dec 2023 08:43:22 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4BBCA1BF27A
+ for <devel@linuxdriverproject.org>; Tue, 12 Dec 2023 08:35:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8054661020
- for <devel@linuxdriverproject.org>; Tue, 12 Dec 2023 08:43:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8054661020
+ by smtp4.osuosl.org (Postfix) with ESMTP id 23FF94163E
+ for <devel@linuxdriverproject.org>; Tue, 12 Dec 2023 08:35:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 23FF94163E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id UDll8qk4iC6y for <devel@linuxdriverproject.org>;
- Tue, 12 Dec 2023 08:43:22 +0000 (UTC)
-Received: from server.musicplus.tn (ns3006284.ip-57-129-1.eu [57.129.1.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E6CB260F80
- for <devel@linuxdriverproject.org>; Tue, 12 Dec 2023 08:43:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E6CB260F80
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EEaUElf2e10H for <devel@linuxdriverproject.org>;
+ Tue, 12 Dec 2023 08:35:31 +0000 (UTC)
+Received: from server.musicplus.tn (unknown [IPv6:2001:41d0:700:7597::])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 574A841621
+ for <devel@driverdev.osuosl.org>; Tue, 12 Dec 2023 08:35:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 574A841621
 Received: from KREMLIN.lan (unknown [197.184.183.250])
- by server.musicplus.tn (Postfix) with ESMTPA id 8F3A522C9625;
- Tue, 12 Dec 2023 04:54:42 +0000 (UTC)
+ by server.musicplus.tn (Postfix) with ESMTPA id 1A5AF22C966B;
+ Tue, 12 Dec 2023 04:54:47 +0000 (UTC)
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Get Back To me for more details
 To: Recipients <rullgoreraza@gmail.com>
 From: "Mr.RG" <rullgoreraza@gmail.com>
-Date: Tue, 12 Dec 2023 06:54:35 +0200
-Message-Id: <20231212084322.8054661020@smtp3.osuosl.org>
+Date: Tue, 12 Dec 2023 06:54:40 +0200
+Message-Id: <20231212083532.23FF94163E@smtp4.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
