@@ -1,74 +1,61 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 14F5C818C02
-	for <lists+driverdev-devel@lfdr.de>; Tue, 19 Dec 2023 17:16:15 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA80D8199AF
+	for <lists+driverdev-devel@lfdr.de>; Wed, 20 Dec 2023 08:39:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4A7424055D;
-	Tue, 19 Dec 2023 16:16:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4A7424055D
+	by smtp2.osuosl.org (Postfix) with ESMTP id 96BDF411A9;
+	Wed, 20 Dec 2023 07:39:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 96BDF411A9
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id twrwEYpYZ-Cr; Tue, 19 Dec 2023 16:16:12 +0000 (UTC)
+	with ESMTP id O1GQHZyruZK8; Wed, 20 Dec 2023 07:39:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BF60C40A62;
-	Tue, 19 Dec 2023 16:16:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BF60C40A62
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4579343617;
+	Wed, 20 Dec 2023 07:39:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4579343617
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 548701BF360
- for <devel@linuxdriverproject.org>; Tue, 19 Dec 2023 16:16:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7E14C1BF59A
+ for <devel@linuxdriverproject.org>; Wed, 20 Dec 2023 07:39:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2B46641BDE
- for <devel@linuxdriverproject.org>; Tue, 19 Dec 2023 16:16:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2B46641BDE
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5643041EBE
+ for <devel@linuxdriverproject.org>; Wed, 20 Dec 2023 07:39:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5643041EBE
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Nm3Ltg9ciiGo for <devel@linuxdriverproject.org>;
- Tue, 19 Dec 2023 16:16:07 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1644041BD4
- for <devel@driverdev.osuosl.org>; Tue, 19 Dec 2023 16:16:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1644041BD4
-X-IronPort-AV: E=McAfee;i="6600,9927,10929"; a="394563506"
-X-IronPort-AV: E=Sophos;i="6.04,288,1695711600"; d="scan'208";a="394563506"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Dec 2023 08:16:06 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10929"; a="919665139"
-X-IronPort-AV: E=Sophos;i="6.04,288,1695711600"; d="scan'208";a="919665139"
-Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
- by fmsmga001.fm.intel.com with ESMTP; 19 Dec 2023 08:16:05 -0800
-Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rFclG-0005dj-1z;
- Tue, 19 Dec 2023 16:16:02 +0000
-Date: Wed, 20 Dec 2023 00:15:14 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- 7f2c9c0bb8d575ed289943ad782776649343ee7e
-Message-ID: <202312200010.hLSEzGYQ-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1703002567; x=1734538567;
- h=date:from:to:cc:subject:message-id;
- bh=Ct/lIkTJ3pea5T8MFeeRGQ/x7mjnspbDmA3CRaWtpUA=;
- b=TN3y3UmLiFAkrCZvdx8NhX+hWn9h5Pu7a4kr402J06BQaIoxPsHE/KQJ
- NcdZtrOiCnQICit2OtJeMggIhKE23lBgCWU02qBOE5YC8a7BVvXBZ+GRU
- GPe7zxJOkms7/fb5vLFFld3u/i/ssm9mOiOqxanh41F639K+hIDusiA8F
- 23jdB+0HaR0x8lzU0VxnJvLC9PvNt0KmEqtGFgBizRY94VbRvgowDRjnv
- s8eJrDtVR7THqJkFqn/23Je2VT4rdZy0KaXwJtay8y99pNXPYgXv+J1B2
- b9prvekpgYvz4/D1q7zIyUnoNxiVgQx565JVAFHq/DIewsM88RE6ZCKD8
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=TN3y3UmL
+ with ESMTP id gyZx_gKiznZ0 for <devel@linuxdriverproject.org>;
+ Wed, 20 Dec 2023 07:39:10 +0000 (UTC)
+X-Greylist: delayed 2241 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 20 Dec 2023 07:39:10 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AB35D41E4A
+Received: from oxo.com.pe (mail.oxo.com.pe [190.116.91.52])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id AB35D41E4A
+ for <devel@driverdev.osuosl.org>; Wed, 20 Dec 2023 07:39:10 +0000 (UTC)
+Received: from oxo.com.pe (localhost [127.0.0.1])
+ by oxo.com.pe (Postfix) with ESMTPS id E36952567A1D;
+ Wed, 20 Dec 2023 01:32:03 -0500 (-05)
+Received: from localhost (localhost [127.0.0.1])
+ by oxo.com.pe (Postfix) with ESMTP id 9782D2574170;
+ Wed, 20 Dec 2023 01:17:50 -0500 (-05)
+X-Virus-Scanned: amavisd-new at oxo.com.pe
+Received: from oxo.com.pe ([127.0.0.1])
+ by localhost (oxo.com.pe [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id FEqmoCbaL3T2; Wed, 20 Dec 2023 01:17:48 -0500 (-05)
+Received: from DESKTOP-JTAQ1T4.lan (unknown [105.113.19.93])
+ by oxo.com.pe (Postfix) with ESMTPSA id 3CADF2565696;
+ Wed, 20 Dec 2023 01:04:59 -0500 (-05)
+MIME-Version: 1.0
+Content-Description: Mail message body
+Subject: =?utf-8?q?Herzlichen_Gl=C3=BCckwunsch!?=
+To: Recipients <jtrejo@oxo.com.pe>
+From: "Euro Millions" <jtrejo@oxo.com.pe>
+Date: Wed, 20 Dec 2023 07:04:46 +0100
+Message-Id: <20231220060501.3CADF2565696@oxo.com.pe>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,174 +68,18 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: bjic@mail2one.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: 7f2c9c0bb8d575ed289943ad782776649343ee7e  Staging: rtl8192e: Rename variable pBaStartSeqCtrl
-
-Warning ids grouped by kconfigs:
-
-gcc_recent_errors
-|-- loongarch-allmodconfig
-|   |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
-|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
-|-- m68k-allmodconfig
-|   |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
-|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
-|-- m68k-defconfig
-|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
-|-- nios2-allmodconfig
-|   |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
-|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
-|-- s390-allmodconfig
-|   |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
-|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
-|-- s390-defconfig
-|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
-|-- x86_64-randconfig-001-20231219
-|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
-`-- x86_64-randconfig-006-20231219
-    `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
-clang_recent_errors
-|-- i386-randconfig-062-20231219
-|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
-`-- x86_64-buildonly-randconfig-001-20231219
-    `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
-
-elapsed time: 1472m
-
-configs tested: 115
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                             allnoconfig   gcc  
-alpha                               defconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                                 defconfig   gcc  
-arc                     nsimosci_hs_defconfig   gcc  
-arm                               allnoconfig   gcc  
-arm                                 defconfig   clang
-arm                            mmp2_defconfig   clang
-arm                        shmobile_defconfig   gcc  
-arm                           tegra_defconfig   gcc  
-arm64                             allnoconfig   gcc  
-arm64                               defconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                                defconfig   gcc  
-hexagon                           allnoconfig   clang
-hexagon                             defconfig   clang
-i386                             allmodconfig   clang
-i386                              allnoconfig   clang
-i386                             allyesconfig   clang
-i386         buildonly-randconfig-001-20231219   clang
-i386         buildonly-randconfig-002-20231219   clang
-i386         buildonly-randconfig-003-20231219   clang
-i386         buildonly-randconfig-004-20231219   clang
-i386         buildonly-randconfig-005-20231219   clang
-i386         buildonly-randconfig-006-20231219   clang
-i386                                defconfig   gcc  
-i386                  randconfig-001-20231219   clang
-i386                  randconfig-002-20231219   clang
-i386                  randconfig-003-20231219   clang
-i386                  randconfig-004-20231219   clang
-i386                  randconfig-005-20231219   clang
-i386                  randconfig-006-20231219   clang
-i386                  randconfig-011-20231219   gcc  
-i386                  randconfig-012-20231219   gcc  
-i386                  randconfig-013-20231219   gcc  
-i386                  randconfig-014-20231219   gcc  
-i386                  randconfig-015-20231219   gcc  
-i386                  randconfig-016-20231219   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-m68k                             allmodconfig   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                        m5307c3_defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-mips                              allnoconfig   clang
-mips                             allyesconfig   gcc  
-mips                  cavium_octeon_defconfig   clang
-mips                     cu1830-neo_defconfig   clang
-mips                 decstation_r4k_defconfig   gcc  
-mips                           ip27_defconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                            defconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                      acadia_defconfig   clang
-powerpc                    adder875_defconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                        fsp2_defconfig   clang
-powerpc                      ppc40x_defconfig   gcc  
-riscv                             allnoconfig   clang
-riscv                               defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                              allnoconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                                  defconfig   gcc  
-sh                            titan_defconfig   gcc  
-sparc                            allmodconfig   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   clang
-um                                  defconfig   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                            allnoconfig   gcc  
-x86_64                           allyesconfig   clang
-x86_64       buildonly-randconfig-001-20231219   clang
-x86_64       buildonly-randconfig-002-20231219   clang
-x86_64       buildonly-randconfig-003-20231219   clang
-x86_64       buildonly-randconfig-004-20231219   clang
-x86_64       buildonly-randconfig-005-20231219   clang
-x86_64       buildonly-randconfig-006-20231219   clang
-x86_64                              defconfig   gcc  
-x86_64                randconfig-001-20231219   gcc  
-x86_64                randconfig-002-20231219   gcc  
-x86_64                randconfig-003-20231219   gcc  
-x86_64                randconfig-004-20231219   gcc  
-x86_64                randconfig-005-20231219   gcc  
-x86_64                randconfig-006-20231219   gcc  
-x86_64                randconfig-011-20231219   clang
-x86_64                randconfig-012-20231219   clang
-x86_64                randconfig-013-20231219   clang
-x86_64                randconfig-014-20231219   clang
-x86_64                randconfig-015-20231219   clang
-x86_64                          rhel-8.3-rust   clang
-xtensa                            allnoconfig   gcc  
-xtensa                generic_kc705_defconfig   gcc  
-xtensa                          iss_defconfig   gcc  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGVyemxpY2hlbiBHbMO8Y2t3dW5zY2gsIFNpZSBoYWJlbiBiZWkgZGVuIG1vbmF0bGljaGVuIEV1
+cm8gTWlsbGlvbnMgLyBHb29nbGUgUHJvbW8tV2V0dGJld2VyYmVuIGFtIDE5LkRlemVtYmVyIDIw
+MjMg4oKsNjUwLjAwMCwwMCBnZXdvbm5lbi4KIApXZW5kZW4gU2llIHNpY2ggbWl0IGRlbiBmb2xn
+ZW5kZW4gSW5mb3JtYXRpb25lbiBhbiB1bnNlcmVuIFNjaGFkZW5yZWd1bGllcmVyLgogClZvbGxz
+dMOkbmRpZ2VyIE5hbWUKSGVpbWF0YWRyZXNzZQpHZXNjaGxlY2h0CkFsdGVyCkJlc2V0enVuZwpU
+ZWxlZm9uCiAKTXIuIEpvaG4gV29vZApPbmxpbmUtS29vcmRpbmF0b3IKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVs
+QGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2pl
+Y3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
