@@ -1,56 +1,66 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C93E681E195
-	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Dec 2023 17:33:24 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6341381E798
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Dec 2023 14:24:17 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 89C4140180;
-	Mon, 25 Dec 2023 16:33:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 89C4140180
+	by smtp4.osuosl.org (Postfix) with ESMTP id 405824046D;
+	Tue, 26 Dec 2023 13:24:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 405824046D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FQIsiyv_hMqS; Mon, 25 Dec 2023 16:33:19 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XOtb3JA80k5f; Tue, 26 Dec 2023 13:24:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3813040138;
-	Mon, 25 Dec 2023 16:33:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3813040138
+	by smtp4.osuosl.org (Postfix) with ESMTP id 304A240457;
+	Tue, 26 Dec 2023 13:24:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 304A240457
 X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2D4671BF34A
+ by ash.osuosl.org (Postfix) with ESMTP id 3955C1BF34D
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 25 Dec 2023 16:33:16 +0000 (UTC)
+ Tue, 26 Dec 2023 13:24:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0CC3B4035A
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1D8424046D
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 25 Dec 2023 16:33:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0CC3B4035A
+ Tue, 26 Dec 2023 13:24:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1D8424046D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cBsfPbPuo2Yx
+ with ESMTP id PXKyxW6I4IXN
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 25 Dec 2023 16:33:14 +0000 (UTC)
-Received: from gbook.cl (54.16.198.104.bc.googleusercontent.com
- [104.198.16.54])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7368440358
+ Tue, 26 Dec 2023 13:24:10 +0000 (UTC)
+Received: from email.toppine.net (email.toppine.net [203.160.94.171])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 60FD740457
  for <driverdev-devel@linuxdriverproject.org>;
- Mon, 25 Dec 2023 16:33:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7368440358
-Received: from User (84.127.94.252.dyn.user.ono.com [84.127.94.252])
- by gbook.cl (Postfix) with ESMTPA id 7BE9612FF4C;
- Mon, 25 Dec 2023 09:42:40 -0300 (-03)
-From: "JA"<alberjustin@aol.com>
-Subject: IT IS OUR DUTY TO FINANCE YOUR PROJECTS/BUSINESS
-Date: Mon, 25 Dec 2023 13:42:47 +0100
+ Tue, 26 Dec 2023 13:24:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 60FD740457
+Received: from localhost (localhost [127.0.0.1])
+ by email.toppine.net (Postfix) with ESMTP id 31B4550C2715;
+ Mon, 25 Dec 2023 08:32:09 +0800 (HKT)
+Received: from email.toppine.net ([127.0.0.1])
+ by localhost (email.toppine.net [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id 6LlxQR_lPmmx; Mon, 25 Dec 2023 08:32:08 +0800 (HKT)
+Received: from localhost (localhost [127.0.0.1])
+ by email.toppine.net (Postfix) with ESMTP id A5E8F5484EC8;
+ Fri, 22 Dec 2023 15:57:06 +0800 (HKT)
+X-Virus-Scanned: amavisd-new at toppine.net
+Received: from email.toppine.net ([127.0.0.1])
+ by localhost (email.toppine.net [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id xC51ujBNbtuJ; Fri, 22 Dec 2023 15:57:04 +0800 (HKT)
+Received: from [91.92.250.174] (unknown [192.168.94.1])
+ by email.toppine.net (Postfix) with ESMTP id 180B051A4596;
+ Thu, 21 Dec 2023 21:56:25 +0800 (HKT)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20231225163316.0CC3B4035A@smtp4.osuosl.org>
+Content-Description: Mail message body
+Subject: RE: GOOD DAY
+To: Recipients <test@mail.terazawa.net>
+From: "Mr. X" <test@mail.terazawa.net>
+Date: Thu, 21 Dec 2023 05:56:15 -0800
+Message-Id: <20231221135627.180B051A4596@email.toppine.net>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,25 +73,22 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: albertjustin888@aol.com
+Reply-To: abdulmkkh1971@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Attention.
 
-I represent a group of company based in the Gulf Region with access to over $500 Million. We are seeking means of expanding and relocating our business interest abroad in the following sectors: Oil/Gas, Construction, Real Estate, Stock Speculation and Mining, Transportation, Health Sector and Tobacco, Communication Services, Aviation industry, Agriculture Forestry & Fishing, thus any sector.
-
-If you have a solid background and idea of making good profit in any of the mentioned business sectors or any other VIABLE business in your country. Please write me for possible business co-operation. More so, we are ready to facilitate and fund any business that is capable of generating 2% annual return on investment (AROI)
-
-I am available to discuss this proposal with you and to answer any questions you may have in regard to this investment. As soon as you give your positive response to this proposal, I will not hesitate in sending you the details information of this great investment partnership opportunity. Kindly contact us through this address( albertjustin888@aol.com)
-
-look forward to discussing this opportunity further with you.
+Dear sir
+My name is Mohamed Abdul I have the capacity to inject a considerable
+amount of capital in any viable project 
+1,cell phone number what-sap
+2,full name
 
 
-Sincerely,
-Justin Albert
+yours truly
+Mohamed Abdul Ahmed
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
