@@ -2,72 +2,74 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4AC181DE00
-	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Dec 2023 04:31:37 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED96A81DE03
+	for <lists+driverdev-devel@lfdr.de>; Mon, 25 Dec 2023 04:36:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 887BF607A4;
-	Mon, 25 Dec 2023 03:31:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 887BF607A4
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5B503607E1;
+	Mon, 25 Dec 2023 03:36:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5B503607E1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id egCMxItTrISU; Mon, 25 Dec 2023 03:31:34 +0000 (UTC)
+	with ESMTP id AskPE-h3ORLc; Mon, 25 Dec 2023 03:36:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4339460672;
-	Mon, 25 Dec 2023 03:31:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4339460672
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0A08160BF1;
+	Mon, 25 Dec 2023 03:36:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0A08160BF1
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 61F3D1BF86B
- for <devel@linuxdriverproject.org>; Mon, 25 Dec 2023 03:31:31 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F3BA11BF86B
+ for <devel@linuxdriverproject.org>; Mon, 25 Dec 2023 03:36:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3AFDB607A4
- for <devel@linuxdriverproject.org>; Mon, 25 Dec 2023 03:31:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3AFDB607A4
+ by smtp1.osuosl.org (Postfix) with ESMTP id D58AE81975
+ for <devel@linuxdriverproject.org>; Mon, 25 Dec 2023 03:36:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D58AE81975
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kTANmZCvchSX for <devel@linuxdriverproject.org>;
- Mon, 25 Dec 2023 03:31:30 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 33A4560672
- for <devel@driverdev.osuosl.org>; Mon, 25 Dec 2023 03:31:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 33A4560672
-X-IronPort-AV: E=McAfee;i="6600,9927,10934"; a="400087167"
-X-IronPort-AV: E=Sophos;i="6.04,302,1695711600"; d="scan'208";a="400087167"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Dec 2023 19:31:28 -0800
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VpSIm_MsrKKe for <devel@linuxdriverproject.org>;
+ Mon, 25 Dec 2023 03:36:32 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E425481973
+ for <devel@driverdev.osuosl.org>; Mon, 25 Dec 2023 03:36:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E425481973
+X-IronPort-AV: E=McAfee;i="6600,9927,10934"; a="9781492"
+X-IronPort-AV: E=Sophos;i="6.04,302,1695711600"; 
+   d="scan'208";a="9781492"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Dec 2023 19:36:31 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.04,302,1695711600"; d="scan'208";a="19352829"
+X-IronPort-AV: E=McAfee;i="6600,9927,10934"; a="868281990"
+X-IronPort-AV: E=Sophos;i="6.04,302,1695711600"; d="scan'208";a="868281990"
 Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
- by orviesa002.jf.intel.com with ESMTP; 24 Dec 2023 19:31:28 -0800
+ by FMSMGA003.fm.intel.com with ESMTP; 24 Dec 2023 19:36:30 -0800
 Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rHbgL-000Csv-1K;
- Mon, 25 Dec 2023 03:31:24 +0000
-Date: Mon, 25 Dec 2023 11:30:00 +0800
+ (envelope-from <lkp@intel.com>) id 1rHbl8-000CtA-2r;
+ Mon, 25 Dec 2023 03:36:07 +0000
+Date: Mon, 25 Dec 2023 11:32:56 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- ae4d90f7ca49eb71f8a3dca64d06d4c4e2193705
-Message-ID: <202312251157.d0NBXJFR-lkp@intel.com>
+Subject: [staging:staging-testing] BUILD SUCCESS
+ 9ebffbe2ad12b030b282796fed5117a182588c51
+Message-ID: <202312251152.iXU9BAi1-lkp@intel.com>
 User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1703475090; x=1735011090;
+ t=1703475392; x=1735011392;
  h=date:from:to:cc:subject:message-id;
- bh=MOoSbqMEtXK3d8O73QSuZShR2ec8+RmflZvGx7x/5/I=;
- b=Mw+0x2TWHTbEoVNs9+RnxfiE4Ul678lnIBU3CjA9HUIL76HD2RexXrqc
- 3GIr9Sm2ueFSDvgnrZ7K5yD+k+LmC4aPWW+alttnWRfjTKjo4lA2ugUaW
- UpdqOGuxNGrMhDvl/mm3ONnxYgORDzs9jA/zjut5znt4fZU6fB+5jvE81
- 052cxgkou/3wyGDzmMSCxSU8Ol52IxjEZb95TnzSMDp8cfqLO7kfBXOe6
- LoN2V/xhRHRSV/KHnC+spW1z9dDEDa6EV8X3NJ8m5r63lvTbSUk4EAi8Z
- n2TLjts6VNot0c2+sIeIJjmj8VUlzQWSANrznTiL7ujyghN6yY7Wx53Kg
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=c5h2nZTHPCyPB1LnPLX2AvTedvl8WJAHcv/melxx2FM=;
+ b=M8o43G7beE0gxg+LZbaD/4+1+LV0+3cGc/XNxEGueQqgsICSNUMkAxNd
+ zYHTVlnwtQrrmoeID8R0MW+FlmmZWOwzqt850W/GxutIvp80bVgizJ8TX
+ ug81Hc79XCCJP7EQit20XsWBdOU/qp8jAYFCoyHDF7xtS8Zs4MZQVrBd2
+ RiCg7dQuOhOxGdI90KtJ3gL3op0bUYQ+UycDoHSH3zqmghjk+h7eGRdd3
+ PlzWoQDTl4/+LI7G4winKv3YcSQhxohjt9K6WR7WcMnxnVI/HEzekW1qu
+ +f7g3ypsacWqoN3VvsfFrvwJ/rF0+eFgs54en/xZ78N1s0TbydAnlJQ7E
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Mw+0x2TW
+ header.a=rsa-sha256 header.s=Intel header.b=M8o43G7b
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,35 +89,62 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
-branch HEAD: ae4d90f7ca49eb71f8a3dca64d06d4c4e2193705  driver core: device.h: fix Excess kernel-doc description warning
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+branch HEAD: 9ebffbe2ad12b030b282796fed5117a182588c51  Staging: rtl8192e: Rename function rtllib_DisableNetMonitorMode()
 
-elapsed time: 2281m
+Warning ids grouped by kconfigs:
 
-configs tested: 99
-configs skipped: 1
+gcc_recent_errors
+|-- loongarch-allmodconfig
+|   |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
+|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
+|-- m68k-allmodconfig
+|   |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
+|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
+|-- nios2-randconfig-002-20231224
+|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
+|-- parisc-allmodconfig
+|   |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
+|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
+|-- powerpc64-randconfig-002-20231224
+|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
+`-- riscv-allmodconfig
+    |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
+    `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
+clang_recent_errors
+|-- i386-randconfig-141-20231225
+|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
+`-- powerpc-allmodconfig
+    |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-mptcp-mptcp_diag.o
+    `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-net-xdp-xsk_diag.o
+
+elapsed time: 2283m
+
+configs tested: 100
+configs skipped: 0
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
 
 tested configs:
 alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
 alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
 arc                               allnoconfig   gcc  
 arc                                 defconfig   gcc  
-arc                 nsimosci_hs_smp_defconfig   gcc  
 arc                   randconfig-001-20231224   gcc  
 arc                   randconfig-002-20231224   gcc  
 arm                               allnoconfig   gcc  
+arm                     davinci_all_defconfig   clang
 arm                                 defconfig   clang
-arm                        mvebu_v5_defconfig   clang
-arm                        neponset_defconfig   clang
+arm                          exynos_defconfig   gcc  
+arm                        mvebu_v7_defconfig   gcc  
+arm                          pxa3xx_defconfig   gcc  
 arm                   randconfig-001-20231224   gcc  
 arm                   randconfig-002-20231224   gcc  
 arm                   randconfig-003-20231224   gcc  
 arm                   randconfig-004-20231224   gcc  
-arm                             rpc_defconfig   gcc  
-arm                        shmobile_defconfig   gcc  
 arm64                             allnoconfig   gcc  
 arm64                               defconfig   gcc  
 arm64                 randconfig-001-20231224   gcc  
@@ -159,29 +188,29 @@ loongarch             randconfig-002-20231224   gcc
 m68k                             allmodconfig   gcc  
 m68k                              allnoconfig   gcc  
 m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                        m5407c3_defconfig   gcc  
 microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                      malta_kvm_defconfig   clang
-nios2                            allmodconfig   gcc  
-nios2                            allyesconfig   gcc  
+mips                          ath79_defconfig   clang
+mips                      maltasmvp_defconfig   gcc  
+mips                        maltaup_defconfig   clang
 nios2                 randconfig-001-20231224   gcc  
 nios2                 randconfig-002-20231224   gcc  
+openrisc                         allyesconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                           allyesconfig   gcc  
 parisc                randconfig-001-20231224   gcc  
 parisc                randconfig-002-20231224   gcc  
-powerpc                     asp8347_defconfig   gcc  
-powerpc                   currituck_defconfig   gcc  
-powerpc                     ep8248e_defconfig   gcc  
-powerpc                     ppa8548_defconfig   gcc  
+powerpc                          allmodconfig   clang
+powerpc                      cm5200_defconfig   gcc  
+powerpc                          g5_defconfig   clang
+powerpc                    klondike_defconfig   gcc  
+powerpc                      ppc40x_defconfig   gcc  
 powerpc               randconfig-001-20231224   gcc  
 powerpc               randconfig-002-20231224   gcc  
 powerpc               randconfig-003-20231224   gcc  
 powerpc64             randconfig-001-20231224   gcc  
 powerpc64             randconfig-002-20231224   gcc  
 powerpc64             randconfig-003-20231224   gcc  
+riscv                            allmodconfig   gcc  
 riscv                 randconfig-001-20231224   gcc  
 riscv                 randconfig-002-20231224   gcc  
 s390                  randconfig-001-20231224   clang
