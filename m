@@ -1,56 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0F1881F19F
-	for <lists+driverdev-devel@lfdr.de>; Wed, 27 Dec 2023 20:38:06 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5EB3581F64E
+	for <lists+driverdev-devel@lfdr.de>; Thu, 28 Dec 2023 10:33:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A7856823AA;
-	Wed, 27 Dec 2023 19:38:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A7856823AA
+	by smtp3.osuosl.org (Postfix) with ESMTP id 73AC960BBE;
+	Thu, 28 Dec 2023 09:33:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 73AC960BBE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ynfJdg052P-C; Wed, 27 Dec 2023 19:38:04 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jZAYDpFO3fwE; Thu, 28 Dec 2023 09:33:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9AF1C8238A;
-	Wed, 27 Dec 2023 19:38:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9AF1C8238A
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4E5BF610B4;
+	Thu, 28 Dec 2023 09:33:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4E5BF610B4
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CC95F1BF2E4
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 27 Dec 2023 19:38:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 466CC1BF990
+ for <devel@linuxdriverproject.org>; Thu, 28 Dec 2023 09:33:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A4C3C4027B
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 27 Dec 2023 19:38:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A4C3C4027B
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2CB20405A2
+ for <devel@linuxdriverproject.org>; Thu, 28 Dec 2023 09:33:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2CB20405A2
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mzMrfP99nvTo
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 27 Dec 2023 19:37:59 +0000 (UTC)
-Received: from gbook.cl (54.16.198.104.bc.googleusercontent.com
- [104.198.16.54])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8DF6C40277
- for <driverdev-devel@linuxdriverproject.org>;
- Wed, 27 Dec 2023 19:37:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8DF6C40277
-Received: from User (84.127.94.252.dyn.user.ono.com [84.127.94.252])
- by gbook.cl (Postfix) with ESMTPA id C8764129BFB;
- Wed, 27 Dec 2023 14:04:34 -0300 (-03)
-From: "WB"<willsonbrand@aol.com>
-Subject: I NEED YOUR IMMEDIATE ATTENTION.
-Date: Wed, 27 Dec 2023 18:04:41 +0100
+ with ESMTP id rydu3jG6TKIL for <devel@linuxdriverproject.org>;
+ Thu, 28 Dec 2023 09:33:00 +0000 (UTC)
+Received: from mail-ua1-x941.google.com (mail-ua1-x941.google.com
+ [IPv6:2607:f8b0:4864:20::941])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D98674015A
+ for <devel@linuxdriverproject.org>; Thu, 28 Dec 2023 09:32:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D98674015A
+Received: by mail-ua1-x941.google.com with SMTP id
+ a1e0cc1a2514c-7cbf6ce782dso1505758241.0
+ for <devel@linuxdriverproject.org>; Thu, 28 Dec 2023 01:32:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1703755978; x=1704360778;
+ h=to:subject:message-id:date:from:reply-to:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=6wpRmhPzZYewxgNPeLpQCxgoFM946UyixDuR+kE4Hhc=;
+ b=SEKUpMR/aPJd7KFLs9vyA8mdlYQnC/PUE8yfp6x9q7LLx1NFYPKRto+4rwDPMFuULv
+ en1LyBufmOOY8JSV8zsQl/mUn5jwC0212QCRLk0BsM65yBBYE1kq99Ubfmvfsclq6JGE
+ o6KVcRUB51nzOxxOTS6IGzwQduuLzTtEmigVeiRuIl8a2gXyuL6yQyg87jFlI/feJilD
+ /98FlPU/5UQFMEXMj4n0rYXYnekPZEJqLKsR3ztaNn3uHcv5KNwXcyebhFPheEGcuEZ0
+ t3dJJUGzVDCqm7JutTK2gsjuoTkwtXBKzBkgUbYMkDkwxSv1NwsIpJPewhds52tPc5tT
+ e8Ag==
+X-Gm-Message-State: AOJu0YxeUjNMnVp96/jjd1rRReX+2XdKok0MPPeq0/LDmImD1A4CcsbH
+ In7dn1eiU1iTyyTCj60ujyhhM1CM28IJbEpC4TE=
+X-Google-Smtp-Source: AGHT+IEAUIR4QERvM4GXWvgIWbvacHt3unQAmb/HjHvUP6RiBoIYKG3DGwbgNqKKXcDbxE7/ieo7I6B4EQFDb9wDE4Y=
+X-Received: by 2002:a05:6102:418a:b0:467:432:4edc with SMTP id
+ cd10-20020a056102418a00b0046704324edcmr2853665vsb.31.1703755978047; Thu, 28
+ Dec 2023 01:32:58 -0800 (PST)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-Id: <20231227193800.A4C3C4027B@smtp4.osuosl.org>
+Received: by 2002:a59:9ece:0:b0:43d:f766:c866 with HTTP; Thu, 28 Dec 2023
+ 01:32:57 -0800 (PST)
+From: CITIBANK <awarymrchristopher8@gmail.com>
+Date: Thu, 28 Dec 2023 10:32:57 +0100
+Message-ID: <CAAMtbagzFBHZEq=CA6Ze-xGyuSnsPE89B-XDi543_YG7az5m-A@mail.gmail.com>
+Subject: WELCOME TO CITIBANK OF AMERICA.
+To: undisclosed-recipients:;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1703755978; x=1704360778;
+ darn=linuxdriverproject.org; 
+ h=to:subject:message-id:date:from:reply-to:mime-version:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=6wpRmhPzZYewxgNPeLpQCxgoFM946UyixDuR+kE4Hhc=;
+ b=BXkemK1AxFIC7W/AMAAHB9WWI0igd2qFtAc4G3RfUqU+R4oOR0zLrUZdUoODfi/9Gm
+ WvzwDLy/hB0tyQ6gk3FBSC/9J3pCPsPRotBzGUi9WxtQ4AcIl3LC0+Gjd90w5zhQT9it
+ p4BDZyP8M4rdixY2TNVrBCmK1SNIubq2rVEmGvcfSv+Eo8mQYk9g7hpJ6qWepozrnGkT
+ oIiPRJO/00X2oc59wq8DH0Dtzq5wbsn5dwMsxIudSKhKQE2T/0w06zctjcrrTDntqMjn
+ YuOf700lzhog1ceG8OGAnRkBkzuNmI3CcPG1xle14JjOKfme1ls3p4CPCjBgTsPQH2Ob
+ G6YA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=BXkemK1A
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,24 +90,34 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: brawillson94@gmail.com
+Reply-To: citibankofamerican8168@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Friend.
+WELCOME TO CITIBANK OF AMERICA.
 
-I am Mr. Willson Brand, a financial consultant, bringing to your notice a business proposal. 
-A well known minister in one of the African countries who is undergoing financial queries by
-the Authority over alleged mismanaged of contract funds worth over five billion dollars has contacted me to help him move a transit funds amounting to US$ 76 Million dollars.
+1 Pirat St NE, Washington, DC
+20543, United States of America
 
-He has advised that the funds be moved from its present position to a reliable hand and be used for any lucrative investment abroad . I am contacting you based on the information I already given  to him that I have a reliable hand to handle the investment funds, but the person I had in mind unknown to me passed away due to Covid-19 complication as I was reliably informed.
+TO YOUR ATTENTION!
 
-Therefore I am contacting you to know if you are able to handle this matter by receiving and investing the funds under a 60/40 sharing ratio of the capital and the investment annual returns. 
-If you are interested to handle the transaction, kindly contact me through this email address (brawillson94@gmail.com) for more detail
-Regards
-Mr. Willson Brand
+This is to inform you that a compensation payment in the amount of
+US$20,800,000.00 (Twenty Million Eight Hundred United State Dollars)
+was legally approved
+and deposited few days ago with our Bank, Citi Bank, and it was
+deposited in your name by the
+foreign debts settlement/compensation committee. and they instructed
+us to credit this fund direct to your
+private bank account with immediate effect,
+
+However, Please note that Citi Bank have decided and agreed together to
+send this payment to you by either
+(1). Bank Wire Transfer,
+(2). Cash delivery or by
+(3). ATM means.
+Depending the option you would prefer to receive this
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
