@@ -2,67 +2,67 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90E6682033D
-	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Dec 2023 02:39:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1493B82033E
+	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Dec 2023 02:43:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 479494047D;
-	Sat, 30 Dec 2023 01:39:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 479494047D
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9FF794047D;
+	Sat, 30 Dec 2023 01:43:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9FF794047D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3u-ibqlp8K9P; Sat, 30 Dec 2023 01:39:54 +0000 (UTC)
+	with ESMTP id MyEerW-Uc0IU; Sat, 30 Dec 2023 01:43:45 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D4E85401A4;
-	Sat, 30 Dec 2023 01:39:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D4E85401A4
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6726B400BA;
+	Sat, 30 Dec 2023 01:43:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6726B400BA
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id F3E6E1BF20D
- for <devel@linuxdriverproject.org>; Sat, 30 Dec 2023 01:39:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 138C91BF20D
+ for <devel@linuxdriverproject.org>; Sat, 30 Dec 2023 01:43:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C4BF44047D
- for <devel@linuxdriverproject.org>; Sat, 30 Dec 2023 01:39:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C4BF44047D
+ by smtp2.osuosl.org (Postfix) with ESMTP id D9E8E4047D
+ for <devel@linuxdriverproject.org>; Sat, 30 Dec 2023 01:43:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D9E8E4047D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nQWvbB3SCPXV for <devel@linuxdriverproject.org>;
- Sat, 30 Dec 2023 01:39:50 +0000 (UTC)
-X-Greylist: delayed 1804 seconds by postgrey-1.37 at util1.osuosl.org;
- Sat, 30 Dec 2023 01:39:49 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D7CFF401A4
+ with ESMTP id q6iR1yqjNpFf for <devel@linuxdriverproject.org>;
+ Sat, 30 Dec 2023 01:43:42 +0000 (UTC)
+X-Greylist: delayed 1802 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sat, 30 Dec 2023 01:43:41 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EDABF400BA
 Received: from spang.lifesahouse.com (spang.lifesahouse.com [88.209.206.18])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D7CFF401A4
- for <devel@linuxdriverproject.org>; Sat, 30 Dec 2023 01:39:49 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EDABF400BA
+ for <devel@driverdev.osuosl.org>; Sat, 30 Dec 2023 01:43:41 +0000 (UTC)
 From: Webster Family Charity <ayla@lifesahouse.com>
-To: devel@linuxdriverproject.org
+To: devel@driverdev.osuosl.org
 Subject: A GIFT FROM BECKY BELL.
-Date: 29 Dec 2023 17:09:43 -0800
-Message-ID: <20231229170943.25FD05303A56A146@lifesahouse.com>
+Date: 29 Dec 2023 17:13:37 -0800
+Message-ID: <20231229171337.FC08099A118CCCF9@lifesahouse.com>
 MIME-Version: 1.0
 X-Mailman-Original-DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=dkim;
  d=lifesahouse.com; 
- b=bE1sbPEUDh99vNdxEdr+19EqmtlPUN//gX41TjiO3htZlrqMasugn7ZNVHLu4eX6xLijDSmvLuy3
- jy3HHIbM8MCof3R/Udh/OITle0DsJ5pJwSQFVR7HZ4Nfhls6QB9o6k4DXhAUOa6VGxYgHC9F0s+7
- /L3Nygz0aJuYrc7lJyYd32/FeItODJLcqBKsYSw/kw3XhbG6ItqERr67545l5CsNdWmLCs1uTy7U
- ZcpJaFaSb4k/tozzQeyCJ3DCOiT36yG/3EsjSWHP+jxCkh/9LsGYOFdy6ZP5McItiz+w22fen5mh
- 6q+q1oSZt0azTi12saWaYSHVHlpnZGNV9jWfDw==;
+ b=GLqAuqsvhkga46EdE82ansIszoByuo8ey3JfqIWt4HbXjcbGbO0uym6wIByyoG0Tl/CgSwX11TYe
+ oBsGG/to4OALUWwNP0fJhCuMXcSWT0/TLSKFfKvz00w6iRgWoSa5Wnm6toQrI7LQa5FJj8agt45k
+ zyhKz1TPFxTRgnSCcGeSnHKuDZ6cuRx88DnCHUzqlYp5sCoQ+erdJtTuonkt3HYiNemoflGvr94E
+ 7F8S5hXA9q7W9IpQeDQIDGY2GE99kmqMj1XF8kn7pwhkRUP/h++BR6TAjSqlmsKxHGgjZ/JjRiiA
+ 83LDzHJPblFSQxtbDS5/V6kqzgAWBTraLnZCVA==;
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=dkim;
  d=lifesahouse.com; 
  h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
  i=ayla@lifesahouse.com; 
  bh=YtQDbBT/rM811tEkXmJMjC2/UbY=;
- b=NPuX8/YlJiDqZ97GnfhsO+XT5o5J4kC/pM6ryuYO/VOBB8Qk6BMSvQlmZbiP0wN/rtkb5PDMFRfa
- B47ICZnVyaSwKrNowYLFA1oFzeRJSKv6I5De7Qpz8KUamO8aNFA+fFtebg+/x5z1TMIVwpTDMGBj
- RL9k+qonF9t78MTXyKO6fmHRiLakdxsRxvR91P0VQWsFnYxVCRD7bz2+y5cbLrMvm+ynKTEiHeXT
- bnCMDncH7ouCnm2s3hswSkH92LMoaRAQiZdIohWy/09pTNI5cphwW4pqEh94xR22yFaX8y9djg0g
- 5weJE7E+S5scX8PbRVI1Ff75P6PxXZKNyZH60g==
+ b=J+Yifa0mhTdj0psuda/lAigloTdJzAjoNsHwxQKv5euwC47Z/iUp06s8MQ72UqwJM6NgwL+4wXVT
+ TmJnUmOljHlxaSlvZILMy1PyjbfH2507DV65d3g0sMeQWKrz9jcOUvya8MkJwV568JhXD8C54MSW
+ J/bfgZ3ttyiDdr10saCMR23bMqB6FRa3rizgK5kHPkEdz/Y01sZmkzBaXPkZgSn5RkzZEJ2GX6zO
+ U0JcyK/9Dt/n4WhWbNQG/oNJsKqQ7MX3bLEcnvQ8z2qvrBdlU0FhTxkeKE07eHFTvnAaJ9YKy5u3
+ oQeTxiOz4sQGgFU/M1p0+STjErDr/r45zJwHRA==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=lifesahouse.com
  header.i=ayla@lifesahouse.com header.a=rsa-sha1 header.s=dkim
- header.b=NPuX8/Yl
+ header.b=J+Yifa0m
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
