@@ -1,51 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69B1C820B5E
-	for <lists+driverdev-devel@lfdr.de>; Sun, 31 Dec 2023 13:15:30 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9FAB8821567
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Jan 2024 22:18:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E3C9040903;
-	Sun, 31 Dec 2023 12:15:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E3C9040903
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7A61B4359A;
+	Mon,  1 Jan 2024 21:18:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7A61B4359A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p8I0Qsdt1wjX; Sun, 31 Dec 2023 12:15:27 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Wf2HedPXzoTL; Mon,  1 Jan 2024 21:18:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D282A40901;
-	Sun, 31 Dec 2023 12:15:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D282A40901
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0415B43684;
+	Mon,  1 Jan 2024 21:18:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0415B43684
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 073BF1BF484
- for <devel@linuxdriverproject.org>; Sun, 31 Dec 2023 12:15:24 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 119B81BF3D5
+ for <devel@linuxdriverproject.org>; Mon,  1 Jan 2024 21:18:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D425260767
- for <devel@linuxdriverproject.org>; Sun, 31 Dec 2023 12:15:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D425260767
+ by smtp1.osuosl.org (Postfix) with ESMTP id A22FE8224B
+ for <devel@linuxdriverproject.org>; Mon,  1 Jan 2024 21:07:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A22FE8224B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jtF5YnE794EA for <devel@linuxdriverproject.org>;
- Sun, 31 Dec 2023 12:15:19 +0000 (UTC)
-X-Greylist: delayed 88283 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 31 Dec 2023 12:15:19 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 75493606FF
-Received: from d-stroke.com (os3-324-51826.vs.sakura.ne.jp [49.212.153.80])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 75493606FF
- for <devel@driverdev.osuosl.org>; Sun, 31 Dec 2023 12:15:18 +0000 (UTC)
-Received: from [103.78.0.54] (unknown [103.78.0.54])
- by d-stroke.com (Postfix) with ESMTPA id 4BA0C34365C
- for <devel@driverdev.osuosl.org>; Sat, 30 Dec 2023 17:33:12 +0900 (JST)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xaMziww_TQuL for <devel@linuxdriverproject.org>;
+ Mon,  1 Jan 2024 21:07:28 +0000 (UTC)
+Received: from cwp.hustme.com (server.hustme.com [23.184.48.231])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8A80482252
+ for <devel@driverdev.osuosl.org>; Mon,  1 Jan 2024 21:04:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8A80482252
+Received: from [192.168.8.119] (unknown [102.129.235.58])
+ (using TLSv1 with cipher DHE-RSA-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by cwp.hustme.com (Postfix) with ESMTPSA id 109F02FCE33;
+ Sun, 31 Dec 2023 10:41:18 -0500 (EST)
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: GREETINGS!
-To: devel@driverdev.osuosl.org
-From: "PRIVATE BUSINESS" <nagamany856@uitm.edu.my>
-Date: Sat, 30 Dec 2023 15:33:10 +0700
-Message-Id: <20231231121523.D425260767@smtp3.osuosl.org>
+Subject: donated to you by Mikhail Fridman
+To: Recipients <sales@hustme.com>
+From: sales@hustme.com
+Date: Sun, 31 Dec 2023 07:41:08 -0800
+Message-Id: <20240101210728.A22FE8224B@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,14 +58,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: LaiYuenJhsbltd@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: fridmanmikhail5@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-I have a Business Proposal for you, get back to me for more details
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RGllIFN1bW1lIHZvbiAyLjUwMC4wMDAsMDAg4oKsIHd1cmRlIElobmVuIHZvbiBNaWtoYWlsIEZy
+aWRtYW4gZ2VzcGVuZGV0LiBGw7xyIHdlaXRlcmUgSW5mb3JtYXRpb25lbiBrb250YWt0aWVyZW4g
+U2llIGJpdHRlCgpHb3R0IHNjaMO8dHplIGRpY2guClZpZWwgR2zDvGNrLCBNaWtoYWlsIEZyaWRt
+YW4KS29udGFrdC1FLU1haWw6IGZyaWRtYW5taWtoYWlsNUBnbWFpbC5jb20KX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRl
+dmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnBy
+b2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
