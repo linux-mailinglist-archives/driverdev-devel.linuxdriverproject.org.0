@@ -1,75 +1,74 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32F96825F11
-	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Jan 2024 10:58:11 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B1CD0825FAF
+	for <lists+driverdev-devel@lfdr.de>; Sat,  6 Jan 2024 14:36:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 56E5784394;
-	Sat,  6 Jan 2024 09:58:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 56E5784394
+	by smtp4.osuosl.org (Postfix) with ESMTP id 17ADE41D6D;
+	Sat,  6 Jan 2024 13:36:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 17ADE41D6D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XGzENYFTA6lD; Sat,  6 Jan 2024 09:58:08 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tOePxSEqrPYq; Sat,  6 Jan 2024 13:36:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 128AA83A4C;
-	Sat,  6 Jan 2024 09:58:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 128AA83A4C
+	by smtp4.osuosl.org (Postfix) with ESMTP id B868141C62;
+	Sat,  6 Jan 2024 13:35:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B868141C62
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 91BAD1BF360
- for <devel@linuxdriverproject.org>; Sat,  6 Jan 2024 09:57:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C65D11BF322
+ for <devel@linuxdriverproject.org>; Sat,  6 Jan 2024 13:35:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 699B084387
- for <devel@linuxdriverproject.org>; Sat,  6 Jan 2024 09:57:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 699B084387
+ by smtp1.osuosl.org (Postfix) with ESMTP id ACBBE83506
+ for <devel@linuxdriverproject.org>; Sat,  6 Jan 2024 13:35:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ACBBE83506
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OQeIrUY_ZKaV for <devel@linuxdriverproject.org>;
- Sat,  6 Jan 2024 09:57:41 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2064384384
- for <devel@driverdev.osuosl.org>; Sat,  6 Jan 2024 09:57:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2064384384
-X-IronPort-AV: E=McAfee;i="6600,9927,10944"; a="4406179"
-X-IronPort-AV: E=Sophos;i="6.04,336,1695711600"; 
-   d="scan'208";a="4406179"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jan 2024 01:53:22 -0800
+ with ESMTP id Q-BhjjysovfV for <devel@linuxdriverproject.org>;
+ Sat,  6 Jan 2024 13:35:55 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5AE17834E8
+ for <devel@driverdev.osuosl.org>; Sat,  6 Jan 2024 13:35:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5AE17834E8
+X-IronPort-AV: E=McAfee;i="6600,9927,10945"; a="396543525"
+X-IronPort-AV: E=Sophos;i="6.04,337,1695711600"; d="scan'208";a="396543525"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Jan 2024 05:35:54 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10944"; a="774050489"
-X-IronPort-AV: E=Sophos;i="6.04,336,1695711600"; d="scan'208";a="774050489"
+X-IronPort-AV: E=McAfee;i="6600,9927,10945"; a="1028003467"
+X-IronPort-AV: E=Sophos;i="6.04,337,1695711600"; d="scan'208";a="1028003467"
 Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
- by orsmga007.jf.intel.com with ESMTP; 06 Jan 2024 01:53:20 -0800
+ by fmsmga006.fm.intel.com with ESMTP; 06 Jan 2024 05:35:52 -0800
 Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rM3Mj-0002Ig-37;
- Sat, 06 Jan 2024 09:53:17 +0000
-Date: Sat, 06 Jan 2024 17:52:24 +0800
+ (envelope-from <lkp@intel.com>) id 1rM6q6-0002Wx-2u;
+ Sat, 06 Jan 2024 13:35:50 +0000
+Date: Sat, 06 Jan 2024 21:35:32 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- c312828c37a72fe2d033a961c47c227b0767e9f8
-Message-ID: <202401061722.gXycZpYF-lkp@intel.com>
+Subject: [driver-core:bus_cleanup] BUILD SUCCESS
+ c9d85bf0421b8d2ba7678878db687bdc50902592
+Message-ID: <202401062130.NhYquJiT-lkp@intel.com>
 User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1704535061; x=1736071061;
+ t=1704548155; x=1736084155;
  h=date:from:to:cc:subject:message-id;
- bh=/wknzZ+pnzzxJn3wnRtFi2wsmZ4+PTtPnPKs7HQEzmw=;
- b=CTZVAcuHqQMuwUupiNt31V2oRsV0DMurS9eKBi+y+3jY/9jh5qMVHI0t
- Lt8DRiBqadWiMGh2O1XEB+2CGzdrRj2XwXbFAe6kXpN+yV51e28oRWDw6
- gEo32WPAMniotZ8iU2hLF8iG9zaiZSldM3csCUk731EguFXSl2G29oJY+
- LTWXW0T01rTPnO+ShhJ5qZ3rnHr+0NhvfwNsWx1WefofJmAo4b4kh4q3H
- fopa7ByTWIoJ2qHLvGHxFQhKhVFqW2oKWc6dBaNzkrsySjQm2LZ+E0+2x
- t3nIOA7f257gNa2Zlf+h7qk8NR4Du+XZEbKqW60wx28ijMku/I/zjTYGJ
+ bh=ltrDwBGOBzCJDi/C24hoDe8nJQle18TC3uTLKBuxNzc=;
+ b=IL+p+YTQ0u+N0ZMpOt7RQmxxH+gFvE2GS+wdiNoOlNtEv1BVjlxMplv4
+ mwihZ/7LspW7MStd+Y4PYgqLT+3RkfESrKeGNYeWb/UpuGac9nRVH2j1M
+ bMXie70Ff/whEew7Cj6mBEkOUJuHvVwltuItLUxrJCLZudKYGAyirfIvo
+ jcuAunxWRmvmvwkC5mKbvx1UkZtIsLeu1OeGTeHJCHUfss/mAi7pz+OSL
+ Ugoq6P0CCEfmdw8voNQ/GfY0kzkbONxEqflDIroXXtewVsclYnOqA1C47
+ UrbCtx4vCvD/Ka+d+s9YOde1OR/d6N2GmH04BxZlvmgQTwZIw1et+wcgd
  w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=CTZVAcuH
+ header.a=rsa-sha256 header.s=Intel header.b=IL+p+YTQ
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,12 +88,12 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
-branch HEAD: c312828c37a72fe2d033a961c47c227b0767e9f8  kernfs: convert kernfs_idr_lock to an irq safe raw spinlock
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git bus_cleanup
+branch HEAD: c9d85bf0421b8d2ba7678878db687bdc50902592  PNP: make pnp_bus_type const
 
-elapsed time: 1445m
+elapsed time: 1456m
 
-configs tested: 198
+configs tested: 184
 configs skipped: 2
 
 The following configs have been built successfully.
@@ -102,7 +101,6 @@ More configs may be tested in the coming days.
 
 tested configs:
 alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
 alpha                               defconfig   gcc  
 arc                              allmodconfig   gcc  
 arc                               allnoconfig   gcc  
@@ -110,11 +108,8 @@ arc                              allyesconfig   gcc
 arc                                 defconfig   gcc  
 arc                   randconfig-001-20240106   gcc  
 arc                   randconfig-002-20240106   gcc  
-arm                              allmodconfig   gcc  
 arm                               allnoconfig   gcc  
-arm                              allyesconfig   gcc  
 arm                         at91_dt_defconfig   gcc  
-arm                                 defconfig   clang
 arm                          gemini_defconfig   gcc  
 arm                        keystone_defconfig   gcc  
 arm                        mvebu_v7_defconfig   gcc  
@@ -131,9 +126,7 @@ arm64                 randconfig-001-20240106   gcc
 arm64                 randconfig-002-20240106   gcc  
 arm64                 randconfig-003-20240106   gcc  
 arm64                 randconfig-004-20240106   gcc  
-csky                             allmodconfig   gcc  
 csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
 csky                                defconfig   gcc  
 csky                  randconfig-001-20240106   gcc  
 csky                  randconfig-002-20240106   gcc  
@@ -144,30 +137,24 @@ hexagon                             defconfig   clang
 i386                             allmodconfig   clang
 i386                              allnoconfig   clang
 i386                             allyesconfig   clang
-i386         buildonly-randconfig-001-20240105   clang
-i386         buildonly-randconfig-002-20240105   clang
-i386         buildonly-randconfig-003-20240105   clang
-i386         buildonly-randconfig-004-20240105   clang
-i386         buildonly-randconfig-005-20240105   clang
-i386         buildonly-randconfig-006-20240105   clang
+i386         buildonly-randconfig-001-20240106   gcc  
+i386         buildonly-randconfig-002-20240106   gcc  
+i386         buildonly-randconfig-003-20240106   gcc  
+i386         buildonly-randconfig-004-20240106   gcc  
+i386         buildonly-randconfig-005-20240106   gcc  
+i386         buildonly-randconfig-006-20240106   gcc  
 i386                                defconfig   gcc  
-i386                  randconfig-001-20240105   clang
-i386                  randconfig-002-20240105   clang
-i386                  randconfig-003-20240105   clang
-i386                  randconfig-004-20240105   clang
-i386                  randconfig-005-20240105   clang
-i386                  randconfig-006-20240105   clang
-i386                  randconfig-011-20240105   gcc  
+i386                  randconfig-001-20240106   gcc  
+i386                  randconfig-002-20240106   gcc  
+i386                  randconfig-003-20240106   gcc  
+i386                  randconfig-004-20240106   gcc  
+i386                  randconfig-005-20240106   gcc  
+i386                  randconfig-006-20240106   gcc  
 i386                  randconfig-011-20240106   clang
-i386                  randconfig-012-20240105   gcc  
 i386                  randconfig-012-20240106   clang
-i386                  randconfig-013-20240105   gcc  
 i386                  randconfig-013-20240106   clang
-i386                  randconfig-014-20240105   gcc  
 i386                  randconfig-014-20240106   clang
-i386                  randconfig-015-20240105   gcc  
 i386                  randconfig-015-20240106   clang
-i386                  randconfig-016-20240105   gcc  
 i386                  randconfig-016-20240106   clang
 loongarch                        allmodconfig   gcc  
 loongarch                         allnoconfig   gcc  
@@ -229,7 +216,6 @@ powerpc64             randconfig-001-20240106   gcc
 powerpc64             randconfig-002-20240106   gcc  
 powerpc64             randconfig-003-20240106   gcc  
 riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   clang
 riscv                            allyesconfig   gcc  
 riscv                               defconfig   gcc  
 riscv                 randconfig-001-20240106   gcc  
@@ -262,7 +248,6 @@ sparc64                             defconfig   gcc
 sparc64               randconfig-001-20240106   gcc  
 sparc64               randconfig-002-20240106   gcc  
 um                               allmodconfig   clang
-um                                allnoconfig   clang
 um                               allyesconfig   clang
 um                                  defconfig   gcc  
 um                             i386_defconfig   gcc  
