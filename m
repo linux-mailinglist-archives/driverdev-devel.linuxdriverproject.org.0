@@ -1,66 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7D23829AE9
-	for <lists+driverdev-devel@lfdr.de>; Wed, 10 Jan 2024 14:08:04 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0063A828995
+	for <lists+driverdev-devel@lfdr.de>; Tue,  9 Jan 2024 17:05:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 12C55614DA;
-	Wed, 10 Jan 2024 13:08:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 12C55614DA
+	by smtp4.osuosl.org (Postfix) with ESMTP id DAA9641BD5;
+	Tue,  9 Jan 2024 16:05:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DAA9641BD5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id opJQgDQkvpBp; Wed, 10 Jan 2024 13:08:01 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Y0r0nDKrzhwB; Tue,  9 Jan 2024 16:05:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E69CF614BB;
-	Wed, 10 Jan 2024 13:08:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E69CF614BB
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id BAFDF41BC3;
+	Tue,  9 Jan 2024 16:05:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BAFDF41BC3
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A10021BF359
- for <devel@linuxdriverproject.org>; Wed, 10 Jan 2024 13:07:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A6FA71BF408
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jan 2024 16:05:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7ADC883339
- for <devel@linuxdriverproject.org>; Wed, 10 Jan 2024 13:07:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7ADC883339
+ by smtp2.osuosl.org (Postfix) with ESMTP id 79B2A43589
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jan 2024 16:05:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 79B2A43589
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qt5xnWz8QquA for <devel@linuxdriverproject.org>;
- Wed, 10 Jan 2024 13:07:58 +0000 (UTC)
-X-Greylist: delayed 4111 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 10 Jan 2024 13:07:57 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D42A781EC5
-Received: from mail.makebiz.pl (mail.makebiz.pl [141.95.160.213])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D42A781EC5
- for <devel@driverdev.osuosl.org>; Wed, 10 Jan 2024 13:07:57 +0000 (UTC)
-Received: by mail.makebiz.pl (Postfix, from userid 1002)
- id 80D89A5A8C; Tue,  9 Jan 2024 09:15:38 +0000 (UTC)
-Received: by mail.makebiz.pl for <devel@driverdev.osuosl.org>;
- Tue,  9 Jan 2024 09:15:30 GMT
-Message-ID: <20240109074500-0.1.ah.lqfr.0.62cqxac7jo@makebiz.pl>
-Date: Tue,  9 Jan 2024 09:15:30 GMT
-From: "Kamil Wejerowski" <kamil.wejerowski@makebiz.pl>
-To: <devel@driverdev.osuosl.org>
-Subject: Mobilny handlowiec?
-X-Mailer: mail.makebiz.pl
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id uEnT25WHPV8a
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jan 2024 16:04:59 +0000 (UTC)
+X-Greylist: delayed 11031 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 09 Jan 2024 16:04:59 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 773EE41A44
+Received: from mail.netmarkt.top (unknown [207.154.242.15])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 773EE41A44
+ for <driverdev-devel@linuxdriverproject.org>;
+ Tue,  9 Jan 2024 16:04:59 +0000 (UTC)
+Received: from User (84.127.94.252.dyn.user.ono.com [84.127.94.252])
+ by mail.netmarkt.top (Postfix) with ESMTPA id 20C1B11BE24;
+ Tue,  9 Jan 2024 13:50:03 +0200 (EET)
+From: "Jus"<alberjustin@aol.com>
+Subject: PROJECTS/BUSINESS FINANCING, JOIN US.
+Date: Tue, 9 Jan 2024 12:50:05 +0100
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=makebiz.pl; s=mail; 
- t=1704791739; bh=rzosZF7FWqny0v9UUUVRTSaSsUUA/JEVyw2ViOBy+ug=;
- h=Date:From:To:Subject:From;
- b=w6Fh36Ck5PMJtX3bGqnCvf4yTttd93cMaXbcutqzP+catzGAocVn85qPSn2Vj0ws6
- OFOiQGXte2uRUtMbAlVpXyXCAw+OJXkfdF+1uhI2m+36QqkNrAjUQ+5/183SAEegvd
- SZYtv4y+kyOq+EpClXE3ozLmtBtlSV3OyK3zB78NDB3gz5ciQXoLozlPC4kSkqmjwC
- bmvaWe/wuVNZzfkcvcFoOqa9/1hETk1ZyolRm3DFdE/ZuNvgt2hzw8UB+vfn8Ssx6F
- bIDjH12mVupoQ+nXqUZG+lrCtiOr97A0JaJgnG0RazzXq0PlHEps8jONu8U+HbB0T/
- dD+G834R1yR+g==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=fail reason="signature verification failed" (2048-bit key)
- header.d=makebiz.pl header.i=@makebiz.pl header.a=rsa-sha256 header.s=mail
- header.b=w6Fh36Ck
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+Message-Id: <20240109160500.79B2A43589@smtp2.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,25 +64,26 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: albertjustin888@aol.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-U3phbm93bmkgUGHFhHN0d28sCgpjenkgY2hjaWVsaWJ5IFBhxYRzdHdvIHp3acSZa3N6ecSHIHNw
-cnplZGHFvCBiZXogcG90cnplYnkgemF0cnVkbmlhbmlhIGRvZGF0a293eWNoIGhhbmRsb3djw7N3
-PwoKU3R3b3J6eWxpxZtteSBhcGxpa2FjasSZIG1vYmlsbsSFIGRvIHphcnrEhWR6YW5pYSBzcHJ6
-ZWRhxbzEhSBkbGEgaGFuZGxvd2PDs3cgaSBtYW5hZ2Vyw7N3IHNwcnplZGHFvHksIGt0w7NyYSBh
-dXRvbWF0eXp1amUgemFkYW5pYSB3eWtvbnl3YW5lIHByemV6IHplc3DDs8WCIGhhbmRsb3d5LgoK
-WiBwb3ppb211IGplZG5lZ28gbmFyesSZZHppYSBwcmFjb3duaWN5IG1hasSFIGRvc3TEmXAgZG8g
-d3N6ZWxraWVqIGRva3VtZW50YWNqaSwgc8SFIHcgc3RhbmllIHN6eWJjaWVqIHNrxYJhZGHEhyB6
-YW3Ds3dpZW5pYSwga3TDs3JlIHRyYWZpYWrEhSBiZXpwb8WbcmVkbmlvIGRvIHN5c3RlbXUgRVJQ
-LCBhIGtpZXJvd25pY3kgbW9uaXRvcm93YcSHIHJlYWxpemFjasSZIGR6aWHFgmHFhC4KClXFvHl0
-a293bmljeSBvZG5vdG93dWrEhSBkd3Vrcm90bmllIHdpxJlrc3plIG9icm90eSwgendpxJlrc3pv
-bsSFIG8gMzAlIGVmZWt0eXdub8WbxIcgb2ZlcnRvd2FuaWEgaSBza3JhY2FqxIUgamVnbyBjemFz
-IHogMjAgZG8gMiBtaW51dC4KCk1vxbxlbXkgcG9yb3ptYXdpYcSHIG8gbW/FvGxpd2/Fm2NpIHd5
-a29yenlzdGFuaWEgdGFraWVnbyBuYXJ6xJlkemlhIHcgUGHFhHN0d2EgZmlybWllPwoKClBvemRy
-YXdpYW0KS2FtaWwgV2VqZXJvd3NraQpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0
-Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9kcml2ZXJkZXYtZGV2ZWwK
+Attention.
+
+I represent a group of company based in the Gulf Region with access to over $500 Million. We are seeking means of expanding and relocating our business interest abroad in the following sectors: Oil/Gas, Construction, Real Estate, Stock Speculation and Mining, Transportation, Health Sector and Tobacco, Communication Services, Aviation industry, Agriculture Forestry & Fishing, thus any sector.
+
+If you have a solid background and idea of making good profit in any of the mentioned business sectors or any other VIABLE business in your country. Please write me for possible business co-operation. More so, we are ready to facilitate and fund any business that is capable of generating 2% annual return on investment (AROI)
+
+I am available to discuss this proposal with you and to answer any questions you may have in regard to this investment. As soon as you give your positive response to this proposal, I will not hesitate in sending you the details information of this great investment partnership opportunity. Kindly contact us through this address( albertjustin888@aol.com)
+
+look forward to discussing this opportunity further with you.
+
+
+Sincerely,
+Justin Albert
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
