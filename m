@@ -1,63 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F21E482E677
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jan 2024 02:17:15 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A747C82E85C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jan 2024 04:57:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CB0FD61410;
-	Tue, 16 Jan 2024 01:17:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CB0FD61410
+	by smtp2.osuosl.org (Postfix) with ESMTP id A8349403D6;
+	Tue, 16 Jan 2024 03:57:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A8349403D6
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZTyiRiG4OgWo; Tue, 16 Jan 2024 01:17:12 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id yLjokvg3ES4N; Tue, 16 Jan 2024 03:57:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8C9BF6140F;
-	Tue, 16 Jan 2024 01:17:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8C9BF6140F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3CBAF400D6;
+	Tue, 16 Jan 2024 03:57:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3CBAF400D6
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 038C01BF2A4
- for <devel@linuxdriverproject.org>; Tue, 16 Jan 2024 01:17:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5D3411BF39D
+ for <devel@linuxdriverproject.org>; Tue, 16 Jan 2024 03:57:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DBAB741748
- for <devel@linuxdriverproject.org>; Tue, 16 Jan 2024 01:17:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DBAB741748
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2D841403D6
+ for <devel@linuxdriverproject.org>; Tue, 16 Jan 2024 03:57:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2D841403D6
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id a3RTmhWNwMym for <devel@linuxdriverproject.org>;
- Tue, 16 Jan 2024 01:17:05 +0000 (UTC)
+ with ESMTP id IcQqpdx_QeYm for <devel@linuxdriverproject.org>;
+ Tue, 16 Jan 2024 03:57:20 +0000 (UTC)
 Received: from kernelhost.info (kernelhost.info [91.218.67.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E67C5404A0
- for <devel@linuxdriverproject.org>; Tue, 16 Jan 2024 01:17:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E67C5404A0
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 06851400D6
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jan 2024 03:57:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 06851400D6
 Received: from proservice.com
  (dynamic-046-114-197-051.46.114.pool.telefonica.de [46.114.197.51])
- by kernelhost.info (Postfix) with ESMTPA id 06B213A640D
- for <devel@linuxdriverproject.org>; Tue, 16 Jan 2024 00:58:36 +0100 (CET)
+ by kernelhost.info (Postfix) with ESMTPA id E75F23A6806
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jan 2024 00:59:54 +0100 (CET)
 Received-SPF: pass (kernelhost.info: connection is authenticated)
 From: dept1@proservice.com
-To: devel@linuxdriverproject.org
+To: devel@driverdev.osuosl.org
 Subject: Hello Good Friend
-Date: 16 Jan 2024 00:58:37 +0100
-Message-ID: <20240116005835.14C5251B44E8AD54@proservice.com>
+Date: 16 Jan 2024 00:59:55 +0100
+Message-ID: <20240116005955.7B616369E1E44AC8@proservice.com>
 MIME-Version: 1.0
 X-Antivirus: AVG (VPS 240115-6, 1/15/2024), Outbound message
 X-Antivirus-Status: Clean
-X-PPP-Message-ID: <170536311833.15493.14544006867310530596@kernelhost.info>
+X-PPP-Message-ID: <170536319537.25813.9583522805894043316@kernelhost.info>
 X-PPP-Vhost: proservice.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=proservice.com; s=default; t=1705363131;
+ d=proservice.com; s=default; t=1705363195;
  bh=u53ObPI4G8xI27f+r/r70dk96PSvuk/VG2KS59IMtl0=; h=From:To:Subject;
- b=VYgmyQvpeLen42mHAhcxh+9YENoHfBhL17axKG55fzIXW+S5ldf/qG7rSwgpQDzfI
- 56sphm/36WXJqQUF7dT86y9jBSKQDp6W/Yctr7K77D7vQy4EeAhfEYpXTSHeK/Ztow
- 6v7Xr9fVPzpmVQRq5NleS0RKYWyGlYuMtWDxAWlbkjUH7SqiSQsiL5LgdlK/CWIN9h
- yXSQ1zoivN+GrCbe8xv+/QAVfZ9/tL6eU63L7xhi4AvsaRopiBFSIOprZJM7VFdAWR
- EFtKPiP/wX3mCQeGsMwWYdKfllM7UKfEFgYbgPJB+GhsUOAakMBDHOUznlFGaawMF2
- XGlE0gG1OpuZw==
+ b=bOXn6BsGDzTaYxkXzMKALc5UkuGvL/pm+J+ixDHM7g5+5vb+KdySxmt8ofIPxlT3p
+ lreqZGIBOS01hqCOK0F6PdZmHQBZTj2xZJZgC5HJXHRK7M34vnT78EN+sRCf43Vz+Z
+ D7QMbo3FqNrOQjKvZKFzbqw+TIj0L+IgTOFqpNhIboEStcSt5vOsCDWKQBiEGFu4jN
+ 4wKPRi1JL2rcAfj/oAwJLTyJl8ajVARCFDL4sJk3WIfVBv4mkDRhIzrzvlUGZGJR1G
+ LGbPfkHsZqCfqzf3WjtTWYhSMkFKGFLAgtuEbB0wU4TVqDmRZZIjXJpFIEeAn71LRS
+ rzeFpZgPJibKA==
 X-Mailman-Original-Authentication-Results: kernelhost.info;
  spf=pass (sender IP is 46.114.197.51) smtp.mailfrom=dept1@proservice.com
  smtp.helo=proservice.com
