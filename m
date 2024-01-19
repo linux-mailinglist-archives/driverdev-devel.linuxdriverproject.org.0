@@ -1,47 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0186831F61
-	for <lists+driverdev-devel@lfdr.de>; Thu, 18 Jan 2024 19:55:04 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6077A83255B
+	for <lists+driverdev-devel@lfdr.de>; Fri, 19 Jan 2024 09:02:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 126396F66A;
-	Thu, 18 Jan 2024 18:55:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 126396F66A
+	by smtp1.osuosl.org (Postfix) with ESMTP id D173A83FA0;
+	Fri, 19 Jan 2024 08:02:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D173A83FA0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zu2ErF6gj23z; Thu, 18 Jan 2024 18:55:02 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id qjPaCEdGrnZm; Fri, 19 Jan 2024 08:02:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 038F96F646;
-	Thu, 18 Jan 2024 18:55:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 038F96F646
-X-Original-To: devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id C0EB781B3E;
+	Fri, 19 Jan 2024 08:02:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C0EB781B3E
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 89E671BF2FF
- for <devel@linuxdriverproject.org>; Thu, 18 Jan 2024 18:54:58 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 58BE91BF842
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 19 Jan 2024 08:02:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6291542263
- for <devel@linuxdriverproject.org>; Thu, 18 Jan 2024 18:54:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6291542263
+ by smtp1.osuosl.org (Postfix) with ESMTP id 31AF383FA0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 19 Jan 2024 08:02:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 31AF383FA0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9F_lkfQNSX_U for <devel@linuxdriverproject.org>;
- Thu, 18 Jan 2024 18:54:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id W5Biq_n-gJd0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 19 Jan 2024 08:02:31 +0000 (UTC)
 Received: from pinnacletradehub.com (mail.pinnacletradehub.com [74.48.186.67])
- by smtp4.osuosl.org (Postfix) with ESMTP id E06E242260
- for <devel@driverdev.osuosl.org>; Thu, 18 Jan 2024 18:54:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E06E242260
+ by smtp1.osuosl.org (Postfix) with ESMTP id B556681B3E
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 19 Jan 2024 08:02:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B556681B3E
 Received: from mail.pinnacletradehub.com (unknown [74.48.186.67])
- by pinnacletradehub.com (Postfix) with ESMTP id CCFEBA226B
- for <devel@driverdev.osuosl.org>; Thu, 18 Jan 2024 12:54:56 -0600 (CST)
+ by pinnacletradehub.com (Postfix) with ESMTP id 70169A1BD9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 19 Jan 2024 02:02:30 -0600 (CST)
 From: Bahadir Emir<BahadirEmir@pinnacletradehub.com>
-To: devel@driverdev.osuosl.org
+To: driverdev-devel@linuxdriverproject.org
 Subject: RE: Respond Swiftly
-Date: 18 Jan 2024 18:54:55 +0000
-Message-ID: <20240118185455.0640E67DBC4469D2@pinnacletradehub.com>
+Date: 19 Jan 2024 08:02:29 +0000
+Message-ID: <20240119080228.B082D2CF9E5B2FE4@pinnacletradehub.com>
 MIME-Version: 1.0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -62,7 +67,7 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 
-Dear devel
+Dear driverdev-devel
 
 Attention,
 
