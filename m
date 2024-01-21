@@ -1,74 +1,75 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1188C8354D2
-	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Jan 2024 08:28:15 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 36CC08354D9
+	for <lists+driverdev-devel@lfdr.de>; Sun, 21 Jan 2024 08:37:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E9DA082726;
-	Sun, 21 Jan 2024 07:28:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E9DA082726
+	by smtp1.osuosl.org (Postfix) with ESMTP id A1AE682503;
+	Sun, 21 Jan 2024 07:37:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A1AE682503
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QGGKfsI_lqeY; Sun, 21 Jan 2024 07:28:12 +0000 (UTC)
+	with ESMTP id zjEO2kWQLROZ; Sun, 21 Jan 2024 07:37:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B27F4826FF;
-	Sun, 21 Jan 2024 07:28:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B27F4826FF
+	by smtp1.osuosl.org (Postfix) with ESMTP id 58EF3824DD;
+	Sun, 21 Jan 2024 07:37:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 58EF3824DD
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 88B791BF476
- for <devel@linuxdriverproject.org>; Sun, 21 Jan 2024 07:28:08 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 707B71BF476
+ for <devel@linuxdriverproject.org>; Sun, 21 Jan 2024 07:37:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 61131410A5
- for <devel@linuxdriverproject.org>; Sun, 21 Jan 2024 07:28:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 61131410A5
+ by smtp1.osuosl.org (Postfix) with ESMTP id 493A282503
+ for <devel@linuxdriverproject.org>; Sun, 21 Jan 2024 07:37:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 493A282503
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U3uDho4pTAtT for <devel@linuxdriverproject.org>;
- Sun, 21 Jan 2024 07:28:07 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 06800409C9
- for <devel@driverdev.osuosl.org>; Sun, 21 Jan 2024 07:28:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 06800409C9
-X-IronPort-AV: E=McAfee;i="6600,9927,10959"; a="7764931"
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id t8Oohx3Q63mt for <devel@linuxdriverproject.org>;
+ Sun, 21 Jan 2024 07:37:13 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5C58C824DD
+ for <devel@driverdev.osuosl.org>; Sun, 21 Jan 2024 07:37:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5C58C824DD
+X-IronPort-AV: E=McAfee;i="6600,9927,10959"; a="876721"
 X-IronPort-AV: E=Sophos;i="6.05,209,1701158400"; 
-   d="scan'208";a="7764931"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jan 2024 23:28:06 -0800
+   d="scan'208";a="876721"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Jan 2024 23:30:06 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,209,1701158400"; d="scan'208";a="27090871"
+X-IronPort-AV: E=Sophos;i="6.05,209,1701158400"; 
+   d="scan'208";a="917151"
 Received: from lkp-server01.sh.intel.com (HELO 961aaaa5b03c) ([10.239.97.150])
- by orviesa002.jf.intel.com with ESMTP; 20 Jan 2024 23:28:05 -0800
+ by orviesa005.jf.intel.com with ESMTP; 20 Jan 2024 23:30:05 -0800
 Received: from kbuild by 961aaaa5b03c with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rRSFO-0005ke-0N;
- Sun, 21 Jan 2024 07:28:02 +0000
-Date: Sun, 21 Jan 2024 15:28:02 +0800
+ (envelope-from <lkp@intel.com>) id 1rRSHK-0005ks-0c;
+ Sun, 21 Jan 2024 07:30:02 +0000
+Date: Sun, 21 Jan 2024 15:29:57 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:class_cleanup] BUILD SUCCESS
- deed9f6482107383cf9248b573ee0b8458d67066
-Message-ID: <202401211559.G83XgSaV-lkp@intel.com>
+Subject: [driver-core:bus_cleanup] BUILD SUCCESS
+ 9591b2ef48c212c08b8edfc756c37f8601cf97b2
+Message-ID: <202401211555.U6R5CXNq-lkp@intel.com>
 User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1705822087; x=1737358087;
+ t=1705822633; x=1737358633;
  h=date:from:to:cc:subject:message-id;
- bh=Fvg5T/tyBYJITu5vx/CK0Lr+o6wRtfWsyCFda0ydMwU=;
- b=RIDab1qRX2Xr77VRSwWtbmjvhxDMVtwOpqHtxVaLuUdKkBNNzKfqvDCx
- pOQ/L162ZWpfEFVkGSqVRqVuLg4iBYB1kWroUpEbDoUwdlqI6tP48+Fsi
- XH6dBvnt3Z85vp6yjX9h6zxBYI+qQ6QsB1THJMtSuHTcm8d98e4kIhjoI
- KEIuiiWKPTDCVRfaln2uM4oSf1my4xmqCGXPRBLljQBtgHqbENb9f9A7S
- TbLf1dg1Da+F0DPzwdorayXcVAG+3dOyDmWWjwT/yB2yKCBD6C557bbFT
- JW1J7KJDMKrSUDFKmgXrbclW0cP2pieDVDAwI5FObXbncGYZ1Rekg+EWH
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=jlJoIvzsWhd/UXVHJ3KxQt63VvyXi65gQ9SgrPNMyEk=;
+ b=fY/V/1WGBzqZvfw6HVe2HhY++kkyZKDeE7dLYWTZQjolzxUtSfU3smMa
+ fk6BPaZ4skdl0JZKw0hmomYFGp4ArXSFf04p2BdgH5+XCsLn9bFCqLIW/
+ tG0uuMnxVFt/ZcBuQWZqPXC9zGuVUUydPcrfDRX66U8+PxebqFAUNOnrP
+ qnQ/JaTYtTfFEPUwgvsbk/r3ilbySSTEFRVwMA/LQfk7sXZe8YBPy6LQS
+ yaHU1HaVJBdrOickcGHgTHiswb8b+X0U3Vo4meiW6yegncr6/VsDOT9IR
+ WUqyM1xdUZSzoUyTKIM6K4zj2tFkczxA/ZAWmdPCiGKdBZfd6ZSiCF37p
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RIDab1qR
+ header.a=rsa-sha256 header.s=Intel header.b=fY/V/1WG
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,10 +89,10 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git class_cleanup
-branch HEAD: deed9f6482107383cf9248b573ee0b8458d67066  crypto: qat: make adf_ctl_class constant
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git bus_cleanup
+branch HEAD: 9591b2ef48c212c08b8edfc756c37f8601cf97b2  make a bunch of struct bus_type const.
 
-elapsed time: 1455m
+elapsed time: 1457m
 
 configs tested: 158
 configs skipped: 2
