@@ -1,66 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE65283FBE9
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jan 2024 02:45:10 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B30F783FCBF
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jan 2024 04:29:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D2AF382193;
-	Mon, 29 Jan 2024 01:45:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D2AF382193
+	by smtp4.osuosl.org (Postfix) with ESMTP id 486824093E;
+	Mon, 29 Jan 2024 03:29:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 486824093E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TUzfRhNtZqWc; Mon, 29 Jan 2024 01:45:06 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hW88--kSE09E; Mon, 29 Jan 2024 03:29:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AD98281E65;
-	Mon, 29 Jan 2024 01:45:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AD98281E65
-X-Original-To: devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0660C4155B;
+	Mon, 29 Jan 2024 03:29:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0660C4155B
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 307D61BF5A7
- for <devel@linuxdriverproject.org>; Mon, 29 Jan 2024 01:45:02 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F093F1BF2A9
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 29 Jan 2024 03:29:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 099BF81E65
- for <devel@linuxdriverproject.org>; Mon, 29 Jan 2024 01:45:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 099BF81E65
+ by smtp3.osuosl.org (Postfix) with ESMTP id CB20B60AD8
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 29 Jan 2024 03:29:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CB20B60AD8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I5YO6TGZt976 for <devel@linuxdriverproject.org>;
- Mon, 29 Jan 2024 01:45:01 +0000 (UTC)
-X-Greylist: delayed 2879 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 29 Jan 2024 01:45:00 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8C4AF81E55
-Received: from mail4.meandermc.nl (mail4.meandermc.nl [87.213.170.12])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8C4AF81E55
- for <devel@driverdev.osuosl.org>; Mon, 29 Jan 2024 01:45:00 +0000 (UTC)
-Received: from mail4.meandermc.nl (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 9366CFC4E5;
- Mon, 29 Jan 2024 01:34:16 +0100 (CET)
-Received: from mail4.meandermc.nl (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 42EE3FE6B9;
- Mon, 29 Jan 2024 01:08:36 +0100 (CET)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Sx2A94KVkdvi
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 29 Jan 2024 03:29:42 +0000 (UTC)
+X-Greylist: delayed 5876 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 29 Jan 2024 03:29:42 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 030AD60ACA
+Received: from mail3.meandermc.nl (mail3.meandermc.nl [87.213.170.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 030AD60ACA
+ for <driverdev-devel@linuxdriverproject.org>;
+ Mon, 29 Jan 2024 03:29:41 +0000 (UTC)
+Received: from mail3.meandermc.nl (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 01748BF816;
+ Mon, 29 Jan 2024 01:51:23 +0100 (CET)
+Received: from mail3.meandermc.nl (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 25611798A2;
+ Mon, 29 Jan 2024 01:10:58 +0100 (CET)
 Received: from SRV-EXCH-04.meandermc.vineta.nl (unknown [10.1.129.124])
- by mail4.meandermc.nl (Postfix) with ESMTPS;
- Mon, 29 Jan 2024 01:08:36 +0100 (CET)
+ by mail3.meandermc.nl (Postfix) with ESMTPS;
+ Mon, 29 Jan 2024 01:10:58 +0100 (CET)
 Received: from SRV-EXCH-03.meandermc.vineta.nl (10.1.129.123) by
  SRV-EXCH-04.meandermc.vineta.nl (10.1.129.124) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Mon, 29 Jan 2024 01:08:31 +0100
+ 15.1.2507.35; Mon, 29 Jan 2024 01:10:53 +0100
 Received: from User (87.213.170.55) by SRV-EXCH-03.meandermc.vineta.nl
  (10.1.129.123) with Microsoft SMTP Server id 15.1.2507.35 via Frontend
- Transport; Mon, 29 Jan 2024 01:08:26 +0100
+ Transport; Mon, 29 Jan 2024 01:10:48 +0100
 From: Anna Pechorin <ap@meandermc.nl>
 Subject: PLS TARRY NOT
-Date: Sun, 28 Jan 2024 16:08:54 -0800
+Date: Sun, 28 Jan 2024 16:11:16 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <51aa5be0-7be1-4999-aaca-3420ce941e2e@SRV-EXCH-03.meandermc.vineta.nl>
+Message-ID: <bace5399-35d1-4f80-a9e2-1c9cecb28348@SRV-EXCH-03.meandermc.vineta.nl>
 To: Undisclosed recipients:;
 X-TM-AS-Product-Ver: IMSVA-9.1.0.2164-9.0.0.1002-28148.003
 X-TM-AS-Result: No-12-125.490400-8.000000
@@ -76,21 +80,21 @@ X-TM-AS-User-Approved-Sender: No;No
 X-TM-AS-User-Blocked-Sender: No
 X-TMASE-Result: 12-125.490400-10.000000
 X-TMASE-Version: IMSVA-9.1.0.2164-9.0.1002-28148.003
-X-TM-SNTS-SMTP: E59BA45070BF5BA653F23207139C590195783F307069BDEDEB9ADE39B8AB228F2000:8
+X-TM-SNTS-SMTP: B3DD443E6338AF42F13D8F2719670EE404BDD461382F3B23E9BA540450254E042000:8
 X-TM-AS-GCONF: 00
 X-TMASE-SNAP-Result: Not scanned
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=meandermc.nl; s=20210113; t=1706488462;
+ d=meandermc.nl; s=20210113; t=1706489491;
  bh=QYd4Z+K74vOne843bZG/bUMgA+xpBiNIlrMM6m7vgsk=; h=From:Date:To;
- b=jSiWugVJVGMIdUdQC1nCTFc/W9zcGF4fw7NFMFsT6nEg8b/2L6xSvDSQGPCtIRbtl
- /6isB+h6ywwoi2OaUIde/QHamCwAR54QzhOzS+BFmPi76Wmrl2vUw/oJd8XfdoxPi4
- eU9N7oWcbiAJDNSyaaFdKf+Ycaqlpbo9A2IM1fL9NKAE+9xyfwFb7m1f9ykFhQ2EUI
- Z4hh4FK/3VMG5OffYsTdgFDjN9cwVkukPxxu3mXOmH7LpEoYz2kpfZP9hLI4T/OaRC
- /6CC6sXgQHihkku91VB4FnrazJ1+yJ9tPxLmm4gXQMIkN9wGuyyFlv+fsTig1RVchK
- AUYlYFueTXUoA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=eQqD7y+6slRrv0mO3I0LrnNAf3U9xqd4vlzruq8eJj5Aj6EUSPzvpiMYLWedkBVGh
+ 7k0d2PX8SYyizY2+TA2W07Sf9KxHzc2Gwi/kuXS7lPz+h4hAFIVGUUMoJby/nqbhXG
+ fh77ABU9F30CNg1VUNvdyFQuSjNmangJRxmluCBig9a6AHUqOtAYunAwpT0J2dFzd3
+ ixsnW+Zf6MAmjZjHGDwTL0K4T3rzZewVu39zG+URRDsWGppPndIkOHWUpU++Ku11Eh
+ 4Ilbt+1SRd8agMSiDBjTW7Fn5CCNrul/S7G8JwSA0TmVbe06CL4egHAFqlFdS6W2HC
+ LY7MvaUX34rdA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=meandermc.nl header.i=@meandermc.nl
- header.a=rsa-sha256 header.s=20210113 header.b=jSiWugVJ
+ header.a=rsa-sha256 header.s=20210113 header.b=eQqD7y+6
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
