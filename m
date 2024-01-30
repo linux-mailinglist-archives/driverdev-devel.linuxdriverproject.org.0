@@ -1,69 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38A3A841ED1
-	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jan 2024 10:08:51 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9BC7E841ED3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 30 Jan 2024 10:08:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3053C8196E;
-	Tue, 30 Jan 2024 09:08:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3053C8196E
+	by smtp1.osuosl.org (Postfix) with ESMTP id 29220833C9;
+	Tue, 30 Jan 2024 09:08:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 29220833C9
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id laUSo16vnjyY; Tue, 30 Jan 2024 09:08:48 +0000 (UTC)
+	with ESMTP id ebsSLiIUQwXK; Tue, 30 Jan 2024 09:08:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 09CA381826;
-	Tue, 30 Jan 2024 09:08:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 09CA381826
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0EED181826;
+	Tue, 30 Jan 2024 09:08:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0EED181826
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C5DC21BF395
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 30 Jan 2024 09:08:45 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 0B9811BF395
+ for <devel@linuxdriverproject.org>; Tue, 30 Jan 2024 09:08:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9BFA841910
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 30 Jan 2024 09:08:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9BFA841910
+ by smtp3.osuosl.org (Postfix) with ESMTP id D8F366101B
+ for <devel@linuxdriverproject.org>; Tue, 30 Jan 2024 09:08:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D8F366101B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QO3AUMJBrfom
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 30 Jan 2024 09:08:45 +0000 (UTC)
-X-Greylist: delayed 589 seconds by postgrey-1.37 at util1.osuosl.org;
- Tue, 30 Jan 2024 09:08:44 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DC5A1418B6
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id g01x_iehs30M for <devel@linuxdriverproject.org>;
+ Tue, 30 Jan 2024 09:08:52 +0000 (UTC)
+X-Greylist: delayed 588 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 30 Jan 2024 09:08:52 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3383B61014
 Received: from sendemail77.com (sendemail77.com [57.128.201.141])
- by smtp4.osuosl.org (Postfix) with ESMTPS id DC5A1418B6
- for <driverdev-devel@linuxdriverproject.org>;
- Tue, 30 Jan 2024 09:08:44 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3383B61014
+ for <devel@linuxdriverproject.org>; Tue, 30 Jan 2024 09:08:52 +0000 (UTC)
 Received: from [45.129.14.76] (unknown [45.129.14.76])
- by sendemail77.com (Postfix) with ESMTPA id 319FD7A076;
- Tue, 30 Jan 2024 08:54:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 sendemail77.com 319FD7A076
+ by sendemail77.com (Postfix) with ESMTPA id 2BA2F7A081;
+ Tue, 30 Jan 2024 08:55:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 sendemail77.com 2BA2F7A081
 MIME-Version: 1.0
 Content-Description: Mail message body
 Subject: Present you as NOK
 To: Recipients <smtp@sendemail77.com>
 From: "Horst Angerer" <smtp@sendemail77.com>
-Date: Tue, 30 Jan 2024 00:54:57 -0800
-Message-Id: <20240130090845.9BFA841910@smtp4.osuosl.org>
+Date: Tue, 30 Jan 2024 00:54:59 -0800
+Message-Id: <20240130090852.D8F366101B@smtp3.osuosl.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sendemail77.com; s=default; t=1706604899;
+ d=sendemail77.com; s=default; t=1706604901;
  bh=HYQ5DHl0KP89+SpOFAyd7UKqIf089LtHyUMNb+8vbHU=;
  h=Subject:To:From:Date:Reply-To:From;
- b=FXI7+gNMMM5Vd89KZavIxAUN9w2Zpn189YOm0G+7OpT7Ss3mJxpTPdM5gJhPPOC7R
- nGkGJwx0RB7HjaKGIBrd8oxJXSIeabZZIOfhnVo0VThZq5nuRR0W5qR7p+bOmQ9oAX
- jn2yjwgzfQUGydRlu5hcvCnbYp/PcLXOR+dvdUv8CVtCU8j9CyYPyFx1kvShx43cQU
- Grr2OwSIqz+QCyrn0o41AtwyZ+GhHM8Q5PXhnCQnnCRJRf7ZEMf0S9tvWn5U1s893T
- NBKLhMVQVrftuwgC8+WV92R5qIHMlXB5F1AaUYxHmTTrBUKKdu6YVBHetdMoS0/nEC
- ezA660CCGYr1w==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=BqbQIHBpO8WWkxoyZRkBgBx9nC3MrqT5maXsg5h0Wd6tvHb1qR7YfMXoveA/b4t0c
+ 8G4L7Vew7prdjep1jrp11W2pId65p4L/3BdKjnqzmF+XU9d5c2TQHUeD9nVGbciWBe
+ tIEMi4F0CtmuWzBSApQ4hRpLkf7KUfnzHvCsVsZIgLF4YcBhRNkZaYlrx8GeXGrvVB
+ CjIlbJQcnC/9bmkreyumvQYDrArwZ9LeW6whE4zvOneKvgDimZeqMy9xr2Q7J2h71X
+ awrNtPHLk8FEB1sKJUyUtE+x8F+Ugg+Np0c62WXa8qOSxAXegp8A7C2lGZjgPhuhQi
+ VyhYz77nRl5hQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=sendemail77.com header.i=@sendemail77.com
- header.a=rsa-sha256 header.s=default header.b=FXI7+gNM
+ header.a=rsa-sha256 header.s=default header.b=BqbQIHBp
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
