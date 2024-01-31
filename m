@@ -1,74 +1,73 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A81D84404D
-	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jan 2024 14:17:27 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 54AA88449DC
+	for <lists+driverdev-devel@lfdr.de>; Wed, 31 Jan 2024 22:23:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BF29284495;
-	Wed, 31 Jan 2024 13:17:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BF29284495
+	by smtp3.osuosl.org (Postfix) with ESMTP id B41A2614B5;
+	Wed, 31 Jan 2024 21:23:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B41A2614B5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id lGyw70fe8Azb; Wed, 31 Jan 2024 13:17:24 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id S8RZaC1IBXR3; Wed, 31 Jan 2024 21:23:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6DCDD8448A;
-	Wed, 31 Jan 2024 13:17:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6DCDD8448A
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5CAB4614EC;
+	Wed, 31 Jan 2024 21:23:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5CAB4614EC
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F1F7F1BF325
- for <devel@linuxdriverproject.org>; Wed, 31 Jan 2024 13:17:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9986B1BF4DB
+ for <devel@linuxdriverproject.org>; Wed, 31 Jan 2024 21:23:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C9DE341F37
- for <devel@linuxdriverproject.org>; Wed, 31 Jan 2024 13:17:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C9DE341F37
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7EDBB416BC
+ for <devel@linuxdriverproject.org>; Wed, 31 Jan 2024 21:23:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7EDBB416BC
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 78zUTuPmazIp for <devel@linuxdriverproject.org>;
- Wed, 31 Jan 2024 13:17:19 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BDF3741C5F
- for <devel@driverdev.osuosl.org>; Wed, 31 Jan 2024 13:17:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BDF3741C5F
-X-IronPort-AV: E=McAfee;i="6600,9927,10969"; a="25073057"
-X-IronPort-AV: E=Sophos;i="6.05,231,1701158400"; d="scan'208";a="25073057"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Jan 2024 05:17:19 -0800
+ with ESMTP id wb5TtLs9QE7C for <devel@linuxdriverproject.org>;
+ Wed, 31 Jan 2024 21:23:27 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5082B415FF
+ for <devel@driverdev.osuosl.org>; Wed, 31 Jan 2024 21:23:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5082B415FF
+X-IronPort-AV: E=McAfee;i="6600,9927,10969"; a="394172352"
+X-IronPort-AV: E=Sophos;i="6.05,233,1701158400"; d="scan'208";a="394172352"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Jan 2024 13:23:24 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10969"; a="788574032"
-X-IronPort-AV: E=Sophos;i="6.05,231,1701158400"; d="scan'208";a="788574032"
+X-IronPort-AV: E=Sophos;i="6.05,233,1701158400"; d="scan'208";a="30368236"
 Received: from lkp-server02.sh.intel.com (HELO 59f4f4cd5935) ([10.239.97.151])
- by orsmga002.jf.intel.com with ESMTP; 31 Jan 2024 05:17:17 -0800
+ by orviesa002.jf.intel.com with ESMTP; 31 Jan 2024 13:23:23 -0800
 Received: from kbuild by 59f4f4cd5935 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rVASo-0001ae-2E;
- Wed, 31 Jan 2024 13:17:14 +0000
-Date: Wed, 31 Jan 2024 21:16:54 +0800
+ (envelope-from <lkp@intel.com>) id 1rVI3D-00022o-36;
+ Wed, 31 Jan 2024 21:23:19 +0000
+Date: Thu, 01 Feb 2024 05:22:21 +0800
 From: kernel test robot <lkp@intel.com>
 To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- f297a3844aa059c53be3f69be85ebc071b8a6d16
-Message-ID: <202401312151.37MBmWNg-lkp@intel.com>
+Subject: [driver-core:driver-core-linus] BUILD SUCCESS
+ 98323e9d70172f1b46d1cadb20d6c54abf62870d
+Message-ID: <202402010518.PygG0nj4-lkp@intel.com>
 User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1706707040; x=1738243040;
+ t=1706736207; x=1738272207;
  h=date:from:to:cc:subject:message-id;
- bh=mtK/31EoOwQdqd/so4eMJcgzEWB7WzRK5/9aYo1sbdE=;
- b=REEP0+Bg8E+UenqOc5SPYjAPhvbuktDcjp9e9nTKh7NCbvJYSZ3QpPOX
- mU+k6YH9kRPw/NlA2tQ5lW1aZ4oRcYzxVoxdbuybP4kB8IV71QVFohTYU
- G4bdB/fETgF7HAuMh9cj/8BONKBf9PmHLlQHvQXYq01kVpSqFHCJLdTIk
- MTxwC2tWuJa+4w8DIbVIB+8IQF4gE0Y+Viu7eRCX8oFaac3QeBCoBMv6X
- 4mBaoLVovnYF4XCJRjNePry5wMNCMVA9fTgJ6Oz62i2V/rnSskkjb9PnA
- NgM382nfPaW8+20i5Z1eks5jUMnfJyrkevMTeZb69Qh383I8Kpz/MRtAW
- Q==;
+ bh=TDOs7/W9Z8CDpegdVeN/QQhjcsBUAogq3KZSXT5M9DE=;
+ b=XNnqiI5JqKtcEzFD4s+1e3xveTWZ/E3in1XBrMvbx67i8LYpkwxu2x3B
+ ftD9z3WZRGy6elmfU9YNoGyt4/75PmL6TWUwbXhqd5tE+gDoxjZ6wJdX8
+ dmzfE8+1vBAojwzRuQhj+UO68WuEEpggsxLcNDgkox44zY0nM2vVZgpPS
+ bSoPN5tqoXBSEB+nzz28/3rjmk8ISsAWTyU2BWmffvBx2vg7ed1Q5yB2Y
+ ozf2C9OodAPRDM57CG7XcJ5nNtJuge7YnvUd5qGULbht64zRCyDjyVBIP
+ wRe4u37R7mbJB4IoXSJcGl3tHVsLH4VI1LuhUGY1fPsd254ZWXgoreRZz
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=REEP0+Bg
+ header.a=rsa-sha256 header.s=Intel header.b=XNnqiI5J
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,13 +87,13 @@ Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
-branch HEAD: f297a3844aa059c53be3f69be85ebc071b8a6d16  driver core: component: fix spellos
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-linus
+branch HEAD: 98323e9d70172f1b46d1cadb20d6c54abf62870d  topology: Set capacity_freq_ref in all cases
 
-elapsed time: 791m
+elapsed time: 1277m
 
-configs tested: 182
-configs skipped: 3
+configs tested: 191
+configs skipped: 4
 
 The following configs have been built successfully.
 More configs may be tested in the coming days.
@@ -117,7 +116,9 @@ arm                              allmodconfig   gcc
 arm                               allnoconfig   gcc  
 arm                              allyesconfig   gcc  
 arm                       aspeed_g5_defconfig   gcc  
+arm                         axm55xx_defconfig   gcc  
 arm                                 defconfig   clang
+arm                          gemini_defconfig   gcc  
 arm                      integrator_defconfig   gcc  
 arm                          pxa910_defconfig   gcc  
 arm                   randconfig-001-20240131   clang
@@ -126,7 +127,10 @@ arm                   randconfig-003-20240131   clang
 arm                   randconfig-004-20240131   clang
 arm                        realview_defconfig   gcc  
 arm                        spear6xx_defconfig   gcc  
+arm                           stm32_defconfig   gcc  
+arm                         vf610m4_defconfig   gcc  
 arm                         wpcm450_defconfig   gcc  
+arm64                            alldefconfig   gcc  
 arm64                            allmodconfig   clang
 arm64                             allnoconfig   gcc  
 arm64                               defconfig   gcc  
@@ -181,6 +185,7 @@ mips                        bcm47xx_defconfig   gcc
 mips                  cavium_octeon_defconfig   gcc  
 mips                           ip27_defconfig   gcc  
 mips                     loongson1b_defconfig   gcc  
+mips                      maltasmvp_defconfig   gcc  
 mips                  maltasmvp_eva_defconfig   gcc  
 nios2                            allmodconfig   gcc  
 nios2                             allnoconfig   gcc  
@@ -209,6 +214,7 @@ powerpc                      mgcoge_defconfig   gcc
 powerpc               randconfig-001-20240131   clang
 powerpc               randconfig-002-20240131   clang
 powerpc               randconfig-003-20240131   clang
+powerpc                    socrates_defconfig   gcc  
 powerpc64             randconfig-001-20240131   clang
 powerpc64             randconfig-002-20240131   clang
 powerpc64             randconfig-003-20240131   clang
@@ -234,6 +240,7 @@ sh                        dreamcast_defconfig   gcc
 sh                        edosk7760_defconfig   gcc  
 sh                    randconfig-001-20240131   gcc  
 sh                    randconfig-002-20240131   gcc  
+sh                           se7721_defconfig   gcc  
 sh                             shx3_defconfig   gcc  
 sparc                            allmodconfig   gcc  
 sparc                             allnoconfig   gcc  
@@ -282,6 +289,7 @@ xtensa                  cadence_csp_defconfig   gcc
 xtensa                       common_defconfig   gcc  
 xtensa                randconfig-001-20240131   gcc  
 xtensa                randconfig-002-20240131   gcc  
+xtensa                    xip_kc705_defconfig   gcc  
 
 -- 
 0-DAY CI Kernel Test Service
