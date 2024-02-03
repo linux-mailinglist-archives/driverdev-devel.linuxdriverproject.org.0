@@ -1,61 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 202F9848846
-	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Feb 2024 19:53:43 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B7E9848848
+	for <lists+driverdev-devel@lfdr.de>; Sat,  3 Feb 2024 19:54:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 67BA1405CC;
-	Sat,  3 Feb 2024 18:53:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 67BA1405CC
+	by smtp2.osuosl.org (Postfix) with ESMTP id 89AA6408D1;
+	Sat,  3 Feb 2024 18:54:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 89AA6408D1
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id g7Y9YBZJ03I7; Sat,  3 Feb 2024 18:53:39 +0000 (UTC)
+	with ESMTP id DDAOV2WrFV9R; Sat,  3 Feb 2024 18:54:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0D476405CB;
-	Sat,  3 Feb 2024 18:53:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0D476405CB
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 370CC4063B;
+	Sat,  3 Feb 2024 18:54:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 370CC4063B
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4CBE21BF285
- for <devel@linuxdriverproject.org>; Sat,  3 Feb 2024 18:53:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5AB621BF285
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  3 Feb 2024 18:53:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 256C583BE0
- for <devel@linuxdriverproject.org>; Sat,  3 Feb 2024 18:53:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 256C583BE0
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4078183BE2
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  3 Feb 2024 18:53:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4078183BE2
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id mcgVkZEMP5Gh for <devel@linuxdriverproject.org>;
- Sat,  3 Feb 2024 18:53:32 +0000 (UTC)
-X-Greylist: delayed 30003 seconds by postgrey-1.37 at util1.osuosl.org;
- Sat, 03 Feb 2024 18:53:32 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5E9C283B3B
+ with ESMTP id JqTRLwiz_e0y
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  3 Feb 2024 18:53:56 +0000 (UTC)
+X-Greylist: delayed 29843 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sat, 03 Feb 2024 18:53:56 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 73E8C83BE0
 Received: from fec.com.tw (mails.fec.com.tw [60.250.203.44])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5E9C283B3B
- for <devel@driverdev.osuosl.org>; Sat,  3 Feb 2024 18:53:32 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 73E8C83BE0
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sat,  3 Feb 2024 18:53:56 +0000 (UTC)
 Received: from User ([156.96.112.132])
  by fec.com.tw (mail2.fec.com.tw [127.0.0.1]) (MDaemon.PRO.v7.2.3.R)
- with ESMTP id md50014227891.msg
- for <devel@driverdev.osuosl.org>; Sat, 03 Feb 2024 17:34:27 +0800
+ with ESMTP id md50014228470.msg
+ for <driverdev-devel@linuxdriverproject.org>; Sat, 03 Feb 2024 17:37:49 +0800
 From: "Anna Pechorin"<c.s.dep@fec.com.tw>
 Subject: PLS TARRY NOT
-Date: Sat, 3 Feb 2024 01:29:40 -0800
+Date: Sat, 3 Feb 2024 01:31:44 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-Spam-Processed: mail2.fec.com.tw, Sat, 03 Feb 2024 17:34:27 +0800
+X-Spam-Processed: mail2.fec.com.tw, Sat, 03 Feb 2024 17:37:49 +0800
  (not processed: message from valid local sender)
 X-Lookup-Warning: MAIL lookup on c.s.dep@fec.com.tw does not match
  156.96.112.132
 X-MDRemoteIP: 156.96.112.132
 X-Return-Path: c.s.dep@fec.com.tw
-X-MDaemon-Deliver-To: devel@driverdev.osuosl.org
-Message-Id: <20240203185333.256C583BE0@smtp1.osuosl.org>
+X-MDaemon-Deliver-To: driverdev-devel@linuxdriverproject.org
+Message-Id: <20240203185357.4078183BE2@smtp1.osuosl.org>
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
