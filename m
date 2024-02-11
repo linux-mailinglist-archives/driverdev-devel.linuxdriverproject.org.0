@@ -1,80 +1,76 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2E4C85053C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Feb 2024 17:34:07 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C4FD8506D4
+	for <lists+driverdev-devel@lfdr.de>; Sat, 10 Feb 2024 23:10:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 64FE3408F7;
-	Sat, 10 Feb 2024 16:34:02 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8EC6D60627;
+	Sat, 10 Feb 2024 22:10:03 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tXEvB_7pXIxA; Sat, 10 Feb 2024 16:34:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UKVmu-q_6UWd; Sat, 10 Feb 2024 22:10:02 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9237E4090D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C06CE6062F
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9237E4090D;
-	Sat, 10 Feb 2024 16:34:01 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id C06CE6062F;
+	Sat, 10 Feb 2024 22:10:02 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C90C51BF855
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Feb 2024 16:33:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 32A6B1BF290
+ for <devel@linuxdriverproject.org>; Sat, 10 Feb 2024 22:10:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B4A4B40292
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Feb 2024 16:33:59 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1E53E404AF
+ for <devel@linuxdriverproject.org>; Sat, 10 Feb 2024 22:10:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9dne9gM1QafV
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Feb 2024 16:33:58 +0000 (UTC)
+ with ESMTP id TK4afkuUyYdi for <devel@linuxdriverproject.org>;
+ Sat, 10 Feb 2024 22:09:59 +0000 (UTC)
 Received-SPF: Permerror (mailfrom) identity=mailfrom; client-ip=203.124.39.171;
  helo=symantec7.comsats.net.pk; envelope-from=naseer.a@kam-network.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org CBE6B40279
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CBE6B40279
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6394A40445
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6394A40445
 Received: from symantec7.comsats.net.pk (symantec7.comsats.net.pk
  [203.124.39.171])
- by smtp2.osuosl.org (Postfix) with ESMTPS id CBE6B40279
- for <driverdev-devel@linuxdriverproject.org>;
- Sat, 10 Feb 2024 16:33:54 +0000 (UTC)
-X-AuditID: cb7c27ab-53dc5700000035dd-67-65c79ff22337
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6394A40445
+ for <devel@driverdev.osuosl.org>; Sat, 10 Feb 2024 22:09:56 +0000 (UTC)
+X-AuditID: cb7c27ab-549c6700000035dd-66-65c7f370cfce
 Received: from host202003.comsatshosting.com (host202003.comsatshosting.com
  [203.124.44.148])
  by symantec7.comsats.net.pk (Symantec Messaging Gateway) with SMTP id
- D1.57.13789.2FF97C56; Sat, 10 Feb 2024 21:10:28 +0500 (PKT)
+ 1D.26.13789.073F7C56; Sun, 11 Feb 2024 03:06:43 +0500 (PKT)
 To: undisclosed-recipients:;
-Message-ID: <D1.57.13789.2FF97C56@symantec7.comsats.net.pk>
+Message-ID: <1D.26.13789.073F7C56@symantec7.comsats.net.pk>
 From: "Anna Pechorin"<naseer.a@kam-network.com>
 Subject: NO DELAYS
-Date: Sat, 10 Feb 2024 11:12:54 -0800
+Date: Sat, 10 Feb 2024 17:09:22 -0800
 MIME-Version: 1.0
 X-Priority: 3
 X-MSMail-Priority: Normal
 X-Mailer: Microsoft Outlook Express 6.00.2600.0000
 X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-Brightmail-Tracker: H4sIAAAAAAAAA03Sa0xTdxgG8P3P//S0YAqHQsLxsuDYjGEZF4vB180YJNlyNrbhSMkuH2AV
- z7TjImlRFDYtTDoHskHEpLRcGoMI1CopchOprKKUFaXQXQA3FIVRautASgIyYAIu4dsveZ48
- eT+8Aiyy8jYJZOmZnDxdmhpMeZPWb94qDfVUdXMRTw274WFdFQUXC0swlDh3gHHhEh885UoM
- EyojAuODUgz3T59FoL6tImBcNUJBs7KDgu7WIgquDd8lYdp0Cu5dmkFQWmwjYeznQQwLJjsf
- ltXvw9BPUyQMLLfxYKn+Ah/aci0IbtoeETB7sw5DTctjPpifX8Mw5OwkofKWAUP+kzI+3M2/
- iqC3T4uhaKmWhK7JBgx5jnYe1Nb1ktBjKcPQe7aQD1XD5wnwDN8hYG7hRbneMc2H+vYRHqjO
- /UOC7sEYCaZnEtBXuDHUXi6n4LwzDTzV0dFiNm9yCbH25uPsQO0swV7pqyFYt4VjzxSrCXbQ
- foPPXvnVSrATXVd5bINxjGRn+kp47PyoHbFG3QZ2yG7DbGvHb5idPV1J7Q/9wnvPQS5VdoyT
- h+/90vtwYbGDyujccFx7Xc9TokavAuQlYOidzJzThAqQt0BEjyKmoTuXvxIE0FuYCu1j3opF
- 9OvMvVsVqxbS7zAug3K1Q9HhTGPuZWrF/rSIeTY5RayYpLcxLufIy74f01M2Rq4Y02Kmad6F
- 1xzEtLjL8doRQkb9/Ti55o3Md/pHLy1mflRN8NcMjM3aj4qRr2bdrGbdrGbdrA7hesQoTqRJ
- X3xY8q6w5CNpCmmmIiydywzLSDGi1X/brm9FptLccDMiBMiMGAEODhBKqrs4kfCg9EQ2Jz+S
- JD+ayinMaLOADA4UZrwq40T0IWkml8JxGZz8/5QQeG1SEj6DurDEb7sc/ahyyfORxbU1a99M
- ZMd7hoTEgJB4q/lDfaAm9pXbHXuWWPEHCZI2nf56ApMx3z9n6vZLmsrRSnZ9dUdzNCc+P13v
- OrAsERKVx+77nExsVnu8ndPumKaIN+L39/rGbNGMOSRZp7YfIGJ/+GNEHNk0nx3vu7iw03ev
- X4tXe1XkRtHAeHJzYKL/SaUi7qHOsJuHRxfzjVlJ/742+jTqUMiFzYbGoI+f1NgaFTwnHb7Y
- KftF/Vd2SvK79qmiuCC7/++2Ga3FHRVb/fnXmeIgHKUaTt36/IzNMTL/2Scxbqo6FOV8av0z
- P6LnRohC1uLz974CU3TE23lxy17BpOKwdMebWK6Q/gdBHYWF3gMAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA03SbUxTdxQG8PzvS2/LaLyUZruwqaGEzeEEIW47C4Ro5ubNNtkkxiVs4hq8
+ UwItXQsEyF4oOKA4S7EIUmSjDOoEysTCENykwU60soJsiuNFLYhYy3gpMQpRMkq3hG+/k/Pk
+ yflw+LjoKhnMT5FncEq5NE3C8yOuffla+RbVQi+3ddEWC+4/2ki4UmHH4dyjUKg7poJJyyyC
+ ywVpMPRDMQ6d40Uk/Hl3lAcL1TlwzzyNYLymFAPTfRsOus5OEtrOZEK/1YCBo5aBSpcRwbK9
+ gYSGvkUMZlqHcTDPzeMwtFhHgK3wLgWe7mkMDEdv8KDV/CpcuCmDtqEFCipPnqXg26l+HO6Y
+ HBjofr+Jw+j1KRI6PacJsFemgUuTtzJVDGGg6bfg8GvfErUyniBgrsOFwS1TFw7z1joEY2du
+ UdBtKcegP38cA7XRTYH+QiOCOn0etT2aLXvcSLHO7tfZatMRiv1poIRknYZNrK11lmR7ix+Q
+ 7MzwdxSrPtGMs7P5f/NYl3qSYlucesQu1TaQ7O2Llwi2rNdKsU8c32MfbU30iz3IpaVkccrI
+ uM/8Dh/VPeAprM9lV3c1kXnIIihBAj5Db2POuu14CfLji2gnYtzHlynvQky/xNRUT5Bei+hQ
+ xnGpZtVCOob5sVa3muHRkYxF3czzOpAWMR7XHOY1QYcxN54s4b58AHO16h7hNU5HM+2L07jP
+ G5mOf07hviOEzMmiScLnIKagafw/RzPawinKZ2AGrl1HOrTOsKbWsKbWsKa2FuGNiFHlyKQr
+ /5X8ZkRyukwlzVBFyLmMCEXqObT6ba80nUcXy9WRPQjjox7E8HGJWLi33saJhAelObmcMv2A
+ MjONU/WgF/mE5AWhYn0KJ6IPSTO4VI5TcMr/txhfEJyH/ZU1OSwQ22Q5p/S7jYWCr+NN5qDo
+ 5tth2+kvHrWna7v27lyWfyXYn5SU6PwwMN0z/cHoN7ty3x2ODX76uK+8tGJ20/0sY0FLlMZs
+ c27++D3/SI2jZc9p00zNhonNzzcc2tYRkB2SX2Xp2llq7fGEtycM3vHTi7GquLH4Z29Rl9cR
+ /onvT1qPKcaCdEn11iu/yGNT14cE9H0ikRxxxox9ape55ozPHobXlxUPWDdSQVHSbtS6L/Cd
+ HSPhB0ZC4xUJ4srBbPdvuTGyl/dgPz+d755PiOjc/7m2bUfT2xNmdmSD//nd7SnaN8hBSbI4
+ zNK4RTMS8jBrV6ayOTV7YV9RHNuslRCqw9KocFypkv4LLDB39twDAAA=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=kam-network.com
