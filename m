@@ -2,43 +2,42 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5481085D817
-	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Feb 2024 13:44:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C1DBE85D818
+	for <lists+driverdev-devel@lfdr.de>; Wed, 21 Feb 2024 13:44:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 353DD606BD;
+	by smtp3.osuosl.org (Postfix) with ESMTP id AEF8F605DB;
 	Wed, 21 Feb 2024 12:44:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DzC3Oa823Z1q; Wed, 21 Feb 2024 12:44:29 +0000 (UTC)
+	with ESMTP id U6cMTx2v1VTB; Wed, 21 Feb 2024 12:44:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3D7CE605C3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D73B86060F
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3D7CE605C3;
+	by smtp3.osuosl.org (Postfix) with ESMTP id D73B86060F;
 	Wed, 21 Feb 2024 12:44:29 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 178AB1BF484
- for <devel@linuxdriverproject.org>; Wed, 21 Feb 2024 12:44:28 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 272521BF8B4;
+ Wed, 21 Feb 2024 12:44:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 12DFD80B1B
- for <devel@linuxdriverproject.org>; Wed, 21 Feb 2024 12:44:28 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 146824173B;
+ Wed, 21 Feb 2024 12:44:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aTaVW_jC8EBp for <devel@linuxdriverproject.org>;
- Wed, 21 Feb 2024 12:44:27 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aeDVaPSGH8fu; Wed, 21 Feb 2024 12:44:27 +0000 (UTC)
 X-Greylist: delayed 1115 seconds by postgrey-1.37 at util1.osuosl.org;
  Wed, 21 Feb 2024 12:44:27 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 785A780301
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 785A780301
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 774A441732
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 774A441732
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.249.118.119;
  helo=server.gdci.com.sa; envelope-from=sharon5051@gdci.com.sa;
  receiver=<UNKNOWN> 
 Received: from server.gdci.com.sa (server.gdci.com.sa [192.249.118.119])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 785A780301
- for <devel@driverdev.osuosl.org>; Wed, 21 Feb 2024 12:44:27 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 774A441732;
+ Wed, 21 Feb 2024 12:44:27 +0000 (UTC)
 Received: from [::1] (port=40534 helo=server.gdci.com.sa)
  by server.gdci.com.sa with esmtpa (Exim 4.96.2)
  (envelope-from <sharon5051@gdci.com.sa>) id 1rclfA-00Aiw7-1R;
@@ -54,7 +53,7 @@ X-Sender: sharon5051@gdci.com.sa
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - server.gdci.com.sa
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Original Domain - linuxdriverproject.org
 X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
 X-AntiAbuse: Sender Address Domain - gdci.com.sa
 X-Get-Message-Sender-Via: server.gdci.com.sa: authenticated_id:
@@ -73,13 +72,12 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  1m3j6+Tt5frOuLBsTcj/B/QfQGPhXcr0qpRx93GxuxkxBsazteBMMAvOJk8jeRKHqBghLPzd4V3Gl
  8/qe2nLZEox7x7ZHbVazq/ow/kACSaxZmmATXOnh9OOK8QDiWIBGlidVG8mABkUt1aEbv8LXeSNR+
  ZmzSxp8A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=gdci.com.sa
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gdci.com.sa header.i=@gdci.com.sa header.a=rsa-sha256
- header.s=default header.b=YFonN9Z9
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gdci.com.sa header.i=@gdci.com.sa
+ header.a=rsa-sha256 header.s=default header.b=YFonN9Z9
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
