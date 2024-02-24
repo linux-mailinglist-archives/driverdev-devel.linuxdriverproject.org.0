@@ -1,58 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 349AE861C54
-	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Feb 2024 20:15:07 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C42398628AA
+	for <lists+driverdev-devel@lfdr.de>; Sun, 25 Feb 2024 02:03:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3BE10400E3;
-	Fri, 23 Feb 2024 19:15:05 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7F8B740579;
+	Sun, 25 Feb 2024 01:02:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mUPNTSq9C7Db; Fri, 23 Feb 2024 19:15:04 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fSCFZDbdSFfT; Sun, 25 Feb 2024 01:02:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 838AF40109
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7C02740585
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 838AF40109;
-	Fri, 23 Feb 2024 19:15:04 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7C02740585;
+	Sun, 25 Feb 2024 01:02:57 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 366D11BF400
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Feb 2024 19:15:03 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 24CD31BF853
+ for <devel@linuxdriverproject.org>; Sun, 25 Feb 2024 01:02:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3129280C38
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Feb 2024 19:15:03 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1168A40579
+ for <devel@linuxdriverproject.org>; Sun, 25 Feb 2024 01:02:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zPpprYrr4IYA
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Feb 2024 19:15:02 +0000 (UTC)
-Received: from nervous-zhukovsky.77-68-72-172.plesk.page (unknown
- [77.68.72.172])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AB37780C1D
- for <driverdev-devel@linuxdriverproject.org>;
- Fri, 23 Feb 2024 19:15:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AB37780C1D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AB37780C1D
-Received: by nervous-zhukovsky.77-68-72-172.plesk.page (Postfix,
- from userid 10000)
- id CCE9518939C; Fri, 23 Feb 2024 18:22:11 +0000 (UTC)
-To: driverdev-devel@linuxdriverproject.org
-Subject: REPLY IMMEDIATELY
-Date: Fri, 23 Feb 2024 18:22:11 +0000
-From: Edward Johnson <edward@hotmail.com>
-Message-ID: <d30d7068c3773b7ec70c8eb0ba05abd8@crowdfundmillionaire.co.uk>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2zwWG3Ob9qtJ for <devel@linuxdriverproject.org>;
+ Sun, 25 Feb 2024 01:02:54 +0000 (UTC)
+X-Greylist: delayed 11023 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 25 Feb 2024 01:02:53 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org AA87140571
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AA87140571
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=134.157.0.129;
+ helo=shiva.jussieu.fr; envelope-from=atilla.eren-mamuk@insp.upmc.fr;
+ receiver=<UNKNOWN> 
+Received: from shiva.jussieu.fr (shiva.jussieu.fr [134.157.0.129])
+ by smtp2.osuosl.org (Postfix) with ESMTP id AA87140571
+ for <devel@driverdev.osuosl.org>; Sun, 25 Feb 2024 01:02:52 +0000 (UTC)
+Received: from mailix1.insp.jussieu.fr (mailix1.insp.jussieu.fr
+ [134.157.37.11])
+ by shiva.jussieu.fr (8.15.2/jtpda-5.4) with ESMTP id 41OLtunU019483
+ ; Sat, 24 Feb 2024 22:55:56 +0100 (CET)
+X-Ids: 168
+Received: from hordix.insp.jussieu.fr (hordix.insp.jussieu.fr [134.157.37.9])
+ by mailix1.insp.jussieu.fr (Postfix-INSP-2.10.1) with ESMTPSA id
+ 23294C022FD4; Sat, 24 Feb 2024 22:55:55 +0100 (CET)
+Received: from [193.27.14.187] ([193.27.14.187]) by webmail.insp.jussieu.fr
+ (Horde Framework) with HTTPS; Sat, 24 Feb 2024 21:55:54 +0000
+Date: Sat, 24 Feb 2024 21:55:54 +0000
+Message-ID: <20240224215554.Horde.OAjzygwd2fvMjgY2Wt11xbn@webmail.insp.jussieu.fr>
+From: Victoria Cleland <atilla.eren-mamuk@insp.upmc.fr>
+Subject: Re: Hallo
+User-Agent: Horde Application Framework 5
+Organization: Institut des NanoSciences de Paris
+X-InspUpmcSession: aemamuk
 MIME-Version: 1.0
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=fail (p=none dis=none)
- header.from=hotmail.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- spf=fail smtp.mailfrom=hotmail.com
+Content-Disposition: inline
+X-Miltered: at jchkmail2.reseau.jussieu.fr with ID 65DA65EC.00D by Joe's
+ j-chkmail (http : // j-chkmail dot ensmp dot fr)!
+X-j-chkmail-Enveloppe: 65DA65EC.00D from
+ mailix1.insp.jussieu.fr/mailix1.insp.jussieu.fr/134.157.37.11/mailix1.insp.jussieu.fr/<atilla.eren-mamuk@insp.upmc.fr>
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=insp.upmc.fr
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,20 +77,19 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: edwardj@qwestoffice.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: vcleland8@aol.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"; DelSp="Yes"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear beneficiary
-
-The sum of $60,000,000 has been approved to be paid to you. Please send us your full name and phone number so that we can send you more information.
-
-Thank you
-Edward Johnson
-
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+CgoKSGFsbG8sCgpJY2ggaGFiZSBlaW5lbiB3ZXJ0dm9sbGVuIEdlc2Now6RmdHN2b3JzY2hsYWcs
+IGRlbiBpY2ggbWl0IElobmVuIHRlaWxlbiAgCm3DtmNodGUuIERhbWl0IGljaCBuw6RoZXIgZGFy
+YXVmIGVpbmdlaGVuIGthbm4sIGlzdCBJaHJlIFp1c3RpbW11bmcgIAplcmZvcmRlcmxpY2guCgpG
+w7xyIHdlaXRlcmUgRGV0YWlscyBhbnR3b3J0ZW4gU2llIGF1ZiBFbmdsaXNjaC4KCkhpbndlaXM6
+IEVzIGlzdCBrZWluZSBmaW5hbnppZWxsZSBWZXJwZmxpY2h0dW5nIGVyZm9yZGVybGljaC4KCkdy
+w7zDn2UsClZpY3RvcmlhIENsZWxhbmQuCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fClBl
+cnPDtm5saWNoZXIgQXNzaXN0ZW50OiBBdGlsbGEgTWFtdWsKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51
+eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
