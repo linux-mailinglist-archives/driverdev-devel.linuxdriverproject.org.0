@@ -1,70 +1,68 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3358D8700DD
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Mar 2024 12:57:58 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D6F4782103;
-	Mon,  4 Mar 2024 11:57:56 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id J1M-vddhAujQ; Mon,  4 Mar 2024 11:57:56 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 26F0E8210B
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 26F0E8210B;
-	Mon,  4 Mar 2024 11:57:56 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 44D4E1BF95C
- for <devel@linuxdriverproject.org>; Mon,  4 Mar 2024 11:57:54 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 22BEE87748E
+	for <lists+driverdev-devel@lfdr.de>; Sun, 10 Mar 2024 00:57:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B0AE240BD6
- for <devel@linuxdriverproject.org>; Mon,  4 Mar 2024 11:57:49 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 701DE4017A;
+	Sat,  9 Mar 2024 23:57:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oj9GedOqGlbI for <devel@linuxdriverproject.org>;
- Mon,  4 Mar 2024 11:57:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=164.132.48.43;
- helo=mail.thrivehub.pl; envelope-from=szymon.jankowski@thrivehub.pl;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 971B240BE9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 971B240BE9
-Received: from mail.thrivehub.pl (mail.thrivehub.pl [164.132.48.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 971B240BE9
- for <devel@driverdev.osuosl.org>; Mon,  4 Mar 2024 11:57:47 +0000 (UTC)
-Received: by mail.thrivehub.pl (Postfix, from userid 1002)
- id 6B8232E5CF; Mon,  4 Mar 2024 08:36:10 +0000 (UTC)
-Received: by mail.thrivehub.pl for <devel@driverdev.osuosl.org>;
- Mon,  4 Mar 2024 08:35:59 GMT
-Message-ID: <20240304074500-0.1.4z.26xgn.0.ve6qudd4gw@thrivehub.pl>
-Date: Mon,  4 Mar 2024 08:35:59 GMT
-From: "Szymon Jankowski" <szymon.jankowski@thrivehub.pl>
-To: <devel@driverdev.osuosl.org>
-Subject: Zapytanie ofertowe 
-X-Mailer: mail.thrivehub.pl
-MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=thrivehub.pl; s=mail; 
- t=1709544702; bh=m3ZUCTPRVLoDFM+cXi7VhHW+xNF3eUdGHrj1eDbLwQI=;
- h=Date:From:To:Subject:From;
- b=SHLwvpWm+oQWktHQo5X0UYAEfDWhTu7Fns0HvhCFLGnXpNzqLOgFk3UclEYgbSU30
- ysFx6pf62FY27YzbMmScMPwmDH1la7oCPfTZn1iSJmEdhuiM+D6ItrJFrnR2AHsVIT
- BQrWcePrIKcPpvAK0z0UGlgGK0nGByRyeGkz+BtFJvJtyWNEu3gid6vxRayXRotM9x
- 84OoXTXyb4Xi39lpq2rfWc9gaLaVmWa5SziRaNGQHkqQ5ARGFo6Jg1Ozw3JRiFl7kB
- AZAnqQVywscfW7szcObQrnpV0+wEIP1mYS5luNRN5TzYYdRmKKkqyqWFKns6vWyrAV
- Xg0EBBZEbSt5A==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=thrivehub.pl
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=thrivehub.pl header.i=@thrivehub.pl header.a=rsa-sha256
- header.s=mail header.b=SHLwvpWm
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mKLB2rX4Rgrf; Sat,  9 Mar 2024 23:57:10 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6EF6E40188
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6EF6E40188;
+	Sat,  9 Mar 2024 23:57:10 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 675511BF2A2
+ for <devel@linuxdriverproject.org>; Sat,  9 Mar 2024 23:57:08 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6080460A3D
+ for <devel@linuxdriverproject.org>; Sat,  9 Mar 2024 23:57:08 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wLSTqqQ58UXt for <devel@linuxdriverproject.org>;
+ Sat,  9 Mar 2024 23:57:07 +0000 (UTC)
+Received: from kernelhost.info (unknown [91.218.67.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7FE23608D7
+ for <devel@driverdev.osuosl.org>; Sat,  9 Mar 2024 23:57:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7FE23608D7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7FE23608D7
+Received: from [127.0.0.1] (dynamic-176-001-007-044.176.1.pool.telefonica.de
+ [176.1.7.44]) by kernelhost.info (Postfix) with ESMTPA id 02D15159DAF
+ for <devel@driverdev.osuosl.org>; Sat,  2 Mar 2024 16:39:43 +0100 (CET)
+Received-SPF: pass (kernelhost.info: connection is authenticated)
+Message-Id: <yt36UBAHbC2Ss4J5WgCVAXQzmybFh573MFowLtv3Lg3L@imf.org>
+Mime-Version: 1.0
+From: Mrs. Patricia Mcniel <public@imf.org>
+To: "devel" <devel@driverdev.osuosl.org>
+Subject: Very Urgent
+Date: Sat, 2 Mar 2024 16:39:45 +0100
+X-Bounce-Tracking-Info: <ZGV2ZWwJCQlkZXZlbEBkcml2ZXJkZXYub3N1b3NsLm9yZwlWZXJ5IFVyZ2VudAkyMwkJNTYzOTExCWJvdW5jZQlubwlubw==>
+X-PPP-Message-ID: <170939398554.8780.8282744209646617513@kernelhost.info>
+X-PPP-Vhost: imf.org
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=imf.org; s=default; 
+ t=1709393985; bh=GMwkPfl8GtaVwnuNAYiwfN9l9xM9+sgKU7IzB05mBgo=;
+ h=From:To:Subject;
+ b=BwC2tjGcR5egkhWhfYyP9RQnsVNr4vUXCPJQmuVB22k3RsxnRx8jc+980C0fQbaAw
+ iJXc+OeXK5/a549C6iGfW8GMIcB0ER+zgrlhhz9JZylrVnn9xwHoA0pgGpffAmF5Ld
+ vq9FgNbK0gESxGS8BJCfHX52LN0VW8EJz8zQF4WBvOL+l7vxCWWJdbwiQtNcOjBBw7
+ pj6h7XlcNtKLpNKRYUqrMCCKgVePrATf0NvgpbqsxsvO+zBA9SLebNuFE9LWFG9Lss
+ cA7Xp/sGnO96eZFj258bJvDp9b+SnOkP/ck7rZzpJIBay8ZYLId52Z8/d3315BpnOW
+ UogY7R7K40ryQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=fail (p=none dis=none)
+ header.from=imf.org
+X-Mailman-Original-Authentication-Results: kernelhost.info;
+ spf=pass (sender IP is 176.1.7.44) smtp.mailfrom=public@imf.org
+ smtp.helo=[127.0.0.1]
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,17 +75,44 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: patricia881a@gmail.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-RHppZcWEIGRvYnJ5LAoKUG96d29sacWCZW0gc29iaWUgbmEga29udGFrdCwgcG9uaWV3YcW8IGpl
-c3RlbSB6YWludGVyZXNvd2FueSB3ZXJ5ZmlrYWNqxIUgbW/FvGxpd2/Fm2NpIG5hd2nEhXphbmlh
-IHdzcMOzxYJwcmFjeS4KCldzcGllcmFteSBmaXJteSB3IHBvenlza2l3YW5pdSBub3d5Y2gga2xp
-ZW50w7N3IGJpem5lc293eWNoLgoKQ3p5IG1vxbxlbXkgcG9yb3ptYXdpYcSHIHcgY2VsdSBwcnpl
-ZHN0YXdpZW5pYSBzemN6ZWfDs8WCb3d5Y2ggaW5mb3JtYWNqaT8gCgoKUG96ZHJhd2lhbQpTenlt
-b24gSmFua293c2tpCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
-Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
-cmRldi1kZXZlbAo=
+Headquarters:
+International Monetary Fund
+700 19th Street, N.W.
+
+
+With reference to your entitlement fund and inline with the CHANGE OF BENEFICIARY'S APPLICATION, signed by Mr Calvin R. Hemming with your purported authorization. This issue has been carefully examined and we have declined Calvin R. Hemming's application as the application lacks regular signature. But Did you ever instruct Mr Calvin R. Hemming to claim your fund worth US$9.500.000? Below is the bank account information provided by Mr Calvin R. Hemming saying that you authorized him to claim your fund that you are terminally ill.
+
+Bank Name: Bank of America
+Account Name:: Calvin R. Hemming
+ACCT NO: 586025513245
+Routing No: 111000025
+Bank Address 9711 Bissonnet St. Houston, Tx 77036
+
+If you had not authorized the change of your bank account in respect to your outstanding entitlement Payment, therefore notify me immediately as the notification / declaration was supported with a sworn affidavit from Texas high court ref: ilk /jj/202/k2024, dated 29th of February 2024 and signed by Mr Calvin R. Hemming who claimed and stated in the sworn declaration that you authorized him to claim the said fund on your behalf to a different bank account in the U.S. as stated above because you were terminally ill and the Doctor who is in charge of your case stated that you will not stay more than one Month before passing away.
+
+If you did not authorize this payment, we will suspend all your pending transfers and arrange your payment through our swift card payment center after verification. In receipt of this confidential email, you are required to get back to us immediately to proceed with the funds release or stop with the release to your representatives and claim your funds personally.
+
+You are directed to contact the Office of the Paymaster General immediately through his below Contact details to start processing your file.
+
+Dr. Michael Smith
+Email Address:  claim.department@mail2Usa.com
+
+This development has caused lots of discrepancies in your payment file that is why we had to suspend your payment and prompted you to contact you directly before re-validating your payment. You can be rest assured that we will do everything within my capacity to successfully actualize the quick transfer of your fund to any of your nominated bank accounts.
+
+Kindly contact Dr. Michael Smith as soon as possible so that he will direct you on what to do for the claims.
+
+Best Regards.
+Mrs. Patricia Mcniel.
+Email: pmcniel947@gmail.com
+Public Information Officer
+
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
