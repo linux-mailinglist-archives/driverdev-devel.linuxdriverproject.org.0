@@ -2,87 +2,80 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4646C86F49C
-	for <lists+driverdev-devel@lfdr.de>; Sun,  3 Mar 2024 12:41:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 49A2186F526
+	for <lists+driverdev-devel@lfdr.de>; Sun,  3 Mar 2024 14:35:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C58C8820A5;
-	Sun,  3 Mar 2024 11:41:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id BB6D281F87;
+	Sun,  3 Mar 2024 13:35:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Uw4sE1LCXWd2; Sun,  3 Mar 2024 11:41:15 +0000 (UTC)
+	with ESMTP id 2aRgqjisdQGe; Sun,  3 Mar 2024 13:35:56 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 06A76820BD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B76D281FA1
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 06A76820BD;
-	Sun,  3 Mar 2024 11:41:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B76D281FA1;
+	Sun,  3 Mar 2024 13:35:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D4C871BF2A6
- for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 11:41:12 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CC9551BF863
+ for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 13:35:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C1A9D4085E
- for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 11:41:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B37A840210
+ for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 13:35:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JJZC4_8xYY26 for <devel@linuxdriverproject.org>;
- Sun,  3 Mar 2024 11:41:11 +0000 (UTC)
-X-Greylist: delayed 63625 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 03 Mar 2024 11:41:11 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6CD3240859
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6CD3240859
-Received-SPF: Permerror (mailfrom) identity=mailfrom; client-ip=186.113.7.92;
- helo=mail.sticcoltel.co; envelope-from=jadominguez@sticcoltel.co;
- receiver=<UNKNOWN> 
-Received: from mail.sticcoltel.co (unknown [186.113.7.92])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6CD3240859
- for <devel@driverdev.osuosl.org>; Sun,  3 Mar 2024 11:41:11 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.sticcoltel.co (Postfix) with ESMTP id DA4C516B92726;
- Sat,  2 Mar 2024 11:12:43 -0500 (-05)
-Received: from mail.sticcoltel.co ([127.0.0.1])
- by localhost (mail.sticcoltel.co [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id ybON_0H2sWb5; Sat,  2 Mar 2024 11:12:43 -0500 (-05)
-Received: from localhost (localhost [127.0.0.1])
- by mail.sticcoltel.co (Postfix) with ESMTP id 56E771560F502;
- Sat,  2 Mar 2024 07:12:08 -0500 (-05)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mail.sticcoltel.co 56E771560F502
-X-Virus-Scanned: amavisd-new at sticcoltel.co
-Received: from mail.sticcoltel.co ([127.0.0.1])
- by localhost (mail.sticcoltel.co [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id gUQalfnggtCE; Sat,  2 Mar 2024 07:12:08 -0500 (-05)
-Received: from EC2AMAZ-I2OQVV3.us-east-2.compute.internal
- (ec2-3-140-195-102.us-east-2.compute.amazonaws.com [3.140.195.102])
- by mail.sticcoltel.co (Postfix) with ESMTPSA id 9C8301560F93B;
- Sat,  2 Mar 2024 05:52:19 -0500 (-05)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BRu6vTvjwxel for <devel@linuxdriverproject.org>;
+ Sun,  3 Mar 2024 13:35:54 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2585340126
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2585340126
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2585340126
+ for <devel@driverdev.osuosl.org>; Sun,  3 Mar 2024 13:35:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11001"; a="15374536"
+X-IronPort-AV: E=Sophos;i="6.06,201,1705392000"; d="scan'208";a="15374536"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Mar 2024 05:35:51 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,201,1705392000"; d="scan'208";a="46228498"
+Received: from lkp-server01.sh.intel.com (HELO b21307750695) ([10.239.97.150])
+ by orviesa001.jf.intel.com with ESMTP; 03 Mar 2024 05:35:49 -0800
+Received: from kbuild by b21307750695 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1rgm0I-0001o0-32;
+ Sun, 03 Mar 2024 13:35:46 +0000
+Date: Sun, 3 Mar 2024 21:34:57 +0800
+From: kernel test robot <lkp@intel.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: [driver-core:debugfs_cleanup 11/11] drivers/nvmem/core.c:481:8:
+ error: call to undeclared function 'devm_device_add_groups'; ISO C99 and
+ later do not support implicit function declarations
+Message-ID: <202403032155.yW6rZVrP-lkp@intel.com>
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Kreditangebot!!! @ 1.5%
-To: Recipients <jadominguez@sticcoltel.co>
-From: "Thomas Mark" <jadominguez@sticcoltel.co>
-Date: Sat, 02 Mar 2024 10:50:00 +0000
-Message-Id: <20240302105220.9C8301560F93B@mail.sticcoltel.co>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sticcoltel.co; 
- s=76D537E4-BCFA-11ED-B719-8355120AF0F9; t=1709381528;
- bh=Ar2iaLaYRTJYNc+ohcjENhHAPwCijW86qaDECh2eoiE=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=aCu6HXD0+cQkWv3dVgtpC93UqktdzijJTLIOz0g37KDotPlfA8wPHY826EczyPWBs
- 7q6AEBXsvnPWyFGoj8o9FH62nztxi4c0+6EgFEZ5B4jleT8hBwngvQkGR21nkQQ4OP
- 5n7W0DxGEfxjVMO2cp3G8qH4ec/MMtZENl0AHKOSboOVH5qAsPXh3mRtD7Ui/6DByN
- 5RkpeRzcLjbscDStuH51+/vuHMaS+LOs4CWez8X0DWj23FlKWy+tEpDVlcm8XHM8Q2
- riqKR5PhYrj9OpQ677T6yZ/9cRob2SqrsINa7SRVRBAlJ62KeIKVgQEWL9kj2as1Sa
- abRmZHOKx/yLg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=sticcoltel.co
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Disposition: inline
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1709472954; x=1741008954;
+ h=date:from:to:cc:subject:message-id:mime-version;
+ bh=fRqyqbtzagsoNSUzbbnk/0zzzjp6RJ6/jLywjH2E6RU=;
+ b=Ns5v6SEnisGe2VJEVdN4SPPbV1sLW0GHWmpxoUC+Q3kqXjzKXILKY3Bn
+ I/+K9qiuzW7CM2H8w4xueBsGZneX/AtOotf2k+UYzHEqrcIJOCr7zUXyI
+ DC5OiuEGLxxbjHg/GG/y1KL/4k1M8nYAfd0FUWlGOgcObmawt1ouuKjIB
+ UJFGAfBwUDRYxeNYLqZwggF/SYvRWwzmILoRwBnRQ0yjiP2XA6hgj+vwt
+ I7zV2ro2DWVZNT6f3cTprgxnFJ41YyBD2wsm92yRWNvT0+O4pWRrqLVhS
+ lAT/TFCeZEMay0Olp8t2mucnNXZdW2Z9ZVe8waQJKX7+SvHmaSSfctqGv
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=sticcoltel.co header.i=@sticcoltel.co
- header.a=rsa-sha256 header.s=76D537E4-BCFA-11ED-B719-8355120AF0F9
- header.b=aCu6HXD0
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Ns5v6SEn
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,25 +88,113 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: thomaswellcometrust@skiff.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: devel@driverdev.osuosl.org, llvm@lists.linux.dev,
+ oe-kbuild-all@lists.linux.dev
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Gr=FC=DFe,
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
+head:   d52687b617d2f0d9709ddfe812df75aa25fe202f
+commit: d52687b617d2f0d9709ddfe812df75aa25fe202f [11/11] driver core: remove devm_device_add_groups()
+config: x86_64-rhel-8.3-bpf (https://download.01.org/0day-ci/archive/20240303/202403032155.yW6rZVrP-lkp@intel.com/config)
+compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240303/202403032155.yW6rZVrP-lkp@intel.com/reproduce)
 
-Wir freuen uns, Ihnen unsere Kreditdienstleistungen mit einem j=E4hrlichen =
-Zinssatz von 1,5% anbieten zu k=F6nnen. Unsere Kreditbetr=E4ge reichen von =
-20.000 Euro bis 50.000.000 Euro und wir unterst=FCtzen Sie gerne bei der Er=
-f=FCllung Ihres finanziellen Bedarfs. Wenn Sie diese M=F6glichkeit interess=
-ant finden, informieren Sie uns bitte. Wenn Sie unsere E-Mails nicht mehr e=
-rhalten m=F6chten, senden Sie uns bitte eine E-Mail mit dem Betreff "Abmeld=
-en", und wir werden Sie aus unserer Mailingliste entfernen.
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202403032155.yW6rZVrP-lkp@intel.com/
 
-Danke,
+All errors (new ones prefixed by >>):
 
-Thomas Mark
+>> drivers/nvmem/core.c:481:8: error: call to undeclared function 'devm_device_add_groups'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+     481 |         ret = devm_device_add_groups(&nvmem->dev, nvmem_cells_groups);
+         |               ^
+   drivers/nvmem/core.c:481:8: note: did you mean 'devm_device_add_group'?
+   include/linux/device.h:1204:18: note: 'devm_device_add_group' declared here
+    1204 | int __must_check devm_device_add_group(struct device *dev,
+         |                  ^
+   1 error generated.
+
+
+vim +/devm_device_add_groups +481 drivers/nvmem/core.c
+
+84400305271937 Srinivas Kandagatla 2020-03-25  429  
+0331c611949fff Miquel Raynal       2023-12-15  430  static int nvmem_populate_sysfs_cells(struct nvmem_device *nvmem)
+0331c611949fff Miquel Raynal       2023-12-15  431  {
+0331c611949fff Miquel Raynal       2023-12-15  432  	struct bin_attribute **cells_attrs, *attrs;
+0331c611949fff Miquel Raynal       2023-12-15  433  	struct nvmem_cell_entry *entry;
+0331c611949fff Miquel Raynal       2023-12-15  434  	unsigned int ncells = 0, i = 0;
+0331c611949fff Miquel Raynal       2023-12-15  435  	int ret = 0;
+0331c611949fff Miquel Raynal       2023-12-15  436  
+0331c611949fff Miquel Raynal       2023-12-15  437  	mutex_lock(&nvmem_mutex);
+0331c611949fff Miquel Raynal       2023-12-15  438  
+0331c611949fff Miquel Raynal       2023-12-15  439  	if (list_empty(&nvmem->cells) || nvmem->sysfs_cells_populated) {
+0331c611949fff Miquel Raynal       2023-12-15  440  		nvmem_cells_group.bin_attrs = NULL;
+0331c611949fff Miquel Raynal       2023-12-15  441  		goto unlock_mutex;
+0331c611949fff Miquel Raynal       2023-12-15  442  	}
+0331c611949fff Miquel Raynal       2023-12-15  443  
+0331c611949fff Miquel Raynal       2023-12-15  444  	/* Allocate an array of attributes with a sentinel */
+0331c611949fff Miquel Raynal       2023-12-15  445  	ncells = list_count_nodes(&nvmem->cells);
+0331c611949fff Miquel Raynal       2023-12-15  446  	cells_attrs = devm_kcalloc(&nvmem->dev, ncells + 1,
+0331c611949fff Miquel Raynal       2023-12-15  447  				   sizeof(struct bin_attribute *), GFP_KERNEL);
+0331c611949fff Miquel Raynal       2023-12-15  448  	if (!cells_attrs) {
+0331c611949fff Miquel Raynal       2023-12-15  449  		ret = -ENOMEM;
+0331c611949fff Miquel Raynal       2023-12-15  450  		goto unlock_mutex;
+0331c611949fff Miquel Raynal       2023-12-15  451  	}
+0331c611949fff Miquel Raynal       2023-12-15  452  
+0331c611949fff Miquel Raynal       2023-12-15  453  	attrs = devm_kcalloc(&nvmem->dev, ncells, sizeof(struct bin_attribute), GFP_KERNEL);
+0331c611949fff Miquel Raynal       2023-12-15  454  	if (!attrs) {
+0331c611949fff Miquel Raynal       2023-12-15  455  		ret = -ENOMEM;
+0331c611949fff Miquel Raynal       2023-12-15  456  		goto unlock_mutex;
+0331c611949fff Miquel Raynal       2023-12-15  457  	}
+0331c611949fff Miquel Raynal       2023-12-15  458  
+0331c611949fff Miquel Raynal       2023-12-15  459  	/* Initialize each attribute to take the name and size of the cell */
+0331c611949fff Miquel Raynal       2023-12-15  460  	list_for_each_entry(entry, &nvmem->cells, node) {
+0331c611949fff Miquel Raynal       2023-12-15  461  		sysfs_bin_attr_init(&attrs[i]);
+0331c611949fff Miquel Raynal       2023-12-15  462  		attrs[i].attr.name = devm_kasprintf(&nvmem->dev, GFP_KERNEL,
+e20f378d993b10 Arnd Bergmann       2024-02-09  463  						    "%s@%x,%x", entry->name,
+e20f378d993b10 Arnd Bergmann       2024-02-09  464  						    entry->offset,
+e20f378d993b10 Arnd Bergmann       2024-02-09  465  						    entry->bit_offset);
+0331c611949fff Miquel Raynal       2023-12-15  466  		attrs[i].attr.mode = 0444;
+0331c611949fff Miquel Raynal       2023-12-15  467  		attrs[i].size = entry->bytes;
+0331c611949fff Miquel Raynal       2023-12-15  468  		attrs[i].read = &nvmem_cell_attr_read;
+0331c611949fff Miquel Raynal       2023-12-15  469  		attrs[i].private = entry;
+0331c611949fff Miquel Raynal       2023-12-15  470  		if (!attrs[i].attr.name) {
+0331c611949fff Miquel Raynal       2023-12-15  471  			ret = -ENOMEM;
+0331c611949fff Miquel Raynal       2023-12-15  472  			goto unlock_mutex;
+0331c611949fff Miquel Raynal       2023-12-15  473  		}
+0331c611949fff Miquel Raynal       2023-12-15  474  
+0331c611949fff Miquel Raynal       2023-12-15  475  		cells_attrs[i] = &attrs[i];
+0331c611949fff Miquel Raynal       2023-12-15  476  		i++;
+0331c611949fff Miquel Raynal       2023-12-15  477  	}
+0331c611949fff Miquel Raynal       2023-12-15  478  
+0331c611949fff Miquel Raynal       2023-12-15  479  	nvmem_cells_group.bin_attrs = cells_attrs;
+0331c611949fff Miquel Raynal       2023-12-15  480  
+0331c611949fff Miquel Raynal       2023-12-15 @481  	ret = devm_device_add_groups(&nvmem->dev, nvmem_cells_groups);
+0331c611949fff Miquel Raynal       2023-12-15  482  	if (ret)
+0331c611949fff Miquel Raynal       2023-12-15  483  		goto unlock_mutex;
+0331c611949fff Miquel Raynal       2023-12-15  484  
+0331c611949fff Miquel Raynal       2023-12-15  485  	nvmem->sysfs_cells_populated = true;
+0331c611949fff Miquel Raynal       2023-12-15  486  
+0331c611949fff Miquel Raynal       2023-12-15  487  unlock_mutex:
+0331c611949fff Miquel Raynal       2023-12-15  488  	mutex_unlock(&nvmem_mutex);
+0331c611949fff Miquel Raynal       2023-12-15  489  
+0331c611949fff Miquel Raynal       2023-12-15  490  	return ret;
+0331c611949fff Miquel Raynal       2023-12-15  491  }
+0331c611949fff Miquel Raynal       2023-12-15  492  
+
+:::::: The code at line 481 was first introduced by commit
+:::::: 0331c611949fffdf486652450901a4dc52bc5cca nvmem: core: Expose cells through sysfs
+
+:::::: TO: Miquel Raynal <miquel.raynal@bootlin.com>
+:::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
