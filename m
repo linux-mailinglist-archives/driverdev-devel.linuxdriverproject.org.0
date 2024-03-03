@@ -1,81 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49A2186F526
-	for <lists+driverdev-devel@lfdr.de>; Sun,  3 Mar 2024 14:35:59 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7299686F57F
+	for <lists+driverdev-devel@lfdr.de>; Sun,  3 Mar 2024 15:18:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BB6D281F87;
-	Sun,  3 Mar 2024 13:35:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 18C2760754;
+	Sun,  3 Mar 2024 14:17:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2aRgqjisdQGe; Sun,  3 Mar 2024 13:35:56 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 59hmIuHm5nAj; Sun,  3 Mar 2024 14:17:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B76D281FA1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 00CF660874
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B76D281FA1;
-	Sun,  3 Mar 2024 13:35:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 00CF660874;
+	Sun,  3 Mar 2024 14:17:55 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CC9551BF863
- for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 13:35:55 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 33F071BF5AE
+ for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 14:17:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B37A840210
- for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 13:35:55 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2E21C60754
+ for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 14:17:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BRu6vTvjwxel for <devel@linuxdriverproject.org>;
- Sun,  3 Mar 2024 13:35:54 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6AZ_cyvh8cUQ for <devel@linuxdriverproject.org>;
+ Sun,  3 Mar 2024 14:17:52 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2585340126
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2585340126
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2585340126
- for <devel@driverdev.osuosl.org>; Sun,  3 Mar 2024 13:35:53 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11001"; a="15374536"
-X-IronPort-AV: E=Sophos;i="6.06,201,1705392000"; d="scan'208";a="15374536"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Mar 2024 05:35:51 -0800
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0DB1D60737
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0DB1D60737
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0DB1D60737
+ for <devel@driverdev.osuosl.org>; Sun,  3 Mar 2024 14:17:51 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11001"; a="6920157"
+X-IronPort-AV: E=Sophos;i="6.06,201,1705392000"; 
+   d="scan'208";a="6920157"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Mar 2024 06:17:50 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,201,1705392000"; d="scan'208";a="46228498"
+X-IronPort-AV: E=Sophos;i="6.06,201,1705392000"; d="scan'208";a="13286642"
 Received: from lkp-server01.sh.intel.com (HELO b21307750695) ([10.239.97.150])
- by orviesa001.jf.intel.com with ESMTP; 03 Mar 2024 05:35:49 -0800
+ by fmviesa004.fm.intel.com with ESMTP; 03 Mar 2024 06:17:49 -0800
 Received: from kbuild by b21307750695 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rgm0I-0001o0-32;
- Sun, 03 Mar 2024 13:35:46 +0000
-Date: Sun, 3 Mar 2024 21:34:57 +0800
+ (envelope-from <lkp@intel.com>) id 1rgmex-0001p6-22;
+ Sun, 03 Mar 2024 14:17:47 +0000
+Date: Sun, 3 Mar 2024 22:17:02 +0800
 From: kernel test robot <lkp@intel.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup 11/11] drivers/nvmem/core.c:481:8:
- error: call to undeclared function 'devm_device_add_groups'; ISO C99 and
- later do not support implicit function declarations
-Message-ID: <202403032155.yW6rZVrP-lkp@intel.com>
+Subject: [driver-core:debugfs_cleanup 11/11] drivers/nvmem/core.c:481:15:
+ error: implicit declaration of function 'devm_device_add_groups'; did you
+ mean 'devm_device_add_group'?
+Message-ID: <202403032205.vsrv47wd-lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709472954; x=1741008954;
+ t=1709475472; x=1741011472;
  h=date:from:to:cc:subject:message-id:mime-version;
- bh=fRqyqbtzagsoNSUzbbnk/0zzzjp6RJ6/jLywjH2E6RU=;
- b=Ns5v6SEnisGe2VJEVdN4SPPbV1sLW0GHWmpxoUC+Q3kqXjzKXILKY3Bn
- I/+K9qiuzW7CM2H8w4xueBsGZneX/AtOotf2k+UYzHEqrcIJOCr7zUXyI
- DC5OiuEGLxxbjHg/GG/y1KL/4k1M8nYAfd0FUWlGOgcObmawt1ouuKjIB
- UJFGAfBwUDRYxeNYLqZwggF/SYvRWwzmILoRwBnRQ0yjiP2XA6hgj+vwt
- I7zV2ro2DWVZNT6f3cTprgxnFJ41YyBD2wsm92yRWNvT0+O4pWRrqLVhS
- lAT/TFCeZEMay0Olp8t2mucnNXZdW2Z9ZVe8waQJKX7+SvHmaSSfctqGv
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=kAcwQcWLoQI/JTk5HLMMnP/Uy5MWepxeGbO/YChabP0=;
+ b=Wj6ofuwWzcnGY3HLrZt93UCthXIqXiTWe4Rt11WtBkx4Jhk6jpTP2raS
+ oivrzYJE2ja6laqpj4efkgcU7t/7A2k6MEaXjOwTZAKKfOsIMZC1DlGPW
+ HpPho2BPFputqoCk1fSPZGrtbBcXwuc3RtrG+fpduFDmqaqr1Kj150RqP
+ 85tHmbAVgkBn5cdpJT1tlc5iM/LLKvKQy9IdtqkzdRjBeJnOSUPed5MaQ
+ jAV3gD5PrlL03yvQ/UfmgbBsdWj9ovZLHzLMAQk16eF8Fsn/LVwXUR1dp
+ EFUoMzSEWdov8s/UR00eQSuRIsG2/CVctpbIJ0vaEPNx5wNFKI4gnbjUD
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Ns5v6SEn
+ header.s=Intel header.b=Wj6ofuwW
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,8 +89,7 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, llvm@lists.linux.dev,
- oe-kbuild-all@lists.linux.dev
+Cc: devel@driverdev.osuosl.org, oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -98,28 +98,26 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
 head:   d52687b617d2f0d9709ddfe812df75aa25fe202f
 commit: d52687b617d2f0d9709ddfe812df75aa25fe202f [11/11] driver core: remove devm_device_add_groups()
-config: x86_64-rhel-8.3-bpf (https://download.01.org/0day-ci/archive/20240303/202403032155.yW6rZVrP-lkp@intel.com/config)
-compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240303/202403032155.yW6rZVrP-lkp@intel.com/reproduce)
+config: arm64-randconfig-004-20240303 (https://download.01.org/0day-ci/archive/20240303/202403032205.vsrv47wd-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240303/202403032205.vsrv47wd-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202403032155.yW6rZVrP-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202403032205.vsrv47wd-lkp@intel.com/
 
 All errors (new ones prefixed by >>):
 
->> drivers/nvmem/core.c:481:8: error: call to undeclared function 'devm_device_add_groups'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   drivers/nvmem/core.c: In function 'nvmem_populate_sysfs_cells':
+>> drivers/nvmem/core.c:481:15: error: implicit declaration of function 'devm_device_add_groups'; did you mean 'devm_device_add_group'? [-Werror=implicit-function-declaration]
      481 |         ret = devm_device_add_groups(&nvmem->dev, nvmem_cells_groups);
-         |               ^
-   drivers/nvmem/core.c:481:8: note: did you mean 'devm_device_add_group'?
-   include/linux/device.h:1204:18: note: 'devm_device_add_group' declared here
-    1204 | int __must_check devm_device_add_group(struct device *dev,
-         |                  ^
-   1 error generated.
+         |               ^~~~~~~~~~~~~~~~~~~~~~
+         |               devm_device_add_group
+   cc1: some warnings being treated as errors
 
 
-vim +/devm_device_add_groups +481 drivers/nvmem/core.c
+vim +481 drivers/nvmem/core.c
 
 84400305271937 Srinivas Kandagatla 2020-03-25  429  
 0331c611949fff Miquel Raynal       2023-12-15  430  static int nvmem_populate_sysfs_cells(struct nvmem_device *nvmem)
