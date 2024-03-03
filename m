@@ -2,81 +2,87 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7299686F57F
-	for <lists+driverdev-devel@lfdr.de>; Sun,  3 Mar 2024 15:18:03 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 426EA86F71F
+	for <lists+driverdev-devel@lfdr.de>; Sun,  3 Mar 2024 22:07:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 18C2760754;
-	Sun,  3 Mar 2024 14:17:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6789260AF8;
+	Sun,  3 Mar 2024 21:07:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 59hmIuHm5nAj; Sun,  3 Mar 2024 14:17:55 +0000 (UTC)
+	with ESMTP id NmULZ71NflO8; Sun,  3 Mar 2024 21:07:56 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 00CF660874
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9356560851
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 00CF660874;
-	Sun,  3 Mar 2024 14:17:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9356560851;
+	Sun,  3 Mar 2024 21:07:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 33F071BF5AE
- for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 14:17:53 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 271B91BF33D
+ for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 21:07:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2E21C60754
- for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 14:17:53 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0D5C340210
+ for <devel@linuxdriverproject.org>; Sun,  3 Mar 2024 21:07:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6AZ_cyvh8cUQ for <devel@linuxdriverproject.org>;
- Sun,  3 Mar 2024 14:17:52 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0DB1D60737
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0DB1D60737
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0DB1D60737
- for <devel@driverdev.osuosl.org>; Sun,  3 Mar 2024 14:17:51 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11001"; a="6920157"
-X-IronPort-AV: E=Sophos;i="6.06,201,1705392000"; 
-   d="scan'208";a="6920157"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Mar 2024 06:17:50 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,201,1705392000"; d="scan'208";a="13286642"
-Received: from lkp-server01.sh.intel.com (HELO b21307750695) ([10.239.97.150])
- by fmviesa004.fm.intel.com with ESMTP; 03 Mar 2024 06:17:49 -0800
-Received: from kbuild by b21307750695 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rgmex-0001p6-22;
- Sun, 03 Mar 2024 14:17:47 +0000
-Date: Sun, 3 Mar 2024 22:17:02 +0800
-From: kernel test robot <lkp@intel.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup 11/11] drivers/nvmem/core.c:481:15:
- error: implicit declaration of function 'devm_device_add_groups'; did you
- mean 'devm_device_add_group'?
-Message-ID: <202403032205.vsrv47wd-lkp@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id I7SmKGM3xldu for <devel@linuxdriverproject.org>;
+ Sun,  3 Mar 2024 21:07:53 +0000 (UTC)
+X-Greylist: delayed 581 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 03 Mar 2024 21:07:51 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9313B400EF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9313B400EF
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=103.21.126.61;
+ helo=smtp1.iitb.ac.in; envelope-from=210100011@iitb.ac.in; receiver=<UNKNOWN> 
+Received: from smtp1.iitb.ac.in (smtpd6.iitb.ac.in [103.21.126.61])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9313B400EF
+ for <devel@driverdev.osuosl.org>; Sun,  3 Mar 2024 21:07:51 +0000 (UTC)
+Received: from ldns1.iitb.ac.in (ldns1.iitb.ac.in [10.200.12.1])
+ by smtp1.iitb.ac.in (Postfix) with SMTP id 78DB3104D0CC
+ for <devel@driverdev.osuosl.org>; Mon,  4 Mar 2024 02:28:05 +0530 (IST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.iitb.ac.in 78DB3104D0CC
+Received: (qmail 10329 invoked by uid 510); 4 Mar 2024 02:28:05 +0530
+X-Qmail-Scanner-Diagnostics: from 10.200.1.25 by ldns1 (envelope-from
+ <210100011@iitb.ac.in>, uid 501) with qmail-scanner-2.11
+ spamassassin: 3.4.1. mhr: 1.0. {clamdscan: 0.101.4/26439} 
+ Clear:RC:1(10.200.1.25):SA:0(0.0/7.0):. Processed in 2.173844 secs;
+ 04 Mar 2024 02:28:05 +0530
+X-Spam-Pyzor: Reported 0 times.
+X-Envelope-From: 210100011@iitb.ac.in
+X-Qmail-Scanner-Mime-Attachments: |
+X-Qmail-Scanner-Zip-Files: |
+Received: from unknown (HELO ldns1.iitb.ac.in) (10.200.1.25)
+ by ldns1.iitb.ac.in with SMTP; 4 Mar 2024 02:28:03 +0530
+Received: from wm1.iitb.ac.in (wm1.iitb.ac.in [10.200.17.1])
+ by ldns1.iitb.ac.in (Postfix) with ESMTP id 0F460360072;
+ Mon,  4 Mar 2024 02:28:03 +0530 (IST)
+Received: from webmail-sso.iitb.ac.in (localhost [IPv6:::1])
+ by wm1.iitb.ac.in (Postfix) with ESMTP id 0B2DC608E11;
+ Mon,  4 Mar 2024 02:28:03 +0530 (IST)
+Received: from [10.9.9.42] by webmail.iitb.ac.in
+ with HTTP (HTTP/1.1 POST); Mon, 04 Mar 2024 02:28:02 +0530
 MIME-Version: 1.0
-Content-Disposition: inline
+Date: Mon, 04 Mar 2024 02:28:02 +0530
+From: Aman Sharma <210100011@iitb.ac.in>
+To: gregkh@linuxfoundation.org
+Subject: [PATCH] Staging: pi433: Updated bitrate range from datasheet
+Message-ID: <ddbd681a7504ae8b8fd4dc69270e804d@iitb.ac.in>
+X-Sender: 210100011@iitb.ac.in
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709475472; x=1741011472;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=kAcwQcWLoQI/JTk5HLMMnP/Uy5MWepxeGbO/YChabP0=;
- b=Wj6ofuwWzcnGY3HLrZt93UCthXIqXiTWe4Rt11WtBkx4Jhk6jpTP2raS
- oivrzYJE2ja6laqpj4efkgcU7t/7A2k6MEaXjOwTZAKKfOsIMZC1DlGPW
- HpPho2BPFputqoCk1fSPZGrtbBcXwuc3RtrG+fpduFDmqaqr1Kj150RqP
- 85tHmbAVgkBn5cdpJT1tlc5iM/LLKvKQy9IdtqkzdRjBeJnOSUPed5MaQ
- jAV3gD5PrlL03yvQ/UfmgbBsdWj9ovZLHzLMAQk16eF8Fsn/LVwXUR1dp
- EFUoMzSEWdov8s/UR00eQSuRIsG2/CVctpbIJ0vaEPNx5wNFKI4gnbjUD
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Wj6ofuwW
+ d=iitb.ac.in; s=mail; 
+ t=1709499485; bh=cKZF4odXE/it1RO6myqlNO63lhy9YJ56gjTn3CJcxsg=;
+ h=Date:From:To:Cc:Subject:From;
+ b=iKpm+6L0Pc/00Or8X8OssRsxjQMhwYDrKz9bODytEVcXCnbzyt9G3u0q6xNDhdgW2
+ W6LzUUdcHPyOQMck9zdE13H8weaVvST9hM7LbwX0LuMeDfa4Vqqo59Ej4X1ujyTL59
+ io9vXgCXQN0aGdHnnIUb3qQ8udXfX27VCEIvzsi4=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=iitb.ac.in
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=iitb.ac.in header.i=@iitb.ac.in header.a=rsa-sha256
+ header.s=mail header.b=iKpm+6L0
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,110 +95,63 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, oe-kbuild-all@lists.linux.dev
-Content-Type: text/plain; charset="us-ascii"
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
-head:   d52687b617d2f0d9709ddfe812df75aa25fe202f
-commit: d52687b617d2f0d9709ddfe812df75aa25fe202f [11/11] driver core: remove devm_device_add_groups()
-config: arm64-randconfig-004-20240303 (https://download.01.org/0day-ci/archive/20240303/202403032205.vsrv47wd-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240303/202403032205.vsrv47wd-lkp@intel.com/reproduce)
+ From a0528708b209739f0d566401bdd428e215abf366 Mon Sep 17 00:00:00 2001
+ From: Aman Sharma <amansharma612002@gmail.com>
+Date: Mon, 4 Mar 2024 00:44:06 +0530
+Subject: [PATCH] Staging: pi433: Updated bitrate range from datasheet
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202403032205.vsrv47wd-lkp@intel.com/
+Updated bitrate range for FSK and OOK modulation from datasheet.
 
-All errors (new ones prefixed by >>):
+Signed-off-by: Aman Sharma<amansharma6122002@gmail.com>
+---
+  drivers/staging/pi433/Documentation/pi433.txt | 6 ++++--
+  drivers/staging/pi433/TODO                    | 1 -
+  2 files changed, 4 insertions(+), 3 deletions(-)
 
-   drivers/nvmem/core.c: In function 'nvmem_populate_sysfs_cells':
->> drivers/nvmem/core.c:481:15: error: implicit declaration of function 'devm_device_add_groups'; did you mean 'devm_device_add_group'? [-Werror=implicit-function-declaration]
-     481 |         ret = devm_device_add_groups(&nvmem->dev, nvmem_cells_groups);
-         |               ^~~~~~~~~~~~~~~~~~~~~~
-         |               devm_device_add_group
-   cc1: some warnings being treated as errors
-
-
-vim +481 drivers/nvmem/core.c
-
-84400305271937 Srinivas Kandagatla 2020-03-25  429  
-0331c611949fff Miquel Raynal       2023-12-15  430  static int nvmem_populate_sysfs_cells(struct nvmem_device *nvmem)
-0331c611949fff Miquel Raynal       2023-12-15  431  {
-0331c611949fff Miquel Raynal       2023-12-15  432  	struct bin_attribute **cells_attrs, *attrs;
-0331c611949fff Miquel Raynal       2023-12-15  433  	struct nvmem_cell_entry *entry;
-0331c611949fff Miquel Raynal       2023-12-15  434  	unsigned int ncells = 0, i = 0;
-0331c611949fff Miquel Raynal       2023-12-15  435  	int ret = 0;
-0331c611949fff Miquel Raynal       2023-12-15  436  
-0331c611949fff Miquel Raynal       2023-12-15  437  	mutex_lock(&nvmem_mutex);
-0331c611949fff Miquel Raynal       2023-12-15  438  
-0331c611949fff Miquel Raynal       2023-12-15  439  	if (list_empty(&nvmem->cells) || nvmem->sysfs_cells_populated) {
-0331c611949fff Miquel Raynal       2023-12-15  440  		nvmem_cells_group.bin_attrs = NULL;
-0331c611949fff Miquel Raynal       2023-12-15  441  		goto unlock_mutex;
-0331c611949fff Miquel Raynal       2023-12-15  442  	}
-0331c611949fff Miquel Raynal       2023-12-15  443  
-0331c611949fff Miquel Raynal       2023-12-15  444  	/* Allocate an array of attributes with a sentinel */
-0331c611949fff Miquel Raynal       2023-12-15  445  	ncells = list_count_nodes(&nvmem->cells);
-0331c611949fff Miquel Raynal       2023-12-15  446  	cells_attrs = devm_kcalloc(&nvmem->dev, ncells + 1,
-0331c611949fff Miquel Raynal       2023-12-15  447  				   sizeof(struct bin_attribute *), GFP_KERNEL);
-0331c611949fff Miquel Raynal       2023-12-15  448  	if (!cells_attrs) {
-0331c611949fff Miquel Raynal       2023-12-15  449  		ret = -ENOMEM;
-0331c611949fff Miquel Raynal       2023-12-15  450  		goto unlock_mutex;
-0331c611949fff Miquel Raynal       2023-12-15  451  	}
-0331c611949fff Miquel Raynal       2023-12-15  452  
-0331c611949fff Miquel Raynal       2023-12-15  453  	attrs = devm_kcalloc(&nvmem->dev, ncells, sizeof(struct bin_attribute), GFP_KERNEL);
-0331c611949fff Miquel Raynal       2023-12-15  454  	if (!attrs) {
-0331c611949fff Miquel Raynal       2023-12-15  455  		ret = -ENOMEM;
-0331c611949fff Miquel Raynal       2023-12-15  456  		goto unlock_mutex;
-0331c611949fff Miquel Raynal       2023-12-15  457  	}
-0331c611949fff Miquel Raynal       2023-12-15  458  
-0331c611949fff Miquel Raynal       2023-12-15  459  	/* Initialize each attribute to take the name and size of the cell */
-0331c611949fff Miquel Raynal       2023-12-15  460  	list_for_each_entry(entry, &nvmem->cells, node) {
-0331c611949fff Miquel Raynal       2023-12-15  461  		sysfs_bin_attr_init(&attrs[i]);
-0331c611949fff Miquel Raynal       2023-12-15  462  		attrs[i].attr.name = devm_kasprintf(&nvmem->dev, GFP_KERNEL,
-e20f378d993b10 Arnd Bergmann       2024-02-09  463  						    "%s@%x,%x", entry->name,
-e20f378d993b10 Arnd Bergmann       2024-02-09  464  						    entry->offset,
-e20f378d993b10 Arnd Bergmann       2024-02-09  465  						    entry->bit_offset);
-0331c611949fff Miquel Raynal       2023-12-15  466  		attrs[i].attr.mode = 0444;
-0331c611949fff Miquel Raynal       2023-12-15  467  		attrs[i].size = entry->bytes;
-0331c611949fff Miquel Raynal       2023-12-15  468  		attrs[i].read = &nvmem_cell_attr_read;
-0331c611949fff Miquel Raynal       2023-12-15  469  		attrs[i].private = entry;
-0331c611949fff Miquel Raynal       2023-12-15  470  		if (!attrs[i].attr.name) {
-0331c611949fff Miquel Raynal       2023-12-15  471  			ret = -ENOMEM;
-0331c611949fff Miquel Raynal       2023-12-15  472  			goto unlock_mutex;
-0331c611949fff Miquel Raynal       2023-12-15  473  		}
-0331c611949fff Miquel Raynal       2023-12-15  474  
-0331c611949fff Miquel Raynal       2023-12-15  475  		cells_attrs[i] = &attrs[i];
-0331c611949fff Miquel Raynal       2023-12-15  476  		i++;
-0331c611949fff Miquel Raynal       2023-12-15  477  	}
-0331c611949fff Miquel Raynal       2023-12-15  478  
-0331c611949fff Miquel Raynal       2023-12-15  479  	nvmem_cells_group.bin_attrs = cells_attrs;
-0331c611949fff Miquel Raynal       2023-12-15  480  
-0331c611949fff Miquel Raynal       2023-12-15 @481  	ret = devm_device_add_groups(&nvmem->dev, nvmem_cells_groups);
-0331c611949fff Miquel Raynal       2023-12-15  482  	if (ret)
-0331c611949fff Miquel Raynal       2023-12-15  483  		goto unlock_mutex;
-0331c611949fff Miquel Raynal       2023-12-15  484  
-0331c611949fff Miquel Raynal       2023-12-15  485  	nvmem->sysfs_cells_populated = true;
-0331c611949fff Miquel Raynal       2023-12-15  486  
-0331c611949fff Miquel Raynal       2023-12-15  487  unlock_mutex:
-0331c611949fff Miquel Raynal       2023-12-15  488  	mutex_unlock(&nvmem_mutex);
-0331c611949fff Miquel Raynal       2023-12-15  489  
-0331c611949fff Miquel Raynal       2023-12-15  490  	return ret;
-0331c611949fff Miquel Raynal       2023-12-15  491  }
-0331c611949fff Miquel Raynal       2023-12-15  492  
-
-:::::: The code at line 481 was first introduced by commit
-:::::: 0331c611949fffdf486652450901a4dc52bc5cca nvmem: core: Expose cells through sysfs
-
-:::::: TO: Miquel Raynal <miquel.raynal@bootlin.com>
-:::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
+diff --git a/drivers/staging/pi433/Documentation/pi433.txt 
+b/drivers/staging/pi433/Documentation/pi433.txt
+index 4a0d34b4ad37..9ce7282ef6f8 100644
+--- a/drivers/staging/pi433/Documentation/pi433.txt
++++ b/drivers/staging/pi433/Documentation/pi433.txt
+@@ -78,7 +78,8 @@ rf params:
+  		Allowed values: 433050000...434790000
+  	bit_rate
+  		bit rate used for transmission.
+-		Allowed values: #####
++		Allowed values (For FSK): 1200...320000
++		Allowed values (For OOK): 1200...32768
+  	dev_frequency
+  		frequency deviation in case of FSK.
+  		Allowed values: 600...500000
+@@ -169,7 +170,8 @@ rf params:
+  		Allowed values: 433050000...434790000
+  	bit_rate
+  		bit rate used for transmission.
+-		Allowed values: #####
++		Allowed values (For FSK): 1200...320000
++		Allowed values (For OOK): 1200...32768
+  	dev_frequency
+  		frequency deviation in case of FSK.
+  		Allowed values: 600...500000
+diff --git a/drivers/staging/pi433/TODO b/drivers/staging/pi433/TODO
+index 63a40bfcc67e..61ed3a1578bc 100644
+--- a/drivers/staging/pi433/TODO
++++ b/drivers/staging/pi433/TODO
+@@ -2,4 +2,3 @@
+  * still TODOs, annotated in the code
+  * currently the code introduces new IOCTLs. I'm afraid this is a bad 
+idea.
+    -> Replace this with another interface, hints are welcome!
+-* Some missing data (marked with ###) needs to be added in the 
+documentation
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.34.1
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
