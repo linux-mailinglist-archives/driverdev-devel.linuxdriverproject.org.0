@@ -1,88 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D667D86F9B4
-	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Mar 2024 06:49:39 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3358D8700DD
+	for <lists+driverdev-devel@lfdr.de>; Mon,  4 Mar 2024 12:57:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 17BDE60B36;
-	Mon,  4 Mar 2024 05:49:38 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0E7hwZ5l-Uwe; Mon,  4 Mar 2024 05:49:37 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 405C660B38
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 405C660B38;
-	Mon,  4 Mar 2024 05:49:37 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7D2BC1BF59B
- for <devel@linuxdriverproject.org>; Mon,  4 Mar 2024 05:49:35 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 77C4D81F69
- for <devel@linuxdriverproject.org>; Mon,  4 Mar 2024 05:49:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D6F4782103;
+	Mon,  4 Mar 2024 11:57:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jPXIoUFJ43Ea for <devel@linuxdriverproject.org>;
- Mon,  4 Mar 2024 05:49:35 +0000 (UTC)
-X-Greylist: delayed 128911 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 04 Mar 2024 05:49:34 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 924EF81F66
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 924EF81F66
-Received-SPF: Permerror (mailfrom) identity=mailfrom; client-ip=186.113.7.92;
- helo=mail.sticcoltel.co; envelope-from=jadominguez@sticcoltel.co;
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id J1M-vddhAujQ; Mon,  4 Mar 2024 11:57:56 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 26F0E8210B
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 26F0E8210B;
+	Mon,  4 Mar 2024 11:57:56 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 44D4E1BF95C
+ for <devel@linuxdriverproject.org>; Mon,  4 Mar 2024 11:57:54 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id B0AE240BD6
+ for <devel@linuxdriverproject.org>; Mon,  4 Mar 2024 11:57:49 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id oj9GedOqGlbI for <devel@linuxdriverproject.org>;
+ Mon,  4 Mar 2024 11:57:49 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=164.132.48.43;
+ helo=mail.thrivehub.pl; envelope-from=szymon.jankowski@thrivehub.pl;
  receiver=<UNKNOWN> 
-Received: from mail.sticcoltel.co (unknown [186.113.7.92])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 924EF81F66
- for <devel@linuxdriverproject.org>; Mon,  4 Mar 2024 05:49:34 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.sticcoltel.co (Postfix) with ESMTP id 7F3D416B974BC;
- Sat,  2 Mar 2024 11:13:23 -0500 (-05)
-Received: from mail.sticcoltel.co ([127.0.0.1])
- by localhost (mail.sticcoltel.co [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id WlmpHaYhILx9; Sat,  2 Mar 2024 11:13:23 -0500 (-05)
-Received: from localhost (localhost [127.0.0.1])
- by mail.sticcoltel.co (Postfix) with ESMTP id B09E615611256;
- Sat,  2 Mar 2024 07:12:17 -0500 (-05)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mail.sticcoltel.co B09E615611256
-X-Virus-Scanned: amavisd-new at sticcoltel.co
-Received: from mail.sticcoltel.co ([127.0.0.1])
- by localhost (mail.sticcoltel.co [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id koSyyl58rWZS; Sat,  2 Mar 2024 07:12:17 -0500 (-05)
-Received: from EC2AMAZ-I2OQVV3.us-east-2.compute.internal
- (ec2-3-140-195-102.us-east-2.compute.amazonaws.com [3.140.195.102])
- by mail.sticcoltel.co (Postfix) with ESMTPSA id DB44915611107;
- Sat,  2 Mar 2024 05:52:21 -0500 (-05)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 971B240BE9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 971B240BE9
+Received: from mail.thrivehub.pl (mail.thrivehub.pl [164.132.48.43])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 971B240BE9
+ for <devel@driverdev.osuosl.org>; Mon,  4 Mar 2024 11:57:47 +0000 (UTC)
+Received: by mail.thrivehub.pl (Postfix, from userid 1002)
+ id 6B8232E5CF; Mon,  4 Mar 2024 08:36:10 +0000 (UTC)
+Received: by mail.thrivehub.pl for <devel@driverdev.osuosl.org>;
+ Mon,  4 Mar 2024 08:35:59 GMT
+Message-ID: <20240304074500-0.1.4z.26xgn.0.ve6qudd4gw@thrivehub.pl>
+Date: Mon,  4 Mar 2024 08:35:59 GMT
+From: "Szymon Jankowski" <szymon.jankowski@thrivehub.pl>
+To: <devel@driverdev.osuosl.org>
+Subject: Zapytanie ofertowe 
+X-Mailer: mail.thrivehub.pl
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Kreditangebot!!! @ 1.5%
-To: Recipients <jadominguez@sticcoltel.co>
-From: "Thomas Mark" <jadominguez@sticcoltel.co>
-Date: Sat, 02 Mar 2024 10:50:02 +0000
-Message-Id: <20240302105222.DB44915611107@mail.sticcoltel.co>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sticcoltel.co; 
- s=76D537E4-BCFA-11ED-B719-8355120AF0F9; t=1709381537;
- bh=Ar2iaLaYRTJYNc+ohcjENhHAPwCijW86qaDECh2eoiE=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=mato14uFsymFM6zuhLJD2ZRUe2nzYdKUcmLrA+ma14npENux4QJebvWs0xfqmf1io
- JsRnc11ZX3CNifD7SSLr3A3zS7b4qhVnCHdO2t3rVo3jg0p7szTu5bliLbKRCOSC9O
- Ei7FS2I7PDKwJoL2J0jSKl/bsz1AIEUElAAhFUoxw61wSqPdYVMzzbgamYyWiEKwJY
- 8DDhNrOfgzE7VyGlr/MXR4jqO1fAxqFO1BfF32k7oDUuDXxSaZYhSeS02NJtxFi7ib
- bkbl6LJ2oHONIZb/Sy5+DNx5LmH6TsKVdjYaLPqO/70cQmJSkE+HP2aIYDyMVdzBwl
- NR1S6Th8U406A==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=sticcoltel.co
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=thrivehub.pl; s=mail; 
+ t=1709544702; bh=m3ZUCTPRVLoDFM+cXi7VhHW+xNF3eUdGHrj1eDbLwQI=;
+ h=Date:From:To:Subject:From;
+ b=SHLwvpWm+oQWktHQo5X0UYAEfDWhTu7Fns0HvhCFLGnXpNzqLOgFk3UclEYgbSU30
+ ysFx6pf62FY27YzbMmScMPwmDH1la7oCPfTZn1iSJmEdhuiM+D6ItrJFrnR2AHsVIT
+ BQrWcePrIKcPpvAK0z0UGlgGK0nGByRyeGkz+BtFJvJtyWNEu3gid6vxRayXRotM9x
+ 84OoXTXyb4Xi39lpq2rfWc9gaLaVmWa5SziRaNGQHkqQ5ARGFo6Jg1Ozw3JRiFl7kB
+ AZAnqQVywscfW7szcObQrnpV0+wEIP1mYS5luNRN5TzYYdRmKKkqyqWFKns6vWyrAV
+ Xg0EBBZEbSt5A==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=thrivehub.pl
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=sticcoltel.co header.i=@sticcoltel.co
- header.a=rsa-sha256 header.s=76D537E4-BCFA-11ED-B719-8355120AF0F9
- header.b=mato14uF
+ unprotected) header.d=thrivehub.pl header.i=@thrivehub.pl header.a=rsa-sha256
+ header.s=mail header.b=SHLwvpWm
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,26 +77,17 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: thomaswellcometrust@skiff.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Gr=FC=DFe,
-
-Wir freuen uns, Ihnen unsere Kreditdienstleistungen mit einem j=E4hrlichen =
-Zinssatz von 1,5% anbieten zu k=F6nnen. Unsere Kreditbetr=E4ge reichen von =
-20.000 Euro bis 50.000.000 Euro und wir unterst=FCtzen Sie gerne bei der Er=
-f=FCllung Ihres finanziellen Bedarfs. Wenn Sie diese M=F6glichkeit interess=
-ant finden, informieren Sie uns bitte. Wenn Sie unsere E-Mails nicht mehr e=
-rhalten m=F6chten, senden Sie uns bitte eine E-Mail mit dem Betreff "Abmeld=
-en", und wir werden Sie aus unserer Mailingliste entfernen.
-
-Danke,
-
-Thomas Mark
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RHppZcWEIGRvYnJ5LAoKUG96d29sacWCZW0gc29iaWUgbmEga29udGFrdCwgcG9uaWV3YcW8IGpl
+c3RlbSB6YWludGVyZXNvd2FueSB3ZXJ5ZmlrYWNqxIUgbW/FvGxpd2/Fm2NpIG5hd2nEhXphbmlh
+IHdzcMOzxYJwcmFjeS4KCldzcGllcmFteSBmaXJteSB3IHBvenlza2l3YW5pdSBub3d5Y2gga2xp
+ZW50w7N3IGJpem5lc293eWNoLgoKQ3p5IG1vxbxlbXkgcG9yb3ptYXdpYcSHIHcgY2VsdSBwcnpl
+ZHN0YXdpZW5pYSBzemN6ZWfDs8WCb3d5Y2ggaW5mb3JtYWNqaT8gCgoKUG96ZHJhd2lhbQpTenlt
+b24gSmFua293c2tpCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6
+Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZl
+cmRldi1kZXZlbAo=
