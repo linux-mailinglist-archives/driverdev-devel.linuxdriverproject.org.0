@@ -1,79 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5BE92876C62
-	for <lists+driverdev-devel@lfdr.de>; Fri,  8 Mar 2024 22:28:13 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 468E6876E6C
+	for <lists+driverdev-devel@lfdr.de>; Sat,  9 Mar 2024 02:12:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DE5AC8367C;
-	Fri,  8 Mar 2024 21:28:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1DCF783412;
+	Sat,  9 Mar 2024 01:12:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id A5pwWBQ5N6Q4; Fri,  8 Mar 2024 21:28:08 +0000 (UTC)
+	with ESMTP id Ux_CizaSYixO; Sat,  9 Mar 2024 01:12:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 018A283611
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0536683422
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 018A283611;
-	Fri,  8 Mar 2024 21:28:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0536683422;
+	Sat,  9 Mar 2024 01:12:15 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 918721BF48D
- for <devel@linuxdriverproject.org>; Fri,  8 Mar 2024 21:28:06 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 355E51BF475
+ for <devel@linuxdriverproject.org>; Sat,  9 Mar 2024 01:12:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7896960AE5
- for <devel@linuxdriverproject.org>; Fri,  8 Mar 2024 21:28:06 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2221541962
+ for <devel@linuxdriverproject.org>; Sat,  9 Mar 2024 01:12:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZaDL70uugMqs for <devel@linuxdriverproject.org>;
- Fri,  8 Mar 2024 21:28:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id G2FA8dGDrFpN for <devel@linuxdriverproject.org>;
+ Sat,  9 Mar 2024 01:12:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 52DEB60AF4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 52DEB60AF4
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 52DEB60AF4
- for <devel@driverdev.osuosl.org>; Fri,  8 Mar 2024 21:28:05 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11007"; a="15314237"
-X-IronPort-AV: E=Sophos;i="6.07,110,1708416000"; d="scan'208";a="15314237"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2024 13:28:04 -0800
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 014B8418EB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 014B8418EB
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 014B8418EB
+ for <devel@driverdev.osuosl.org>; Sat,  9 Mar 2024 01:12:10 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11007"; a="15413669"
+X-IronPort-AV: E=Sophos;i="6.07,111,1708416000"; d="scan'208";a="15413669"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Mar 2024 17:12:10 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,110,1708416000"; d="scan'208";a="10974491"
+X-IronPort-AV: E=Sophos;i="6.07,111,1708416000"; d="scan'208";a="41593603"
 Received: from lkp-server01.sh.intel.com (HELO b21307750695) ([10.239.97.150])
- by orviesa006.jf.intel.com with ESMTP; 08 Mar 2024 13:28:03 -0800
+ by fmviesa001.fm.intel.com with ESMTP; 08 Mar 2024 17:12:08 -0800
 Received: from kbuild by b21307750695 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rihl2-0006jd-1Q;
- Fri, 08 Mar 2024 21:28:00 +0000
-Date: Sat, 09 Mar 2024 05:27:22 +0800
+ (envelope-from <lkp@intel.com>) id 1rilFu-0006qj-1C;
+ Sat, 09 Mar 2024 01:12:06 +0000
+Date: Sat, 9 Mar 2024 09:11:53 +0800
 From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:const_work] BUILD SUCCESS
- 77294dd75aa919b6af3a44e9d68c441ea5d7de59
-Message-ID: <202403090518.lQzrBHVH-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+To: "Ricardo B. Marliere" <ricardo@marliere.net>
+Subject: [driver-core:const_work 180/183]
+ drivers/bus/fsl-mc/fsl-mc-bus.c:409:19: warning: initialization discards
+ 'const' qualifier from pointer target type
+Message-ID: <202403090918.89zrHUF2-lkp@intel.com>
+MIME-Version: 1.0
+Content-Disposition: inline
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709933285; x=1741469285;
- h=date:from:to:cc:subject:message-id;
- bh=6hzMAN5GxuhHHlgAsLYdVoTSQMuAVYumMFwjvhKNt40=;
- b=U0ZjI+v2YU30xTfZyIVYABFh0meRwuJcLx0gNu0CWd1ryaduz2kODoR5
- HOIvppYquu89kJILMySFtlBsd4tS/C2wBSo8zxKYGug9WS49en9pw7CPs
- NsZt2ufpxWHdt+xqRlfJsf3u7oyUBaysOxBCh2mRhN9+CaCgYm9sjv3PB
- mlEDEUebwe0KHssbjGllotRgm6wZk7NN4hrjAbXgyx3SaHQTjSC6BhJ+y
- E4mIZqXfXJDUjwgFhpKyIAknzOl1saxZX/Sh93Fw/dm+wGhtSjJSOSa2J
- OJyhgEOM6e+KiL4OMOSECTxdlP8R8zRSZ4aFWR2mfhe0NTm8YanJaQvP/
+ t=1709946731; x=1741482731;
+ h=date:from:to:cc:subject:message-id:mime-version:
+ content-transfer-encoding;
+ bh=w4odC7Dutz0Uzk9LHRKlU7wdATzv/l4NWvcm7JJj0ak=;
+ b=Vtkqho2obEwHCO61LhWBA+JaH6C8qME+ieWWEkfM2Dtczu3XawQPcNjc
+ QG6ZVCofMsjxlATdUD9Dq4nJq4A/Ux9xHn2cnzc05BNqZ7HKEH7UQAG3b
+ QZ8352vmoQswnehQu6sBoL24g8HI4f4XdXMv6dxLrk4GRQZZE3/ZdzsRf
+ WmPTjVrccbebrv+3C+1B2gHgP+iGt6sGv/3vogBMrAxXJOagkInh/TzCC
+ AP0/DSH2Fck6WvCY3gujeqK1neKa6V3vBE4VAw1bbeio03mZBApqQMPFX
+ FG2nL3d2FwKfv0+gcML/3UMT9H9e5zxLzIouTuPTzViYBUZRLI2QbOv8t
  w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=U0ZjI+v2
+ header.s=Intel header.b=Vtkqho2o
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,178 +89,173 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ oe-kbuild-all@lists.linux.dev
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git const_work
-branch HEAD: 77294dd75aa919b6af3a44e9d68c441ea5d7de59  siox: make siox_bus_type const
-
-elapsed time: 1463m
-
-configs tested: 148
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allmodconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                   randconfig-001-20240308   gcc  
-arc                   randconfig-002-20240308   gcc  
-arm                              alldefconfig   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   clang
-arm                              allyesconfig   gcc  
-arm                     am200epdkit_defconfig   gcc  
-arm                                 defconfig   clang
-arm                        neponset_defconfig   gcc  
-arm                           omap1_defconfig   gcc  
-arm                          pxa910_defconfig   gcc  
-arm                   randconfig-001-20240308   gcc  
-arm                        shmobile_defconfig   gcc  
-arm64                            allmodconfig   clang
-arm64                             allnoconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                 randconfig-004-20240308   gcc  
-csky                             allmodconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
-csky                                defconfig   gcc  
-csky                  randconfig-001-20240308   gcc  
-csky                  randconfig-002-20240308   gcc  
-hexagon                          allmodconfig   clang
-hexagon                           allnoconfig   clang
-hexagon                          allyesconfig   clang
-hexagon                             defconfig   clang
-i386                             allmodconfig   gcc  
-i386                              allnoconfig   gcc  
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-003-20240308   gcc  
-i386         buildonly-randconfig-004-20240308   gcc  
-i386         buildonly-randconfig-005-20240308   gcc  
-i386                                defconfig   clang
-i386                  randconfig-004-20240308   gcc  
-i386                  randconfig-011-20240308   gcc  
-i386                  randconfig-015-20240308   gcc  
-i386                  randconfig-016-20240308   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                        allyesconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch             randconfig-001-20240308   gcc  
-loongarch             randconfig-002-20240308   gcc  
-m68k                             allmodconfig   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                        m5272c3_defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-mips                             allmodconfig   gcc  
-mips                              allnoconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                     loongson1c_defconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-nios2                 randconfig-001-20240308   gcc  
-nios2                 randconfig-002-20240308   gcc  
-openrisc                         allmodconfig   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                         allyesconfig   gcc  
-openrisc                            defconfig   gcc  
-parisc                           allmodconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc                randconfig-001-20240308   gcc  
-parisc                randconfig-002-20240308   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   clang
-powerpc                         ps3_defconfig   gcc  
-powerpc               randconfig-001-20240308   gcc  
-powerpc                  storcenter_defconfig   gcc  
-powerpc64             randconfig-001-20240308   gcc  
-riscv                            allmodconfig   clang
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   clang
-riscv                               defconfig   clang
-s390                              allnoconfig   clang
-s390                             allyesconfig   gcc  
-s390                                defconfig   clang
-s390                  randconfig-001-20240308   gcc  
-s390                  randconfig-002-20240308   gcc  
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                                  defconfig   gcc  
-sh                          kfr2r09_defconfig   gcc  
-sh                    randconfig-001-20240308   gcc  
-sh                    randconfig-002-20240308   gcc  
-sh                           se7724_defconfig   gcc  
-sh                            titan_defconfig   gcc  
-sh                          urquell_defconfig   gcc  
-sparc                            allmodconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                            allyesconfig   gcc  
-sparc                               defconfig   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-sparc64               randconfig-001-20240308   gcc  
-sparc64               randconfig-002-20240308   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   gcc  
-um                                  defconfig   clang
-um                             i386_defconfig   gcc  
-um                    randconfig-002-20240308   gcc  
-um                           x86_64_defconfig   clang
-x86_64                            allnoconfig   clang
-x86_64                           allyesconfig   clang
-x86_64       buildonly-randconfig-002-20240308   gcc  
-x86_64       buildonly-randconfig-003-20240308   gcc  
-x86_64       buildonly-randconfig-005-20240308   gcc  
-x86_64       buildonly-randconfig-006-20240308   gcc  
-x86_64                              defconfig   gcc  
-x86_64                randconfig-001-20240308   gcc  
-x86_64                randconfig-005-20240308   gcc  
-x86_64                randconfig-006-20240308   gcc  
-x86_64                randconfig-012-20240308   gcc  
-x86_64                randconfig-015-20240308   gcc  
-x86_64                randconfig-016-20240308   gcc  
-x86_64                randconfig-072-20240308   gcc  
-x86_64                randconfig-073-20240308   gcc  
-x86_64                randconfig-074-20240308   gcc  
-x86_64                randconfig-075-20240308   gcc  
-x86_64                randconfig-076-20240308   gcc  
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
-xtensa                            allnoconfig   gcc  
-xtensa                           allyesconfig   gcc  
-xtensa                       common_defconfig   gcc  
-xtensa                randconfig-001-20240308   gcc  
-xtensa                randconfig-002-20240308   gcc  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+dHJlZTogICBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9n
+cmVna2gvZHJpdmVyLWNvcmUuZ2l0IGNvbnN0X3dvcmsKaGVhZDogICA3NzI5NGRkNzVhYTkxOWI2
+YWYzYTQ0ZTlkNjhjNDQxZWE1ZDdkZTU5CmNvbW1pdDogM2VlNGU0ZGEzYmM0ZDkxMmZiMTUxOWI1
+NmY5OTIyYzUyZjBiMTJhOSBbMTgwLzE4M10gYnVzOiBmc2wtbWM6IGNvbnN0aWZ5IHRoZSBzdHJ1
+Y3QgZGV2aWNlX3R5cGUgdXNhZ2UKY29uZmlnOiBhcm02NC1kZWZjb25maWcgKGh0dHBzOi8vZG93
+bmxvYWQuMDEub3JnLzBkYXktY2kvYXJjaGl2ZS8yMDI0MDMwOS8yMDI0MDMwOTA5MTguODl6ckhV
+RjItbGtwQGludGVsLmNvbS9jb25maWcpCmNvbXBpbGVyOiBhYXJjaDY0LWxpbnV4LWdjYyAoR0ND
+KSAxMy4yLjAKcmVwcm9kdWNlICh0aGlzIGlzIGEgVz0xIGJ1aWxkKTogKGh0dHBzOi8vZG93bmxv
+YWQuMDEub3JnLzBkYXktY2kvYXJjaGl2ZS8yMDI0MDMwOS8yMDI0MDMwOTA5MTguODl6ckhVRjIt
+bGtwQGludGVsLmNvbS9yZXByb2R1Y2UpCgpJZiB5b3UgZml4IHRoZSBpc3N1ZSBpbiBhIHNlcGFy
+YXRlIHBhdGNoL2NvbW1pdCAoaS5lLiBub3QganVzdCBhIG5ldyB2ZXJzaW9uIG9mCnRoZSBzYW1l
+IHBhdGNoL2NvbW1pdCksIGtpbmRseSBhZGQgZm9sbG93aW5nIHRhZ3MKfCBSZXBvcnRlZC1ieTog
+a2VybmVsIHRlc3Qgcm9ib3QgPGxrcEBpbnRlbC5jb20+CnwgQ2xvc2VzOiBodHRwczovL2xvcmUu
+a2VybmVsLm9yZy9vZS1rYnVpbGQtYWxsLzIwMjQwMzA5MDkxOC44OXpySFVGMi1sa3BAaW50ZWwu
+Y29tLwoKQWxsIHdhcm5pbmdzIChuZXcgb25lcyBwcmVmaXhlZCBieSA+Pik6CgogICBkcml2ZXJz
+L2J1cy9mc2wtbWMvZnNsLW1jLWJ1cy5jOiBJbiBmdW5jdGlvbiAnZnNsX21jX2dldF9kZXZpY2Vf
+dHlwZSc6Cj4+IGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmM6NDA5OjE5OiB3YXJuaW5n
+OiBpbml0aWFsaXphdGlvbiBkaXNjYXJkcyAnY29uc3QnIHF1YWxpZmllciBmcm9tIHBvaW50ZXIg
+dGFyZ2V0IHR5cGUgWy1XZGlzY2FyZGVkLXF1YWxpZmllcnNdCiAgICAgNDA5IHwgICAgICAgICAg
+ICAgICAgIHsgJmZzbF9tY19idXNfZHByY190eXBlLCAiZHByYyIgfSwKICAgICAgICAgfCAgICAg
+ICAgICAgICAgICAgICBeCiAgIGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmM6NDEwOjE5
+OiB3YXJuaW5nOiBpbml0aWFsaXphdGlvbiBkaXNjYXJkcyAnY29uc3QnIHF1YWxpZmllciBmcm9t
+IHBvaW50ZXIgdGFyZ2V0IHR5cGUgWy1XZGlzY2FyZGVkLXF1YWxpZmllcnNdCiAgICAgNDEwIHwg
+ICAgICAgICAgICAgICAgIHsgJmZzbF9tY19idXNfZHBuaV90eXBlLCAiZHBuaSIgfSwKICAgICAg
+ICAgfCAgICAgICAgICAgICAgICAgICBeCiAgIGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVz
+LmM6NDExOjE5OiB3YXJuaW5nOiBpbml0aWFsaXphdGlvbiBkaXNjYXJkcyAnY29uc3QnIHF1YWxp
+ZmllciBmcm9tIHBvaW50ZXIgdGFyZ2V0IHR5cGUgWy1XZGlzY2FyZGVkLXF1YWxpZmllcnNdCiAg
+ICAgNDExIHwgICAgICAgICAgICAgICAgIHsgJmZzbF9tY19idXNfZHBpb190eXBlLCAiZHBpbyIg
+fSwKICAgICAgICAgfCAgICAgICAgICAgICAgICAgICBeCiAgIGRyaXZlcnMvYnVzL2ZzbC1tYy9m
+c2wtbWMtYnVzLmM6NDEyOjE5OiB3YXJuaW5nOiBpbml0aWFsaXphdGlvbiBkaXNjYXJkcyAnY29u
+c3QnIHF1YWxpZmllciBmcm9tIHBvaW50ZXIgdGFyZ2V0IHR5cGUgWy1XZGlzY2FyZGVkLXF1YWxp
+ZmllcnNdCiAgICAgNDEyIHwgICAgICAgICAgICAgICAgIHsgJmZzbF9tY19idXNfZHBzd190eXBl
+LCAiZHBzdyIgfSwKICAgICAgICAgfCAgICAgICAgICAgICAgICAgICBeCiAgIGRyaXZlcnMvYnVz
+L2ZzbC1tYy9mc2wtbWMtYnVzLmM6NDEzOjE5OiB3YXJuaW5nOiBpbml0aWFsaXphdGlvbiBkaXNj
+YXJkcyAnY29uc3QnIHF1YWxpZmllciBmcm9tIHBvaW50ZXIgdGFyZ2V0IHR5cGUgWy1XZGlzY2Fy
+ZGVkLXF1YWxpZmllcnNdCiAgICAgNDEzIHwgICAgICAgICAgICAgICAgIHsgJmZzbF9tY19idXNf
+ZHBicF90eXBlLCAiZHBicCIgfSwKICAgICAgICAgfCAgICAgICAgICAgICAgICAgICBeCiAgIGRy
+aXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmM6NDE0OjE5OiB3YXJuaW5nOiBpbml0aWFsaXph
+dGlvbiBkaXNjYXJkcyAnY29uc3QnIHF1YWxpZmllciBmcm9tIHBvaW50ZXIgdGFyZ2V0IHR5cGUg
+Wy1XZGlzY2FyZGVkLXF1YWxpZmllcnNdCiAgICAgNDE0IHwgICAgICAgICAgICAgICAgIHsgJmZz
+bF9tY19idXNfZHBjb25fdHlwZSwgImRwY29uIiB9LAogICAgICAgICB8ICAgICAgICAgICAgICAg
+ICAgIF4KICAgZHJpdmVycy9idXMvZnNsLW1jL2ZzbC1tYy1idXMuYzo0MTU6MTk6IHdhcm5pbmc6
+IGluaXRpYWxpemF0aW9uIGRpc2NhcmRzICdjb25zdCcgcXVhbGlmaWVyIGZyb20gcG9pbnRlciB0
+YXJnZXQgdHlwZSBbLVdkaXNjYXJkZWQtcXVhbGlmaWVyc10KICAgICA0MTUgfCAgICAgICAgICAg
+ICAgICAgeyAmZnNsX21jX2J1c19kcG1jcF90eXBlLCAiZHBtY3AiIH0sCiAgICAgICAgIHwgICAg
+ICAgICAgICAgICAgICAgXgogICBkcml2ZXJzL2J1cy9mc2wtbWMvZnNsLW1jLWJ1cy5jOjQxNjox
+OTogd2FybmluZzogaW5pdGlhbGl6YXRpb24gZGlzY2FyZHMgJ2NvbnN0JyBxdWFsaWZpZXIgZnJv
+bSBwb2ludGVyIHRhcmdldCB0eXBlIFstV2Rpc2NhcmRlZC1xdWFsaWZpZXJzXQogICAgIDQxNiB8
+ICAgICAgICAgICAgICAgICB7ICZmc2xfbWNfYnVzX2RwbWFjX3R5cGUsICJkcG1hYyIgfSwKICAg
+ICAgICAgfCAgICAgICAgICAgICAgICAgICBeCiAgIGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMt
+YnVzLmM6NDE3OjE5OiB3YXJuaW5nOiBpbml0aWFsaXphdGlvbiBkaXNjYXJkcyAnY29uc3QnIHF1
+YWxpZmllciBmcm9tIHBvaW50ZXIgdGFyZ2V0IHR5cGUgWy1XZGlzY2FyZGVkLXF1YWxpZmllcnNd
+CiAgICAgNDE3IHwgICAgICAgICAgICAgICAgIHsgJmZzbF9tY19idXNfZHBydGNfdHlwZSwgImRw
+cnRjIiB9LAogICAgICAgICB8ICAgICAgICAgICAgICAgICAgIF4KICAgZHJpdmVycy9idXMvZnNs
+LW1jL2ZzbC1tYy1idXMuYzo0MTg6MTk6IHdhcm5pbmc6IGluaXRpYWxpemF0aW9uIGRpc2NhcmRz
+ICdjb25zdCcgcXVhbGlmaWVyIGZyb20gcG9pbnRlciB0YXJnZXQgdHlwZSBbLVdkaXNjYXJkZWQt
+cXVhbGlmaWVyc10KICAgICA0MTggfCAgICAgICAgICAgICAgICAgeyAmZnNsX21jX2J1c19kcHNl
+Y2lfdHlwZSwgImRwc2VjaSIgfSwKICAgICAgICAgfCAgICAgICAgICAgICAgICAgICBeCiAgIGRy
+aXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmM6NDE5OjE5OiB3YXJuaW5nOiBpbml0aWFsaXph
+dGlvbiBkaXNjYXJkcyAnY29uc3QnIHF1YWxpZmllciBmcm9tIHBvaW50ZXIgdGFyZ2V0IHR5cGUg
+Wy1XZGlzY2FyZGVkLXF1YWxpZmllcnNdCiAgICAgNDE5IHwgICAgICAgICAgICAgICAgIHsgJmZz
+bF9tY19idXNfZHBkbXV4X3R5cGUsICJkcGRtdXgiIH0sCiAgICAgICAgIHwgICAgICAgICAgICAg
+ICAgICAgXgogICBkcml2ZXJzL2J1cy9mc2wtbWMvZnNsLW1jLWJ1cy5jOjQyMDoxOTogd2Fybmlu
+ZzogaW5pdGlhbGl6YXRpb24gZGlzY2FyZHMgJ2NvbnN0JyBxdWFsaWZpZXIgZnJvbSBwb2ludGVy
+IHRhcmdldCB0eXBlIFstV2Rpc2NhcmRlZC1xdWFsaWZpZXJzXQogICAgIDQyMCB8ICAgICAgICAg
+ICAgICAgICB7ICZmc2xfbWNfYnVzX2RwZGNlaV90eXBlLCAiZHBkY2VpIiB9LAogICAgICAgICB8
+ICAgICAgICAgICAgICAgICAgIF4KICAgZHJpdmVycy9idXMvZnNsLW1jL2ZzbC1tYy1idXMuYzo0
+MjE6MTk6IHdhcm5pbmc6IGluaXRpYWxpemF0aW9uIGRpc2NhcmRzICdjb25zdCcgcXVhbGlmaWVy
+IGZyb20gcG9pbnRlciB0YXJnZXQgdHlwZSBbLVdkaXNjYXJkZWQtcXVhbGlmaWVyc10KICAgICA0
+MjEgfCAgICAgICAgICAgICAgICAgeyAmZnNsX21jX2J1c19kcGFpb3BfdHlwZSwgImRwYWlvcCIg
+fSwKICAgICAgICAgfCAgICAgICAgICAgICAgICAgICBeCiAgIGRyaXZlcnMvYnVzL2ZzbC1tYy9m
+c2wtbWMtYnVzLmM6NDIyOjE5OiB3YXJuaW5nOiBpbml0aWFsaXphdGlvbiBkaXNjYXJkcyAnY29u
+c3QnIHF1YWxpZmllciBmcm9tIHBvaW50ZXIgdGFyZ2V0IHR5cGUgWy1XZGlzY2FyZGVkLXF1YWxp
+ZmllcnNdCiAgICAgNDIyIHwgICAgICAgICAgICAgICAgIHsgJmZzbF9tY19idXNfZHBjaV90eXBl
+LCAiZHBjaSIgfSwKICAgICAgICAgfCAgICAgICAgICAgICAgICAgICBeCiAgIGRyaXZlcnMvYnVz
+L2ZzbC1tYy9mc2wtbWMtYnVzLmM6NDIzOjE5OiB3YXJuaW5nOiBpbml0aWFsaXphdGlvbiBkaXNj
+YXJkcyAnY29uc3QnIHF1YWxpZmllciBmcm9tIHBvaW50ZXIgdGFyZ2V0IHR5cGUgWy1XZGlzY2Fy
+ZGVkLXF1YWxpZmllcnNdCiAgICAgNDIzIHwgICAgICAgICAgICAgICAgIHsgJmZzbF9tY19idXNf
+ZHBkbWFpX3R5cGUsICJkcGRtYWkiIH0sCiAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgXgog
+ICBkcml2ZXJzL2J1cy9mc2wtbWMvZnNsLW1jLWJ1cy5jOjQyNDoxOTogd2FybmluZzogaW5pdGlh
+bGl6YXRpb24gZGlzY2FyZHMgJ2NvbnN0JyBxdWFsaWZpZXIgZnJvbSBwb2ludGVyIHRhcmdldCB0
+eXBlIFstV2Rpc2NhcmRlZC1xdWFsaWZpZXJzXQogICAgIDQyNCB8ICAgICAgICAgICAgICAgICB7
+ICZmc2xfbWNfYnVzX2RwZGJnX3R5cGUsICJkcGRiZyIgfSwKICAgICAgICAgfCAgICAgICAgICAg
+ICAgICAgICBeCgoKdmltICsvY29uc3QgKzQwOSBkcml2ZXJzL2J1cy9mc2wtbWMvZnNsLW1jLWJ1
+cy5jCgplNzBiYTFiMDZjMjZjZCBkcml2ZXJzL2J1cy9mc2wtbWMvZnNsLW1jLWJ1cy5jICAgICAg
+ICAgSW9hbmEgQ2lvcm5laSAgIDIwMjEtMDItMDggIDQwMiAgCjQ3NDMzYjYzMGI3YjMwIGRyaXZl
+cnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0x
+MS0xNyAgNDAzICBzdGF0aWMgc3RydWN0IGRldmljZV90eXBlICpmc2xfbWNfZ2V0X2RldmljZV90
+eXBlKGNvbnN0IGNoYXIgKnR5cGUpCjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wt
+bWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDA0ICB7CjQ3
+NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVy
+ZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDA1ICAJc3RhdGljIGNvbnN0IHN0cnVjdCB7CjQ3NDMz
+YjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50
+aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDA2ICAJCXN0cnVjdCBkZXZpY2VfdHlwZSAqZGV2X3R5cGU7
+CjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1idXMuYyBM
+YXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDA3ICAJCWNvbnN0IGNoYXIgKnR5cGU7CjQ3NDMz
+YjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50
+aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDA4ICAJfSBkZXZfdHlwZXNbXSA9IHsKNDc0MzNiNjMwYjdi
+MzAgZHJpdmVycy9zdGFnaW5nL2ZzbC1tYy9idXMvZnNsLW1jLWJ1cy5jIExhdXJlbnRpdSBUdWRv
+ciAyMDE3LTExLTE3IEA0MDkgIAkJeyAmZnNsX21jX2J1c19kcHJjX3R5cGUsICJkcHJjIiB9LAo0
+NzQzM2I2MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1
+cmVudGl1IFR1ZG9yIDIwMTctMTEtMTcgIDQxMCAgCQl7ICZmc2xfbWNfYnVzX2RwbmlfdHlwZSwg
+ImRwbmkiIH0sCjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1t
+Yy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDExICAJCXsgJmZzbF9tY19idXNf
+ZHBpb190eXBlLCAiZHBpbyIgfSwKNDc0MzNiNjMwYjdiMzAgZHJpdmVycy9zdGFnaW5nL2ZzbC1t
+Yy9idXMvZnNsLW1jLWJ1cy5jIExhdXJlbnRpdSBUdWRvciAyMDE3LTExLTE3ICA0MTIgIAkJeyAm
+ZnNsX21jX2J1c19kcHN3X3R5cGUsICJkcHN3IiB9LAo0NzQzM2I2MzBiN2IzMCBkcml2ZXJzL3N0
+YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVudGl1IFR1ZG9yIDIwMTctMTEtMTcg
+IDQxMyAgCQl7ICZmc2xfbWNfYnVzX2RwYnBfdHlwZSwgImRwYnAiIH0sCjQ3NDMzYjYzMGI3YjMw
+IGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3Ig
+MjAxNy0xMS0xNyAgNDE0ICAJCXsgJmZzbF9tY19idXNfZHBjb25fdHlwZSwgImRwY29uIiB9LAo0
+NzQzM2I2MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1
+cmVudGl1IFR1ZG9yIDIwMTctMTEtMTcgIDQxNSAgCQl7ICZmc2xfbWNfYnVzX2RwbWNwX3R5cGUs
+ICJkcG1jcCIgfSwKNDc0MzNiNjMwYjdiMzAgZHJpdmVycy9zdGFnaW5nL2ZzbC1tYy9idXMvZnNs
+LW1jLWJ1cy5jIExhdXJlbnRpdSBUdWRvciAyMDE3LTExLTE3ICA0MTYgIAkJeyAmZnNsX21jX2J1
+c19kcG1hY190eXBlLCAiZHBtYWMiIH0sCjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9m
+c2wtbWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDE3ICAJ
+CXsgJmZzbF9tY19idXNfZHBydGNfdHlwZSwgImRwcnRjIiB9LAplOTE1OGIzNWVmOWFmYiBkcml2
+ZXJzL2J1cy9mc2wtbWMvZnNsLW1jLWJ1cy5jICAgICAgICAgSG9yaWEgR2VhbnTEgyAgICAyMDE4
+LTA5LTEyICA0MTggIAkJeyAmZnNsX21jX2J1c19kcHNlY2lfdHlwZSwgImRwc2VjaSIgfSwKYTNi
+N2E1ODE4MjM4NTcgZHJpdmVycy9idXMvZnNsLW1jL2ZzbC1tYy1idXMuYyAgICAgICAgIElvYW5h
+IENpb3JuZWkgICAyMDIwLTA3LTE3ICA0MTkgIAkJeyAmZnNsX21jX2J1c19kcGRtdXhfdHlwZSwg
+ImRwZG11eCIgfSwKYTNiN2E1ODE4MjM4NTcgZHJpdmVycy9idXMvZnNsLW1jL2ZzbC1tYy1idXMu
+YyAgICAgICAgIElvYW5hIENpb3JuZWkgICAyMDIwLTA3LTE3ICA0MjAgIAkJeyAmZnNsX21jX2J1
+c19kcGRjZWlfdHlwZSwgImRwZGNlaSIgfSwKYTNiN2E1ODE4MjM4NTcgZHJpdmVycy9idXMvZnNs
+LW1jL2ZzbC1tYy1idXMuYyAgICAgICAgIElvYW5hIENpb3JuZWkgICAyMDIwLTA3LTE3ICA0MjEg
+IAkJeyAmZnNsX21jX2J1c19kcGFpb3BfdHlwZSwgImRwYWlvcCIgfSwKYTNiN2E1ODE4MjM4NTcg
+ZHJpdmVycy9idXMvZnNsLW1jL2ZzbC1tYy1idXMuYyAgICAgICAgIElvYW5hIENpb3JuZWkgICAy
+MDIwLTA3LTE3ICA0MjIgIAkJeyAmZnNsX21jX2J1c19kcGNpX3R5cGUsICJkcGNpIiB9LAphM2I3
+YTU4MTgyMzg1NyBkcml2ZXJzL2J1cy9mc2wtbWMvZnNsLW1jLWJ1cy5jICAgICAgICAgSW9hbmEg
+Q2lvcm5laSAgIDIwMjAtMDctMTcgIDQyMyAgCQl7ICZmc2xfbWNfYnVzX2RwZG1haV90eXBlLCAi
+ZHBkbWFpIiB9LAplNzBiYTFiMDZjMjZjZCBkcml2ZXJzL2J1cy9mc2wtbWMvZnNsLW1jLWJ1cy5j
+ICAgICAgICAgSW9hbmEgQ2lvcm5laSAgIDIwMjEtMDItMDggIDQyNCAgCQl7ICZmc2xfbWNfYnVz
+X2RwZGJnX3R5cGUsICJkcGRiZyIgfSwKNDc0MzNiNjMwYjdiMzAgZHJpdmVycy9zdGFnaW5nL2Zz
+bC1tYy9idXMvZnNsLW1jLWJ1cy5jIExhdXJlbnRpdSBUdWRvciAyMDE3LTExLTE3ICA0MjUgIAkJ
+eyBOVUxMLCBOVUxMIH0KNDc0MzNiNjMwYjdiMzAgZHJpdmVycy9zdGFnaW5nL2ZzbC1tYy9idXMv
+ZnNsLW1jLWJ1cy5jIExhdXJlbnRpdSBUdWRvciAyMDE3LTExLTE3ICA0MjYgIAl9Owo0NzQzM2I2
+MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVudGl1
+IFR1ZG9yIDIwMTctMTEtMTcgIDQyNyAgCWludCBpOwo0NzQzM2I2MzBiN2IzMCBkcml2ZXJzL3N0
+YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVudGl1IFR1ZG9yIDIwMTctMTEtMTcg
+IDQyOCAgCjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1i
+dXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDI5ICAJZm9yIChpID0gMDsgZGV2X3R5
+cGVzW2ldLmRldl90eXBlOyBpKyspCjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wt
+bWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDMwICAJCWlm
+ICghc3RyY21wKGRldl90eXBlc1tpXS50eXBlLCB0eXBlKSkKNDc0MzNiNjMwYjdiMzAgZHJpdmVy
+cy9zdGFnaW5nL2ZzbC1tYy9idXMvZnNsLW1jLWJ1cy5jIExhdXJlbnRpdSBUdWRvciAyMDE3LTEx
+LTE3ICA0MzEgIAkJCXJldHVybiBkZXZfdHlwZXNbaV0uZGV2X3R5cGU7CjQ3NDMzYjYzMGI3YjMw
+IGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3Ig
+MjAxNy0xMS0xNyAgNDMyICAKNDc0MzNiNjMwYjdiMzAgZHJpdmVycy9zdGFnaW5nL2ZzbC1tYy9i
+dXMvZnNsLW1jLWJ1cy5jIExhdXJlbnRpdSBUdWRvciAyMDE3LTExLTE3ICA0MzMgIAlyZXR1cm4g
+TlVMTDsKNDc0MzNiNjMwYjdiMzAgZHJpdmVycy9zdGFnaW5nL2ZzbC1tYy9idXMvZnNsLW1jLWJ1
+cy5jIExhdXJlbnRpdSBUdWRvciAyMDE3LTExLTE3ICA0MzQgIH0KNDc0MzNiNjMwYjdiMzAgZHJp
+dmVycy9zdGFnaW5nL2ZzbC1tYy9idXMvZnNsLW1jLWJ1cy5jIExhdXJlbnRpdSBUdWRvciAyMDE3
+LTExLTE3ICA0MzUgIAoKOjo6Ojo6IFRoZSBjb2RlIGF0IGxpbmUgNDA5IHdhcyBmaXJzdCBpbnRy
+b2R1Y2VkIGJ5IGNvbW1pdAo6Ojo6OjogNDc0MzNiNjMwYjdiMzBkMGRhYTM2MGM2NDMwOGMwZjRj
+OTYzMjk4NiBzdGFnaW5nOiBmc2wtbWM6IGFkZCBzdXBwb3J0IGZvciBkZXZpY2UgdHlwZQoKOjo6
+Ojo6IFRPOiBMYXVyZW50aXUgVHVkb3IgPGxhdXJlbnRpdS50dWRvckBueHAuY29tPgo6Ojo6Ojog
+Q0M6IEdyZWcgS3JvYWgtSGFydG1hbiA8Z3JlZ2toQGxpbnV4Zm91bmRhdGlvbi5vcmc+CgotLSAK
+MC1EQVkgQ0kgS2VybmVsIFRlc3QgU2VydmljZQpodHRwczovL2dpdGh1Yi5jb20vaW50ZWwvbGtw
+LXRlc3RzL3dpa2kKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5vcmcKaHR0cDov
+L2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGluZm8vZHJpdmVy
+ZGV2LWRldmVsCg==
