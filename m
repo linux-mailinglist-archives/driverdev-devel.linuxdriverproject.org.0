@@ -1,35 +1,53 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8D3E87D755
-	for <lists+driverdev-devel@lfdr.de>; Sat, 16 Mar 2024 00:31:22 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2ACE787F079
+	for <lists+driverdev-devel@lfdr.de>; Mon, 18 Mar 2024 20:37:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4478C417ED;
-	Fri, 15 Mar 2024 23:31:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3A491818D0;
+	Mon, 18 Mar 2024 19:37:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QR62_oQSvyVu; Fri, 15 Mar 2024 23:31:16 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id X_QvCQGvK-K3; Mon, 18 Mar 2024 19:37:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 39BC74180B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5D0EE81A6A
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 39BC74180B;
-	Fri, 15 Mar 2024 23:31:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5D0EE81A6A;
+	Mon, 18 Mar 2024 19:37:12 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DB9361BF362
- for <devel@linuxdriverproject.org>; Fri, 15 Mar 2024 23:31:14 +0000 (UTC)
-Received: by smtp1.osuosl.org (Postfix)
- id D1AF582325; Fri, 15 Mar 2024 23:31:13 +0000 (UTC)
-Date: Fri, 15 Mar 2024 23:31:13 +0000 (UTC)
-From: MAILER-DAEMON@osuosl.org (Mail Delivery System)
-Subject: Successful Mail Delivery Report
+ by ash.osuosl.org (Postfix) with ESMTP id 3C4751BF2C1
+ for <devel@linuxdriverproject.org>; Mon, 18 Mar 2024 19:37:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 29EED81A6A
+ for <devel@linuxdriverproject.org>; Mon, 18 Mar 2024 19:37:10 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 6li4_B9zhtAd for <devel@linuxdriverproject.org>;
+ Mon, 18 Mar 2024 19:37:09 +0000 (UTC)
+X-Greylist: delayed 64044 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 18 Mar 2024 19:37:08 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AE3428176C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AE3428176C
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=103.78.0.165;
+ helo=[103.78.0.165]; envelope-from=notification@driverdev.osuosl.org;
+ receiver=<UNKNOWN> 
+Received: from [103.78.0.165] (unknown [103.78.0.165])
+ by smtp1.osuosl.org (Postfix) with ESMTP id AE3428176C
+ for <devel@driverdev.osuosl.org>; Mon, 18 Mar 2024 19:37:08 +0000 (UTC)
+From: Notification@driverdev.osuosl.org
 To: devel@driverdev.osuosl.org
-Auto-Submitted: auto-replied
+Subject: Re: NEW JOB ALERT AVAILABLE
+Date: 18 Mar 2024 12:37:07 -0700
+Message-ID: <20240318123706.83D2841513301F6B@driverdev.osuosl.org>
 MIME-Version: 1.0
-Message-Id: <20240315233113.D1AF582325@smtp1.osuosl.org>
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=driverdev.osuosl.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -42,85 +60,55 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7170673769672922649=="
+Reply-To: sudarshanpaper3@gmail.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-This is a MIME-encapsulated message.
+Dear devel,
 
---===============7170673769672922649==
-Content-Type: multipart/report; report-type=delivery-status;
-	boundary="B656A82315.1710545473/smtp1.osuosl.org"
-Content-Transfer-Encoding: 8bit
+Nice to hear from you
+I am grateful for your response. 
 
-This is a MIME-encapsulated message.
+I'm Darlene HR. Assistant from IMPRO TECHNOLOGIES Pvt. Ltd.
 
---B656A82315.1710545473/smtp1.osuosl.org
-Content-Description: Notification
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Our company is looking for freelancers for our new Emirate 
+Digital Promotion Project.
 
-This is the mail system at host smtp1.osuosl.org.
+You can do this job from home, office and anywhere at your free 
+time and is relatively easy.
+Can I share the job details please?
+                                   
+Basically, Our Company actually advertise for various top 
+(Brands) like e-commerce, Social media marketing, WhatsApp and 
+YouTube SEO companies project, I will share you the Job 
+description:         
 
-Your message was successfully delivered to the destination(s)
-listed below. If the message was delivered to mailbox you will
-receive no further notifications. Otherwise you may still receive
-notifications of mail delivery errors from other systems.
+Task Role: Your Job Role is simply and easy, you just have to 
+Follow our client's YouTube pages, then send us screenshots and 
+get daily basis payout. 
 
-                   The mail system
+Daily salary: 1000 Birr to 3000 Birr+ or in your country currency 
+daily bonus. Salary will be paid daily via any bank transfer.
 
-<devel@driverdev.osuosl.org>: alias expanded
+For a better understanding about this job, i will give you a 
+Trial Task to see how we work. We will pay you Birr 180 instant 
+welcome bonus for this task now.
 
---B656A82315.1710545473/smtp1.osuosl.org
-Content-Description: Delivery report
-Content-Type: message/delivery-status
+Would you like to give it a try?  
 
-Reporting-MTA: dns; smtp1.osuosl.org
-X-Postfix-Queue-ID: B656A82315
-X-Postfix-Sender: rfc822; devel@driverdev.osuosl.org
-Arrival-Date: Fri, 15 Mar 2024 23:31:07 +0000 (UTC)
+Now All you need to do is subscribe to the YouTube Page and send 
+us screenshots on Whsatsapp or reply us back as we proceed with 
+paying your first salary.
 
-Final-Recipient: rfc822; devel@driverdev.osuosl.org
-Original-Recipient: rfc822;devel@driverdev.osuosl.org
-Action: expanded
-Status: 2.0.0
-Diagnostic-Code: X-Postfix; alias expanded
+DEMO TASK:
+Open YouTube and search 
+YouTube PAGE: @nishanbusiness
+Whatsapp Contact:+1 323-813-8375
 
---B656A82315.1710545473/smtp1.osuosl.org
-Content-Description: Message Headers
-Content-Type: text/rfc822-headers
-Content-Transfer-Encoding: 8bit
-
-Return-Path: <devel@driverdev.osuosl.org>
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=157.10.44.177; helo=[157.10.44.177]; envelope-from=devel@driverdev.osuosl.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B656A82315
-Authentication-Results: smtp1.osuosl.org; dmarc=none (p=none dis=none) header.from=driverdev.osuosl.org
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B656A82315
-Received: from [157.10.44.177] (unknown [157.10.44.177])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B656A82315
-	for <devel@driverdev.osuosl.org>; Fri, 15 Mar 2024 23:31:07 +0000 (UTC)
-From: driverdev.osuosl.org cpanel <devel@driverdev.osuosl.org>
-To: devel@driverdev.osuosl.org
-Subject: [ACTION REQUIRED]  :  devel@driverdev.osuosl.org have  Pending incoming messages.
-Date: 15 Mar 2024 16:31:05 -0700
-Message-ID: <20240315163105.960D3EA68D4F915E@driverdev.osuosl.org>
-MIME-Version: 1.0
-Disposition-Notification-To: noreply@driverdev.osuosl.org
-Content-Type: text/html;
-	charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
---B656A82315.1710545473/smtp1.osuosl.org--
-
---===============7170673769672922649==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+YOUTUBE LINK: https://www.youtube.com/@nishanbusiness
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
 http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
-
---===============7170673769672922649==--
