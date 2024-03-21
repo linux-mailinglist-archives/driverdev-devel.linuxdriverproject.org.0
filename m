@@ -1,47 +1,47 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2587880CDD
-	for <lists+driverdev-devel@lfdr.de>; Wed, 20 Mar 2024 09:15:44 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 11960881C49
+	for <lists+driverdev-devel@lfdr.de>; Thu, 21 Mar 2024 07:03:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 37EA240907;
-	Wed, 20 Mar 2024 08:15:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B91096002E;
+	Thu, 21 Mar 2024 06:03:32 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id d99QjUrYZmKS; Wed, 20 Mar 2024 08:15:40 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YwBFs85-JJBd; Thu, 21 Mar 2024 06:03:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B22F0404B4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D242360629
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B22F0404B4;
-	Wed, 20 Mar 2024 08:15:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D242360629;
+	Thu, 21 Mar 2024 06:03:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0710B1BF47D
- for <devel@linuxdriverproject.org>; Wed, 20 Mar 2024 08:15:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CCEB61BF5F8
+ for <devel@linuxdriverproject.org>; Thu, 21 Mar 2024 06:03:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E4E9181F57
- for <devel@linuxdriverproject.org>; Wed, 20 Mar 2024 08:15:37 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B9F4C81FDE
+ for <devel@linuxdriverproject.org>; Thu, 21 Mar 2024 06:03:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 581gMaYtwoSQ for <devel@linuxdriverproject.org>;
- Wed, 20 Mar 2024 08:15:37 +0000 (UTC)
+ with ESMTP id jJoQsG57NXiV for <devel@linuxdriverproject.org>;
+ Thu, 21 Mar 2024 06:03:30 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=103.78.0.165;
  helo=[103.78.0.165]; envelope-from=compensation@driverdev.osuosl.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A6FA480E50
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A6FA480E50
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 72D5E81FB7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 72D5E81FB7
 Received: from [103.78.0.165] (unknown [103.78.0.165])
- by smtp1.osuosl.org (Postfix) with ESMTP id A6FA480E50
- for <devel@driverdev.osuosl.org>; Wed, 20 Mar 2024 08:15:36 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 72D5E81FB7
+ for <devel@driverdev.osuosl.org>; Thu, 21 Mar 2024 06:03:28 +0000 (UTC)
 From: Compensation@driverdev.osuosl.org
 To: devel@driverdev.osuosl.org
-Subject: Re: Compensation ATM Card Delivery Approval
-Date: 20 Mar 2024 01:15:33 -0700
-Message-ID: <20240320011533.19E136E50E9798E9@driverdev.osuosl.org>
+Subject: NEW MESSAGE :Urgent Reply Needed!!!
+Date: 20 Mar 2024 23:03:26 -0700
+Message-ID: <20240320230326.23D91FB0D8955A51@driverdev.osuosl.org>
 MIME-Version: 1.0
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
@@ -58,7 +58,7 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: jeanmarcelguillondr8@gmail.com
+Reply-To: raymundorosas912@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -88,10 +88,9 @@ kindly Contact me Directly Via Whatsapp or Email Address below
 
 THANKS
 BEST REGARDS
-Dr Jean-Marcel Guillon
+Dr RAYMUNDO ROSAS
 CHIEF FINANCIAL OFFICER
-WHATSAPP: +1 323-813-8375
-EMAIL ADDRESS : jeanmarcelguillondr8@gmail.com
+EMAIL ADDRESS :Raymundorosas912@gmail.com
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
