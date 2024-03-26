@@ -1,84 +1,81 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 585B688C2CB
-	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Mar 2024 13:58:56 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C78888C8F3
+	for <lists+driverdev-devel@lfdr.de>; Tue, 26 Mar 2024 17:22:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 85A37406A0;
-	Tue, 26 Mar 2024 12:58:54 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 094E741511;
+	Tue, 26 Mar 2024 16:22:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yv65AF4SNOF3; Tue, 26 Mar 2024 12:58:53 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id s90m40QEAm00; Tue, 26 Mar 2024 16:22:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3079D406BD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E4A8C41520
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3079D406BD;
-	Tue, 26 Mar 2024 12:58:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E4A8C41520;
+	Tue, 26 Mar 2024 16:22:56 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6F4FE1BF3BA
- for <devel@linuxdriverproject.org>; Tue, 26 Mar 2024 12:58:51 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 06AE71BF487
+ for <devel@linuxdriverproject.org>; Tue, 26 Mar 2024 16:22:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B30674054E
- for <devel@linuxdriverproject.org>; Tue, 26 Mar 2024 12:58:50 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 00ED181FE3
+ for <devel@linuxdriverproject.org>; Tue, 26 Mar 2024 16:22:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qARaCcSjAKuO for <devel@linuxdriverproject.org>;
- Tue, 26 Mar 2024 12:58:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id lc-KAlyEUnsN for <devel@linuxdriverproject.org>;
+ Tue, 26 Mar 2024 16:22:54 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 968DD4054D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 968DD4054D
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 968DD4054D
- for <devel@driverdev.osuosl.org>; Tue, 26 Mar 2024 12:58:48 +0000 (UTC)
-X-CSE-ConnectionGUID: 8nXuhP8bTIuETVtEkRYyqw==
-X-CSE-MsgGUID: aDm+pKxTRIeI1pmEjEzQPQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11024"; a="6717064"
-X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; 
-   d="scan'208";a="6717064"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2024 05:58:48 -0700
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C693D81FDF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C693D81FDF
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C693D81FDF
+ for <devel@driverdev.osuosl.org>; Tue, 26 Mar 2024 16:22:53 +0000 (UTC)
+X-CSE-ConnectionGUID: CMK7QnnRRkyTIfft47Vhwg==
+X-CSE-MsgGUID: c5r6NBCiSiao70rEwv4ICA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11025"; a="24020739"
+X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; d="scan'208";a="24020739"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Mar 2024 09:22:53 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; d="scan'208";a="46972394"
+X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; d="scan'208";a="20662502"
 Received: from lkp-server01.sh.intel.com (HELO be39aa325d23) ([10.239.97.150])
- by orviesa002.jf.intel.com with ESMTP; 26 Mar 2024 05:58:47 -0700
+ by orviesa003.jf.intel.com with ESMTP; 26 Mar 2024 09:22:52 -0700
 Received: from kbuild by be39aa325d23 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rp6O4-00003M-1x;
- Tue, 26 Mar 2024 12:58:44 +0000
-Date: Tue, 26 Mar 2024 20:58:26 +0800
+ (envelope-from <lkp@intel.com>) id 1rp9ZZ-0000Ca-0k;
+ Tue, 26 Mar 2024 16:22:49 +0000
+Date: Wed, 27 Mar 2024 00:21:56 +0800
 From: kernel test robot <lkp@intel.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:debugfs_cleanup 6/7]
- drivers/platform/x86/amd/hsmp.c:696:36: error: no member named 'dev' in
- 'struct hsmp_plat_device'
-Message-ID: <202403262003.n5XJu6mg-lkp@intel.com>
-MIME-Version: 1.0
-Content-Disposition: inline
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [staging:staging-linus] BUILD SUCCESS
+ f37e76abd614b68987abc8e5c22d986013349771
+Message-ID: <202403270052.YIZMpEn7-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1711457929; x=1742993929;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=X2THMzWYsExlmAuHaeWoNiOj8tHicjNNbZgJc80wfXE=;
- b=F9oSwfnfpTIpcEjaPfw45AhA7D6KQ0TXqaU7B9KTsSYrN08thwiW9n4x
- 7ZXdOY4JPE9+CxcPHloforH1BpJ1sbl7Z7HlzwBHIhv+JhusiwRxeApna
- KG86yoXtfs57flktGfr1YS/ry8bJyqGqtcLQyMOjwyVUnxbpMiUo4E/MS
- ITF726n2YXkEMxoxHdy54E6IcYYZSKYyeXEMn728H4DYAPBPS7gWOUnYp
- qQwwS86y8mrEY2I8a/W2oeK9aUXVr/bkRRzKrYuEuwdmWiacHET8CA33K
- bAGAFR6e+GX56MnU0sUpg/ybMNs0nwo96XXoZm/T+Q/D+UGxSBhahZ1Xy
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1711470174; x=1743006174;
+ h=date:from:to:cc:subject:message-id;
+ bh=z1QyN9r42l05Y5HlAGaM4zt52T65CQOCnr+c4BEmLt4=;
+ b=iQ1fePXYF3RY7OoZzETtnJ9AV/SpgqF9nFVOKlTiVH33EKWgu2TylshO
+ SoZIVGoUrhlC6WAMKFopYUdfBlNha9Fv2gUaDaXkJNPRCk9iR40eQAbqW
+ wNEfwtIiOnBI1Ctp7iW187bFBFJWbVLQ5oSD72n4KZKVPFNOh8AFc2gaB
+ DZAEwrywOaTezKL8T97rTWv3OMv2vMhsqOaNsCI2c1GcsDob+Rlz4JO66
+ sFNuyDgx69FxgWpkStrcLjjrnPyB6NfONPBHIiNcILVHSAp0K/8puTAXW
+ QvVABAmq/va4hG3GezbaVtUdXhVTEr/oD+vAW4FUAGXwpuKd4lJDXlEzJ
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=F9oSwfnf
+ header.s=Intel header.b=iQ1fePXY
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,66 +88,217 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, llvm@lists.linux.dev,
- oe-kbuild-all@lists.linux.dev
+Cc: devel@driverdev.osuosl.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git debugfs_cleanup
-head:   766db77dfd694e14cfdc4728e9c2f6d747dfdf84
-commit: 3baa931df8381661c94796a782d473e44391c0dc [6/7] platform/x86/amd/hsmp: switch to use device_add_groups()
-config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20240326/202403262003.n5XJu6mg-lkp@intel.com/config)
-compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240326/202403262003.n5XJu6mg-lkp@intel.com/reproduce)
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-linus
+branch HEAD: f37e76abd614b68987abc8e5c22d986013349771  staging: vc04_services: fix information leak in create_component()
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202403262003.n5XJu6mg-lkp@intel.com/
+elapsed time: 1324m
 
-All errors (new ones prefixed by >>):
+configs tested: 192
+configs skipped: 3
 
->> drivers/platform/x86/amd/hsmp.c:696:36: error: no member named 'dev' in 'struct hsmp_plat_device'
-     696 |         return device_add_groups(plat_dev.dev, hsmp_attr_grps);
-         |                                  ~~~~~~~~ ^
-   1 error generated.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-
-vim +696 drivers/platform/x86/amd/hsmp.c
-
-   668	
-   669	static int hsmp_create_non_acpi_sysfs_if(struct device *dev)
-   670	{
-   671		const struct attribute_group **hsmp_attr_grps;
-   672		struct attribute_group *attr_grp;
-   673		u16 i;
-   674	
-   675		hsmp_attr_grps = devm_kcalloc(dev, plat_dev.num_sockets + 1,
-   676					      sizeof(*hsmp_attr_grps),
-   677					      GFP_KERNEL);
-   678		if (!hsmp_attr_grps)
-   679			return -ENOMEM;
-   680	
-   681		/* Create a sysfs directory for each socket */
-   682		for (i = 0; i < plat_dev.num_sockets; i++) {
-   683			attr_grp = devm_kzalloc(dev, sizeof(struct attribute_group),
-   684						GFP_KERNEL);
-   685			if (!attr_grp)
-   686				return -ENOMEM;
-   687	
-   688			snprintf(plat_dev.sock[i].name, HSMP_ATTR_GRP_NAME_SIZE, "socket%u", (u8)i);
-   689			attr_grp->name			= plat_dev.sock[i].name;
-   690			attr_grp->is_bin_visible	= hsmp_is_sock_attr_visible;
-   691			hsmp_attr_grps[i]		= attr_grp;
-   692	
-   693			hsmp_create_attr_list(attr_grp, dev, i);
-   694		}
-   695	
- > 696		return device_add_groups(plat_dev.dev, hsmp_attr_grps);
-   697	}
-   698	
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                          axs101_defconfig   gcc  
+arc                      axs103_smp_defconfig   gcc  
+arc                                 defconfig   gcc  
+arc                        nsimosci_defconfig   gcc  
+arc                   randconfig-001-20240326   gcc  
+arc                   randconfig-002-20240326   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   clang
+arm                              allyesconfig   gcc  
+arm                                 defconfig   clang
+arm                        multi_v5_defconfig   gcc  
+arm                       netwinder_defconfig   gcc  
+arm                   randconfig-001-20240326   gcc  
+arm                   randconfig-002-20240326   gcc  
+arm                   randconfig-003-20240326   gcc  
+arm                   randconfig-004-20240326   gcc  
+arm                         s3c6400_defconfig   gcc  
+arm                           spitz_defconfig   gcc  
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                            allyesconfig   clang
+arm64                               defconfig   gcc  
+arm64                 randconfig-003-20240326   gcc  
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20240326   gcc  
+csky                  randconfig-002-20240326   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+i386                             allmodconfig   gcc  
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-002-20240326   clang
+i386         buildonly-randconfig-003-20240326   clang
+i386                                defconfig   clang
+i386                  randconfig-004-20240326   clang
+i386                  randconfig-006-20240326   clang
+i386                  randconfig-011-20240326   clang
+i386                  randconfig-013-20240326   clang
+i386                  randconfig-014-20240326   clang
+i386                  randconfig-015-20240326   clang
+i386                  randconfig-016-20240326   clang
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                        allyesconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20240326   gcc  
+loongarch             randconfig-002-20240326   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+m68k                       m5208evb_defconfig   gcc  
+m68k                          multi_defconfig   gcc  
+m68k                        mvme147_defconfig   gcc  
+m68k                           sun3_defconfig   gcc  
+microblaze                       alldefconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                             allmodconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+mips                       bmips_be_defconfig   gcc  
+mips                         cobalt_defconfig   gcc  
+mips                 decstation_r4k_defconfig   gcc  
+mips                      fuloong2e_defconfig   gcc  
+mips                          malta_defconfig   gcc  
+mips                malta_qemu_32r6_defconfig   gcc  
+mips                       rbtx49xx_defconfig   gcc  
+mips                          rm200_defconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20240326   gcc  
+nios2                 randconfig-002-20240326   gcc  
+openrisc                         allmodconfig   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           alldefconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc                randconfig-001-20240326   gcc  
+parisc                randconfig-002-20240326   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc                    amigaone_defconfig   gcc  
+powerpc                      ep88xc_defconfig   gcc  
+powerpc                    klondike_defconfig   gcc  
+powerpc                   microwatt_defconfig   gcc  
+powerpc                 mpc832x_rdb_defconfig   gcc  
+powerpc                 mpc837x_rdb_defconfig   gcc  
+powerpc               randconfig-002-20240326   gcc  
+powerpc                      walnut_defconfig   gcc  
+powerpc64             randconfig-001-20240326   gcc  
+powerpc64             randconfig-002-20240326   gcc  
+powerpc64             randconfig-003-20240326   gcc  
+riscv                            allmodconfig   clang
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   clang
+riscv                               defconfig   clang
+riscv             nommu_k210_sdcard_defconfig   gcc  
+riscv                 randconfig-001-20240326   gcc  
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                          debug_defconfig   gcc  
+s390                                defconfig   clang
+sh                               alldefconfig   gcc  
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                         ap325rxa_defconfig   gcc  
+sh                         apsh4a3a_defconfig   gcc  
+sh                        apsh4ad0a_defconfig   gcc  
+sh                                  defconfig   gcc  
+sh                ecovec24-romimage_defconfig   gcc  
+sh                               j2_defconfig   gcc  
+sh                          landisk_defconfig   gcc  
+sh                          lboxre2_defconfig   gcc  
+sh                          polaris_defconfig   gcc  
+sh                    randconfig-001-20240326   gcc  
+sh                    randconfig-002-20240326   gcc  
+sh                          rsk7269_defconfig   gcc  
+sh                      rts7751r2d1_defconfig   gcc  
+sh                   rts7751r2dplus_defconfig   gcc  
+sh                          sdk7786_defconfig   gcc  
+sh                           se7705_defconfig   gcc  
+sh                        sh7757lcr_defconfig   gcc  
+sh                        sh7785lcr_defconfig   gcc  
+sh                             shx3_defconfig   gcc  
+sh                              ul2_defconfig   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                            allyesconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20240326   gcc  
+sparc64               randconfig-002-20240326   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                                  defconfig   clang
+um                             i386_defconfig   gcc  
+um                    randconfig-001-20240326   gcc  
+um                    randconfig-002-20240326   gcc  
+um                           x86_64_defconfig   clang
+x86_64                            allnoconfig   clang
+x86_64                           allyesconfig   clang
+x86_64       buildonly-randconfig-002-20240326   gcc  
+x86_64       buildonly-randconfig-004-20240326   gcc  
+x86_64       buildonly-randconfig-005-20240326   gcc  
+x86_64       buildonly-randconfig-006-20240326   gcc  
+x86_64                              defconfig   gcc  
+x86_64                randconfig-001-20240326   gcc  
+x86_64                randconfig-002-20240326   gcc  
+x86_64                randconfig-003-20240326   gcc  
+x86_64                randconfig-005-20240326   gcc  
+x86_64                randconfig-011-20240326   gcc  
+x86_64                randconfig-013-20240326   gcc  
+x86_64                randconfig-014-20240326   gcc  
+x86_64                randconfig-072-20240326   gcc  
+x86_64                randconfig-073-20240326   gcc  
+x86_64                randconfig-074-20240326   gcc  
+x86_64                randconfig-075-20240326   gcc  
+x86_64                randconfig-076-20240326   gcc  
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+xtensa                            allnoconfig   gcc  
+xtensa                           allyesconfig   gcc  
+xtensa                randconfig-001-20240326   gcc  
+xtensa                randconfig-002-20240326   gcc  
+xtensa                    xip_kc705_defconfig   gcc  
 
 -- 
 0-DAY CI Kernel Test Service
