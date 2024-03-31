@@ -1,51 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4E94892C4C
-	for <lists+driverdev-devel@lfdr.de>; Sat, 30 Mar 2024 19:01:30 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7405A8939F9
+	for <lists+driverdev-devel@lfdr.de>; Mon,  1 Apr 2024 12:04:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 14695405F2;
-	Sat, 30 Mar 2024 18:01:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 950BA404D3;
+	Mon,  1 Apr 2024 10:04:25 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0teDVXPJmnRZ; Mon,  1 Apr 2024 10:04:24 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BF9E340514
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id BF9E340514;
+	Mon,  1 Apr 2024 10:04:24 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C746E1BF3CA;
+ Mon,  1 Apr 2024 10:04:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id DB68640516;
+ Mon,  1 Apr 2024 10:04:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7xBJ06F0Tlno; Sat, 30 Mar 2024 18:01:28 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DCA504060E
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DCA504060E;
-	Sat, 30 Mar 2024 18:01:27 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 385431BF27E
- for <devel@linuxdriverproject.org>; Sat, 30 Mar 2024 18:01:26 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2588F820FD
- for <devel@linuxdriverproject.org>; Sat, 30 Mar 2024 18:01:26 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ekmgFCePw2iz for <devel@linuxdriverproject.org>;
- Sat, 30 Mar 2024 18:01:25 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=103.78.0.165;
- helo=[103.78.0.165]; envelope-from=compensation@driverdev.osuosl.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 006C5820EE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 006C5820EE
-Received: from [103.78.0.165] (unknown [103.78.0.165])
- by smtp1.osuosl.org (Postfix) with ESMTP id 006C5820EE
- for <devel@driverdev.osuosl.org>; Sat, 30 Mar 2024 18:01:24 +0000 (UTC)
-From: Compensation@driverdev.osuosl.org
-To: devel@driverdev.osuosl.org
-Subject: Fwd:  BANK ATM 
-Date: 30 Mar 2024 11:01:22 -0700
-Message-ID: <20240330110121.07CF8D3608D428AE@driverdev.osuosl.org>
+ id 6CXKcxR2I1sG; Mon,  1 Apr 2024 10:04:20 +0000 (UTC)
+X-Greylist: delayed 30244 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 01 Apr 2024 10:04:17 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2FB8B40306
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2FB8B40306
+Received-SPF: Neutral (mailfrom) identity=mailfrom; client-ip=194.85.206.78;
+ helo=smtp-corp.rea.ru; envelope-from=support@rea.ru; receiver=<UNKNOWN> 
+Received: from smtp-corp.rea.ru (unknown [194.85.206.78])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2FB8B40306
+ for <devel@driverdev.osuosl.org>; Mon,  1 Apr 2024 10:04:17 +0000 (UTC)
+Received: from smtp-corp.rea.ru (unknown [141.98.10.152])
+ by smtp-corp.rea.ru (smtp-corp.rea.ru) with ESMTPA id 90982316D98;
+ Mon,  1 Apr 2024 01:23:23 +0300 (MSK)
 MIME-Version: 1.0
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=driverdev.osuosl.org
+Content-Description: Mail message body
+Subject: Darlehen
+To: Recipients <support@rea.ru>
+From: "Massy Finance Ltd" <support@rea.ru>
+Date: Mon, 01 Apr 2024 00:23:22 +0200
+Message-Id: <20240331222324.90982316D98@smtp-corp.rea.ru>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=rea.ru; s=mail; 
+ t=1711923805; h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:mime-version:mime-version:
+ content-type:content-type: content-transfer-encoding:content-transfer-encoding;
+ bh=cJ9vjYlVN4LngQrm8v+gF2oGEBCuUfAl25+aLLUHuSE=;
+ b=TfOYyy0p0k542QAbvs4HOeK8MyyVPWnRgogk0HVGpjE7+FeV/97fMZaDlgQNQsa4um6vNn
+ tidIJaU1xKI9d++oIBO6ND1jcOZqbXfMXrWuioYUetCIYxkkf5/IQrOBop3mrV8eHfNNno
+ DiPZTekeC6HWltRZq13xnAlk6CqrIOkkqhfcRpc1gdcOeZVSgrZ7T4qdf3sw4peaccw+Cq
+ DegkAOjESXahqkerx1sOUGMrRHGS3DnogpIkkfP04ezeLJcIh99QPQ7kNXukijEIeRDuGX
+ oJi4tcVadCzA2HWmKCRSRr+5qUzcUn/xz+bvctdR+Ung9S9zhYIRu5zz4ap5gg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=fail (p=quarantine dis=none)
+ header.from=rea.ru
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=fail reason="signature verification failed" (2048-bit key,
+ unprotected) header.d=rea.ru header.i=@rea.ru header.a=rsa-sha256
+ header.s=mail header.b=TfOYyy0p
+X-Mailman-Original-Authentication-Results: smtp-corp.rea.ru;
+ auth=pass smtp.auth=support@rea.ru smtp.mailfrom=support@rea.ru
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,39 +79,28 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: Cashconsultantog@outlook.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: massyfinanceltd@gmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear ,
+Gr=FC=DFe
 
+Ben=F6tigen Sie einen Gesch=E4ftskredit oder einen Privatkredit? Ich m=F6ch=
+te Sie dar=FCber informieren, dass wir alle Arten von Krediten zu einem Zin=
+ssatz von 2 % anbieten. Kontaktieren Sie uns noch heute, indem Sie das unte=
+nstehende Formular ausf=FCllen.
 
-I am glad and  grateful for the consideration and decision made 
-by The Federal Government Board Of Directors to compensate you  
-for the losses you  have incurred in the past, and to restore the 
-good image of our federation tarnished by hackers and scammers. 
-It is truly heartening to know that your concerns have been 
-acknowledged, 
+Vor-und Nachname:
+Erforderlicher Kreditbetrag:
+Kreditlaufzeit:
+Telefonnummer:
+Land:
+Geschlecht:
 
-the payment of $95,850. is waiting for you as compensation Please 
-provide me with the details and instructions below on how to 
-proceed, and I will ensure your compensation  without delay. You 
-can reach me directly at My Email Address or through any other 
-means convenient for you Below
-
-regarding the disbursement of funds.  the options provided for 
-receiving the payment.  is stated below We have 3 method of 
-payment ATM card payment, Online banking which you will have 
-access to your funds online and cash delivery to Your doorstep? 
-kindly Contact me Directly Via Whatsapp or Email Address below 
-
-THANKS
-BEST REGARDS
-Dr RAYMUNDO ROSAS
-CHIEF FINANCIAL OFFICER
-EMAIL ADDRESS :Cashconsultantog@outlook.com
+Beste gr=FC=DFe.
+Massy Finance Ltd.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
