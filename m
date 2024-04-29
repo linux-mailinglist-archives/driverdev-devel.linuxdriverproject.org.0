@@ -1,84 +1,57 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02E7F8B4D8C
-	for <lists+driverdev-devel@lfdr.de>; Sun, 28 Apr 2024 21:00:45 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EE58881E7E;
-	Sun, 28 Apr 2024 19:00:43 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hAqASHyw-ziH; Sun, 28 Apr 2024 19:00:42 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 639F781E84
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 639F781E84;
-	Sun, 28 Apr 2024 19:00:42 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 363C91BF344
- for <devel@linuxdriverproject.org>; Sun, 28 Apr 2024 19:00:40 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8692E8B6055
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Apr 2024 19:45:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1FF9740429
- for <devel@linuxdriverproject.org>; Sun, 28 Apr 2024 19:00:40 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id EAC3F40B35;
+	Mon, 29 Apr 2024 17:45:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id zRA7-wEQ7_S9 for <devel@linuxdriverproject.org>;
- Sun, 28 Apr 2024 19:00:39 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=103.79.96.173;
- helo=mail.unimedika.com; envelope-from=admintele.umst@unimedika.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 81D65403C7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 81D65403C7
-Received: from mail.unimedika.com (smtp.unimedika.com [103.79.96.173])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 81D65403C7
- for <devel@linuxdriverproject.org>; Sun, 28 Apr 2024 19:00:37 +0000 (UTC)
+ id HSdM73mltmsl; Mon, 29 Apr 2024 17:45:11 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2AA0B40B5C
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2AA0B40B5C;
+	Mon, 29 Apr 2024 17:45:11 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C3331BF95D
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2024 17:45:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by mail.unimedika.com (Postfix) with ESMTP id BFA0048E1892;
- Sat, 27 Apr 2024 23:37:07 +0700 (WIB)
-Received: from mail.unimedika.com ([127.0.0.1])
- by localhost (mail.unimedika.com [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id wuTYHP4z8l8U; Sat, 27 Apr 2024 23:37:07 +0700 (WIB)
-Received: from localhost (localhost [127.0.0.1])
- by mail.unimedika.com (Postfix) with ESMTP id 1E8DA465B75D;
- Sat, 27 Apr 2024 22:32:20 +0700 (WIB)
-DKIM-Filter: OpenDKIM Filter v2.10.3 mail.unimedika.com 1E8DA465B75D
-X-Virus-Scanned: amavisd-new at unimedika.com
-Received: from mail.unimedika.com ([127.0.0.1])
- by localhost (mail.unimedika.com [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id rQleby1JIecD; Sat, 27 Apr 2024 22:32:20 +0700 (WIB)
-Received: from [156.96.115.93] (unknown [156.96.115.93])
- by mail.unimedika.com (Postfix) with ESMTPSA id B99994694AA4;
- Sat, 27 Apr 2024 22:05:06 +0700 (WIB)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 78B6F60843
+ for <devel@linuxdriverproject.org>; Mon, 29 Apr 2024 17:45:08 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CDssGJtC04AQ for <devel@linuxdriverproject.org>;
+ Mon, 29 Apr 2024 17:45:07 +0000 (UTC)
+X-Greylist: delayed 6903 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 29 Apr 2024 17:45:05 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6AC316061D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6AC316061D
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=81.180.73.249;
+ helo=mail.utm.md; envelope-from=postmaster@primamedica.md; receiver=<UNKNOWN> 
+Received: from mail.utm.md (mail.utm.md [81.180.73.249])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6AC316061D
+ for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2024 17:45:05 +0000 (UTC)
+Received: from primamedica.md (mail.terramed.md [188.237.201.51])
+ by mail.utm.md (Postfix) with ESMTP id 13E0911413F;
+ Mon, 29 Apr 2024 18:36:34 +0300 (EEST)
+Received: from internal.domain; Mon, 29 Apr 2024 18:32:33 +0300
 MIME-Version: 1.0
 Content-Description: Mail message body
-Subject: I Request your Attention
-To: Recipients <admintele.umst@unimedika.com>
-From: "Mrs. Reem E. Al-Hashimi" <admintele.umst@unimedika.com>
-Date: Sat, 27 Apr 2024 08:05:00 -0700
-Message-Id: <20240427150506.B99994694AA4@mail.unimedika.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=unimedika.com; 
- s=C0D54D52-E252-11E8-BC0B-A0FABF73D6AF; t=1714231940;
- bh=NW0cd4+qiRrtsmO3+RTo9B4WE35wO+S5S3T2Bw8z8r8=;
- h=MIME-Version:To:From:Date:Message-Id;
- b=qr83AMM/r0lCE916Fps090ztZfj+LOZV3tOvEbbSYoWJrVnJK7NoLeTEJ7pTjHSYH
- yU3q1WK6KLrbb2vFsze9gk2Vx3X0RKLgV37o/ZLGXeM7gVwRb29xeztp1Aqc4EV0gP
- qqm/60MhY5uEbWvIKayVMZ1xGpQEm+6ZU5uhuzPemyPFyAYDquYBcAtWN82XUrR7ic
- w31/YGYN6mHObprF6SrI6kpE9BKw6Hm9JWhdodzPAsKt3Xdz8rpBpK28pmr86t3awh
- 2MVXFOauhtWm/f5a3RYKr6saX4mqGbe0tlCAD8iLWs8u4Bt6oYLhAa/+AuiZJoaBrg
- qyxfC+KbxXlVQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=unimedika.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=unimedika.com header.i=@unimedika.com
- header.a=rsa-sha256 header.s=C0D54D52-E252-11E8-BC0B-A0FABF73D6AF
- header.b=qr83AMM/
+Subject: (Anspruchs)
+To: Recipients <postmaster@primamedica.md>
+From: Silvana Tenreyro <postmaster@primamedica.md>
+Date: Mon, 29 Apr 2024 17:33:19 +0100
+Message-ID: <auto-000004220422@primamedica.md>
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=primamedica.md
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,25 +64,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: a0976047327@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: silvanatenreyrompc@hotmail.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-My name is Reem E. Al-Hashimi, the Emirati Minister of State. I am writing to you to stand as my partner to receive my share of the gratification from the foreign companies that I helped during the bidding process to the Dubai World Expo 2020/2021 Committee.
-
-I am serving as a minister and I have a limit to my personal income and investment level, I cannot receive such a huge amount back to my country or my personal account.
-
-I have agreed with the foreign companies to transfer the gratuities to an open beneficiary account at a financial institution where I will be able to direct further transfer of the funds to a third party account.
-
-The amount is valued at $47,745,533.00 with a financial institution awaiting my instructions for further transfer to a destination account as soon as I have your information indicating interest and I will compensate you with 30% of the total amount and you will also benefit from the investment.
-
-Please note that the above details are subject to my working with you as a partner. reply to me by email: reem.alh2023@gmail.com
-
-If you can make the fund a good investment.
-Kind regards,
-Reem 
+Wir haben einen nicht eingeforderten Betrag von 4.000.000,00 =A3, der mit I=
+hren Namen verkn=FCpft ist. Bitte senden Sie Ihre vollst=E4ndigen Namen an =
+meine E-Mail-Adresse: (silvanatenreyrompc@hotmail.com) f=FCr weitere Inform=
+ationen im Falle eines dringenden Anspruchs.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
