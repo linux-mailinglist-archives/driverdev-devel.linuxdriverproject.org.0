@@ -1,57 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8692E8B6055
-	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Apr 2024 19:45:13 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B0B028B9020
+	for <lists+driverdev-devel@lfdr.de>; Wed,  1 May 2024 21:43:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EAC3F40B35;
-	Mon, 29 Apr 2024 17:45:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D5DC5820C8;
+	Wed,  1 May 2024 19:43:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HSdM73mltmsl; Mon, 29 Apr 2024 17:45:11 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id v1gLlai7krFl; Wed,  1 May 2024 19:43:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2AA0B40B5C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 00444820D0
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2AA0B40B5C;
-	Mon, 29 Apr 2024 17:45:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 00444820D0;
+	Wed,  1 May 2024 19:43:26 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8C3331BF95D
- for <devel@linuxdriverproject.org>; Mon, 29 Apr 2024 17:45:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8953A1BF2C9
+ for <devel@linuxdriverproject.org>; Wed,  1 May 2024 19:43:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 78B6F60843
- for <devel@linuxdriverproject.org>; Mon, 29 Apr 2024 17:45:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 81A1740313
+ for <devel@linuxdriverproject.org>; Wed,  1 May 2024 19:43:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CDssGJtC04AQ for <devel@linuxdriverproject.org>;
- Mon, 29 Apr 2024 17:45:07 +0000 (UTC)
-X-Greylist: delayed 6903 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 29 Apr 2024 17:45:05 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6AC316061D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6AC316061D
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=81.180.73.249;
- helo=mail.utm.md; envelope-from=postmaster@primamedica.md; receiver=<UNKNOWN> 
-Received: from mail.utm.md (mail.utm.md [81.180.73.249])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6AC316061D
- for <devel@driverdev.osuosl.org>; Mon, 29 Apr 2024 17:45:05 +0000 (UTC)
-Received: from primamedica.md (mail.terramed.md [188.237.201.51])
- by mail.utm.md (Postfix) with ESMTP id 13E0911413F;
- Mon, 29 Apr 2024 18:36:34 +0300 (EEST)
-Received: from internal.domain; Mon, 29 Apr 2024 18:32:33 +0300
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id WGnngX3uekb3 for <devel@linuxdriverproject.org>;
+ Wed,  1 May 2024 19:43:23 +0000 (UTC)
+X-Greylist: delayed 606 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 01 May 2024 19:43:21 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BE80040301
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BE80040301
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=137.220.190.164;
+ helo=mail0.ska28.com; envelope-from=no-reply@ska28.com; receiver=<UNKNOWN> 
+Received: from mail0.ska28.com (unknown [137.220.190.164])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BE80040301
+ for <devel@linuxdriverproject.org>; Wed,  1 May 2024 19:43:21 +0000 (UTC)
+Message-ID: <f9ecd3787de03ce34689b62f28c6d212@ska28.com>
+From: =?utf-8?B?6Ieq5YuV44Oh44O844Or6YCB5L+h?= <no-reply@ska28.com>
+To: <devel@linuxdriverproject.org>
+Subject: =?utf-8?B?44CQ5LiJ5LqV5L2P5Y+LIOOCq+ODvOODieOAkSDjgYrmlK8=?=
+ =?utf-8?B?5omV44GE5LqI5a6a6YeR6aGN44Gu44GU5qGI5YaF?=
+Date: Thu, 02 May 2024 03:33:09 +0800
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: (Anspruchs)
-To: Recipients <postmaster@primamedica.md>
-From: Silvana Tenreyro <postmaster@primamedica.md>
-Date: Mon, 29 Apr 2024 17:33:19 +0100
-Message-ID: <auto-000004220422@primamedica.md>
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ s=default; d=ska28.com; 
+ h=Message-ID:From:To:Subject:Date:MIME-Version:Content-Type:
+ Content-Transfer-Encoding; i=no-reply@ska28.com;
+ bh=ycPeo4PiodI9AbCUTbYMdUaufHH/+jDLpdGVUl04pJg=;
+ b=dYJ8whWrwmh35x79BwdnjhKSkV6xqZB/be9H0kXZ3jS74b/WltJO/jhWQOnmY9gTTsmqicX8URst
+ 2KE1YjyBABz4/gcPbMKsZqwmCP9HJ7EaKxFCbidBaeID+5z47vNOqAvxPT3jKLps5p/t6yxeONds
+ yEuYHnzutbPzMCIeAx8=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=primamedica.md
+ header.from=ska28.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=ska28.com header.i=no-reply@ska28.com
+ header.a=rsa-sha256 header.s=default header.b=dYJ8whWr
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,17 +72,35 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: silvanatenreyrompc@hotmail.com
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Wir haben einen nicht eingeforderten Betrag von 4.000.000,00 =A3, der mit I=
-hren Namen verkn=FCpft ist. Bitte senden Sie Ihre vollst=E4ndigen Namen an =
-meine E-Mail-Adresse: (silvanatenreyrompc@hotmail.com) f=FCr weitere Inform=
-ationen im Falle eines dringenden Anspruchs.
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+5LiJIOS6lSDkvY8g5Y+LIOOCqyDjg7wg44OJ44KS44GU5Yip55So44Gu44GK5a6i5qeY44G4DQoN
+CuOBk+OBruOBn+OBs+OBr+S4iSDkupUg5L2PIOWPiyDjgqsg44O8IOODieOCkuOBlOWIqeeUqOOB
+hOOBn+OBoOOBjeOAgeiqoOOBq+OBguOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAgg0K5LiL
+6KiY44Gu44GU5Yip55So54Wn5Lya44GM44GU44GW44GE44G+44GX44Gf44Gu44Gn44CB44GK55+l
+44KJ44Gb44GE44Gf44GX44G+44GZ44CCDQoNCuKAu+acrOODoeODvOODq+OBr+OAgeOBlOWIqeeU
+qOODu+iri+axguOCkueiuuWumuOBmeOCi+OCguOBruOBp+OBr+OBguOCiuOBvuOBm+OCk+OAgg0K
+44GU5Yip55So5pel5pmC77yaMjAyNCAvIDA1IC8gMDEgICAgICAyMyA6IDE4DQrjgZTliKnnlKjl
+oLTmiYDvvJrjgrvjg5bjg7Mt44Kk44Os44OW44OzIOWNg+S7o+eUsOS4gOODhOapiyAxIOS4geeb
+ruW6lw0K44GU5Yip55So6YeR6aGN77yaOSwgNTgw5YaGDQoNCuOCq+ODvOODieOCkuS9v+eUqOOB
+l+OBn+immuOBiOOBjOOBquOBhOWgtOWQiOOBr+OAgeS7peS4iyDjga4g44OqIOODsyDjgq8g44KS
+44Kv44OqIOODgyDjgq8g44GXIOOBpuOCqyDjg7wg44OJ5L2/55So44Gu6Kmz57Sw44KS56K66KqN
+44GX44Gm44GP44Gg44GV44GE44CCDQpodHRwczovL2RvbnMtamlncy5jb20NCg0K77yc44GU5rOo
+5oSP54K577yeDQrigLvvvJHvvI7mnKzjgrXjg7zjg5Pjgrnjga/jgIHjgYrlrqLmp5jjga7kuIkg
+5LqVIOS9jyDlj4sg44KrIOODvCDjg4njga7jgZTliKnnlKjnhafkvJrjgYzooYzjgo/jgozjgZ/l
+oLTlkIjjgIENCuS4iSDkupUg5L2PIOWPiyBORVTjgavjgZTnmbvpjLLjgYTjgZ/jgaDjgYTjgabj
+gYTjgovjg6Hjg7zjg6vjgqLjg4njg6zjgrnjgbjjgYrnn6XjgonjgZvjgZnjgovjgrXjg7zjg5Pj
+grnjgafjgZnjgIINCuKAu++8ku+8juOBlOWlkee0hOOCreODo+ODs+OCu+ODq+OBqOOBquOBo+OB
+n+WgtOWQiOOBruOBiuWPlua2iOOBl+aDheWgseOBr+mFjeS/oeOBleOCjOOBvuOBm+OCk+OAgg0K
+4oC777yT77yO5LiJIOS6lSDkvY8g5Y+LIFZpc2Hjg5fjg6rjg5rjgqTjg4njgqvjg7zjg4nlj4rj
+gbPkuInkupXkvY/lj4vjg5Djg7zjg4Hjg6Pjg6vjgqsg44O8IOODieOBruOBlOWIqeeUqOWIhuOC
+guWQq+OBv+OBvuOBmeOAgg0K4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU
+4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCU4oCUDQrilqDnmbog6KGMIOiAheKWoA0K5LiJIOS6lSDk
+vY8g5Y+LIOOCqyDjg7wg44OJ5qCq5byP5Lya56S+DQrjgJIxMzUtMDA2MQ0K5p2x5Lqs6YO95rGf
+5p2x5Yy66LGK5rSyMuS4geebrjLnlaozMQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJv
+amVjdC5vcmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4v
+bGlzdGluZm8vZHJpdmVyZGV2LWRldmVsCg==
