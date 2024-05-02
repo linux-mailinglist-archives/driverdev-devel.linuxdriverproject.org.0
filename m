@@ -1,65 +1,65 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B0B028B9020
-	for <lists+driverdev-devel@lfdr.de>; Wed,  1 May 2024 21:43:29 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9CDC88B931A
+	for <lists+driverdev-devel@lfdr.de>; Thu,  2 May 2024 03:28:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D5DC5820C8;
-	Wed,  1 May 2024 19:43:27 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id v1gLlai7krFl; Wed,  1 May 2024 19:43:27 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 00444820D0
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 00444820D0;
-	Wed,  1 May 2024 19:43:26 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8953A1BF2C9
- for <devel@linuxdriverproject.org>; Wed,  1 May 2024 19:43:24 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 81A1740313
- for <devel@linuxdriverproject.org>; Wed,  1 May 2024 19:43:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 90A35401F9;
+	Thu,  2 May 2024 01:28:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WGnngX3uekb3 for <devel@linuxdriverproject.org>;
- Wed,  1 May 2024 19:43:23 +0000 (UTC)
-X-Greylist: delayed 606 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 01 May 2024 19:43:21 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BE80040301
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BE80040301
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=137.220.190.164;
- helo=mail0.ska28.com; envelope-from=no-reply@ska28.com; receiver=<UNKNOWN> 
-Received: from mail0.ska28.com (unknown [137.220.190.164])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BE80040301
- for <devel@linuxdriverproject.org>; Wed,  1 May 2024 19:43:21 +0000 (UTC)
-Message-ID: <f9ecd3787de03ce34689b62f28c6d212@ska28.com>
-From: =?utf-8?B?6Ieq5YuV44Oh44O844Or6YCB5L+h?= <no-reply@ska28.com>
-To: <devel@linuxdriverproject.org>
+ id gqcBPeFwZ0Jf; Thu,  2 May 2024 01:28:43 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7326640331
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7326640331;
+	Thu,  2 May 2024 01:28:43 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 35B8D1BF3D1
+ for <devel@linuxdriverproject.org>; Thu,  2 May 2024 01:28:41 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 264AC40159
+ for <devel@linuxdriverproject.org>; Thu,  2 May 2024 01:28:41 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id znNUWuGzxjfo for <devel@linuxdriverproject.org>;
+ Thu,  2 May 2024 01:28:40 +0000 (UTC)
+X-Greylist: delayed 603 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 02 May 2024 01:28:38 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0EB9D4011A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0EB9D4011A
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=104.143.35.141;
+ helo=mail0.te872.com; envelope-from=no-reply@te872.com; receiver=<UNKNOWN> 
+Received: from mail0.te872.com (unknown [104.143.35.141])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0EB9D4011A
+ for <devel@driverdev.osuosl.org>; Thu,  2 May 2024 01:28:38 +0000 (UTC)
+Message-ID: <4dc991e3835b4047ad543b982e4a4852@te872.com>
+From: =?utf-8?B?6Ieq5YuV44Oh44O844Or6YCB5L+h?= <no-reply@te872.com>
+To: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
 Subject: =?utf-8?B?44CQ5LiJ5LqV5L2P5Y+LIOOCq+ODvOODieOAkSDjgYrmlK8=?=
  =?utf-8?B?5omV44GE5LqI5a6a6YeR6aGN44Gu44GU5qGI5YaF?=
-Date: Thu, 02 May 2024 03:33:09 +0800
+Date: Thu, 02 May 2024 09:18:32 +0800
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- s=default; d=ska28.com; 
+ s=default; d=te872.com; 
  h=Message-ID:From:To:Subject:Date:MIME-Version:Content-Type:
- Content-Transfer-Encoding; i=no-reply@ska28.com;
+ Content-Transfer-Encoding; i=no-reply@te872.com;
  bh=ycPeo4PiodI9AbCUTbYMdUaufHH/+jDLpdGVUl04pJg=;
- b=dYJ8whWrwmh35x79BwdnjhKSkV6xqZB/be9H0kXZ3jS74b/WltJO/jhWQOnmY9gTTsmqicX8URst
- 2KE1YjyBABz4/gcPbMKsZqwmCP9HJ7EaKxFCbidBaeID+5z47vNOqAvxPT3jKLps5p/t6yxeONds
- yEuYHnzutbPzMCIeAx8=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=ska28.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=NNBxo9MDFEpCVI35OXT9fXOzRpD/84ROWTIZNOR5ZtLY+wtT7aJxF99tQpFTOc56kVLTBeZ4WjWz
+ RRBpt4K8/WfVAjF8BJ7Mc5dPAiQlLeLnmjZwGAuL2NhN+GN8GWmBTweYFmCWn7Zy8nHoa4sBttA8
+ JHfHX2OK0JJFhAejmeE=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=te872.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (1024-bit key,
- unprotected) header.d=ska28.com header.i=no-reply@ska28.com
- header.a=rsa-sha256 header.s=default header.b=dYJ8whWr
+ unprotected) header.d=te872.com header.i=no-reply@te872.com
+ header.a=rsa-sha256 header.s=default header.b=NNBxo9MD
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
