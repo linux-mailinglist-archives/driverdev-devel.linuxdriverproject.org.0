@@ -2,42 +2,42 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 613CC8BC82A
-	for <lists+driverdev-devel@lfdr.de>; Mon,  6 May 2024 09:16:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BB9C8BC82B
+	for <lists+driverdev-devel@lfdr.de>; Mon,  6 May 2024 09:16:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E9DF68219C;
-	Mon,  6 May 2024 07:16:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 870278218A;
+	Mon,  6 May 2024 07:16:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vdoXpuniiEFv; Mon,  6 May 2024 07:16:31 +0000 (UTC)
+ id gsxtkGMFgU99; Mon,  6 May 2024 07:16:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E81498213C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A0BF7821AD
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E81498213C;
-	Mon,  6 May 2024 07:16:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A0BF7821AD;
+	Mon,  6 May 2024 07:16:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 165FF1BF276
- for <devel@linuxdriverproject.org>; Mon,  6 May 2024 07:16:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2DAF71BF276
+ for <devel@linuxdriverproject.org>; Mon,  6 May 2024 07:16:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0BC018213C
- for <devel@linuxdriverproject.org>; Mon,  6 May 2024 07:16:29 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 230D182179
+ for <devel@linuxdriverproject.org>; Mon,  6 May 2024 07:16:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eu0G2i3w79IT for <devel@linuxdriverproject.org>;
- Mon,  6 May 2024 07:16:28 +0000 (UTC)
+ id mCF8Fo_8TzGy for <devel@linuxdriverproject.org>;
+ Mon,  6 May 2024 07:16:29 +0000 (UTC)
 Received-SPF: Softfail (mailfrom) identity=mailfrom; client-ip=35.211.226.55;
  helo=smtp-1.us-central1-a.c.lytehouse-dev-307303.internal;
  envelope-from=manager@ldnuniondeposits.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2F9EE812A5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2F9EE812A5
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F1C3A82120
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F1C3A82120
 Received: from smtp-1.us-central1-a.c.lytehouse-dev-307303.internal
  (55.226.211.35.bc.googleusercontent.com [35.211.226.55])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2F9EE812A5
- for <devel@driverdev.osuosl.org>; Mon,  6 May 2024 07:16:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id F1C3A82120
+ for <devel@linuxdriverproject.org>; Mon,  6 May 2024 07:16:28 +0000 (UTC)
 Received: from User (unknown [78.142.218.152])
  by smtp-1.us-central1-a.c.lytehouse-dev-307303.internal (Postfix) with SMTP id
  B292045FC9; Mon,  6 May 2024 07:04:50 +0000 (UTC)
