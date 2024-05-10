@@ -1,62 +1,70 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 99CB78C184C
-	for <lists+driverdev-devel@lfdr.de>; Thu,  9 May 2024 23:21:37 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C4D6F8C2ADA
+	for <lists+driverdev-devel@lfdr.de>; Fri, 10 May 2024 22:00:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CB7404200B;
-	Thu,  9 May 2024 21:21:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 84D80423E8;
+	Fri, 10 May 2024 20:00:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id zHSA17Z9_dok; Thu,  9 May 2024 21:21:35 +0000 (UTC)
+ id L09RoQ41PtMM; Fri, 10 May 2024 20:00:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C989442018
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3D3F0423FA
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C989442018;
-	Thu,  9 May 2024 21:21:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3D3F0423FA;
+	Fri, 10 May 2024 20:00:21 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E91061BF427
- for <devel@linuxdriverproject.org>; Thu,  9 May 2024 21:21:33 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 18E911BF390
+ for <devel@linuxdriverproject.org>; Fri, 10 May 2024 20:00:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E2CCF8402B
- for <devel@linuxdriverproject.org>; Thu,  9 May 2024 21:21:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F29FA40643
+ for <devel@linuxdriverproject.org>; Fri, 10 May 2024 20:00:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CtQtTaTikZl9 for <devel@linuxdriverproject.org>;
- Thu,  9 May 2024 21:21:33 +0000 (UTC)
-X-Greylist: delayed 21452 seconds by postgrey-1.37 at util1.osuosl.org;
- Thu, 09 May 2024 21:21:31 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6266E84029
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6266E84029
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=202.63.172.104;
- helo=mail.07037.cn; envelope-from=admin@07037.cn; receiver=<UNKNOWN> 
-Received: from mail.07037.cn (unknown [202.63.172.104])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6266E84029
- for <devel@driverdev.osuosl.org>; Thu,  9 May 2024 21:21:31 +0000 (UTC)
-Received: from localhost (unknown [127.0.0.1])
- by mail.07037.cn (Postfix) with ESMTP id E321E601D78;
- Thu,  9 May 2024 21:03:50 +0000 (UTC)
-Received: from mail.07037.cn ([127.0.0.1])
- by localhost (mail.07037.cn [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 7u3qMmJuGAgE; Fri, 10 May 2024 05:03:50 +0800 (CST)
-Received: from [192.168.8.183] (unknown [197.184.180.84])
- by mail.07037.cn (Postfix) with ESMTPA id 7A0E4601874;
- Fri, 10 May 2024 03:40:43 +0800 (CST)
-MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: =?utf-8?b?4oKsIDIsNTAwLjAwMCwwMA==?=
-To: Recipients <admin@07037.cn>
-From: admin@07037.cn
-Date: Thu, 09 May 2024 12:40:30 -0700
-Message-Id: <20240509210350.E321E601D78@mail.07037.cn>
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=07037.cn
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id GsSreWpLJWc6 for <devel@linuxdriverproject.org>;
+ Fri, 10 May 2024 20:00:17 +0000 (UTC)
+X-Greylist: delayed 603 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 10 May 2024 20:00:14 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A8E3C40492
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A8E3C40492
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=137.220.233.57;
+ helo=mail0.mf219.com; envelope-from=no-reply@mf219.com; receiver=<UNKNOWN> 
+Received: from mail0.mf219.com (unknown [137.220.233.57])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A8E3C40492
+ for <devel@driverdev.osuosl.org>; Fri, 10 May 2024 20:00:14 +0000 (UTC)
+From: =?utf-8?Q?=E8=87=AA=E5=8B=95=E3=83=A1=E3=83=BC=E3=83=AB=E9=80=9A=E7=9F=A5?=
+ <no-reply@mf219.com>
+To: =?utf-8?Q?devel?= <devel@driverdev.osuosl.org>
+Subject: =?utf-8?Q?=E3=80=90_=E4=B8=89=E4=BA=95=E4=BD=8F=E5=8F=8B?=
+ =?utf-8?Q?=E3=82=AB=E3=83=BC=E3=83=89_=E3=80=91=E6=B1=BA=E6=B8=88?=
+ =?utf-8?Q?=E5=AE=8C=E4=BA=86=E3=81=AE=E3=81=8A=E7=9F=A5=E3=82=89?=
+ =?utf-8?Q?=E3=81=9B?=
+Mime-Version: 1.0
+Message-ID: <tencent_CC14B4E4942773335F53622D@mf219.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-QQ-Mailer: QQMail 2.x
+Date: Sat, 11 May 2024 03:50:07 +0800
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ s=default; d=mf219.com; 
+ h=From:To:Subject:Mime-Version:Message-ID:Date:Content-Type:
+ Content-Transfer-Encoding; i=no-reply@mf219.com;
+ bh=3/S4eamjvgsXkSHejwH6VCcC2SKqFeGtViCz55YuzIk=;
+ b=Wn8xsDEfrVkqosfW8EhWlgXTMqgqkb+ejlKT21UqgRm+vDWHMLJE184PiC5kZmVlAvGbl47BICaq
+ XDvSrh/KNDEh28y2bMHM7VRV+B44mdby3d0dDp/OmSDufbJWnwz6V5dJ/kMNyDdZkjS3MGrZitg2
+ QF01XyIkkteABFUywrg=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=mf219.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=mf219.com header.i=no-reply@mf219.com
+ header.a=rsa-sha256 header.s=default header.b=Wn8xsDEf
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,18 +77,30 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: fridmanmikhail511@hotmail.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-SGFsbG8sCgpNaWtoYWlsIEZyaWRtYW4gd2lyZCAyLjUwMC4wMDAsMDAg4oKsIGF1cyBlaW5lbSBU
-ZWlsIG1laW5lciBJbnZlc3RpdGlvbiBpbSBOYW1lbiBlaW5lciBXb2hsdMOkdGlna2VpdHNvcmdh
-bmlzYXRpb24gc3BlbmRlbi4gQml0dGUgYW50d29ydGVuIFNpZSBtaXQgSWhyZW4gQW5zcHJ1Y2hz
-ZGV0YWlscy4gSWNoIGVyd2FydGUgSWhyZSBmcsO8aGVzdGUgQW50d29ydCB1bmQgR290dCBzZWdu
-ZSBTaWUuCgpWaWVsIEdsw7xjaywKTWljaGFpbCBGcmlkbWFuCktvbnRha3QtRS1NYWlsOiBmcmlk
-bWFubWlraGFpbDUxMUBnbWFpbC5jb20KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2pl
-Y3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
+5LiJ5LqV5L2P5Y+L44Kr44O844OJ44Kv44Op44K344OD44Kv4oC75Lya5ZOhICBkZXZlbEBkcml2
+ZXJkZXYub3N1b3NsLm9yZw0KDQrjgZPjga7jgZ/jgbPjga/kuInkupXkvY/lj4vjgqvjg7zjg4nj
+gpLjgZTliKnnlKjjgYTjgZ/jgaDjgY3jgIHoqqDjgavjgYLjgorjgYzjgajjgYbjgZTjgZbjgYTj
+gb7jgZnjgIINCuaYqOaXpeOAgeOBiuWuouanmOOBruOCr+ODrOOCuOODg+ODiOOCq+ODvOODieOB
+p+a2iOiyu+aUr+WHuuOBjOeZuueUn+OBl+OBn+OBk+OBqOOCkuOBiuefpeOCieOBm+OBhOOBn+OB
+l+OBvuOBmeOAgg0K44Gd44Gu5pSv5omV44GE44Gu6Kmz57Sw44Gv5qyh44Gu44Go44GK44KK44Gn
+44GZ44CCDQrjgZQg5YipIOeUqCDml6Ug5pmCIO+8mjIwMjTlubQwNeaciDEw5pelICAyMzo0OSBQ
+TQ0K44GUIOWIqSDnlKgg5aC0IOaJgCDvvJrljYPku6PnlLDkuIDjg4TmqYsgMSDkuIHnm67lupcg
+KOOCu+ODluODs+OCpOODrOODluODsykNCuOBlCDliKkg55SoIOmHkSDpoY0g77yaOTUzMOWGhg0K
+DQrjgqvjg7zjg4njgpLkvb/nlKjjgZfjgZ/opprjgYjjgYzjgarjgYTloLTlkIjjga/jgIHku6Xk
+uIvjga7jg6rjg7Pjgq/jgpLjgq/jg6rjg4Pjgq/jgZfjgabjgq/jg6zjgrjjg4Pjg4gg44Kr44O8
+44OJ5pSv5omV44GE44Gu5om/6KqN44KS44Kt44Oj44Oz44K744Or44GX44Gm44GP44Gg44GV44GE
+44CCDQpodHRwczovL2xvdXppYm8uY29tDQoNCuS4iSDkupUg5L2PIOWPiyBORVTjgavjgZTnmbvp
+jLLjgYTjgZ/jgaDjgYTjgabjgYTjgovjg6Hjg7zjg6vjgqLjg4njg6zjgrnjgbjjgYrnn6Xjgonj
+gZvjgZnjgovjgrXjg7zjg5PjgrnjgafjgZnjgIINCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0NCuKWoCDnmbog6KGMIOiAhSDilqANCiAgIOS4iSDkupUg5L2PIOWPiyDj
+gqsg44O8IOODiSDmoKog5byPIOS8miDnpL4NCiAgIOOAkjEzNS0wMDYxIOadseS6rOmDveaxn+ad
+seWMuuixiua0sjLkuIHnm64y55WqMzHlj7cNCiAgIENvcHlyaWdodCBAIFN1bWl0b21vIE1pdHN1
+aSBDYXJkIENvcnBvcmF0aW9uLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KZGV2ZWwgbWFpbGluZyBsaXN0CmRldmVsQGxpbnV4ZHJpdmVycHJvamVjdC5v
+cmcKaHR0cDovL2RyaXZlcmRldi5saW51eGRyaXZlcnByb2plY3Qub3JnL21haWxtYW4vbGlzdGlu
+Zm8vZHJpdmVyZGV2LWRldmVsCg==
