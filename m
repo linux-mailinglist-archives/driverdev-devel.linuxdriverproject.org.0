@@ -2,56 +2,60 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AAD5E8C7FD3
-	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2024 04:20:49 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F8038C7FDC
+	for <lists+driverdev-devel@lfdr.de>; Fri, 17 May 2024 04:23:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 54F7741DBF;
-	Fri, 17 May 2024 02:20:44 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 920EA404C2;
+	Fri, 17 May 2024 02:23:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4SMvaCchY6rN; Fri, 17 May 2024 02:20:43 +0000 (UTC)
+ id ne2zIO9k0orV; Fri, 17 May 2024 02:23:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8244441DB6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AEB9040BB2
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8244441DB6;
-	Fri, 17 May 2024 02:20:43 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id AEB9040BB2;
+	Fri, 17 May 2024 02:23:11 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A07491BF990
- for <devel@linuxdriverproject.org>; Fri, 17 May 2024 02:20:40 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 38CBA1BF23C
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 17 May 2024 02:23:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9A7C360874
- for <devel@linuxdriverproject.org>; Fri, 17 May 2024 02:20:40 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 233B283C13
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 17 May 2024 02:23:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EQ6F4csvqdxF for <devel@linuxdriverproject.org>;
- Fri, 17 May 2024 02:20:40 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id w_ZEayrEF35W for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 17 May 2024 02:23:09 +0000 (UTC)
 Received-SPF: Softfail (mailfrom) identity=mailfrom; client-ip=162.214.157.170;
  helo=4932826.nilepost.co.ug; envelope-from=support@alwaysnbs.tv;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1FC7760872
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1FC7760872
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7FC2783C12
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7FC2783C12
 Received: from 4932826.nilepost.co.ug (unknown [162.214.157.170])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1FC7760872
- for <devel@driverdev.osuosl.org>; Fri, 17 May 2024 02:20:39 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7FC2783C12
+ for <driverdev-devel@linuxdriverproject.org>;
+ Fri, 17 May 2024 02:23:09 +0000 (UTC)
 Received: from alwaysnbs by 4932826.nilepost.co.ug with local (Exim 4.96.2)
- (envelope-from <support@alwaysnbs.tv>) id 1s7nD4-0001X0-16
- for devel@driverdev.osuosl.org; Thu, 16 May 2024 21:20:38 -0500
-To: devel@driverdev.osuosl.org
+ (envelope-from <support@alwaysnbs.tv>) id 1s7nFT-00074o-19
+ for driverdev-devel@linuxdriverproject.org;
+ Thu, 16 May 2024 21:23:07 -0500
+To: driverdev-devel@linuxdriverproject.org
 Subject: YOUR FUNDS WILL BE RELEASED TO YOU IMMEDIATELY
 X-PHP-Script: alwaysnbs.tv/gZ5c4T1wNAr.php for 105.112.200.124
 X-PHP-Originating-Script: 1005:gZ5c4T1wNAr.php
-Date: Fri, 17 May 2024 02:20:38 +0000
+Date: Fri, 17 May 2024 02:23:07 +0000
 From: "Mr. Adesina A. Akinwunmi" <support@alwaysnbs.tv>
-Message-ID: <62428cd6383f407785f3b26f0d03d3ab@alwaysnbs.tv>
+Message-ID: <d099725de198cda376aa9fae2264cb65@alwaysnbs.tv>
 MIME-Version: 1.0
 X-AntiAbuse: This header was added to track abuse,
  please include it with any abuse report
 X-AntiAbuse: Primary Hostname - 4932826.nilepost.co.ug
-X-AntiAbuse: Original Domain - driverdev.osuosl.org
+X-AntiAbuse: Original Domain - linuxdriverproject.org
 X-AntiAbuse: Originator/Caller UID/GID - [1005 991] / [47 12]
 X-AntiAbuse: Sender Address Domain - alwaysnbs.tv
 X-Get-Message-Sender-Via: 4932826.nilepost.co.ug: authenticated_id:
@@ -60,7 +64,7 @@ X-Authenticated-Sender: 4932826.nilepost.co.ug: support@alwaysnbs.tv
 X-Source: 
 X-Source-Args: php-fpm: pool alwaysnbs_tv                               
 X-Source-Dir: alwaysnbs.tv:/public_html
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=alwaysnbs.tv
 X-BeenThere: driverdev-devel@linuxdriverproject.org
