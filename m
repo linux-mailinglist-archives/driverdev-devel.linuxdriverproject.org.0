@@ -1,22 +1,22 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F4698CC8DB
-	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2024 00:11:35 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BA798CC8D9
+	for <lists+driverdev-devel@lfdr.de>; Thu, 23 May 2024 00:11:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2D73360687;
-	Wed, 22 May 2024 22:11:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 901946067A;
+	Wed, 22 May 2024 22:11:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WhA04-cMou3D; Wed, 22 May 2024 22:11:31 +0000 (UTC)
+ id 0NY_ry_3bhUg; Wed, 22 May 2024 22:11:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5449560710
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B2FCC60681
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5449560710;
-	Wed, 22 May 2024 22:11:31 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id B2FCC60681;
+	Wed, 22 May 2024 22:11:30 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
  by ash.osuosl.org (Postfix) with ESMTP id A6FF71BF25F;
