@@ -2,47 +2,47 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E7BB8D453E
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2024 08:03:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9021D8D453D
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2024 08:03:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 00ADE61042;
-	Thu, 30 May 2024 06:03:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0245561035;
+	Thu, 30 May 2024 06:03:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Pse9J51494VA; Thu, 30 May 2024 06:03:34 +0000 (UTC)
+ id dn_8XW0eg-CW; Thu, 30 May 2024 06:03:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 05C0561048
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0956160790
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 05C0561048;
-	Thu, 30 May 2024 06:03:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0956160790;
+	Thu, 30 May 2024 06:03:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5DC101D4291
- for <devel@linuxdriverproject.org>; Thu, 30 May 2024 06:03:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4BCD61D4273
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2024 06:03:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 469C9408EC
+ by smtp2.osuosl.org (Postfix) with ESMTP id 42A60408D4
  for <devel@linuxdriverproject.org>; Thu, 30 May 2024 06:03:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UqYRGjnW_tOF for <devel@linuxdriverproject.org>;
+ id 6GFdzmnYYL_U for <devel@linuxdriverproject.org>;
  Thu, 30 May 2024 06:03:28 +0000 (UTC)
 X-Greylist: delayed 7203 seconds by postgrey-1.37 at util1.osuosl.org;
  Thu, 30 May 2024 06:03:27 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1DED8402E7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1DED8402E7
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=202.238.198.174;
- helo=cmfo-0000.xspmail.jp; envelope-from=nuelmelch03@ms5.megaegg.ne.jp;
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1E4C840586
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1E4C840586
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=202.238.198.181;
+ helo=cmfo-0002.xspmail.jp; envelope-from=nuelmelch03@ms5.megaegg.ne.jp;
  receiver=<UNKNOWN> 
-Received: from cmfo-0000.xspmail.jp (cmfo-0000.xspmail.jp [202.238.198.174])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1DED8402E7
- for <devel@linuxdriverproject.org>; Thu, 30 May 2024 06:03:27 +0000 (UTC)
-Received: from cmo-0000.xspmail.jp ([202.238.198.165]) by cmfo with ESMTP
- id CX0csN2fgpB67CX0esiu2x; Thu, 30 May 2024 13:03:24 +0900
+Received: from cmfo-0002.xspmail.jp (cmfo-0002.xspmail.jp [202.238.198.181])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1E4C840586
+ for <devel@driverdev.osuosl.org>; Thu, 30 May 2024 06:03:27 +0000 (UTC)
+Received: from cmo-0002.xspmail.jp ([202.238.198.67]) by cmfo with ESMTP
+ id CX0bsgtSeHIHICX0esNnmx; Thu, 30 May 2024 13:03:24 +0900
 Received: from cmr-0002.xspmail.jp ([202.238.198.119]) by cmo with ESMTP
- id CX0bstb7rZh8ICX0bspI5t; Thu, 30 May 2024 13:03:21 +0900
+ id CX0bsU7V9rZHSCX0bsAEk2; Thu, 30 May 2024 13:03:21 +0900
 Received: from User ([223.223.33.72]) by cmr with SMTP
  id CX0FsqTg9gAFbCX0Gsn9X0; Thu, 30 May 2024 13:03:21 +0900
 Message-Id: <20240530130321.CX0FsqTg9gAFbCX0Gsn9X0@cmr-0002.xspmail.jp>
