@@ -1,66 +1,69 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7293F8D4579
-	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2024 08:28:28 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6CB688D4F67
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2024 17:49:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 68C4260B13;
-	Thu, 30 May 2024 06:28:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id EA1B2403FC;
+	Thu, 30 May 2024 15:49:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1yqRkXJulTzh; Thu, 30 May 2024 06:28:25 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id pHM5s72Hs3lc; Thu, 30 May 2024 15:49:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8B58860B5F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1A66941431
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8B58860B5F;
-	Thu, 30 May 2024 06:28:25 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1A66941431;
+	Thu, 30 May 2024 15:49:13 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 416D21D42EA
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 30 May 2024 06:28:23 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E2DFE1D483D
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2024 15:49:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3B58283B2C
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 30 May 2024 06:28:23 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id CF533403FC
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2024 15:49:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8Qa0mAz35pov for <driverdev-devel@linuxdriverproject.org>;
- Thu, 30 May 2024 06:28:22 +0000 (UTC)
-X-Greylist: delayed 7205 seconds by postgrey-1.37 at util1.osuosl.org;
- Thu, 30 May 2024 06:28:22 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4AC0281F4B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4AC0281F4B
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=202.238.198.179;
- helo=cmfo-0001.xspmail.jp; envelope-from=nuelmelch03@ms5.megaegg.ne.jp;
- receiver=<UNKNOWN> 
-Received: from cmfo-0001.xspmail.jp (cmfo-0001.xspmail.jp [202.238.198.179])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4AC0281F4B
- for <driverdev-devel@linuxdriverproject.org>;
- Thu, 30 May 2024 06:28:21 +0000 (UTC)
-Received: from cmo-0000.xspmail.jp ([202.238.198.165]) by cmfo with ESMTP
- id CXMss19rhK9fhCXOksd4sX; Thu, 30 May 2024 13:28:18 +0900
-Received: from cmr-0002.xspmail.jp ([202.238.198.119]) by cmo with ESMTP
- id CXOIstcfUZh8ICXOispIpn; Thu, 30 May 2024 13:28:16 +0900
-Received: from User ([223.223.33.72]) by cmr with SMTP
- id CXOLsqcHugAFbCXONsnASo; Thu, 30 May 2024 13:28:16 +0900
-Message-Id: <20240530132816.CXOLsqcHugAFbCXONsnASo@cmr-0002.xspmail.jp>
-From: "Mr. Manuel Melchor"<nuelmelch03@ms5.megaegg.ne.jp>
-To: You
-Subject: INVESTMENT BUSINESS OPPORTUNITY
-Date: Wed, 29 May 2024 21:28:12 -0700
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YWRMN6F7hgV3 for <devel@linuxdriverproject.org>;
+ Thu, 30 May 2024 15:49:10 +0000 (UTC)
+X-Greylist: delayed 604 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 30 May 2024 15:49:08 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 64A2F404D1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 64A2F404D1
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=137.220.181.223;
+ helo=mail0.zzhcgj.com; envelope-from=no-reply@zzhcgj.com; receiver=<UNKNOWN> 
+Received: from mail0.zzhcgj.com (unknown [137.220.181.223])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 64A2F404D1
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2024 15:49:07 +0000 (UTC)
+From: =?utf-8?B?5p2xIOS6rCDpm7sg5Yqb?= <no-reply@zzhcgj.com>
+To: <devel@linuxdriverproject.org>
+Subject: =?utf-8?B?44CQ6YeN6KaB44CR5pyq5omV44GE44Gu6Zu75rCX5paZ6YeR?=
+ =?utf-8?B?44Gr6Zai44GZ44KL44GK55+l44KJ44Gb77yI5b+F44Ga44GU56K66KqN?=
+ =?utf-8?B?44GP44Gg44GV44GE77yJ?=
+Date: Thu, 30 May 2024 23:38:57 +0800
+Message-ID: <PHPIGFELGABDMJGFHNJKHJKOJHNM.no-reply@zzhcgj.com>
 MIME-Version: 1.0
-X-Priority: 3
 X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Importance: Normal
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.2180
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ s=default; d=zzhcgj.com; 
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
+ Content-Transfer-Encoding; i=no-reply@zzhcgj.com;
+ bh=bbW6Aczp7Exv/U2zyRGEgvlHi2RwcTNF8WwNkQ6vyVI=;
+ b=L0f/wjsq93xhk8JTj5D5vI2SNltXl29L3wms1jOEe92/1wiCndRpUCW97+Hv+3amP8Ezw3gKXycJ
+ rscDvIB+YU+S4GZ4deEjhd8xov3UdNxjCsySJEqIqD9UCF9B8/o7HNYHx1jfbwy4mFJ235vwG3SK
+ QZZ5gDFZGCII7Ds4upY=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=ms5.megaegg.ne.jp
+ header.from=zzhcgj.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=zzhcgj.com header.i=no-reply@zzhcgj.com
+ header.a=rsa-sha256 header.s=default header.b=L0f/wjsq
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,34 +76,37 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: mrmanuelmelchor03@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-From  Mr. Manuel Melchor 
-
-
-Dear Sir,
-
- 
-
-BUSINESS OPPORTUNITY
-
- 
-
-I am Mr. Manuel Melchor, I lead a family investment vehicle who want to invest a proportion of their funds with a trust party. My client is a former Oil Minister in Angola, a politically exposed person who fell out with the current Government in that Country. 
-
- He is very eager to invest his funds out of  where it is currently  saved through a second party to ensure safety of his  hard earned money from the hands of his enemies and detractors that make up the current government in his country.
-
-What we are looking for is a fund manager that has the capacity to handle investments in real Estate/Manufacturing etc. such a person can also suggest the area of business that he/she has strength in. We would like to know the investment climate in your country or wherever you intend to invest the money e.g. Government taxes, rebate for foreign investors coming in with huge amounts of money for investment. If you have the capacity to handle the investment we will sign a mutual cooperation agreement. The fund owner wants to invest the money he set aside for a period of 10 years subject to renewal.
-
-Looking forward to your prompt and positive response.
-
- Best Regards,
-Mr. Manuel Melchor
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+5p2x5Lqs6Zu75Yqb5bGA44Ki44OX44Oq44KS44GU5Yip55So44GE44Gf44Gg44GN44CB44GC44KK
+44GM44Go44GG44GU44GW44GE44G+44GZ44CCCuOBleOBpuOAgeOBk+OBruW6puOBr+OBiuWuouan
+mOOBrumbu+awl+aWmemHkeOBruOBiuaUr+aJleOBhOOBq+mWouOBl+OBpuOAgeWkp+WIh+OBquOB
+iuefpeOCieOBm+OBjOOBlOOBluOBhOOBvuOBmeOAguW8iuWxgOOBruiomOmMsuOBq+OCiOOCiuOB
+vuOBmeOBqOOAgeOBiuWuouanmOOBruOCouOCq+OCpuODs+ODiOOBq+OBpuaui+W/teOBquOBjOOC
+ieacquaJleOBhOOBruaWmemHkeOBjOeZuueUnwrjgZfjgabjgYrjgorjgb7jgZnjgIIK6Kmz57Sw
+44Gv5Lul5LiL44Gu44Go44GK44KK44Gn44GZ77yaIArjgYrmlK/miZXjgYTmnJ/pmZA6IDIwMjQv
+MDUvMzEK44GK5pSv5omV44GE6YeR6aGNOiAzODMwIOWGhgoK44GK5a6i5qeY44Gr44Gv5aSa5aSn
+44Gq44KL44GU6L+35oOR44KS44GK44GL44GR44GZ44KL44GT44Go44Go44Gq44KK44CB5b+D44KI
+44KK44GK6Kmr44Gz55Sz44GX5LiK44GS44G+44GZ44CC44GX44GL44GX44Gq44GM44KJ44CB6Zu7
+5Yqb44K144O844OT44K544Gu57aZ57aa55qE44Gq5o+Q5L6b44KS5L+d6Ki844GZ44KL44Gf44KB
+44Gr44KC44CBW+OBiuaUr+aJleOBhOacn+mZkF3jgb4K44Gn44Gr5pyq5omV44GE44Gu5paZ6YeR
+44KS44GK5pSv5omV44GE44GE44Gf44Gg44GR44G+44GZ44KI44GG44GK6aGY44GE55Sz44GX5LiK
+44GS44G+44GZ44CCIAoK44GK5pSv5omV44GE44Gv44CB5Lul5LiL44Gu44Oq44Oz44Kv44GL44KJ
+57Ch5Y2Y44Gr44Kq44Oz44Op44Kk44Oz44Gn6KGM44GG44GT44Go44GM44Gn44GN44G+44GZ77ya
+IApodHRwczovL3Nlc2xpdXllLmNvbQoK4oC75pu05paw44Gu5pyJ5Yq55pyf6ZmQ44Gv44CBMjTm
+mYLplpPjgafjgZnjgIIK44GK5pSv5omV44GE5YmN44Gr44CB5re75LuY44Gu6KuL5rGC5pu444KS
+44GU56K66KqN44GE44Gf44Gg44GN44CB44GK5pSv5omV44GE6YeR6aGN44GM5q2j56K644Gn44GC
+44KL44GT44Go44KS44GU56K66KqN44GP44Gg44GV44GE44CCCuaXouOBq+OBiuaUr+aJleOBhOOB
+hOOBn+OBoOOBhOOBn+WgtOWQiOOBr+OAgeOBk+OBruOBiuefpeOCieOBm+OCkueEoeimluOBl+OB
+puOBhOOBn+OBoOOBhOOBpue1kOani+OBp+OBmeOAggrjgZTkuI3mmI7jgarngrnjgoTjgZTos6rl
+lY/jgYzjgYLjgovloLTlkIjjga/jgIHjgYrmsJfou73jgavjgYrllY/jgYTlkIjjgo/jgZvjgY/j
+gaDjgZXjgYTjgILjgYrlrqLmp5jjgrXjg53jg7zjg4jjg4Hjg7zjg6DjgYzjgYrmiYvkvJ3jgYTj
+gYTjgZ/jgZfjgb7jgZnjgIIKLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQrmnbHkuqzpm7vl
+ipvjgqjjg4rjgrjjg7zjg5Hjg7zjg4jjg4rjg7zmoKrlvI/kvJrnpL4K44CSMTAwLTg1NjAK5p2x
+5Lqs6YO95Y2D5Luj55Sw5Yy65YaF5bm455S6MeS4geebrjHnlaoz5Y+3CgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2
+ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJv
+amVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
