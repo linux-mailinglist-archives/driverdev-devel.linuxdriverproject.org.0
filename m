@@ -1,66 +1,63 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 524EC8D1A7B
-	for <lists+driverdev-devel@lfdr.de>; Tue, 28 May 2024 13:59:22 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E7BB8D453E
+	for <lists+driverdev-devel@lfdr.de>; Thu, 30 May 2024 08:03:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 02BD340636;
-	Tue, 28 May 2024 11:59:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 00ADE61042;
+	Thu, 30 May 2024 06:03:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VecJexkrpDLj; Tue, 28 May 2024 11:59:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Pse9J51494VA; Thu, 30 May 2024 06:03:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D500340637
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 05C0561048
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D500340637;
-	Tue, 28 May 2024 11:59:18 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 05C0561048;
+	Thu, 30 May 2024 06:03:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 29F5E1D2173
- for <devel@linuxdriverproject.org>; Tue, 28 May 2024 11:59:17 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5DC101D4291
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2024 06:03:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 16EA340636
- for <devel@linuxdriverproject.org>; Tue, 28 May 2024 11:59:17 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 469C9408EC
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2024 06:03:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9SBVP8i-Up0F for <devel@linuxdriverproject.org>;
- Tue, 28 May 2024 11:59:16 +0000 (UTC)
-X-Greylist: delayed 602 seconds by postgrey-1.37 at util1.osuosl.org;
- Tue, 28 May 2024 11:59:15 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EB6B34062E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EB6B34062E
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=31.192.235.199;
- helo=mgn.giabatg.org; envelope-from=info@giabatg.org; receiver=<UNKNOWN> 
-Received: from mgn.giabatg.org (mgn.giabatg.org [31.192.235.199])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EB6B34062E
- for <devel@driverdev.osuosl.org>; Tue, 28 May 2024 11:59:15 +0000 (UTC)
-From: Luke Moktar <info@giabatg.org>
-To: devel@driverdev.osuosl.org
-Subject: PUCHASE ORDER 2024
-Date: 28 May 2024 07:49:11 -0400
-Message-ID: <20240528074911.6FABE053A8870FF5@giabatg.org>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id UqYRGjnW_tOF for <devel@linuxdriverproject.org>;
+ Thu, 30 May 2024 06:03:28 +0000 (UTC)
+X-Greylist: delayed 7203 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 30 May 2024 06:03:27 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1DED8402E7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1DED8402E7
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=202.238.198.174;
+ helo=cmfo-0000.xspmail.jp; envelope-from=nuelmelch03@ms5.megaegg.ne.jp;
+ receiver=<UNKNOWN> 
+Received: from cmfo-0000.xspmail.jp (cmfo-0000.xspmail.jp [202.238.198.174])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1DED8402E7
+ for <devel@linuxdriverproject.org>; Thu, 30 May 2024 06:03:27 +0000 (UTC)
+Received: from cmo-0000.xspmail.jp ([202.238.198.165]) by cmfo with ESMTP
+ id CX0csN2fgpB67CX0esiu2x; Thu, 30 May 2024 13:03:24 +0900
+Received: from cmr-0002.xspmail.jp ([202.238.198.119]) by cmo with ESMTP
+ id CX0bstb7rZh8ICX0bspI5t; Thu, 30 May 2024 13:03:21 +0900
+Received: from User ([223.223.33.72]) by cmr with SMTP
+ id CX0FsqTg9gAFbCX0Gsn9X0; Thu, 30 May 2024 13:03:21 +0900
+Message-Id: <20240530130321.CX0FsqTg9gAFbCX0Gsn9X0@cmr-0002.xspmail.jp>
+From: "Mr. Manuel Melchor"<nuelmelch03@ms5.megaegg.ne.jp>
+To: You
+Subject: INVESTMENT BUSINESS OPPORTUNITY
+Date: Wed, 29 May 2024 21:03:17 -0700
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mgn1;
- d=giabatg.org; 
- h=Reply-To:From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:
- Content-Transfer-Encoding; i=info@giabatg.org;
- bh=EZYdlICnAdsNNLeJsysOTfIY5Qbbxhmk9+efvSgBH0s=;
- b=mdwHUtNvgQnax3mOn4nXvIBgLHQ66ebKRDllT3bFLBIy84V4Q/c2pNhHvaRXBVL0WanDOLnaFdTM
- IdR2slaGd5/vAvL8Hg5gs+dUPIDu9yU6EvqGVvEVgNDXT8JUEgDHZIo8orEM0fWzRp0cbcXxUl0z
- 4Em9LdhnaC2D78UMvQR/BG1Cj6bixlS5/NQqoMrs4vKjDELis2wiareemRv7ar4w0OJIxbqvaQnB
- p3/yagWTj6K/z5zGFxCERDM2cdkNEWxEFqj3qteq5LsVQ8+Ks9HQn6h365FMmpfuaKD85Z9FNQC6
- gOSAzHFwNsDjbXFYVcJiyembcSMScqmay+Oo4w==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=giabatg.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=giabatg.org header.i=info@giabatg.org
- header.a=rsa-sha256 header.s=mgn1 header.b=mdwHUtNv
+X-Priority: 3
+X-MSMail-Priority: Normal
+X-Mailer: Microsoft Outlook Express 6.00.2600.0000
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=ms5.megaegg.ne.jp
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,36 +70,33 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: export.mokter@gmail.com
+Reply-To: mrmanuelmelchor03@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Greetings Sir/Madam,
+From  Mr. Manuel Melchor 
 
 
-We are interested in buying your product/items after visiting 
-your website. Please kindly send us your latest catalogue and 
-advice on product details so we can order from your company,
-
-hence we will send you our purchase order within the working 
-day's.
-
-Waiting for your response
+Dear Sir,
 
  
 
-Best Regards,
-Mr. Luke Moktar
+BUSINESS OPPORTUNITY
 
-DIRECTOR
+ 
 
-whatsapp/Tel +12097294426
+I am Mr. Manuel Melchor, I lead a family investment vehicle who want to invest a proportion of their funds with a trust party. My client is a former Oil Minister in Angola, a politically exposed person who fell out with the current Government in that Country. 
 
-Email: export.mokter@gmail.com
+ He is very eager to invest his funds out of  where it is currently  saved through a second party to ensure safety of his  hard earned money from the hands of his enemies and detractors that make up the current government in his country.
 
-Export Deals LTD
+What we are looking for is a fund manager that has the capacity to handle investments in real Estate/Manufacturing etc. such a person can also suggest the area of business that he/she has strength in. We would like to know the investment climate in your country or wherever you intend to invest the money e.g. Government taxes, rebate for foreign investors coming in with huge amounts of money for investment. If you have the capacity to handle the investment we will sign a mutual cooperation agreement. The fund owner wants to invest the money he set aside for a period of 10 years subject to renewal.
+
+Looking forward to your prompt and positive response.
+
+ Best Regards,
+Mr. Manuel Melchor
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
