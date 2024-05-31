@@ -1,70 +1,54 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2A6A8FFD1D
-	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2024 09:30:53 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2F04642592;
-	Fri,  7 Jun 2024 07:30:52 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1IqSjARceFi7; Fri,  7 Jun 2024 07:30:51 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 36D5E42584
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 36D5E42584;
-	Fri,  7 Jun 2024 07:30:51 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id E69F71BF4D6
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2024 07:30:49 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A597900D50
+	for <lists+driverdev-devel@lfdr.de>; Fri,  7 Jun 2024 23:05:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D4094843DB
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2024 07:30:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 32CA384773;
+	Fri,  7 Jun 2024 21:05:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5kof7PNR8xaS for <devel@linuxdriverproject.org>;
- Fri,  7 Jun 2024 07:30:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=91.134.88.143;
- helo=mail.provomint.com; envelope-from=phil.westbrook@provomint.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 514EE843C1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 514EE843C1
-Received: from mail.provomint.com (mail.provomint.com [91.134.88.143])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 514EE843C1
- for <devel@linuxdriverproject.org>; Fri,  7 Jun 2024 07:30:47 +0000 (UTC)
-Received: by mail.provomint.com (Postfix, from userid 1002)
- id 3B27F2292A; Fri,  7 Jun 2024 09:30:42 +0200 (CEST)
-Received: by mail.provomint.com for <devel@linuxdriverproject.org>;
- Fri,  7 Jun 2024 07:30:40 GMT
-Message-ID: <20240607084500-0.1.3h.3hkt.0.ywo83jmppg@provomint.com>
-Date: Fri,  7 Jun 2024 07:30:40 GMT
-From: "Phil Westbrook" <phil.westbrook@provomint.com>
-To: <devel@linuxdriverproject.org>
-Subject: Nowe Smartphony do oferty 
-X-Mailer: mail.provomint.com
+ id ARbdFQ3gzGGc; Fri,  7 Jun 2024 21:05:02 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4802E84740
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4802E84740;
+	Fri,  7 Jun 2024 21:05:02 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 63F2F1BF471
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2024 21:05:00 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5DC2A40473
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2024 21:05:00 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id s1YR6VSdt7Hh for <devel@linuxdriverproject.org>;
+ Fri,  7 Jun 2024 21:04:59 +0000 (UTC)
+Received: from mail.hashinsta.com (unknown [103.109.6.224])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 420384013B
+ for <devel@linuxdriverproject.org>; Fri,  7 Jun 2024 21:04:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 420384013B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 420384013B
+Received: from [192.168.43.190] ([197.211.59.12]) by amshoft.net with
+ MailEnable ESMTPA; Fri, 31 May 2024 10:55:57 +0530
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=provomint.com; s=mail; t=1717745445;
- bh=XboPJ9RovlrhSSBmzlgl4Pp4USKge3mlBjemRqwuODM=;
- h=Date:From:To:Subject:From;
- b=E3CIMN2Z6PSoQ9PIm5M8EuJ6TqS1nfU+N4/sK4jridno/klVEUB/ZP/5ycLYumMc5
- o2Pn2DFBOe/qwaRG8EsEMCxSZkcuBgZGXBlGoWNkrJW7eY5HbOGBL5g1FleQmoX1yW
- 5ZwR5tCf5JzW8JV5qGR1s2404eDjuUTxSZsRaor3vqqX4Lp4+8nkMB/2ZnEQgvWxq4
- UGyEjkBhDI53Nd7IyGAdFTohMUT4bRqzvTrT9Uy/IeV3hVcbDNSXmSt1G6oi9Atr5g
- y78dPTwtATnkdLS5NvpPTMsQyDC/7e16shDn12el3X3dPcnBQUR2KU6K72akh9XK9N
- G5CdzMHVHQQoQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=provomint.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=provomint.com header.i=@provomint.com
- header.a=rsa-sha256 header.s=mail header.b=E3CIMN2Z
+Content-Description: Mail message body
+Subject: =?utf-8?q?CONGRATULATION_=E2=82=AC2=2C000=2C000=2C00_HAS_BEEN_DONATED_TO_?=
+ =?utf-8?q?YOU?=
+To: Recipients <armani@info.com>
+From: ''MR GIORGIO''<armani@info.com>
+Date: Thu, 30 May 2024 22:25:43 -0700
+Message-ID: <B68BEEFC818E4A85BB9C210E820C3BD0.MAI@amshoft.net>
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=info.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ spf=fail smtp.mailfrom=info.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,25 +61,21 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: giorgioarmanigiorgio76@gmail.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello,
-
-As a wholesaler of mobile phones and GSM accessories, we supply the latest smartphones from top manufacturers.
-
-Our offer includes the newest models of smartphones from reputable brands such as Motorola, Google, Honor, OnePlus, Oppo, POCO, Samsung, and Xiaomi. By eliminating intermediaries in the distribution process, we can ensure competitive prices, allowing you to achieve higher margins.
-
-All phones are available immediately for immediate shipping. Fast delivery ensures that your customers can enjoy their new devices within just 48 hours of placing an order.
-
-If you are interested in cooperation or have any questions, please reply to this email address.
-
-
-Best regards
-Phil Westbrook
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+SGVsbG8sCgpJJ20gR2lvcmdpbyBBcm1hbmksIGFuIEl0YWxpYW4gYnVzaW5lc3MgdHljb29uLCBp
+bnZlc3RvciBhbmQKcGhpbGFudGhyb3Bpc3QgSSBnYXZlIGF3YXkgMjVwZXJjZW50IG9mIG15IHBl
+cnNvbmFsIHdlYWx0aAp0byBjaGFyaXR5IEFuZCBJIGFsc28gcGxlZGdlZCB0byBnaXZlIGF3YXkg
+dGhlIHJlc3Qgb2YgMjUlCnRoaXMgeWVhciAyMDI0IHRvIEluZGl2aWR1YWxzIEkgaGF2ZSBkZWNp
+ZGVkIHRvIGRvbmF0ZQrigqwyLDAwMC4wMDAsMDAgdG8geW91IElmIHlvdSBhcmUgaW50ZXJlc3Rl
+ZCBpbiBteSBkb25hdGlvbiwKZG8gY29udGFjdCBtZSBmb3IgbW9yZSBpbmZvcm1hdGlvbi4KCllv
+dSBjYW4gYWxzbyByZWFkIG1vcmUgYWJvdXQgbWUgZnJvbSB0aGUgbGluayBiZWxvdwoKaHR0cHM6
+Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvR2lvcmdpb19Bcm1hbmkKCldhcm0gUmVnYXJkCkdpb3Jn
+aW8gQXJtYW5pIApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpkZXZlbCBtYWlsaW5nIGxpc3QKZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8v
+ZHJpdmVyZGV2LmxpbnV4ZHJpdmVycHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJk
+ZXYtZGV2ZWwK
