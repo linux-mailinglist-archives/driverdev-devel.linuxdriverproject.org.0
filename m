@@ -1,83 +1,51 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13A939013B8
-	for <lists+driverdev-devel@lfdr.de>; Sat,  8 Jun 2024 23:58:33 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 40BE8902BE2
+	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Jun 2024 00:53:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 43C0340024;
-	Sat,  8 Jun 2024 21:58:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D272D60608;
+	Mon, 10 Jun 2024 22:53:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0xHTDVxCr2b0; Sat,  8 Jun 2024 21:58:30 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id mxFAg5XkezT7; Mon, 10 Jun 2024 22:53:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5426B4018B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ED64560673
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5426B4018B;
-	Sat,  8 Jun 2024 21:58:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id ED64560673;
+	Mon, 10 Jun 2024 22:53:34 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A683B1BF405
- for <devel@linuxdriverproject.org>; Sat,  8 Jun 2024 21:58:29 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 839C61BF3AE;
+ Mon, 10 Jun 2024 22:53:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 938948331B
- for <devel@linuxdriverproject.org>; Sat,  8 Jun 2024 21:58:29 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6FA6C40547;
+ Mon, 10 Jun 2024 22:53:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GPtw8qxAimaI for <devel@linuxdriverproject.org>;
- Sat,  8 Jun 2024 21:58:28 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8A52683131
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8A52683131
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8A52683131
- for <devel@driverdev.osuosl.org>; Sat,  8 Jun 2024 21:58:28 +0000 (UTC)
-X-CSE-ConnectionGUID: n7Dlfk4zTVWrMQdqaZR0bw==
-X-CSE-MsgGUID: DxsKmDVYSbm+YHvJJKiMrw==
-X-IronPort-AV: E=McAfee;i="6600,9927,11097"; a="25689755"
-X-IronPort-AV: E=Sophos;i="6.08,224,1712646000"; d="scan'208";a="25689755"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jun 2024 14:58:27 -0700
-X-CSE-ConnectionGUID: XLVEaasxToWjEPVqn8yr5g==
-X-CSE-MsgGUID: yLm34IPZQwuFji2wrqj5Hw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,224,1712646000"; d="scan'208";a="39103990"
-Received: from lkp-server01.sh.intel.com (HELO 8967fbab76b3) ([10.239.97.150])
- by orviesa006.jf.intel.com with ESMTP; 08 Jun 2024 14:58:26 -0700
-Received: from kbuild by 8967fbab76b3 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sG44u-0000XK-0z;
- Sat, 08 Jun 2024 21:58:24 +0000
-Date: Sun, 09 Jun 2024 05:58:23 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- bd7246a19ed85451befc3c8fc6038a7d955e7d5f
-Message-ID: <202406090522.U2NUZMoL-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717883908; x=1749419908;
- h=date:from:to:cc:subject:message-id;
- bh=EM75BP6cKAkL3/d5D+vVzN8f8hnzzPDDVwZKByEgvzo=;
- b=dgk+HbMHvwjakJ1q2E6lkFA0akDwhRoJKOoE+EBIvQ2AXmB6OmV2ehqO
- df0DJyHsAidgfxlj/osiAK4eK073PTuQlk4upgW3tS+wlhEWmd4+GW5Y3
- xY/bCt8sSTwaNX+MTZKL8UGScR1zOk/vq4L8XCIbdccSjOMqdOqYpOSeA
- jp8pyDDCSw31MUV/O9wZXoXW6GETSwzhiiZLNfH1TJ12icLrgM4J8LJBd
- IhyHj7pCcaJ2BJP2o6HjHwJGddwQR9fXEurL+DBCtxHfZqenvt6gaIYRf
- LhEcSLw9LO8yVE6js+vUmKvLSP2Vh7tfRajQdHeZZNt2nlYeOfYTuQ40b
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=dgk+HbMH
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OQRjUCMTbh8o; Mon, 10 Jun 2024 22:53:32 +0000 (UTC)
+X-Greylist: delayed 5472 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 10 Jun 2024 22:53:31 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4FCB140471
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4FCB140471
+Received-SPF: Softfail (mailfrom) identity=mailfrom; client-ip=172.245.21.194;
+ helo=mail0.coutts.com; envelope-from=office1@wphca.org; receiver=<UNKNOWN> 
+Received: from mail0.coutts.com (unknown [172.245.21.194])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4FCB140471
+ for <devel@driverdev.osuosl.org>; Mon, 10 Jun 2024 22:53:31 +0000 (UTC)
+From: "Jafar Script" <office1@wphca.org>
+To: devel@driverdev.osuosl.org
+Subject: Hier ist die letzte Warnung.
+Date: 10 Jun 2024 23:25:33 +0200
+Message-ID: <20240610232533.7220780005E29F7F@wphca.org>
+MIME-Version: 1.0
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=fail (p=quarantine dis=none)
+ header.from=wphca.org
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,55 +58,61 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
-branch HEAD: bd7246a19ed85451befc3c8fc6038a7d955e7d5f  Merge tag 'platform-remove-void-step-b' of https://git.kernel.org/pub/scm/linux/kernel/git/ukleinek/linux into driver-core-next
-
-elapsed time: 1607m
-
-configs tested: 25
-configs skipped: 2
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                            allyesconfig   gcc  
-hexagon                          allmodconfig   clang
-hexagon                          allyesconfig   clang
-openrisc                          allnoconfig   gcc  
-openrisc                            defconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                           allnoconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                               defconfig   clang
-s390                              allnoconfig   clang
-s390                                defconfig   clang
-sh                                allnoconfig   gcc  
-sh                                  defconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                               defconfig   gcc  
-sparc64                             defconfig   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   gcc  
-um                                  defconfig   clang
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   clang
-xtensa                            allnoconfig   gcc  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+R3V0ZW4gVGFnIQoKSGllciBpc3QgZGllIGxldHp0ZSBXYXJudW5nLgoKSWhyIFN5c3RlbSB3dXJk
+ZSBnZWtuYWNrdC4gV2lyIGhhYmVuIGRpZSBnZXNhbXRlbiBJbmZvcm1hdGlvbmVuIAp2b24gSWhy
+ZW0gR2Vyw6R0IGF1ZiB1bnNlcmUgU2VydmVyIGtvcGllcnQuIEF1w59lcmRlbSBoYWJlbiB3aXIg
+ZGFzIApWaWRlbyB2b24gSWhyZXIgS2FtZXJhIGF1Zmdlbm9tbWVuLCB3w6RocmVuZCBTaWUgc2lj
+aCBlaW5lbiAKUG9ybm9maWxtIGFuZ2VzZWhlbiBoYWJlbi4KCk1laW4gVmlydXMgaGF0IElociBH
+ZXLDpHQgw7xiZXIgZWluZSBXZWJzaXRlIGbDvHIgRXJ3YWNoc2VuZSAKaW5maXppZXJ0LCBkaWUg
+U2llIGvDvHJ6bGljaCBiZXN1Y2h0IGhhYmVuLgoKRmFsbHMgU2llIG5pY2h0IHdpc3Nlbiwgd2ll
+IGVzIGZ1bmt0aW9uaWVydCwga2FubiBpY2ggSWhuZW4gCkVpbnplbGhlaXRlbiBtaXR0ZWlsZW4u
+IEVpbiBUcm9qYW5lciBnZXfDpGhydCBtaXIgdm9sbHN0w6RuZGlnZW4gClp1Z3JpZmYgdW5kIEtv
+bnRyb2xsZSDDvGJlciBJaHIgR2Vyw6R0LiBEYWR1cmNoIGthbm4gaWNoIElocmVuIApCaWxkc2No
+aXJtIHNlaGVuLCBkaWUgS2FtZXJhIHVuZCBkYXMgTWlrcm9mb24gYWt0aXZpZXJlbiB1bmQgU2ll
+IAptZXJrZW4gbmljaHRzIGRhdm9uLgoKSWNoIGhhYmUgZWluIFZpZGVvIHZvbiBJaHJlbSBCaWxk
+c2NoaXJtIHVuZCBkZXIgS2FtZXJhIAphdWZnZW5vbW1lbiB1bmQgZWluIFZpZGVvIGVyc3RlbGx0
+LCBpbiBkZW0gZWluIFRlaWwgZGVzIApCaWxkc2NoaXJtcyB6ZWlndCwgd2llIFNpZSBtYXN0dXJi
+aWVyZW4sIHVuZCBlaW4gYW5kZXJlciBUZWlsIGVpbiAKUG9ybm92aWRlbyB6ZWlndCwgZGFzIFNp
+ZSBzaWNoIHp1IGRpZXNlbSBaZWl0cHVua3QgYW5nZXNlaGVuIApoYWJlbi4KCkljaCBrYW5uIGRp
+ZSBnZXNhbXRlIExpc3RlIElocmVyIEtvbnRha3RlIGltIFRlbGVmb24gdW5kIGluIGRlbiAKc296
+aWFsZW4gTmV0endlcmtlbiBzZWhlbi4KCkljaCBrYW5uIGRpZXNlcyBWaWRlbyBtaXQgZWluZW0g
+ZWluemlnZW4gS2xpY2sgYW4gYWxsZSBLb250YWt0ZSAKaW4gSWhyZW0gVGVsZWZvbiwgcGVyIEUt
+TWFpbCB1bmQgaW4gZGVuIHNvemlhbGVuIE5ldHp3ZXJrZW4gCnNlbmRlbi4gRGFyw7xiZXIgaGlu
+YXVzIGthbm4gaWNoIGRpZSBEYXRlbiBJaHJlciBFLU1haWwgdW5kIElocmVyIApNZXNzZW5nZXIg
+YW4gamVkZW4gc2VuZGVuLgoKRGllcyB3w7xyZGUgSWhyZW4gUnVmIGVuZGfDvGx0aWcgcnVpbmll
+cmVuLgoKV2VubiBTaWUgc29sY2hlIEtvbnNlcXVlbnplbiB2ZXJoaW5kZXJuIG3DtmNodGVuLCBn
+ZWhlbiBTaWUgd2llIApmb2xndCB2b3I6CgrDnGJlcndlaXNlIDQ3MDAgRVVSICAoQlRDOiAwLjA3
+NTYyMTAyKSBhdWYgbWVpbiBCaXRjb2luLVdhbGxldC4KCihXZW5uIFNpZSBuaWNodCB3aXNzZW4s
+IHdpZSBkYXMgZ2VodCwgZ2ViZW4gU2llIGluIEdvb2dsZSBlaW5lIApTdWNoemVpY2hlbmZvbGdl
+IGVpbjog4oCeQml0Y29pbiBrYXVmZW7igJwpLgoKTWVpbiBCaXRjb2luLVdhbGxldCAoQlRDLVdh
+bGxldCk6IApiYzFxNjJ3bDdxZHRzZDRhdDN5N204ZzdrOHQ0OGo4dTd6cXA0c3NjNm0KClVubWl0
+dGVsYmFyIG5hY2ggZGVyIEd1dHNjaHJpZnQgZGVyIFphaGx1bmcgd2VyZGUgaWNoIElociBWaWRl
+byAKbMO2c2NoZW4gdW5kIFNpZSBuaWNodCBtZWhyIGJlbMOkc3RpZ2VuLgoKU2llIGhhYmVuIDUw
+IFN0dW5kZW4gKGV0d2FzIG1laHIgYWxzIDIgVGFnZSkgWmVpdCwgdW0gZGllIFphaGx1bmcgCnZv
+cnp1bmVobWVuLgoKSWNoIGVyaGFsdGUgZWluZSBhdXRvbWF0aXNjaGUgQmVuYWNocmljaHRpZ3Vu
+ZyDDvGJlciBkaWUgTGVrdMO8cmUgCmRpZXNlcyBCcmllZmVzLiBEZXIgVGltZXIgc3RhcnRldCBh
+dcOfZXJkZW0gYXV0b21hdGlzY2gsIGRpcmVrdCAKbmFjaGRlbSBTaWUgZGllc2UgRS1NYWlsIGdl
+bGVzZW4gaGFiZW4uCgpWZXJzdWNoZW4gU2llIG5pY2h0LCBzaWNoIGlyZ2VuZHdvIHp1IGJlc2No
+d2VyZW4g4oCTIG1laW4gQlRDLQpXYWxsZXQga2FubiBuaWNodCB6dXLDvGNrdmVyZm9sZ3Qgd2Vy
+ZGVuIHVuZCBlaW5lIEUtTWFpbCwgZGllIApJaG5lbiBkZW4gQnJpZWYgZ2VzY2hpY2t0IGhhdCwg
+d2lyZCBhdXRvbWF0aXNjaCBlcnN0ZWxsdCDigJMgamVkZSAKQW50d29ydCB3w6RyZSBzaW5ubG9z
+LgoKU29sbHRlbiBTaWUgdmVyc3VjaGVuLCBkaWVzZSBFLU1haWwgbWl0IGplbWFuZGVtIHp1IHRl
+aWxlbiwgCnNlbmRldCBkYXMgU3lzdGVtIGF1dG9tYXRpc2NoIGVpbmUgQW5mcmFnZSBhbiBkaWUg
+U2VydmVyIHVuZCAKZGllc2UgYmVnaW5uZW4sIGRpZSBnZXNhbXRlbiBJbmZvcm1hdGlvbmVuIGFu
+IHNvemlhbGUgTmV0endlcmtlIAp6dSBzZW5kZW4uCgpEYXMgw4RuZGVybiB2b24gUGFzc3fDtnJ0
+ZXJuIHNvemlhbGVyIE5ldHp3ZXJrZSwgZWluZXIgRS1NYWlsIHVuZCAKZGVzIEdlcsOkdHMgd8Ok
+cmUgZWJlbmZhbGxzIHNpbm5sb3MsIGRhIGRpZSBnZXNhbXRlbiBEYXRlbiBiZXJlaXRzIAphdWYg
+ZGVuIENsdXN0ZXIgbWVpbmVyIFNlcnZlciBoZXJ1bnRlcmdlbGFkZW4gd3VyZGVuLgoKS29udGFr
+dGllcmVuIFNpZSBtaWNoIHBlciBFLU1haWwgKGphZmFyX3NjcmlwdEBvdXRsb29rLmNvbSkgbWl0
+IApCZXRyZWZmOiAoKkRFVklDRUtFWTkyNzM3MzAqKQoKTmFjaCBkaWVzZW4gU2Nocml0dGVuIGVy
+aGFsdGVuIFNpZSBwZXIgRS1NYWlsIGRlbiBTY2hsw7xzc2VsIHVuZCAKZWluIEVudHNjaGzDvHNz
+ZWx1bmdzLVR1dG9yaWFsLgoKSWNoIHfDvG5zY2hlIGRpciB2aWVsIEdsw7xjayB1bmQgbWFjaCBr
+ZWluZSBEdW1taGVpdGVuLiBEZW5rZW4gU2llIAphbiBJaHJlbiBSdWYuCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZl
+bEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9q
+ZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRldi1kZXZlbAo=
