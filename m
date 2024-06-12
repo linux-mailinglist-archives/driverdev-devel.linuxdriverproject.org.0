@@ -1,85 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C36890374A
-	for <lists+driverdev-devel@lfdr.de>; Tue, 11 Jun 2024 10:59:15 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 81E0F904DF2
+	for <lists+driverdev-devel@lfdr.de>; Wed, 12 Jun 2024 10:18:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AF77680DBB;
-	Tue, 11 Jun 2024 08:59:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 056D88204B;
+	Wed, 12 Jun 2024 08:18:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JqSLRwCHWKf9; Tue, 11 Jun 2024 08:59:12 +0000 (UTC)
+ id PfhummIk_-aB; Wed, 12 Jun 2024 08:18:45 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 959CA80DBF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CF9A482129
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 959CA80DBF;
-	Tue, 11 Jun 2024 08:59:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CF9A482129;
+	Wed, 12 Jun 2024 08:18:44 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8914F1BF39D
- for <devel@linuxdriverproject.org>; Tue, 11 Jun 2024 08:59:11 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 435991BF378
+ for <devel@linuxdriverproject.org>; Wed, 12 Jun 2024 08:18:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 74C4480DB6
- for <devel@linuxdriverproject.org>; Tue, 11 Jun 2024 08:59:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3C170605D7
+ for <devel@linuxdriverproject.org>; Wed, 12 Jun 2024 08:18:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wOUqSdFqz3Aq for <devel@linuxdriverproject.org>;
- Tue, 11 Jun 2024 08:59:10 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gKbtko8E_P8y for <devel@linuxdriverproject.org>;
+ Wed, 12 Jun 2024 08:18:42 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 48BDE80DB4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 48BDE80DB4
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 48BDE80DB4
- for <devel@driverdev.osuosl.org>; Tue, 11 Jun 2024 08:59:09 +0000 (UTC)
-X-CSE-ConnectionGUID: G403GwZ3T3qXvnK0JmKBIw==
-X-CSE-MsgGUID: EkLIr+xjR+uQ5vA89apLlg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11099"; a="40194328"
-X-IronPort-AV: E=Sophos;i="6.08,229,1712646000"; d="scan'208";a="40194328"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jun 2024 01:59:09 -0700
-X-CSE-ConnectionGUID: WmVQdflITz+at+cdjYnIuw==
-X-CSE-MsgGUID: 62seSpLyTEa8T/F7jia7XA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B6C516059C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B6C516059C
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B6C516059C
+ for <devel@driverdev.osuosl.org>; Wed, 12 Jun 2024 08:18:40 +0000 (UTC)
+X-CSE-ConnectionGUID: ZdU//hwZSzOVVMCC8c7OEw==
+X-CSE-MsgGUID: /q+PycYwT0uJRN3mH03roA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11100"; a="14891955"
+X-IronPort-AV: E=Sophos;i="6.08,232,1712646000"; d="scan'208";a="14891955"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Jun 2024 01:18:41 -0700
+X-CSE-ConnectionGUID: CfM5ULbFRUmCuVVLQLAi8Q==
+X-CSE-MsgGUID: ucvlQ+fTRLOt1iPY/K/O5Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,229,1712646000"; d="scan'208";a="70152225"
+X-IronPort-AV: E=Sophos;i="6.08,232,1712646000"; d="scan'208";a="62888037"
 Received: from lkp-server01.sh.intel.com (HELO 628d7d8b9fc6) ([10.239.97.150])
- by orviesa002.jf.intel.com with ESMTP; 11 Jun 2024 01:59:08 -0700
+ by fmviesa002.fm.intel.com with ESMTP; 12 Jun 2024 01:18:38 -0700
 Received: from kbuild by 628d7d8b9fc6 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sGxLO-0000Fa-05;
- Tue, 11 Jun 2024 08:59:06 +0000
-Date: Tue, 11 Jun 2024 16:59:02 +0800
+ (envelope-from <lkp@intel.com>) id 1sHJBk-0001MG-1i;
+ Wed, 12 Jun 2024 08:18:36 +0000
+Date: Wed, 12 Jun 2024 16:18:06 +0800
 From: kernel test robot <lkp@intel.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:const_driver 8/8] drivers/s390/cio/device.c:64:21:
- error: initializing 'struct ccw_driver *' with an expression of type 'const
- struct ccw_driver *' discards qualifiers
-Message-ID: <202406111607.3OiraQK0-lkp@intel.com>
-MIME-Version: 1.0
-Content-Disposition: inline
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:driver-core-next] BUILD SUCCESS
+ d7d3ae441e29f0ca56c69cdd3a47769227b7be3d
+Message-ID: <202406121603.b1NxMLxZ-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718096350; x=1749632350;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=HYqgkl04zqLdbPcuqAZMYldfDQQSBLgVFDNzDgBP8Ag=;
- b=XBxpsiXPV31KVB7EjRN7UWyvqqR5WQHk6sepVyJMOiMd5k2vJyAqL+hx
- Ypbz2a0/6mvqfm4OsFcPNDET4zYd39yjBMXw8gR3iuYJIc2bmr88TDdVg
- UUTIOAyKlFGsZw4QvoFOlbH7IQ7DZigb3X2YMlR1TlC0ZcKirso4RNC4M
- Ke24K6FjnNIbNJqF/7ZX/3z2m8O1Oxhy7AhI98vTJDfZ6ml2hu3WKImds
- 1Uk5qAs1Gzs/gHFlMciMlPTia5FVH1BQMYbYzV9+tUe45jJaQYOMEUjKP
- 1cyUyAwrAxJcjd2be9tL2WTOK77j2FIPhThnM0GIFWwKx6x50cTMj6gud
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1718180322; x=1749716322;
+ h=date:from:to:cc:subject:message-id;
+ bh=WPB9ccHOFkgz+5VXEXuqApJ0hM6QqupnccTZmt7CpWI=;
+ b=Cpf3X94Feb7vVMPmcTWOVNDYSR35R2XupRvyv8mAMj3nv/epfdldtKJH
+ n0CgjBr0TIak8Jq8dfpQrz8m8VgAxE+EnXclKRRcP2g9xW2UfMiDlVruP
+ HIBMfdr8S4/+IfR6hNzl4nAHKjflo7ACyyTCNU2SQwNioONG5ay4e9beo
+ b/8iH4AOf5Rwf080cDaNl09gw+px+eyjG3tSsMhbApXhm9lKg1+IkCYI5
+ mLLU5gy/3Qa7O+Xdtq0u/tma9c9Ob4F9FErUrClyuEKrIkqwH4joPu5ha
+ j9hEFX/ch8SQhpIMgeV7kVqVABbs8X115DnslQfJBz1PcZ8I+j6uOEj5t
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=XBxpsiXP
+ header.s=Intel header.b=Cpf3X94F
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,137 +90,249 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, llvm@lists.linux.dev,
- oe-kbuild-all@lists.linux.dev
+Cc: devel@driverdev.osuosl.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git const_driver
-head:   8e41ff96c9c6e36d7f4887ad6f6224fcd889ac38
-commit: 8e41ff96c9c6e36d7f4887ad6f6224fcd889ac38 [8/8] driver core: have match() callback in struct bus_type take a const *
-config: s390-allnoconfig (https://download.01.org/0day-ci/archive/20240611/202406111607.3OiraQK0-lkp@intel.com/config)
-compiler: clang version 19.0.0git (https://github.com/llvm/llvm-project 4403cdbaf01379de96f8d0d6ea4f51a085e37766)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240611/202406111607.3OiraQK0-lkp@intel.com/reproduce)
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-next
+branch HEAD: d7d3ae441e29f0ca56c69cdd3a47769227b7be3d  dca: make dca_class a static const structure
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406111607.3OiraQK0-lkp@intel.com/
+elapsed time: 2846m
 
-All errors (new ones prefixed by >>):
+configs tested: 224
+configs skipped: 4
 
-   In file included from drivers/s390/cio/device.c:21:
-   In file included from include/linux/device.h:32:
-   In file included from include/linux/device/driver.h:21:
-   In file included from include/linux/module.h:19:
-   In file included from include/linux/elf.h:6:
-   In file included from arch/s390/include/asm/elf.h:173:
-   In file included from arch/s390/include/asm/mmu_context.h:11:
-   In file included from arch/s390/include/asm/pgalloc.h:18:
-   In file included from include/linux/mm.h:2253:
-   include/linux/vmstat.h:514:36: warning: arithmetic between different enumeration types ('enum node_stat_item' and 'enum lru_list') [-Wenum-enum-conversion]
-     514 |         return node_stat_name(NR_LRU_BASE + lru) + 3; // skip "nr_"
-         |                               ~~~~~~~~~~~ ^ ~~~
-   In file included from drivers/s390/cio/device.c:27:
-   In file included from include/linux/dma-mapping.h:11:
-   In file included from include/linux/scatterlist.h:9:
-   In file included from arch/s390/include/asm/io.h:93:
-   include/asm-generic/io.h:548:31: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     548 |         val = __raw_readb(PCI_IOBASE + addr);
-         |                           ~~~~~~~~~~ ^
-   include/asm-generic/io.h:561:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     561 |         val = __le16_to_cpu((__le16 __force)__raw_readw(PCI_IOBASE + addr));
-         |                                                         ~~~~~~~~~~ ^
-   include/uapi/linux/byteorder/big_endian.h:37:59: note: expanded from macro '__le16_to_cpu'
-      37 | #define __le16_to_cpu(x) __swab16((__force __u16)(__le16)(x))
-         |                                                           ^
-   include/uapi/linux/swab.h:102:54: note: expanded from macro '__swab16'
-     102 | #define __swab16(x) (__u16)__builtin_bswap16((__u16)(x))
-         |                                                      ^
-   In file included from drivers/s390/cio/device.c:27:
-   In file included from include/linux/dma-mapping.h:11:
-   In file included from include/linux/scatterlist.h:9:
-   In file included from arch/s390/include/asm/io.h:93:
-   include/asm-generic/io.h:574:61: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     574 |         val = __le32_to_cpu((__le32 __force)__raw_readl(PCI_IOBASE + addr));
-         |                                                         ~~~~~~~~~~ ^
-   include/uapi/linux/byteorder/big_endian.h:35:59: note: expanded from macro '__le32_to_cpu'
-      35 | #define __le32_to_cpu(x) __swab32((__force __u32)(__le32)(x))
-         |                                                           ^
-   include/uapi/linux/swab.h:115:54: note: expanded from macro '__swab32'
-     115 | #define __swab32(x) (__u32)__builtin_bswap32((__u32)(x))
-         |                                                      ^
-   In file included from drivers/s390/cio/device.c:27:
-   In file included from include/linux/dma-mapping.h:11:
-   In file included from include/linux/scatterlist.h:9:
-   In file included from arch/s390/include/asm/io.h:93:
-   include/asm-generic/io.h:585:33: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     585 |         __raw_writeb(value, PCI_IOBASE + addr);
-         |                             ~~~~~~~~~~ ^
-   include/asm-generic/io.h:595:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     595 |         __raw_writew((u16 __force)cpu_to_le16(value), PCI_IOBASE + addr);
-         |                                                       ~~~~~~~~~~ ^
-   include/asm-generic/io.h:605:59: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     605 |         __raw_writel((u32 __force)cpu_to_le32(value), PCI_IOBASE + addr);
-         |                                                       ~~~~~~~~~~ ^
-   include/asm-generic/io.h:693:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     693 |         readsb(PCI_IOBASE + addr, buffer, count);
-         |                ~~~~~~~~~~ ^
-   include/asm-generic/io.h:701:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     701 |         readsw(PCI_IOBASE + addr, buffer, count);
-         |                ~~~~~~~~~~ ^
-   include/asm-generic/io.h:709:20: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     709 |         readsl(PCI_IOBASE + addr, buffer, count);
-         |                ~~~~~~~~~~ ^
-   include/asm-generic/io.h:718:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     718 |         writesb(PCI_IOBASE + addr, buffer, count);
-         |                 ~~~~~~~~~~ ^
-   include/asm-generic/io.h:727:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     727 |         writesw(PCI_IOBASE + addr, buffer, count);
-         |                 ~~~~~~~~~~ ^
-   include/asm-generic/io.h:736:21: warning: performing pointer arithmetic on a null pointer has undefined behavior [-Wnull-pointer-arithmetic]
-     736 |         writesl(PCI_IOBASE + addr, buffer, count);
-         |                 ~~~~~~~~~~ ^
->> drivers/s390/cio/device.c:64:21: error: initializing 'struct ccw_driver *' with an expression of type 'const struct ccw_driver *' discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
-      64 |         struct ccw_driver *cdrv = to_ccwdrv(drv);
-         |                            ^      ~~~~~~~~~~~~~~
-   13 warnings and 1 error generated.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-
-vim +64 drivers/s390/cio/device.c
-
-^1da177e4c3f41 Linus Torvalds     2005-04-16  55  
-^1da177e4c3f41 Linus Torvalds     2005-04-16  56  /* The Linux driver model distinguishes between a bus type and
-^1da177e4c3f41 Linus Torvalds     2005-04-16  57   * the bus itself. Of course we only have one channel
-^1da177e4c3f41 Linus Torvalds     2005-04-16  58   * subsystem driver and one channel system per machine, but
-^1da177e4c3f41 Linus Torvalds     2005-04-16  59   * we still use the abstraction. T.R. says it's a good idea. */
-^1da177e4c3f41 Linus Torvalds     2005-04-16  60  static int
-8e41ff96c9c6e3 Greg Kroah-Hartman 2024-06-10  61  ccw_bus_match (struct device * dev, const struct device_driver * drv)
-^1da177e4c3f41 Linus Torvalds     2005-04-16  62  {
-^1da177e4c3f41 Linus Torvalds     2005-04-16  63  	struct ccw_device *cdev = to_ccwdev(dev);
-^1da177e4c3f41 Linus Torvalds     2005-04-16 @64  	struct ccw_driver *cdrv = to_ccwdrv(drv);
-^1da177e4c3f41 Linus Torvalds     2005-04-16  65  	const struct ccw_device_id *ids = cdrv->ids, *found;
-^1da177e4c3f41 Linus Torvalds     2005-04-16  66  
-^1da177e4c3f41 Linus Torvalds     2005-04-16  67  	if (!ids)
-^1da177e4c3f41 Linus Torvalds     2005-04-16  68  		return 0;
-^1da177e4c3f41 Linus Torvalds     2005-04-16  69  
-^1da177e4c3f41 Linus Torvalds     2005-04-16  70  	found = ccw_device_id_match(ids, &cdev->id);
-^1da177e4c3f41 Linus Torvalds     2005-04-16  71  	if (!found)
-^1da177e4c3f41 Linus Torvalds     2005-04-16  72  		return 0;
-^1da177e4c3f41 Linus Torvalds     2005-04-16  73  
-^1da177e4c3f41 Linus Torvalds     2005-04-16  74  	cdev->id.driver_info = found->driver_info;
-^1da177e4c3f41 Linus Torvalds     2005-04-16  75  
-^1da177e4c3f41 Linus Torvalds     2005-04-16  76  	return 1;
-^1da177e4c3f41 Linus Torvalds     2005-04-16  77  }
-^1da177e4c3f41 Linus Torvalds     2005-04-16  78  
-
-:::::: The code at line 64 was first introduced by commit
-:::::: 1da177e4c3f41524e886b7f1b8a0c1fc7321cac2 Linux-2.6.12-rc2
-
-:::::: TO: Linus Torvalds <torvalds@ppc970.osdl.org>
-:::::: CC: Linus Torvalds <torvalds@ppc970.osdl.org>
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                             allnoconfig   gcc-13.2.0
+alpha                            allyesconfig   gcc  
+alpha                            allyesconfig   gcc-13.2.0
+alpha                               defconfig   gcc  
+alpha                               defconfig   gcc-13.2.0
+arc                               allnoconfig   gcc  
+arc                               allnoconfig   gcc-13.2.0
+arc                                 defconfig   gcc  
+arc                                 defconfig   gcc-13.2.0
+arc                   randconfig-001-20240612   gcc-13.2.0
+arc                   randconfig-002-20240612   gcc-13.2.0
+arm                               allnoconfig   clang
+arm                               allnoconfig   clang-19
+arm                                 defconfig   clang
+arm                                 defconfig   clang-14
+arm                        mvebu_v5_defconfig   gcc  
+arm                   randconfig-001-20240612   gcc-13.2.0
+arm                   randconfig-002-20240612   gcc-13.2.0
+arm                   randconfig-003-20240612   clang-19
+arm                   randconfig-004-20240612   clang-14
+arm                           sama5_defconfig   gcc  
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                             allnoconfig   gcc-13.2.0
+arm64                               defconfig   gcc  
+arm64                               defconfig   gcc-13.2.0
+arm64                 randconfig-001-20240612   gcc-13.2.0
+arm64                 randconfig-002-20240612   gcc-13.2.0
+arm64                 randconfig-003-20240612   gcc-13.2.0
+arm64                 randconfig-004-20240612   clang-19
+csky                              allnoconfig   gcc  
+csky                              allnoconfig   gcc-13.2.0
+csky                                defconfig   gcc  
+csky                                defconfig   gcc-13.2.0
+csky                  randconfig-001-20240612   gcc-13.2.0
+csky                  randconfig-002-20240612   gcc-13.2.0
+hexagon                          allmodconfig   clang
+hexagon                          allmodconfig   clang-19
+hexagon                           allnoconfig   clang
+hexagon                           allnoconfig   clang-19
+hexagon                          allyesconfig   clang
+hexagon                          allyesconfig   clang-19
+hexagon                             defconfig   clang
+hexagon                             defconfig   clang-19
+hexagon               randconfig-001-20240612   clang-19
+hexagon               randconfig-002-20240612   clang-19
+i386                             allmodconfig   gcc  
+i386                             allmodconfig   gcc-13
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-001-20240610   clang
+i386         buildonly-randconfig-001-20240612   gcc-13
+i386         buildonly-randconfig-002-20240610   gcc  
+i386         buildonly-randconfig-002-20240612   gcc-8
+i386         buildonly-randconfig-003-20240610   gcc  
+i386         buildonly-randconfig-003-20240611   clang
+i386         buildonly-randconfig-003-20240612   gcc-13
+i386         buildonly-randconfig-004-20240610   clang
+i386         buildonly-randconfig-004-20240612   clang-18
+i386         buildonly-randconfig-005-20240610   gcc  
+i386         buildonly-randconfig-005-20240612   gcc-13
+i386         buildonly-randconfig-006-20240610   clang
+i386         buildonly-randconfig-006-20240612   clang-18
+i386                                defconfig   clang-18
+i386                  randconfig-001-20240610   gcc  
+i386                  randconfig-001-20240611   clang
+i386                  randconfig-001-20240612   gcc-8
+i386                  randconfig-002-20240610   gcc  
+i386                  randconfig-002-20240612   clang-18
+i386                  randconfig-003-20240610   gcc  
+i386                  randconfig-003-20240612   clang-18
+i386                  randconfig-004-20240610   gcc  
+i386                  randconfig-004-20240611   clang
+i386                  randconfig-004-20240612   clang-18
+i386                  randconfig-005-20240610   clang
+i386                  randconfig-005-20240612   gcc-13
+i386                  randconfig-006-20240610   gcc  
+i386                  randconfig-006-20240611   clang
+i386                  randconfig-006-20240612   clang-18
+i386                  randconfig-011-20240610   clang
+i386                  randconfig-011-20240611   clang
+i386                  randconfig-011-20240612   clang-18
+i386                  randconfig-012-20240610   clang
+i386                  randconfig-012-20240612   clang-18
+i386                  randconfig-013-20240610   clang
+i386                  randconfig-013-20240611   clang
+i386                  randconfig-013-20240612   clang-18
+i386                  randconfig-014-20240610   clang
+i386                  randconfig-014-20240612   gcc-7
+i386                  randconfig-015-20240610   clang
+i386                  randconfig-015-20240611   clang
+i386                  randconfig-015-20240612   gcc-13
+i386                  randconfig-016-20240610   clang
+i386                  randconfig-016-20240611   clang
+i386                  randconfig-016-20240612   gcc-7
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                         allnoconfig   gcc-13.2.0
+loongarch                        allyesconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20240612   gcc-13.2.0
+loongarch             randconfig-002-20240612   gcc-13.2.0
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                              allnoconfig   gcc-13.2.0
+m68k                             allyesconfig   gcc  
+m68k                          atari_defconfig   gcc  
+m68k                                defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                             allmodconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+mips                      pic32mzda_defconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20240612   gcc-13.2.0
+nios2                 randconfig-002-20240612   gcc-13.2.0
+openrisc                         allmodconfig   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc-13.2.0
+parisc                              defconfig   gcc  
+parisc                randconfig-001-20240612   gcc-13.2.0
+parisc                randconfig-002-20240612   gcc-13.2.0
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc-13.2.0
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc                          allyesconfig   clang-19
+powerpc                     ep8248e_defconfig   gcc  
+powerpc                     ksi8560_defconfig   gcc  
+powerpc               randconfig-001-20240612   gcc-13.2.0
+powerpc               randconfig-002-20240612   gcc-13.2.0
+powerpc               randconfig-003-20240612   clang-19
+powerpc                      walnut_defconfig   gcc  
+powerpc64             randconfig-001-20240612   gcc-13.2.0
+powerpc64             randconfig-002-20240612   gcc-13.2.0
+powerpc64             randconfig-003-20240612   clang-14
+riscv                            allmodconfig   clang
+riscv                            allmodconfig   clang-19
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   clang
+riscv                            allyesconfig   clang-19
+riscv                               defconfig   clang
+riscv                 randconfig-001-20240612   gcc-13.2.0
+riscv                 randconfig-002-20240612   gcc-13.2.0
+s390                             alldefconfig   gcc  
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                                defconfig   clang
+s390                  randconfig-001-20240612   clang-19
+s390                  randconfig-002-20240612   clang-19
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                         apsh4a3a_defconfig   gcc  
+sh                                  defconfig   gcc  
+sh                          landisk_defconfig   gcc  
+sh                    randconfig-001-20240612   gcc-13.2.0
+sh                    randconfig-002-20240612   gcc-13.2.0
+sh                           se7619_defconfig   gcc  
+sh                   sh7724_generic_defconfig   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                            allyesconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20240612   gcc-13.2.0
+sparc64               randconfig-002-20240612   gcc-13.2.0
+um                               allmodconfig   clang
+um                               allmodconfig   clang-19
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                               allyesconfig   gcc-13
+um                                  defconfig   clang
+um                             i386_defconfig   gcc  
+um                    randconfig-001-20240612   gcc-13
+um                    randconfig-002-20240612   clang-16
+um                           x86_64_defconfig   clang
+x86_64                            allnoconfig   clang
+x86_64                           allyesconfig   clang-18
+x86_64       buildonly-randconfig-001-20240611   gcc  
+x86_64       buildonly-randconfig-002-20240611   gcc  
+x86_64       buildonly-randconfig-003-20240611   gcc  
+x86_64       buildonly-randconfig-004-20240611   clang
+x86_64       buildonly-randconfig-005-20240611   gcc  
+x86_64       buildonly-randconfig-006-20240611   gcc  
+x86_64                              defconfig   gcc  
+x86_64                randconfig-001-20240611   clang
+x86_64                randconfig-002-20240611   gcc  
+x86_64                randconfig-003-20240611   gcc  
+x86_64                randconfig-004-20240611   clang
+x86_64                randconfig-005-20240611   gcc  
+x86_64                randconfig-006-20240611   clang
+x86_64                randconfig-011-20240611   clang
+x86_64                randconfig-012-20240611   gcc  
+x86_64                randconfig-013-20240611   clang
+x86_64                randconfig-014-20240611   clang
+x86_64                randconfig-015-20240611   clang
+x86_64                randconfig-016-20240611   gcc  
+x86_64                randconfig-071-20240611   clang
+x86_64                randconfig-072-20240611   gcc  
+x86_64                randconfig-073-20240611   clang
+x86_64                randconfig-074-20240611   gcc  
+x86_64                randconfig-075-20240611   gcc  
+x86_64                randconfig-076-20240611   gcc  
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+xtensa                            allnoconfig   gcc  
+xtensa                           allyesconfig   gcc  
+xtensa                randconfig-001-20240612   gcc-13.2.0
+xtensa                randconfig-002-20240612   gcc-13.2.0
 
 -- 
 0-DAY CI Kernel Test Service
