@@ -1,54 +1,52 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03113909C1A
-	for <lists+driverdev-devel@lfdr.de>; Sun, 16 Jun 2024 09:30:56 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5725A909CD6
+	for <lists+driverdev-devel@lfdr.de>; Sun, 16 Jun 2024 11:47:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3CC6682253;
-	Sun, 16 Jun 2024 07:30:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BBF33405D6;
+	Sun, 16 Jun 2024 09:47:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Wglmhumw4xG2; Sun, 16 Jun 2024 07:30:54 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id l8omIzEBXVDM; Sun, 16 Jun 2024 09:47:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6B8D782257
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B1B4C40608
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6B8D782257;
-	Sun, 16 Jun 2024 07:30:54 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id B1B4C40608;
+	Sun, 16 Jun 2024 09:47:50 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9B9021BF2CA
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 16 Jun 2024 07:30:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6107C1BF2FC
+ for <devel@linuxdriverproject.org>; Sun, 16 Jun 2024 09:47:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 93E4660667
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 16 Jun 2024 07:30:53 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4EDDF6067C
+ for <devel@linuxdriverproject.org>; Sun, 16 Jun 2024 09:47:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ar5rmEHUGlzK for <driverdev-devel@linuxdriverproject.org>;
- Sun, 16 Jun 2024 07:30:53 +0000 (UTC)
+ id 58aFUqLwIXlP for <devel@linuxdriverproject.org>;
+ Sun, 16 Jun 2024 09:47:47 +0000 (UTC)
+X-Greylist: delayed 3768 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 16 Jun 2024 09:47:47 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9D5E36062A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9D5E36062A
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=210.116.104.65;
  helo=mail.youngperson.co.kr; envelope-from=jjkwak@youngperson.co.kr;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C44E660659
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C44E660659
 Received: from mail.youngperson.co.kr (unknown [210.116.104.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C44E660659
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 16 Jun 2024 07:30:52 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9D5E36062A
+ for <devel@driverdev.osuosl.org>; Sun, 16 Jun 2024 09:47:47 +0000 (UTC)
 Received: from rain-197-184-177-17.rain.network (unknown [146.70.101.36])
- by mail.youngperson.co.kr (Postfix) with ESMTPSA id 945CB109C228
- for <driverdev-devel@linuxdriverproject.org>;
- Sun, 16 Jun 2024 16:07:59 +0900 (KST)
+ by mail.youngperson.co.kr (Postfix) with ESMTPSA id D492310B279C
+ for <devel@driverdev.osuosl.org>; Sun, 16 Jun 2024 17:21:00 +0900 (KST)
 From: jjkwak@youngperson.co.kr
-To: driverdev-devel@linuxdriverproject.org
+To: devel@driverdev.osuosl.org
 Subject: Betreff: DRINGENDE HINWEISE!
-Date: 16 Jun 2024 00:07:50 -0700
-Message-ID: <20240616000750.1CDDF7D37ACDD7A5@youngperson.co.kr>
+Date: 16 Jun 2024 01:20:52 -0700
+Message-ID: <20240616012051.00975FACCDEB5A0E@youngperson.co.kr>
 MIME-Version: 1.0
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
