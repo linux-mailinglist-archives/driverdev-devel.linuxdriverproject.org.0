@@ -1,86 +1,83 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F27A090A0DA
-	for <lists+driverdev-devel@lfdr.de>; Mon, 17 Jun 2024 01:43:14 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 697AE90C52B
+	for <lists+driverdev-devel@lfdr.de>; Tue, 18 Jun 2024 11:07:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 977D54063B;
-	Sun, 16 Jun 2024 23:43:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1256E81AC1;
+	Tue, 18 Jun 2024 09:07:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KpxFzrMOP6mN; Sun, 16 Jun 2024 23:43:08 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nxMtZ0MpkwfK; Tue, 18 Jun 2024 09:07:46 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 607A44065C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E98B3820FB
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 607A44065C;
-	Sun, 16 Jun 2024 23:43:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E98B3820FB;
+	Tue, 18 Jun 2024 09:07:45 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id AB0101BF2B7
- for <devel@linuxdriverproject.org>; Sun, 16 Jun 2024 23:43:06 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 58D161BF281
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2024 09:07:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 97C2740320
- for <devel@linuxdriverproject.org>; Sun, 16 Jun 2024 23:43:06 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4337460B50
+ for <devel@linuxdriverproject.org>; Tue, 18 Jun 2024 09:07:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ydnvY1uWfYD4 for <devel@linuxdriverproject.org>;
- Sun, 16 Jun 2024 23:43:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id tgz3p9AP5qaC for <devel@linuxdriverproject.org>;
+ Tue, 18 Jun 2024 09:07:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 29CD64024F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 29CD64024F
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 29CD64024F
- for <devel@driverdev.osuosl.org>; Sun, 16 Jun 2024 23:43:04 +0000 (UTC)
-X-CSE-ConnectionGUID: RBZJxlmPQ2C8gGY7q1AUbw==
-X-CSE-MsgGUID: yJE4pqCCSG+EIs19ZRgk8A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11105"; a="15275301"
-X-IronPort-AV: E=Sophos;i="6.08,243,1712646000"; d="scan'208";a="15275301"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jun 2024 16:43:04 -0700
-X-CSE-ConnectionGUID: bRPC9MD1Q/6oRA3YMqpqrw==
-X-CSE-MsgGUID: +3FlXk15Tx+wOye5GQJWKg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1B63060B4B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1B63060B4B
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1B63060B4B
+ for <devel@driverdev.osuosl.org>; Tue, 18 Jun 2024 09:07:42 +0000 (UTC)
+X-CSE-ConnectionGUID: /iQVfuTdRmyjiGlKNNGNfw==
+X-CSE-MsgGUID: CI+392uTTrmIQn6wPX2gXw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11106"; a="19383640"
+X-IronPort-AV: E=Sophos;i="6.08,247,1712646000"; d="scan'208";a="19383640"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Jun 2024 02:07:41 -0700
+X-CSE-ConnectionGUID: cAiF+rseSHGmlNc3gkM+Fg==
+X-CSE-MsgGUID: oOUsJI+OTQO6gt4e+6r/QA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,243,1712646000"; d="scan'208";a="78514236"
+X-IronPort-AV: E=Sophos;i="6.08,247,1712646000"; d="scan'208";a="41410827"
 Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
- by orviesa001.jf.intel.com with ESMTP; 16 Jun 2024 16:43:03 -0700
+ by orviesa010.jf.intel.com with ESMTP; 18 Jun 2024 02:07:40 -0700
 Received: from kbuild by 68891e0c336b with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sIzWW-0003Uw-1I;
- Sun, 16 Jun 2024 23:43:00 +0000
-Date: Mon, 17 Jun 2024 07:42:45 +0800
+ (envelope-from <lkp@intel.com>) id 1sJUoU-0005Ls-11;
+ Tue, 18 Jun 2024 09:07:38 +0000
+Date: Tue, 18 Jun 2024 17:07:27 +0800
 From: kernel test robot <lkp@intel.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [driver-core:const_driver 16/23] drivers/cdx/cdx.c:648:12: error:
- incompatible function pointer types initializing 'int (*)(struct device *,
- const struct device_driver *)' with an expression of type 'int (struct
- device *, struct device_driver *)'
-Message-ID: <202406170739.qxdbTrrC-lkp@intel.com>
-MIME-Version: 1.0
-Content-Disposition: inline
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:driver-core-testing] BUILD SUCCESS
+ b5dd424181f33c2978562c64b286fc22cf5ef4bf
+Message-ID: <202406181723.VHNSjSBN-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718581385; x=1750117385;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=YlfxSKtg6WVsYZ13Hx2l/TEDR3MnXSvuyy4a8H3SioE=;
- b=IXBSztY5dLwR9qqIlx3QdMah0eCDCFdMU2TwS7YiaVmVJFnNggj0Pheb
- 5wfRMaKzpuveApmq1eYfYGCti092ZhLUIvsz56ob+0fgFdBXpLEpPoE/3
- yY6B60nlNrAkVrLu0sVN+TyTEB4hzpLCOHqEOst5IszKoM+DNZ/ZCa9Br
- kbgqHpemdlhxrI3JpNYwDfFdIPkff46LpVkkAL/1yECKqvPVrxb22nMe1
- nJU7T3hoSomPlBzBckWZYEGUV1ojwuoR9TfEaWwn703e1xFdbYg5kGgQ7
- Qn4pHE9NSk6ypLOU3DUh+3fvLISwu9fAIlRUSN9hJuRdq0Vp2InnGbkN4
- A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1718701663; x=1750237663;
+ h=date:from:to:cc:subject:message-id;
+ bh=cQUxaLNhLNBdaRe3ZGKk5TrF4q879Nfer8Ihyg3zaC8=;
+ b=k+s0cxEkYVOVocZUPdnCNn1U1I61JetFlo2o0JdJXuBNoxizEQ9JO6bH
+ 1X+OI139DNDR3rf+Iz+tXfvRz82tcoBnNtkIK+tEX21Are+I1GjHBjZmo
+ RImTvxTnfRUft/mbNAT+iMfmfqYg/NMQDiZyssmc6Jynyld0iCjOiE0Uf
+ 3kxgk5T2C1v0WM+4q5G10wQqbYLlyUufxtvrQSLnv+4baIArHY1P5x/b/
+ WLu/HJ8VuwHTnlGeFSpQuVdUUHMQg2ciQtPGzUdYP0QwpNx0/8m9QB1d/
+ yBc/0JJGOKhHtf7CyL8W6lYWlj34bOTpLPG4IaRfmO5OffVAkqbzAG4kI
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=IXBSztY5
+ header.s=Intel header.b=k+s0cxEk
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,55 +90,136 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, llvm@lists.linux.dev,
- oe-kbuild-all@lists.linux.dev
+Cc: devel@driverdev.osuosl.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git const_driver
-head:   59a02fe9d47c712050ae1895d753dd46ce97f357
-commit: 271b7e9b52810c0931a92496d9de0e3e07be51e0 [16/23] driver core: have match() callback in struct bus_type take a const *
-config: arm64-randconfig-004-20240617 (https://download.01.org/0day-ci/archive/20240617/202406170739.qxdbTrrC-lkp@intel.com/config)
-compiler: clang version 15.0.7 (https://github.com/llvm/llvm-project 8dfdcc7b7bf66834a761bd8de445840ef68e4d1a)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240617/202406170739.qxdbTrrC-lkp@intel.com/reproduce)
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
+branch HEAD: b5dd424181f33c2978562c64b286fc22cf5ef4bf  Merge tag 'v6.10-rc4' into driver-core-next
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406170739.qxdbTrrC-lkp@intel.com/
+elapsed time: 1584m
 
-All errors (new ones prefixed by >>):
+configs tested: 111
+configs skipped: 1
 
->> drivers/cdx/cdx.c:648:12: error: incompatible function pointer types initializing 'int (*)(struct device *, const struct device_driver *)' with an expression of type 'int (struct device *, struct device_driver *)' [-Werror,-Wincompatible-function-pointer-types]
-           .match          = cdx_bus_match,
-                             ^~~~~~~~~~~~~
-   1 error generated.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-
-vim +648 drivers/cdx/cdx.c
-
-2959ab247061e6 Nipun Gupta 2023-03-13  645  
-2959ab247061e6 Nipun Gupta 2023-03-13  646  struct bus_type cdx_bus_type = {
-2959ab247061e6 Nipun Gupta 2023-03-13  647  	.name		= "cdx",
-2959ab247061e6 Nipun Gupta 2023-03-13 @648  	.match		= cdx_bus_match,
-2959ab247061e6 Nipun Gupta 2023-03-13  649  	.probe		= cdx_probe,
-2959ab247061e6 Nipun Gupta 2023-03-13  650  	.remove		= cdx_remove,
-2959ab247061e6 Nipun Gupta 2023-03-13  651  	.shutdown	= cdx_shutdown,
-2959ab247061e6 Nipun Gupta 2023-03-13  652  	.dma_configure	= cdx_dma_configure,
-b8c5ff76059ded Nipun Gupta 2023-06-05  653  	.dma_cleanup	= cdx_dma_cleanup,
-2959ab247061e6 Nipun Gupta 2023-03-13  654  	.bus_groups	= cdx_bus_groups,
-48a6c7bced2a78 Nipun Gupta 2023-03-13  655  	.dev_groups	= cdx_dev_groups,
-2959ab247061e6 Nipun Gupta 2023-03-13  656  };
-2959ab247061e6 Nipun Gupta 2023-03-13  657  EXPORT_SYMBOL_GPL(cdx_bus_type);
-2959ab247061e6 Nipun Gupta 2023-03-13  658  
-
-:::::: The code at line 648 was first introduced by commit
-:::::: 2959ab247061e67485d83b6af8feb3761ec08cb9 cdx: add the cdx bus driver
-
-:::::: TO: Nipun Gupta <nipun.gupta@amd.com>
-:::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+tested configs:
+alpha                               defconfig   gcc-13.2.0
+arc                        nsim_700_defconfig   gcc-13.2.0
+arc                   randconfig-001-20240617   gcc-13.2.0
+arc                   randconfig-002-20240617   gcc-13.2.0
+arc                           tb10x_defconfig   gcc-13.2.0
+arm                         at91_dt_defconfig   clang-19
+arm                            dove_defconfig   gcc-13.2.0
+arm                   milbeaut_m10v_defconfig   clang-16
+arm                            mmp2_defconfig   gcc-13.2.0
+arm                          pxa3xx_defconfig   clang-19
+arm                   randconfig-001-20240617   clang-19
+arm                   randconfig-002-20240617   clang-19
+arm                   randconfig-003-20240617   gcc-13.2.0
+arm                   randconfig-004-20240617   gcc-13.2.0
+arm                         socfpga_defconfig   gcc-13.2.0
+arm                       spear13xx_defconfig   gcc-13.2.0
+arm64                 randconfig-001-20240617   clang-15
+arm64                 randconfig-002-20240617   gcc-13.2.0
+arm64                 randconfig-003-20240617   gcc-13.2.0
+arm64                 randconfig-004-20240617   clang-15
+csky                  randconfig-001-20240617   gcc-13.2.0
+csky                  randconfig-002-20240617   gcc-13.2.0
+hexagon               randconfig-001-20240617   clang-19
+hexagon               randconfig-002-20240617   clang-14
+i386         buildonly-randconfig-001-20240617   gcc-13
+i386         buildonly-randconfig-002-20240617   gcc-9
+i386         buildonly-randconfig-003-20240617   gcc-9
+i386         buildonly-randconfig-004-20240617   clang-18
+i386         buildonly-randconfig-005-20240617   clang-18
+i386         buildonly-randconfig-006-20240617   clang-18
+i386                  randconfig-001-20240617   clang-18
+i386                  randconfig-002-20240617   clang-18
+i386                  randconfig-003-20240617   gcc-11
+i386                  randconfig-004-20240617   clang-18
+i386                  randconfig-005-20240617   clang-18
+i386                  randconfig-006-20240617   gcc-11
+i386                  randconfig-011-20240617   clang-18
+i386                  randconfig-012-20240617   gcc-13
+i386                  randconfig-013-20240617   clang-18
+i386                  randconfig-014-20240617   gcc-10
+i386                  randconfig-015-20240617   gcc-13
+i386                  randconfig-016-20240617   gcc-13
+loongarch             randconfig-001-20240617   gcc-13.2.0
+loongarch             randconfig-002-20240617   gcc-13.2.0
+microblaze                      mmu_defconfig   gcc-13.2.0
+mips                          ath79_defconfig   gcc-13.2.0
+mips                  maltasmvp_eva_defconfig   gcc-13.2.0
+mips                        maltaup_defconfig   clang-19
+mips                           mtx1_defconfig   clang-16
+mips                          rb532_defconfig   clang-19
+nios2                 randconfig-001-20240617   gcc-13.2.0
+nios2                 randconfig-002-20240617   gcc-13.2.0
+parisc                randconfig-001-20240617   gcc-13.2.0
+parisc                randconfig-002-20240617   gcc-13.2.0
+powerpc                     asp8347_defconfig   clang-17
+powerpc                    ge_imp3a_defconfig   gcc-13.2.0
+powerpc                   lite5200b_defconfig   clang-14
+powerpc                    mvme5100_defconfig   gcc-13.2.0
+powerpc                      pmac32_defconfig   clang-19
+powerpc               randconfig-001-20240617   clang-19
+powerpc               randconfig-002-20240617   clang-19
+powerpc               randconfig-003-20240617   clang-19
+powerpc64             randconfig-001-20240617   clang-19
+powerpc64             randconfig-002-20240617   gcc-13.2.0
+powerpc64             randconfig-003-20240617   clang-19
+riscv                 randconfig-001-20240617   gcc-13.2.0
+riscv                 randconfig-002-20240617   gcc-13.2.0
+s390                  randconfig-001-20240617   clang-17
+s390                  randconfig-002-20240617   gcc-13.2.0
+sh                     magicpanelr2_defconfig   gcc-13.2.0
+sh                    randconfig-001-20240617   gcc-13.2.0
+sh                    randconfig-002-20240617   gcc-13.2.0
+sh                      rts7751r2d1_defconfig   gcc-13.2.0
+sh                           se7206_defconfig   gcc-13.2.0
+sh                           se7343_defconfig   gcc-13.2.0
+sh                           se7751_defconfig   gcc-13.2.0
+sh                   sh7724_generic_defconfig   gcc-13.2.0
+sh                             shx3_defconfig   gcc-13.2.0
+sparc                       sparc64_defconfig   gcc-13.2.0
+sparc64               randconfig-001-20240617   gcc-13.2.0
+sparc64               randconfig-002-20240617   gcc-13.2.0
+um                    randconfig-001-20240617   clang-19
+um                    randconfig-002-20240617   gcc-7
+x86_64       buildonly-randconfig-001-20240617   gcc-13
+x86_64       buildonly-randconfig-002-20240617   clang-18
+x86_64       buildonly-randconfig-003-20240617   gcc-13
+x86_64       buildonly-randconfig-004-20240617   gcc-13
+x86_64       buildonly-randconfig-005-20240617   gcc-11
+x86_64       buildonly-randconfig-006-20240617   clang-18
+x86_64                randconfig-001-20240617   clang-18
+x86_64                randconfig-002-20240617   gcc-8
+x86_64                randconfig-003-20240617   gcc-13
+x86_64                randconfig-004-20240617   clang-18
+x86_64                randconfig-005-20240617   clang-18
+x86_64                randconfig-006-20240617   gcc-13
+x86_64                randconfig-011-20240617   clang-18
+x86_64                randconfig-012-20240617   clang-18
+x86_64                randconfig-013-20240617   clang-18
+x86_64                randconfig-014-20240617   clang-18
+x86_64                randconfig-015-20240617   clang-18
+x86_64                randconfig-016-20240617   clang-18
+x86_64                randconfig-071-20240617   gcc-9
+x86_64                randconfig-072-20240617   clang-18
+x86_64                randconfig-073-20240617   clang-18
+x86_64                randconfig-074-20240617   clang-18
+x86_64                randconfig-075-20240617   clang-18
+x86_64                randconfig-076-20240617   gcc-13
+xtensa                  cadence_csp_defconfig   gcc-13.2.0
+xtensa                randconfig-001-20240617   gcc-13.2.0
+xtensa                randconfig-002-20240617   gcc-13.2.0
+xtensa                    smp_lx200_defconfig   gcc-13.2.0
 
 -- 
 0-DAY CI Kernel Test Service
