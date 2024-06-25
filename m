@@ -1,86 +1,98 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 04156915AFD
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2024 02:26:46 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8444E400C1;
-	Tue, 25 Jun 2024 00:26:41 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5XgIg7rgZ52j; Tue, 25 Jun 2024 00:26:40 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BF48F40511
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BF48F40511;
-	Tue, 25 Jun 2024 00:26:39 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3A2411BF42D
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2024 00:26:38 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DA89916870
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2024 14:57:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 33DF481E9F
- for <devel@linuxdriverproject.org>; Tue, 25 Jun 2024 00:26:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3989881271;
+	Tue, 25 Jun 2024 12:57:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4MtPgY8FcAoz for <devel@linuxdriverproject.org>;
- Tue, 25 Jun 2024 00:26:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F308681E9C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F308681E9C
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F308681E9C
- for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2024 00:26:36 +0000 (UTC)
-X-CSE-ConnectionGUID: lpz26j0gR5yvRHyxm8aIHg==
-X-CSE-MsgGUID: i3H7IVW3TiaMWBMlRDgFFA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11113"; a="20041751"
-X-IronPort-AV: E=Sophos;i="6.08,263,1712646000"; d="scan'208";a="20041751"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2024 17:26:36 -0700
-X-CSE-ConnectionGUID: zFoy3tIPSxSwOtkNzjiRsQ==
-X-CSE-MsgGUID: tvvUl7VRT1WVrcKaUcwoDA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,263,1712646000"; d="scan'208";a="66689027"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
- by fmviesa002.fm.intel.com with ESMTP; 24 Jun 2024 17:26:34 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sLu12-000Dqy-0A;
- Tue, 25 Jun 2024 00:26:32 +0000
-Date: Tue, 25 Jun 2024 08:26:16 +0800
-From: kernel test robot <lkp@intel.com>
-To: Teddy Engel <engel.teddy@gmail.com>
-Subject: [staging:staging-testing 34/59]
- drivers/staging/rtl8192e/rtl8192e/rtl_pci.c:31:6: error: conflicting types
- for 'rtl92e_check_adapter'; have 'bool(struct pci_dev *, struct net_device
- *)' {aka '_Bool(struct pci_dev *, struct net_device *)'}
-Message-ID: <202406250858.L8rJMHQm-lkp@intel.com>
+ id IKdgqFMbdGe2; Tue, 25 Jun 2024 12:57:43 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C8C081276
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4C8C081276;
+	Tue, 25 Jun 2024 12:57:43 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 17CCB1BF422
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2024 12:57:41 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0309440144
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2024 12:57:41 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SzPtrYDSyYvX for <devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2024 12:57:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::129; helo=mail-lf1-x129.google.com;
+ envelope-from=engel.teddy@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 83C4B40065
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 83C4B40065
+Received: from mail-lf1-x129.google.com (mail-lf1-x129.google.com
+ [IPv6:2a00:1450:4864:20::129])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 83C4B40065
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2024 12:57:39 +0000 (UTC)
+Received: by mail-lf1-x129.google.com with SMTP id
+ 2adb3069b0e04-52cdd03d6aaso3354805e87.0
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2024 05:57:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1719320257; x=1719925057;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=2rEKkD7V2tH6Ok9lwRlb6M97RUxTNvraYNPbf5dbADE=;
+ b=NvYsfbKkK9tLzbCTuTLdFx58fO/ei6n2XEI/ipKz1MpKx7GDvPt26fE13AliqmisOm
+ Mdg8Ho6UNJ2TBLP41/adkHoJNzNXvAgD8DV20GAFpmgxdm3aCBdoMvYHwOiFTtChqicU
+ /5BubO8VGH0BFrpjwC4duZaNxJ0K7PZ6ZEBgk30Uy+Nc9poKuWkcRA2eCWfVLiI/i4GD
+ /nBO/lTouMdzrxMRYiOZxjZQj2hGbTe8bGBUIQ9UDKrp9frQL1xNXbxoYDJP9/8F1zYE
+ QRPu2X37+rsEdrsMTnIRscJz5MdPoBtgD4cBVyMOvTXvS6RBgLL5BqCrGyQNqWZlefAh
+ 5SZA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWGwfxaTFW5xgsxS8s0rnmRucaMRst6UyNpwo9/1WvCul9nqSgxpsZCQAi6kgYf1eBcWDYDdW78OCJCJPOLQcDabq5FyMfi2222Dw==
+X-Gm-Message-State: AOJu0Yw0Ma0+2LYQq5vS3TVAvAQHtVWCbAOZSiIRyXxfbgJ0ZjTDm6j6
+ /SXZzKaCHhUETZbHSJuDdD/5ij8L/9MVGjbY8q6beHYCjltsyDhd
+X-Google-Smtp-Source: AGHT+IHr65fV8bE4i4m/jYWnI2hJuHAcFS/zLp0flAAUIY1B7gsR/pRJn3GX+QupEnLMcGlwprX1NA==
+X-Received: by 2002:a05:6512:281e:b0:52c:e450:773b with SMTP id
+ 2adb3069b0e04-52ce450785fmr4967644e87.61.1719320256787; 
+ Tue, 25 Jun 2024 05:57:36 -0700 (PDT)
+Received: from localhost.localdomain ([31.120.167.14])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-366383f675esm12907761f8f.22.2024.06.25.05.57.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Jun 2024 05:57:36 -0700 (PDT)
+From: Teddy Engel <engel.teddy@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ oe-kbuild-all@lists.linux.dev, devel@driverdev.osuosl.org
+Subject: [PATCH] staging: rtl8192e: Fix conflicting types error with
+ net_device.
+Date: Tue, 25 Jun 2024 13:56:38 +0100
+Message-Id: <20240625125638.28041-1-engel.teddy@gmail.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Disposition: inline
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1719275197; x=1750811197;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=TPcouhR3AQn4HPMyULB62+z/TgauBoDEXDNkxKWQFPw=;
- b=P5qTFkH2pBRqLZJRg0yeD7uAypMH1CWW+wRS7QE2ZK5vkEWC734JZvgr
- +psN/zan0fmCXGlBVdAXPS+vx/wDXRZHzUOO2uLwDrEHe/j3gNq36f73A
- UDKQIq9eXgJR/fvErt4SrKXyx0Q9CdTz6A+3WS66/ib8E6hsfYA/6qo93
- 2UAS8SErW3lgrPJ3IrKXXHOCerFiBFt4Qux6Abw3CRfMFYAE6mhwwkpbn
- XDgzofxjjTD4RGUzpsNC6xbsfmdS/kpF5WSBqxrNhQWGllYiQ8cP+jA6k
- rOxyXg6SucTi4ngXi6rK8uzQTRIQ1nJP3yYF7HJqOy2XLBPf3HnkqDOHs
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1719320257; x=1719925057; darn=driverdev.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=2rEKkD7V2tH6Ok9lwRlb6M97RUxTNvraYNPbf5dbADE=;
+ b=feNjw0I2ROtHB5+n2qgxgapQqsWRM+WJUhC4QYVLjqkjW3QmOWm/3uvxMKIXc5NjYe
+ OLOeIAXt3Vi1pAavzMk7LvkGLnzqxvavaqilKiOlRzB05MU9Vg2iIRClNnBH01zQkz0H
+ A7Kf7SIxuyG0vlqchHPJ3xc0m+QJ/gkLCj5Vfb2Py5liO2cO9F/NOgsWlzmxk+1Yufne
+ pZgEMYmH4qG+beGvvtAqDV9g0FmmhgVWD3QLDCkg88Utm8Zo0LnstnbeQ5DLY8+mNLU0
+ DBtmycnw/+lkjKAN19bSfonqBrfsqcxZHFAeKzIXi89X/ybXCS7mWB4n3G23K/slAu2g
+ HeCA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=P5qTFkH2
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=feNjw0I2
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,53 +105,52 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- oe-kbuild-all@lists.linux.dev
+Cc: Teddy Engel <engel.teddy@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-head:   921190437a4827667cceef10202b2150571ebe5c
-commit: 7dff0b27d9c842f88149bf611cbc0b59be1dcd3c [34/59] staging: rtl8192e: Remove unnecessary pre-declaration of struct net_device
-config: arm64-randconfig-001-20240625 (https://download.01.org/0day-ci/archive/20240625/202406250858.L8rJMHQm-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240625/202406250858.L8rJMHQm-lkp@intel.com/reproduce)
+Add a pre-declaration of struct net_device so the compiler is able to
+use rtl_pci.h / rtl_cam.h.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406250858.L8rJMHQm-lkp@intel.com/
+Signed-off-by: Teddy Engel <engel.teddy@gmail.com>
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202406250858.L8rJMHQm-lkp@intel.com/
+---
+ drivers/staging/rtl8192e/rtl8192e/rtl_cam.h | 2 ++
+ drivers/staging/rtl8192e/rtl8192e/rtl_pci.h | 2 ++
+ 2 files changed, 4 insertions(+)
 
-All error/warnings (new ones prefixed by >>):
-
-   In file included from drivers/staging/rtl8192e/rtl8192e/rtl_pci.c:10:
->> drivers/staging/rtl8192e/rtl8192e/rtl_pci.h:16:56: warning: 'struct net_device' declared inside parameter list will not be visible outside of this definition or declaration
-      16 | bool rtl92e_check_adapter(struct pci_dev *pdev, struct net_device *dev);
-         |                                                        ^~~~~~~~~~
->> drivers/staging/rtl8192e/rtl8192e/rtl_pci.c:31:6: error: conflicting types for 'rtl92e_check_adapter'; have 'bool(struct pci_dev *, struct net_device *)' {aka '_Bool(struct pci_dev *, struct net_device *)'}
-      31 | bool rtl92e_check_adapter(struct pci_dev *pdev, struct net_device *dev)
-         |      ^~~~~~~~~~~~~~~~~~~~
-   drivers/staging/rtl8192e/rtl8192e/rtl_pci.h:16:6: note: previous declaration of 'rtl92e_check_adapter' with type 'bool(struct pci_dev *, struct net_device *)' {aka '_Bool(struct pci_dev *, struct net_device *)'}
-      16 | bool rtl92e_check_adapter(struct pci_dev *pdev, struct net_device *dev);
-         |      ^~~~~~~~~~~~~~~~~~~~
-
-
-vim +31 drivers/staging/rtl8192e/rtl8192e/rtl_pci.c
-
-94a799425eee82 drivers/staging/rtl8192e/rtl_pci.c          Larry Finger       2011-08-23  30  
-e250592ed93a12 drivers/staging/rtl8192e/rtl8192e/rtl_pci.c Mateusz Kulikowski 2015-07-19 @31  bool rtl92e_check_adapter(struct pci_dev *pdev, struct net_device *dev)
-
-:::::: The code at line 31 was first introduced by commit
-:::::: e250592ed93a12eecc42ed590f5a8245a20ab994 staging: rtl8192e: Rename rtl8192_pci_findadapter
-
-:::::: TO: Mateusz Kulikowski <mateusz.kulikowski@gmail.com>
-:::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_cam.h b/drivers/staging/rtl8192e/rtl8192e/rtl_cam.h
+index 3a5635494385..9deffdf96072 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_cam.h
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_cam.h
+@@ -12,6 +12,8 @@
+ 
+ #include <linux/types.h>
+ 
++struct net_device;
++
+ void rtl92e_cam_reset(struct net_device *dev);
+ void rtl92e_enable_hw_security_config(struct net_device *dev);
+ void rtl92e_set_key(struct net_device *dev, u8 EntryNo, u8 KeyIndex,
+diff --git a/drivers/staging/rtl8192e/rtl8192e/rtl_pci.h b/drivers/staging/rtl8192e/rtl8192e/rtl_pci.h
+index c645775b2150..3e39c4835ac8 100644
+--- a/drivers/staging/rtl8192e/rtl8192e/rtl_pci.h
++++ b/drivers/staging/rtl8192e/rtl8192e/rtl_pci.h
+@@ -13,6 +13,8 @@
+ #include <linux/types.h>
+ #include <linux/pci.h>
+ 
++struct net_device;
++
+ bool rtl92e_check_adapter(struct pci_dev *pdev, struct net_device *dev);
+ 
+ #endif
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.39.2
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
