@@ -1,84 +1,86 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B8A6915AC0
-	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2024 01:53:42 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 04156915AFD
+	for <lists+driverdev-devel@lfdr.de>; Tue, 25 Jun 2024 02:26:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B4CC540B03;
-	Mon, 24 Jun 2024 23:53:39 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8444E400C1;
+	Tue, 25 Jun 2024 00:26:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ppuOBXiJ89HT; Mon, 24 Jun 2024 23:53:38 +0000 (UTC)
+ id 5XgIg7rgZ52j; Tue, 25 Jun 2024 00:26:40 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 626A840AF2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BF48F40511
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 626A840AF2;
-	Mon, 24 Jun 2024 23:53:38 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BF48F40511;
+	Tue, 25 Jun 2024 00:26:39 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6A1DD1BF23C
- for <devel@linuxdriverproject.org>; Mon, 24 Jun 2024 23:53:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3A2411BF42D
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2024 00:26:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5666681F06
- for <devel@linuxdriverproject.org>; Mon, 24 Jun 2024 23:53:37 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 33DF481E9F
+ for <devel@linuxdriverproject.org>; Tue, 25 Jun 2024 00:26:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id W_aRMhYELpmV for <devel@linuxdriverproject.org>;
- Mon, 24 Jun 2024 23:53:36 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+ id 4MtPgY8FcAoz for <devel@linuxdriverproject.org>;
+ Tue, 25 Jun 2024 00:26:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 43B0481F01
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 43B0481F01
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 43B0481F01
- for <devel@driverdev.osuosl.org>; Mon, 24 Jun 2024 23:53:35 +0000 (UTC)
-X-CSE-ConnectionGUID: xCZ8Uv5QQTWCXRpH2mMjkw==
-X-CSE-MsgGUID: giGPslfoRPusuH23aOEyjQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11113"; a="27677245"
-X-IronPort-AV: E=Sophos;i="6.08,263,1712646000"; d="scan'208";a="27677245"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Jun 2024 16:53:35 -0700
-X-CSE-ConnectionGUID: PlVxXWMOQre2Jc4suIX4TQ==
-X-CSE-MsgGUID: CD767dqpSqaBcWJVjR9fdg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F308681E9C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F308681E9C
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F308681E9C
+ for <devel@driverdev.osuosl.org>; Tue, 25 Jun 2024 00:26:36 +0000 (UTC)
+X-CSE-ConnectionGUID: lpz26j0gR5yvRHyxm8aIHg==
+X-CSE-MsgGUID: i3H7IVW3TiaMWBMlRDgFFA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11113"; a="20041751"
+X-IronPort-AV: E=Sophos;i="6.08,263,1712646000"; d="scan'208";a="20041751"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Jun 2024 17:26:36 -0700
+X-CSE-ConnectionGUID: zFoy3tIPSxSwOtkNzjiRsQ==
+X-CSE-MsgGUID: tvvUl7VRT1WVrcKaUcwoDA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,263,1712646000"; d="scan'208";a="48410056"
+X-IronPort-AV: E=Sophos;i="6.08,263,1712646000"; d="scan'208";a="66689027"
 Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
- by orviesa005.jf.intel.com with ESMTP; 24 Jun 2024 16:53:34 -0700
+ by fmviesa002.fm.intel.com with ESMTP; 24 Jun 2024 17:26:34 -0700
 Received: from kbuild by 68891e0c336b with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sLtV5-000DpU-00;
- Mon, 24 Jun 2024 23:53:31 +0000
-Date: Tue, 25 Jun 2024 07:53:10 +0800
+ (envelope-from <lkp@intel.com>) id 1sLu12-000Dqy-0A;
+ Tue, 25 Jun 2024 00:26:32 +0000
+Date: Tue, 25 Jun 2024 08:26:16 +0800
 From: kernel test robot <lkp@intel.com>
-To: Philipp Hortmann <philipp.g.hortmann@gmail.com>
-Subject: [staging:staging-testing 37/59]
- drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c:2553:24: warning: variable
- 'pwdev_priv' set but not used
-Message-ID: <202406250759.FnxzD3PK-lkp@intel.com>
+To: Teddy Engel <engel.teddy@gmail.com>
+Subject: [staging:staging-testing 34/59]
+ drivers/staging/rtl8192e/rtl8192e/rtl_pci.c:31:6: error: conflicting types
+ for 'rtl92e_check_adapter'; have 'bool(struct pci_dev *, struct net_device
+ *)' {aka '_Bool(struct pci_dev *, struct net_device *)'}
+Message-ID: <202406250858.L8rJMHQm-lkp@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1719273216; x=1750809216;
+ t=1719275197; x=1750811197;
  h=date:from:to:cc:subject:message-id:mime-version;
- bh=B/GFHm7zyq0ueXrJHR9jcizF4kP7pcHilfrk4JTO0gI=;
- b=iEmCvM4qbOCPX8cRM36xEEt2lwxlG8/qXxom+zHHW5zzKVCsIKXp5fjU
- IDTe88YLDdXzvnXS1bOezQ8QPF1Qmd1bPz4aaQYIHSubFzbYNLkeYnmJz
- /P/tvcckQACQueO+TwReHCeHLSlF6McKFrLiNMdMJTu1SYxpvFmzvgYNv
- Q2fM4xqgCJCKVxIIB209SZzeQz4A6LqNG4yY/YESBH0RPrJot8lTUG8aU
- qHPWNyeKe51X6j/aJJRkrF3/n9vbjRpZm3406pRxkWwCih87pb0+h4vHT
- 74l34fPl5C0Q4e9sxmLM+YZoJU8o+XupCPCVjlu1Wg7ZycIsLY4JwiFe4
- Q==;
+ bh=TPcouhR3AQn4HPMyULB62+z/TgauBoDEXDNkxKWQFPw=;
+ b=P5qTFkH2pBRqLZJRg0yeD7uAypMH1CWW+wRS7QE2ZK5vkEWC734JZvgr
+ +psN/zan0fmCXGlBVdAXPS+vx/wDXRZHzUOO2uLwDrEHe/j3gNq36f73A
+ UDKQIq9eXgJR/fvErt4SrKXyx0Q9CdTz6A+3WS66/ib8E6hsfYA/6qo93
+ 2UAS8SErW3lgrPJ3IrKXXHOCerFiBFt4Qux6Abw3CRfMFYAE6mhwwkpbn
+ XDgzofxjjTD4RGUzpsNC6xbsfmdS/kpF5WSBqxrNhQWGllYiQ8cP+jA6k
+ rOxyXg6SucTi4ngXi6rK8uzQTRIQ1nJP3yYF7HJqOy2XLBPf3HnkqDOHs
+ g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=iEmCvM4q
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=P5qTFkH2
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,7 +94,7 @@ List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
 Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev
+ oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
@@ -100,84 +102,39 @@ Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
 head:   921190437a4827667cceef10202b2150571ebe5c
-commit: bdee203cd80ce2d3b0a52015ecfde6ad45d01eb9 [37/59] staging: rtl8723bs: Remove switch(type) as type is constant
-config: x86_64-buildonly-randconfig-004-20240625 (https://download.01.org/0day-ci/archive/20240625/202406250759.FnxzD3PK-lkp@intel.com/config)
-compiler: clang version 18.1.5 (https://github.com/llvm/llvm-project 617a15a9eac96088ae5e9134248d8236e34b91b1)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240625/202406250759.FnxzD3PK-lkp@intel.com/reproduce)
+commit: 7dff0b27d9c842f88149bf611cbc0b59be1dcd3c [34/59] staging: rtl8192e: Remove unnecessary pre-declaration of struct net_device
+config: arm64-randconfig-001-20240625 (https://download.01.org/0day-ci/archive/20240625/202406250858.L8rJMHQm-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240625/202406250858.L8rJMHQm-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406250759.FnxzD3PK-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202406250858.L8rJMHQm-lkp@intel.com/
 
-All warnings (new ones prefixed by >>):
+All error/warnings (new ones prefixed by >>):
 
->> drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c:2553:24: warning: variable 'pwdev_priv' set but not used [-Wunused-but-set-variable]
-    2553 |         struct rtw_wdev_priv *pwdev_priv;
-         |                               ^
-   1 warning generated.
+   In file included from drivers/staging/rtl8192e/rtl8192e/rtl_pci.c:10:
+>> drivers/staging/rtl8192e/rtl8192e/rtl_pci.h:16:56: warning: 'struct net_device' declared inside parameter list will not be visible outside of this definition or declaration
+      16 | bool rtl92e_check_adapter(struct pci_dev *pdev, struct net_device *dev);
+         |                                                        ^~~~~~~~~~
+>> drivers/staging/rtl8192e/rtl8192e/rtl_pci.c:31:6: error: conflicting types for 'rtl92e_check_adapter'; have 'bool(struct pci_dev *, struct net_device *)' {aka '_Bool(struct pci_dev *, struct net_device *)'}
+      31 | bool rtl92e_check_adapter(struct pci_dev *pdev, struct net_device *dev)
+         |      ^~~~~~~~~~~~~~~~~~~~
+   drivers/staging/rtl8192e/rtl8192e/rtl_pci.h:16:6: note: previous declaration of 'rtl92e_check_adapter' with type 'bool(struct pci_dev *, struct net_device *)' {aka '_Bool(struct pci_dev *, struct net_device *)'}
+      16 | bool rtl92e_check_adapter(struct pci_dev *pdev, struct net_device *dev);
+         |      ^~~~~~~~~~~~~~~~~~~~
 
 
-vim +/pwdev_priv +2553 drivers/staging/rtl8723bs/os_dep/ioctl_cfg80211.c
+vim +31 drivers/staging/rtl8192e/rtl8192e/rtl_pci.c
 
-554c0a3abf216c Hans de Goede     2017-03-29  2536  
-1d85bb7fd66aa1 Franziska Naepelt 2023-07-01  2537  static int cfg80211_rtw_mgmt_tx(struct wiphy *wiphy, struct wireless_dev *wdev,
-554c0a3abf216c Hans de Goede     2017-03-29  2538  				struct cfg80211_mgmt_tx_params *params,
-554c0a3abf216c Hans de Goede     2017-03-29  2539  				u64 *cookie)
-554c0a3abf216c Hans de Goede     2017-03-29  2540  {
-554c0a3abf216c Hans de Goede     2017-03-29  2541  	struct net_device *ndev = wdev_to_ndev(wdev);
-554c0a3abf216c Hans de Goede     2017-03-29  2542  	struct ieee80211_channel *chan = params->chan;
-554c0a3abf216c Hans de Goede     2017-03-29  2543  	const u8 *buf = params->buf;
-554c0a3abf216c Hans de Goede     2017-03-29  2544  	size_t len = params->len;
-554c0a3abf216c Hans de Goede     2017-03-29  2545  	int ret = 0;
-554c0a3abf216c Hans de Goede     2017-03-29  2546  	int tx_ret;
-554c0a3abf216c Hans de Goede     2017-03-29  2547  	u32 dump_limit = RTW_MAX_MGMT_TX_CNT;
-554c0a3abf216c Hans de Goede     2017-03-29  2548  	u32 dump_cnt = 0;
-554c0a3abf216c Hans de Goede     2017-03-29  2549  	bool ack = true;
-554c0a3abf216c Hans de Goede     2017-03-29  2550  	u8 tx_ch = (u8)ieee80211_frequency_to_channel(chan->center_freq);
-554c0a3abf216c Hans de Goede     2017-03-29  2551  	u8 category, action;
-554c0a3abf216c Hans de Goede     2017-03-29  2552  	struct adapter *padapter;
-554c0a3abf216c Hans de Goede     2017-03-29 @2553  	struct rtw_wdev_priv *pwdev_priv;
-554c0a3abf216c Hans de Goede     2017-03-29  2554  
-cd1f1450092216 Michael Straube   2021-08-29  2555  	if (!ndev) {
-554c0a3abf216c Hans de Goede     2017-03-29  2556  		ret = -EINVAL;
-554c0a3abf216c Hans de Goede     2017-03-29  2557  		goto exit;
-554c0a3abf216c Hans de Goede     2017-03-29  2558  	}
-554c0a3abf216c Hans de Goede     2017-03-29  2559  
-42a18f09bcb900 Ivan Safonov      2020-10-11  2560  	padapter = rtw_netdev_priv(ndev);
-554c0a3abf216c Hans de Goede     2017-03-29  2561  	pwdev_priv = adapter_wdev_data(padapter);
-554c0a3abf216c Hans de Goede     2017-03-29  2562  
-554c0a3abf216c Hans de Goede     2017-03-29  2563  	/* cookie generation */
-554c0a3abf216c Hans de Goede     2017-03-29  2564  	*cookie = (unsigned long)buf;
-554c0a3abf216c Hans de Goede     2017-03-29  2565  
-554c0a3abf216c Hans de Goede     2017-03-29  2566  	/* indicate ack before issue frame to avoid racing with rsp frame */
-554c0a3abf216c Hans de Goede     2017-03-29  2567  	rtw_cfg80211_mgmt_tx_status(padapter, *cookie, buf, len, ack, GFP_KERNEL);
-554c0a3abf216c Hans de Goede     2017-03-29  2568  
-04c35396c5c6c6 Fabio Aiuto       2021-04-10  2569  	if (rtw_action_frame_parse(buf, len, &category, &action) == false)
-554c0a3abf216c Hans de Goede     2017-03-29  2570  		goto exit;
-554c0a3abf216c Hans de Goede     2017-03-29  2571  
-554c0a3abf216c Hans de Goede     2017-03-29  2572  	rtw_ps_deny(padapter, PS_DENY_MGNT_TX);
-51c8299a031c19 Kang Minchul      2022-09-22  2573  	if (rtw_pwr_wakeup(padapter) == _FAIL) {
-554c0a3abf216c Hans de Goede     2017-03-29  2574  		ret = -EFAULT;
-554c0a3abf216c Hans de Goede     2017-03-29  2575  		goto cancel_ps_deny;
-554c0a3abf216c Hans de Goede     2017-03-29  2576  	}
-554c0a3abf216c Hans de Goede     2017-03-29  2577  
-554c0a3abf216c Hans de Goede     2017-03-29  2578  	do {
-554c0a3abf216c Hans de Goede     2017-03-29  2579  		dump_cnt++;
-554c0a3abf216c Hans de Goede     2017-03-29  2580  		tx_ret = _cfg80211_rtw_mgmt_tx(padapter, tx_ch, buf, len);
-554c0a3abf216c Hans de Goede     2017-03-29  2581  	} while (dump_cnt < dump_limit && tx_ret != _SUCCESS);
-554c0a3abf216c Hans de Goede     2017-03-29  2582  
-554c0a3abf216c Hans de Goede     2017-03-29  2583  cancel_ps_deny:
-554c0a3abf216c Hans de Goede     2017-03-29  2584  	rtw_ps_deny_cancel(padapter, PS_DENY_MGNT_TX);
-554c0a3abf216c Hans de Goede     2017-03-29  2585  exit:
-554c0a3abf216c Hans de Goede     2017-03-29  2586  	return ret;
-554c0a3abf216c Hans de Goede     2017-03-29  2587  }
-554c0a3abf216c Hans de Goede     2017-03-29  2588  
+94a799425eee82 drivers/staging/rtl8192e/rtl_pci.c          Larry Finger       2011-08-23  30  
+e250592ed93a12 drivers/staging/rtl8192e/rtl8192e/rtl_pci.c Mateusz Kulikowski 2015-07-19 @31  bool rtl92e_check_adapter(struct pci_dev *pdev, struct net_device *dev)
 
-:::::: The code at line 2553 was first introduced by commit
-:::::: 554c0a3abf216c991c5ebddcdb2c08689ecd290b staging: Add rtl8723bs sdio wifi driver
+:::::: The code at line 31 was first introduced by commit
+:::::: e250592ed93a12eecc42ed590f5a8245a20ab994 staging: rtl8192e: Rename rtl8192_pci_findadapter
 
-:::::: TO: Hans de Goede <hdegoede@redhat.com>
+:::::: TO: Mateusz Kulikowski <mateusz.kulikowski@gmail.com>
 :::::: CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 -- 
