@@ -1,75 +1,71 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 144C4929779
-	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Jul 2024 12:44:07 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 316BA9297B4
+	for <lists+driverdev-devel@lfdr.de>; Sun,  7 Jul 2024 13:49:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 40A17404D1;
-	Sun,  7 Jul 2024 10:44:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E68E580DC8;
+	Sun,  7 Jul 2024 11:49:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id QZDisBAPTHfP; Sun,  7 Jul 2024 10:44:04 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id DC0hGt6ftEqG; Sun,  7 Jul 2024 11:49:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 30BF440545
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0CCBD80DC9
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 30BF440545;
-	Sun,  7 Jul 2024 10:44:04 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0CCBD80DC9;
+	Sun,  7 Jul 2024 11:49:49 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2AC181BF841
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  7 Jul 2024 10:44:02 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6A9F01BF831
+ for <devel@linuxdriverproject.org>; Sun,  7 Jul 2024 11:49:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 17FCC606F0
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  7 Jul 2024 10:44:02 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 548AE40670
+ for <devel@linuxdriverproject.org>; Sun,  7 Jul 2024 11:49:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qD-Y5ZikUlfY for <driverdev-devel@linuxdriverproject.org>;
- Sun,  7 Jul 2024 10:44:01 +0000 (UTC)
-X-Greylist: delayed 20583 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 07 Jul 2024 10:44:01 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3685560804
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3685560804
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=190.223.56.50;
- helo=mail.drtcp.gob.pe; envelope-from=mmechato@drtcp.gob.pe;
- receiver=<UNKNOWN> 
-Received: from mail.drtcp.gob.pe (unknown [190.223.56.50])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3685560804
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  7 Jul 2024 10:44:01 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by mail.drtcp.gob.pe (Postfix) with ESMTP id 6E34423AA1D79;
- Sat,  6 Jul 2024 20:27:17 -0500 (PET)
-Received: from mail.drtcp.gob.pe ([127.0.0.1])
- by localhost (mail.drtcp.gob.pe [127.0.0.1]) (amavisd-new, port 10032)
- with ESMTP id VRdHvl7H5L4L; Sat,  6 Jul 2024 20:27:15 -0500 (PET)
-Received: from localhost (localhost [127.0.0.1])
- by mail.drtcp.gob.pe (Postfix) with ESMTP id 332D523AA1D63;
- Sat,  6 Jul 2024 20:27:11 -0500 (PET)
-X-Virus-Scanned: amavisd-new at mail.drtcp.gob.pe
-Received: from mail.drtcp.gob.pe ([127.0.0.1])
- by localhost (mail.drtcp.gob.pe [127.0.0.1]) (amavisd-new, port 10026)
- with ESMTP id lOPHcxe5uJWm; Sat,  6 Jul 2024 20:27:09 -0500 (PET)
-Received: from mail.drtcp.gob.pe (mail [192.168.1.10])
- by mail.drtcp.gob.pe (Postfix) with ESMTP id 7A7E12312FC70;
- Sat,  6 Jul 2024 20:26:45 -0500 (PET)
-Date: Sat, 6 Jul 2024 20:26:45 -0500 (PET)
-From: HESAKO CORPORATION <mmechato@drtcp.gob.pe>
-Message-ID: <320444636.314235.1720315605322.JavaMail.zimbra@drtcp.gob.pe>
-Subject: Work with us and earn $6000 monthly.
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XwIzAmZcp0Av for <devel@linuxdriverproject.org>;
+ Sun,  7 Jul 2024 11:49:46 +0000 (UTC)
+X-Greylist: delayed 902 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 07 Jul 2024 11:49:45 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 416A84066F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 416A84066F
+Received-SPF: Permerror (mailfrom) identity=mailfrom; client-ip=80.253.163.146;
+ helo=mail.croz.net; envelope-from=muhitdinov@unicon.uz; receiver=<UNKNOWN> 
+Received: from mail.croz.net (outbound-mail-1.croz.net [80.253.163.146])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 416A84066F
+ for <devel@driverdev.osuosl.org>; Sun,  7 Jul 2024 11:49:45 +0000 (UTC)
+X-AuditID: 0a0009c8-ca74c24000002100-eb-668a7d4cba9d
+Received: from [103.195.236.30] (Unknown_Domain [103.195.236.30])
+ (using TLS with cipher DHE-RSA-AES256-SHA (256/256 bits))
+ (Client did not present a certificate)
+ by mail.croz.net (mail.croz.net) with SMTP id DE.92.08448.C4D7A866;
+ Sun,  7 Jul 2024 13:34:37 +0200 (CEST)
+Message-ID: <DE.92.08448.C4D7A866@mail.croz.net>
 MIME-Version: 1.0
-X-Originating-IP: [72.136.96.111]
-X-Mailer: Zimbra 8.7.2_GA_1736 (zclient/8.7.2_GA_1736)
-Thread-Index: GlCoO6p4faCbPfCpa5pL2YK/fq3RDg==
-Thread-Topic: Work with us and earn $6000 monthly.
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Description: Mail message body
+Subject: Re:
+To: devel@driverdev.osuosl.org
+From: "PRIVATE" <muhitdinov@unicon.uz>
+Date: Sun, 07 Jul 2024 18:34:26 +0700
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprFIsWRmVeSWpSXmKPExsWSfviNnK5vbVeawfy9yhZ7zvxid2D0uLfv
+ MEsAYxSXTUpqTmZZapG+XQJXxrs1H9gLNCrOt35ibWCU72Lk5JAQMJHovdXN0sXIxSEkMJlJ
+ 4s6PZkaQBLOAnsSNqVPYQGxeAQOJ16cmskPYghInZz5hgajRlli28DVzFyMHkK0m8bWrBCQs
+ LMAj8fnYRLASEQE5iaufHrKC2GxAJQda9jCB2CwCqhI/TzeCrRICijcvb2ebwMgzC8nmWUi2
+ zUKybRbCtgWMLKsYBYpz0/VScqv0kovyq/TyUks2MQIDhYuB88QOxikP3Q4xMnEwHmKU5GBS
+ EuXdb9qRJsSXlJ9SmZFYnBFfVJqTWnyIUYKDWUmE9/Tj9jQh3pTEyqrUonyYlDQHi5I4r3Ns
+ RpqQQHpiSWp2ampBahFMVoaDQ0mC16amK01IsCg1PbUiLTOnBCHNxMEJMpwHaDhHHlANb3FB
+ Ym5xZjpCnv8UozHH5oV79zJzfN3WdYBZiCUvPy9VSpx3cjVQvQBIfUZpHtxIWGy/YhTnYFQS
+ 5uUG2cwDTAtwQ6UaGKtfLD/C0BPaMjWv/cJbrfsVzJ8PHHqnsMPowfzJM+3+6RiWPpf1rEk1
+ cZ12z6G3e9IRTYnHn7d8v7vPYsaV7FmTzmR6da+b3H2sh2/hoRZd39KbXhFl+oJVsvPMFvEu
+ rxJL/qtRY9S7f0JdgfKDE7ryTKvXhAse6bp4QjJ0WbPOar6wtzfUkpVYijMSDbWYi4oTAdlb
+ Tg+tAgAA
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=drtcp.gob.pe
+ header.from=unicon.uz
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,19 +78,13 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: "hesako-corporation@asia.com" <hesako-corporation@asia.com>
+Reply-To: privateidentity034@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hello
-
-We are seeking individuals or companies to act as intermediaries for our company. You will earn benefits and commission for working with us. Get back to me in receipt of this email.
-
-Mr. Kiyoshi Haruto
-HESAKO CORPORATION
-https://www.haseko.co.jp
+Can you do a private business with me?
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
