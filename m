@@ -2,52 +2,50 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D5F7932355
-	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jul 2024 11:49:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 18EFB93235C
+	for <lists+driverdev-devel@lfdr.de>; Tue, 16 Jul 2024 11:50:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2515A40AF9;
-	Tue, 16 Jul 2024 09:49:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 62BE240AF9;
+	Tue, 16 Jul 2024 09:50:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IfCtnA0_0XTe; Tue, 16 Jul 2024 09:49:10 +0000 (UTC)
+ id rCXXN22Z465a; Tue, 16 Jul 2024 09:50:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EFBA140B02
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3DBEB40B02
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EFBA140B02;
-	Tue, 16 Jul 2024 09:49:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3DBEB40B02;
+	Tue, 16 Jul 2024 09:50:19 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7D1461BF870
- for <devel@linuxdriverproject.org>; Tue, 16 Jul 2024 09:49:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0E5841BF870
+ for <devel@linuxdriverproject.org>; Tue, 16 Jul 2024 09:50:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7762481304
- for <devel@linuxdriverproject.org>; Tue, 16 Jul 2024 09:49:08 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id EE8BB80BAC
+ for <devel@linuxdriverproject.org>; Tue, 16 Jul 2024 09:50:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id A_M36bSHkWcc for <devel@linuxdriverproject.org>;
- Tue, 16 Jul 2024 09:49:07 +0000 (UTC)
-X-Greylist: delayed 1189 seconds by postgrey-1.37 at util1.osuosl.org;
- Tue, 16 Jul 2024 09:49:07 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6FD2B81301
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6FD2B81301
+ id JQCCdv2ijdeZ for <devel@linuxdriverproject.org>;
+ Tue, 16 Jul 2024 09:50:16 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=185.223.29.102;
  helo=server.academicletter.com;
  envelope-from=mdpipub@server.academicletter.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1F38280A69
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F38280A69
 Received: from server.academicletter.com (red-squid-87466.zap.cloud
  [185.223.29.102])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6FD2B81301
- for <devel@driverdev.osuosl.org>; Tue, 16 Jul 2024 09:49:07 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1F38280A69
+ for <devel@driverdev.osuosl.org>; Tue, 16 Jul 2024 09:50:16 +0000 (UTC)
 Received: by server.academicletter.com (Postfix, from userid 1003)
- id 29249141597; Tue, 16 Jul 2024 09:25:18 +0000 (UTC)
+ id EC8831415DF; Tue, 16 Jul 2024 09:26:19 +0000 (UTC)
 To: science@mdpipublication.com
 Subject: Publish with Us: Applied Sciences - Open Access,
  Swiftly visible and highly accessible
 From: science@mdpipublication.com
-Message-Id: <20240716092518.29249141597@server.academicletter.com>
-Date: Tue, 16 Jul 2024 09:25:18 +0000 (UTC)
+Message-Id: <20240716092619.EC8831415DF@server.academicletter.com>
+Date: Tue, 16 Jul 2024 09:26:19 +0000 (UTC)
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=mdpipublication.com
