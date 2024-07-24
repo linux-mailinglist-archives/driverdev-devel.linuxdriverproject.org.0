@@ -1,56 +1,72 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F2F293A074
-	for <lists+driverdev-devel@lfdr.de>; Tue, 23 Jul 2024 14:19:13 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B69C793AD68
+	for <lists+driverdev-devel@lfdr.de>; Wed, 24 Jul 2024 09:50:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 65512810C7;
-	Tue, 23 Jul 2024 12:19:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6F51680F46;
+	Wed, 24 Jul 2024 07:50:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TnWi4kg1jpCD; Tue, 23 Jul 2024 12:19:10 +0000 (UTC)
+ id HyFLu9YCmpaj; Wed, 24 Jul 2024 07:50:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 990168110E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CFEAD80FFB
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 990168110E;
-	Tue, 23 Jul 2024 12:19:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CFEAD80FFB;
+	Wed, 24 Jul 2024 07:50:00 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8A6D21BF83C
- for <devel@linuxdriverproject.org>; Tue, 23 Jul 2024 12:19:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 73FE41BF280
+ for <devel@linuxdriverproject.org>; Wed, 24 Jul 2024 07:49:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 772C240374
- for <devel@linuxdriverproject.org>; Tue, 23 Jul 2024 12:19:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 61BEB402FF
+ for <devel@linuxdriverproject.org>; Wed, 24 Jul 2024 07:49:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1xqzBo-5fxp7 for <devel@linuxdriverproject.org>;
- Tue, 23 Jul 2024 12:19:07 +0000 (UTC)
-Received-SPF: Softfail (mailfrom) identity=mailfrom; client-ip=177.93.72.14;
- helo=srv01.soltelecompe.com.br; envelope-from=abrahamsezeugol@gmail.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hoTNVSaE8s_o for <devel@linuxdriverproject.org>;
+ Wed, 24 Jul 2024 07:49:58 +0000 (UTC)
+X-Greylist: delayed 542 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 24 Jul 2024 07:49:58 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 19AB44023F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 19AB44023F
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=162.19.155.125;
+ helo=mail.originatepro.pl; envelope-from=marcin.wojciechowski@originatepro.pl;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 8A73040111
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8A73040111
-Received: from srv01.soltelecompe.com.br (unknown [177.93.72.14])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8A73040111
- for <devel@linuxdriverproject.org>; Tue, 23 Jul 2024 12:19:07 +0000 (UTC)
-Received: from [109.248.151.83] (helo=IP-151-83.dataclub.info)
- by srv01.soltelecompe.com.br with esmtpa (Exim 4.92.2)
- (envelope-from <abrahamsezeugol@gmail.com>) id 1sWETv-0007CU-Kd
- for devel@linuxdriverproject.org; Tue, 23 Jul 2024 09:19:03 -0300
+Received: from mail.OriginatePro.pl (mail.originatepro.pl [162.19.155.125])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 19AB44023F
+ for <devel@driverdev.osuosl.org>; Wed, 24 Jul 2024 07:49:57 +0000 (UTC)
+Received: by mail.OriginatePro.pl (Postfix, from userid 1002)
+ id 185C123E22; Wed, 24 Jul 2024 09:40:47 +0200 (CEST)
+Received: by mail.OriginatePro.pl for <devel@driverdev.osuosl.org>;
+ Wed, 24 Jul 2024 07:40:45 GMT
+Message-ID: <20240724084500-0.1.d0.1n30u.0.8w3m9cf5gj@OriginatePro.pl>
+Date: Wed, 24 Jul 2024 07:40:45 GMT
+From: "Marcin Wojciechowski" <marcin.wojciechowski@originatepro.pl>
+To: <devel@driverdev.osuosl.org>
+Subject: =?UTF-8?Q?Prosz=C4=99_o_kontakt?=
+X-Mailer: mail.OriginatePro.pl
 MIME-Version: 1.0
-Content-Description: Mail message body
-Subject: Re: YOUR FUND...14
-To: devel@linuxdriverproject.org
-From: "YOUR FUND" <abrahamsezeugol@gmail.com>
-Date: Tue, 23 Jul 2024 15:18:58 +0300
-Message-Id: <E1sWETv-0007CU-Kd@srv01.soltelecompe.com.br>
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=fail (p=none dis=none)
- header.from=gmail.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=OriginatePro.pl; s=mail; t=1721806853;
+ bh=oZTeICgx2X9EeHQQOCJSHYKJVJOCiOs1n/VaxwVhO9Y=;
+ h=Date:From:To:Subject:From;
+ b=7zZXhAkKS4Wyhjsw1dK48P5reQ5k8SPL5u/mP6QggMDk1OOThk3yZda/Jr3OFD+tP
+ U+U6sLx0W3sJVX4I93yIvNE+l2zbp2eKXhyUKI+NDDEuMYD7PVuULnleliGXSywz1I
+ xjz/xGI1ilXZmng4htOhKo75aEmHYZZYE1EvuddeWevGxBvEJqSNPsI9Fi/0xIzetn
+ B1iDznOQF3DwQdQPJceSMJv2b1qCm0NkCsvaF2LhVbEx1HXaJq4h7z0TBkdMs5uVaN
+ ZL3Yv0D0WTAwjHjlCZ20/l7KNaEkzyN8Sq9mCN0WVfIguvWNyx0sKySLZ2f/8x+5M8
+ rnicfEG46hVEw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=originatepro.pl
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=OriginatePro.pl header.i=@OriginatePro.pl
+ header.a=rsa-sha256 header.s=mail header.b=7zZXhAkK
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,27 +79,16 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: abrahamsezeugol@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Attention: devel@linuxdriverproject.org,
-
-Good Day.
-How are you doing?
-Hope everything is going well with you.
-I want to remind you, your fund is still in our bank and your ATM CARD is also ready.
-Are you ready to receive your fund and your ATM CARD?
-
-Reply.
-Thank you Sir.
-
-Mr. Thomas Lee.
-Director of Finance.
-24 Hour Online Banking Services.
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+RHppZcWEIGRvYnJ5LAoKQ3p5IGplc3QgbW/FvGxpd2/Fm8SHIG5hd2nEhXphbmlhIHdzcMOzxYJw
+cmFjeSB6IFBhxYRzdHdlbT8KClogY2jEmWNpxIUgcG9yb3ptYXdpYW0geiBvc29ixIUgemFqbXVq
+xIVjxIUgc2nEmSBkemlhxYJhbmlhbWkgendpxIV6YW55bWkgemUgc3ByemVkYcW8xIUuCgpQb21h
+Z2FteSBza3V0ZWN6bmllIHBvenlza2l3YcSHIG5vd3ljaCBrbGllbnTDs3cuCgpaYXByYXN6YW0g
+ZG8ga29udGFrdHUuCgoKUG96ZHJhd2lhbQpNYXJjaW4gV29qY2llY2hvd3NraQpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpkZXZlbCBtYWlsaW5nIGxpc3QK
+ZGV2ZWxAbGludXhkcml2ZXJwcm9qZWN0Lm9yZwpodHRwOi8vZHJpdmVyZGV2LmxpbnV4ZHJpdmVy
+cHJvamVjdC5vcmcvbWFpbG1hbi9saXN0aW5mby9kcml2ZXJkZXYtZGV2ZWwK
