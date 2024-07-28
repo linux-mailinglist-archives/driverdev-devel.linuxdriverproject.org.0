@@ -1,83 +1,84 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CFD893DCA4
-	for <lists+driverdev-devel@lfdr.de>; Sat, 27 Jul 2024 02:39:24 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 29E0293EDA7
+	for <lists+driverdev-devel@lfdr.de>; Mon, 29 Jul 2024 08:49:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 53F9940278;
-	Sat, 27 Jul 2024 00:39:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B8C3740252;
+	Mon, 29 Jul 2024 06:49:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MFGQYvxwGp8C; Sat, 27 Jul 2024 00:39:18 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id WpMsP_tgKx-K; Mon, 29 Jul 2024 06:49:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9AA87405FB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8C14940263
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9AA87405FB;
-	Sat, 27 Jul 2024 00:39:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8C14940263;
+	Mon, 29 Jul 2024 06:49:52 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9EF681BF41D
- for <devel@linuxdriverproject.org>; Sat, 27 Jul 2024 00:39:16 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DBA381BF3E1
+ for <devel@linuxdriverproject.org>; Mon, 29 Jul 2024 06:49:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8A26B60808
- for <devel@linuxdriverproject.org>; Sat, 27 Jul 2024 00:39:16 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C7AD48115C
+ for <devel@linuxdriverproject.org>; Mon, 29 Jul 2024 06:49:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id phyVpg_rW-zD for <devel@linuxdriverproject.org>;
- Sat, 27 Jul 2024 00:39:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 029B1605D2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 029B1605D2
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 029B1605D2
- for <devel@driverdev.osuosl.org>; Sat, 27 Jul 2024 00:39:14 +0000 (UTC)
-X-CSE-ConnectionGUID: /m4CQJ+SRbm0DQQRjPfBEg==
-X-CSE-MsgGUID: J5RDCvE/T22p9wwYceFD2w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11145"; a="30461945"
-X-IronPort-AV: E=Sophos;i="6.09,240,1716274800"; d="scan'208";a="30461945"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jul 2024 17:39:12 -0700
-X-CSE-ConnectionGUID: 5wycvy00QgWw3tQK7NYXBQ==
-X-CSE-MsgGUID: cBRgfI2URY+z7qKvKbUZWQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,240,1716274800"; d="scan'208";a="58199275"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
- by orviesa005.jf.intel.com with ESMTP; 26 Jul 2024 17:39:12 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sXVSn-000pWw-0K;
- Sat, 27 Jul 2024 00:39:09 +0000
-Date: Sat, 27 Jul 2024 08:38:44 +0800
-From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:const_driver] BUILD SUCCESS
- d0192328ccc7c6f93a4b2527aeecd3557714f70e
-Message-ID: <202407270841.WojVdcrG-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id C4wshzHI7_Yx for <devel@linuxdriverproject.org>;
+ Mon, 29 Jul 2024 06:49:50 +0000 (UTC)
+X-Greylist: delayed 538 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 29 Jul 2024 06:49:49 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B6849810FB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B6849810FB
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=134.122.186.212;
+ helo=mail.hfzq.co.uk; envelope-from=support5@hfzq.co.uk; receiver=<UNKNOWN> 
+Received: from mail.hfzq.co.uk (unknown [134.122.186.212])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B6849810FB
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jul 2024 06:49:49 +0000 (UTC)
+Received: from mail.hfzq.co.uk (mail.hfzq.co.uk [127.0.0.1])
+ by mail.hfzq.co.uk (Postfix) with ESMTP id 4WXTHY6LMSz3S2K
+ for <devel@driverdev.osuosl.org>; Mon, 29 Jul 2024 06:39:53 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at mail.hfzq.co.uk
+Received: from mail.hfzq.co.uk ([127.0.0.1])
+ by mail.hfzq.co.uk (mail.hfzq.co.uk [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id 2Bu6FwcItx_O for <devel@driverdev.osuosl.org>;
+ Mon, 29 Jul 2024 06:39:46 +0000 (UTC)
+Received: from headahce.com (unknown [8.218.26.69])
+ by mail.hfzq.co.uk (Postfix) with ESMTPSA id 4WXCy65Jx2z3S2v
+ for <devel@driverdev.osuosl.org>; Sun, 28 Jul 2024 20:38:54 +0000 (UTC)
+Message-ID: <3f5291ef978a4f944e3819c30942a53a@hotespa.net>
+From: =?utf-8?B?44Ko44Od44K544Kr44O844OJ?= <info@hotespa.net>
+To: "devel@driverdev.osuosl.org" <devel@driverdev.osuosl.org>
+Subject: =?utf-8?B?44CQ44Ko44Od44K544Kr44O844OJ44CR44GU5Yip55So56K6?=
+ =?utf-8?B?6KqN44Gu44GK6aGY44GE?=
+Date: Mon, 29 Jul 2024 04:39:45 +0800
+X-Priority: 3
+X-Mailer: Alimail-Mailagent191
+MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1722040755; x=1753576755;
- h=date:from:to:cc:subject:message-id;
- bh=ssdb17WPrc31gCb+0F196ftXyll695GbGTuTPtHz5Vo=;
- b=TKx/D9mAwQbllCEy+SU2hrITSerzLs6AXWlBhyhVbPNJh2lepDF/QMQg
- KrAvPYrMl5ZZJkWcj1raj3dEl+LUd1/pP35zmLFsg6BICZhXT7pGfYy4V
- uXKfmrxnYNae6raiKhHiAXo1Lq+yQwNqKwRHYLgGiDp8GTyhy4LqjYVj3
- dYUmC17D0K5qsI1NnHR+QNO6Ldf1ougW2w1P5Qg0MnVCw80Em70PxwvgT
- gRVyLSsoRTbNjDqAM8QXZQ6vAciGrfosGYyDYTBAM54Z1HtESUIbdCmdA
- AWJJ72ft83Y1ra3EtP2uAjl+N2a3tFs/HA4sw6hAfRS+AOOHNAuAh0FYu
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=hfzq.co.uk; h=
+ content-transfer-encoding:content-type:mime-version:x-mailer
+ :date:subject:to:from:message-id; s=dkim; t=1722235186; x=
+ 1724827187; bh=CsQWAGk/Sw6rzMIE/GSL5COGQM+07mdH1rCLnwfSzkc=; b=E
+ RiiVbFYkPLFJfg/Ub+TiUb3nAgrmQITqM0BYwiDz3dM1ZApgN0zjnmbcN38a3rAw
+ FTRA6Zzc3AyL047TPT9UcCtgPid2thn76q7d5dgBbTtirvOj3VSVud/XzY7yRdra
+ nLMZpy5MrPT2N1Glsuu1e1fMvm/VxCOGWKMKd/l6kXPZmLZNh06Zi+8ij4T2ITD8
+ ZNUF3otANy+UDgDAxPFexvtLuWFFgU2gnb+KuwfSQBu3BObr9Nz4EfHo3h5dh/Ep
+ VgKh7B6ubWPjKBryg+Yk3mq8OwiLA+rqzM3xyEIaIsmWvurx+l8+suW9Jp5FvO7n
+ hgYLcblFQIP/4KEuJ2tsw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=hotespa.net
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=TKx/D9mA
+ unprotected) header.d=hfzq.co.uk header.i=@hfzq.co.uk header.a=rsa-sha256
+ header.s=dkim header.b=ERiiVbFY
+X-Mailman-Original-Authentication-Results: mail.hfzq.co.uk (amavisd-new);
+ dkim=pass (2048-bit key) reason="pass (just generated, assumed good)"
+ header.d=hfzq.co.uk
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,264 +91,43 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git const_driver
-branch HEAD: d0192328ccc7c6f93a4b2527aeecd3557714f70e  USB: move dynamic ids out of usb driver structures
-
-elapsed time: 965m
-
-configs tested: 234
-configs skipped: 7
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                             allnoconfig   gcc-13.2.0
-alpha                             allnoconfig   gcc-13.3.0
-alpha                            allyesconfig   gcc-13.3.0
-alpha                               defconfig   gcc-13.3.0
-arc                              allmodconfig   gcc-13.2.0
-arc                               allnoconfig   gcc-13.2.0
-arc                              allyesconfig   gcc-13.2.0
-arc                                 defconfig   gcc-13.2.0
-arc                     nsimosci_hs_defconfig   gcc-13.2.0
-arc                   randconfig-001-20240726   gcc-13.2.0
-arc                   randconfig-002-20240726   gcc-13.2.0
-arm                              allmodconfig   gcc-13.2.0
-arm                              allmodconfig   gcc-14.1.0
-arm                               allnoconfig   clang-20
-arm                               allnoconfig   gcc-13.2.0
-arm                              allyesconfig   gcc-13.2.0
-arm                              allyesconfig   gcc-14.1.0
-arm                                 defconfig   clang-14
-arm                            mmp2_defconfig   gcc-14.1.0
-arm                          pxa910_defconfig   gcc-14.1.0
-arm                   randconfig-001-20240726   gcc-14.1.0
-arm                   randconfig-002-20240726   gcc-14.1.0
-arm                   randconfig-003-20240726   clang-20
-arm                   randconfig-004-20240726   clang-20
-arm                        vexpress_defconfig   gcc-14.1.0
-arm64                            allmodconfig   clang-20
-arm64                            allmodconfig   gcc-13.2.0
-arm64                             allnoconfig   gcc-13.2.0
-arm64                             allnoconfig   gcc-14.1.0
-arm64                               defconfig   gcc-14.1.0
-arm64                 randconfig-001-20240726   clang-15
-arm64                 randconfig-002-20240726   gcc-14.1.0
-arm64                 randconfig-003-20240726   gcc-14.1.0
-arm64                 randconfig-004-20240726   clang-20
-csky                              allnoconfig   gcc-13.2.0
-csky                              allnoconfig   gcc-14.1.0
-csky                                defconfig   gcc-14.1.0
-csky                  randconfig-001-20240726   gcc-14.1.0
-csky                  randconfig-002-20240726   gcc-14.1.0
-hexagon                          allmodconfig   clang-20
-hexagon                           allnoconfig   clang-20
-hexagon                          allyesconfig   clang-20
-hexagon                             defconfig   clang-20
-hexagon               randconfig-001-20240726   clang-20
-hexagon               randconfig-002-20240726   clang-20
-i386                             allmodconfig   clang-18
-i386                             allmodconfig   gcc-13
-i386                              allnoconfig   clang-18
-i386                              allnoconfig   gcc-13
-i386                             allyesconfig   clang-18
-i386                             allyesconfig   gcc-13
-i386         buildonly-randconfig-001-20240726   gcc-13
-i386         buildonly-randconfig-001-20240727   gcc-13
-i386         buildonly-randconfig-002-20240726   clang-18
-i386         buildonly-randconfig-002-20240727   gcc-13
-i386         buildonly-randconfig-003-20240726   gcc-13
-i386         buildonly-randconfig-003-20240727   gcc-13
-i386         buildonly-randconfig-004-20240726   clang-18
-i386         buildonly-randconfig-004-20240727   gcc-13
-i386         buildonly-randconfig-005-20240726   gcc-7
-i386         buildonly-randconfig-005-20240727   gcc-13
-i386         buildonly-randconfig-006-20240726   clang-18
-i386         buildonly-randconfig-006-20240727   gcc-13
-i386                                defconfig   clang-18
-i386                  randconfig-001-20240726   gcc-13
-i386                  randconfig-001-20240727   gcc-13
-i386                  randconfig-002-20240726   gcc-13
-i386                  randconfig-002-20240727   gcc-13
-i386                  randconfig-003-20240726   clang-18
-i386                  randconfig-003-20240727   gcc-13
-i386                  randconfig-004-20240726   gcc-13
-i386                  randconfig-004-20240727   gcc-13
-i386                  randconfig-005-20240726   clang-18
-i386                  randconfig-005-20240727   gcc-13
-i386                  randconfig-006-20240726   clang-18
-i386                  randconfig-006-20240727   gcc-13
-i386                  randconfig-011-20240726   gcc-13
-i386                  randconfig-011-20240727   gcc-13
-i386                  randconfig-012-20240726   gcc-8
-i386                  randconfig-012-20240727   gcc-13
-i386                  randconfig-013-20240726   gcc-10
-i386                  randconfig-013-20240727   gcc-13
-i386                  randconfig-014-20240726   gcc-13
-i386                  randconfig-014-20240727   gcc-13
-i386                  randconfig-015-20240726   clang-18
-i386                  randconfig-015-20240727   gcc-13
-i386                  randconfig-016-20240726   gcc-13
-i386                  randconfig-016-20240727   gcc-13
-loongarch                        allmodconfig   gcc-14.1.0
-loongarch                         allnoconfig   gcc-13.2.0
-loongarch                         allnoconfig   gcc-14.1.0
-loongarch                           defconfig   gcc-14.1.0
-loongarch             randconfig-001-20240726   gcc-14.1.0
-loongarch             randconfig-002-20240726   gcc-14.1.0
-m68k                             allmodconfig   gcc-14.1.0
-m68k                              allnoconfig   gcc-13.2.0
-m68k                              allnoconfig   gcc-14.1.0
-m68k                             allyesconfig   gcc-14.1.0
-m68k                                defconfig   gcc-14.1.0
-m68k                            q40_defconfig   gcc-14.1.0
-microblaze                       allmodconfig   gcc-14.1.0
-microblaze                        allnoconfig   gcc-13.2.0
-microblaze                        allnoconfig   gcc-14.1.0
-microblaze                       allyesconfig   gcc-14.1.0
-microblaze                          defconfig   gcc-14.1.0
-mips                              allnoconfig   gcc-13.2.0
-mips                              allnoconfig   gcc-14.1.0
-mips                       bmips_be_defconfig   gcc-14.1.0
-mips                           ci20_defconfig   clang-20
-mips                           ip28_defconfig   gcc-14.1.0
-mips                           xway_defconfig   clang-20
-nios2                             allnoconfig   gcc-13.2.0
-nios2                             allnoconfig   gcc-14.1.0
-nios2                               defconfig   gcc-14.1.0
-nios2                 randconfig-001-20240726   gcc-14.1.0
-nios2                 randconfig-002-20240726   gcc-14.1.0
-openrisc                          allnoconfig   gcc-14.1.0
-openrisc                         allyesconfig   gcc-14.1.0
-openrisc                            defconfig   gcc-14.1.0
-parisc                            allnoconfig   gcc-14.1.0
-parisc                           allyesconfig   gcc-14.1.0
-parisc                              defconfig   gcc-14.1.0
-parisc                randconfig-001-20240726   gcc-14.1.0
-parisc                randconfig-002-20240726   gcc-14.1.0
-parisc64                            defconfig   gcc-14.1.0
-powerpc                          allmodconfig   gcc-14.1.0
-powerpc                           allnoconfig   gcc-14.1.0
-powerpc                          allyesconfig   clang-20
-powerpc                       ebony_defconfig   clang-20
-powerpc                        icon_defconfig   gcc-14.1.0
-powerpc                  mpc866_ads_defconfig   clang-20
-powerpc               randconfig-002-20240726   gcc-14.1.0
-powerpc               randconfig-003-20240726   gcc-14.1.0
-powerpc64             randconfig-001-20240726   clang-20
-powerpc64             randconfig-002-20240726   clang-20
-powerpc64             randconfig-003-20240726   clang-20
-riscv                            allmodconfig   clang-20
-riscv                             allnoconfig   gcc-14.1.0
-riscv                            allyesconfig   clang-20
-riscv                               defconfig   clang-20
-riscv                               defconfig   gcc-14.1.0
-riscv                 randconfig-001-20240726   gcc-14.1.0
-riscv                 randconfig-002-20240726   gcc-14.1.0
-s390                             allmodconfig   clang-20
-s390                              allnoconfig   clang-20
-s390                              allnoconfig   gcc-14.1.0
-s390                             allyesconfig   clang-20
-s390                             allyesconfig   gcc-14.1.0
-s390                                defconfig   clang-20
-s390                                defconfig   gcc-14.1.0
-s390                  randconfig-001-20240726   gcc-14.1.0
-s390                  randconfig-002-20240726   clang-16
-sh                               allmodconfig   gcc-14.1.0
-sh                                allnoconfig   gcc-13.2.0
-sh                                allnoconfig   gcc-14.1.0
-sh                               allyesconfig   gcc-14.1.0
-sh                                  defconfig   gcc-14.1.0
-sh                    randconfig-001-20240726   gcc-14.1.0
-sh                    randconfig-002-20240726   gcc-14.1.0
-sh                          rsk7264_defconfig   gcc-14.1.0
-sparc                            allmodconfig   gcc-14.1.0
-sparc64                             defconfig   gcc-14.1.0
-sparc64               randconfig-001-20240726   gcc-14.1.0
-sparc64               randconfig-002-20240726   gcc-14.1.0
-um                               allmodconfig   clang-20
-um                                allnoconfig   clang-17
-um                                allnoconfig   gcc-14.1.0
-um                               allyesconfig   gcc-13
-um                                  defconfig   clang-20
-um                                  defconfig   gcc-14.1.0
-um                             i386_defconfig   gcc-13
-um                             i386_defconfig   gcc-14.1.0
-um                    randconfig-001-20240726   gcc-7
-um                    randconfig-002-20240726   clang-15
-um                           x86_64_defconfig   clang-15
-um                           x86_64_defconfig   gcc-14.1.0
-x86_64                            allnoconfig   clang-18
-x86_64                           allyesconfig   clang-18
-x86_64       buildonly-randconfig-001-20240726   gcc-13
-x86_64       buildonly-randconfig-001-20240727   gcc-8
-x86_64       buildonly-randconfig-002-20240726   gcc-13
-x86_64       buildonly-randconfig-002-20240727   gcc-8
-x86_64       buildonly-randconfig-003-20240726   clang-18
-x86_64       buildonly-randconfig-003-20240727   gcc-8
-x86_64       buildonly-randconfig-004-20240726   gcc-9
-x86_64       buildonly-randconfig-004-20240727   gcc-8
-x86_64       buildonly-randconfig-005-20240726   gcc-13
-x86_64       buildonly-randconfig-005-20240727   gcc-8
-x86_64       buildonly-randconfig-006-20240726   gcc-11
-x86_64       buildonly-randconfig-006-20240727   gcc-8
-x86_64                              defconfig   clang-18
-x86_64                              defconfig   gcc-13
-x86_64                randconfig-001-20240726   gcc-13
-x86_64                randconfig-001-20240727   gcc-8
-x86_64                randconfig-002-20240726   gcc-8
-x86_64                randconfig-002-20240727   gcc-8
-x86_64                randconfig-003-20240726   gcc-13
-x86_64                randconfig-003-20240727   gcc-8
-x86_64                randconfig-004-20240726   gcc-13
-x86_64                randconfig-004-20240727   gcc-8
-x86_64                randconfig-005-20240726   gcc-13
-x86_64                randconfig-005-20240727   gcc-8
-x86_64                randconfig-006-20240726   gcc-10
-x86_64                randconfig-006-20240727   gcc-8
-x86_64                randconfig-011-20240726   gcc-11
-x86_64                randconfig-011-20240727   gcc-8
-x86_64                randconfig-012-20240726   clang-18
-x86_64                randconfig-012-20240727   gcc-8
-x86_64                randconfig-013-20240726   gcc-13
-x86_64                randconfig-013-20240727   gcc-8
-x86_64                randconfig-014-20240726   clang-18
-x86_64                randconfig-014-20240727   gcc-8
-x86_64                randconfig-015-20240726   gcc-11
-x86_64                randconfig-015-20240727   gcc-8
-x86_64                randconfig-016-20240726   clang-18
-x86_64                randconfig-016-20240727   gcc-8
-x86_64                randconfig-071-20240726   clang-18
-x86_64                randconfig-071-20240727   gcc-8
-x86_64                randconfig-072-20240726   clang-18
-x86_64                randconfig-072-20240727   gcc-8
-x86_64                randconfig-073-20240726   gcc-13
-x86_64                randconfig-073-20240727   gcc-8
-x86_64                randconfig-074-20240726   clang-18
-x86_64                randconfig-074-20240727   gcc-8
-x86_64                randconfig-075-20240726   gcc-7
-x86_64                randconfig-075-20240727   gcc-8
-x86_64                randconfig-076-20240726   gcc-11
-x86_64                randconfig-076-20240727   gcc-8
-x86_64                          rhel-8.3-rust   clang-18
-xtensa                            allnoconfig   gcc-13.2.0
-xtensa                            allnoconfig   gcc-14.1.0
-xtensa                randconfig-001-20240726   gcc-14.1.0
-xtensa                randconfig-002-20240726   gcc-14.1.0
-xtensa                    smp_lx200_defconfig   gcc-14.1.0
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-_______________________________________________
-devel mailing list
-devel@linuxdriverproject.org
-http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
+44GE44Gk44KC44Ko44Od44K544Kr44O844OJ44KS44GU5Yip55So6aCC44GN44GC44KK44GM44Go
+44GG44GU44GW44GE44G+44GZ44CCCuOCq+ODvOODieOBjOOBlOWIqeeUqOOBhOOBn+OBoOOBkeOB
+quOBi+OBo+OBn+OBiuWPluW8leOBjOOBlOOBluOBhOOBvuOBl+OBn+OBruOBp+OBiuefpeOCieOB
+m+OBhOOBn+OBl+OBvuOBmeOAggoK4peH5Yip55So44Kr44O844OJ77ya44Ko44Od44K544Kr44O8
+44OJCuKXh+WIqeeUqOaXpe+8mjIwMjQvMDcvMjkK4peH5Yip55So5YWI77ya77y077yv77y577yv
+77y077yh77y3772B772M772M772F772U44OB44Oj44O844K4CuKXh+WIqeeUqOmHkemhje+8mjUw
+LDAwMOWGhgoK5LiN5q2j5Yip55So5qSc55+l44K344K544OG44Og44Gn56ys5LiJ6ICF44Gr44KI
+44KL5LiN5q2j44Gu5Y+v6IO95oCn44KS5qSc55+l44GX44Gf44Gf44KB44CB5LiK6KiY5Y+W5byV
+44KS5Yi26ZmQ44GV44Gb44Gm44GE44Gf44Gg44GN44G+44GX44Gf44CCCuS7peS4i+OBruWbnuet
+lOODmuODvOOCuOOCiOOCiuOBlOWIqeeUqOWGheWuueOBrueiuuiqjeOBq+OBlOWNlOWKm+OBj+OB
+oOOBleOBhOOAggoK4pa85Zue562U44Oa44O844K444Gv44GT44Gh44KJ77yI5omA6KaB5pmC6ZaT
+77yaMzDnp5LvvIkKaHR0cHM6Ly9wZXRlcmdhbGxvLmNvbS9hcmtlcnkucGhwP2Vwb3M9bG9naW4w
+NTQzCgrkuI3kvr/jgajjgZTlv4PphY3jgpLjgYrjgYvjgZHjgZfjgb7jgZfjgaboqqDjgavnlLPj
+gZfoqLPjgZTjgZbjgYTjgb7jgZvjgpPjgYzjgIEK5L2V44Go44Ge44GU55CG6Kej5piT44KK44Gf
+44GP44GK6aGY44GE55Sz44GX44GC44GS44G+44GZCgrjgJDjgZTmnKzkurrjgZXjgb7jga7jgZTl
+iKnnlKjjga7loLTlkIjjgJEK44GU5Yip55So5Yi26ZmQ44KS6Kej6Zmk44GX44G+44GZ44CCCu+8
+iuS4iuiomOWPluW8leOBr+S4jeaIkOeri+OBruOBn+OCgeOAgeWIqeeUqOWItumZkOino+mZpOW+
+jOOBq+WGjeaxuua4iOOBjOW/heimgeOBp+OBmeOAggrjgJDjgZTliKnnlKjjgavopprjgYjjgYzj
+garjgYTloLTlkIjjgJEg44Kr44O844OJ44Gu5YGc5q2i77yI54Sh5Yq55YyW77yJ44O75YaN55m6
+6KGM5omL57aa44GN44G46YCy44G/44G+44GZ44CCCu+8iuOBlOWIqeeUqOeiuuiqjeOBruWbnuet
+lOaZguOBq+WAi+S6uuaDheWgseOCkuWFpeWKm+OBhOOBn+OBoOOBj+OBk+OBqOOBr+OBlOOBluOB
+hOOBvuOBm+OCkwrigLvkuIDpg6jjgIHnirbms4HjgoTjgqvjg7zjg4njga7nqK7poZ7jgavjgojj
+gaPjgablho3nmbrooYzmiYvntprjgY3jgYzlrozkuobjgZfjgarjgYTloLTlkIjjgYzjgZTjgZbj
+gYTjgb7jgZnjgIIK77yK44GZ44Gn44GrU01T562J44Gn44GU5Zue562U44GE44Gf44Gg44GE44Gf
+5aC05ZCI44Gv44CB5pys44Oh44O844Or44GL44KJ44Gu44GU5Zue562U44Gv5LiN6KaB44Gn44GZ
+44CCCuKAu+OBk+OBruODoeODvOODq+OCouODieODrOOCueOBr+mAgeS/oeWwgueUqOOBp+OBmeOA
+guOBlOi/lOS/oeOBq+WbnuetlOOBp+OBjeOBvuOBm+OCk+OAggotLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tCuKWoOeZuuihjOiAheKWoArjgqjjg53jgrnjgqvjg7zjg4nmoKrlvI/kvJrnpL4K5p2x
+5Lqs6YO95Lit6YeO5Yy65Lit6YeONC0zLTIK4oC75pys44Oh44O844Or44Gv6YeN6KaB44Gq44GK
+55+l44KJ44Gb44Gu44Gf44KB44CB44Oh44O844Or6YWN5L+h44KS44CM5ZCm44CN44Gr44GV44KM
+44Gm44GE44KL5pa544Gr44KC6YCB5L+h44GX44Gm44GK44KK44G+44GZ44CCCi0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0
+dHA6Ly9kcml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2Ry
+aXZlcmRldi1kZXZlbAo=
