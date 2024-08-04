@@ -1,72 +1,64 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 91A4C945916
-	for <lists+driverdev-devel@lfdr.de>; Fri,  2 Aug 2024 09:42:10 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0164F946FEC
+	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Aug 2024 19:04:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D25D084500;
-	Fri,  2 Aug 2024 07:42:08 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 79BF04034B;
+	Sun,  4 Aug 2024 17:04:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UK9GTSJXvoP2; Fri,  2 Aug 2024 07:42:08 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CZLTFYtYPg2k; Sun,  4 Aug 2024 17:04:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A48484505
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 660F7403B7
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0A48484505;
-	Fri,  2 Aug 2024 07:42:08 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 660F7403B7;
+	Sun,  4 Aug 2024 17:04:24 +0000 (UTC)
+X-Original-To: driverdev-devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 00E561BF476
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2024 07:42:06 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 172A51BF340
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  4 Aug 2024 17:04:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EFFE16073C
- for <devel@linuxdriverproject.org>; Fri,  2 Aug 2024 07:42:05 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 040654034B
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  4 Aug 2024 17:04:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GoakwOznhZJP for <devel@linuxdriverproject.org>;
- Fri,  2 Aug 2024 07:42:05 +0000 (UTC)
-X-Greylist: delayed 375 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 02 Aug 2024 07:42:04 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5824F6073F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5824F6073F
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=89.40.118.23;
- helo=mail.vectorspeedbiz.com; envelope-from=julien.keller@vectorspeedbiz.com;
- receiver=<UNKNOWN> 
-Received: from mail.vectorspeedbiz.com (mail.vectorspeedbiz.com [89.40.118.23])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5824F6073F
- for <devel@driverdev.osuosl.org>; Fri,  2 Aug 2024 07:42:04 +0000 (UTC)
-Received: by mail.vectorspeedbiz.com (Postfix, from userid 1002)
- id C044584756; Fri,  2 Aug 2024 09:35:36 +0200 (CEST)
-Received: by mail.vectorspeedbiz.com for <devel@driverdev.osuosl.org>;
- Fri,  2 Aug 2024 07:35:32 GMT
-Message-ID: <20240802084500-0.1.4o.3ag5.0.07919xq8fd@vectorspeedbiz.com>
-Date: Fri,  2 Aug 2024 07:35:32 GMT
-From: "Julien Keller" <julien.keller@vectorspeedbiz.com>
-To: <devel@driverdev.osuosl.org>
-Subject: Mobile Phone Wholesale
-X-Mailer: mail.vectorspeedbiz.com
-MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=vectorspeedbiz.com; s=mail; t=1722584140;
- bh=xrNEpnWQZ8snhxPgU3EBuIKpICs42jmB6iTHM0+PLvw=;
- h=Date:From:To:Subject:From;
- b=YFFVr9QpNYM+DetJ5UYhsY2gapy+nshCAwM9iQGQR3k6pfOwmFQNBaiXcAa5m9RGi
- G60zuqqvbCfPuKBKhR1bCwK6y0KPcvBYJTSulxQ9bV/+IUl1e0US32zdC7Z1WHiJg2
- PnfVwgbx5X+qzeU591iALO49uevZgzMoNq/+j/G0UBtKg/FJ1iAebtpR2emxm/jaiw
- o2WH/LFrjcyPnGHH72aiM9rnoBiV47yFZaHbxENgmH3xCPW+2hmKptFl3SGP0GJz3p
- Z1faHVKNMkIJrPcrivKcYOGSmduzj3lJvkCFOcXSCr2bjc5QAriah7Epjhi3h8bWZE
- tUCmCfSLoNzaA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=vectorspeedbiz.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=vectorspeedbiz.com header.i=@vectorspeedbiz.com
- header.a=rsa-sha256 header.s=mail header.b=YFFVr9Qp
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id NUs4GkE9s-Ru for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  4 Aug 2024 17:04:21 +0000 (UTC)
+X-Greylist: delayed 914 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 04 Aug 2024 17:04:19 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 11405400F1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 11405400F1
+Received: from sh11825.ispgateway.de (sh11825.ispgateway.de [92.205.64.114])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 11405400F1
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  4 Aug 2024 17:04:19 +0000 (UTC)
+Received: from sh11825.ispgateway.de (_gateway [IPv6:fd00:dead:beef::1])
+ by sh11825.ispgateway.de (Postfix) with ESMTPS id 3384849114
+ for <driverdev-devel@linuxdriverproject.org>;
+ Sun,  4 Aug 2024 18:48:58 +0200 (CEST)
+Received: (from 125741@localhost)
+ by sh11825.ispgateway.de (8.15.2/8.15.2/Submit) id 474GmvQH010569;
+ Sun, 4 Aug 2024 18:48:57 +0200
+Date: Sun, 4 Aug 2024 18:48:57 +0200
+Message-Id: <202408041648.474GmvQH010569@sh11825.ispgateway.de>
+X-Authentication-Warning: sh11825.ispgateway.de: 125741 set sender to
+ buchhaltung@hanskruchen.de using -f
+To: driverdev-devel@linuxdriverproject.org
+Subject: 
+X-PHP-Originating-Script: 125741:intro.php
+From: <driverdev-devel@linuxdriverproject.org>
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linuxdriverproject.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org; spf=fail
+ smtp.mailfrom=hanskruchen.de
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,24 +71,32 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Good morning, 
+Hello
+As you may have noticed, I sent you an email from your email account driverdev-devel@linuxdriverproject.org 
+This means that I have full access to your account
+I have been watching you for a few months
+The problem is that you were infected with njrat through an adult website that you visited
+If you don't know about this, let me explain
+njrat gives me full access and control over your device.
+This means that I can see everything on your screen, turn on the camera and microphone, but you don't know
+I also have access to all your contacts and all your correspondence.
+On the left half of the screen, I made a video showing how you pleasured yourself, on the right half you see the video that you watched.
+With a click of the mouse I can send this video to all your emails and contacts on social networks
+I can also see access to all your communication and messaging programs that you use.
+If you want to avoid this,
+Transfer the amount of 1200 USD to my bitcoin address write moonpay or banxa or go to p2p exchange if you don't know
+My Bitcoin address (BTC wallet): 1J9mGro5tqDNje8qKnLJ36a5vj2Wh2bv1J 
+After the payment is received, I will delete the video and you will not hear from me again
+I am giving you 48 hours to pay
+Don't forget that I will see you when I open the message, the counter will start
+If I notice that you have shared this message with someone else, the video will be posted immediately
 
-As a wholesaler of GSM mobile phones and accessories, we offer smartphones such as Motorola, Google, Honor, OnePlus, Oppo, POCO, Samsung and Xiaomi. 
-
-By eliminating intermediaries, we provide truly competitive prices.
-
-All phones are in stock and ready for immediate shipment. We guarantee delivery within 48 hours.
-
-If you are interested in cooperation or have questions, please reply to this e-mail address.
-
-
-Best regards
-Julien Keller
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
