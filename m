@@ -2,62 +2,58 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0164F946FEC
-	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Aug 2024 19:04:28 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 62789947001
+	for <lists+driverdev-devel@lfdr.de>; Sun,  4 Aug 2024 19:16:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 79BF04034B;
-	Sun,  4 Aug 2024 17:04:25 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id F1D4F40342;
+	Sun,  4 Aug 2024 17:16:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CZLTFYtYPg2k; Sun,  4 Aug 2024 17:04:24 +0000 (UTC)
+ id mNSEcs4PSDL7; Sun,  4 Aug 2024 17:16:17 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 660F7403B7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D39D94034B
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 660F7403B7;
-	Sun,  4 Aug 2024 17:04:24 +0000 (UTC)
-X-Original-To: driverdev-devel@linuxdriverproject.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id D39D94034B;
+	Sun,  4 Aug 2024 17:16:16 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 172A51BF340
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  4 Aug 2024 17:04:22 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3762E1BF340
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2024 17:16:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 040654034B
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  4 Aug 2024 17:04:22 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 321A7606A6
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2024 17:16:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NUs4GkE9s-Ru for <driverdev-devel@linuxdriverproject.org>;
- Sun,  4 Aug 2024 17:04:21 +0000 (UTC)
-X-Greylist: delayed 914 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 04 Aug 2024 17:04:19 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 11405400F1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 11405400F1
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HYLrSWwP0t5e for <devel@linuxdriverproject.org>;
+ Sun,  4 Aug 2024 17:16:14 +0000 (UTC)
+X-Greylist: delayed 1543 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 04 Aug 2024 17:16:13 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3F1BA6065A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3F1BA6065A
 Received: from sh11825.ispgateway.de (sh11825.ispgateway.de [92.205.64.114])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 11405400F1
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  4 Aug 2024 17:04:19 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3F1BA6065A
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2024 17:16:13 +0000 (UTC)
 Received: from sh11825.ispgateway.de (_gateway [IPv6:fd00:dead:beef::1])
- by sh11825.ispgateway.de (Postfix) with ESMTPS id 3384849114
- for <driverdev-devel@linuxdriverproject.org>;
- Sun,  4 Aug 2024 18:48:58 +0200 (CEST)
+ by sh11825.ispgateway.de (Postfix) with ESMTPS id 88167493D7
+ for <devel@linuxdriverproject.org>; Sun,  4 Aug 2024 18:50:17 +0200 (CEST)
 Received: (from 125741@localhost)
- by sh11825.ispgateway.de (8.15.2/8.15.2/Submit) id 474GmvQH010569;
- Sun, 4 Aug 2024 18:48:57 +0200
-Date: Sun, 4 Aug 2024 18:48:57 +0200
-Message-Id: <202408041648.474GmvQH010569@sh11825.ispgateway.de>
+ by sh11825.ispgateway.de (8.15.2/8.15.2/Submit) id 474GoGjh011110;
+ Sun, 4 Aug 2024 18:50:16 +0200
+Date: Sun, 4 Aug 2024 18:50:16 +0200
+Message-Id: <202408041650.474GoGjh011110@sh11825.ispgateway.de>
 X-Authentication-Warning: sh11825.ispgateway.de: 125741 set sender to
  buchhaltung@hanskruchen.de using -f
-To: driverdev-devel@linuxdriverproject.org
+To: devel@linuxdriverproject.org
 Subject: 
 X-PHP-Originating-Script: 125741:intro.php
-From: <driverdev-devel@linuxdriverproject.org>
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+From: <devel@linuxdriverproject.org>
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linuxdriverproject.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org; spf=fail
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org; spf=fail
  smtp.mailfrom=hanskruchen.de
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
@@ -78,7 +74,7 @@ Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
 Hello
-As you may have noticed, I sent you an email from your email account driverdev-devel@linuxdriverproject.org 
+As you may have noticed, I sent you an email from your email account devel@linuxdriverproject.org 
 This means that I have full access to your account
 I have been watching you for a few months
 The problem is that you were infected with njrat through an adult website that you visited
