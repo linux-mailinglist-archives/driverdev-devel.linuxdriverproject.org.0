@@ -1,83 +1,91 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C586C95139E
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Aug 2024 06:52:52 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 519E9952102
+	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Aug 2024 19:24:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1217340102;
-	Wed, 14 Aug 2024 04:52:51 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id V-Q53eNBLdUI; Wed, 14 Aug 2024 04:52:49 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7540340451
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7540340451;
-	Wed, 14 Aug 2024 04:52:49 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 390051BF2FF
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2024 04:52:47 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3469F6070A
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2024 04:52:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 870B4606D5;
+	Wed, 14 Aug 2024 17:24:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hJjirgvV9BqY for <devel@linuxdriverproject.org>;
- Wed, 14 Aug 2024 04:52:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
+ id xrjSxuGBjXeW; Wed, 14 Aug 2024 17:24:34 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 59623606FA
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 59623606FA;
+	Wed, 14 Aug 2024 17:24:34 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6B16A1BF5F6
+ for <devel@linuxdriverproject.org>; Wed, 14 Aug 2024 17:24:32 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5902A402BC
+ for <devel@linuxdriverproject.org>; Wed, 14 Aug 2024 17:24:32 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8hofKNOjpq4B for <devel@linuxdriverproject.org>;
+ Wed, 14 Aug 2024 17:24:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 98289605D7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 98289605D7
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 98289605D7
- for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2024 04:52:45 +0000 (UTC)
-X-CSE-ConnectionGUID: i7nbEeohQYStIiBRfccBRg==
-X-CSE-MsgGUID: wOQj7lPZQvGaaLWo3C2cXA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11163"; a="21959763"
-X-IronPort-AV: E=Sophos;i="6.09,287,1716274800"; d="scan'208";a="21959763"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2024 21:52:44 -0700
-X-CSE-ConnectionGUID: 8HOlxPxZQbe4wGeR9rlwlw==
-X-CSE-MsgGUID: 3K2O+D1bR1+kpjy1KVbViA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E181940BEA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E181940BEA
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E181940BEA
+ for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2024 17:24:30 +0000 (UTC)
+X-CSE-ConnectionGUID: CUCdiswXQaihbLjiZiFqNA==
+X-CSE-MsgGUID: dpNbTtPkQTedxvzyMQ4QQA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11164"; a="32564571"
+X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="32564571"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Aug 2024 10:24:29 -0700
+X-CSE-ConnectionGUID: B1w5T3AwRBejyYsR2BN9bw==
+X-CSE-MsgGUID: DGOFRB0ZR8Kvs/uEdul9jQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,287,1716274800"; d="scan'208";a="63750211"
+X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="89790981"
 Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
- by orviesa005.jf.intel.com with ESMTP; 13 Aug 2024 21:52:43 -0700
+ by orviesa002.jf.intel.com with ESMTP; 14 Aug 2024 10:24:24 -0700
 Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1se5zz-00019A-2H;
- Wed, 14 Aug 2024 04:52:39 +0000
-Date: Wed, 14 Aug 2024 12:52:11 +0800
+ (envelope-from <lkp@intel.com>) id 1seHjS-0002bz-1S;
+ Wed, 14 Aug 2024 17:24:22 +0000
+Date: Thu, 15 Aug 2024 01:24:21 +0800
 From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [staging:staging-testing] BUILD SUCCESS
- d727f0217ad6e92cfcdc80b4d01cea1cabc74c75
-Message-ID: <202408141209.c98ZFyow-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+To: Li Li <dualli@chromium.org>, dualli@google.com,
+ gregkh@linuxfoundation.org, arve@android.com, tkjos@android.com,
+ maco@android.com, joel@joelfernandes.org, brauner@kernel.org,
+ cmllamas@google.com, surenb@google.com, arnd@arndb.de,
+ masahiroy@kernel.org, devel@driverdev.osuosl.org,
+ linux-kernel@vger.kernel.org, hridya@google.com, smoreland@google.com
+Subject: Re: [PATCH v1] add binder genl for txn report
+Message-ID: <202408150004.BAtK29zS-lkp@intel.com>
+References: <20240812211844.4107494-1-dualli@chromium.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20240812211844.4107494-1-dualli@chromium.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723611166; x=1755147166;
- h=date:from:to:cc:subject:message-id;
- bh=iD3WDH7TcleugCKrb3XMcHbn8NLknfi3gEwm9aLijPM=;
- b=L/oJu0RD449GF7bsKtBvn1dBTN3rh0qpp4kVlv4+5BBXd3eNaAMKl7GR
- ukM0YdE17ZqsSxPcBsLFmBrDnyUdVU0EPgod5Csp2dZ2BbLF1/lwcX+nN
- dvQaqB1lGWvKKqkvWBHM6V3HUy+FqKlVss6/eVlhOtfJVpYArQ0Sl/eZD
- Y1jNg4L87aB74X+lEg6KKqufcegt3gdP8gAEq8UmKRUAC9zJbfs70PVHL
- +x/UIB7q8hm19Nh87tdZ+4z2UT5I4l9mmErnD/LiFkTtzMdSImLkJ5y7W
- dcSrTGR+eC6paHZPtAlWMnSvrJK6KKKsnMVuErgW2IjOjSYXadRp4ViIu
+ t=1723656271; x=1755192271;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=/2nqj1zk1eK5KRY1Jy6nsIwDR99wK4nO4cOzT9n6K3s=;
+ b=LR+EWNyAJA7xcUz2gz0LXeKeVm2jYh6wUxV+ZAzHdNPrxp+2D5P5DXA+
+ seqSbeV8bnNgTXXiqoDevYKbdPbFHTC5dUmQFiQBhCkvzzpCJ9lQ2ugWb
+ a45jprmEVIEFi0j61XrMKOaug4gxNaJNR9eMLZZwSHU6zH23CSUiarI0j
+ 03w3Sg5Onrf8xsXpVxKmZJmKPRW4poLmpMXz0QJFGXdHjNeNZV1ADXoJs
+ SMIpZFWRWF4xGZX/2Vh7ulO2BVgJNXFvMNB56MWX8vIbriJ5BDlaGvmwN
+ +qF2QN0TnrLWsHY2dDJE9D4rQZkqnlnjusBle2R+JRbN79tlM5WzfFhvq
  g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=L/oJu0RD
+ header.s=Intel header.b=LR+EWNyA
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,250 +98,64 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-MIME-Version: 1.0
+Cc: kernel-team@android.com, oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
-branch HEAD: d727f0217ad6e92cfcdc80b4d01cea1cabc74c75  Staging: rtl8192e: Rename variable nSubframe_Length
+Hi Li,
 
-elapsed time: 1095m
+kernel test robot noticed the following build errors:
 
-configs tested: 225
-configs skipped: 7
+[auto build test ERROR on staging/staging-testing]
+[also build test ERROR on staging/staging-next staging/staging-linus linus/master v6.11-rc3 next-20240814]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+url:    https://github.com/intel-lab-lkp/linux/commits/Li-Li/add-binder-genl-for-txn-report/20240814-150338
+base:   staging/staging-testing
+patch link:    https://lore.kernel.org/r/20240812211844.4107494-1-dualli%40chromium.org
+patch subject: [PATCH v1] add binder genl for txn report
+config: x86_64-buildonly-randconfig-002-20240814 (https://download.01.org/0day-ci/archive/20240815/202408150004.BAtK29zS-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240815/202408150004.BAtK29zS-lkp@intel.com/reproduce)
 
-tested configs:
-alpha                             allnoconfig   gcc-13.2.0
-alpha                             allnoconfig   gcc-13.3.0
-alpha                            allyesconfig   gcc-13.3.0
-alpha                               defconfig   gcc-13.2.0
-arc                              allmodconfig   gcc-13.2.0
-arc                               allnoconfig   gcc-13.2.0
-arc                              allyesconfig   gcc-13.2.0
-arc                                 defconfig   gcc-13.2.0
-arc                   randconfig-001-20240813   gcc-13.2.0
-arc                   randconfig-002-20240813   gcc-13.2.0
-arc                           tb10x_defconfig   gcc-13.2.0
-arm                              allmodconfig   gcc-13.2.0
-arm                              allmodconfig   gcc-14.1.0
-arm                               allnoconfig   clang-20
-arm                               allnoconfig   gcc-13.2.0
-arm                              allyesconfig   gcc-13.2.0
-arm                              allyesconfig   gcc-14.1.0
-arm                         assabet_defconfig   gcc-13.2.0
-arm                                 defconfig   gcc-13.2.0
-arm                            dove_defconfig   gcc-12.4.0
-arm                            hisi_defconfig   gcc-12.4.0
-arm                          moxart_defconfig   gcc-12.4.0
-arm                         mv78xx0_defconfig   gcc-12.4.0
-arm                       omap2plus_defconfig   gcc-13.2.0
-arm                   randconfig-001-20240813   gcc-13.2.0
-arm                   randconfig-002-20240813   gcc-13.2.0
-arm                   randconfig-003-20240813   gcc-13.2.0
-arm                   randconfig-004-20240813   gcc-13.2.0
-arm                           sunxi_defconfig   gcc-13.2.0
-arm                         wpcm450_defconfig   gcc-12.4.0
-arm64                            allmodconfig   clang-20
-arm64                            allmodconfig   gcc-13.2.0
-arm64                             allnoconfig   gcc-13.2.0
-arm64                             allnoconfig   gcc-14.1.0
-arm64                               defconfig   gcc-13.2.0
-arm64                 randconfig-001-20240813   gcc-13.2.0
-arm64                 randconfig-002-20240813   gcc-13.2.0
-arm64                 randconfig-003-20240813   gcc-13.2.0
-arm64                 randconfig-004-20240813   gcc-13.2.0
-csky                              allnoconfig   gcc-13.2.0
-csky                              allnoconfig   gcc-14.1.0
-csky                                defconfig   gcc-13.2.0
-csky                  randconfig-001-20240813   gcc-13.2.0
-csky                  randconfig-002-20240813   gcc-13.2.0
-hexagon                          allmodconfig   clang-20
-hexagon                           allnoconfig   clang-20
-hexagon                          allyesconfig   clang-20
-i386                             alldefconfig   gcc-12.4.0
-i386                             allmodconfig   clang-18
-i386                             allmodconfig   gcc-12
-i386                              allnoconfig   clang-18
-i386                              allnoconfig   gcc-12
-i386                             allyesconfig   clang-18
-i386                             allyesconfig   gcc-12
-i386         buildonly-randconfig-001-20240813   gcc-12
-i386         buildonly-randconfig-001-20240814   clang-18
-i386         buildonly-randconfig-002-20240813   gcc-12
-i386         buildonly-randconfig-002-20240814   clang-18
-i386         buildonly-randconfig-003-20240813   gcc-12
-i386         buildonly-randconfig-003-20240814   clang-18
-i386         buildonly-randconfig-004-20240813   gcc-11
-i386         buildonly-randconfig-004-20240814   clang-18
-i386         buildonly-randconfig-005-20240813   clang-18
-i386         buildonly-randconfig-005-20240814   clang-18
-i386         buildonly-randconfig-006-20240813   gcc-12
-i386         buildonly-randconfig-006-20240814   clang-18
-i386                                defconfig   clang-18
-i386                  randconfig-001-20240813   gcc-12
-i386                  randconfig-001-20240814   clang-18
-i386                  randconfig-002-20240813   clang-18
-i386                  randconfig-002-20240814   clang-18
-i386                  randconfig-003-20240813   gcc-12
-i386                  randconfig-003-20240814   clang-18
-i386                  randconfig-004-20240813   gcc-12
-i386                  randconfig-004-20240814   clang-18
-i386                  randconfig-005-20240813   clang-18
-i386                  randconfig-005-20240814   clang-18
-i386                  randconfig-006-20240813   clang-18
-i386                  randconfig-006-20240814   clang-18
-i386                  randconfig-011-20240813   gcc-12
-i386                  randconfig-011-20240814   clang-18
-i386                  randconfig-012-20240813   gcc-12
-i386                  randconfig-012-20240814   clang-18
-i386                  randconfig-013-20240813   clang-18
-i386                  randconfig-013-20240814   clang-18
-i386                  randconfig-014-20240813   clang-18
-i386                  randconfig-014-20240814   clang-18
-i386                  randconfig-015-20240813   clang-18
-i386                  randconfig-015-20240814   clang-18
-i386                  randconfig-016-20240813   clang-18
-i386                  randconfig-016-20240814   clang-18
-loongarch                        allmodconfig   gcc-14.1.0
-loongarch                         allnoconfig   gcc-13.2.0
-loongarch                         allnoconfig   gcc-14.1.0
-loongarch                           defconfig   gcc-13.2.0
-loongarch             randconfig-001-20240813   gcc-13.2.0
-loongarch             randconfig-002-20240813   gcc-13.2.0
-m68k                             allmodconfig   gcc-14.1.0
-m68k                              allnoconfig   gcc-13.2.0
-m68k                              allnoconfig   gcc-14.1.0
-m68k                             allyesconfig   gcc-14.1.0
-m68k                         amcore_defconfig   gcc-12.4.0
-m68k                                defconfig   gcc-13.2.0
-m68k                        mvme16x_defconfig   gcc-12.4.0
-microblaze                       allmodconfig   gcc-14.1.0
-microblaze                        allnoconfig   gcc-13.2.0
-microblaze                        allnoconfig   gcc-14.1.0
-microblaze                       allyesconfig   gcc-14.1.0
-microblaze                          defconfig   gcc-13.2.0
-mips                              allnoconfig   gcc-13.2.0
-mips                              allnoconfig   gcc-14.1.0
-mips                       bmips_be_defconfig   gcc-13.2.0
-mips                         rt305x_defconfig   gcc-13.2.0
-nios2                             allnoconfig   gcc-13.2.0
-nios2                             allnoconfig   gcc-14.1.0
-nios2                               defconfig   gcc-13.2.0
-nios2                 randconfig-001-20240813   gcc-13.2.0
-nios2                 randconfig-002-20240813   gcc-13.2.0
-openrisc                          allnoconfig   gcc-14.1.0
-openrisc                         allyesconfig   gcc-14.1.0
-openrisc                            defconfig   gcc-14.1.0
-openrisc                  or1klitex_defconfig   gcc-12.4.0
-parisc                           allmodconfig   gcc-14.1.0
-parisc                            allnoconfig   gcc-14.1.0
-parisc                           allyesconfig   gcc-14.1.0
-parisc                              defconfig   gcc-14.1.0
-parisc                randconfig-001-20240813   gcc-13.2.0
-parisc                randconfig-002-20240813   gcc-13.2.0
-parisc64                            defconfig   gcc-13.2.0
-powerpc                          allmodconfig   gcc-14.1.0
-powerpc                           allnoconfig   gcc-14.1.0
-powerpc                          allyesconfig   clang-20
-powerpc                          allyesconfig   gcc-14.1.0
-powerpc                      katmai_defconfig   gcc-12.4.0
-powerpc                      katmai_defconfig   gcc-13.2.0
-powerpc                 mpc837x_rdb_defconfig   gcc-13.2.0
-powerpc                      ppc44x_defconfig   gcc-13.2.0
-powerpc                       ppc64_defconfig   gcc-12.4.0
-powerpc               randconfig-002-20240813   gcc-13.2.0
-powerpc               randconfig-003-20240813   gcc-13.2.0
-powerpc                 xes_mpc85xx_defconfig   gcc-13.2.0
-powerpc64             randconfig-001-20240813   gcc-13.2.0
-powerpc64             randconfig-002-20240813   gcc-13.2.0
-powerpc64             randconfig-003-20240813   gcc-13.2.0
-riscv                            allmodconfig   clang-20
-riscv                            allmodconfig   gcc-14.1.0
-riscv                             allnoconfig   gcc-14.1.0
-riscv                            allyesconfig   clang-20
-riscv                            allyesconfig   gcc-14.1.0
-riscv                               defconfig   gcc-14.1.0
-riscv                 randconfig-001-20240813   gcc-13.2.0
-riscv                 randconfig-002-20240813   gcc-13.2.0
-s390                             allmodconfig   clang-20
-s390                              allnoconfig   clang-20
-s390                              allnoconfig   gcc-14.1.0
-s390                             allyesconfig   clang-20
-s390                             allyesconfig   gcc-14.1.0
-s390                                defconfig   gcc-13.2.0
-s390                                defconfig   gcc-14.1.0
-s390                  randconfig-001-20240813   gcc-13.2.0
-s390                  randconfig-002-20240813   gcc-13.2.0
-sh                               allmodconfig   gcc-14.1.0
-sh                                allnoconfig   gcc-13.2.0
-sh                                allnoconfig   gcc-14.1.0
-sh                               allyesconfig   gcc-14.1.0
-sh                                  defconfig   gcc-14.1.0
-sh                          landisk_defconfig   gcc-13.2.0
-sh                            migor_defconfig   gcc-12.4.0
-sh                          polaris_defconfig   gcc-12.4.0
-sh                    randconfig-001-20240813   gcc-13.2.0
-sh                    randconfig-002-20240813   gcc-13.2.0
-sh                          rsk7269_defconfig   gcc-13.2.0
-sh                      rts7751r2d1_defconfig   gcc-12.4.0
-sh                          sdk7780_defconfig   gcc-13.2.0
-sh                           sh2007_defconfig   gcc-12.4.0
-sh                     sh7710voipgw_defconfig   gcc-12.4.0
-sparc                            allmodconfig   gcc-14.1.0
-sparc                       sparc64_defconfig   gcc-12.4.0
-sparc64                             defconfig   gcc-14.1.0
-sparc64               randconfig-001-20240813   gcc-13.2.0
-sparc64               randconfig-002-20240813   gcc-13.2.0
-um                               allmodconfig   clang-20
-um                               allmodconfig   gcc-13.3.0
-um                                allnoconfig   clang-17
-um                                allnoconfig   gcc-14.1.0
-um                               allyesconfig   gcc-12
-um                               allyesconfig   gcc-13.3.0
-um                                  defconfig   gcc-14.1.0
-um                             i386_defconfig   gcc-14.1.0
-um                    randconfig-001-20240813   gcc-13.2.0
-um                    randconfig-002-20240813   gcc-13.2.0
-um                           x86_64_defconfig   gcc-14.1.0
-x86_64                            allnoconfig   clang-18
-x86_64                           allyesconfig   clang-18
-x86_64       buildonly-randconfig-001-20240814   clang-18
-x86_64       buildonly-randconfig-002-20240814   clang-18
-x86_64       buildonly-randconfig-003-20240814   clang-18
-x86_64       buildonly-randconfig-004-20240814   clang-18
-x86_64       buildonly-randconfig-005-20240814   clang-18
-x86_64       buildonly-randconfig-006-20240814   clang-18
-x86_64                              defconfig   clang-18
-x86_64                              defconfig   gcc-11
-x86_64                randconfig-001-20240814   clang-18
-x86_64                randconfig-002-20240814   clang-18
-x86_64                randconfig-003-20240814   clang-18
-x86_64                randconfig-004-20240814   clang-18
-x86_64                randconfig-005-20240814   clang-18
-x86_64                randconfig-006-20240814   clang-18
-x86_64                randconfig-011-20240814   clang-18
-x86_64                randconfig-012-20240814   clang-18
-x86_64                randconfig-013-20240814   clang-18
-x86_64                randconfig-014-20240814   clang-18
-x86_64                randconfig-015-20240814   clang-18
-x86_64                randconfig-016-20240814   clang-18
-x86_64                randconfig-071-20240814   clang-18
-x86_64                randconfig-072-20240814   clang-18
-x86_64                randconfig-073-20240814   clang-18
-x86_64                randconfig-074-20240814   clang-18
-x86_64                randconfig-075-20240814   clang-18
-x86_64                randconfig-076-20240814   clang-18
-x86_64                          rhel-8.3-rust   clang-18
-xtensa                            allnoconfig   gcc-13.2.0
-xtensa                            allnoconfig   gcc-14.1.0
-xtensa                randconfig-001-20240813   gcc-13.2.0
-xtensa                randconfig-002-20240813   gcc-13.2.0
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202408150004.BAtK29zS-lkp@intel.com/
+
+All error/warnings (new ones prefixed by >>):
+
+>> drivers/android/binder_genl.c:20: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+    * The registered process that would receive binder reports.
+   drivers/android/binder_genl.c:25: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+    * The policy to verify the type of the binder genl data
+>> drivers/android/binder_genl.c:102: warning: cannot understand function prototype: 'struct genl_small_ops binder_genl_ops[] = '
+>> drivers/android/binder_genl.c:114: warning: cannot understand function prototype: 'struct genl_family binder_gnl_family = '
+--
+   ld: drivers/android/binder_genl.o: in function `binder_genl_cmd_doit':
+>> binder_genl.c:(.text+0x38): undefined reference to `__alloc_skb'
+>> ld: binder_genl.c:(.text+0x61): undefined reference to `genlmsg_put'
+>> ld: binder_genl.c:(.text+0x83): undefined reference to `nla_put'
+>> ld: binder_genl.c:(.text+0xb7): undefined reference to `init_net'
+>> ld: binder_genl.c:(.text+0xbc): undefined reference to `netlink_unicast'
+>> ld: binder_genl.c:(.text+0x135): undefined reference to `skb_trim'
+>> ld: binder_genl.c:(.text+0x144): undefined reference to `sk_skb_reason_drop'
+   ld: binder_genl.c:(.text+0x195): undefined reference to `sk_skb_reason_drop'
+   ld: drivers/android/binder_genl.o: in function `binder_genl_send_report':
+   binder_genl.c:(.text+0x21c): undefined reference to `__alloc_skb'
+   ld: binder_genl.c:(.text+0x248): undefined reference to `genlmsg_put'
+   ld: binder_genl.c:(.text+0x267): undefined reference to `nla_put'
+   ld: binder_genl.c:(.text+0x298): undefined reference to `init_net'
+   ld: binder_genl.c:(.text+0x29d): undefined reference to `netlink_unicast'
+   ld: binder_genl.c:(.text+0x304): undefined reference to `skb_trim'
+   ld: binder_genl.c:(.text+0x313): undefined reference to `sk_skb_reason_drop'
+   ld: binder_genl.c:(.text+0x34c): undefined reference to `sk_skb_reason_drop'
+   ld: drivers/android/binder_genl.o: in function `binder_genl_init':
+>> binder_genl.c:(.init.text+0x12): undefined reference to `genl_register_family'
 
 -- 
 0-DAY CI Kernel Test Service
