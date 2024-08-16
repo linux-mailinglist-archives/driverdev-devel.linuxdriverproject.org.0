@@ -1,91 +1,56 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5683F952100
-	for <lists+driverdev-devel@lfdr.de>; Wed, 14 Aug 2024 19:24:37 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BF65E60637;
-	Wed, 14 Aug 2024 17:24:34 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GaiXvcz_OCdX; Wed, 14 Aug 2024 17:24:33 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BCD0A60654
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BCD0A60654;
-	Wed, 14 Aug 2024 17:24:33 +0000 (UTC)
-X-Original-To: devel@linuxdriverproject.org
-Delivered-To: driverdev-devel@osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EA1341BF5F6
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2024 17:24:31 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1EFEF954C61
+	for <lists+driverdev-devel@lfdr.de>; Fri, 16 Aug 2024 16:30:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E411740AF0
- for <devel@linuxdriverproject.org>; Wed, 14 Aug 2024 17:24:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0A7B24014E;
+	Fri, 16 Aug 2024 14:30:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3ftgyGUbvOHE for <devel@linuxdriverproject.org>;
- Wed, 14 Aug 2024 17:24:30 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6A2B3402BC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6A2B3402BC
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6A2B3402BC
- for <devel@driverdev.osuosl.org>; Wed, 14 Aug 2024 17:24:29 +0000 (UTC)
-X-CSE-ConnectionGUID: 58+nrVtPQjmMcxPU9TEDnw==
-X-CSE-MsgGUID: SLPlcFq0S+W1G6h9tmB1EQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11164"; a="32564560"
-X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="32564560"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Aug 2024 10:24:29 -0700
-X-CSE-ConnectionGUID: wffD7kcEScaJXp8C+mn8Ag==
-X-CSE-MsgGUID: jJzill+7TK+s2hclhmnJyA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="89790982"
-Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
- by orviesa002.jf.intel.com with ESMTP; 14 Aug 2024 10:24:24 -0700
-Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1seHjS-0002bs-1C;
- Wed, 14 Aug 2024 17:24:22 +0000
-Date: Thu, 15 Aug 2024 01:24:22 +0800
-From: kernel test robot <lkp@intel.com>
-To: Li Li <dualli@chromium.org>, dualli@google.com,
- gregkh@linuxfoundation.org, arve@android.com, tkjos@android.com,
- maco@android.com, joel@joelfernandes.org, brauner@kernel.org,
- cmllamas@google.com, surenb@google.com, arnd@arndb.de,
- masahiroy@kernel.org, devel@driverdev.osuosl.org,
- linux-kernel@vger.kernel.org, hridya@google.com, smoreland@google.com
-Subject: Re: [PATCH v1] add binder genl for txn report
-Message-ID: <202408150142.elc854F6-lkp@intel.com>
-References: <20240812211844.4107494-1-dualli@chromium.org>
+ id wHMnRmAinl1J; Fri, 16 Aug 2024 14:30:52 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C7EE64042D
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id C7EE64042D;
+	Fri, 16 Aug 2024 14:30:51 +0000 (UTC)
+X-Original-To: devel@linuxdriverproject.org
+Delivered-To: driverdev-devel@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C8FBC1BF420
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2024 14:30:50 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id C2DD34014E
+ for <devel@linuxdriverproject.org>; Fri, 16 Aug 2024 14:30:50 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SXziSeBCIe19 for <devel@linuxdriverproject.org>;
+ Fri, 16 Aug 2024 14:30:49 +0000 (UTC)
+X-Greylist: delayed 5206 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 16 Aug 2024 14:30:49 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 34286400D3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 34286400D3
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=18.179.60.173;
+ helo=win-adludmf6157; envelope-from=root@venusgm.com; receiver=<UNKNOWN> 
+Received: from WIN-ADLUDMF6157
+ (ec2-18-179-60-173.ap-northeast-1.compute.amazonaws.com [18.179.60.173])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 34286400D3
+ for <devel@driverdev.osuosl.org>; Fri, 16 Aug 2024 14:30:48 +0000 (UTC)
+Received: from 107-173-241-213-host.colocrossing.com (Unknown [89.238.185.78])
+ by WIN-ADLUDMF6157 with ESMTP ; Fri, 16 Aug 2024 20:52:43 +0800
+Message-ID: <18025606-39C9-4A4C-A9A7-608807F591F9@WIN-ADLUDMF6157>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240812211844.4107494-1-dualli@chromium.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723656270; x=1755192270;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=lA+xgV+iDgHq0xbaiiQy3rlhIvSZnsZQd5TAPMVjzso=;
- b=WhbElZxSq0PC/Zzpybr4sDkmt9u8RlWqrIJfgQYzdm2P+0f1k5UyLMZ0
- WAvKEZkPtRe9xlkZH5QbqQNiW7ixi7DUEY6++2vEgQi2n4svPfdCGHKeu
- 2MstTe0EhFVyJhjvVKwqsC2MTrMEEmHA03xTEsh+HjBKiXwBilRQi58q+
- BhjQ69bORUIYkx2ydnUDQfWcIdRnY/+ANVeG4dbOYBZm8KYu9AiEig3S+
- XkhVgmc/OXfTX8Ok4Qa3xAKrOPUbShvKMzRnliOGynwgbnNqy02eWOPQD
- KY1pHbClnWk4cB4XoC6QJEYPlZ6qd+/mJeIj8w4lAF9C0Gt5hnCbZkuiw
- A==;
+Content-Description: Mail message body
+Subject: MTCN: 967-115-5111
+To: Recipients <root@venusgm.com>
+From: "Mr. Michael Williams" <root@venusgm.com>
+Date: Fri, 16 Aug 2024 05:46:44 -0700
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=WhbElZxS
+ dmarc=none (p=none dis=none)
+ header.from=venusgm.com
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,61 +63,62 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: kernel-team@android.com, oe-kbuild-all@lists.linux.dev
+Reply-To: officefile_0112@yahoo.co.jp
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Hi Li,
+WESTERN UNION INTERNATIONAL MONEY TRANSFER 
+ADDRESS :KAMPALA UGANDA . 
 
-kernel test robot noticed the following build errors:
+Attention
 
-[auto build test ERROR on staging/staging-testing]
-[also build test ERROR on staging/staging-next staging/staging-linus linus/master v6.11-rc3 next-20240814]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Western Union wishes to inform you that the United Nation and (EAST-Afri) have instructed us to send to you the sum of $10,500,000.00. $5,000.00 has already been sent to you as first collection Sender Information HERE IS THE Available MTCN for pick up below;
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Li-Li/add-binder-genl-for-txn-report/20240814-150338
-base:   staging/staging-testing
-patch link:    https://lore.kernel.org/r/20240812211844.4107494-1-dualli%40chromium.org
-patch subject: [PATCH v1] add binder genl for txn report
-config: x86_64-buildonly-randconfig-005-20240814 (https://download.01.org/0day-ci/archive/20240815/202408150142.elc854F6-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240815/202408150142.elc854F6-lkp@intel.com/reproduce)
+Sender First Name: Michael
+Sender Last Name: Williams
+MTCN: 967-115-5111
+Test Question: When?
+Test Answer: 24 Hours
+Amount: $5,000.00 USD
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202408150142.elc854F6-lkp@intel.com/
+Go to any western union location and pick up the funds with the information given to you.
+Send Your Name:
+Address:
+Phone Number:
 
-All errors (new ones prefixed by >>):
+Find below the information you would need in order to pick up your first payment of $5,000.00. You can also track your payment online with the link below to view the status of the transfer or visit https://www.westernunion.com/web/global-service/track-transfer the MTCN number correctly to view your payment status.
 
-   ld: vmlinux.o: in function `binder_genl_cmd_doit':
-   binder_genl.c:(.text+0x1284e00): undefined reference to `__alloc_skb'
-   ld: binder_genl.c:(.text+0x1284e2f): undefined reference to `genlmsg_put'
-   ld: binder_genl.c:(.text+0x1284e5c): undefined reference to `nla_put'
-   ld: binder_genl.c:(.text+0x1284e94): undefined reference to `init_net'
-   ld: binder_genl.c:(.text+0x1284e9d): undefined reference to `netlink_unicast'
-   ld: binder_genl.c:(.text+0x1284f04): undefined reference to `skb_trim'
-   ld: binder_genl.c:(.text+0x1284f18): undefined reference to `sk_skb_reason_drop'
-   ld: binder_genl.c:(.text+0x1284f72): undefined reference to `sk_skb_reason_drop'
-   ld: vmlinux.o: in function `binder_genl_send_report':
->> (.text+0x12850d9): undefined reference to `__alloc_skb'
->> ld: (.text+0x128510a): undefined reference to `genlmsg_put'
->> ld: (.text+0x1285131): undefined reference to `nla_put'
->> ld: (.text+0x128516e): undefined reference to `init_net'
->> ld: (.text+0x1285173): undefined reference to `netlink_unicast'
->> ld: (.text+0x12851c2): undefined reference to `skb_trim'
->> ld: (.text+0x12851d6): undefined reference to `sk_skb_reason_drop'
-   ld: (.text+0x128527a): undefined reference to `sk_skb_reason_drop'
-   ld: vmlinux.o: in function `binder_genl_init':
->> (.init.text+0xa5bd7): undefined reference to `genl_register_family'
+Money Transfer Control Number (M.T.C.N)967-115-5111
+Senders Name: .........Michael Williams
+Amount sent: -----$5,000.00 USD
+https://www.westernunion.com/web/global-service/track-transfer
+Sender's Name:
+MTCN Number:
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Be informed that you will have to pay the balance sum of your activation upon cashing up of your first $5,000.00  USD, also I am using this medium to inform you that failure to pay the $300 usd  will leave us with no option but  to deactivate your MTCN of which you will never cash up the balance sum I want you to send the renewing and  transfer fee with the information below.
+
+
+RECEIVER'S: 
+COUNTRY : Uganda, Kampala
+ADDRESS :Plaza G07 Ci, PLOT 24/26 KAMPALA ROAD, Kampala
+CITY:  Kampala
+Test Question: God is?
+Test Answer: able
+Amount: S$300.00
+
+send us the Card Copy immediately you send the money and immediately we confirm the transfer fee we will send you the first receipt of your $5,000.00 immediately. Note: The charges cannot be Deducted from our side for this is our mode of operation or manipulation. This is in accordance with section 13(1)(n) of the National Transfer Act as adopted in 2010 and amended on 3RD July 2014 by the constitutional assembly. This is to protect customers and to avoid misappropriation and crime.
+
+Once again, Welcome to WESTERN UNION INTERNATIONAL MONEY TRANSFER
+------------------------------------------------------------------------------------------------
+Confidentiality Note:
+
+Mr. Michael Williams
+Email: western_union323232@hotmail.com
+Remittance Dept. Western Union Uganda Constituency.
+Western union money transfer.
+
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
