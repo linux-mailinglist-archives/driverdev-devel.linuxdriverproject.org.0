@@ -2,56 +2,67 @@ Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C99595749D
-	for <lists+driverdev-devel@lfdr.de>; Mon, 19 Aug 2024 21:40:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D15E957B65
+	for <lists+driverdev-devel@lfdr.de>; Tue, 20 Aug 2024 04:26:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 835ED4026F;
-	Mon, 19 Aug 2024 19:39:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5F9D6404E1;
+	Tue, 20 Aug 2024 02:26:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7-I4D4fRFMrp; Mon, 19 Aug 2024 19:39:58 +0000 (UTC)
+ id YZy6DFGR1btJ; Tue, 20 Aug 2024 02:26:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 936BA40372
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 71F6A404D0
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 936BA40372;
-	Mon, 19 Aug 2024 19:39:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 71F6A404D0;
+	Tue, 20 Aug 2024 02:26:13 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C05F01BF355
- for <devel@linuxdriverproject.org>; Mon, 19 Aug 2024 19:39:56 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4B7CC1BF37F
+ for <devel@linuxdriverproject.org>; Tue, 20 Aug 2024 02:26:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8F85540259
- for <devel@linuxdriverproject.org>; Mon, 19 Aug 2024 19:39:56 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 38BBE403B7
+ for <devel@linuxdriverproject.org>; Tue, 20 Aug 2024 02:26:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FtYTskH4uY3z for <devel@linuxdriverproject.org>;
- Mon, 19 Aug 2024 19:39:56 +0000 (UTC)
-X-Greylist: delayed 4027 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 19 Aug 2024 19:39:55 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4B3D240263
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4B3D240263
-Received-SPF: Softfail (mailfrom) identity=mailfrom; client-ip=31.25.90.163;
- helo=alborz.r1host.com; envelope-from=irrcc@orange.iq; receiver=<UNKNOWN> 
-Received: from alborz.r1host.com (alborz.r1host.com [31.25.90.163])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4B3D240263
- for <devel@driverdev.osuosl.org>; Mon, 19 Aug 2024 19:39:54 +0000 (UTC)
-Received: from User ([185.24.233.43]) by alborz.r1host.com with
- MailEnable ESMTPA; Mon, 19 Aug 2024 20:55:09 +0330
-From: "Rafaa Esawi"<irrcc@orange.iq>
-Subject: We want to buy your products
-Date: Mon, 19 Aug 2024 17:26:55 -0000
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gogs52h-DpmE for <devel@linuxdriverproject.org>;
+ Tue, 20 Aug 2024 02:26:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=212.154.136.243;
+ helo=mail.meridian-soft.kz; envelope-from=info@meridian-soft.kz;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7086140111
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7086140111
+Received: from mail.meridian-soft.kz (mail.meridian-soft.kz [212.154.136.243])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7086140111
+ for <devel@driverdev.osuosl.org>; Tue, 20 Aug 2024 02:26:08 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.meridian-soft.kz (Postfix) with ESMTP id 907181068F2D5;
+ Tue, 20 Aug 2024 07:52:50 +0600 (+06)
+Received: from mail.meridian-soft.kz ([127.0.0.1])
+ by localhost (mail.meridian-soft.kz [127.0.0.1]) (amavisd-new, port 10032)
+ with ESMTP id 1iRGNh9fltxP; Tue, 20 Aug 2024 07:52:50 +0600 (+06)
+Received: from localhost (localhost [127.0.0.1])
+ by mail.meridian-soft.kz (Postfix) with ESMTP id 5ADE91068F2FE;
+ Tue, 20 Aug 2024 07:52:50 +0600 (+06)
+X-Virus-Scanned: amavisd-new at meridian-soft.kz
+Received: from mail.meridian-soft.kz ([127.0.0.1])
+ by localhost (mail.meridian-soft.kz [127.0.0.1]) (amavisd-new, port 10026)
+ with ESMTP id lXt9j1DwhKmS; Tue, 20 Aug 2024 07:52:50 +0600 (+06)
+Received: from [192.168.0.145] (unknown [197.211.59.25])
+ by mail.meridian-soft.kz (Postfix) with ESMTPSA id B8BA61068F2D5;
+ Tue, 20 Aug 2024 07:52:44 +0600 (+06)
 MIME-Version: 1.0
-X-Priority: 3
-X-MSMail-Priority: Normal
-X-Mailer: Microsoft Outlook Express 6.00.2600.0000
-X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2600.0000
-Message-ID: <FB992E39957C48DEBFA6EAD280340D07.MAI@alborz.r1host.com>
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Description: Mail message body
+Subject: Bitte
+To: Recipients <info@meridian-soft.kz>
+From: Mikhail Fridman<info@meridian-soft.kz>
+Date: Tue, 20 Aug 2024 02:59:50 +0100
+Message-Id: <20240820015244.B8BA61068F2D5@mail.meridian-soft.kz>
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=orange.iq
+ header.from=meridian-soft.kz
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,26 +75,18 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Reply-To: rafaaesawi11@gmail.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Reply-To: alfagroupfridman@outlook.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-Dear Supplier,
+Hallo, ich, Mikhail Fridman, werde Ihnen im Namen einer Wohlt=E4tigkeitsorg=
+anisation 2.500.000 Euro aus einem Teil meiner Investition spenden. Bitte a=
+ntworten Sie mit Ihren Anspruchsdetails. Ich erwarte Ihre fr=FCheste Antwor=
+t und
 
-We invite you to take part in ongoing rebuilding of our great country,
-Iraq after many years of conflicts. We are determined to purchase your
-products in large quantities.
-
-A consideration also is that your quotation must be CIF Port of Umm
-Qasr.
-
-Get back to me asap for more details
-
-Best Regards,
-
-Rafaa Esawi
+Gott sch=FCtze dich.
 _______________________________________________
 devel mailing list
 devel@linuxdriverproject.org
