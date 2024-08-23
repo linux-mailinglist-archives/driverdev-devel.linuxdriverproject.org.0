@@ -1,83 +1,85 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BF3995C7EA
-	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Aug 2024 10:22:30 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69C1F95CC71
+	for <lists+driverdev-devel@lfdr.de>; Fri, 23 Aug 2024 14:35:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 08DAC81CE1;
-	Fri, 23 Aug 2024 08:22:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E15F0818BE;
+	Fri, 23 Aug 2024 12:35:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XQdYch0jALtk; Fri, 23 Aug 2024 08:22:26 +0000 (UTC)
+ id XN0b8b06hUum; Fri, 23 Aug 2024 12:35:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B7F5781E0A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E8D2E80E56
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B7F5781E0A;
-	Fri, 23 Aug 2024 08:22:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E8D2E80E56;
+	Fri, 23 Aug 2024 12:35:31 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 01B461BF366
- for <devel@linuxdriverproject.org>; Fri, 23 Aug 2024 08:22:25 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 607D01BF3C6
+ for <devel@linuxdriverproject.org>; Fri, 23 Aug 2024 12:35:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E249281CE1
- for <devel@linuxdriverproject.org>; Fri, 23 Aug 2024 08:22:24 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5ABB240FDB
+ for <devel@linuxdriverproject.org>; Fri, 23 Aug 2024 12:35:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id n6rULEWHYoyF for <devel@linuxdriverproject.org>;
- Fri, 23 Aug 2024 08:22:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id o5ZBPJKDQH9G for <devel@linuxdriverproject.org>;
+ Fri, 23 Aug 2024 12:35:29 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5865481CDC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5865481CDC
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5865481CDC
- for <devel@driverdev.osuosl.org>; Fri, 23 Aug 2024 08:22:23 +0000 (UTC)
-X-CSE-ConnectionGUID: LSoRC5LzRO69UyY0TNPPMA==
-X-CSE-MsgGUID: NCjzFtnjSg2NdP2G7LWvtw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11172"; a="25754731"
-X-IronPort-AV: E=Sophos;i="6.10,169,1719903600"; d="scan'208";a="25754731"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Aug 2024 01:22:22 -0700
-X-CSE-ConnectionGUID: 9oL6YvLzSb+/XKuUBmfZkg==
-X-CSE-MsgGUID: aIPDMy81TQq9U+oXCxosUQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D585E400C7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D585E400C7
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D585E400C7
+ for <devel@driverdev.osuosl.org>; Fri, 23 Aug 2024 12:35:28 +0000 (UTC)
+X-CSE-ConnectionGUID: ycDplOzvR7u4W797liU/yQ==
+X-CSE-MsgGUID: E8JIJhx4RRWkrhYtQHFC5Q==
+X-IronPort-AV: E=McAfee;i="6700,10204,11172"; a="33505130"
+X-IronPort-AV: E=Sophos;i="6.10,170,1719903600"; d="scan'208";a="33505130"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Aug 2024 05:35:28 -0700
+X-CSE-ConnectionGUID: SHAeHeDoSGWSMIRPnDqBMA==
+X-CSE-MsgGUID: 99cntAGlTJWmRrCGIMPVgA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,169,1719903600"; d="scan'208";a="99245131"
+X-IronPort-AV: E=Sophos;i="6.10,170,1719903600"; d="scan'208";a="62303847"
 Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
- by orviesa001.jf.intel.com with ESMTP; 23 Aug 2024 01:22:21 -0700
+ by orviesa007.jf.intel.com with ESMTP; 23 Aug 2024 05:35:26 -0700
 Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1shPYo-000DaS-32;
- Fri, 23 Aug 2024 08:22:18 +0000
-Date: Fri, 23 Aug 2024 16:21:26 +0800
+ (envelope-from <lkp@intel.com>) id 1shTVj-000Dhc-2t;
+ Fri, 23 Aug 2024 12:35:23 +0000
+Date: Fri, 23 Aug 2024 20:35:15 +0800
 From: kernel test robot <lkp@intel.com>
-To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
-Subject: [driver-core:driver-core-testing] BUILD SUCCESS
- 888f67e621dda5c2804a696524e28d0ca4cf0a80
-Message-ID: <202408231623.VUvSzIkV-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+To: Simon Horman <horms@kernel.org>
+Subject: [staging:staging-testing 36/53]
+ drivers/staging/rtl8192e/rtllib_crypt_tkip.c:640:7: warning: variable 'iv16'
+ set but not used
+Message-ID: <202408232049.UJef268y-lkp@intel.com>
+MIME-Version: 1.0
+Content-Disposition: inline
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1724401343; x=1755937343;
- h=date:from:to:cc:subject:message-id;
- bh=TVLolJqJs6LstGTnL4SQfAmMoUvFOO8P9DVChfwKeeA=;
- b=mhCSV+buLXlXVo1Sz4U94xNO7b3xaVDGxov59QTiIRo/s4/FmxWNHGKH
- jfFDbB7uq8akJMdPGrmgyxhA/Y/pEepU2Hvbj8F3edv025UtjA+li3L+s
- WvliA29MRjXuemf+nRO5BFY6Mh5uDPPVsOeohF0fp1BNB/L4WXOHR0yQi
- j9zBtG6sa1vYinfDYmPvby/cY7coWSI78lYMlY8VLG13UIuP8Xu0xjNSz
- s2sIHoDhqbxL2w7BQb1lHXFFRwkDsux0984ZnayhTaykBq86LIO4oGQZD
- EcjTFnsp/H0sqOPAYd4XO0wYXcHsSnnCqYtFPivTFIgxrFQXZzqaa4f/x
+ t=1724416529; x=1755952529;
+ h=date:from:to:cc:subject:message-id:mime-version;
+ bh=ix6vXKCUbnKnqPEkpF9Bih2vIgrDcu1Z3BK9hyeomeA=;
+ b=JrZJ5EM+6+zB1OEiQGium2GCJCsrw1B71shsiVWZqrOxoAmNSe8DdMDm
+ mOtazdhwhdn5xscAPN1rmoAG8c/A3yilA8cXawlP0K/vPfvD4yfQL9P2X
+ lgQERL82yhcEmW0KryHvrlEnhwCBciUgQzT8dwCdmNPhc5O9jEDjG0d2l
+ pcNiNui8Q7yszF2Z4wJTqScZ6fF0vJuwJuX9LmLA1xqyfkkYm2NImX9KF
+ 7JRwY/Lc8shRmo1o8gynzeEKj8v/Ob9emHTXr/Xy7bkAkddqhHxPYRvIf
+ 1f0OPxvspLiFUzFYe3cAGIAbkfPWpk4Bd21Iz07+rJiflTSNKDxxd0+7K
  Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=mhCSV+bu
+ header.s=Intel header.b=JrZJ5EM+
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,250 +92,69 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org
-MIME-Version: 1.0
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git driver-core-testing
-branch HEAD: 888f67e621dda5c2804a696524e28d0ca4cf0a80  driver core: Use 2-argument strscpy()
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git staging-testing
+head:   5315266844ea3b0b8b6be9842d5901e439fa838a
+commit: 5f1a6826ea4900f8540d5eeb29f97796860f2d08 [36/53] staging: rtl8192e: remove set but otherwise unused local variable iv32
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20240823/202408232049.UJef268y-lkp@intel.com/config)
+compiler: clang version 18.1.5 (https://github.com/llvm/llvm-project 617a15a9eac96088ae5e9134248d8236e34b91b1)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240823/202408232049.UJef268y-lkp@intel.com/reproduce)
 
-elapsed time: 1470m
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202408232049.UJef268y-lkp@intel.com/
 
-configs tested: 225
-configs skipped: 6
+All warnings (new ones prefixed by >>):
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+>> drivers/staging/rtl8192e/rtllib_crypt_tkip.c:640:7: warning: variable 'iv16' set but not used [-Wunused-but-set-variable]
+     640 |                 u16 iv16 = tkey->tx_iv16;
+         |                     ^
+   1 warning generated.
 
-tested configs:
-alpha                             allnoconfig   gcc-13.2.0
-alpha                             allnoconfig   gcc-13.3.0
-alpha                            allyesconfig   gcc-13.3.0
-alpha                               defconfig   gcc-13.2.0
-arc                              allmodconfig   gcc-13.2.0
-arc                               allnoconfig   gcc-13.2.0
-arc                              allyesconfig   gcc-13.2.0
-arc                      axs103_smp_defconfig   gcc-13.2.0
-arc                                 defconfig   gcc-13.2.0
-arc                     haps_hs_smp_defconfig   gcc-13.2.0
-arc                     nsimosci_hs_defconfig   gcc-13.2.0
-arc                 nsimosci_hs_smp_defconfig   gcc-13.2.0
-arc                   randconfig-001-20240823   gcc-13.2.0
-arc                   randconfig-002-20240823   gcc-13.2.0
-arc                    vdk_hs38_smp_defconfig   gcc-13.2.0
-arm                              allmodconfig   gcc-13.2.0
-arm                              allmodconfig   gcc-14.1.0
-arm                               allnoconfig   clang-20
-arm                               allnoconfig   gcc-13.2.0
-arm                              allyesconfig   gcc-13.2.0
-arm                              allyesconfig   gcc-14.1.0
-arm                                 defconfig   gcc-13.2.0
-arm                          exynos_defconfig   clang-17
-arm                           imxrt_defconfig   clang-20
-arm                         lpc32xx_defconfig   gcc-13.2.0
-arm                   randconfig-001-20240823   gcc-14.1.0
-arm                   randconfig-003-20240823   gcc-14.1.0
-arm                   randconfig-004-20240823   clang-20
-arm                             rpc_defconfig   gcc-13.2.0
-arm                        vexpress_defconfig   gcc-14.1.0
-arm64                            allmodconfig   clang-20
-arm64                            allmodconfig   gcc-13.2.0
-arm64                             allnoconfig   gcc-13.2.0
-arm64                             allnoconfig   gcc-14.1.0
-arm64                               defconfig   gcc-13.2.0
-arm64                 randconfig-001-20240823   clang-20
-arm64                 randconfig-002-20240823   gcc-14.1.0
-arm64                 randconfig-003-20240823   gcc-14.1.0
-arm64                 randconfig-004-20240823   clang-20
-csky                              allnoconfig   gcc-13.2.0
-csky                              allnoconfig   gcc-14.1.0
-csky                                defconfig   gcc-13.2.0
-csky                                defconfig   gcc-14.1.0
-csky                  randconfig-001-20240823   gcc-14.1.0
-csky                  randconfig-002-20240823   gcc-14.1.0
-hexagon                          allmodconfig   clang-20
-hexagon                           allnoconfig   clang-20
-hexagon                          allyesconfig   clang-20
-hexagon               randconfig-001-20240823   clang-20
-hexagon               randconfig-002-20240823   clang-20
-i386                             allmodconfig   clang-18
-i386                             allmodconfig   gcc-12
-i386                              allnoconfig   clang-18
-i386                              allnoconfig   gcc-12
-i386                             allyesconfig   clang-18
-i386                             allyesconfig   gcc-12
-i386         buildonly-randconfig-001-20240823   clang-18
-i386         buildonly-randconfig-002-20240823   clang-18
-i386         buildonly-randconfig-003-20240823   gcc-12
-i386         buildonly-randconfig-004-20240823   clang-18
-i386         buildonly-randconfig-005-20240823   clang-18
-i386         buildonly-randconfig-006-20240823   gcc-12
-i386                                defconfig   clang-18
-i386                  randconfig-001-20240823   gcc-12
-i386                  randconfig-002-20240823   gcc-12
-i386                  randconfig-003-20240823   clang-18
-i386                  randconfig-004-20240823   gcc-12
-i386                  randconfig-005-20240823   gcc-11
-i386                  randconfig-006-20240823   gcc-12
-i386                  randconfig-011-20240823   clang-18
-i386                  randconfig-012-20240823   clang-18
-i386                  randconfig-013-20240823   gcc-12
-i386                  randconfig-014-20240823   clang-18
-i386                  randconfig-015-20240823   clang-18
-i386                  randconfig-016-20240823   clang-18
-loongarch                        allmodconfig   gcc-14.1.0
-loongarch                         allnoconfig   gcc-13.2.0
-loongarch                         allnoconfig   gcc-14.1.0
-loongarch                           defconfig   gcc-13.2.0
-loongarch             randconfig-001-20240823   gcc-14.1.0
-loongarch             randconfig-002-20240823   gcc-14.1.0
-m68k                             allmodconfig   gcc-14.1.0
-m68k                              allnoconfig   gcc-13.2.0
-m68k                              allnoconfig   gcc-14.1.0
-m68k                             allyesconfig   gcc-14.1.0
-m68k                                defconfig   gcc-13.2.0
-m68k                          hp300_defconfig   gcc-14.1.0
-m68k                            q40_defconfig   gcc-13.2.0
-m68k                           virt_defconfig   gcc-13.2.0
-microblaze                       allmodconfig   gcc-14.1.0
-microblaze                        allnoconfig   gcc-13.2.0
-microblaze                        allnoconfig   gcc-14.1.0
-microblaze                       allyesconfig   gcc-14.1.0
-microblaze                          defconfig   gcc-13.2.0
-mips                              allnoconfig   gcc-13.2.0
-mips                              allnoconfig   gcc-14.1.0
-mips                            gpr_defconfig   gcc-13.2.0
-mips                           ip32_defconfig   clang-20
-mips                        vocore2_defconfig   gcc-13.2.0
-nios2                             allnoconfig   gcc-13.2.0
-nios2                             allnoconfig   gcc-14.1.0
-nios2                               defconfig   gcc-13.2.0
-nios2                 randconfig-001-20240823   gcc-14.1.0
-nios2                 randconfig-002-20240823   gcc-14.1.0
-openrisc                          allnoconfig   gcc-14.1.0
-openrisc                         allyesconfig   gcc-14.1.0
-openrisc                            defconfig   gcc-14.1.0
-openrisc                    or1ksim_defconfig   gcc-14.1.0
-parisc                           allmodconfig   gcc-14.1.0
-parisc                            allnoconfig   gcc-14.1.0
-parisc                           allyesconfig   gcc-14.1.0
-parisc                              defconfig   gcc-14.1.0
-parisc                randconfig-001-20240823   gcc-14.1.0
-parisc                randconfig-002-20240823   gcc-14.1.0
-parisc64                            defconfig   gcc-13.2.0
-powerpc                          allmodconfig   gcc-14.1.0
-powerpc                           allnoconfig   gcc-14.1.0
-powerpc                          allyesconfig   clang-20
-powerpc                      katmai_defconfig   gcc-13.2.0
-powerpc                     ksi8560_defconfig   gcc-13.2.0
-powerpc                      mgcoge_defconfig   gcc-13.2.0
-powerpc               mpc834x_itxgp_defconfig   gcc-13.2.0
-powerpc                      pcm030_defconfig   clang-20
-powerpc               randconfig-001-20240823   clang-20
-powerpc               randconfig-002-20240823   clang-14
-powerpc                     skiroot_defconfig   gcc-13.2.0
-powerpc                  storcenter_defconfig   gcc-13.2.0
-powerpc                     tqm8560_defconfig   gcc-13.2.0
-powerpc                 xes_mpc85xx_defconfig   gcc-14.1.0
-powerpc64             randconfig-001-20240823   gcc-14.1.0
-powerpc64             randconfig-002-20240823   gcc-14.1.0
-powerpc64             randconfig-003-20240823   clang-20
-riscv                            allmodconfig   clang-20
-riscv                             allnoconfig   gcc-14.1.0
-riscv                            allyesconfig   clang-20
-riscv                               defconfig   clang-20
-riscv                               defconfig   gcc-14.1.0
-riscv                 randconfig-001-20240823   clang-14
-riscv                 randconfig-002-20240823   clang-20
-s390                             allmodconfig   clang-20
-s390                              allnoconfig   clang-20
-s390                              allnoconfig   gcc-14.1.0
-s390                             allyesconfig   clang-20
-s390                             allyesconfig   gcc-14.1.0
-s390                                defconfig   clang-20
-s390                                defconfig   gcc-14.1.0
-s390                  randconfig-001-20240823   gcc-14.1.0
-s390                  randconfig-002-20240823   clang-15
-sh                               allmodconfig   gcc-14.1.0
-sh                                allnoconfig   gcc-13.2.0
-sh                                allnoconfig   gcc-14.1.0
-sh                               allyesconfig   gcc-14.1.0
-sh                                  defconfig   gcc-14.1.0
-sh                    randconfig-001-20240823   gcc-14.1.0
-sh                    randconfig-002-20240823   gcc-14.1.0
-sh                           se7206_defconfig   gcc-14.1.0
-sh                           se7721_defconfig   gcc-14.1.0
-sh                        sh7757lcr_defconfig   gcc-13.2.0
-sh                        sh7785lcr_defconfig   gcc-14.1.0
-sh                            titan_defconfig   gcc-14.1.0
-sparc                            allmodconfig   gcc-14.1.0
-sparc                       sparc64_defconfig   gcc-14.1.0
-sparc64                             defconfig   gcc-14.1.0
-sparc64               randconfig-001-20240823   gcc-14.1.0
-sparc64               randconfig-002-20240823   gcc-14.1.0
-um                               allmodconfig   clang-20
-um                               allmodconfig   gcc-13.3.0
-um                                allnoconfig   clang-17
-um                                allnoconfig   gcc-14.1.0
-um                               allyesconfig   gcc-12
-um                               allyesconfig   gcc-13.3.0
-um                                  defconfig   clang-20
-um                                  defconfig   gcc-14.1.0
-um                             i386_defconfig   gcc-12
-um                             i386_defconfig   gcc-14.1.0
-um                    randconfig-001-20240823   clang-20
-um                    randconfig-002-20240823   gcc-12
-um                           x86_64_defconfig   clang-15
-um                           x86_64_defconfig   gcc-14.1.0
-x86_64                            allnoconfig   clang-18
-x86_64                           allyesconfig   clang-18
-x86_64       buildonly-randconfig-001-20240823   gcc-12
-x86_64       buildonly-randconfig-002-20240823   gcc-12
-x86_64       buildonly-randconfig-003-20240823   gcc-12
-x86_64       buildonly-randconfig-004-20240823   clang-18
-x86_64       buildonly-randconfig-004-20240823   gcc-12
-x86_64       buildonly-randconfig-005-20240823   gcc-12
-x86_64       buildonly-randconfig-006-20240823   gcc-12
-x86_64                              defconfig   clang-18
-x86_64                              defconfig   gcc-11
-x86_64                randconfig-001-20240823   clang-18
-x86_64                randconfig-001-20240823   gcc-12
-x86_64                randconfig-002-20240823   clang-18
-x86_64                randconfig-002-20240823   gcc-12
-x86_64                randconfig-003-20240823   clang-18
-x86_64                randconfig-003-20240823   gcc-12
-x86_64                randconfig-004-20240823   clang-18
-x86_64                randconfig-004-20240823   gcc-12
-x86_64                randconfig-005-20240823   clang-18
-x86_64                randconfig-005-20240823   gcc-12
-x86_64                randconfig-006-20240823   clang-18
-x86_64                randconfig-006-20240823   gcc-12
-x86_64                randconfig-011-20240823   gcc-12
-x86_64                randconfig-012-20240823   clang-18
-x86_64                randconfig-012-20240823   gcc-12
-x86_64                randconfig-013-20240823   clang-18
-x86_64                randconfig-013-20240823   gcc-12
-x86_64                randconfig-014-20240823   gcc-11
-x86_64                randconfig-014-20240823   gcc-12
-x86_64                randconfig-015-20240823   clang-18
-x86_64                randconfig-015-20240823   gcc-12
-x86_64                randconfig-016-20240823   gcc-12
-x86_64                randconfig-071-20240823   gcc-12
-x86_64                randconfig-072-20240823   gcc-12
-x86_64                randconfig-073-20240823   gcc-12
-x86_64                randconfig-074-20240823   clang-18
-x86_64                randconfig-074-20240823   gcc-12
-x86_64                randconfig-075-20240823   gcc-12
-x86_64                randconfig-076-20240823   gcc-12
-x86_64                          rhel-8.3-rust   clang-18
-xtensa                            allnoconfig   gcc-13.2.0
-xtensa                            allnoconfig   gcc-14.1.0
-xtensa                randconfig-001-20240823   gcc-14.1.0
-xtensa                randconfig-002-20240823   gcc-14.1.0
-xtensa                    smp_lx200_defconfig   gcc-14.1.0
+
+vim +/iv16 +640 drivers/staging/rtl8192e/rtllib_crypt_tkip.c
+
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  626  
+94a799425eee82 drivers/staging/rtl8192e/rtllib_crypt_tkip.c              Larry Finger       2011-08-23  627  static int rtllib_tkip_get_key(void *key, int len, u8 *seq, void *priv)
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  628  {
+94a799425eee82 drivers/staging/rtl8192e/rtllib_crypt_tkip.c              Larry Finger       2011-08-23  629  	struct rtllib_tkip_data *tkey = priv;
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  630  
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  631  	if (len < TKIP_KEY_LEN)
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  632  		return -1;
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  633  
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  634  	if (!tkey->key_set)
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  635  		return 0;
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  636  	memcpy(key, tkey->key, TKIP_KEY_LEN);
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  637  
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  638  	if (seq) {
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  639  		/* Return the sequence number of the last transmitted frame. */
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04 @640  		u16 iv16 = tkey->tx_iv16;
+3a6b70c3f3558a drivers/staging/rtl8192e/rtllib_crypt_tkip.c              Matthew Casey      2014-08-22  641  
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  642  		iv16--;
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  643  		seq[0] = tkey->tx_iv16;
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  644  		seq[1] = tkey->tx_iv16 >> 8;
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  645  		seq[2] = tkey->tx_iv32;
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  646  		seq[3] = tkey->tx_iv32 >> 8;
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  647  		seq[4] = tkey->tx_iv32 >> 16;
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  648  		seq[5] = tkey->tx_iv32 >> 24;
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  649  	}
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  650  
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  651  	return TKIP_KEY_LEN;
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  652  }
+ecdfa44610fa18 drivers/staging/rtl8192e/ieee80211/ieee80211_crypt_tkip.c Greg Kroah-Hartman 2009-08-04  653  
+
+:::::: The code at line 640 was first introduced by commit
+:::::: ecdfa44610fa18678c3dd481af75368b9800c6c7 Staging: add Realtek 8192 PCI wireless driver
+
+:::::: TO: Greg Kroah-Hartman <gregkh@suse.de>
+:::::: CC: Greg Kroah-Hartman <gregkh@suse.de>
 
 -- 
 0-DAY CI Kernel Test Service
