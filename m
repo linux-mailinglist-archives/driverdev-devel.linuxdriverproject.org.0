@@ -1,42 +1,42 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5AA2696CBD6
-	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Sep 2024 02:37:02 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E66BF96CBD3
+	for <lists+driverdev-devel@lfdr.de>; Thu,  5 Sep 2024 02:36:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 146F740B9E;
-	Thu,  5 Sep 2024 00:37:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8287740BAC;
+	Thu,  5 Sep 2024 00:36:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9SYC1t7NAZxG; Thu,  5 Sep 2024 00:37:00 +0000 (UTC)
+ id xS6oQU52ERRk; Thu,  5 Sep 2024 00:36:46 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 026C240B9B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4AE7940B98
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 026C240B9B;
-	Thu,  5 Sep 2024 00:36:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4AE7940B98;
+	Thu,  5 Sep 2024 00:36:46 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F26181BF834
- for <devel@linuxdriverproject.org>; Thu,  5 Sep 2024 00:36:58 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1B0D31BF834
+ for <devel@linuxdriverproject.org>; Thu,  5 Sep 2024 00:36:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DF6D14015F
- for <devel@linuxdriverproject.org>; Thu,  5 Sep 2024 00:36:58 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1533A812E8
+ for <devel@linuxdriverproject.org>; Thu,  5 Sep 2024 00:36:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Vzl-Yzomqv5U for <devel@linuxdriverproject.org>;
- Thu,  5 Sep 2024 00:36:58 +0000 (UTC)
-X-Greylist: delayed 16194 seconds by postgrey-1.37 at util1.osuosl.org;
- Thu, 05 Sep 2024 00:36:56 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3D6434010E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3D6434010E
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id P6Jq3HYAJ9Og for <devel@linuxdriverproject.org>;
+ Thu,  5 Sep 2024 00:36:43 +0000 (UTC)
+X-Greylist: delayed 16180 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 05 Sep 2024 00:36:42 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 01832812DC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 01832812DC
 Received: from esa.hc1735-10.eu.iphmx.com (esa.hc1735-10.eu.iphmx.com
  [207.54.69.91])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3D6434010E
- for <devel@driverdev.osuosl.org>; Thu,  5 Sep 2024 00:36:56 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 01832812DC
+ for <devel@linuxdriverproject.org>; Thu,  5 Sep 2024 00:36:42 +0000 (UTC)
 X-CSE-ConnectionGUID: vr/MMUk3Seak0rFMItDJrg==
 X-CSE-MsgGUID: cCRLq3RzS4WLdL0rMIfYDA==
 Message-Id: <529cf4$82ge8@ob1.hc1735-10.eu.iphmx.com>
@@ -55,10 +55,10 @@ Subject: Re:
 To: Recipients <sales@adcom.com.tw>
 From: "Mr.Karl Albrecht" <sales@adcom.com.tw>
 Date: Wed, 04 Sep 2024 23:06:52 +0300
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=adcom.com.tw
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  spf=fail smtp.mailfrom=adcom.com.tw
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
