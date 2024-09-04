@@ -1,87 +1,82 @@
 Return-Path: <driverdev-devel-bounces@linuxdriverproject.org>
 X-Original-To: lists+driverdev-devel@lfdr.de
 Delivered-To: lists+driverdev-devel@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 912DC96B78C
-	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2024 11:58:16 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E74AD96BB6B
+	for <lists+driverdev-devel@lfdr.de>; Wed,  4 Sep 2024 14:01:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 33F05401A3;
-	Wed,  4 Sep 2024 09:58:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 884EC404D9;
+	Wed,  4 Sep 2024 12:01:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CUdd8cKpyIA0; Wed,  4 Sep 2024 09:58:13 +0000 (UTC)
+ id M4ISiPvtxQaI; Wed,  4 Sep 2024 12:01:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=driverdev-devel-bounces@linuxdriverproject.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8BA7C401F8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CD39440511
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8BA7C401F8;
-	Wed,  4 Sep 2024 09:58:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CD39440511;
+	Wed,  4 Sep 2024 12:01:18 +0000 (UTC)
 X-Original-To: devel@linuxdriverproject.org
 Delivered-To: driverdev-devel@osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E4ED81BF577
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2024 09:58:11 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D4CC31BF47E
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2024 12:01:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DEBBD40182
- for <devel@linuxdriverproject.org>; Wed,  4 Sep 2024 09:58:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B33EA60877
+ for <devel@linuxdriverproject.org>; Wed,  4 Sep 2024 12:01:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UUItXSsBYE2B for <devel@linuxdriverproject.org>;
- Wed,  4 Sep 2024 09:58:10 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id mpy4h5EneQld for <devel@linuxdriverproject.org>;
+ Wed,  4 Sep 2024 12:01:13 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 15EE140158
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 15EE140158
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 15EE140158
- for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2024 09:58:09 +0000 (UTC)
-X-CSE-ConnectionGUID: vM6jBB4eTVqI7JdB6HbbHA==
-X-CSE-MsgGUID: 2J/Ip36tRIiDReix7xHsmA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11184"; a="27854927"
-X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; d="scan'208";a="27854927"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Sep 2024 02:58:10 -0700
-X-CSE-ConnectionGUID: 39+CWM22SpysaoMoNPrIfw==
-X-CSE-MsgGUID: Evx1CLRsQjKdayKCAKstIw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 791306087B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 791306087B
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 791306087B
+ for <devel@driverdev.osuosl.org>; Wed,  4 Sep 2024 12:01:13 +0000 (UTC)
+X-CSE-ConnectionGUID: WM8oB31vT864donxEy5nsA==
+X-CSE-MsgGUID: Nr6fAQM1SGCI9+wv5B1O6g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11184"; a="35467443"
+X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; d="scan'208";a="35467443"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Sep 2024 05:01:12 -0700
+X-CSE-ConnectionGUID: uf+roH06Rue3C4Y+K9u5iA==
+X-CSE-MsgGUID: 9ZmA0rDUQTmxojPAZs1gkw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; d="scan'208";a="64901217"
+X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; d="scan'208";a="70061025"
 Received: from lkp-server01.sh.intel.com (HELO 9c6b1c7d3b50) ([10.239.97.150])
- by fmviesa007.fm.intel.com with ESMTP; 04 Sep 2024 02:58:08 -0700
+ by orviesa005.jf.intel.com with ESMTP; 04 Sep 2024 05:01:11 -0700
 Received: from kbuild by 9c6b1c7d3b50 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1slmm5-0007qA-0z;
- Wed, 04 Sep 2024 09:58:05 +0000
-Date: Wed, 4 Sep 2024 17:57:08 +0800
+ (envelope-from <lkp@intel.com>) id 1slohB-0007wV-0E;
+ Wed, 04 Sep 2024 12:01:09 +0000
+Date: Wed, 04 Sep 2024 20:00:27 +0800
 From: kernel test robot <lkp@intel.com>
-To: "Ricardo B. Marliere" <ricardo@marliere.net>
-Subject: [driver-core:class_cleanup 33/42]
- drivers/bus/fsl-mc/fsl-mc-bus.c:412:5: error: initializing 'struct
- device_type *' with an expression of type 'typeof (fsl_mc_bus_dpsw_type) *'
- (aka 'const struct device_type *') discards qualifiers
-Message-ID: <202409041701.8NfSraMa-lkp@intel.com>
-MIME-Version: 1.0
-Content-Disposition: inline
+To: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>
+Subject: [driver-core:class_cleanup] BUILD REGRESSION
+ 95b7bd9f5490de7ff7cfb0c4137a3c22cf3de1bf
+Message-ID: <202409042024.eG9Jobx0-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1725443891; x=1756979891;
- h=date:from:to:cc:subject:message-id:mime-version:
- content-transfer-encoding;
- bh=K3XRxhgvvaJuzWtw7fw9RYQGpCxvwFPd0ZFjfLVadAs=;
- b=gfdIMo0mX3e4sBUTJYX+gGrDLmQqmqV4FhypdSvzLkyTGd3JqYDwTx8R
- HLnzbDt0WiTPwie/l81Tz4fMss5IaLib4oScZkWRFWRRsWThRug4FiAM2
- Meac/dewF50fZNdmG6N2kZIIRslbqChlnQcvUM1DZDN7sW1x9/OaQTtPd
- +Ud+xDsgbgbMX3V8v52euO7p0U8mgbZ62utos3eJNeseJgRDauRdIFKQx
- HapaOxR50GPhgzNjqL9bBAkuN8nyM52L3c58Q0aMG2NdeaOtLQx4TYKJ3
- M22sFr98Nk5B2Ln5EcN1b3VEGiBadfsmZIwwnMU9IbOWUX8SIopYRg9LT
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1725451273; x=1756987273;
+ h=date:from:to:cc:subject:message-id;
+ bh=a+WGcFIdG8rFcwvqq0xNCeAW5aH4lxsQEEXjtdUGbAU=;
+ b=mfbX96kDL63V6aHue2arnJCoyvK6zbJ1/11Z2Y2XV9T0PAuFQvle1bow
+ 2CNZtWmpffpc+78WFbpQKXTqL6sB9+LvKQyoeKj4LocuHudYZAztysKwo
+ rcI8zxXLPRgUMTEypvtIBWvDb1lO6xnl5A4AIYzrYPGUQbYc9A68SKJtq
+ jB7uqgrIX/84/t6MHqVJLzonqY9TiZhRsrTlM/jao75hRsH1jeHqH6qH0
+ 0nkapgYNKJ0IAUAqj45gOSrB0Tm4dpyJV8H0ipVMnBeV6e/XRDjTiaf2P
+ Yp4XYAeW5GivOemLEFMEYrXcfx/hz9ZGg+eIKqCwLFD9FnsGvSz41nnlS
+ g==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=gfdIMo0m
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=mfbX96kD
 X-BeenThere: driverdev-devel@linuxdriverproject.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,212 +89,179 @@ List-Post: <mailto:driverdev-devel@linuxdriverproject.org>
 List-Help: <mailto:driverdev-devel-request@linuxdriverproject.org?subject=help>
 List-Subscribe: <http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel>, 
  <mailto:driverdev-devel-request@linuxdriverproject.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: driverdev-devel-bounces@linuxdriverproject.org
 Sender: "devel" <driverdev-devel-bounces@linuxdriverproject.org>
 
-dHJlZTogICBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9n
-cmVna2gvZHJpdmVyLWNvcmUuZ2l0IGNsYXNzX2NsZWFudXAKaGVhZDogICA5NWI3YmQ5ZjU0OTBk
-ZTdmZjdjZmIwYzQxMzdhM2MyMmNmM2RlMWJmCmNvbW1pdDogYzE5MWFmNjk1ZTdkZDBhYWM0OWM1
-YjcwZTBiZGZkMGNmYWFjNWEyNCBbMzMvNDJdIGJ1czogZnNsLW1jOiBjb25zdGlmeSB0aGUgc3Ry
-dWN0IGRldmljZV90eXBlIHVzYWdlCmNvbmZpZzogeDg2XzY0LWFsbHllc2NvbmZpZyAoaHR0cHM6
-Ly9kb3dubG9hZC4wMS5vcmcvMGRheS1jaS9hcmNoaXZlLzIwMjQwOTA0LzIwMjQwOTA0MTcwMS44
-TmZTcmFNYS1sa3BAaW50ZWwuY29tL2NvbmZpZykKY29tcGlsZXI6IGNsYW5nIHZlcnNpb24gMTgu
-MS41IChodHRwczovL2dpdGh1Yi5jb20vbGx2bS9sbHZtLXByb2plY3QgNjE3YTE1YTllYWM5NjA4
-OGFlNWU5MTM0MjQ4ZDgyMzZlMzRiOTFiMSkKcmVwcm9kdWNlICh0aGlzIGlzIGEgVz0xIGJ1aWxk
-KTogKGh0dHBzOi8vZG93bmxvYWQuMDEub3JnLzBkYXktY2kvYXJjaGl2ZS8yMDI0MDkwNC8yMDI0
-MDkwNDE3MDEuOE5mU3JhTWEtbGtwQGludGVsLmNvbS9yZXByb2R1Y2UpCgpJZiB5b3UgZml4IHRo
-ZSBpc3N1ZSBpbiBhIHNlcGFyYXRlIHBhdGNoL2NvbW1pdCAoaS5lLiBub3QganVzdCBhIG5ldyB2
-ZXJzaW9uIG9mCnRoZSBzYW1lIHBhdGNoL2NvbW1pdCksIGtpbmRseSBhZGQgZm9sbG93aW5nIHRh
-Z3MKfCBSZXBvcnRlZC1ieToga2VybmVsIHRlc3Qgcm9ib3QgPGxrcEBpbnRlbC5jb20+CnwgQ2xv
-c2VzOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9vZS1rYnVpbGQtYWxsLzIwMjQwOTA0MTcwMS44
-TmZTcmFNYS1sa3BAaW50ZWwuY29tLwoKQWxsIGVycm9ycyAobmV3IG9uZXMgcHJlZml4ZWQgYnkg
-Pj4pOgoKICAgZHJpdmVycy9idXMvZnNsLW1jL2ZzbC1tYy1idXMuYzo0MDk6NTogZXJyb3I6IGlu
-aXRpYWxpemluZyAnc3RydWN0IGRldmljZV90eXBlIConIHdpdGggYW4gZXhwcmVzc2lvbiBvZiB0
-eXBlICd0eXBlb2YgKGZzbF9tY19idXNfZHByY190eXBlKSAqJyAoYWthICdjb25zdCBzdHJ1Y3Qg
-ZGV2aWNlX3R5cGUgKicpIGRpc2NhcmRzIHF1YWxpZmllcnMgWy1XZXJyb3IsLVdpbmNvbXBhdGli
-bGUtcG9pbnRlci10eXBlcy1kaXNjYXJkcy1xdWFsaWZpZXJzXQogICAgIDQwOSB8ICAgICAgICAg
-ICAgICAgICB7ICZmc2xfbWNfYnVzX2RwcmNfdHlwZSwgImRwcmMiIH0sCiAgICAgICAgIHwgICAg
-ICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+CiAgIGRyaXZlcnMvYnVzL2ZzbC1t
-Yy9mc2wtbWMtYnVzLmM6NDEwOjU6IGVycm9yOiBpbml0aWFsaXppbmcgJ3N0cnVjdCBkZXZpY2Vf
-dHlwZSAqJyB3aXRoIGFuIGV4cHJlc3Npb24gb2YgdHlwZSAndHlwZW9mIChmc2xfbWNfYnVzX2Rw
-bmlfdHlwZSkgKicgKGFrYSAnY29uc3Qgc3RydWN0IGRldmljZV90eXBlIConKSBkaXNjYXJkcyBx
-dWFsaWZpZXJzIFstV2Vycm9yLC1XaW5jb21wYXRpYmxlLXBvaW50ZXItdHlwZXMtZGlzY2FyZHMt
-cXVhbGlmaWVyc10KICAgICA0MTAgfCAgICAgICAgICAgICAgICAgeyAmZnNsX21jX2J1c19kcG5p
-X3R5cGUsICJkcG5pIiB9LAogICAgICAgICB8ICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+
-fn5+fn5+fn5+fgogICBkcml2ZXJzL2J1cy9mc2wtbWMvZnNsLW1jLWJ1cy5jOjQxMTo1OiBlcnJv
-cjogaW5pdGlhbGl6aW5nICdzdHJ1Y3QgZGV2aWNlX3R5cGUgKicgd2l0aCBhbiBleHByZXNzaW9u
-IG9mIHR5cGUgJ3R5cGVvZiAoZnNsX21jX2J1c19kcGlvX3R5cGUpIConIChha2EgJ2NvbnN0IHN0
-cnVjdCBkZXZpY2VfdHlwZSAqJykgZGlzY2FyZHMgcXVhbGlmaWVycyBbLVdlcnJvciwtV2luY29t
-cGF0aWJsZS1wb2ludGVyLXR5cGVzLWRpc2NhcmRzLXF1YWxpZmllcnNdCiAgICAgNDExIHwgICAg
-ICAgICAgICAgICAgIHsgJmZzbF9tY19idXNfZHBpb190eXBlLCAiZHBpbyIgfSwKICAgICAgICAg
-fCAgICAgICAgICAgICAgICAgICBefn5+fn5+fn5+fn5+fn5+fn5+fn4KPj4gZHJpdmVycy9idXMv
-ZnNsLW1jL2ZzbC1tYy1idXMuYzo0MTI6NTogZXJyb3I6IGluaXRpYWxpemluZyAnc3RydWN0IGRl
-dmljZV90eXBlIConIHdpdGggYW4gZXhwcmVzc2lvbiBvZiB0eXBlICd0eXBlb2YgKGZzbF9tY19i
-dXNfZHBzd190eXBlKSAqJyAoYWthICdjb25zdCBzdHJ1Y3QgZGV2aWNlX3R5cGUgKicpIGRpc2Nh
-cmRzIHF1YWxpZmllcnMgWy1XZXJyb3IsLVdpbmNvbXBhdGlibGUtcG9pbnRlci10eXBlcy1kaXNj
-YXJkcy1xdWFsaWZpZXJzXQogICAgIDQxMiB8ICAgICAgICAgICAgICAgICB7ICZmc2xfbWNfYnVz
-X2Rwc3dfdHlwZSwgImRwc3ciIH0sCiAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgXn5+fn5+
-fn5+fn5+fn5+fn5+fn5+Cj4+IGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmM6NDEzOjU6
-IGVycm9yOiBpbml0aWFsaXppbmcgJ3N0cnVjdCBkZXZpY2VfdHlwZSAqJyB3aXRoIGFuIGV4cHJl
-c3Npb24gb2YgdHlwZSAndHlwZW9mIChmc2xfbWNfYnVzX2RwYnBfdHlwZSkgKicgKGFrYSAnY29u
-c3Qgc3RydWN0IGRldmljZV90eXBlIConKSBkaXNjYXJkcyBxdWFsaWZpZXJzIFstV2Vycm9yLC1X
-aW5jb21wYXRpYmxlLXBvaW50ZXItdHlwZXMtZGlzY2FyZHMtcXVhbGlmaWVyc10KICAgICA0MTMg
-fCAgICAgICAgICAgICAgICAgeyAmZnNsX21jX2J1c19kcGJwX3R5cGUsICJkcGJwIiB9LAogICAg
-ICAgICB8ICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fgo+PiBkcml2ZXJz
-L2J1cy9mc2wtbWMvZnNsLW1jLWJ1cy5jOjQxNDo1OiBlcnJvcjogaW5pdGlhbGl6aW5nICdzdHJ1
-Y3QgZGV2aWNlX3R5cGUgKicgd2l0aCBhbiBleHByZXNzaW9uIG9mIHR5cGUgJ3R5cGVvZiAoZnNs
-X21jX2J1c19kcGNvbl90eXBlKSAqJyAoYWthICdjb25zdCBzdHJ1Y3QgZGV2aWNlX3R5cGUgKicp
-IGRpc2NhcmRzIHF1YWxpZmllcnMgWy1XZXJyb3IsLVdpbmNvbXBhdGlibGUtcG9pbnRlci10eXBl
-cy1kaXNjYXJkcy1xdWFsaWZpZXJzXQogICAgIDQxNCB8ICAgICAgICAgICAgICAgICB7ICZmc2xf
-bWNfYnVzX2RwY29uX3R5cGUsICJkcGNvbiIgfSwKICAgICAgICAgfCAgICAgICAgICAgICAgICAg
-ICBefn5+fn5+fn5+fn5+fn5+fn5+fn5+Cj4+IGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVz
-LmM6NDE1OjU6IGVycm9yOiBpbml0aWFsaXppbmcgJ3N0cnVjdCBkZXZpY2VfdHlwZSAqJyB3aXRo
-IGFuIGV4cHJlc3Npb24gb2YgdHlwZSAndHlwZW9mIChmc2xfbWNfYnVzX2RwbWNwX3R5cGUpICon
-IChha2EgJ2NvbnN0IHN0cnVjdCBkZXZpY2VfdHlwZSAqJykgZGlzY2FyZHMgcXVhbGlmaWVycyBb
-LVdlcnJvciwtV2luY29tcGF0aWJsZS1wb2ludGVyLXR5cGVzLWRpc2NhcmRzLXF1YWxpZmllcnNd
-CiAgICAgNDE1IHwgICAgICAgICAgICAgICAgIHsgJmZzbF9tY19idXNfZHBtY3BfdHlwZSwgImRw
-bWNwIiB9LAogICAgICAgICB8ICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+
-fn4KICAgZHJpdmVycy9idXMvZnNsLW1jL2ZzbC1tYy1idXMuYzo0MTY6NTogZXJyb3I6IGluaXRp
-YWxpemluZyAnc3RydWN0IGRldmljZV90eXBlIConIHdpdGggYW4gZXhwcmVzc2lvbiBvZiB0eXBl
-ICd0eXBlb2YgKGZzbF9tY19idXNfZHBtYWNfdHlwZSkgKicgKGFrYSAnY29uc3Qgc3RydWN0IGRl
-dmljZV90eXBlIConKSBkaXNjYXJkcyBxdWFsaWZpZXJzIFstV2Vycm9yLC1XaW5jb21wYXRpYmxl
-LXBvaW50ZXItdHlwZXMtZGlzY2FyZHMtcXVhbGlmaWVyc10KICAgICA0MTYgfCAgICAgICAgICAg
-ICAgICAgeyAmZnNsX21jX2J1c19kcG1hY190eXBlLCAiZHBtYWMiIH0sCiAgICAgICAgIHwgICAg
-ICAgICAgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+fgogICBkcml2ZXJzL2J1cy9mc2wt
-bWMvZnNsLW1jLWJ1cy5jOjQxNzo1OiBlcnJvcjogaW5pdGlhbGl6aW5nICdzdHJ1Y3QgZGV2aWNl
-X3R5cGUgKicgd2l0aCBhbiBleHByZXNzaW9uIG9mIHR5cGUgJ3R5cGVvZiAoZnNsX21jX2J1c19k
-cHJ0Y190eXBlKSAqJyAoYWthICdjb25zdCBzdHJ1Y3QgZGV2aWNlX3R5cGUgKicpIGRpc2NhcmRz
-IHF1YWxpZmllcnMgWy1XZXJyb3IsLVdpbmNvbXBhdGlibGUtcG9pbnRlci10eXBlcy1kaXNjYXJk
-cy1xdWFsaWZpZXJzXQogICAgIDQxNyB8ICAgICAgICAgICAgICAgICB7ICZmc2xfbWNfYnVzX2Rw
-cnRjX3R5cGUsICJkcHJ0YyIgfSwKICAgICAgICAgfCAgICAgICAgICAgICAgICAgICBefn5+fn5+
-fn5+fn5+fn5+fn5+fn5+CiAgIGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmM6NDE4OjU6
-IGVycm9yOiBpbml0aWFsaXppbmcgJ3N0cnVjdCBkZXZpY2VfdHlwZSAqJyB3aXRoIGFuIGV4cHJl
-c3Npb24gb2YgdHlwZSAndHlwZW9mIChmc2xfbWNfYnVzX2Rwc2VjaV90eXBlKSAqJyAoYWthICdj
-b25zdCBzdHJ1Y3QgZGV2aWNlX3R5cGUgKicpIGRpc2NhcmRzIHF1YWxpZmllcnMgWy1XZXJyb3Is
-LVdpbmNvbXBhdGlibGUtcG9pbnRlci10eXBlcy1kaXNjYXJkcy1xdWFsaWZpZXJzXQogICAgIDQx
-OCB8ICAgICAgICAgICAgICAgICB7ICZmc2xfbWNfYnVzX2Rwc2VjaV90eXBlLCAiZHBzZWNpIiB9
-LAogICAgICAgICB8ICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+Cj4+
-IGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmM6NDE5OjU6IGVycm9yOiBpbml0aWFsaXpp
-bmcgJ3N0cnVjdCBkZXZpY2VfdHlwZSAqJyB3aXRoIGFuIGV4cHJlc3Npb24gb2YgdHlwZSAndHlw
-ZW9mIChmc2xfbWNfYnVzX2RwZG11eF90eXBlKSAqJyAoYWthICdjb25zdCBzdHJ1Y3QgZGV2aWNl
-X3R5cGUgKicpIGRpc2NhcmRzIHF1YWxpZmllcnMgWy1XZXJyb3IsLVdpbmNvbXBhdGlibGUtcG9p
-bnRlci10eXBlcy1kaXNjYXJkcy1xdWFsaWZpZXJzXQogICAgIDQxOSB8ICAgICAgICAgICAgICAg
-ICB7ICZmc2xfbWNfYnVzX2RwZG11eF90eXBlLCAiZHBkbXV4IiB9LAogICAgICAgICB8ICAgICAg
-ICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+CiAgIGRyaXZlcnMvYnVzL2ZzbC1t
-Yy9mc2wtbWMtYnVzLmM6NDIwOjU6IGVycm9yOiBpbml0aWFsaXppbmcgJ3N0cnVjdCBkZXZpY2Vf
-dHlwZSAqJyB3aXRoIGFuIGV4cHJlc3Npb24gb2YgdHlwZSAndHlwZW9mIChmc2xfbWNfYnVzX2Rw
-ZGNlaV90eXBlKSAqJyAoYWthICdjb25zdCBzdHJ1Y3QgZGV2aWNlX3R5cGUgKicpIGRpc2NhcmRz
-IHF1YWxpZmllcnMgWy1XZXJyb3IsLVdpbmNvbXBhdGlibGUtcG9pbnRlci10eXBlcy1kaXNjYXJk
-cy1xdWFsaWZpZXJzXQogICAgIDQyMCB8ICAgICAgICAgICAgICAgICB7ICZmc2xfbWNfYnVzX2Rw
-ZGNlaV90eXBlLCAiZHBkY2VpIiB9LAogICAgICAgICB8ICAgICAgICAgICAgICAgICAgIF5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+CiAgIGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmM6NDIx
-OjU6IGVycm9yOiBpbml0aWFsaXppbmcgJ3N0cnVjdCBkZXZpY2VfdHlwZSAqJyB3aXRoIGFuIGV4
-cHJlc3Npb24gb2YgdHlwZSAndHlwZW9mIChmc2xfbWNfYnVzX2RwYWlvcF90eXBlKSAqJyAoYWth
-ICdjb25zdCBzdHJ1Y3QgZGV2aWNlX3R5cGUgKicpIGRpc2NhcmRzIHF1YWxpZmllcnMgWy1XZXJy
-b3IsLVdpbmNvbXBhdGlibGUtcG9pbnRlci10eXBlcy1kaXNjYXJkcy1xdWFsaWZpZXJzXQogICAg
-IDQyMSB8ICAgICAgICAgICAgICAgICB7ICZmc2xfbWNfYnVzX2RwYWlvcF90eXBlLCAiZHBhaW9w
-IiB9LAogICAgICAgICB8ICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
-CiAgIGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmM6NDIyOjU6IGVycm9yOiBpbml0aWFs
-aXppbmcgJ3N0cnVjdCBkZXZpY2VfdHlwZSAqJyB3aXRoIGFuIGV4cHJlc3Npb24gb2YgdHlwZSAn
-dHlwZW9mIChmc2xfbWNfYnVzX2RwY2lfdHlwZSkgKicgKGFrYSAnY29uc3Qgc3RydWN0IGRldmlj
-ZV90eXBlIConKSBkaXNjYXJkcyBxdWFsaWZpZXJzIFstV2Vycm9yLC1XaW5jb21wYXRpYmxlLXBv
-aW50ZXItdHlwZXMtZGlzY2FyZHMtcXVhbGlmaWVyc10KICAgICA0MjIgfCAgICAgICAgICAgICAg
-ICAgeyAmZnNsX21jX2J1c19kcGNpX3R5cGUsICJkcGNpIiB9LAogICAgICAgICB8ICAgICAgICAg
-ICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fgo+PiBkcml2ZXJzL2J1cy9mc2wtbWMvZnNs
-LW1jLWJ1cy5jOjQyMzo1OiBlcnJvcjogaW5pdGlhbGl6aW5nICdzdHJ1Y3QgZGV2aWNlX3R5cGUg
-Kicgd2l0aCBhbiBleHByZXNzaW9uIG9mIHR5cGUgJ3R5cGVvZiAoZnNsX21jX2J1c19kcGRtYWlf
-dHlwZSkgKicgKGFrYSAnY29uc3Qgc3RydWN0IGRldmljZV90eXBlIConKSBkaXNjYXJkcyBxdWFs
-aWZpZXJzIFstV2Vycm9yLC1XaW5jb21wYXRpYmxlLXBvaW50ZXItdHlwZXMtZGlzY2FyZHMtcXVh
-bGlmaWVyc10KICAgICA0MjMgfCAgICAgICAgICAgICAgICAgeyAmZnNsX21jX2J1c19kcGRtYWlf
-dHlwZSwgImRwZG1haSIgfSwKICAgICAgICAgfCAgICAgICAgICAgICAgICAgICBefn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fgogICBkcml2ZXJzL2J1cy9mc2wtbWMvZnNsLW1jLWJ1cy5jOjQyNDo1OiBl
-cnJvcjogaW5pdGlhbGl6aW5nICdzdHJ1Y3QgZGV2aWNlX3R5cGUgKicgd2l0aCBhbiBleHByZXNz
-aW9uIG9mIHR5cGUgJ3R5cGVvZiAoZnNsX21jX2J1c19kcGRiZ190eXBlKSAqJyAoYWthICdjb25z
-dCBzdHJ1Y3QgZGV2aWNlX3R5cGUgKicpIGRpc2NhcmRzIHF1YWxpZmllcnMgWy1XZXJyb3IsLVdp
-bmNvbXBhdGlibGUtcG9pbnRlci10eXBlcy1kaXNjYXJkcy1xdWFsaWZpZXJzXQogICAgIDQyNCB8
-ICAgICAgICAgICAgICAgICB7ICZmc2xfbWNfYnVzX2RwZGJnX3R5cGUsICJkcGRiZyIgfSwKICAg
-ICAgICAgfCAgICAgICAgICAgICAgICAgICBefn5+fn5+fn5+fn5+fn5+fn5+fn5+CiAgIDE2IGVy
-cm9ycyBnZW5lcmF0ZWQuCgoKdmltICs0MTIgZHJpdmVycy9idXMvZnNsLW1jL2ZzbC1tYy1idXMu
-YwoKZTcwYmExYjA2YzI2Y2QgZHJpdmVycy9idXMvZnNsLW1jL2ZzbC1tYy1idXMuYyAgICAgICAg
-IElvYW5hIENpb3JuZWkgICAyMDIxLTAyLTA4ICA0MDIgIAo0NzQzM2I2MzBiN2IzMCBkcml2ZXJz
-L3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVudGl1IFR1ZG9yIDIwMTctMTEt
-MTcgIDQwMyAgc3RhdGljIHN0cnVjdCBkZXZpY2VfdHlwZSAqZnNsX21jX2dldF9kZXZpY2VfdHlw
-ZShjb25zdCBjaGFyICp0eXBlKQo0NzQzM2I2MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNsLW1j
-L2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVudGl1IFR1ZG9yIDIwMTctMTEtMTcgIDQwNCAgewo0NzQz
-M2I2MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVu
-dGl1IFR1ZG9yIDIwMTctMTEtMTcgIDQwNSAgCXN0YXRpYyBjb25zdCBzdHJ1Y3Qgewo0NzQzM2I2
-MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVudGl1
-IFR1ZG9yIDIwMTctMTEtMTcgIDQwNiAgCQlzdHJ1Y3QgZGV2aWNlX3R5cGUgKmRldl90eXBlOwo0
-NzQzM2I2MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1
-cmVudGl1IFR1ZG9yIDIwMTctMTEtMTcgIDQwNyAgCQljb25zdCBjaGFyICp0eXBlOwo0NzQzM2I2
-MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVudGl1
-IFR1ZG9yIDIwMTctMTEtMTcgIDQwOCAgCX0gZGV2X3R5cGVzW10gPSB7CjQ3NDMzYjYzMGI3YjMw
-IGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3Ig
-MjAxNy0xMS0xNyAgNDA5ICAJCXsgJmZzbF9tY19idXNfZHByY190eXBlLCAiZHByYyIgfSwKNDc0
-MzNiNjMwYjdiMzAgZHJpdmVycy9zdGFnaW5nL2ZzbC1tYy9idXMvZnNsLW1jLWJ1cy5jIExhdXJl
-bnRpdSBUdWRvciAyMDE3LTExLTE3ICA0MTAgIAkJeyAmZnNsX21jX2J1c19kcG5pX3R5cGUsICJk
-cG5pIiB9LAo0NzQzM2I2MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMt
-YnVzLmMgTGF1cmVudGl1IFR1ZG9yIDIwMTctMTEtMTcgIDQxMSAgCQl7ICZmc2xfbWNfYnVzX2Rw
-aW9fdHlwZSwgImRwaW8iIH0sCjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMv
-YnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyBANDEyICAJCXsgJmZz
-bF9tY19idXNfZHBzd190eXBlLCAiZHBzdyIgfSwKNDc0MzNiNjMwYjdiMzAgZHJpdmVycy9zdGFn
-aW5nL2ZzbC1tYy9idXMvZnNsLW1jLWJ1cy5jIExhdXJlbnRpdSBUdWRvciAyMDE3LTExLTE3IEA0
-MTMgIAkJeyAmZnNsX21jX2J1c19kcGJwX3R5cGUsICJkcGJwIiB9LAo0NzQzM2I2MzBiN2IzMCBk
-cml2ZXJzL3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVudGl1IFR1ZG9yIDIw
-MTctMTEtMTcgQDQxNCAgCQl7ICZmc2xfbWNfYnVzX2RwY29uX3R5cGUsICJkcGNvbiIgfSwKNDc0
-MzNiNjMwYjdiMzAgZHJpdmVycy9zdGFnaW5nL2ZzbC1tYy9idXMvZnNsLW1jLWJ1cy5jIExhdXJl
-bnRpdSBUdWRvciAyMDE3LTExLTE3IEA0MTUgIAkJeyAmZnNsX21jX2J1c19kcG1jcF90eXBlLCAi
-ZHBtY3AiIH0sCjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1t
-Yy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDE2ICAJCXsgJmZzbF9tY19idXNf
-ZHBtYWNfdHlwZSwgImRwbWFjIiB9LAo0NzQzM2I2MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNs
-LW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVudGl1IFR1ZG9yIDIwMTctMTEtMTcgIDQxNyAgCQl7
-ICZmc2xfbWNfYnVzX2RwcnRjX3R5cGUsICJkcHJ0YyIgfSwKZTkxNThiMzVlZjlhZmIgZHJpdmVy
-cy9idXMvZnNsLW1jL2ZzbC1tYy1idXMuYyAgICAgICAgIEhvcmlhIEdlYW50xIMgICAgMjAxOC0w
-OS0xMiAgNDE4ICAJCXsgJmZzbF9tY19idXNfZHBzZWNpX3R5cGUsICJkcHNlY2kiIH0sCmEzYjdh
-NTgxODIzODU3IGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmMgICAgICAgICBJb2FuYSBD
-aW9ybmVpICAgMjAyMC0wNy0xNyBANDE5ICAJCXsgJmZzbF9tY19idXNfZHBkbXV4X3R5cGUsICJk
-cGRtdXgiIH0sCmEzYjdhNTgxODIzODU3IGRyaXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmMg
-ICAgICAgICBJb2FuYSBDaW9ybmVpICAgMjAyMC0wNy0xNyAgNDIwICAJCXsgJmZzbF9tY19idXNf
-ZHBkY2VpX3R5cGUsICJkcGRjZWkiIH0sCmEzYjdhNTgxODIzODU3IGRyaXZlcnMvYnVzL2ZzbC1t
-Yy9mc2wtbWMtYnVzLmMgICAgICAgICBJb2FuYSBDaW9ybmVpICAgMjAyMC0wNy0xNyAgNDIxICAJ
-CXsgJmZzbF9tY19idXNfZHBhaW9wX3R5cGUsICJkcGFpb3AiIH0sCmEzYjdhNTgxODIzODU3IGRy
-aXZlcnMvYnVzL2ZzbC1tYy9mc2wtbWMtYnVzLmMgICAgICAgICBJb2FuYSBDaW9ybmVpICAgMjAy
-MC0wNy0xNyAgNDIyICAJCXsgJmZzbF9tY19idXNfZHBjaV90eXBlLCAiZHBjaSIgfSwKYTNiN2E1
-ODE4MjM4NTcgZHJpdmVycy9idXMvZnNsLW1jL2ZzbC1tYy1idXMuYyAgICAgICAgIElvYW5hIENp
-b3JuZWkgICAyMDIwLTA3LTE3IEA0MjMgIAkJeyAmZnNsX21jX2J1c19kcGRtYWlfdHlwZSwgImRw
-ZG1haSIgfSwKZTcwYmExYjA2YzI2Y2QgZHJpdmVycy9idXMvZnNsLW1jL2ZzbC1tYy1idXMuYyAg
-ICAgICAgIElvYW5hIENpb3JuZWkgICAyMDIxLTAyLTA4ICA0MjQgIAkJeyAmZnNsX21jX2J1c19k
-cGRiZ190eXBlLCAiZHBkYmciIH0sCjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wt
-bWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDI1ICAJCXsg
-TlVMTCwgTlVMTCB9CjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2Zz
-bC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDI2ICAJfTsKNDc0MzNiNjMw
-YjdiMzAgZHJpdmVycy9zdGFnaW5nL2ZzbC1tYy9idXMvZnNsLW1jLWJ1cy5jIExhdXJlbnRpdSBU
-dWRvciAyMDE3LTExLTE3ICA0MjcgIAlpbnQgaTsKNDc0MzNiNjMwYjdiMzAgZHJpdmVycy9zdGFn
-aW5nL2ZzbC1tYy9idXMvZnNsLW1jLWJ1cy5jIExhdXJlbnRpdSBUdWRvciAyMDE3LTExLTE3ICA0
-MjggIAo0NzQzM2I2MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVz
-LmMgTGF1cmVudGl1IFR1ZG9yIDIwMTctMTEtMTcgIDQyOSAgCWZvciAoaSA9IDA7IGRldl90eXBl
-c1tpXS5kZXZfdHlwZTsgaSsrKQo0NzQzM2I2MzBiN2IzMCBkcml2ZXJzL3N0YWdpbmcvZnNsLW1j
-L2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVudGl1IFR1ZG9yIDIwMTctMTEtMTcgIDQzMCAgCQlpZiAo
-IXN0cmNtcChkZXZfdHlwZXNbaV0udHlwZSwgdHlwZSkpCjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMv
-c3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0x
-NyAgNDMxICAJCQlyZXR1cm4gZGV2X3R5cGVzW2ldLmRldl90eXBlOwo0NzQzM2I2MzBiN2IzMCBk
-cml2ZXJzL3N0YWdpbmcvZnNsLW1jL2J1cy9mc2wtbWMtYnVzLmMgTGF1cmVudGl1IFR1ZG9yIDIw
-MTctMTEtMTcgIDQzMiAgCjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVz
-L2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDMzICAJcmV0dXJuIE5V
-TEw7CjQ3NDMzYjYzMGI3YjMwIGRyaXZlcnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1idXMu
-YyBMYXVyZW50aXUgVHVkb3IgMjAxNy0xMS0xNyAgNDM0ICB9CjQ3NDMzYjYzMGI3YjMwIGRyaXZl
-cnMvc3RhZ2luZy9mc2wtbWMvYnVzL2ZzbC1tYy1idXMuYyBMYXVyZW50aXUgVHVkb3IgMjAxNy0x
-MS0xNyAgNDM1ICAKCjo6Ojo6OiBUaGUgY29kZSBhdCBsaW5lIDQxMiB3YXMgZmlyc3QgaW50cm9k
-dWNlZCBieSBjb21taXQKOjo6Ojo6IDQ3NDMzYjYzMGI3YjMwZDBkYWEzNjBjNjQzMDhjMGY0Yzk2
-MzI5ODYgc3RhZ2luZzogZnNsLW1jOiBhZGQgc3VwcG9ydCBmb3IgZGV2aWNlIHR5cGUKCjo6Ojo6
-OiBUTzogTGF1cmVudGl1IFR1ZG9yIDxsYXVyZW50aXUudHVkb3JAbnhwLmNvbT4KOjo6Ojo6IEND
-OiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdraEBsaW51eGZvdW5kYXRpb24ub3JnPgoKLS0gCjAt
-REFZIENJIEtlcm5lbCBUZXN0IFNlcnZpY2UKaHR0cHM6Ly9naXRodWIuY29tL2ludGVsL2xrcC10
-ZXN0cy93aWtpCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CmRldmVsIG1haWxpbmcgbGlzdApkZXZlbEBsaW51eGRyaXZlcnByb2plY3Qub3JnCmh0dHA6Ly9k
-cml2ZXJkZXYubGludXhkcml2ZXJwcm9qZWN0Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2RyaXZlcmRl
-di1kZXZlbAo=
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git class_cleanup
+branch HEAD: 95b7bd9f5490de7ff7cfb0c4137a3c22cf3de1bf  misc: c2port: core: make c2port_class a static const structure
+
+Error/Warning reports:
+
+https://lore.kernel.org/oe-kbuild-all/202409041701.8NfSraMa-lkp@intel.com
+
+Error/Warning: (recently discovered and may have been fixed)
+
+drivers/bus/fsl-mc/fsl-mc-bus.c:412:5: error: initializing 'struct device_type *' with an expression of type 'typeof (fsl_mc_bus_dpsw_type) *' (aka 'const struct device_type *') discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
+drivers/bus/fsl-mc/fsl-mc-bus.c:413:5: error: initializing 'struct device_type *' with an expression of type 'typeof (fsl_mc_bus_dpbp_type) *' (aka 'const struct device_type *') discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
+drivers/bus/fsl-mc/fsl-mc-bus.c:414:5: error: initializing 'struct device_type *' with an expression of type 'typeof (fsl_mc_bus_dpcon_type) *' (aka 'const struct device_type *') discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
+drivers/bus/fsl-mc/fsl-mc-bus.c:415:5: error: initializing 'struct device_type *' with an expression of type 'typeof (fsl_mc_bus_dpmcp_type) *' (aka 'const struct device_type *') discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
+drivers/bus/fsl-mc/fsl-mc-bus.c:419:5: error: initializing 'struct device_type *' with an expression of type 'typeof (fsl_mc_bus_dpdmux_type) *' (aka 'const struct device_type *') discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
+drivers/bus/fsl-mc/fsl-mc-bus.c:423:5: error: initializing 'struct device_type *' with an expression of type 'typeof (fsl_mc_bus_dpdmai_type) *' (aka 'const struct device_type *') discards qualifiers [-Werror,-Wincompatible-pointer-types-discards-qualifiers]
+
+Error/Warning ids grouped by kconfigs:
+
+recent_errors
+|-- arm64-allmodconfig
+|   |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpbp_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible-
+|   |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpcon_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible
+|   |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpdmai_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatibl
+|   |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpdmux_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatibl
+|   |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpmcp_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible
+|   `-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpsw_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible-
+|-- powerpc-allyesconfig
+|   |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpbp_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible-
+|   |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpcon_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible
+|   |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpdmai_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatibl
+|   |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpdmux_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatibl
+|   |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpmcp_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible
+|   `-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpsw_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible-
+`-- x86_64-allyesconfig
+    |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpbp_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible-
+    |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpcon_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible
+    |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpdmai_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatibl
+    |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpdmux_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatibl
+    |-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpmcp_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible
+    `-- drivers-bus-fsl-mc-fsl-mc-bus.c:error:initializing-struct-device_type-with-an-expression-of-type-typeof-(fsl_mc_bus_dpsw_type)-(aka-const-struct-device_type-)-discards-qualifiers-Werror-Wincompatible-
+
+elapsed time: 1369m
+
+configs tested: 114
+configs skipped: 4
+
+tested configs:
+alpha                             allnoconfig   gcc-14.1.0
+alpha                            allyesconfig   clang-20
+alpha                               defconfig   gcc-14.1.0
+arc                              allmodconfig   clang-20
+arc                               allnoconfig   gcc-14.1.0
+arc                              allyesconfig   clang-20
+arc                                 defconfig   gcc-14.1.0
+arm                              allmodconfig   clang-20
+arm                               allnoconfig   gcc-14.1.0
+arm                              allyesconfig   clang-20
+arm                                 defconfig   gcc-14.1.0
+arm                        neponset_defconfig   gcc-14.1.0
+arm                         socfpga_defconfig   gcc-14.1.0
+arm64                            allmodconfig   clang-20
+arm64                             allnoconfig   gcc-14.1.0
+arm64                               defconfig   gcc-14.1.0
+csky                             alldefconfig   gcc-14.1.0
+csky                              allnoconfig   gcc-14.1.0
+csky                                defconfig   gcc-14.1.0
+hexagon                          allmodconfig   clang-20
+hexagon                           allnoconfig   gcc-14.1.0
+hexagon                          allyesconfig   clang-20
+hexagon                             defconfig   gcc-14.1.0
+i386                             allmodconfig   clang-18
+i386                             allmodconfig   gcc-12
+i386                              allnoconfig   clang-18
+i386                              allnoconfig   gcc-12
+i386                             allyesconfig   clang-18
+i386                             allyesconfig   gcc-12
+i386         buildonly-randconfig-001-20240904   gcc-12
+i386         buildonly-randconfig-002-20240904   gcc-12
+i386         buildonly-randconfig-003-20240904   gcc-12
+i386         buildonly-randconfig-004-20240904   gcc-12
+i386         buildonly-randconfig-005-20240904   gcc-12
+i386         buildonly-randconfig-006-20240904   gcc-12
+i386                                defconfig   clang-18
+i386                  randconfig-001-20240904   gcc-12
+i386                  randconfig-002-20240904   gcc-12
+i386                  randconfig-004-20240904   gcc-12
+i386                  randconfig-005-20240904   gcc-12
+i386                  randconfig-006-20240904   gcc-12
+i386                  randconfig-011-20240904   gcc-12
+i386                  randconfig-012-20240904   gcc-12
+i386                  randconfig-013-20240904   gcc-12
+i386                  randconfig-014-20240904   gcc-12
+i386                  randconfig-015-20240904   gcc-12
+i386                  randconfig-016-20240904   gcc-12
+loongarch                        allmodconfig   gcc-14.1.0
+loongarch                         allnoconfig   gcc-14.1.0
+loongarch                           defconfig   gcc-14.1.0
+m68k                             allmodconfig   gcc-14.1.0
+m68k                              allnoconfig   gcc-14.1.0
+m68k                             allyesconfig   gcc-14.1.0
+m68k                                defconfig   gcc-14.1.0
+m68k                          multi_defconfig   gcc-14.1.0
+microblaze                       allmodconfig   gcc-14.1.0
+microblaze                        allnoconfig   gcc-14.1.0
+microblaze                       allyesconfig   gcc-14.1.0
+microblaze                          defconfig   gcc-14.1.0
+mips                              allnoconfig   gcc-14.1.0
+mips                           gcw0_defconfig   gcc-14.1.0
+mips                           ip28_defconfig   gcc-14.1.0
+mips                           jazz_defconfig   gcc-14.1.0
+nios2                             allnoconfig   gcc-14.1.0
+nios2                               defconfig   gcc-14.1.0
+openrisc                          allnoconfig   clang-20
+openrisc                         allyesconfig   gcc-14.1.0
+openrisc                            defconfig   gcc-12
+openrisc                 simple_smp_defconfig   gcc-14.1.0
+parisc                           allmodconfig   gcc-14.1.0
+parisc                            allnoconfig   clang-20
+parisc                           allyesconfig   gcc-14.1.0
+parisc                              defconfig   gcc-12
+parisc64                            defconfig   gcc-14.1.0
+powerpc                     akebono_defconfig   gcc-14.1.0
+powerpc                          allmodconfig   gcc-14.1.0
+powerpc                           allnoconfig   clang-20
+powerpc                          allyesconfig   gcc-14.1.0
+powerpc                      ep88xc_defconfig   gcc-14.1.0
+powerpc                          g5_defconfig   gcc-14.1.0
+powerpc                    ge_imp3a_defconfig   gcc-14.1.0
+powerpc                 xes_mpc85xx_defconfig   gcc-14.1.0
+riscv                            allmodconfig   gcc-14.1.0
+riscv                             allnoconfig   clang-20
+riscv                            allyesconfig   gcc-14.1.0
+riscv                               defconfig   gcc-12
+s390                             allmodconfig   gcc-14.1.0
+s390                              allnoconfig   clang-20
+s390                             allyesconfig   gcc-14.1.0
+s390                                defconfig   gcc-12
+s390                                defconfig   gcc-14.1.0
+sh                               allmodconfig   gcc-14.1.0
+sh                                allnoconfig   gcc-14.1.0
+sh                               allyesconfig   gcc-14.1.0
+sh                                  defconfig   gcc-12
+sh                          sdk7786_defconfig   gcc-14.1.0
+sh                           se7724_defconfig   gcc-14.1.0
+sparc                            allmodconfig   gcc-14.1.0
+sparc                       sparc32_defconfig   gcc-14.1.0
+sparc64                             defconfig   gcc-12
+um                               allmodconfig   clang-20
+um                                allnoconfig   clang-20
+um                               allyesconfig   clang-20
+um                                  defconfig   gcc-12
+um                             i386_defconfig   gcc-12
+um                           x86_64_defconfig   gcc-12
+x86_64                            allnoconfig   clang-18
+x86_64                           allyesconfig   clang-18
+x86_64                              defconfig   clang-18
+x86_64                              defconfig   gcc-11
+x86_64                                  kexec   gcc-12
+x86_64                          rhel-8.3-rust   clang-18
+x86_64                               rhel-8.3   gcc-12
+xtensa                            allnoconfig   gcc-14.1.0
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+_______________________________________________
+devel mailing list
+devel@linuxdriverproject.org
+http://driverdev.linuxdriverproject.org/mailman/listinfo/driverdev-devel
